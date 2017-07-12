@@ -1,0 +1,19 @@
+version: '2'
+services:
+  dev-env:
+    build:
+      context: dev-env
+    working_dir: /app
+    volumes:
+      - .:/app
+      # Enable the use of Docker from within the container
+      - /var/run/docker.sock:/var/run/docker.sock
+    entrypoint:
+      - /bin/bash
+  blogserver:
+    build:
+      context: .
+    volumes:
+      - .:/app
+    ports:
+      - 4000:4000

@@ -12,19 +12,12 @@ describe "Blog Server" do
       end
     end
 
-    @container = image.run()
+    @container = image.run("jekyll serve")
     set :os, family: :debian
     set :backend, :docker
     set :docker_container, @container.id
     # wait for the container to start
-    sleep 10
-    # wait_for_open_port 4000, 10
-
-
-    # set :os, family: :debian
-    # set :backend, :docker
-    # set :docker_image, image.id
-
+    sleep 5
   end
 
   after(:all) do
@@ -37,9 +30,6 @@ describe "Blog Server" do
       it { should be_listening }
     end
 
-    describe command('curl http://localhost:4000') do
-      its(:stdout) { should include '<title>Mechanical Rock Blogs</title>' }
-    end
   end
 
 

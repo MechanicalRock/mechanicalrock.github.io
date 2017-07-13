@@ -3,6 +3,7 @@ layout: post
 title:  "Introducing Infrastructure Mapping!"
 date:   2016-12-21 04:48:58 +0000
 categories: bdd devops
+author: Tim Myerscough
 ---
 If it looks like you have seen this article somewhere before, that is not accidental.  They say imitation is the sincerest form of flattery (or maybe it just lacks imagination).
 

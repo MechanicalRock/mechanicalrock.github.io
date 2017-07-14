@@ -13,4 +13,4 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y net-tools
 
-CMD ["jekyll" "serve"]
+CMD ["jekyll", "serve"]

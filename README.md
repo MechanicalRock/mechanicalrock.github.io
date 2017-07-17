@@ -2,8 +2,9 @@
 
 Welcome!
 
-# Contributing
+Published blogs: https://mechanicalrock.github.io/
 
+# Contributing
 
 * Create a branch, using the format: `article/summary-title`
 * Add your post under `_posts` using the format: `yyyy-mm-dd-summary-title.markdown`

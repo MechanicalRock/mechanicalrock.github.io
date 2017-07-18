@@ -1,0 +1,14 @@
+body {
+    font-size: 1em;
+    line-height: 1.85714286em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Open Sans','Helvetica','Arial',sans-serif;
+    color: #666;
+    font-weight: 400
+}
+
+
+a, a:visited {
+	color: #40BFB4;
+}

@@ -6,8 +6,6 @@ categories: bdd devops
 author: Nick Jenkins
 ---
 
----
-
 There is a common ‘wisdom’ these days that software development should move faster. From agile to continuous delivery and DevOps, everything is about the need for speed.
 
 But many people struggle to understand the benefits of ‘faster’.

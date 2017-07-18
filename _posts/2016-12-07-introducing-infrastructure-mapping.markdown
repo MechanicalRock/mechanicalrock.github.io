@@ -4,7 +4,7 @@ title:  "Introducing Infrastructure Mapping!"
 date:   2016-12-21 04:48:58 +0000
 categories: bdd devops
 author: Tim Myerscough
-image: https://camo.githubusercontent.com/14b97ba4a1327c0db2200f3892788fd873a1ce20/687474703a2f2f626c6f672e70687573696f6e2e6e6c2f77702d636f6e74656e742f75706c6f6164732f323031332f31312f646f636b65722e706e67
+image: img/cards.png
 ---
 If it looks like you have seen this article somewhere before, that is not accidental.  They say imitation is the sincerest form of flattery (or maybe it just lacks imagination).
 

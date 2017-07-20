@@ -4,7 +4,7 @@ title:  "The Value of Faster"
 date:   2017-07-17
 categories: bdd devops
 author: Nick Jenkins
-image: img/feedback_cycle_smaller_projects.png
+image: img/roi_curve_value.png
 ---
 
 There is a common ‘wisdom’ these days that software development should move faster. From agile to continuous delivery and DevOps, everything is about the need for speed.

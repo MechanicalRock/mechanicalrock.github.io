@@ -12,3 +12,7 @@ body {
 a, a:visited {
 	color: #40BFB4;
 }
+
+.social-media-list > li > a {
+	float: right;
+}

@@ -30,7 +30,7 @@ Substitute it as the RoleArn parameter
 
 In code once you have imported the AWS SDK in JS, we can specify something like below:
 
-```
+```javascript
 new AWS.STS().assumeRole({
    RoleArn: ‘arn:aws:iam:666666:role/BlahRole’,
    RoleSessionName: “Fred’s Session”
@@ -55,7 +55,7 @@ new AWS.STS().assumeRole({
 
 At some point in time you will want to check if the credentials has expired. You can easily achieve this as specified below:
 
-```
+```javascript
 if(new Date(credentials.expiryTime) > new Date()) {
     //good to go
 } else {

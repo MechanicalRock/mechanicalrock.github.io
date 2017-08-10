@@ -12,21 +12,21 @@ This article highlights the preliminary steps of performing AWS API calls in Jav
 
 Why would you want to do this? Because you are currently working on a project using Javascript’s AWS API and have absolutely no idea how to do stuff with cross accounts.
 
-Before starting, it is assumed that you have already configured the necessary AWS policies and groups for cross account access (if not, you could look here https://aws.amazon.com/blogs/security/how-to-enable-cross-account-access-to-the-aws-management-console/). 
+Before starting, it is assumed that you have already configured the necessary AWS policies and groups for cross account access (if not, you could look here https://aws.amazon.com/blogs/security/how-to-enable-cross-account-access-to-the-aws-management-console/).
 
 In the AWS Console, you can easily switch roles by using a link specific to switching to the cross account role. In code we will need to do something slightly different.
 
 API calls relating to assuming roles can be found in the AWS.STS API. Essentially you need to use it to generate temporary credentials(access key and secret key) to use for the cross account. These are short lived credentials, so don’t expect it to be valid once it has passed its expiry date. 
 
 You should also know the cross account policy role arn. Unless you already have it, follow the steps below: 
-Go into the AWS console 
-Navigate to IAM section
-Click on the Users tab
-Click on your username
-Click on Permissions
-Click on the policy drop down arrow that corresponds to the Cross Account you intend to get access to
-Copy the role arn within the JSON policy document
-Substitute it as the RoleArn parameter
+1. Go into the AWS console 
+2. Navigate to IAM section
+3. Click on the Users tab
+4. Click on your username
+5. Click on Permissions
+6. Click on the policy drop down arrow that corresponds to the Cross Account you intend to get access to
+7. Copy the role arn within the JSON policy document
+8. Substitute it as the RoleArn parameter
 
 In code once you have imported the AWS SDK in JS, we can specify something like below:
 

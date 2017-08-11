@@ -12,7 +12,7 @@ This article highlights the preliminary steps of performing AWS API calls in Jav
 
 Why would you want to do this? Because you are currently working on a project using Javascript’s AWS API and have absolutely no idea how to do stuff with cross accounts.
 
-Before starting, it is assumed that you have already configured the necessary AWS policies and groups for cross account access (if not, you could look here https://aws.amazon.com/blogs/security/how-to-enable-cross-account-access-to-the-aws-management-console/).
+Before starting, it is assumed that you have already configured the necessary AWS policies and groups for cross account access <a href="https://aws.amazon.com/blogs/security/how-to-enable-cross-account-access-to-the-aws-management-console/">here</a>.
 
 In the AWS Console, you can easily switch roles by using a link specific to switching to the cross account role. In code we will need to do something slightly different.
 

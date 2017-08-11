@@ -25,8 +25,8 @@ You should also know the cross account policy role arn. Unless you already have 
 4. Click on your username
 5. Click on Permissions
 6. Click on the policy drop down arrow that corresponds to the Cross Account you intend to get access to
-7. Copy the role arn within the JSON policy document
-8. Substitute it as the RoleArn parameter
+7. Copy the role arn (*Resources* field) within the JSON policy document
+8. Substitute it as the RoleArn parameter (see code below)
 
 In code once you have imported the AWS SDK in JS, we can specify something like below:
 

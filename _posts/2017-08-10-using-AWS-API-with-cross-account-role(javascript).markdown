@@ -16,7 +16,7 @@ Before starting, it is assumed that you have already configured the necessary AW
 
 In the AWS Console, you can easily switch roles by using a link specific to switching to the cross account role. In code we will need to do something slightly different.
 
-API calls relating to assuming roles can be found in the AWS.STS API(http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/STS.html). Essentially you need to use it to generate temporary credentials(access key and secret key) to use for the cross account. These are short lived credentials, so don’t expect it to be valid once it has passed its expiry date. 
+API calls relating to assuming roles can be found in the AWS.STS API <a href="http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/STS.html">here</a>. Essentially you need to use it to generate temporary credentials(access key and secret key) to use for the cross account. These are short lived credentials, so don’t expect it to be valid once it has passed its expiry date. 
 
 You should also know the cross account policy role ARN. Unless you already have it, follow the steps below: 
 1. Go into the AWS console 

@@ -1,18 +1,18 @@
 ---
 layout: post
 title:  "Using AWS With Cross Account Role (Javascript)"
-date:   2017-07-17
+date:   2017-08-14
 categories: javascript aws-sdk
 author: Bryan Yu
 ---
 
 Using AWS API With Cross Account Role (Javascript)
 
-This article highlights the preliminary steps of performing AWS API calls in Javascript for a cross account role without going into too much detail.
+This article highlights the preliminary steps of performing AWS API calls in Javascript for a cross account role. 
 
-Why would you want to do this? Because you are currently working on a project using Javascript’s AWS API and have absolutely no idea how to do stuff with cross accounts.
+Setting up for cross account roles is outside the scope of this, so if you need more information on that, visit <a href="https://aws.amazon.com/blogs/security/how-to-enable-cross-account-access-to-the-aws-management-console/">AWS policies and groups for cross account access</a>.
 
-Before starting, it is assumed that you have already configured the necessary AWS policies and groups for cross account access, if not look <a href="https://aws.amazon.com/blogs/security/how-to-enable-cross-account-access-to-the-aws-management-console/">here</a>.
+There are a multitude of <a href="http://blog.flux7.com/aws-cross-accounts-access-part-2">reasons and benefits</a> for taking the cross account approach. At the end of the day, they usually boil down to security, billing and access to customer accounts
 
 In the AWS Console, you can easily switch roles by using a link specific to switching to the cross account role. In code we will need to do something slightly different.
 
@@ -22,10 +22,10 @@ You should also know the cross account policy role ARN. Unless you already have 
 1. Go into the AWS console 
 2. Navigate to IAM section
 3. Click on the Users tab
-4. Click on your username
+4. Click on your username (i.e. john.doe)
 5. Click on Permissions
-6. Click on the policy drop down arrow that corresponds to the Cross Account you intend to get access to
-7. Copy the role ARN (*Resources* field) within the JSON policy document
+6. Click on the policy drop down arrow that corresponds to the Cross Account you intend to get access to (i.e. OtherAccountRole)
+7. Copy the role ARN (*Resources* field i.e. ) within the JSON policy document
 8. Substitute it as the RoleArn parameter (see code below)
 
 In code once you have imported the AWS SDK in JS, we can specify something like below:
@@ -53,16 +53,16 @@ new AWS.STS().assumeRole({
 })
 ```
 
-At some point in time you will want to check if the credentials has expired. You can easily achieve this as specified below:
+At some point in time you will want to check if the credentials has expired and refresh it otherwise. You can easily achieve this as specified below:
 
 ```javascript
-if(new Date(credentials.expiryTime) > new Date()) {
-    //good to go
-} else {
-   //time to renew
+if(credentials.needsRefresh()) {
+    credentials.refresh()
 }
 ```
 
-That’s about it, you just have to create and keep a reference to the credentials object so it can passed along in the options parameter when you construct an instance of an AWS service, else you will just end up using your default credentials.
+Thats about it!
 
-You should then be able to make API calls and modify resources in the other account.
+The next step you will need to consider is how you choose to manage the temporary credentials so they are refreshed (when expired) as and when needed again.
+
+Regardless of it being short lived credentials, security is still top priority and you should ensure that at no point in time they are exposed publicly.

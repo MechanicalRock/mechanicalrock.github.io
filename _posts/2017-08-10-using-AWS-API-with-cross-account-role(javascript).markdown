@@ -4,9 +4,8 @@ title:  "Using AWS With Cross Account Role (Javascript)"
 date:   2017-08-14
 categories: javascript aws-sdk
 author: Bryan Yu
+image: img/aws_sts.png
 ---
-
-Using AWS API With Cross Account Role (Javascript)
 
 This article highlights the preliminary steps of performing AWS API calls in Javascript for a cross account role. 
 

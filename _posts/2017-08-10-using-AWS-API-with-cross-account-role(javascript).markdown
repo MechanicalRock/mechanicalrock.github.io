@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Using AWS With Cross Account Role (Javascript)"
+title:  "Using AWS With Cross Account Role"
 date:   2017-08-14
 categories: javascript aws-sdk
 author: Bryan Yu

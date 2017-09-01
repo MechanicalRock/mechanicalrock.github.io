@@ -48,7 +48,7 @@ The problem with matrix manangement is that fosters all sorts of problems. Polit
 
 The modern equivalent of matrix management in IT teams is the Spotify Model. Not that is actually a model. But expensive consultancies are paid loads to roll out a "model" which effectively propogates this shit. Guilds and tribes may have been formed with good intentions, but are just abused by the middle management that become the issue. 
 
-It takes an exceptional leader or rather one who is a "servant leader" to infact listen to the experts and foster and environment where DevOps is truly understood, practiced and embedded. This environment is a product and customer centric delivery team with true empowerment. Not subject to any political or outside / horizontal interference.
+It takes an exceptional leader or rather one who is a "servant leader" to infact listen to the experts and foster an environment where DevOps is truly understood, practiced and embedded. This environment is a product and customer centric team with true empowerment. Not subject to any political or outside / horizontal interference.
 
 However, even within teams, silos exist, which is why we at [Mechanical Rock](https://www.mechanicalrock.io/) are passionate about Behaviour Driven Development (BDD). BDD enhances the performance of agile teams by taking their collaboration to a new level. As a byproduct it provides a set of living documentation and automated tests, which underpin the DevOps movement. We've also extended this to use [Behaviour Driven Infrastructure](https://mechanicalrock.github.io//bdd/devops/2016/12/21/introducing-infrastructure-mapping) and TDD to develop infrastructure to remove silos within teams and provide configuration and compliance checks as a byproduct.
 

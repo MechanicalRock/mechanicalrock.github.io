@@ -8,16 +8,15 @@ image: img/silos.png
 ---
 This is one of those articles that may stir up a bit of angst with people, because essentially it is an opinion piece. Not driven by data, merely driven by what I think works best. It was provoked by a brief conversation on social media and got me thinking about why I think the way I do. The conversation was based on the following post by [Josh Partogi](https://www.linkedin.com/in/jpartogi/), which was on the money:
 
-```
-Many are talking about devops these days.
+> Many are talking about devops these days.
+> 
+> * Some think devops is a tool.
+> * Others think it is a department or a job role.
+> * Others think it is about frequent deployment.
+> * While others think devops is bug fixing & development.
+> 
+> The IT industry must be the most confusing industry these days.
 
-* Some think devops is a tool.
-* Others think it is a department or a job role.
-* Others think it is about frequent deployment.
-* While others think devops is bug fixing & development.
-
-The IT industry must be the most confusing industry these days.
-```
 
 Running an Enterprise DevOps & Continuous Delivery consultancy, this is a subject close to my heart. We are an opinionated bunch at Mechanical Rock and we believe that if you do the Dev bit in DevOps right, then the Ops bit becomes a lot easier. Bear with me, I will explain and hopefully close the loop. The way I see it, DevOps is made up of 4 key tenets which give way to a set of practices, tooling or processes. 
 

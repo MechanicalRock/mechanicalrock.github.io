@@ -34,13 +34,11 @@ Recently, I have seen first hand, at a major financial institution, the impact o
 
 Wouldn't it be a better situation that the team responsible for the application create the infrastructure required as they are building it, using those techniques? The knowledge stays within that team and the power to make positive change is in their own hands. 
 
-So why do we create a DevOps Team, which sits in its own bubble and has its own reporting structure, which essentially just look after infrastructure (in my experience)? I think a lot of it comes down to organisational structure in matrix management style organisations. 
+So why do organisations create a DevOps Team, which sits in its own bubble and has its own reporting structure, which essentially just look after infrastructure (in my experience)? I think a lot of it comes down to organisational structure in matrix management style organisations. 
 
-Matrix maangement
-    - political bullshit
-    - blame
-    - time to make decisions
-Command and control
-    - do it this way rather than here is a problem we need to solve
-    - adoption of ceremony over real change
+![Matrix Management Picture](/img/matrix.png)
+
+The problem with matrix manangement is that fosters all sorts of problems. Political bullshit, being one. In this scenario, a team is a bunch of individuals from different parts of the organisation that are brought together to deliver something. In theory, this is great, but the problem is that line management for these indivduals sits off to one side. Any successes will be attributed to the members from that line manager and inversely any failures will be as a result of the other team members not aligning with that manager. The biggest problem as a result of this is the time to make decisions. It effectively widens the feedback loop (again) by involving intertested third parties and will disenfranchise the team actually doing the work.
+
+
 

@@ -6,7 +6,7 @@ categories: bdd tdd devops pairing mobbing
 author: Hamish Tedeschi
 image: img/silos.png
 ---
-This is one of those articles that may stir up a bit of angst with people, because essentially it is an opinion piece. Not driven by data, merely driven by what I think works best. It was provoked by a brief conversation on social media and got me thinking about why I think the way I do. The conversation was based on the following post by <ahref="https://www.linkedin.com/in/jpartogi/">Josh Partogi</a>, which was on the money:
+This is one of those articles that may stir up a bit of angst with people, because essentially it is an opinion piece. Not driven by data, merely driven by what I think works best. It was provoked by a brief conversation on social media and got me thinking about why I think the way I do. The conversation was based on the following post by [Josh Partogi](https://www.linkedin.com/in/jpartogi/), which was on the money:
 
 ```
 Many are talking about devops these days.

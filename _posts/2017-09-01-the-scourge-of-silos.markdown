@@ -44,7 +44,7 @@ __So enter matrix management, which was designed to solve all these problems, by
 
 ![Matrix Management Picture](/img/matrix-man.png)
 
-The problem with matrix manangement is that fosters all sorts of nasty things. Political bullshit, being one. In this scenario, a team of individuals from different parts of the organisation are brought together to deliver something. In theory, this is great, but the problem is that line management for these indivduals sits off to one side. Any successes will be attributed to the members of that line manager and inversely any failures will be as a result of the other team members not aligning with that manager. The biggest problem, as a result of this, is the time to make decisions. 
+The problem with matrix manangement is that it fosters all sorts of nasty things. Political bullshit, being one. In this scenario, a team of individuals from different parts of the organisation are brought together to deliver something. In theory, this is great, but the problem is that line management for these indivduals sits off to one side. Any successes will be attributed to the members of that line manager and inversely any failures will be as a result of the other team members not aligning with that manager. The biggest problem, as a result of this, is the time to make decisions. 
 
 __It effectively widens the feedback loop (again) by involving interested third parties and will disenfranchise the team actually doing the work.__
 

@@ -21,9 +21,9 @@ Running an Enterprise DevOps & Continuous Delivery consultancy, this is a subjec
 
 The way I see it, DevOps is made up of 4 key tenets which give way to a set of practices, tooling or processes. 
 
-1. Sharing / No Silos: Creating a culture where information is shared is vital to the success of DevOps, nothing should ever be "someone else's problem".
+1. Sharing / No Silos: Creating a culture where information is shared and is vital to the success of DevOps, nothing should ever be "someone else's problem".
 2. Culture: DevOps seeks to create a high-trust culture of collaboration through learning and experimentation. 
-3. Measure Everything / Fast Feedback: improvements are based on experimentation, experimentation relies on accurate information and measurement. Short feedback loops generate more information, more quickly and allow informed decisions to be made.
+3. Measure Everything / Fast Feedback: Improvements are based on experimentation. Experimentation relies on accurate information and measurement. Short feedback loops generate more information, more quickly and allow informed decisions to be made.
 4. Automate Everything: automate away the 'drudgery' in the the Development-Operations lifecycle, so people can focus on what they are best at - problem solving.
 
 I'd like to focus on the first two tenets, as I think they relate heavily to the intent of the original post and underline the misunderstanding or more likely, the misuse (both intentionally and unintentionally) of "DevOps".

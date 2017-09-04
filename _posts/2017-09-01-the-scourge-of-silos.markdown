@@ -6,7 +6,7 @@ categories: bdd tdd devops pairing mobbing
 author: Hamish Tedeschi
 image: img/silos1.png
 ---
-This is one of those articles that may stir up a bit of angst with people, because essentially it is an opinion piece. Not driven by data, merely driven by what I think works best. It was provoked by a brief conversation on social media and got me thinking about why I think the way I do. The conversation was based on the following post by [Josh Partogi](https://www.linkedin.com/in/jpartogi/), which was on the money:
+This is one of those articles that may stir up a bit of angst with people, because essentially it is an opinion piece. Not driven by data, merely driven by what I think works best. It was provoked by a brief conversation on social media and got me thinking about why I think the way I do. The conversation was based on the following post by [Josh Partogi](https://www.linkedin.com/feed/update/urn:li:activity:6308818675763941376), which was on the money:
 
 > Many are talking about devops these days.
 > 
@@ -40,13 +40,15 @@ So why do organisations create a DevOps Team, which sits in its own bubble and h
 
 Command and control assumes a leader knows best and that they know where the organisation is going (goals, outcomes) and have a plan for how to get there (process). With a term as fuzzy as "DevOps", as illustrated by Josh's post, should we expect IT leaders in enterprise organisations, who have gone from Waterfall to Agile and now DevOps to be in touch enough to understand the nuance of it? Not in my experience. 
 
-So enter matrix management, which was designed to solve all these problems, by creating product centric delivery teams, but still retaining line management.
+__So enter matrix management, which was designed to solve all these problems, by creating product centric delivery teams, but still retaining line management.__
 
 ![Matrix Management Picture](/img/matrix-man.png)
 
-The problem with matrix manangement is that fosters all sorts of problems. Political bullshit, being one. In this scenario, a team of individuals from different parts of the organisation are brought together to deliver something. In theory, this is great, but the problem is that line management for these indivduals sits off to one side. Any successes will be attributed to the members of that line manager and inversely any failures will be as a result of the other team members not aligning with that manager. The biggest problem, as a result of this, is the time to make decisions. It effectively widens the feedback loop (again) by involving interested third parties and will disenfranchise the team actually doing the work.
+The problem with matrix manangement is that fosters all sorts of nast things. Political bullshit, being one. In this scenario, a team of individuals from different parts of the organisation are brought together to deliver something. In theory, this is great, but the problem is that line management for these indivduals sits off to one side. Any successes will be attributed to the members of that line manager and inversely any failures will be as a result of the other team members not aligning with that manager. The biggest problem, as a result of this, is the time to make decisions. It effectively widens the feedback loop (again) by involving interested third parties and will disenfranchise the team actually doing the work.
 
-The modern equivalent of matrix management in IT teams is the Spotify Model. Not that is actually a model. But expensive consultancies are paid loads to roll out a "model" which effectively propogates this shit. Guilds and tribes may have been formed with good intentions, but are just abused by the middle management that become the issue. 
+The modern equivalent of matrix management in IT teams is the Spotify "Model". Not that it is actually a model at all, if you speak to anyone at Spotify! But expensive consultancies are paid loads to roll out a "model" which effectively propogates this shit. Guilds and tribes may have been formed with good intentions, but are just abused by the middle management that become the issue. 
+
+![Spotify Picture](/img/squadstribes_12.png)
 
 It takes an exceptional leader or rather one who is a "servant leader" to infact listen to the experts and foster an environment where DevOps is truly understood, practiced and embedded. This environment is a product and customer centric team with true empowerment. Not subject to any political or outside / horizontal interference.
 

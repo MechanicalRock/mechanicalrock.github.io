@@ -44,7 +44,9 @@ __So enter matrix management, which was designed to solve all these problems, by
 
 ![Matrix Management Picture](/img/matrix-man.png)
 
-The problem with matrix manangement is that fosters all sorts of nast things. Political bullshit, being one. In this scenario, a team of individuals from different parts of the organisation are brought together to deliver something. In theory, this is great, but the problem is that line management for these indivduals sits off to one side. Any successes will be attributed to the members of that line manager and inversely any failures will be as a result of the other team members not aligning with that manager. The biggest problem, as a result of this, is the time to make decisions. It effectively widens the feedback loop (again) by involving interested third parties and will disenfranchise the team actually doing the work.
+The problem with matrix manangement is that fosters all sorts of nasty things. Political bullshit, being one. In this scenario, a team of individuals from different parts of the organisation are brought together to deliver something. In theory, this is great, but the problem is that line management for these indivduals sits off to one side. Any successes will be attributed to the members of that line manager and inversely any failures will be as a result of the other team members not aligning with that manager. The biggest problem, as a result of this, is the time to make decisions. 
+
+__It effectively widens the feedback loop (again) by involving interested third parties and will disenfranchise the team actually doing the work.__
 
 The modern equivalent of matrix management in IT teams is the Spotify "Model". Not that it is actually a model at all, if you speak to anyone at Spotify! But expensive consultancies are paid loads to roll out a "model" which effectively propogates this shit. Guilds and tribes may have been formed with good intentions, but are just abused by the middle management that become the issue. 
 

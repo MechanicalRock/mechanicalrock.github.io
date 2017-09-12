@@ -27,7 +27,7 @@ localstack:
       - "8080:8080"
 ```
 
-In your dockerfile, you can reference a bash script which provisions your AWS resources so that when the docker services are up and running, your resources will available on the relevant service port referenced on the LocalStack GitHub page (<a href=https://github.com/localstack/localstack></a>). If you would like visibility of the resources available on your 'stack', just hit up <a href=http://localhost:8080></a>, in your browser. 
+In your dockerfile, you can reference a bash script which provisions your AWS resources so that when the docker services are up and running, your resources will available on the relevant service port referenced on the <a href="https://github.com/localstack/localstack">LocalStack GitHub page</a>. If you would like visibility of the resources available on your 'stack', just hit up http://localhost:8080, in your browser. 
 
 ```bash
 if [ $ENV = "local" ]; then
@@ -74,7 +74,7 @@ pipelines:
           script:
             - ./scripts/install-and-test.sh
             - export ENV=PROD
-            # - ./scripts/scaffold-environment.sh
+            - ./scripts/scaffold-environment.sh
             - ./scripts/deploy.sh
           services:
             - localstack

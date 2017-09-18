@@ -8,11 +8,11 @@ image: img/no_servers.png
 ---
 
 Building and testing serverless applications locally can be challenging. It's a relatively new landscape and there aren't many established practices, regarding good serverless application design.
-At a recent Mechanical Rock mob programming session we decided to tackle the topic of, "How can we turn off any superfluous and idle ec2 instances" that we may have forgotten to stop/terminate because servers are expensive right? We decided to call the new project, Instance Reaper. Source code available <a href="https://github.com/MechanicalRock/instance-reaper">here</a>. 
+At a recent Mechanical Rock mob programming session we decided to tackle the topic of, "How can we turn off any superfluous and idle ec2 instances" that we may have forgotten to stop/terminate – because servers are expensive right? We decided to call the new project, Instance Reaper. Source code available <a href="https://github.com/MechanicalRock/instance-reaper">here</a>. 
 
 ![serverless benefits]({{ site.url }}/img/about_serverless_architecture.jpg)
 >Whilst a serverless architecture does alleviate a lot of these mundane tasks, it doesn't necessarily remove the need for them completely.
-- Serverless **is** Scalable, fault tolerant and simplifies many of the operational tasks, associated with traditional architectures.
+- Serverless **is** scalable, fault tolerant and simplifies many of the operational tasks, associated with traditional architectures.
 
 
 The preferred approach for any new software project here at Mechanical Rock, is to tackle it with a test-first mindset and a serverless implementation. The difficulty comes in, with the infancy of the whole "serverless" paradigm. As a DevOps consultancy, ideally we would like to practice a Continuous Delivery model on all of our software projects. In order to achieve this, we need to be able test our application locally, on a pipeline and have it run bug-free in the cloud. The good news is, there are tools out there, that can help us achieve this.

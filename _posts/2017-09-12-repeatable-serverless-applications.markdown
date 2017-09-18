@@ -12,7 +12,7 @@ At a recent Mechanical Rock mob programming session we decided to tackle the top
 
 ![serverless benefits]({{ site.url }}/img/about_serverless_architecture.jpg)
 
-```Whilst a serverless architecture does alleviate a lot of these mundane tasks, it doesn't necessarily remove the need for them completely. Serverless is scalable and fault tolerant but mainly simplifies many of the operational tasks, associated with traditional architectures.```    
+Whilst a serverless architecture does alleviate a lot of these mundane tasks, it doesn't necessarily remove the need for them completely. Serverless is scalable and fault tolerant but mainly simplifies many of the operational tasks, associated with traditional architectures.    
 
 
 The preferred approach for any new software project here at Mechanical Rock, is to tackle it with a test-first mindset and a serverless implementation. The difficulty comes in, with the infancy of the whole "serverless" paradigm. As a DevOps consultancy, ideally we would like to practice a Continuous Delivery model on all of our software projects. In order to achieve this, we need to be able test our application locally, on a pipeline and have it run bug-free in the cloud. The good news is, there are tools out there, that can help us achieve this.

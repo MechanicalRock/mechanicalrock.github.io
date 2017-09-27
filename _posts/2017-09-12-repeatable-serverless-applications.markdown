@@ -105,3 +105,5 @@ definitions:
 It's that simple. Thanks to Docker and LocalStack, your developers now have a reproducible environment that can be tested locally and on a pipeline. In the true fashion of serverless architecture, all that needs focusing on, is your application code.
 
 Source code for Instance-Reaper available <a href="https://github.com/MechanicalRock/instance-reaper">here</a>.
+
+<i>Icons by <a href="https://www.flaticon.com/authors/dinosoftlabs">DinosoftLabs</a> from <a href="https://www.flaticon.com">flaticon.com</a></i>

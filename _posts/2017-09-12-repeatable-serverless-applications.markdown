@@ -4,13 +4,13 @@ title: "Repeatable Serverless Applications"
 date: 2017-09-11
 categories: serverless architecture docker aws
 author: Rick Foxcroft
-image: img/repeatable-serverless-applications/no_servers.png
+image: img/repeatable-serverless-applications/less_servers.png
 ---
 
 Building and testing serverless applications locally can be challenging. It's a relatively new landscape and there aren't many established practices, regarding good serverless application design.
 At a recent Mechanical Rock mob programming session we decided to tackle the topic of, "How can we turn off any superfluous and idle ec2 instances" that we may have forgotten to stop/terminate – because servers are expensive right? We decided to call the new project, Instance Reaper.
 
-![serverless benefits]({{ site.url }}/img/repeatable-serverless-applications/about_serverless_architecture.jpg)
+![serverless benefits]({{ site.url }}/img/repeatable-serverless-applications/serverless_simplifies.png)
 
 Whilst a serverless architecture does alleviate a lot of these mundane tasks, it doesn't necessarily remove the need for them completely. Serverless is scalable and fault tolerant but mainly simplifies many of the operational tasks, associated with traditional architectures.    
 

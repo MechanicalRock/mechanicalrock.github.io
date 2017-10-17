@@ -4,7 +4,7 @@ title:  "The New Donut"
 date:   2017-10-15 04:48:58 +0000
 categories: donut automated test reports
 author: Hamish Tedeschi & Amit Sharma
-image: img/the-new-donut/donut.jpeg
+image: img/the-new-donut/Donut-01.jpeg
 ---
 
 Donut was an idea born at [MagenTys](https://magentys.io/) with the intention of making test results from Cucumber more visual and accessible to software development teams. Since its initial commit over a year or so ago it has grown to a rich report which now supports unit, integration and acceptance tests. It also has a number of adaptors and related projects which make it easier to integrate with various test runners and CI tools.

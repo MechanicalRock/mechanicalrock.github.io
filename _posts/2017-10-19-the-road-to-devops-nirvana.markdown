@@ -9,7 +9,7 @@ image: img/devops/the devops transformation helix.png
 
 IT Transformation is not a phrase to be thrown around lightly. The mere mention of it will have some people shuddering at the thought of multi million dollar programmes attempting to shoehorn new organisational structures and / or technology into an organisation. And in many cases failing to achieve what it sets out to do, which was to fundamentally change the way an organisation operates.
 
-The mistake organisations make is that they view this change in people, process and technology as if it were a road to travel, with a destination. That couldn't be further from the truth. It may be a road to travel, but there is no destination. The destination is actually one of continuous improvement and a self sustaining loop. If this isn't adopted form the beginning, then the ultimate goal will likely not be achieved.
+The mistake organisations make is that they view this change in people, process and technology as if it were a road to travel, with a destination. That couldn't be further from the truth. It may be a road to travel, but there is no destination. The destination is actually one of continuous improvement and a self sustaining loop. If this isn't understood from the beginning, then the ultimate goal will likely not be achieved.
 
 Ask yourself this: If I turned of your IT systems tomorrow, could your business still run effectively? I'd wager my house that you can't.
 

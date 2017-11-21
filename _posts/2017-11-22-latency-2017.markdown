@@ -1,12 +1,50 @@
 ---
 layout: post
 title:  "Latency 2017"
-date:   2017-11-22 04:48:58 +0000
+date:   2017-11-20 04:48:58 +0000
 categories: conferences cloud
 author: Hamish Tedeschi
 image: img/latency/Latency2017-Snail.png
 ---
 
-I need to be honest; [Latency] (https://latencyconf.io/) was a complete brain fart. I looked around at the conference options in Perth (and the rest of Australia, for that matter) and didn't see much (other than CukeUp, of course) that I would enjoy going to. As a punter, I don't go to a conference to see glitz and glamour. I go to learn from colleagues and her about ways to solve problems that I may be facing today or tomorrow. I realise that this happens on many occaisions when I am in the corridors or outside of the actual talks. Having fun in a safe environment is also a key concern.
+I need to be honest; [Latency](https://latencyconf.io/) was a complete and utter brain fart. I need to thank my colleagues at [Mechanical Rock](https://mechanicalrock.io/) for allowing me to go ahead with this idea, despite evidence to the contrary pointing to it being a failure. 
 
-A couple of 
+I looked around at the conference options in Perth (and the rest of Australia, for that matter) and didn't see much (other than [CukeUpAu](https://cucumber.io/events/cukeup-au-2016), of course) that I would enjoy going to. As a punter, I don't go to a conference to see glitz and glamour (other than perhaps re:invent), in actual fact, I like a bit of grime. I go to learn from colleagues and her about ways to solve problems that I may be facing today or tomorrow. I realise that this also happens when I am in the corridors or outside of the actual talks. Having fun in a safe environment is also a key concern.
+
+It was a big call to run another conference, especially in Perth. So I needed a good team to help provide a diverse set of views. The worst thing we could do is have an echo chamber of opinions and ideas.. So I put the hard word on [Nick Jenkins](https://www.linkedin.com/in/nickvjenkins/) and he used his network to recruit [Tania Broome](https://www.linkedin.com/in/taniabroome/) and [Min Xu](https://www.linkedin.com/in/min-xu-ab700921/) on the organising team. **Win number one!**
+
+After we had begun the [Latency](https://latencyconf.io/) preparation, I went to [DDDPerth](https://dddperth.com/) with the team, at the Perth Convention Centre. I had a great time - which was a credit to the organisers. The conference scene in Perth was obviously getting more mature and it indicated there is a demand for more progressive, community focused events. I felt renewed enthusiasm that this may be possible after all! **Win number two!**
+
+Running a cloud focused conference in a place where cloud was yet to be adopted seriously was a big call, so we needed support from the major cloud providers, otherwise it would be too risky and just wouldn't make sense. The preference was to have all the major players in town - again, a diverse set of opinions makes for the best experience. Firstly, we approached the team at [AWS](https://aws.amazon.com/) as being a key partner in town, we naturally have contacts there. We had a few hiccups getting approval, but the team were really committed to helping out - Thanks [Andrew](https://www.linkedin.com/in/andrew-winter-43724315/) for driving it through. **Win number three!** 
+
+It wasn't enough to have AWS onboard. We needed more sponsors to help spread the word and provide that extra bit of credibility. Tania suggested [Bankwest](https://www.bankwest.com.au/) may be a possible sponsorship option. That would be huge and completely de-risk the conference from a financial perspective, but also provide that extra publicity we need to get the punters in the door. Again, we had some hiccups getting approval, but Tania persisted and we got there in the end. **Win number four!**
+
+Everything was taking shape - now we just needed a keynote that fit the bill. Someone smart, someone in the cloud / devops space, a seasoned speaker, perhaps international and ideally someone that isn't male. Not a big call at all. The main man [William Sia](https://www.linkedin.com/in/william-sia-67880956/) suggested [Charity Majors](https://www.linkedin.com/in/charity-majors-826b765/). WOW! What a perfect keynote - so after not much persuasion at all, Charity agreed to do Latency! **Win number five!**
+
+As a team, we tried hard to get the other cloud providers on board, for either a panel discussion, as sponsors or even as workshop providers. [Oracle](https://www.oracle.com/index.html) via [Gary Casham](https://www.linkedin.com/in/gary-casham-042b2b7b/) came to the party sponsoring the coffee with an Oracle Coffee Bot came to the party, but the others were lukewarm to say the least. I personally was very disappointed with the response, although it won't stop us trying again. **Loss number one!**
+
+Two weeks out and everything was lining up nicely. The team was following up with each of the speakers and received our second set of bad news. One of the international speakers was in Israel for the days preceding Latency and his flight would only land a few hours AFTER he was due to talk. There was no way around it, so we had to find another speaker. **Loss number two!**
+
+10 days out from Latency, we had our first real weather check. It was going to be 36 degrees! So, the next few days were spent scrambling to ensure our venue had some way to cool the punters down. This is not something we had budgeted for and was proving an expensive exercise. **Loss number three!**
+
+48 hours out from Latency, I got a phone call from Charity. She had missed her flight and may not make it to Perth..  **Loss number four!**
+
+36 hours out from Latency, I get an email from another speaker. He had just been admitted to hospital.. **Loss number five!**
+
+3 hours out from Latency, the Equipment Hire firm arrive late and start setting up..  **Loss number six!**
+
+1 hour out from Latency, the Air Conditioning hire firm hadn't turned up so we call them. They were not arriving for another 3 hours.. **Loss number seven!**
+
+**By this time, we were down 5/7.**
+
+**NOT LOOKING GOOD**
+
+8.55 AM... AND WE WERE OFF AND RACING
+
+The dynamic duo from VGW, [Rhys](https://www.linkedin.com/in/rhysc/) and [Matt](https://www.linkedin.com/in/matthewstephenjames/), stepped in to cover one of the talks and rocked. **Win number six!** 
+
+[Rob Moore](https://www.linkedin.com/in/robdmoore1/) cranked out a live Azure demo on stage. **Win number seven!** 
+
+And Charity flew in, came straight from the airport and gave the final talk of the day. And CRUSHED it! **Win number eight!** 
+
+**By my count, we won 8/7**

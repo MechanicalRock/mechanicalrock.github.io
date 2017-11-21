@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "Latency 2017"
+date:   2017-11-22 04:48:58 +0000
+categories: conferences cloud
+author: Hamish Tedeschi
+image: img/latency/Latency2017-Snail.png
+---
+
+I need to be honest; [Latency] (https://latencyconf.io/) was a complete brain fart. I looked around at the conference options in Perth (and the rest of Australia, for that matter) and didn't see much (other than CukeUp, of course) that I would enjoy going to. As a punter, I don't go to a conference to see glitz and glamour. I go to learn from colleagues and her about ways to solve problems that I may be facing today or tomorrow. I realise that this happens on many occaisions when I am in the corridors or outside of the actual talks. Having fun in a safe environment is also a key concern.
+
+A couple of 

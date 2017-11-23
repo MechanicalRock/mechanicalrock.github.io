@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Latency 2017"
-date:   2017-11-20 04:48:58 +0000
+date:   2017-11-23 04:48:58 +0000
 categories: conferences cloud
 author: Hamish Tedeschi
 image: img/latency/Light BG.jpg

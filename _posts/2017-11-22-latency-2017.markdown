@@ -4,7 +4,7 @@ title:  "Latency 2017"
 date:   2017-11-20 04:48:58 +0000
 categories: conferences cloud
 author: Hamish Tedeschi
-image: img/latency/#51 Light BG.jpg
+image: img/latency/Light BG.jpg
 ---
 
 I need to be honest; [Latency](https://latencyconf.io/) was a temporary mental lapse or failure to reason correctly (in other words, a complete and utter brain fart). I need to thank my colleagues at [Mechanical Rock](https://mechanicalrock.io/) for allowing me to go ahead with this idea, despite evidence to the contrary pointing to it being a potential failure. 

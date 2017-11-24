@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Enable Networking Between Sibling Docker Containers"
-date:   2017-09-27
+date:   2017-12-01
 categories: devops docker
 author: Tim Myerscough
 image: img/docker-sibling/docker-network.png
@@ -53,4 +53,4 @@ Connect the myapp container to my current network
 
 BOOM! 🤘
 
-[Docker networking](https://docs.docker.com/engine/userguide/networking/)is used by `docker-compose` under the hood to transparently add all your compose services to a common network.
+[Docker networking](https://docs.docker.com/engine/userguide/networking/) is used by `docker-compose` under the hood to transparently add all your compose services to a common network.

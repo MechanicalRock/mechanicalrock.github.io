@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Enable Networking Between Sibling Docker Containers"
+title:  "Networking Between Sibling Docker Containers"
 date:   2017-12-01
 categories: devops docker
 author: Tim Myerscough

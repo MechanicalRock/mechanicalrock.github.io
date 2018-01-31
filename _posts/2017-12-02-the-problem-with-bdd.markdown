@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "The Highs & Lows of BDD"
+title:  "The Highs and Lows of BDD"
 date:   2017-12-02
 categories: bdd quality
 author: Hamish Tedeschi

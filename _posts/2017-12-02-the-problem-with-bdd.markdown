@@ -23,4 +23,4 @@ But why? Why is it on these occaisions that the developers were not interested i
 
 ***Newsflash > Worrying about project timelines is fine, I get it. But we need to think more about longer term goals than short term wins. Sometimes the Agile mentality can feel like this runs contrary to that. The times where BDD has worked, there has been a strong technical leader who has given the team the space to experiment, learn and succeed.***
 
-So my advice to you, if you are considering adopting BDD: Use the above 3 points as a barometer for where you currently are and go in to this with your eyes wide open.
+So my advice to you, if you are considering adopting BDD: Use the above 3 points as a barometer for where you as an organisation currently are and go in to this with your eyes wide open, expecting to have to make tough decisions along the way.

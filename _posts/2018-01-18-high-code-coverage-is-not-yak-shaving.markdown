@@ -4,7 +4,7 @@ title:  "High Code Coverage is not Wasted Effort"
 date:   2018-01-08
 categories: Quality BDD
 author: Tim Myerscough
-image: img/docker-sibling/docker-network.png
+image: img/yak.png
 ---
 Recently, someone asked me what I think about code coverage metrics. They said aiming for 100% code coverage could be considered a waste of effort - since you get diminishing returns.
 

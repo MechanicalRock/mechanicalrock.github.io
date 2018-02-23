@@ -7,7 +7,7 @@ author: Pete Yandell
 image: img/inception-pipelines/inception-pipeline-cover.png
 ---
 
-## What's the problem
+## What's The Problem
 
 As we all know, we are supposed to automate everything, every must be 'as code' and there are no manual steps to doing anything. However when pressed with project deadlines, production fires and the rare moments when we get to work on something new, we just don't get around to it.
 
@@ -15,7 +15,7 @@ While working on a recent project, building out a continuous deployment pipeline
 
 So welcome to the Inception Pipeline; a [CloudFormation](https://aws.amazon.com/cloudformation/) template that plants itself inside an AWS Account and then self manages and self updates itself using nothing more than off-the-shelf AWS services.
 
-## What technologies are we going to use
+## What Technologies Are We Going To Use
 
 * [CloudFormation](https://aws.amazon.com/cloudformation/)
 * [CodeCommit](https://aws.amazon.com/codecommit/)
@@ -23,7 +23,7 @@ So welcome to the Inception Pipeline; a [CloudFormation](https://aws.amazon.com/
 * [IAM](https://aws.amazon.com/iam/) [Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)
 * [S3](https://aws.amazon.com/s3/)
 
-## What are the prerequisites
+## What Are The Prerequisites?
 
 1. An AWS Account to create the pipeline in.
 1. The AWS CLI installed and configured with [access credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
@@ -31,7 +31,7 @@ So welcome to the Inception Pipeline; a [CloudFormation](https://aws.amazon.com/
 
 While not strictly required, a passing familiarity of Bash Shell scripts, Git, JSON & YAML, and CloudFormation templates will make understanding everything easier.
 
-## How it all works
+## How It All Works
 
 At a high-level, the Inception Pipeline works by executing a CloudFormation template which then creates a CodeCommit repository, a CodePipeline pipeline and a few other supporting resources. The first non-source action in the pipeline is a [CloudFormation Deployment Action](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/continuous-delivery-codepipeline.html). This blog post won't dive deeply into the CloudFormation template (I'll leave that as an exercise for you dear reader). Instead I'll just discuss the really juicy bits.
 
@@ -65,11 +65,13 @@ While not strictly necessary, I would recommend that:
 1. The ```AdministerPipeline``` stage is only used for the ```AdministerPipeline``` action, i.e. don't add any other actions in.
 2. The ```AdministerPipeline``` stage is the first stage after the ```Source``` stage. This allows the pipeline to update itself before anything else runs.
 
-## Where do I get the seed files
+## Where Do I Get The Seed Files
 
-Go grab a copy from the [GitHub repository](https://github.com/MechanicalRock/InceptionPipeline/part1). I'll wait while you do.
+Go grab a copy from the [GitHub repository](https://github.com/MechanicalRock/InceptionPipeline/tree/master/part-1).
 
-## What are the files
+I'll wait while you do.
+
+### What Are The Files
 
 |File|Description|
 |----|-----------|
@@ -78,9 +80,9 @@ Go grab a copy from the [GitHub repository](https://github.com/MechanicalRock/In
 |aws_seed.json|These are the parameters used by the CloudFormation template when executed as a deployment action in CodePipeline|
 |aws_seed.yml|The pièce de résistance, the CloudFormation template that makes it all work|
 
-## Taking it for a spin
+## Taking It For A Spin
 
-1. Download the seed files from the [GitHub repository](https://github.com/MechanicalRock/InceptionPipeline/part1). Do not clone the repo, as the shell script will perform a ```git init```. Copy the downloaded files into a folder which will become your project folder.
+1. Download the zip file from the [GitHub repository](https://github.com/MechanicalRock/InceptionPipeline/archive/master.zip) and use the `part-1` files. Do not clone the repo, as the shell script will perform a ```git init```. Copy the unziped files into a folder which will become your project folder.
 1. Open all the files into your editor-of-choice. An editor that allows global search-and-replace will be super helpful.
 1. Open ```aws_seed-cli-parameters.json```. Perform a global replace for all values between the ```@@```:
     |Parameter|Description|

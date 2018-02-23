@@ -1,11 +1,13 @@
 ---
 layout: post
 title:  "Seeds of Inception - Part 1: Seeding your Account with an Inception Pipeline"
-date:   2018-02-20
+date:   2018-03-01
 categories: aws continuous deployment
 author: Pete Yandell
 image: img/inception-pipelines/seed_germination.png
 ---
+
+<a title="By U.S. Department of Agriculture (Seedling) [CC BY 2.0 (http://creativecommons.org/licenses/by/2.0) or Public domain], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3ASeed_germination.png"><img width="512" alt="Seed germination" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Seed_germination.png/512px-Seed_germination.png"/></a>
 
 ## What's The Problem
 
@@ -14,8 +16,6 @@ As we all know, we are supposed to automate everything, every must be 'as code' 
 While working on a recent project, building out a continuous deployment pipeline, I got to thinking about the number of upcoming future projects. Each project would need at least one pipeline per application, and a dedicated one for the AWS Account. Rolling a unique snowflake pipeline everytime just seemed evil and wasteful and wrong and totally against everything we stand for a [Mechanical Rock](https://www.mechanicalrock.io)!
 
 So welcome to the Inception Pipeline; a [CloudFormation](https://aws.amazon.com/cloudformation/) template that plants itself inside an AWS Account and then self manages and self updates itself using nothing more than off-the-shelf AWS services.
-
-<a title="By U.S. Department of Agriculture (Seedling) [CC BY 2.0 (http://creativecommons.org/licenses/by/2.0) or Public domain], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3ASeed_germination.png"><img width="512" alt="Seed germination" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Seed_germination.png/512px-Seed_germination.png"/></a>
 
 ## What Technologies Are We Going To Use
 

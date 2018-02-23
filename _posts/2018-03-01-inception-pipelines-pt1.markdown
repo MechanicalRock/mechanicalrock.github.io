@@ -101,6 +101,8 @@ I'll wait while you do.
 1. Run the ```init.sh|init.bat``` and watch the output.
 1. If all goes well, within a few minutes you will have a running Inception Pipeline in your account!
 
+![deployed inception pipeline]({{ site.url }}/img/inception-pipelines/inception-pipeline-cover.png)
+
 ## Wrapping Up
 
 If you do end up running an Inception Pipeline please let me know! I'm especially keen to hear any and all improvements, suggestions and critiques.

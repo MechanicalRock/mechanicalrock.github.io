@@ -4,7 +4,7 @@ title:  "Seeds of Inception - Part 1: Seeding your Account with an Inception Pip
 date:   2018-02-20
 categories: aws continuous deployment
 author: Pete Yandell
-image: img/inception-pipelines/inception-pipeline-cover.png
+image: img/inception-pipelines/seed_germination.png
 ---
 
 ## What's The Problem
@@ -14,6 +14,8 @@ As we all know, we are supposed to automate everything, every must be 'as code' 
 While working on a recent project, building out a continuous deployment pipeline, I got to thinking about the number of upcoming future projects. Each project would need at least one pipeline per application, and a dedicated one for the AWS Account. Rolling a unique snowflake pipeline everytime just seemed evil and wasteful and wrong and totally against everything we stand for a [Mechanical Rock](https://www.mechanicalrock.io)!
 
 So welcome to the Inception Pipeline; a [CloudFormation](https://aws.amazon.com/cloudformation/) template that plants itself inside an AWS Account and then self manages and self updates itself using nothing more than off-the-shelf AWS services.
+
+<a title="By U.S. Department of Agriculture (Seedling) [CC BY 2.0 (http://creativecommons.org/licenses/by/2.0) or Public domain], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3ASeed_germination.png"><img width="512" alt="Seed germination" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Seed_germination.png/512px-Seed_germination.png"/></a>
 
 ## What Technologies Are We Going To Use
 
@@ -32,6 +34,8 @@ So welcome to the Inception Pipeline; a [CloudFormation](https://aws.amazon.com/
 While not strictly required, a passing familiarity of Bash Shell scripts, Git, JSON & YAML, and CloudFormation templates will make understanding everything easier.
 
 ## How It All Works
+
+({{ site.url }}/img/inception-pipelines/inception-pipeline-cover.png)
 
 At a high-level, the Inception Pipeline works by executing a CloudFormation template which then creates a CodeCommit repository, a CodePipeline pipeline and a few other supporting resources. The first non-source action in the pipeline is a [CloudFormation Deployment Action](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/continuous-delivery-codepipeline.html). This blog post won't dive deeply into the CloudFormation template (I'll leave that as an exercise for you dear reader). Instead I'll just discuss the really juicy bits.
 

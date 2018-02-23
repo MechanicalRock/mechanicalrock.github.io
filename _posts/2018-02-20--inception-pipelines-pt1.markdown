@@ -83,6 +83,7 @@ Go grab a copy from the [GitHub repository](https://github.com/MechanicalRock/In
 1. Download the seed files from the [GitHub repository](https://github.com/MechanicalRock/InceptionPipeline/part1). Do not clone the repo, as the shell script will perform a ```git init```. Copy the downloaded files into a folder which will become your project folder.
 1. Open all the files into your editor-of-choice. An editor that allows global search-and-replace will be super helpful.
 1. Open ```aws_seed-cli-parameters.json```. Perform a global replace for all values between the ```@@```:
+
     |Parameter|Description|
     |---------|-----------|
     |RepositoryName|The name of the CodeCommit repository to create|

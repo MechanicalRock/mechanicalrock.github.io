@@ -29,7 +29,7 @@ So welcome to the Inception Pipeline; a [CloudFormation](https://aws.amazon.com/
 1. The AWS CLI installed and configured with [access credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
 1. CodeCommit [git credentials configured](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-unixes.html#setting-up-https-unixes-credential-helper).
 
-While not strictly required, a passing familarity of Bash Shell scripts, Git, JSON & YAML, and CloudFormation templates will make understanding everything easier.
+While not strictly required, a passing familiarity of Bash Shell scripts, Git, JSON & YAML, and CloudFormation templates will make understanding everything easier.
 
 ## How it all works
 
@@ -58,7 +58,7 @@ The secret-sauce to the Inception Pipeline is the using the same CloudFormation 
         RunOrder: '1'
 ```
 
-The CodePipeline is also configured to restart execution if it updates itself (```RestartExecutionOnUpdate: true```). This means when you add new stages, actions, etc, the pipeline will run the above action, realise its changed and then restart itself.
+The CodePipeline is also configured to restart execution if it updates itself (```RestartExecutionOnUpdate: true```). This means when you add new stages, actions, etc, the pipeline will run the above action, realise it has changed and then restart itself.
 
 While not strictly necessary, I would recommend that:
 

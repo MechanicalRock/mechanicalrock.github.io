@@ -94,6 +94,6 @@ Go grab a copy from the [GitHub repository](https://github.com/MechanicalRock/In
 1. Run the ```init.sh|init.bat``` and watch the output.
 1. If all goes well, within a few minutes you will have a running Inception Pipeline in your account!
 
-## WIP/TODO/etc
+## Wrapping Up
 
-Verify that the windows batch file works
+If you do end up running an Inception Pipeline please let me know! I'm especially keen to hear any and all improvements, suggestions and critiques.

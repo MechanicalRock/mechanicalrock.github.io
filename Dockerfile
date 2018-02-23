@@ -13,4 +13,5 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y net-tools
 
-CMD ["jekyll", "serve"]
+# Support future dated posts
+CMD ["jekyll", "serve", "--future"]

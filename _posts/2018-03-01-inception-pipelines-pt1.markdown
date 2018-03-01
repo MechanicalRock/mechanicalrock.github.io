@@ -1,11 +1,13 @@
 ---
 layout: post
-title:  "Seeds of Inception - Part 1: Seeding your Account with an Inception Pipeline"
+title:  "Seeds of Inception - Part 1"
 date:   2018-03-01
 categories: aws continuous deployment
 author: Pete Yandell
 image: img/inception-pipelines/seed_germination.png
 ---
+
+## Seeding your Account with an Inception Pipeline
 
 As we all know, we are supposed to automate everything, every must be 'as code' and there are no manual steps to doing anything. However when pressed with project deadlines, production fires and the rare moments when we get to work on something new, we just don't get around to it.
 

@@ -7,9 +7,9 @@ author: Pete Yandell
 image: img/inception-pipelines/seed_germination.png
 ---
 
-<a title="By U.S. Department of Agriculture (Seedling) [CC BY 2.0 (http://creativecommons.org/licenses/by/2.0) or Public domain], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3ASeed_germination.png"><img width="512" alt="Seed germination" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Seed_germination.png/512px-Seed_germination.png"/></a>
-
 As we all know, we are supposed to automate everything, every must be 'as code' and there are no manual steps to doing anything. However when pressed with project deadlines, production fires and the rare moments when we get to work on something new, we just don't get around to it.
+
+<a title="By U.S. Department of Agriculture (Seedling) [CC BY 2.0 (http://creativecommons.org/licenses/by/2.0) or Public domain], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3ASeed_germination.png"><img width="512" alt="Seed germination" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Seed_germination.png/512px-Seed_germination.png"/></a>
 
 ## What's The Problem
 

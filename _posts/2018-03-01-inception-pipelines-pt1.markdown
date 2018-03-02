@@ -13,7 +13,7 @@ image: img/inception-pipelines/seed_germination.png
 
 ## What's The Problem
 
-As we all know, we are supposed to automate everything, every must be 'as code' and there are no manual steps to doing anything. However when pressed with project deadlines, production fires and the rare moments when we get to work on something new, we just don't get around to it.
+As we all know, we are supposed to automate everything today. Everything must be 'as code' and there are no manual steps to doing anything. However when pressed with project deadlines, production fires and the rare moments when we get to work on something new, we just don't get around to it.
 
 While working on a recent project, building out a continuous deployment pipeline, I got to thinking about the number of upcoming future projects. Each project would need at least one pipeline per application, and a dedicated one for the AWS Account. Rolling a unique snowflake pipeline everytime just seemed evil and wasteful and wrong and totally against everything we stand for at [Mechanical Rock](https://www.mechanicalrock.io)!
 

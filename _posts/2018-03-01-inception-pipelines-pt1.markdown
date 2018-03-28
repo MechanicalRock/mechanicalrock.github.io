@@ -37,7 +37,7 @@ While not strictly required, a passing familiarity of Bash Shell scripts, Git, J
 
 ## How It All Works
 
-({{ site.url }}/img/inception-pipelines/inception-pipeline-cover.png)
+![inception pipeline]({{ site.url }}/img/inception-pipelines/inception-pipeline-cover.png)
 
 At a high-level, the Inception Pipeline works by executing a CloudFormation template which then creates a CodeCommit repository, a CodePipeline pipeline and a few other supporting resources. The first non-source action in the pipeline is a [CloudFormation Deployment Action](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/continuous-delivery-codepipeline.html). This blog post won't dive deeply into the CloudFormation template (I'll leave that as an exercise for you dear reader). Instead I'll just discuss the really juicy bits.
 
@@ -73,7 +73,7 @@ While not strictly necessary, I would recommend that:
 
 ## Where Do I Get The Seed Files
 
-Go grab a copy from the [GitHub repository](https://github.com/MechanicalRock/InceptionPipeline/tree/master/part-1).
+Go grab a copy from the [GitHub repository](https://github.com/MechanicalRock/InceptionPipeline/tree/master).
 
 I'll wait while you do.
 
@@ -88,7 +88,7 @@ I'll wait while you do.
 
 ## Taking It For A Spin
 
-1. Download the zip file from the [GitHub repository](https://github.com/MechanicalRock/InceptionPipeline/archive/master.zip) and use the `part-1` files. Do not clone the repo, as the shell script will perform a ```git init```. Copy the unziped files into a folder which will become your project folder.
+1. Download the zip file from the [GitHub repository](https://github.com/MechanicalRock/InceptionPipeline/archive/master.zip). Do not clone the repo, as the shell script will perform a ```git init```. Copy the unziped files into a folder which will become your project folder.
 1. Open all the files into your editor-of-choice. An editor that allows global search-and-replace will be super helpful.
 1. Open ```aws_seed-cli-parameters.json```. Perform a global replace for all values between the ```@@```:
 

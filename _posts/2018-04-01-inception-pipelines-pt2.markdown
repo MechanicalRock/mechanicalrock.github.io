@@ -7,38 +7,41 @@ author: Pete Yandell
 image: img/inception-pipelines/seed_germination.png
 ---
 
-**Part 2 srouting some website goodness** - A practical example for DevOps on AWS
+**Part 2 sprouting some website goodness** - A practical example for DevOps on AWS
 
-[TODO - Insert pretty picture here](http://example.com)
+![sprouting some website goodness]({{ site.url }}/img/inception-pipelines/seed_germination_2.png)
 
 ## What's the Problem
 
+If you've read my [first post](https://mechanicalrock.github.io//aws/continuous/deployment/2018/03/01/inception-pipelines-pt1) (and you have, haven't you), you either thought "that's absolute crap, why would I bother" or "hey, that's pretty neat, but what can I do with it". If you were the former, then avert your eyes because this post is targeted firmly at the latter.
 
-## What Technologies Are We Going To Use
+In this post I will be covering how to extend an [Inception Pipeline](https://github.com/MechanicalRock/InceptionPipeline/tree/master) to do something useful. In this instance, it is creating the infrastructure to host a single page application. On the projects I'm currently involved with, this is always the first piece of infrastructure we need (well, after first inceptioning up the pipeline).
+
+## What Technologies Are We Going to Use
 
 * [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/)
 * [CloudFront](https://aws.amazon.com/cloudfront/)
 * [Route 53](https://aws.amazon.com/route53/)
 * [S3](https://aws.amazon.com/s3/)
 
-## What Are The Prerequisites
+## What Are the Prerequisites
 
-The obvious first prerequisite is to have an existing [Inception Pipeline](https://mechanicalrock.github.io//aws/continuous/deployment/2018/03/01/inception-pipelines-pt1). So if you don't, jump across to the original post and create yourself one.
+The obvious first prerequisite is an existing [Inception Pipeline](https://mechanicalrock.github.io//aws/continuous/deployment/2018/03/01/inception-pipelines-pt1). So, if you don't have one, jump across to the original post and create yourself one.
 
 The next prerequisite is to manually create a couple of AWS resources:
 
-1. The first one to create is an ACM SSL certificate in the `us-east-1` region. This is the only region that CloudFront will look for the certificate. So unless you're creating the stack in `us-east-1`, then you're going to need to create it yourself. You will also have the option to verify the certificate by email or DNS (email is the only option when it is created via CloudFormation).
-1. The second manual step is to ensure you have a Route 53 Hosted Zone. All that you need is the HostedZoneId as it is a parameter to the CloudFormation template discussed below.
+1. The first one to create is an [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/) managed SSL certificate in the `us-east-1` region. This is the only region that CloudFront will look for the certificate. So, unless you're creating the stack in `us-east-1`, you're going to need to create it yourself. This also gives you the option to verify the certificate by email or DNS (email is the only option when it is created via CloudFormation). You can find out more [here](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-request.html).
+1. The second manual step is to ensure you have a Route 53 Hosted Zone. All that you need is the `HostedZoneId` as it is a parameter to the CloudFormation template discussed below.
 
 An optional step, at least until September 2017, is to create a [DNS CAA record](https://blog.qualys.com/ssllabs/2017/03/13/caa-mandated-by-cabrowser-forum). Having the `CAA` record helps if you are attempting to get a good grade on services like [SSL Labs](https://www.ssllabs.com/).
 
-Incidentaly, using the CloudFormation template discussed in this post will get you an 'A' grade.
+Incidentally, using the CloudFormation template discussed in this post will get you an 'A' grade.
 
 ## How It All Works
 
 What this template does for you is:
 
-* Creates an S3 bucket for holding the website files. These files do not need to be publically sccessible. In fact, we hide them away so that only CloudFront can serve them.
+* Creates an S3 bucket for holding the website files. These files do not need to be publicly accessible. In fact, we hide them away in the S3 Bucket Policy so that only CloudFront can serve them.
 * Creates an S3 bucket to hold the CloudFront access logs.
 * Creates a CloudFront distribution that sits in front of the S3 website bucket.
   * Creates a CloudFront origin access identity so that no-one can access the S3 bucket outside of CloudFront
@@ -47,11 +50,11 @@ What this template does for you is:
   * Uses an existing SSL certificate, and makes sure everything is accessing it via HTTPS
 * Creates a DNS 'A' record in the specified Route 53 hosted zone. This hides the CloudFront domain behind your friendly domain name.
 
-## Where Do I Get The Seed Files
+## Where Do I Get the Seed Files
 
-TODO - Show you the files!
+The files are on the Part 2 branch in the [GitHub repository](https://github.com/MechanicalRock/InceptionPipeline/tree/post/part-2).
 
-### What Are The Files
+### What Are the Files
 
 |File|Description|
 |----|-----------|
@@ -59,11 +62,11 @@ TODO - Show you the files!
 |aws_infrastructure.json|These are the parameters used by the CloudFormation template during execution|
 |aws_seed.yml|Gets a new CloudFormation deployment action snippet as described below which executes the `aws_infrastructure.yml` template.|
 
-## Taking It For A Spin
+## Taking It for A Spin
 
 Getting started is super simple and easy. 
 
-1. Add the following parameter to your `aws_seed.json` file. Obviously you need to replace the value with the CloudFormation stack name of your choosing:
+1. Add the following parameter to your `aws_seed.json` file. Obviously, you need to replace the value with the CloudFormation stack name of your choosing:
 
     ```json
     "StageAdministerInfrastructureStackName": "@@StageAdministerInfrastructureStackName@@"
@@ -101,27 +104,10 @@ Getting started is super simple and easy.
 
 4. Copy the `aws_infrastructure.yml` and `aws_infrastructure.json` into the same folder as `aws_seed.yml`
 5. Replace the parameter values in `aws_infrastructure.json` with appropriate values.
+6. Commit the changes and push to CodeCommit.
+
+If you sit and watch the pipeline execution, you'll notice its starts executing, realises there is a structural change and then restarts execution from the top. In my not-so-humble opinion, this is one of the best features of an Inception Pipeline; it just manages itself effortlessly.
 
 ## Wrapping Up
 
-## My misc stuff
-
-An all-in-one infrastructure template for hosting a static website
-Runs as its own stage within the same account
-Used as the basis of the next article
-Great for all the SPAs out there that don't need a full blown server
-Bits and pieces are skattered across the web on 'how to'; but are usually console driven.
-Bit of a learning/teaching moment for me to make sure I actually know WTF I'm talking about.
-Secured S3 access behind CF
-Al(most) fully infra-as-code
-need to do in two parts:
-1. request the certificate (wait for email and then manually approve)
-2. apply the rest of the template
-
-Need to manually add in the 'CAA' DNS record ()
-Run the various website security checks against the site to see how it stacks up!
-
-
-extending the pipeline to do something useful
-showing how the pipeline can be extended
-cover off a task that most projects need for hosting an SPA
+In this post I covered how you can extend an Inception Pipeline to do something useful. And in the next post, we'll take this idea one step further...

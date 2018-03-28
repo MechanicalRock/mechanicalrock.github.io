@@ -39,7 +39,9 @@ While not strictly required, a passing familiarity of Bash Shell scripts, Git, J
 
 ![inception pipeline]({{ site.url }}/img/inception-pipelines/inception-pipeline-cover.png)
 
-At a high-level, the Inception Pipeline works by executing a CloudFormation template which then creates a CodeCommit repository, a CodePipeline pipeline and a few other supporting resources. The first non-source action in the pipeline is a [CloudFormation Deployment Action](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/continuous-delivery-codepipeline.html). This blog post won't dive deeply into the CloudFormation template (I'll leave that as an exercise for you dear reader). Instead I'll just discuss the really juicy bits.
+At a high-level, the Inception Pipeline works by executing a CloudFormation template which then creates a CodeCommit repository, a CodePipeline pipeline and a few other supporting resources. The first non-source action in the pipeline is a [CloudFormation Deployment Action](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/continuous-delivery-codepipeline.html). 
+
+This blog post won't dive deeply into the CloudFormation template (I'll leave that as an exercise for you dear reader), instead I'll just discuss the really juicy bits.
 
 The secret-sauce to the Inception Pipeline is the using the same CloudFormation stackname in the CLI/console invocation and the CodePipeline Action (CloudFormation parameter ```StageAdministerPipelineStackName```). Once the initial CloudFormation stack has been created, the CodePipeline action below maintains the pipeline.
 

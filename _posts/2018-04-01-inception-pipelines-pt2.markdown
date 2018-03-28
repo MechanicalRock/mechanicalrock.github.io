@@ -39,7 +39,7 @@ Incidentally, using the CloudFormation template discussed in this post will get 
 
 ## How It All Works
 
-What this template does for you is:
+What this template does for you:
 
 * Creates an S3 bucket for holding the website files. These files do not need to be publicly accessible. In fact, we hide them away in the S3 Bucket Policy so that only CloudFront can serve them.
 * Creates an S3 bucket to hold the CloudFront access logs.

@@ -11,20 +11,20 @@ image: img/inception-pipelines/seed_germination.png
 
 ![sprouting some website goodness]({{ site.url }}/img/inception-pipelines/seed_germination_2.png)
 
-## What's the Problem
+## What's The Problem
 
 If you've read my [first post](https://mechanicalrock.github.io//aws/continuous/deployment/2018/03/01/inception-pipelines-pt1) (and you have, haven't you), you either thought "that's absolute crap, why would I bother" or "hey, that's pretty neat, but what can I do with it". If you were the former, then avert your eyes because this post is targeted firmly at the latter.
 
 In this post I will be covering how to extend an [Inception Pipeline](https://github.com/MechanicalRock/InceptionPipeline/tree/master) to do something useful. In this instance, it is creating the infrastructure to host a single page application. On the projects I'm currently involved with, this is always the first piece of infrastructure we need (well, after first inceptioning up the pipeline).
 
-## What Technologies Are We Going to Use
+## What Technologies Are We Going To Use
 
 * [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/)
 * [CloudFront](https://aws.amazon.com/cloudfront/)
 * [Route 53](https://aws.amazon.com/route53/)
 * [S3](https://aws.amazon.com/s3/)
 
-## What Are the Prerequisites
+## What Are The Prerequisites
 
 The obvious first prerequisite is an existing [Inception Pipeline](https://mechanicalrock.github.io//aws/continuous/deployment/2018/03/01/inception-pipelines-pt1). So, if you don't have one, jump across to the original post and create yourself one.
 
@@ -50,11 +50,11 @@ What this template does for you is:
   * Uses an existing SSL certificate, and makes sure everything is accessing it via HTTPS
 * Creates a DNS 'A' record in the specified Route 53 hosted zone. This hides the CloudFront domain behind your friendly domain name.
 
-## Where Do I Get the Seed Files
+## Where Do I Get The Seed Files
 
 The files are on the Part 2 branch in the [GitHub repository](https://github.com/MechanicalRock/InceptionPipeline/tree/post/part-2).
 
-### What Are the Files
+### What Are The Files
 
 |File|Description|
 |----|-----------|
@@ -62,7 +62,7 @@ The files are on the Part 2 branch in the [GitHub repository](https://github.com
 |aws_infrastructure.json|These are the parameters used by the CloudFormation template during execution|
 |aws_seed.yml|Gets a new CloudFormation deployment action snippet as described below which executes the `aws_infrastructure.yml` template.|
 
-## Taking It for A Spin
+## Taking It For A Spin
 
 Getting started is super simple and easy. 
 

@@ -44,7 +44,7 @@ In essence, there are three IAM roles in play, and shared access to a non-produc
 
 To glue all the roles together, there is a cross-account-shared KMS key to allow encrypting and decrypting of the build artefacts.
 
-Honesty time here, I lost countless hours here trying to get production to see non-production files; all I kept getting were `S3 403` errors. Turns out it wasn't the IAM permissions, just production needing to decrypt the non-production files. The lesson here kids is that the KMS key is important!
+Honesty time, I lost countless hours trying to get production to see non-production files as all I kept getting were `S3 403` errors. Turns out it wasn't the IAM permissions, just production needing to decrypt the non-production files. The lesson here kids is that the KMS key is important!
 
 ## Where Do I Get The Seed Files
 
@@ -64,7 +64,7 @@ Rather than repeat what every file is, I'll just talk about the really interesti
 
 If you've been following along with these posts then it is a simple as diffing the files and copying across the relevant bits for `aws_seed.yml` and any of the other files you're missing.
 
-If not (I try not to judge you too much), you should be able to open a command prompt, change directory into either the `non-production` or `production` folder and then just follow the steps from [Part 1](http://localhost:4000/aws/continuous/deployment/2018/03/01/inception-pipelines-pt1.html)
+If not (I'll try not to judge you too much), you should be able to open a command prompt, change directory into either the `non-production` or `production` folder and then just follow the steps from [Part 1](http://localhost:4000/aws/continuous/deployment/2018/03/01/inception-pipelines-pt1.html)
 
 ## Wrapping Up
 

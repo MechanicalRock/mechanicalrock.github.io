@@ -13,7 +13,7 @@ image: img/inception-pipelines/seed_germination.png
 
 ## What's The Problem
 
-In this instalment we'll be stepping back (or is it climbing up) and looking at how Inception Pipeline fits into the forest of AWS Accounts that most organisations have. Firstly, I'll cover off what every AWS account needs (regardless of what it's used for). Next, I'll briefly discuss the common accounts that everyone should have. We'll then finish up with a few ideas on combining accounts and pipelines.
+In this instalment we'll be stepping back (or is it climbing up) and looking at how an Inception Pipeline fits into the forest of AWS Accounts that most organisations have. Firstly, I'll cover off what every AWS account needs (regardless of what it's used for). Next, I'll briefly discuss the common accounts that everyone should have. We'll then finish up with a few ideas on combining accounts and pipelines.
 
 ## What Technologies Are We Going To Use
 
@@ -35,23 +35,23 @@ The ideas discussed in this post also fit alongside the [AWS Landing Zone](https
 
 **Note:** When writing this post, I struggled to find a simple, generic, way of what an Inception Pipeline does in each of the use cases below. Terms like product, feature, service, etc just didn't cover all the possible scenarios. The best term I could think up was *aspect*. Hopefully the term *aspect* makes sense (or soon will), so let’s get started!
 
-### What every AWS Account needs
+### What Every AWS Account Needs
 
 ![account and aspect pipelines]({{ site.url }}/img/inception-pipelines/part-4-what-every-account-needs.png)
 
-The above diagram represents a very strong opinion that I have. which is that every AWS account must have at least two Inception Pipelines.
+The above diagram represents a very strong opinion that I have, which is that every AWS account must have at least two Inception Pipelines.
 
-The first pipeline performs actions and manages the state of the account (aka the account-level pipeline). The obvious items here are things like IAM users/groups/roles/etc, account wide KMS keys, Route 53 hosted zones, etc. The idea here is that anything that changes stuff at the account level is kept together in this pipeline. I would also say it is typically the slower changing items; created once then never really change.
+The first pipeline performs actions and manages the state of the account (aka the account-level pipeline). The obvious items here are things like IAM users/groups/roles/etc, account wide KMS keys, Route 53 hosted zones, etc. The idea here is anything that changes stuff at the account level is kept together in this pipeline. I would also say it is typically the slower changing items; created once then never really change.
 
-The second, and subsequent, pipeline is for doing stuff within the account; they are an aspect of why the account exists in the first place. For example, if the account is for hosting a static website, this is where you put in all the CloudFormation code for configuring CloudFront, S3 buckets, Route 53 domain entries, etc. These items are more likely to have constant change and/or be more transient in lifespan. Another way to think about these aspects is that they are aspects that you want to delete (with the pipeline) but not delete the account.
+The second, and subsequent, pipeline is for doing stuff within the account; they are an *aspect* of why the account exists in the first place. For example, if the account is for hosting a static website, this is where you put in all the CloudFormation code for configuring CloudFront, S3 buckets, Route 53 domain entries, etc. These items are more likely to have constant change and/or be more transient in lifespan. Another way to think about these is that they are aspects that you want to delete (with the pipeline) but not delete the account.
 
-### What every organisation should have
+### What Every Organisation Should Have
 
 ![aws accounts]({{ site.url }}/img/inception-pipelines/part-4-what-every-organisation-needs.png)
 
 #### Root AWS Account
 
-AWS accounts follow a tree like structure where an account can have zero to many child accounts. At the very top of this hierarchy is the root account. This account should be one of the most locked down accounts you have in the tree, both in terms of what people can do and the AWS services that are run inside it. Ideally in here there is only a single Inception Pipeline which is used to manage things which are global.
+AWS accounts follow a tree like structure where an account can have zero to many child accounts. At the very top of this hierarchy is the root account. This account should be one of the most locked down accounts you have in the tree, both in terms of what people can do and the AWS services that are run inside it. Ideally, in here there is only a single Inception Pipeline which is used to manage things which are global.
 
 A perfect use case here is defining IAM users that can assume roles in other accounts. This gives you the following benefits:
 
@@ -59,7 +59,9 @@ A perfect use case here is defining IAM users that can assume roles in other acc
 2. Centralised management of permissions. You define an IAM Group in the root account that can then assume a role in a child account. So, if the child account defines an Administrator role, you match that with a group here and then add/remove IAM users as required.
 3. All changes to your IAM users and groups are managed as code. This gives you a minimalistic audit trail of who made changes.
 
-Next month I'll expand upon this idea with code snippets. One other consideration too with only creating users in the Root is the [IAM Service Limits](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entities). It's probably not an issue unless you literally have thousands of users, in which case you'll be better off using a Single Sign Identity Provider (because your root account now only contains roles).
+Next month's post will expand upon how to configure and use cross account roles.
+
+One last consideration to keep in mind is that with users only being created in the Root Accouint are the [IAM Service Limits](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entities). These limits only becomes an issue when you literally have thousands of users, in which case you'll be better off using a Single SignOn Identity Provider (because your root account now only contains roles to assume).
 
 #### Audit AWS Account
 
@@ -67,7 +69,7 @@ This account is where all things security and audit-ty related go. The account-l
 
 * A heavily controlled **Administrator** account. Once defined, it would only need to be used in the case of emergency to perform actions (most likely in the AWS Console itself).
 * A more open role that can be assumed to make changes via the other pipelines. Called something like **SecurityOwner**?
-* Finally, a read-only role that can be given to developers, auditors, etc to view logs and other files stored in this account, and possibly called something like **SecurityReviewer**.
+* Finally, a read-only role that can be given to developers, auditors, etc to view logs and other files stored in this account and could be called something like **SecurityReviewer**.
 
 Depending on your requirements, you will then have one (or more) pipelines which define things like:
 
@@ -98,7 +100,7 @@ The account Inception Pipeline defines the roles that can be assumed, as well as
 
 ### Managing Aspects
 
-Now we move into the interesting bits and answer the question "How do I structure my accounts\pipeline for my application?".
+Now we move into the interesting bits and answer the question "How do I structure my accounts/pipeline for my application?".
 
 #### All-In-One
 
@@ -115,28 +117,28 @@ Cons:
 
 * Everything is in one place so if your account is compromised then the blast radius is huge.
 * It would quickly become crowded and harder to manage resource name collisions.
-* Easy to make a mistake and accidentally delete production resources.
+* Easy to make a mistake and accidentally delete Production resources.
 * While it is possible to network segregate environments using VPC subnets, they are subjected to the Account Service Limit, and is also just plain harder to find stuff.
 
 #### Production / Non-Production
 
 ![cross account components]({{ site.url }}/img/inception-pipelines/part-4-prod-non-prod.png)
 
-This model separates out the production environment into its own AWS account.
+This model separates out the Production environment into its own AWS account.
 
 Pros:
 
-* If non-production is compromised, then production is still safe.
-* Still has the quick feedback cycle on change to non-production environments as where you build the code is also the same AWS account that you run in.
+* If Non-Production is compromised, then Production is still safe.
+* Still has the quick feedback cycle on change to Non-Production environments as where you build the code is also the same AWS account that you run in.
 * Using new AWS services is easier as you don't need to adjust permission in multiple AWS accounts.
 
 Cons:
 
-* When you deploy into Production, it is a different process (i.e. across account boundaries), so the chance for something to go wrong increases.
-* It can get noisy in the same way that 'All-in-one' does for the non-production environments.
+* When you deploy into Production, it is a different process (i.e. cross account boundaries), so the chance for something to go wrong increases.
+* It can get noisy in the same way that 'All-in-one' does for the Non-Production environments.
 * Getting the cross-account permissions can be challenging.
 
-#### Environments for Everyone
+#### Environments For Everyone
 
 ![cross account components]({{ site.url }}/img/inception-pipelines/part-4-environments-for-everyone.png)
 
@@ -145,7 +147,7 @@ In the final model, we split building the code into its own AWS account, and hav
 Pros:
 
 * Very clean separation of build vs running code.
-* Environments can progressively get more locked-down/restrictive on who can see/do what.
+* Environments can progressively become more locked-down/restrictive on who can see/do what.
 * Environments no longer become snowflakes. Since every environment is built from the same configuration (see [Part 3](https://mechanicalrock.github.io/aws/continuous/deployment/cdn/spa/cloudfront/cross-account/2018/05/18/inception-pipelines-pt3) in this series), there is no 'it worked in TEST but not UAT because ....'
 * If you need a new environment (for example to host a special version) then it’s just another stage in your pipeline.
 

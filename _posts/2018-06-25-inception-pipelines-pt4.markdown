@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Seeds of Inception - Part 4"
-date:   2018-06-27
+date:   2018-06-25
 categories: aws continuous deployment codepipeline codebuild inception pipeline
 author: Pete Yandell
 image: img/inception-pipelines/seed_germination.png

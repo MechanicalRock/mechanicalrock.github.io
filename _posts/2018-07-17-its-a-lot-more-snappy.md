@@ -34,7 +34,7 @@ _(optional and beyond the scope of this post)_
 1. *Remove extraneous Data*
 
 ```typescript
-async function transformFlocs(): Promise<void> {
+async function transformPokemon(): Promise<void> {
     for (let i = 0; i < this.Pokemon.length; i++) {
         const pokemon = {
             value: this.pokemon[i].pokemonId,

@@ -26,7 +26,7 @@ Whilst building the app, we encountered some performance issues. Over time the a
 
 * _Remove extraneous Data_ from the array and ensure this operation only happens once
 
-* _Create a seperate thread in the background_ to update indexedDB, while the user progressed with other aspects of the application.
+* _Create a seperate thread to update indexedDB_, while the user progressed with other aspects of the application.
 
 * _Improve the download speed of the data for slow networks_ by chunking requests in parallel
 _(optional and beyond the scope of this post)_
@@ -34,14 +34,16 @@ _(optional and beyond the scope of this post)_
 1. *Remove extraneous Data*
 
 ```typescript
-for (let i = 0; i < this.Pokemon.length; i++) {
-    const pokemon = {
-        value: this.pokemon[i].pokemonId,
-        label: `${this.pokemon[i].pokemonId} - ${this.pokemon[i].shortDescription}`
-    };
-    this.PokemonOptions.push(pokemon);
+async function transformFlocs(): Promise<void> {
+    for (let i = 0; i < this.Pokemon.length; i++) {
+        const pokemon = {
+            value: this.pokemon[i].pokemonId,
+            label: `${this.pokemon[i].pokemonId} - ${this.pokemon[i].shortDescription}`
+        };
+        this.pokemonOptions.push(pokemon);
+    }
+    await localforage.setItem(this.pokemonGroup, this.pokemonOptions);
 }
-await localforage.setItem(this.pokemonGroup, this.pokemonOptions);
 ```
 
 Instead of storing the complete dataset in memory and using it in several different places. We pulled out only the data that was absolutely necessary for displaying in the UI. We also made sure that this array mapping operation only happened once every time the UPDATE_POKEMON action was dispatched to our redux store, instead of in a component render method. You'll notice, we also store a copy of this transformed array so that we don't have to retrieve it over the network the next time. Which means we can run the following when mounting our component.

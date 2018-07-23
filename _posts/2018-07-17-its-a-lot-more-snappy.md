@@ -170,6 +170,6 @@ worker.onmessage = async (event: MessageEvent): Promise<void> => {
 };
 ```
 
-Adopting this approach meant that we offload the computationally expensive task of writing all this data to IndexedDB. The user can now continue on the main thread and the app will remain responsive. Having all this data stored in IndexedDB also means, offline usage is now possible and subsequent loads of the dataset are no longer a concern at all because the data can be accessed instantly from the local store.
+Adopting this approach meant that we offload the computationally expensive task of writing all this data to IndexedDB. The user can now continue on the main thread and the app will remain responsive without any noticeable decrease in responsiveness over time. Having all this data stored in IndexedDB also means, offline usage is now possible and subsequent loads of the dataset are no longer a concern at all because the data can be accessed instantly from the local store.
 
-The Chrome dev tools revealed the max heap size decreased by +-10mb and we no longer had a gradual decrease in performance over time when using the app. Having noticed these improvements, our PM said “After testing the app, it’s now a lot more snappy!”
+The Chrome dev tools also reveal that using a background process does not result in a significant increase in memory usage. Having noticed these improvements, our PM said “After testing the app, it’s now a lot more snappy!”

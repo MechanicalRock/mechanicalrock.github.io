@@ -16,19 +16,14 @@ Whilst building the app we encountered some performance issues. Over time the ap
 ## What Was The Problem?
 
 * The app had to deal with a large dataset. One of these datasets was an array of 205509 objects. Let’s refer to these objects as Pokemon.
-
 * The list of Pokemon had to be used in several places throughout the app and in some places not all of the data pertaining to each Pokemon was used.
-
 * A JSON file of this magnitude takes a fair amount of time to download. A simulation in chrome reveals that this may take up to 3 minutes to download on  a 1mb/s link.
 
 ## The Solution:
 
 * _Remove extraneous Data_ from the array and ensure this operation only happens once
-
 * _Update IndexedDB on a background thread_, allowing the user to progress with other aspects of the application.
-
-* _Improve the download speed of the data for slow networks_ by chunking requests in parallel
-_(beyond the scope of this post)_
+* _Improve the download speed of the data for slow networks_ by chunking requests in parallel _(beyond the scope of this post)_
 
 ## 1. Remove extraneous Data
 
@@ -65,11 +60,12 @@ async function getPokemon(): Promise<AnyAction> {
     return this.buildUpdateAction();
 }
 ```
+
 ## 2. Create a seperate thread in the background
 
 Before we completed the above step, we decided to do something a little less obvious that would eventually aid us in our quest to build an offline web app. We decided to create a local database of all the Pokemon retrieved from the network, in IndexedDB. In case you don’t know, IndexedDB is a native browser API that is supported by most modern browsers.
 
-When it came to inserting the data into a table in IndexedDB, we found that the native javascript/browser IndexedDB API was cumbersome and unintuitive. We found a wrapper called <a href="https://www.npmjs.com/package/dexie">dexie</a> on NPM. Dexie also allowed us to perform bulk put operations on our IndexedDB tables. Dexie's bulk put operation offers an increase in performance by opting out of listening to onSuccess callbacks for each put operation.
+When it came to inserting the data into a table in IndexedDB, we found that the native javascript/browser IndexedDB API was cumbersome and unintuitive. We found a wrapper called [dexie](https://www.npmjs.com/package/dexie) on NPM. Dexie also allowed us to perform bulk put operations on our IndexedDB tables. Dexie's bulk put operation offers an increase in performance by opting out of listening to onSuccess callbacks for each put operation.
 
 _the magic runes:_
 
@@ -131,13 +127,13 @@ Now that we had implemented this pattern, we noticed that the initial download o
 
 It was at this point our fearless tech lead, William Sia(TM) proposed using a web worker for that exact purpose. This was new and very exciting. Of course we wanted to use a web worker!
 
-I found a module called <a href="https://www.npmjs.com/package/worker-loader">worker-loader</a> which seamlessly integrated with our current build and packaging eco-system. In fact, worker-loader almost made it inconceivable that we waited such a long time to implement our first web worker. We didn’t even need to add any additional config to our web pack config files.
+I found a module called [worker-loader](https://www.npmjs.com/package/worker-loader) which seamlessly integrated with our current build and packaging eco-system. In fact, worker-loader almost made it inconceivable that we waited such a long time to implement our first web worker. We didn’t even need to add any additional config to our web pack config files.
 
 When using a web worker, all that's needed to get things started is:
 
-- initialise the worker
-- post a message to the worker (preferably as a string)
-- create a callback for when the worker completes
+* initialise the worker
+* post a message to the worker (preferably as a string)
+* create a callback for when the worker completes
 
 _from the main thread:_
 

@@ -45,7 +45,7 @@ async function transformPokemon(): Promise<void> {
 }
 ```
 
-Instead of storing the complete dataset in memory and using it in several different places. We pulled out only the data that was absolutely necessary for displaying in the UI. We also made sure that this array mapping operation only happened once every time the UPDATE_POKEMON action was dispatched to our redux store, instead of in a component render method. You'll notice, we also store a copy of this transformed array so that we don't have to retrieve it over the network the next time. Which means we can run the following when mounting our component.
+Instead of storing the complete dataset in memory and using it in several different places, we pulled out only the data that was absolutely necessary for displaying in the UI. We also made sure that this array mapping operation only happened once every time the UPDATE_POKEMON action was dispatched to our redux store, instead of in a component render method. You'll notice, we also store a copy of this transformed array so that we don't have to retrieve it over the network the next time. Which meant we could run the following when mounting our component.
 
 ```typescript
 async function getPokemon(): Promise<AnyAction> {

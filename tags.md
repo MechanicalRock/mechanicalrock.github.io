@@ -4,16 +4,17 @@ title: Tags
 permalink: /tags/
 ---
 <p>
-{% for tag in site.tags %}
+{% assign sorted_tags = site.tags | sort %}
+{% for tag in sorted_tags %}
   {% assign t = tag | first %}
   <a style="background: #F6F6F6" href="/tags/#{{ t }}">{{ t }}</a>
 {% endfor %}
 </p>
-{% for tag in site.tags %}
+{% for tag in sorted_tags %}
   {% assign t = tag | first %}
   {% assign posts = tag | last %}
 
-  <p><a name="{{ t }}"></a><a href="/tags/#{{ t }}">{{ t}}</a></p>
+  <p><a name="{{ t }}"></a><a href="/tags/#{{ t }}">{{ t }}</a></p>
   <ul>
   {% for post in posts %}
     {% if post.tags contains t %}

@@ -2,7 +2,7 @@
 layout: post
 title: "\"It's A Lot More Snappy\""
 date: 2018-07-29
-tags: PWA SPA JavaScript
+tags: pwa spa javascript
 author: Rick Foxcroft
 image: img/offline_logo.png
 ---

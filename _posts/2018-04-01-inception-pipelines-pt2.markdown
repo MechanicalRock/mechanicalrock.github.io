@@ -2,7 +2,7 @@
 layout: post
 title:  "Seeds of Inception - Part 2"
 date:   2018-04-01
-tags: aws continuous deployment cdn SPA cloudfront
+tags: aws continuous deployment cdn spa cloudfront
 author: Pete Yandell
 image: img/inception-pipelines/seed_germination.png
 ---

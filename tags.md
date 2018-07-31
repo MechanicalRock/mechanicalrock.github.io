@@ -6,7 +6,7 @@ permalink: /tags/
 <p>
 {% for tag in site.tags %}
   {% assign t = tag | first %}
-  <a style="background: #F6F6F6" href="/tags/#{{ t }}">{{ t | replace:" ", "," }}</a>
+  <a style="background: #F6F6F6" href="/tags/#{{ t }}">{{ t }}</a>
 {% endfor %}
 </p>
 {% for tag in site.tags %}

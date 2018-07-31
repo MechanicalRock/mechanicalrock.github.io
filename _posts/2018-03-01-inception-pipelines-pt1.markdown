@@ -2,7 +2,7 @@
 layout: post
 title:  "Seeds of Inception - Part 1"
 date:   2018-03-01
-categories: aws continuous deployment
+tags: aws continuous deployment
 author: Pete Yandell
 image: img/inception-pipelines/seed_germination.png
 ---
@@ -39,7 +39,7 @@ While not strictly required, a passing familiarity of Bash Shell scripts, Git, J
 
 ![inception pipeline]({{ site.url }}/img/inception-pipelines/inception-pipeline-cover.png)
 
-At a high-level, the Inception Pipeline works by executing a CloudFormation template which then creates a CodeCommit repository, a CodePipeline pipeline and a few other supporting resources. The first non-source action in the pipeline is a [CloudFormation Deployment Action](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/continuous-delivery-codepipeline.html). 
+At a high-level, the Inception Pipeline works by executing a CloudFormation template which then creates a CodeCommit repository, a CodePipeline pipeline and a few other supporting resources. The first non-source action in the pipeline is a [CloudFormation Deployment Action](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/continuous-delivery-codepipeline.html).
 
 This blog post won't dive deeply into the CloudFormation template (I'll leave that as an exercise for you dear reader), instead I'll just discuss the really juicy bits.
 
@@ -55,7 +55,7 @@ The secret-sauce to the Inception Pipeline is the using the same CloudFormation 
             Provider: 'CloudFormation'
             Version: '1'
         Configuration:
-            ActionMode: 'REPLACE_ON_FAILURE' 
+            ActionMode: 'REPLACE_ON_FAILURE'
             Capabilities: 'CAPABILITY_NAMED_IAM'
             RoleArn: !GetAtt [CloudFormationDeployActionRole, Arn]
             StackName: !Ref StageAdministerPipelineStackName
@@ -108,5 +108,5 @@ I'll wait while you do.
 ![deployed inception pipeline]({{ site.url }}/img/inception-pipelines/inception-pipeline-cover.png)
 
 ## Wrapping Up
- 
+
 If you do end up running an Inception Pipeline please let me know! I'm especially keen to hear any and all improvements, suggestions and critiques.

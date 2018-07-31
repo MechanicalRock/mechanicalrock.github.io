@@ -2,7 +2,7 @@
 layout: post
 title:  "The Value of Faster"
 date:   2017-07-17
-categories: bdd devops
+tags: bdd devops
 author: Nick Jenkins
 image: img/roi_curve_value.png
 ---

@@ -2,7 +2,7 @@
 layout: post
 title:  "Seeds of Inception - Part 2"
 date:   2018-04-01
-categories: aws continuous deployment cdn SPA cloudfront 
+tags: aws continuous deployment cdn SPA cloudfront
 author: Pete Yandell
 image: img/inception-pipelines/seed_germination.png
 ---
@@ -64,7 +64,7 @@ The files are on the Part 2 branch in the [GitHub repository](https://github.com
 
 ## Taking It For A Spin
 
-Getting started is super simple and easy. 
+Getting started is super simple and easy.
 
 1. Add the following parameter to your `aws_seed.json` file. Obviously, you need to replace the value with the CloudFormation stack name of your choosing:
 

@@ -2,7 +2,7 @@
 layout: post
 title:  "The Highs and Lows of BDD"
 date:   2017-12-02
-categories: bdd quality
+tags: bdd quality
 author: Hamish Tedeschi
 image: img/bug_with_lens.png
 ---

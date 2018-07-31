@@ -2,7 +2,7 @@
 layout: post
 title:  "Why And How To Do Unit Testing?"
 date:   2016-11-30 04:48:58 +0000
-categories: bdd tdd unit testing
+tags: bdd tdd unit testing
 author: Amit Sharma
 image: img/bug_with_lens.png
 ---

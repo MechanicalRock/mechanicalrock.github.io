@@ -2,27 +2,27 @@
 layout: post
 title:  "The Scourge of Silos"
 date:   2017-09-01 04:48:58 +0000
-categories: bdd tdd devops pairing mobbing
+tags: bdd tdd devops pairing mobbing
 author: Hamish Tedeschi
 image: img/silos1.png
 ---
 This is one of those articles that may stir up a bit of angst with people, because essentially it is an opinion piece. Not driven by data, merely driven by what I think works best. It was provoked by a brief conversation on social media and got me thinking about why I think the way I do. The conversation was based on the following post by [Josh Partogi](https://www.linkedin.com/feed/update/urn:li:activity:6308818675763941376), which was on the money:
 
 > Many are talking about devops these days.
-> 
+>
 > * Some think devops is a tool.
 > * Others think it is a department or a job role.
 > * Others think it is about frequent deployment.
 > * While others think devops is bug fixing & development.
-> 
+>
 > The IT industry must be the most confusing industry these days.
 
-Running an Enterprise DevOps & Continuous Delivery consultancy, this is a subject close to my heart. We are an opinionated bunch at [Mechanical Rock](https://www.mechanicalrock.io/) and believe that if you do the dev bit in DevOps right, then the Ops bit becomes a lot easier. Bear with me, I will explain and hopefully close the loop. 
+Running an Enterprise DevOps & Continuous Delivery consultancy, this is a subject close to my heart. We are an opinionated bunch at [Mechanical Rock](https://www.mechanicalrock.io/) and believe that if you do the dev bit in DevOps right, then the Ops bit becomes a lot easier. Bear with me, I will explain and hopefully close the loop.
 
-The way I see it, DevOps is made up of 4 key tenets which give way to a set of practices, tooling or processes. 
+The way I see it, DevOps is made up of 4 key tenets which give way to a set of practices, tooling or processes.
 
 1. Sharing / No Silos: Creating a culture where information is shared and is vital to the success of DevOps, nothing should ever be "someone else's problem".
-2. Culture: DevOps seeks to create a high-trust culture of collaboration through learning and experimentation. 
+2. Culture: DevOps seeks to create a high-trust culture of collaboration through learning and experimentation.
 3. Measure Everything / Fast Feedback: Improvements are based on experimentation. Experimentation relies on accurate information and measurement. Short feedback loops generate more information, more quickly and allow informed decisions to be made.
 4. Automate Everything: automate away the 'drudgery' in the the Development-Operations lifecycle, so people can focus on what they are best at - problem solving.
 
@@ -32,23 +32,23 @@ The rise of the DevOps movement has given us a lot of great tools, such as Docke
 
 Recently, I have seen first hand, at a major financial institution, the direct impact of having a "DevOps Team". The six scrum teams we worked with were developing using a gitflow model and although all the teams had the limitless scale of AWS on offer to them, none could actually use it. Some didn't even know the platform they were deploying their application to (which baffles me for a start, as how are they architecting it correctly?). They would develop on a feature branch, but not be able to continuously build, package, deploy and test that feature on the branch, as the DevOps team hadn't set that up for them and were not part of any of these scrum teams. The scrum teams were forced to merge the changes to `master` and test large volumes of features together towards the end of the sprint, thus increasing the risk of change, making the feedback loop larger and slowing the whole process down considerably.
 
-Wouldn't it be a better situation that the team responsible for the application actually create the infrastructure required as they are building it, using those techniques? The knowledge stays within that team, the architecture is emergent and the power to make positive change is in their own hands. 
+Wouldn't it be a better situation that the team responsible for the application actually create the infrastructure required as they are building it, using those techniques? The knowledge stays within that team, the architecture is emergent and the power to make positive change is in their own hands.
 
-So why do organisations create a DevOps Team, which sits in its own bubble and has its own reporting structure, which essentially look after infrastructure, sometimes as code, in my experience? I think a lot of it comes down to organisational structure and command and control leadership styles. 
+So why do organisations create a DevOps Team, which sits in its own bubble and has its own reporting structure, which essentially look after infrastructure, sometimes as code, in my experience? I think a lot of it comes down to organisational structure and command and control leadership styles.
 
 ![Command and Control Management Picture](/img/commdandcontrol.png)
 
-Command and control assumes a leader knows best and that they know where the organisation is going (goals, outcomes) and have a plan for how to get there (process). With a term as fuzzy as "DevOps", as illustrated by Josh's post, should we expect IT leaders in enterprise organisations, who have gone from Waterfall to Agile and now DevOps to be in touch enough to understand the nuance of it? Not in my experience. 
+Command and control assumes a leader knows best and that they know where the organisation is going (goals, outcomes) and have a plan for how to get there (process). With a term as fuzzy as "DevOps", as illustrated by Josh's post, should we expect IT leaders in enterprise organisations, who have gone from Waterfall to Agile and now DevOps to be in touch enough to understand the nuance of it? Not in my experience.
 
 __So enter matrix management, which was designed to solve all these problems, by creating product centric delivery teams, but still retaining line management.__
 
 ![Matrix Management Picture](/img/matrix-man.png)
 
-The problem with matrix manangement is that it fosters all sorts of nasty things. Political bullshit, being one. In this scenario, a team of individuals from different parts of the organisation are brought together to deliver something. In theory, this is great, but the problem is that line management for these indivduals sits off to one side. Any successes will be attributed to the members of that line manager and inversely any failures will be as a result of the other team members not aligning with that manager. The biggest problem, as a result of this, is the time to make decisions. 
+The problem with matrix manangement is that it fosters all sorts of nasty things. Political bullshit, being one. In this scenario, a team of individuals from different parts of the organisation are brought together to deliver something. In theory, this is great, but the problem is that line management for these indivduals sits off to one side. Any successes will be attributed to the members of that line manager and inversely any failures will be as a result of the other team members not aligning with that manager. The biggest problem, as a result of this, is the time to make decisions.
 
 __It effectively widens the feedback loop (again) by involving interested third parties and will disenfranchise the team actually doing the work.__
 
-The modern equivalent of matrix management in IT teams is the Spotify "Model". Not that it is actually a model at all, if you speak to anyone at Spotify! But expensive consultancies are paid loads to roll out a "model" which effectively propogates this shit. Guilds and tribes may have been formed with good intentions, but are just abused by the middle management that become the issue. 
+The modern equivalent of matrix management in IT teams is the Spotify "Model". Not that it is actually a model at all, if you speak to anyone at Spotify! But expensive consultancies are paid loads to roll out a "model" which effectively propogates this shit. Guilds and tribes may have been formed with good intentions, but are just abused by the middle management that become the issue.
 
 ![Spotify Picture](/img/squadstribes_12.png)
 

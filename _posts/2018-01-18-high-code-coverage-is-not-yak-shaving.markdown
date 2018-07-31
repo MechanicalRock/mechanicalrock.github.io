@@ -2,7 +2,7 @@
 layout: post
 title:  "High Code Coverage is not Wasted Effort"
 date:   2018-01-08
-categories: Quality BDD
+tags: Quality BDD
 author: Tim Myerscough
 image: img/yak.png
 ---

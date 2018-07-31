@@ -2,7 +2,7 @@
 layout: post
 title:  "Seeds of Inception - Part 3"
 date:   2018-05-18
-categories: aws continuous deployment cdn SPA cloudfront cross-account
+tags: aws continuous deployment cdn SPA cloudfront cross-account
 author: Pete Yandell
 image: img/inception-pipelines/seed_germination.png
 ---

@@ -2,7 +2,7 @@
 layout: post
 title:  "Introducing Infrastructure Mapping!"
 date:   2016-12-21 04:48:58 +0000
-categories: bdd devops
+tags: bdd devops
 author: Tim Myerscough
 image: img/cards.png
 ---
@@ -60,7 +60,7 @@ In addition, the following contexts may apply:
 
 Rules around Infrastructure Mapping can be grouped into **categories** that are applicable across most contexts.  Capture and maintain a list of categories to structure the conversation.  We have found it useful to keep blue cards with the rules on and re-use them across sessions.  During an infrastructure mapping session, review each category; decide whether it is relevant and discuss examples and rules around it if necessary.
 
-We use the following categories:
+We use the following tags:
 
 * Routing/Firewall - What servers/ports can you see from the context?
 * Users - What users are configured in the context?
@@ -102,7 +102,7 @@ describe "I am logged onto the webserver" do
     end
 
     describe command("curl http://localhost:8080") do
-      its(:stdout) { should match /Hello World/ }    
+      its(:stdout) { should match /Hello World/ }
     end
 
   end
@@ -125,16 +125,16 @@ Once you have your executable specifications, you can TDD the development of you
 
 ## Benefits ##
 
-Being able to capture requirements as executable specifications is an important part of TDD and Infrastructure as Code.  Infrastructure Mapping provides a focussed, structured conversation around capturing your infrastructure requirements, providing a definition of done that is directly translatable into code.  
+Being able to capture requirements as executable specifications is an important part of TDD and Infrastructure as Code.  Infrastructure Mapping provides a focussed, structured conversation around capturing your infrastructure requirements, providing a definition of done that is directly translatable into code.
 Who Should Attend
 
 Infrastructure Mapping is a DevOps activity: the [3 Amigos](https://www.scrumalliance.org/community/articles/2013/2013-april/introducing-the-three-amigos) analogy still applies, but perhaps now it’s the A-Team!
 
 ![The A-Team]({{ site.url }}/img/Ateam.jpg)
 
-* A **developer** representative brings the knowledge of the application functionality to deliver.  
-* The **operations** representative has the experience of ensuring the application can be kept running effectively.  
-* A **tester** representative will help probe the boundaries of the infrastructure.  
+* A **developer** representative brings the knowledge of the application functionality to deliver.
+* The **operations** representative has the experience of ensuring the application can be kept running effectively.
+* A **tester** representative will help probe the boundaries of the infrastructure.
 * A **security** representative will consider risk and help harden the infrastructure.
 
 ## Timebox ##

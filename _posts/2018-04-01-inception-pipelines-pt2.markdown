@@ -13,7 +13,7 @@ image: img/inception-pipelines/seed_germination.png
 
 ## What's The Problem
 
-If you've read my [first post](https://mechanicalrock.github.io//aws/continuous/deployment/2018/03/01/inception-pipelines-pt1) (and you have, haven't you), you either thought "that's absolute crap, why would I bother" or "hey, that's pretty neat, but what can I do with it". If you were the former, then avert your eyes because this post is targeted firmly at the latter.
+If you've read my [first post]({{ site.baseurl }}{% post_url 2018-03-01-inception-pipelines-pt1 %}) (and you have, haven't you), you either thought "that's absolute crap, why would I bother" or "hey, that's pretty neat, but what can I do with it". If you were the former, then avert your eyes because this post is targeted firmly at the latter.
 
 In this post I will be covering how to extend an [Inception Pipeline](https://github.com/MechanicalRock/InceptionPipeline/tree/master) to do something useful. In this instance, it is creating the infrastructure to host a single page application. On the projects I'm currently involved with, this is always the first piece of infrastructure we need (well, after first inceptioning up the pipeline).
 
@@ -26,7 +26,7 @@ In this post I will be covering how to extend an [Inception Pipeline](https://gi
 
 ## What Are The Prerequisites
 
-The obvious first prerequisite is an existing [Inception Pipeline](https://mechanicalrock.github.io//aws/continuous/deployment/2018/03/01/inception-pipelines-pt1). So, if you don't have one, jump across to the original post and create yourself one.
+The obvious first prerequisite is an existing [Inception Pipeline]({{ site.baseurl }}{% post_url 2018-03-01-inception-pipelines-pt1 %}). So, if you don't have one, jump across to the original post and create yourself one.
 
 The next prerequisite is to manually create a couple of AWS resources:
 

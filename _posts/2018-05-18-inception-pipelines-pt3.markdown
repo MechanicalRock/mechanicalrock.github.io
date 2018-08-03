@@ -13,7 +13,7 @@ image: img/inception-pipelines/seed_germination.png
 
 ## What's The Problem
 
-Welcome back to the 3rd instalment in the "Seeds of Inception" series, where we build upon [Part 2](https://mechanicalrock.github.io//aws/continuous/deployment/cdn/spa/cloudfront/2018/04/01/inception-pipelines-pt2) by setting our pipelines to 'defrost'. By this I mean solving the snowflake environment issue that plagues software development; where each environment is unique and special and just a little bit different from all the others in the DEV to PROD chain.
+Welcome back to the 3rd instalment in the "Seeds of Inception" series, where we build upon [Part 2]({{ site.baseurl }}{% post_url 2018-04-01-inception-pipelines-pt2 %}) by setting our pipelines to 'defrost'. By this I mean solving the snowflake environment issue that plagues software development; where each environment is unique and special and just a little bit different from all the others in the DEV to PROD chain.
 
 Getting down to the guts of it, I'll demonstrate one way to deploy your single `aws_infrastructure.yml` template across multiple AWS Accounts. All from the comfort of your very own [Inception Pipeline](https://github.com/MechanicalRock/InceptionPipeline/tree/post/part-3)
 
@@ -27,7 +27,7 @@ Getting down to the guts of it, I'll demonstrate one way to deploy your single `
 
 To get started, you will need the following:
 
-* Having [Part 2](https://mechanicalrock.github.io//aws/continuous/deployment/cdn/spa/cloudfront/2018/04/01/inception-pipelines-pt2) installed.
+* Having [Part 2]({{ site.baseurl }}{% post_url 2018-04-01-inception-pipelines-pt2 %}) installed.
 * Having a second 'production' AWS Account, and enough permissions to create a pipeline.
 
 ## How It All Works
@@ -64,7 +64,7 @@ Rather than repeat what every file is, I'll just talk about the really interesti
 
 If you've been following along with these posts then it is a simple as diffing the files and copying across the relevant bits for `aws_seed.yml` and any of the other files you're missing.
 
-If not (I'll try not to judge you too much), you should be able to open a command prompt, change directory into either the `non-production` or `production` folder and then just follow the steps from [Part 1](http://localhost:4000/aws/continuous/deployment/2018/03/01/inception-pipelines-pt1.html)
+If not (I'll try not to judge you too much), you should be able to open a command prompt, change directory into either the `non-production` or `production` folder and then just follow the steps from [Part 1]({{ site.baseurl }}{% post_url 2018-03-01-inception-pipelines-pt1 %})
 
 ## Wrapping Up
 

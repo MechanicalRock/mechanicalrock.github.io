@@ -21,7 +21,7 @@ None, nada, zero, zilch. So, put away the IDE, shutdown the AWS Console and brew
 
 ## What Are The Prerequisites
 
-Not much this month. If you've read [Part 1](https://mechanicalrock.github.io/aws/continuous/deployment/2018/03/01/inception-pipelines-pt1) then that's pretty much it.
+Not much this month. If you've read [Part 1]({{ site.baseurl }}{% post_url 2018-03-01-inception-pipelines-pt1 %}) then that's pretty much it.
 
 ## How It All Works
 

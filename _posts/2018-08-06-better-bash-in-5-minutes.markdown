@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Better Bash Scripting in 5 Minutes or Less"
-date:   2018-08-10
-categories: bash linux unix mac osx script shell
+date:   2018-08-06
+tags: bash linux unix mac osx script shell
 author: Josh Armitage
 image: img/bash-logo.png
 ---

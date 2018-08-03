@@ -2,7 +2,7 @@
 layout: post
 title:  "Seeds of Inception - Part 4"
 date:   2018-06-25
-categories: aws continuous deployment codepipeline codebuild inception pipeline
+tags: aws continuous deployment codepipeline codebuild inception pipeline
 author: Pete Yandell
 image: img/inception-pipelines/seed_germination.png
 ---
@@ -21,7 +21,7 @@ None, nada, zero, zilch. So, put away the IDE, shutdown the AWS Console and brew
 
 ## What Are The Prerequisites
 
-Not much this month. If you've read [Part 1](https://mechanicalrock.github.io/aws/continuous/deployment/2018/03/01/inception-pipelines-pt1) then that's pretty much it.
+Not much this month. If you've read [Part 1]({{ site.baseurl }}{% post_url 2018-03-01-inception-pipelines-pt1 %}) then that's pretty much it.
 
 ## How It All Works
 

@@ -2,7 +2,7 @@
 layout: post
 title: "Repeatable Serverless Applications"
 date: 2017-09-11
-categories: serverless architecture docker aws
+tags: serverless architecture docker aws
 author: Rick Foxcroft
 image: img/repeatable-serverless-applications/less_servers.png
 ---
@@ -12,14 +12,14 @@ At a recent Mechanical Rock mob programming session we decided to tackle the top
 
 ![serverless benefits]({{ site.url }}/img/repeatable-serverless-applications/serverless_simplifies.png)
 
-Whilst a serverless architecture does alleviate a lot of these mundane tasks, it doesn't necessarily remove the need for them completely. Serverless is scalable and fault tolerant but mainly simplifies many of the operational tasks, associated with traditional architectures.    
+Whilst a serverless architecture does alleviate a lot of these mundane tasks, it doesn't necessarily remove the need for them completely. Serverless is scalable and fault tolerant but mainly simplifies many of the operational tasks, associated with traditional architectures.
 
 
 The preferred approach for any new software project here at Mechanical Rock, is to tackle it with a test-first mindset and a serverless implementation. The difficulty with serverless projects is, they often have dependencies on 3rd party service integrations. As a DevOps consultancy, ideally we would like to practice a Continuous Delivery model on all of our software projects. In order to achieve this, we need to be able test our application locally, on a pipeline and have it run bug-free in the cloud. The good news is, there are tools out there, that can help us achieve this.
 
 ![serverless benefits]({{ site.url }}/img/repeatable-serverless-applications/localstack.png)
 
-Meet, LocalStack. LocalStack, was originally created by Atlassian and has since moved to its own project, found <a href="https://github.com/localstack/localstack">here</a>. LocalStack provides you with "A fully functional local AWS cloud stack". What makes LocalStack so interesting, is that because it is a Docker image with all the traditional AWS serverless services running in the background, one need not litter their codebase with mocking frameworks. Essentially, instead of provisioning mocked services each time your application runs, you bring the LocalStack Docker image up once and your code should run the same locally, as it does in the cloud. You will still need to create resources for your application to use but with a few cheeky bash scripts and some Docker magic, you can automate the provisioning of almost all the necessary resources for your cloud-based application. Sounds too easy? Well you're absolutely right! With a docker-compose file, you can start up the LocalStack service in conjunction with your dev-env in your Dockerfile. 
+Meet, LocalStack. LocalStack, was originally created by Atlassian and has since moved to its own project, found <a href="https://github.com/localstack/localstack">here</a>. LocalStack provides you with "A fully functional local AWS cloud stack". What makes LocalStack so interesting, is that because it is a Docker image with all the traditional AWS serverless services running in the background, one need not litter their codebase with mocking frameworks. Essentially, instead of provisioning mocked services each time your application runs, you bring the LocalStack Docker image up once and your code should run the same locally, as it does in the cloud. You will still need to create resources for your application to use but with a few cheeky bash scripts and some Docker magic, you can automate the provisioning of almost all the necessary resources for your cloud-based application. Sounds too easy? Well you're absolutely right! With a docker-compose file, you can start up the LocalStack service in conjunction with your dev-env in your Dockerfile.
 
 ```yml
 <!-- docker-compose.yml -->
@@ -31,7 +31,7 @@ localstack:
       - "8080:8080"
 ```
 
-In your dockerfile, you can reference a bash script which provisions your AWS resources so that when the docker services are up and running, your resources will be available on the relevant service port referenced on the LocalStack GitHub page. If you would like visibility of the resources available on your 'stack', just hit up http://localhost:8080, in your browser. 
+In your dockerfile, you can reference a bash script which provisions your AWS resources so that when the docker services are up and running, your resources will be available on the relevant service port referenced on the LocalStack GitHub page. If you would like visibility of the resources available on your 'stack', just hit up http://localhost:8080, in your browser.
 
 ```bash
 if [ $ENV = "local" ]; then
@@ -44,7 +44,7 @@ fi
 s3_endpoint = "http://localhost:4572" if os.environ.get("ENV") == "local" else None
 self.s3_resource = boto3.resource('s3', endpoint_url=s3_endpoint)
 ```
-We were using the boto3 library provided by AWS, which allows you to set the endpoint URL of the service you want to talk to when creating a client connection to it. Using this endpoint URL parameter, we were able to establish a connection to our s3 bucket on LocalStack, when the 'ENV' environment variable was set to 'local'. This way, we don't get charged for creating excess and unnecessary resources on our AWS account. 
+We were using the boto3 library provided by AWS, which allows you to set the endpoint URL of the service you want to talk to when creating a client connection to it. Using this endpoint URL parameter, we were able to establish a connection to our s3 bucket on LocalStack, when the 'ENV' environment variable was set to 'local'. This way, we don't get charged for creating excess and unnecessary resources on our AWS account.
 
 If you're hoping to use DynamoDB as a layer of persistence in your application and you are using Python, you may want to use the PynamoDB library which will create a table, if it doesn't already exist. To establish a connection to your local instance of Dynamo, you will have to specify the host name, in the Meta subclass, to point to Dynamo on LocalStack.
 
@@ -54,10 +54,10 @@ class ProductModel(Model):
         table_name = 'Products'
         region = 'ap-southeast-2'
         host = "http://localhost:4569" if os.environ.get(
-            "ENV") == "local" else None 
+            "ENV") == "local" else None
 ```
 
-Since LocalStack is a docker image, with all the AWS services you would typically use, in a cloud native application, you can assume that your application would run the same locally, as it would in the cloud. Subsequently, you should test your application assuming that all the application necessary services are present, when developing locally.  
+Since LocalStack is a docker image, with all the AWS services you would typically use, in a cloud native application, you can assume that your application would run the same locally, as it would in the cloud. Subsequently, you should test your application assuming that all the application necessary services are present, when developing locally.
 
 ```python
 def test_write_data():

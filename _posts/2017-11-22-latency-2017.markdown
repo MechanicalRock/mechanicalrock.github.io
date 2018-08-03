@@ -2,12 +2,12 @@
 layout: post
 title:  "Latency 2017"
 date:   2017-11-23 04:48:58 +0000
-categories: conferences cloud
+tags: conferences cloud
 author: Hamish Tedeschi
 image: img/latency/Light BG.jpg
 ---
 
-I need to be honest; [Latency](https://latencyconf.io/) was a temporary mental lapse or failure to reason correctly (in other words, a complete and utter brain fart). I need to thank my colleagues at [Mechanical Rock](https://mechanicalrock.io/) for allowing me to go ahead with this idea, despite evidence to the contrary pointing to it being a potential failure. 
+I need to be honest; [Latency](https://latencyconf.io/) was a temporary mental lapse or failure to reason correctly (in other words, a complete and utter brain fart). I need to thank my colleagues at [Mechanical Rock](https://mechanicalrock.io/) for allowing me to go ahead with this idea, despite evidence to the contrary pointing to it being a potential failure.
 
 I had looked around at the conference options in Perth (and the rest of Australia, for that matter) and didn't see much (other than [CukeUpAu](https://cucumber.io/events/cukeup-au-2016), of course) that I would enjoy going to. As a punter, I don't go to a conference to see glitz and glamour (other than perhaps [re:invent](https://reinvent.awsevents.com/)). In actual fact, I like a bit of grime. I go to learn from colleagues and hear about ways to solve problems that I may be facing today or tomorrow. I realise that this also happens when I am in the corridors or outside of the actual talks. Having fun in a safe environment is also a key concern.
 
@@ -15,7 +15,7 @@ It was a big call to run another conference, especially in Perth. So I needed a 
 
 After we had begun the [Latency](https://latencyconf.io/) preparation, I went to [DDDPerth](https://dddperth.com/) with the team, at the Perth Convention Centre. I had a great time - which was a credit to the organisers. The conference scene in Perth was obviously getting more mature and it indicated there is a demand for more progressive, community focused events. I felt renewed enthusiasm that this may be possible after all! **Win number two!**
 
-Running a cloud focused conference in a place where cloud was yet to be adopted seriously was a big call, so we needed support from the major cloud providers, otherwise it would be too risky and just wouldn't make sense. The preference was to have all the major players in town - again, a diverse set of opinions makes for the best experience. Firstly, we approached the team at [AWS](https://aws.amazon.com/) as being a key partner in town, we naturally have contacts there. We had a few hiccups getting approval, but the team were really committed to helping out - Thanks [Andrew](https://www.linkedin.com/in/andrew-winter-43724315/) for driving it through. **Win number three!** 
+Running a cloud focused conference in a place where cloud was yet to be adopted seriously was a big call, so we needed support from the major cloud providers, otherwise it would be too risky and just wouldn't make sense. The preference was to have all the major players in town - again, a diverse set of opinions makes for the best experience. Firstly, we approached the team at [AWS](https://aws.amazon.com/) as being a key partner in town, we naturally have contacts there. We had a few hiccups getting approval, but the team were really committed to helping out - Thanks [Andrew](https://www.linkedin.com/in/andrew-winter-43724315/) for driving it through. **Win number three!**
 
 It wasn't enough to have AWS onboard. We needed more sponsors to help spread the word and provide that extra bit of credibility. Tania suggested [Bankwest](https://www.bankwest.com.au/) may be a possible sponsorship option. That would be huge and completely de-risk the conference from a financial perspective, but also provide that extra publicity we need to get the punters in the door. Again, we had some hiccups getting approval, but Tania persisted and we got there in the end. **Win number four!**
 
@@ -41,11 +41,11 @@ Two weeks out and everything was lining up nicely. The team was following up wit
 
 8.55 AM.. AND WE WERE OFF AND RACING..
 
-[Jan Haak](https://www.linkedin.com/in/haakjan/) "volunteered" to cover the opening space for Charity and the dynamic duo from VGW, [Rhys](https://www.linkedin.com/in/rhysc/) and [Matt](https://www.linkedin.com/in/matthewstephenjames/), stepped in to cover the speaker drop out - and both rocked! **Win number six!** 
+[Jan Haak](https://www.linkedin.com/in/haakjan/) "volunteered" to cover the opening space for Charity and the dynamic duo from VGW, [Rhys](https://www.linkedin.com/in/rhysc/) and [Matt](https://www.linkedin.com/in/matthewstephenjames/), stepped in to cover the speaker drop out - and both rocked! **Win number six!**
 
-[Rob Moore](https://www.linkedin.com/in/robdmoore1/) cranked out a live Azure demo on stage, in place of the second drop out. **Win number seven!** 
+[Rob Moore](https://www.linkedin.com/in/robdmoore1/) cranked out a live Azure demo on stage, in place of the second drop out. **Win number seven!**
 
-And Charity flew in, came straight from the airport and gave the final talk of the day. And CRUSHED it! **Win number eight!** 
+And Charity flew in, came straight from the airport and gave the final talk of the day. And CRUSHED it! **Win number eight!**
 
 **By my count, we won 8/7**
 

@@ -2,7 +2,7 @@
 layout: post
 title:  "The New Donut"
 date:   2017-10-15 04:48:58 +0000
-categories: donut automated test reports
+tags: donut automated test reports
 author: Hamish Tedeschi & Amit Sharma
 image: img/the-new-donut/Donut-01.jpeg
 ---
@@ -11,7 +11,7 @@ Donut was an idea born at [MagenTys](https://magentys.io/) with the intention of
 
 Since inception, the number of contributors has grown and the product roadmap has become clearer. In that time, [Mechanical Rock](https://www.mechanicalrock.io/) was also born. As both [MagenTys](https://magentys.io/) and [Mechanical Rock](https://www.mechanicalrock.io/) are part of the core contributor team and the Donut ecosystem of related projects has grown, it made sense to move it to its own GitHub Organization, similar to how LocalStack has moved from the Atlassian repo to a LocalStack owned one.
 
-The new GitHub Organization is named [Donut Report](https://github.com/DonutReport) and all the projects there (including [Donut](https://github.com/DonutReport/donut)) can be cloned and contributed to in that space. As Donut now supports JUnit XML and NUnit XML, pretty much any test runner out there can produce the output necessary to produce a Donut report. 
+The new GitHub Organization is named [Donut Report](https://github.com/DonutReport) and all the projects there (including [Donut](https://github.com/DonutReport/donut)) can be cloned and contributed to in that space. As Donut now supports JUnit XML and NUnit XML, pretty much any test runner out there can produce the output necessary to produce a Donut report.
 
 If you are a current user of Donut, you may need to make a few small changes to get the latest versions. See the steps below:
 

@@ -2,7 +2,7 @@
 layout: post
 title:  "Networking Between Sibling Docker Containers"
 date:   2017-12-01
-categories: devops docker
+tags: devops docker
 author: Tim Myerscough
 image: img/docker-sibling/docker-network.png
 ---

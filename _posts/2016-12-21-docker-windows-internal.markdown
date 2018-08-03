@@ -2,7 +2,7 @@
 layout: post
 title:  "Docker for Windows Internal"
 date:   2016-12-07 04:48:58 +0000
-categories: docker devops windows
+tags: docker devops windows
 author: William Sia
 image: img/docker-windows.png
 ---
@@ -19,7 +19,7 @@ The source code for Docker can be found in [here](https://github.com/docker/dock
 
 The way the interfaces are implemented in Go, make it very easy for the core development team to write windows & linux specific implementation while keeping the user interface (the commands line) the same.
 
-Both of windows and linux specific implementation can be found in the same repository. To find out a specific implementation for Linux, just do a search with 
+Both of windows and linux specific implementation can be found in the same repository. To find out a specific implementation for Linux, just do a search with
 ~~~
 // +build !windows
 ~~~
@@ -54,7 +54,7 @@ func getBlkioWriteBpsDevices(config *containertypes.HostConfig) ([]blkiodev.Thro
 ~~~
 {: .language-go}
 
- 
+
 
 This will give you some idea of what functions are not implemented in windows, such as **getSystemCPUUsage** in **stats_collector_windows.go**
 ~~~
@@ -80,7 +80,7 @@ func (s *Collector) getNumberOnlineCPUs() (uint32, error) {
 ~~~
 {: .language-go}
 
-You can also search for 
+You can also search for
 ~~~
 runtime.GOOS == "windows"
 ~~~

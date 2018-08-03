@@ -13,7 +13,7 @@ image: img/inception-pipelines/seed_germination.png
 
 ## What's The Problem
 
-This month we're building on [last month's post](https://mechanicalrock.github.io//aws/continuous/deployment/codepipeline/codebuild/inception/pipeline/2018/06/25/inception-pipelines-pt4) and discussing one approach to managing IAM users across multiple accounts. More specifically we're avoiding the quick, dirty and lazy way of just throwing IAM users into each account. When you do, you quickly end up with an unmanageable jungle of profiles and access keys, which creates an increased exposure to compromised accounts. So here is a better way; read on fair explorers while we cut a path through this jungle to IAM user nirvana.
+This month we're building on [last month's post]({{ site.baseurl }}{% post_url 2018-06-25-inception-pipelines-pt4 %}) and discussing one approach to managing IAM users across multiple accounts. More specifically we're avoiding the quick, dirty and lazy way of just throwing IAM users into each account. When you do, you quickly end up with an unmanageable jungle of profiles and access keys, which creates an increased exposure to compromised accounts. So here is a better way; read on fair explorers while we cut a path through this jungle to IAM user nirvana.
 
 It is worth explicitly calling out that the ideas discussed below are more targeted towards smaller AWS installations. [Reach out](https://www.mechanicalrock.io/#/contact-us) to us to discuss alternatives if you are working in a large corporate environment with a dedicated user directory and tens or hundreds of AWS Accounts.
 
@@ -132,7 +132,7 @@ If you had multiple roles, then copy-and-paste the above and give it another nam
 
 ## Where Do I Get The Seed Files
 
-Two complete, working pipelines are available [here on GitHub](https://github.com/MechanicalRock/InceptionPipeline/tree/post/part-5) with one pipeline for your root account and one for your child account. As discussed in the [last post](https://mechanicalrock.github.io//aws/continuous/deployment/codepipeline/codebuild/inception/pipeline/2018/06/25/inception-pipelines-pt4), these would be considered account-level pipelines.
+Two complete, working pipelines are available [here on GitHub](https://github.com/MechanicalRock/InceptionPipeline/tree/post/part-5) with one pipeline for your root account and one for your child account. As discussed in the [last post]({{ site.baseurl }}{% post_url 2018-06-25-inception-pipelines-pt4 %}), these would be considered account-level pipelines.
 
 ### What Are The Files
 
@@ -144,7 +144,7 @@ Two complete, working pipelines are available [here on GitHub](https://github.co
 
 ## Taking It For A Spin
 
-If you're new to [Inception Pipelines](https://mechanicalrock.github.io//aws/continuous/deployment/2018/03/01/inception-pipelines-pt1), head on over to the [original post](https://mechanicalrock.github.io//aws/continuous/deployment/2018/03/01/inception-pipelines-pt1) and set yourself up a pipeline. If not, copy over the files referenced above, add in the appropriate pipeline action and commit. Enjoy!
+If you're new to [Inception Pipelines]({{ site.baseurl }}{% post_url 2018-03-01-inception-pipelines-pt1 %}), head on over to the [original post]({{ site.baseurl }}{% post_url 2018-03-01-inception-pipelines-pt1 %}) and set yourself up a pipeline. If not, copy over the files referenced above, add in the appropriate pipeline action and commit. Enjoy!
 
 ## Wrapping Up
 

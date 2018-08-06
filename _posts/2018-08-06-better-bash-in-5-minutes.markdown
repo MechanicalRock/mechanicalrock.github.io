@@ -1,7 +1,11 @@
 ---
 layout: post
 title:  "Better Bash Scripting in 5 Minutes or Less"
+<<<<<<< HEAD
 date:   2018-08-06
+=======
+date:   2018-08-10
+>>>>>>> 652d755... Changed categories to tags
 tags: bash linux unix mac osx script shell
 author: Josh Armitage
 image: img/bash-logo.png

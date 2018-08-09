@@ -7,7 +7,7 @@ author: William Sia
 image: img/native-mobile.png
 ---
 
-On the 4th of August I had the great privilege to do a talk on [DDD Perth](https://dddperth.com/), however I foolishly submitted the talk for the 20 minutes, rather than the 45 minutes track. As a result, we didn't have a lot of time to go through the content in more details. This is my attempt to provide more information related to the talk. Come to our office <img src="https://static.thenounproject.com/png/894284-200.png" width="24"> **Mech Rock HQ Suite 2, 51 King Street, Perth WA 6000** for a quick chat and a game of table tennis <img src="https://static.thenounproject.com/png/64985-200.png" width="24">.
+On the 4th of August I had the great privilege to do a talk at [DDD Perth](https://dddperth.com/), however, I foolishly submitted the talk for the 20 minutes, rather than the 45 minute track. As a result, we didn't have a lot of time to go through the content in more detail. This is my attempt to provide more information related to the talk. Come to our office <img src="https://static.thenounproject.com/png/894284-200.png" width="24"> **Mech Rock HQ Suite 2, 51 King Street, Perth WA 6000** for a quick chat and a game of table tennis <img src="https://static.thenounproject.com/png/64985-200.png" width="24">.
 
  
 I divided the section <img src="https://static.thenounproject.com/png/1141073-200.png" width="24"> into list of technology/concept, and each of them contains links to introduction article, video or framework that you can use to make your life easy.

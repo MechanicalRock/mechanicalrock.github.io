@@ -4,7 +4,7 @@ title:  "Links to DDD Perth talks"
 date:   2018-08-06
 tags: serverless cloud native pwa webapps
 author: William Sia
-image: img/bash-logo.png
+image: img/native-mobile.png
 ---
 
 ## Service Workers
@@ -64,11 +64,11 @@ image: img/bash-logo.png
 
 [What is WebAuthn?](https://developers.google.com/web/updates/2018/05/webauthn) <img src="https://static.thenounproject.com/png/1141073-200.png" width="24"> [Enabling Strong Authentication with WebAuthn ](https://youtu.be/kGGMgEfSzMw)
 
-## Web Assembly & Browser Rendering
+## Web Assembly, Web Workers & Browser Rendering
 
 <img src="https://static.thenounproject.com/png/15066-200.png" width="36">
 
-[How Browser renders your web application](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/) <img src="https://static.thenounproject.com/png/1141073-200.png" width="24"> [Introduction to Web Assembly](https://hacks.mozilla.org/2017/02/a-cartoon-intro-to-webassembly/)
+[Shared Memory in Javascript](https://www.hongkiat.com/blog/shared-memory-in-javascript/) <img src="https://static.thenounproject.com/png/1141073-200.png" width="24">  [Why Shared Array Buffer](http://2ality.com/2017/01/shared-array-buffer.html)  <img src="https://static.thenounproject.com/png/1141073-200.png" width="24"> [How Browser renders your web application](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/) <img src="https://static.thenounproject.com/png/1141073-200.png" width="24"> [Introduction to Web Assembly](https://hacks.mozilla.org/2017/02/a-cartoon-intro-to-webassembly/) <img src="https://static.thenounproject.com/png/1141073-200.png" width="24"> [Future of WebAssembly](https://blog.scottlogic.com/2018/07/20/wasm-future.html)
 
 <img src="https://static.thenounproject.com/png/1141000-200.png" width="36">
 

@@ -17,7 +17,17 @@ image: img/native-mobile.png
 
 [Webpack plugin to generate Service Workers](https://github.com/NekR)
 
+
+## AMP (Accelerated Mobile Pages)
+
+<img src="https://static.thenounproject.com/png/15066-200.png" width="36">
+
+[How do you use AMP in PWA](https://www.ampproject.org/docs/integration/pwa-amp/amp-in-pwa)
+
 <img src="https://static.thenounproject.com/png/1141000-200.png" width="36">
+
+[AMP's evolution beyond web pages](https://www.youtube.com/watch?v=eAyrvHmJD_c) <img src="https://static.thenounproject.com/png/1141073-200.png" width="24"> [Build e-commerce sites for the modern web with AMP, PWA, and more](https://www.youtube.com/watch?v=QCoQs9NO9q0)
+
 
 ## Background Sync
 

@@ -1,23 +1,23 @@
 ---
 layout: post
 title:  "Bashing through Minikube - 0 to 60 for Local Kubernetes Development"
-date:   2018-08-06
+date:   2018-08-20
 tags: kubernetes minikube containers bash local development
 author: Josh Armitage
 image: img/kubernetes/minikube-logo.png
 ---
 
 ## Minikube You Say?
-When you begin on a Kubernetes journey, often one of the first questions is how do I run locally? That's where Minikube comes in, you get an easy to spin up single node Kubernetes environment where you can rapidly iterate. As with nearly all tools, there's some rough edges and gotchas to figure out, in the next 5 minutes I hope to save you hours of frustration.
+When you begin on a Kubernetes journey, often one of the first questions is; "how do I run locally"? That's where Minikube comes in; you get an easy to spin up single node Kubernetes environment where you can rapidly iterate. As with nearly all tools, there's some rough edges and gotchas to figure out. So in the next 5 minutes I hope to save you hours of frustration.
 
 The blog was written using MacOS but the commands should translate across Linux distributions.
 
 
 ## Gotchas
 #### 1. What `eval $(minikube docker-env)` Does
-When you run Minikube it's running in a virtual machine, and in effect you are now running two parallel *docker environments*, the one on your local machine and the one in the virtual machine. The `eval` command does is set a selection of environment variables such that your current terminal session is pointing to the *docker environment* in the virtual machine. This means all the images you have locally won't be available and vice versa.
+When you run Minikube it's running in a virtual machine, and in effect you are now running two parallel *docker environments*, the one on your local machine and the one in the virtual machine. What the `eval` command does is set a selection of environment variables such that your current terminal session is pointing to the *docker environment* in the virtual machine. This means all the images you have locally won't be available and vice versa.
 #### 2. Changing Back To Your Local Docker Environment
-The magic rune to swap you back to your local docker environment is:
+The simplest way to change back is to create a new terminal session, however if you're in a script or want to continue to use your current session the magic runes to swap you back to your local docker environment is:
 
 `unset DOCKER_API_VERSION DOCKER_TLS_VERIFY DOCKER_CERT_PATH DOCKER_API_VERSION DOCKER_HOST`
 #### 3. Swapping Between Minikube And Other Clusters
@@ -44,12 +44,12 @@ With microservices you can reduce the context switch penalty by providing a comm
 This leads into the core of your continuous integration configuration being `build.sh && publish.sh`
 
 ### 2. Keep Your Containers Small
-Using multi-stage Docker builds, i.e one container to build and one minimal container for runtime, will keep your feedback cycles fast. For example, with Java your `build` container can have the JDK installed with all your testing dependencies, but then you can create a JRE only Alpine container that can be about 5-10x smaller.
+Using [multi-stage Docker builds](https://docs.docker.com/develop/develop-images/multistage-build/), i.e one container to build and one minimal container for runtime, will keep your feedback cycles fast. For example, with Java your `build` container can have the JDK installed with all your testing dependencies, but then you can create a JRE only Alpine container that can be about 5-10x smaller.
 
 <div style="text-align: center; margin: 10px"><iframe width="560" height="315" src="https://www.youtube.com/embed/wGz_cbtCiEA?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 
 ### 3. Have Your Container Entrypoint And Command Be Targeted
-The containers that you are expecting to run in your cluster should be single purpose by design, that means that you can have your entrypoint and command set so you don't have to manage that outside the Dockerfile itself.
+The containers you are expecting to run in your cluster should be single purpose by design, this means that you can have your entrypoint and command set so you don't have to manage that outside the Dockerfile itself.
 
 ### 4. Exposing Ports
 #### e.g. I want to see my postgres database
@@ -88,4 +88,4 @@ The need to do this is generally driven by insufficient testing, or testing at t
 ## Wrap Up
 Hopefully this post will have saved you many frustrations in the road ahead to Kubernetes adoption. Minikube is fantastic for keeping your feedback cycles fast and learning its quirks is well worth the time investment.
 
-The next step is getting to grips with your Kubernetes flavour of choice, be that cloud vendor managed or for those stout of heart a bare metal installation. Stay tuned for posts on adopting EKS, up-skilling the team into Kubernetes, and making your cluster production ready.
+The next step is getting to grips with your Kubernetes flavour of choice, be that cloud vendor managed or for those stout of heart a bare metal installation. Stay tuned for posts on adopting [EKS](https://aws.amazon.com/eks/), up-skilling the team into Kubernetes, and making your cluster production ready.

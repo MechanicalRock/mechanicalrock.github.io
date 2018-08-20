@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Links for William's DDD Perth talk"
+title:  "Links for William's DDD Perth Talk"
 date:   2018-08-09
 tags: serverless cloud native pwa webapps
 author: William Sia

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Seeds of Inception - Part 6"
-date:   2018-08-24
+date:   2018-08-27
 tags: aws codepipeline inception pipeline iam roles
 author: Pete Yandell
 image: img/inception-pipelines/seed_germination.png

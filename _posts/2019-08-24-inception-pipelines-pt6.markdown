@@ -13,7 +13,7 @@ image: img/inception-pipelines/seed_germination.png
 
 ## What's The Problem
 
-In this month's instalment I'm going right back to the beginning to answer a question that I'm frequently asked; namely *"How do I do the initial seeding of a pipeline in my shiny new AWS Account?"*.
+In this month's instalment, I'm going right back to the beginning to answer a question that I'm frequently asked; namely *"How do I do the initial seeding of a pipeline in my shiny new AWS Account?"*.
 
 Like all things AWS-ey, there are multiple ways to accomplish this. The three that immediately come to mind are:
 
@@ -81,7 +81,7 @@ Success!
 
 ## Step 4 - Configure Your CLI User
 
-Now that you have your [IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html) it's time to configure the AWS CLI with the credentials. When running the `aws configure` command, I've specified a specific profile name which allows me to jump between different AWS Accounts quite easily. If you are just seeding and using one AWS Account then you could just use the default profile.
+Now that you have your [IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html) it's time to configure the AWS CLI with the credentials. When running the `aws configure` command, I've used a specific profile name which allows me to jump between different AWS Accounts quite easily. If you are just seeding and using one AWS Account then you could just use the default profile.
 
 ```bash
 $ aws configure --profile InceptionPipelineSeedingUser
@@ -113,19 +113,24 @@ This is an optional step that I like to perform before I seed the pipeline. When
 
 ## Step 6 - Change the default profile
 
-Assuming you're still reading along and you are still using the cli profile name InceptionPipelineSeedingUser, you will need to update the `init.sh` file, which is super easy. Simply search-and-replace `default` `with InceptionPipelineSeedingUser` like so (hint, there are four defaults to replace):
+Assuming you're still reading along and you are still using the cli profile name InceptionPipelineSeedingUser, you will need to update the `init.sh` file, which is super easy. Simply replace `default` with `InceptionPipelineSeedingUser` on line 6 like so:
 
 ```bash
+#!/bin/bash
+
 reset
 
-echo "Create the initial CloudFormation Stack"
-aws --profile InceptionPipelineSeedingUser cloudformation create-stack --stack-name "InceptionPipelineSeedingUserStack" --template-body file://aws_seed.yml --parameters file://aws_seed-cli-parameters.json --capabilities "CAPABILITY_NAMED_IAM"
-echo "Waiting for the CloudFormation stack to finish being created."
-aws --profile InceptionPipelineSeedingUser cloudformation wait stack-create-complete --stack-name "InceptionPipelineSeedingUserStack"
-# Print out all the CloudFormation outputs.
-aws --profile InceptionPipelineSeedingUser cloudformation describe-stacks --stack-name "InceptionPipelineSeedingUserStack" --output table --query "Stacks[0].Outputs"
+# Update to use a different AWS profile
+PROFILE=InceptionPipelineSeedingUser
 
-export CODECOMMIT_REPO=`aws --profile InceptionPipelineSeedingUser cloudformation describe-stacks --stack-name "InceptionPipelineSeedingUserStack" --output text --query "Stacks[0].Outputs[?OutputKey=='CodeCommitRepositoryCloneUrlHttp'].OutputValue"`
+echo "Create the initial CloudFormation Stack"
+aws --profile $PROFILE cloudformation create-stack --stack-name "@@StageAdministerPipelineStackName@@" --template-body file://aws_seed.yml --parameters file://aws_seed-cli-parameters.json --capabilities "CAPABILITY_NAMED_IAM" 
+echo "Waiting for the CloudFormation stack to finish being created."
+aws --profile $PROFILE cloudformation wait stack-create-complete --stack-name "@@StageAdministerPipelineStackName@@"
+# Print out all the CloudFormation outputs.
+aws --profile $PROFILE cloudformation describe-stacks --stack-name "@@StageAdministerPipelineStackName@@" --output table --query "Stacks[0].Outputs"
+
+export CODECOMMIT_REPO=`aws --profile $PROFILE cloudformation describe-stacks --stack-name "@@StageAdministerPipelineStackName@@" --output text --query "Stacks[0].Outputs[?OutputKey=='CodeCommitRepositoryCloneUrlHttp'].OutputValue"`
 
 echo "Initialising Git repository"
 git init

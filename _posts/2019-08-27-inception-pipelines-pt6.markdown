@@ -89,16 +89,7 @@ Success!
 
 ### <a name="awscliisland"></a>AWS CLI Island
 
-On this path you will use the AWS CLI to create an [IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html) and [Customer Managed IAM Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies). The commands to execute are below. **Note:** You will need to replace the `111111111111` with your actual AWS Account number.
-
-```bash
-aws iam create-policy --policy-name InceptionPipelineSeedingPolicy --description "Minimum permissions required to seed an Inception Pipeline, and optionally delete it if required." --policy-document https://raw.githubusercontent.com/MechanicalRock/InceptionPipeline/post/part-6/policy.json
-aws iam create-user --user-name InceptionPipelineSeedingUser
-aws iam attach-user-policy --user-name InceptionPipelineSeedingUser --policy-arn "arn:aws:iam::111111111111:policy/InceptionPipelineSeedingPolicy"
-aws iam create-access-key --user-name InceptionPipelineSeedingUser
-```
-
-Because I'm feeling super nice and generous I've wrapped these commands up into a tidy little shell script [here on GitHub](https://github.com/MechanicalRock/InceptionPipeline/blob/post/part-6/seed-inception-pipeline-user.sh). When you run it, this is what you'll see:
+On this path you will use the AWS CLI to create an [IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html) and [Customer Managed IAM Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies). Because I'm super nice and friendly and generous, I've wrapped up the CLI commands into a tidy little shell script [here on GitHub](https://github.com/MechanicalRock/InceptionPipeline/blob/post/part-6/seed-inception-pipeline-user.sh). When you run it, this is what you'll see:
 
 ```bash
 AWS Account: 111111111111
@@ -130,11 +121,20 @@ AWS CLI profile (default is 'default'): default
         "CreateDate": "2018-08-23T02:08:56Z",
         "AccessKeyId": "AKIADEADBEEFBEERGERS",
         "Status": "Active",
-        "SecretAccessKey": "SecretSquirrelBusinessSsshDontTellASeoul",
+        "SecretAccessKey": "SecretSquirrelBusinessSsshDontTellAnyOne",
         "UserName": "InceptionPipelineSeedingUser"
     }
 }
 $
+```
+
+For the curious, these are the commands that were executed. **Note:** that the only dynamic value required was the AWS Account number.
+
+```bash
+aws iam create-policy --policy-name InceptionPipelineSeedingPolicy --description "Minimum permissions required to seed an Inception Pipeline, and optionally delete it if required." --policy-document https://raw.githubusercontent.com/MechanicalRock/InceptionPipeline/post/part-6/policy.json
+aws iam create-user --user-name InceptionPipelineSeedingUser
+aws iam attach-user-policy --user-name InceptionPipelineSeedingUser --policy-arn "arn:aws:iam::111111111111:policy/InceptionPipelineSeedingPolicy"
+aws iam create-access-key --user-name InceptionPipelineSeedingUser
 ```
 
 ## Step 3 - Configure Your CLI User
@@ -144,7 +144,7 @@ Now that you have your [IAM User](https://docs.aws.amazon.com/IAM/latest/UserGui
 ```bash
 $ aws configure --profile InceptionPipelineSeedingUser
 AWS Access Key ID [None]: AKIADEADBEEFBEERGERS
-AWS Secret Access Key [None]: SecretSquirrelBusinessSsshDontTellASeoul
+AWS Secret Access Key [None]: SecretSquirrelBusinessSsshDontTellAnyOne
 Default region name [None]: ap-southeast-2
 Default output format [None]: json
 
@@ -156,7 +156,7 @@ region = ap-southeast-2
 $ cat ~/.aws/credentials
 [InceptionPipelineSeedingUser]
 aws_access_key_id = AKIADEADBEEFBEERGERS
-aws_secret_access_key = SecretSquirrelBusinessSsshDontTellASeoul
+aws_secret_access_key = SecretSquirrelBusinessSsshDontTellAnyOne
 ```
 
 ## Step 4 - Configure CodeCommit Access

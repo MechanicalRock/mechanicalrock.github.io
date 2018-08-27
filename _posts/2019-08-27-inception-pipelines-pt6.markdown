@@ -209,3 +209,4 @@ Now the really hard bit (*note* heavy sarcasm); seed the pipeline by typing `ini
 ## Wrapping Up
 
 This month's article was a light one, mostly as I've been experimenting with the [AWS Cloud Development Kit](https://github.com/awslabs/aws-cdk); specifically, how the concepts within Inception Pipeline map to this new paradigm. Stay tuned for next month's post where I discuss (i.e. vent) my feelings and share my journey!
+

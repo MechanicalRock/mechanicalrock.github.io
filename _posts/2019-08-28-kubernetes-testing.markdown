@@ -135,6 +135,10 @@ import (
 	"context"
 	"time"
 
+	"os"
+	"os/signal"
+	"syscall"
+
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/cache"
 	"k8s.io/apimachinery/pkg/labels"
@@ -145,6 +149,9 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
+signalChannel := make(chan os.Signal, 2)
+
+signal.Notify(signalChannel, os.Interrupt, syscall.SIGTERM)
 
 // The resync period, if specified x > 0, will send
 // the entire list of watched resources to the client
@@ -165,13 +172,13 @@ listOptions := func(options *metav1.ListOptions) {
 }
 
 // We need to make a handler that will receive the events
-// from the informer
+// from the informer. For the sake of the example I'll
+// just throw them onto the queue.
 events = make(chan struct{}, 10)
 fn := func(obj interface{}) {
-	events <- struct{}{}
+	events <- obj
 }
 
-// TODO: FIX THIS
 handler := &cache.ResourceEventHandlerFuncs{
 	AddFunc: fn,
 	DeleteFunc: fn,
@@ -201,5 +208,22 @@ if !cache.WaitForCacheSync(ctx.Done(),
 		Fail("Timed out waiting for cache sync")
 	}
 
-// TODO: Show receiving events
+// At this point we can receive and the events and do
+// whatever we like with them. If we receive SIGTERM
+// we cancel the context and exit.
+
+select {
+case event := <- events:
+	fmt.Printf("%+v\n", event)
+case <- signalChannel:
+	cancel()
+	os.Exit(0)
+}
+
 ```
+
+Try running this against a cluster while creating other objects. It should be reasonably obvious as to how this could be used to stream out the state of a cluster.
+
+## Putting it all together
+
+The kubernetes API is more or less a set of building blocks. The smaller blocks are used to compose bigger pieces of functionality. This is most obvious when inspecting Containers, Pods, ReplicaSets, Deployments. These four objects build upon each to provide the container orchestration functionality. Inspecting the API, we can see that each is embedded in the other.

@@ -309,6 +309,10 @@ Given I have registered my Custom Resource Definition with the cluster,
 		Then I should create a data node deployment
 ```
 
+A small demonstration: The bottom window shows the logging output of the controller, the top-left is the output of the test runner, and the top-right is a watch of on service objects (eg; `watch -n 1 kubectl get services`).
+
+![](/img/kubernetes/k8s-testing.gif)
+
 This is helping me to focus my development on the most important functionality required to get things working, without getting too bogged down in the details (which admittedly still happens but less so than before!).
 
 ## Conclusion

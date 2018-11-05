@@ -285,7 +285,7 @@ spec:
       - name: nginx 
         image: nginx:1.15.4
         ports:
-        - containerPort: 80	
+        - containerPort: 80
 ```
 
 A natural consequence of this is the expectation that creating a higher level object will result in the creation of lower level objects, and you can see a practical result of this in the Kubernetes test for certain resources. For example, you can clearly see this in the test for the deployment resource, located [here](https://github.com/Kubernetes/Kubernetes/blob/master/test/e2e/apps/deployment.go).

@@ -1,13 +1,13 @@
 ---
 layout: post
 title:  "Testing and Kubernetes"
-date:   2018-10-21
+date:   2018-11-07
 tags: Kubernetes Go Conformance BDD
 author: Matt Tyler
 image: img/kubernetes/k8s.png 
 ---
 ### Public Service Announcement
-#### Mechanical Rock will be running a two day 'Intro to Kubernetes' course on January 9th & 10th at Cliftons Perth. Participants will learn to deploy and manage scalable applications in Kubernetes, from local development through to production. Participants will also demonstrate how Kubernetes provides high availability, scalability, and how Kubernetes integrates into existing on-premise and public cloud environments. [More information may be found at the event site.](https://ti.to/intro-to-kubernetes/intro-to-kubernetes)
+#### Mechanical Rock will be running a two day 'Intro to Kubernetes' course on January 9th & 10th at Cliftons Perth. Participants will learn to deploy and manage scalable applications in Kubernetes, from local development through to production. Participants will also learn how Kubernetes provides high availability, scalability, and how Kubernetes can integrate into existing on-premise and public cloud environments. [More information may be found at the event site.](https://ti.to/intro-to-kubernetes/intro-to-kubernetes)
 
 <br/>
 
@@ -41,30 +41,30 @@ Those who are familiar with jasmine, mocha, jest etc should feel right at home. 
 
 What follows is an incredibly contrived example based on an infamous statement from our newest ex-Prime Minister. I'm sure no-one is going to struggle to understand this.
 
-```
+``` go
 import (
-	. "github.com/onsi/ginkgo"
-	. "github.com/onsi/gomega"
+  . "github.com/onsi/ginkgo"
+  . "github.com/onsi/gomega"
 )
 
 var _ = Describe("Example", func() {
-	var (
-		a int
-		b int
-	)
+  var (
+    a int
+    b int
+  )
 
-	BeforeEach(func() {
-		a = 5
-		b = 2
-	})
+  BeforeEach(func() {
+    a = 5
+    b = 2
+  })
 
-	Describe("Law of mathematics applies in Australia", func() {
-		Context("When adding two numbers", func() {
-			It("should be equal to their sum", func() {
-				Expect(a + b).To(Equal(7))
-			})
-		})
-	})
+  Describe("Law of mathematics applies in Australia", func() {
+    Context("When adding two numbers", func() {
+      It("should be equal to their sum", func() {
+        Expect(a + b).To(Equal(7))
+      })
+    })
+  })
 })
 ```
 
@@ -74,14 +74,14 @@ Anyone that has used Go in any capacity is probably aware that you can execute `
 
 We can go a few steps further than this. We can extend that test binary to take all sorts of additional flags, print out usage information, while still taking advantage of features of the Go tooling (eg; test reporting). I've done this in the past to extend my test binaries to bootstrap managed Kubernetes clusters in Google Cloud Platform, and/or target existing clusters that have been defined in a standard Kubernetes configuration file (kubeconfig). How to do this is briefly mentioned in Go's testing documentation, but I've found things work slightly differently when using Ginkgo. Most notably, it's not necessary to use TestMain for setup - you can get away with writing a single *_test.go file to act as an entry point.
 
-```
+``` go
 // My "main" testing file, say e2e_test.go
 import (
-	...
-	// Other imports ommitted for brevity
-	// This import registers a test suite
-	// The underscore indicates we are importing
-	// it for the side-effects.
+  ...
+  // Other imports ommitted for brevity
+  // This import registers a test suite
+  // The underscore indicates we are importing
+  // it for the side-effects.
     _ ".../suite.go" 
 )
 
@@ -128,131 +128,131 @@ The Kubernetes client has typical CRUD like operations for dealing with various 
 
 Here's an example for setting up a watch on service objects in a cluster within the default namespace. The full repository is available [here](https://github.com/MechanicalRock/k8s-service-watcher-demo/blob/master/main.go). You can safely copy the direct source (it's only one source file) or pull down the whole repository to compile and run it.
 
-```
+``` go
 package main
 
 import (
-	"context"
-	"flag"
-	"fmt"
-	"time"
+  "context"
+  "flag"
+  "fmt"
+  "time"
 
-	"os"
-	"os/signal"
-	"syscall"
+  "os"
+  "os/signal"
+  "syscall"
 
-	// "k8s.io/apimachinery/pkg/labels"
-	"k8s.io/client-go/kubernetes"
-	"k8s.io/client-go/rest"
-	"k8s.io/client-go/tools/cache"
-	"k8s.io/client-go/tools/clientcmd"
+  // "k8s.io/apimachinery/pkg/labels"
+  "k8s.io/client-go/kubernetes"
+  "k8s.io/client-go/rest"
+  "k8s.io/client-go/tools/cache"
+  "k8s.io/client-go/tools/clientcmd"
 
-	"k8s.io/api/core/v1"
+  "k8s.io/api/core/v1"
 
-	kubeinformers "k8s.io/client-go/informers"
+  kubeinformers "k8s.io/client-go/informers"
 
-	// metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+  // metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	// depending on how you are configured, you may want to add
-	// other auth providers. These need to be imported for their
-	// side-effects
-	_ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
+  // depending on how you are configured, you may want to add
+  // other auth providers. These need to be imported for their
+  // side-effects
+  _ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
 )
 ```
 
 A lot of libraries need to be pulled into used shared-informers. It's probably one of the most annoying aspects of their use.
 
-```
+``` go
 func main() {
 
-	signalChannel := make(chan os.Signal, 2)
+  signalChannel := make(chan os.Signal, 2)
 
-	signal.Notify(signalChannel, os.Interrupt, syscall.SIGTERM)
+  signal.Notify(signalChannel, os.Interrupt, syscall.SIGTERM)
 
 ```
 
 This is some basic signal handling, so we can handle a graceful termination upon a termination signal (Ctrl+C).
 
-```
-	config, err := buildConfig(kubeconfig)
-	if err != nil {
-		panic(err)
-	}
+``` go
+  config, err := buildConfig(kubeconfig)
+  if err != nil {
+    panic(err)
+  }
 
-	resyncPeriod := 5 * time.Second
+  resyncPeriod := 5 * time.Second
 ```
 
 The resync period, if specified x > 0, will send the entire list of watched resources to the client every x * period. Clients typically set this if they are behaving as a controller. If the controller dies it will need to recover by being sent what the most recent state was. It's then up to the controller to determine what it may have missed during it's downtime.
 
-```
-	namespace := "default"
+``` go
+  namespace := "default"
 
-	events := make(chan interface{})
-	fn := func(obj interface{}) {
-		events <- obj
-	}
+  events := make(chan interface{})
+  fn := func(obj interface{}) {
+    events <- obj
+  }
 
-	handler := &cache.ResourceEventHandlerFuncs{
-		AddFunc:    fn,
-		DeleteFunc: fn,
-		UpdateFunc: func(old interface{}, new interface{}) {
-			fn(new)
-		},
-	}
+  handler := &cache.ResourceEventHandlerFuncs{
+    AddFunc:    fn,
+    DeleteFunc: fn,
+    UpdateFunc: func(old interface{}, new interface{}) {
+      fn(new)
+    },
+  }
 ```
 
 We need to make a handler that will receive the events from the informer. For the sake of the example I'll just throw them onto a channel (queue). We can receive events for adding, deleting or updating a resource.
 
-```
-	// NewForConfigOrDie panics if the configuration throws an error
-	kubeclientset := kubernetes.NewForConfigOrDie(config)
-	kubeInformerFactory := kubeinformers.NewFilteredSharedInformerFactory(
-		kubeclientset, resyncPeriod, namespace, nil)
+``` go
+  // NewForConfigOrDie panics if the configuration throws an error
+  kubeclientset := kubernetes.NewForConfigOrDie(config)
+  kubeInformerFactory := kubeinformers.NewFilteredSharedInformerFactory(
+    kubeclientset, resyncPeriod, namespace, nil)
 ```
 
 Client-Go provides a factory for constructing informers for various resources. Constructing informers from the factory ensures that if two processes query for the same set of resources, only one call is made to the API server, thereby reducing load.
 
-```
-	serviceInformer := kubeInformerFactory.Core().V1().Services()
-	// serviceLister := serviceInformer.Lister()
-	serviceInformer.Informer().AddEventHandler(handler)
+``` go
+  serviceInformer := kubeInformerFactory.Core().V1().Services()
+  // serviceLister := serviceInformer.Lister()
+  serviceInformer.Informer().AddEventHandler(handler)
 ```
 
 In this case, we'll get an informer for service objects, and pass in our event handler we defined earlier to capture the events.
 
-```
-	ctx, cancel := context.WithCancel(context.Background())
+``` go
+  ctx, cancel := context.WithCancel(context.Background())
 
-	go kubeInformerFactory.Start(ctx.Done())
+  go kubeInformerFactory.Start(ctx.Done())
 
-	// Generally it is a good idea to wait for the informer
-	// cache to sync. client-go provides a helper to
-	// do this...
-	if !cache.WaitForCacheSync(ctx.Done(),
-		serviceInformer.Informer().HasSynced) {
-		os.Exit(1)
-	}
+  // Generally it is a good idea to wait for the informer
+  // cache to sync. client-go provides a helper to
+  // do this...
+  if !cache.WaitForCacheSync(ctx.Done(),
+    serviceInformer.Informer().HasSynced) {
+    os.Exit(1)
+  }
 
-	// At this point we can receive and the events and do
-	// whatever we like with them. If we receive SIGTERM
-	// we cancel the context and exit.
+  // At this point we can receive and the events and do
+  // whatever we like with them. If we receive SIGTERM
+  // we cancel the context and exit.
 ```
 
 We need to both start the informer, and provide a means to stop it upon receiving the aforementioned termination signal. To do this, we create a context to act as a cancellation signal to the informer. We pass this to the WaitForCacheSync method so we can stop the initial cache synchronisation if we cancel early. We also pass in the informers we want to use. This ensures we populate the underlying cache before we start using it.
 
-```
-	for {
-		select {
-		case event := <-events:
-			service, ok := event.(*v1.Service)
-			if ok {
-				fmt.Printf("%s\t\t%s\t\t%s\n", service.Namespace, service.Name, service.Spec.Type)
-			}
-		case <-signalChannel:
-			cancel()
-			os.Exit(0)
-		}
-	}
+``` go
+  for {
+    select {
+    case event := <-events:
+      service, ok := event.(*v1.Service)
+      if ok {
+        fmt.Printf("%s\t\t%s\t\t%s\n", service.Namespace, service.Name, service.Spec.Type)
+      }
+    case <-signalChannel:
+      cancel()
+      os.Exit(0)
+    }
+  }
 }
 ```
 
@@ -264,7 +264,7 @@ Try running this against a cluster while creating service objects. From this exa
 
 The Kubernetes API is more or less a set of building blocks. The smaller blocks are used to compose bigger pieces of functionality. This is most obvious when inspecting Containers, Pods, ReplicaSets and Deployments. These four objects build upon each to provide the container orchestration functionality. Inspecting the API, we can see that in each there is a kind-of embedding of the lower level primitives (containers, replicas) in a higher level primitive (deployment).
 
-```
+``` yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -295,13 +295,13 @@ I've applied the same strategy when building tests for my (admittedly, work-in-p
 ``` 
 Given I have registered my Custom Resource Definition with the cluster,
 
-	When I apply a Custom Resource Specification
+  When I apply a Custom Resource Specification
 
-		Then I should create a headless service for the control plane
+    Then I should create a headless service for the control plane
 
-		Then I should create a master node deployment
+    Then I should create a master node deployment
 
-		Then I should create a data node deployment
+    Then I should create a data node deployment
 ```
 
 A small demonstration: The bottom window shows the logging output of the controller, the top-left is the output of the test runner, and the top-right is a watch of on service objects (eg; `watch -n 1 kubectl get services`).

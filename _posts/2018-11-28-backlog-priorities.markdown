@@ -11,7 +11,7 @@ So imagine my horror when point #5 of Gary's 6-step process was 'Stop Estimating
 
 But then I thought back to the lessons I have learned over lean processes, startups, MVPs and delivering core value of software. Are these ideologies somewhat in opposition with estimation and planning? What is more important?
 
-In short, I think estimation is important. Why? Estimation is important for those in control of budgets; every business owner will want to know what something will cost and when it will be done. But if we ask 'why' again, the logical answer we are led to is that a business intends to make money from a product or service, and therefore the owner needs to know that the product or service provided will *be able* to make money before the company's investment is exhausted.
+I do think estimation is important. Why? It is important for those in control of budgets; every business owner will want to know what something will cost and when it will be done. But if we ask 'why' again, the logical answer we are led to is that a business intends to make money from a product or service, and therefore the owner needs to know that the product or service provided will *be able* to make money before the company's investment is exhausted.
 
 And here lies the core concept. Applying lean thinking to the question 'when will the product be done so that we can make some money?' transforms it into 'how soon can the product be useful to customers so that they will pay for it?'. And this then looks like an MVP.
 

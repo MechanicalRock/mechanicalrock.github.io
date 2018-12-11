@@ -2,7 +2,8 @@
 
 I have an interest in effective software delivery and I also like watching the videos by Gary Strahan on his ['Development That Pays'](https://www.youtube.com/channel/UCVHTu50vmvVA0OtkGBJlGPw) channel. When a video popped up on my feed entitled 'From Scrum to Scrumban in 6 steps', I dived in with a mix of inquisitiveness (what is this scrumban thing?) and scepticism (not another agile derivative!). However my inquisitiveness won the day as he went through the 6 steps to transform your scrum-type process.
 
-## Why Estimating?
+## On Estimating?
+<img src="/img/calculator.jpg" width=400>
 
 In the past I have been somewhat obsessed with estimating for many reasons. For one, I still notice that many software developers are often so focussed on the excitement of solving a problem, that they will report in the stand-up meeting that their task is 'nearly done' for several days in a row.
 
@@ -10,11 +11,15 @@ I have also convinced myself that anything that is measurable and quantifiable c
 
 ## Stop!
 
+<img src="/img/stop.png" width=150>
+
 So imagine my horror when point #5 of Gary's 6-step process was ['Stop Estimating'](https://youtu.be/fgT4AaKcBUA?t=658)! What? But how will we schedule the work? How will we budget for it? How will we plan and coordinate launch dates?
 
 But then I thought back to the lessons I have learned over lean processes, startups, MVPs and delivering core value of software. Are these ideologies somewhat in opposition with estimation and planning? What is more important?
 
 ## The core focus
+
+<img src="/img/car_without_wheels.jpg" width=400>
 
 I do think estimation is important. Why? It is important for those in control of budgets; every business owner will want to know what something will cost and when it will be done. But if we ask 'why' again, the logical answer we are led to is that a business intends to make money from a product or service, and therefore the owner needs to know that the product or service provided will *be able* to make money before the company's investment is exhausted.
 

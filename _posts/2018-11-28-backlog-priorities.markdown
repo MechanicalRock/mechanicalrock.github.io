@@ -4,7 +4,7 @@ I have an interest in effective software delivery and I also like watching the v
 
 ## Why Estimating?
 
-In the past I have been somewhat obsessed with estimating for many reasons. For one, I still notice that many software developers are still so focussed on the excitement of solving a problem, that they will report in the stand-up meeting that their task is 'nearly done' for several days in a row.
+In the past I have been somewhat obsessed with estimating for many reasons. For one, I still notice that many software developers are often so focussed on the excitement of solving a problem, that they will report in the stand-up meeting that their task is 'nearly done' for several days in a row.
 
 I have also convinced myself that anything that is measurable and quantifiable can surely be predicted. However, having delivered several small and large scale software projects, the pessimistic side of me also tends to say 'Software is just too complex - good estimates can't be done'. Then the optimisitic side of me counters with 'yes it can! You are probably just expecting too much and measuring the wrong things'.
 
@@ -22,14 +22,14 @@ And here lies the core concept. Applying lean thinking to the question 'when wil
 
 What does this mean for the estimate v priorities argument? Determining the features of an MVP is all about priorities. Being fast to market is achieved by deciding *what* features have the most value and what have the least in order to provide value to your customers - i.e. something they will pay for. I suggest this is more important than trying to understand how long it will take to deliver. Estimation still has value, and the company's budget should not be dismissed, but if you are delivering the WRONG features then your budget will also take a big hit. And coincidentally this ties in nicely with point 4 of Gary's video: Start ordering.
 
-## Better Prioritizing
+## Better Prioritising
 
-So how to prioritize? When it comes to prioritising I usually think about three things:
+So how to prioritise? When it comes to prioritising I usually think about three things:
  - What features deliver core value
  - What additional features do you need in order to enable those features
  - Which features have are the highest risks or carry some auxilliary benefits?
  
-Firstly, as we have already discussed, customer value is very important. If you don't provide customers with value then someone else will. Identifying valus should be at the top of your list.
+Firstly, as we have already discussed, customer value is very important. If you don't provide customers with value then someone else will. Identifying values should be at the top of your list.
  
 Secondly, those features will often have other dependent tasks or features: systems will need accounts and logins, notifications will need account profiles or settings, data reporting needs to have data collection. These tasks will need to be done first, but can sometimes be wrapped up in another feature that provides value. For example if you are building a cat-cuteness ranking application, there may be value in building a ranking per-user before a more complex site-wide system.
  

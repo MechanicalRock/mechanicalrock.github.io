@@ -2,7 +2,7 @@
 
 I have an interest in effective software delivery and I also like watching the videos by Gary Strahan on his ['Development That Pays'](https://www.youtube.com/channel/UCVHTu50vmvVA0OtkGBJlGPw) channel. When a video popped up on my feed entitled 'From Scrum to Scrumban in 6 steps', I dived in with a mix of inquisitiveness (what is this scrumban thing?) and scepticism (not another agile derivative!). However my inquisitiveness won the day as he went through the 6 steps to transform your scrum-type process.
 
-## On Estimating?
+## On Estimating
 <img src="/img/calculator.jpg" width=400>
 
 In the past I have been somewhat obsessed with estimating for many reasons. For one, I still notice that many software developers are often so focussed on the excitement of solving a problem, that they will report in the stand-up meeting that their task is 'nearly done' for several days in a row.

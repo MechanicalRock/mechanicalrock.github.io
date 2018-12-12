@@ -1,6 +1,12 @@
-# Agile Priorities
+---
+layout: post
+title:  "Agile Priorities"
+date:   2018-12-13
+tags: Agile Estimating Planning Scrum
+author: Richard Forshaw
+---
 
-I have an interest in effective software delivery and I also like watching the videos by Gary Strahan on his ['Development That Pays'](https://www.youtube.com/channel/UCVHTu50vmvVA0OtkGBJlGPw) channel. When a video popped up on my feed entitled 'From Scrum to Scrumban in 6 steps', I dived in with a mix of inquisitiveness (what is this scrumban thing?) and scepticism (not another agile derivative!). However my inquisitiveness won the day as he went through the 6 steps to transform your scrum-type process.
+I am always learning more about effective software delivery and I often watch the videos by Gary Strahan on his ['Development That Pays'](https://www.youtube.com/channel/UCVHTu50vmvVA0OtkGBJlGPw) channel. When a video popped up on my feed entitled 'From Scrum to Scrumban in 6 steps', I dived in with a mix of inquisitiveness (what is this scrumban thing?) and scepticism (not another agile derivative!). However my inquisitiveness won the day as he went through the 6 steps to transform your scrum-type process.
 
 ## On Estimating
 <img src="/img/calculator.jpg" width=400>

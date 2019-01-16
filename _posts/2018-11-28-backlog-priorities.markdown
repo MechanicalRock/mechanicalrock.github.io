@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Agile Priorities"
-date:   2018-12-13
+date:   2018-12-31
 tags: Agile Estimating Planning Scrum
 author: Richard Forshaw
 ---
@@ -9,6 +9,7 @@ author: Richard Forshaw
 I am always learning more about effective software delivery and I often watch the videos by Gary Strahan on his ['Development That Pays'](https://www.youtube.com/channel/UCVHTu50vmvVA0OtkGBJlGPw) channel. When a video popped up on my feed entitled 'From Scrum to Scrumban in 6 steps', I dived in with a mix of inquisitiveness (what is this scrumban thing?) and scepticism (not another agile derivative!). However my inquisitiveness won the day as he went through the 6 steps to transform your scrum-type process.
 
 ## On Estimating
+
 ![alt text]({{ site.url }}/img/calculator.jpg "Estimating")
 
 In the past I have been somewhat obsessed with estimating for many reasons. For one, I still notice that many software developers are often so focussed on the excitement of solving a problem, that they will report in the stand-up meeting that their task is 'nearly done' for several days in a row.
@@ -50,5 +51,4 @@ Lastly, don't discount any measurable risk or collateral benefit. If two feature
 
 So in summary, I don't think you can 'Stop Estimating' in all cases - estimates still have use in the right context, especially if budget is tight. But otherwise, quantifying and ranking the priorities of your features rather than continuing with a next-cab-off-the-rank system will deliver more value to the customer, faster.
 
-For more info on how we can help wade through the mess and deliver value, get in contact now at <contact@mechanicalrock.io> .
- 
+For more info on how we can help you and your teams wade through the mess and deliver value, get in contact now at <contact@mechanicalrock.io>.

@@ -13,6 +13,7 @@ TL;DR
 - npm ci can be utilized to install packages based on a lock file, which signficantly speeds up the time it takes to install packages.
 - Package installation can be sped up by persisting the local NPM package cache between build invocations
 - Considered installing hefty development dependencies into the root of the mono-repo to reduce duplicating your dependencies across packages in the repository. Test runners (like Jest) are a good candidates for this.
+- Use features of the mono-repo tooling to ensure that only code that touches a changed path is tested.
 
 This story began with a simple conundrum. A particular repository was taking a long time to build. The process at present was to trigger a build everytime a PR was raised, so tests could be run against the PR and confirm that the code was safe to merge. The repository however, kept becoming larger and additional checks were being added during CI to perform extra static analysis of the code. Whilst this was all well and good, nothing in life is free, and the entire development team was paying for this in the form of increased build-time. 
 

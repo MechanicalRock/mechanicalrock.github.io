@@ -2,7 +2,7 @@
 layout: post
 title:  "Monorepos & AWS Codebuild"
 date: 2019-02-03
-tags: aws codepipeline codebuil npm node monorepo
+tags: aws codepipeline codebuild npm node monorepo
 author: Matt Tyler
 image: img/hydra.gif
 ---
@@ -25,7 +25,7 @@ Much has been written recently on the monorepo, both [for](https://medium.com/@m
 
 > ...in terms of collaboration and code sharing, at scale, developers are exposed to subsections of code through higher layer tooling. Whether the code is in a monorepo or polyrepo is irrelevant; the problem being solved is the same...  - Matt Klein, Engineer @ Lyft & Creator of [Envoy](https://www.envoyproxy.io/)
 
-The first step was to introduce something to help us manage the monorepo. I had previously used 'lerna' to manage another node-based monorepo with some success. I commenced a reasonably lengthy task to restructure what we already had. This meant moving from a heavily nested module structure, to a more flattened structure - which is technically what would have happened had each module been seperated into its own repository. With this in-place, it was now a little easier to manage the dependencies of each module and enable a clear separation of concerns. We were also using a feature in lerna called 'hoisting' which deduplicates dependencies that many packages may rely on.
+The first step was to introduce something to help us manage the monorepo. I had previously used 'lerna' to manage another node-based monorepo with some success. I commenced a reasonably lengthy task to restructure what we already had. This meant moving from a heavily nested module structure, to a more flattened structure - which is technically what would have happened had each module been separated into its own repository. With this in-place, it was now a little easier to manage the dependencies of each module and enable a clear separation of concerns. We were also using a feature in lerna called 'hoisting' which deduplicates dependencies that many packages may rely on.
 
 Unfortunately, we had a small issue with hoisting which meant that we had to remove it. Hoisting involves installing packages in the base node_modules directory of the repository as opposed to the specific package - your 'child' packages thereby resolve all their dependencies at the base as opposed to their own node_modules folders. However, A few of our packages needed to bundle their dependencies, and this was unfortunately impossible to do with lerna's hoisting, because they would attempt to package their local node_modules folders which contained nothing. Had lerna's hoisting had the ability to be limited to development dependencies, this issue may have gone away. But alas, it did not, and therefore we needed to disable hoisting.
 
@@ -118,7 +118,7 @@ With this configured, I expected that this would give a fair improvement in the 
 
 There are two ways to improve this - better hardware, and a reduction in the number of times these dependencies would installed. The former was achieved by bumping the size of the build environment. The latter was slightly more complex. We emulated the hoisting feature by moving development dependencies to top level package.json, and called out these dependencies as peer dependencies to serve as a reminder that they were required in the child packages. 
 
-Some additional changes were needed to make Jest perform slightly better in this arrangement. Previously, we called jest separately on each project, with each project having its own seperate jest configuration. We instead provided a global jest configuration at the base of the monorepo that was capable of locating and executing all tests across the entire repository. This does require that you name and locate tests based upon a convention, which fortunately we were doing.
+Some additional changes were needed to make Jest perform slightly better in this arrangement. Previously, we called jest separately on each project, with each project having its own separate jest configuration. We instead provided a global jest configuration at the base of the monorepo that was capable of locating and executing all tests across the entire repository. This does require that you name and locate tests based upon a convention, which fortunately we were doing.
 
 > At this point, we had solved the worst of our build time issues, resulting in a reduction from approximately 20 minutes down to 3 minutes for a complete build of the repository. 
 

@@ -7,7 +7,7 @@ author: Matt Tyler
 image: img/hydra.gif
 ---
 
-A Monorepo generally requires specialised tooling to manage efficiently once they reach an appreciable size. We recently have been working with a client that has a large node-based monorepo that was encountering increasingly larger build times. By introducing optimisations with included the use of lerna, newer npm features (ci installation, package caching) and de-duplicating development dependencies, we were able to achieve a 1000% speed improvement.
+A Monorepo generally requires specialised tooling to manage efficiently once they reach an appreciable size. We recently have been working with a client that has a large node-based monorepo that was encountering increasingly larger build times. By introducing optimisations which included the use of lerna, newer npm features (ci installation, package caching) and de-duplicating development dependencies, we were able to achieve a 1000% speed improvement.
 
 This story began with a simple conundrum. A particular repository was taking a long time to build. The process at present was to trigger a build every time a PR was raised, so tests could be run against the PR and confirm that the code was safe to merge. The repository however, kept becoming larger and additional checks were being added during CI to perform extra static analysis of the code. Whilst this was all well and good, nothing in life is free, and the entire development team was paying for this in the form of increased build-time. 
 

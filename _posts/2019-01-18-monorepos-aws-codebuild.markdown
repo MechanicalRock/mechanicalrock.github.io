@@ -1,19 +1,13 @@
 ---
 layout: post
-title:  "Monorepos & AWS Codebuild"
+title:  "Monorepos and AWS Codebuild"
 date: 2019-02-03
 tags: aws codepipeline codebuild npm node monorepo
 author: Matt Tyler
 image: img/hydra.gif
 ---
 
-TL;DR
-
-- Mono-repos generally require specialised tooling to manage correctly when they begin to reach any appreciable size
-- Lerna can be used to manage node mono-repos
-- npm ci can be utilised to install packages based on a lock file, which significantly speeds up the time it takes to install packages.
-- Package installation can be sped up by persisting the local NPM package cache between build invocations
-- Considered installing hefty development dependencies into the root of the mono-repo to reduce duplicating your dependencies across packages in the repository. Test runners (like Jest) are a good candidates for this.
+A Monorepo generally requires specialised tooling to manage efficiently once they reach an appreciable size. We recently have been working with a client that has a large node-based monorepo that was encountering increasingly larger build times. By introducing optimisations with included the use of lerna, newer npm features (ci installation, package caching) and de-duplicating development dependencies, we were able to achieve a 1000% speed improvement.
 
 This story began with a simple conundrum. A particular repository was taking a long time to build. The process at present was to trigger a build every time a PR was raised, so tests could be run against the PR and confirm that the code was safe to merge. The repository however, kept becoming larger and additional checks were being added during CI to perform extra static analysis of the code. Whilst this was all well and good, nothing in life is free, and the entire development team was paying for this in the form of increased build-time. 
 
@@ -114,7 +108,7 @@ cache:
     - /root/.npm/**/*
 ```
 
-With this configured, I expected that this would give a fair improvement in the time it would take to install my dependencies. Unfortunately this is not what occurred and I got a barely noticeable improvement. This left me scratching my head for awhile. I had a look through the package cache on my local machine and noticed that the packages are stored as compressed archives (tar.gz) in the npm cache folder - If you attempt to install a package you have previously installed, it is installed from the cache by uncompressing the matching archive to the appropriate node_modules folder. At this point, I decided to look at how many dependencies a common (albeit complex) package had. I used the following website to get an idea of how many dependencies Jest had, which practically all our packages relied on. I was then treated to the illuminating fact that jest had a complete dependency tree of around 900 packages. Eep. It was then I realised that our 'installation' time was not bound by the network time to fetch the packages remotely - it was the time to uncompress these dependencies to each directory.
+With this configured, I expected that this would give a fair improvement in the time it would take to install my dependencies. Unfortunately this is not what occurred and I got a barely noticeable improvement. This left me scratching my head for awhile. I had a look through the package cache on my local machine and noticed that the packages are stored as compressed archives (tar.gz) in the npm cache folder - If you attempt to install a package you have previously installed, it is installed from the cache by uncompressing the matching archive to the appropriate node_modules folder. At this point, I decided to look at how many dependencies a common (albeit complex) package had. I used the following [website](https://npm.anvaka.com/) to get an idea of how many dependencies Jest had, which practically all our packages relied on. I was then treated to the illuminating fact that jest had a complete dependency tree of around 900 packages. Eep. It was then I realised that our 'installation' time was not bound by the network time to fetch the packages remotely - it was the time to uncompress these dependencies to each directory.
 
 There are two ways to improve this - better hardware, and a reduction in the number of times these dependencies would installed. The former was achieved by bumping the size of the build environment. The latter was slightly more complex. We emulated the hoisting feature by moving development dependencies to top level package.json, and called out these dependencies as peer dependencies to serve as a reminder that they were required in the child packages. 
 

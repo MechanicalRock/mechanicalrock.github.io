@@ -97,9 +97,8 @@ phases:
 
 artifacts:
   files:
-  # include everything required from base of repo
-  # - include
-  name: CNFMasterCatalog.zip
+    # include built artefacts
+
 
 # At this step, we instruct codebuild to cache all items that in the NPM Cache
 # that we configured earlier

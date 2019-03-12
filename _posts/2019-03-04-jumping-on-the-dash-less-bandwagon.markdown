@@ -13,7 +13,7 @@ image: img/bandwagonless/bandwagonless.png
 
 It has been awhile since I made my [last post](https://mechanicalrock.github.io/2018/08/27/inception-pipelines-pt6), the one where at the end I promised something about the [AWS CDK](https://awslabs.github.io/aws-cdk/) and how awesome it was going to be. Since then a few of my colleagues have mastered it, and I got super excited by something else.
 
-That something else is SER-VER-LESS!! And so now, I to, am _Jumping on the '-less' Bandwagon!_
+That something else is SER-VER-LESS!! And so now, I too, am _Jumping on the '-less' Bandwagon!_
 
 ## What is serverless and why all the hype?
 

@@ -6,7 +6,7 @@ tags: codebuild aws docker cache continuous-integration
 author: JK Gunnink
 ---
 
-Fast feedback cycles in development is an important consideration when deploying software often as
+Fast feedback in development is an important consideration when deploying software often as
 it helps reduce context switching. When a developer creates some functionality, and wants to test
 and validate the functionality using a CI tool, fast feedback is important to maintain focus.
 
@@ -14,8 +14,8 @@ In a recent project I worked on, one of the tasks I was given was to speed up th
 the CI tools to report success or failure in order to validate the work, but also get the work
 merged in faster. The application is a containerised ruby-on-rails application which has two status
 checks which are required before any work can be merged in. They are:
-- Build the image for production
 - Build the image and test
+- Build the image for production
 
 Using AWS codebuild for both checks, using containers and caching enabled a 84.2% improvement on the
 time taken to get a response. From 4m:45seconds down to 45 seconds.
@@ -43,8 +43,11 @@ phases:
       - rake db:test:prepare
       - rspec spec
 ```
-As can be seen in the file, we simply ran an AWS codebuild image based on the ruby image, spun up a
-postgres database, installed node, installed the gems and ran the tests.
+As can be seen in the file, we simply ran an AWS codebuild image based on the ruby image, then we:
+- spun up a postgres database
+- installed node
+- installed the gems
+- and ran the tests.
 
 By taking advantage of packaging the application in a docker container using a separate dockerfile,
 we ended up with a config that was as follows:
@@ -117,3 +120,6 @@ into play.
 The proof is in the pudding:
 
 ![Code Build Output]({{ site.url }}/img/caching_build_speed.png)
+
+There you have it, using docker layers as a cache to speed up your continuous integration. Give it a
+try and let us know how much time you saved! Tweet at us @mechanicalrock_ with your results!

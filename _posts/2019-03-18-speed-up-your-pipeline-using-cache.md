@@ -6,22 +6,33 @@ tags: codebuild aws docker cache continuous-integration
 author: JK Gunnink
 ---
 
-Fast feedback in development is an important consideration when deploying software often as
-it helps reduce context switching. When a developer creates some functionality, and wants to test
-and validate the functionality using a CI tool, fast feedback is important to maintain focus.
+Fast feedback in development is an important consideration when deploying software often as it helps
+reduce context switching. When a developer creates some functionality, and wants to test and
+validate it using a CI tool, it's important to maintain focus.
 
 In a recent project I worked on, one of the tasks I was given was to speed up the time it took for
 the CI tools to report success or failure in order to validate the work, but also get the work
-merged in faster. The application is a containerised ruby-on-rails application which has two status
-checks which are required before any work can be merged in. They are:
+merged in faster. This is important because the builds were taking nearly five minutes, for minor
+changes. In a relatively green application, this is too long, and not consistent with fast feedback
+that developers expect.
+
+The application is a containerised ruby-on-rails application which has two
+status checks which are required before any work can be merged in. They are:
 - Build the image and test
 - Build the image for production
 
 Using AWS codebuild for both checks, using containers and caching enabled a 84.2% improvement on the
 time taken to get a response. From 4m:45seconds down to 45 seconds.
 
-By leveraging caching layers of docker containers, we were able to take advantage of rebuilding the
-image fast. We started out with a buildspec file that looked like so:
+By leveraging caching layers of docker containers, for dependencies and sections of the application
+which were unchanged, we were able to take advantage of rebuilding the image fast. Docker caching
+works by figuring out if any of the previous layers in the image have been changed and if they have,
+that layer, and subsequent layers are rebuilt. So things like code base and images or anything
+frequently changing is placed towards the end of the Dockerfile and less changing things like
+container types or image dependencies at the top of the file. [Read more about docker caches
+here](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#leverage-build-cache).
+
+We started out with a buildspec file that looked like so:
 ```yaml
 env:
   variables:
@@ -122,4 +133,5 @@ The proof is in the pudding:
 ![Code Build Output]({{ site.url }}/img/caching_build_speed.png)
 
 There you have it, using docker layers as a cache to speed up your continuous integration. Give it a
-try and let us know how much time you saved! Tweet at us @mechanicalrock_ with your results!
+try and let us know how much time you saved! Tweet at us
+[@mechanicalrock_](https://twitter.com/mechanicalrock_io) with your results!

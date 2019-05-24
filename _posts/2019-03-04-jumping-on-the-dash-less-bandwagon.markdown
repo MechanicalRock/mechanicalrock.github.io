@@ -19,7 +19,7 @@ That something else is SER-VER-LESS!! And so now, I too, am _Jumping on the '-le
 
 If you scour the Internet, you will find as many definitions as there are search results. Most of them dive into esoteric technical definitions of what is and isn’t serverless.
 
-My technical perspective is that I don’t consider building, running and managing containers as serverless. I also don't count no-infrastructure pieces of your architecture like DynamoDB, Identity management, payment gateways, etc as Serverless either. They are however critical ‘no-ops’ pieces to operating Serverlessly. What’s left is really the functions-as-a-service services like AWS Lambda, Google Functions and Azure Functions. These functions strip away everything that are not critical core features that are unique to your business (versus structural piece like databases)
+My technical perspective is that I don’t consider writing full-sized applications and deploying them in containers as serverless. I also don't count no-infrastructure pieces of your architecture like DynamoDB, Identity management, payment gateways, etc as Serverless either. They are however critical ‘no-ops’ pieces to operating Serverlessly. What’s left are the functions-as-a-service services like AWS Lambda, Google Functions and Azure Functions. These [event-driven](https://en.wikipedia.org/wiki/Event-driven_architecture) functions strip away everything that are not critical core features which are unique to your business (versus structural piece like databases).
 
 Outside the technical realm, Serverless is also a mindset that flows right back into the core how your business operates. In the next section, I’ll discuss why fully embracing serverless very likely means a shakeup of how IT operates. All traditional IT roles come into question when you consider how much of the day-to-day work that IT people do isn’t directly related to delivering value. Serverless is a great mechanism for identifying waste.
 
@@ -45,9 +45,9 @@ Firstly, it removes the infrastructure downtime between tasks. In the past you�
 
 Next, with all this infrastructure provided to you, gone are hours or days of writing boilerplate code. All the lambda functions I’ve written listen for an incoming event (http, file, database, whatever) and consume it. No setting up scaffolding code. No writing complex convoluted setup logic for unit tests. Just the minimum code to consume the event and suite of testing scenarios to verify the behaviours that I expect. [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle) at its finest.
 
-Time to think in terms of events and states as ultimately you’re responding to state change events within the bounds of a fully distributed system. This requires a more disciplined focus on what triggers these events and how things can, and will, [go awry at any time](https://en.wikipedia.org/wiki/Chaos_engineering).
+Time to think in terms of events and states as ultimately you’re responding to state change events within the bounds of a fully distributed system. This requires a more disciplined focus on what triggers these events and how things can, and will, [go awry at any time](https://en.wikipedia.org/wiki/Chaos_engineering). Stop worrying and start loving [eventual consistency](https://en.wikipedia.org/wiki/Eventual_consistency)!
 
-A recent project demonstrates just how powerful Serverless can be. The AWS Architecture Diagram below is for a photo management service. The service allows end-users to take, upload and manage maintenance photos of the organisation's physical equipment in the field. To deliver this, nothing more beyond CloudFormation scripts and Lambda code was needed.
+A recent project demonstrates just how powerful Serverless can be. The AWS Architecture Diagram below is for a photo management service. The service allows end-users to take, upload and manage maintenance photos of the organisation's physical equipment in the field. To deliver this, nothing more beyond CloudFormation scripts and Lambda code was needed. Operating this going forward has no requirement to security-patch operating systems, pay for under-utilised compute capacity or pay for unused storage.
 
 <img style="display: block; margin-left: auto; margin-right: auto;" alt="photo management service" src="{{ site.url }}/img/bandwagonless/photo-app.png"/>
 
@@ -61,4 +61,6 @@ Today with serverless, entire development-to-production environments can be scri
 
 Serverless is a relentless freight train building that is quickly building up momentum. You can either get onboard or be crushed. Join me in my next post where I discuss the new SDLC; Serverless Development Life Cycle.
 
-**Link of Interest:** [Serverless and start-ups, the beginning of a beautiful friendship](https://aws.amazon.com/blogs/aws/serverless-and-startups/)
+**Links of Interest:**
+
+* [Serverless and start-ups, the beginning of a beautiful friendship](https://aws.amazon.com/blogs/aws/serverless-and-startups/)

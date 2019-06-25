@@ -71,9 +71,11 @@ We are consistently able to deploy changes, with confidence, to production multi
 
 We have helped clients move from release cycles taking months, to days.
 
-[We can help you too](https://www.mechanicalrock.io/#/contact-us).
+[We can help you too][contact-us].
 
-And [we're hiring](https://www.mechanicalrock.io/#/contact-us)! 
+And [we're hiring][contact-us]! 
 
 ----
 Header image licenced by [Zen Wave](https://commons.wikimedia.org/wiki/File:FlexLean_Production_Line.jpg) under [Creative Commons BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en)
+
+[contact-us]: https://www.mechanicalrock.io/lets-get-started

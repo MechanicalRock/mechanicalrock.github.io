@@ -20,7 +20,10 @@ References:
 Start the Jekyll container:
 `docker-compose up blogserver`
 
+Rebuilding the Jekyll container:
+If the container fails to start by throwing errors, you may need to rebuild the container by running the following:
+`docker-compose build blogserver && docker-compose run blogserver`
+
 Browse to the page: http://localhost:4000
 
- 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.

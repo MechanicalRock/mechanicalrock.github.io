@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Continuous Deployment - The First Step on Your Road to Recovery"
-date:   2019-05-10
+date:   2019-07-01
 tags: devops continuous-delivery lean trunk-based-development
 author: Tim Myerscough
 image: img/continuous-deployment-the-first-step/421px-FlexLean_Production_Line.jpg

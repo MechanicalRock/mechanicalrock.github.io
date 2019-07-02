@@ -16,7 +16,7 @@ image: img/inception-pipelines/seed_germination.png
 
 ![trail]({{ site.url }}/img/inception-pipelines/part-7/cover.jpg)
 
-Hi, I'm Pipeline Pete and I welcome you to "AWS things you should know about but don't". In this lesson we'll learn how to enable [AWS CloudTrail](https://aws.amazon.com/cloudtrail/) at the [AWS Organizations](https://aws.amazon.com/organizations/) level so that you never have to think about setting it up again (or live with that perpetual niggley fear that someone has tampered with it inside your account).
+Hi, I'm Pipeline Pete and I welcome you to "AWS things you should know about but don't". In this lesson we'll learn how to enable [AWS CloudTrail](https://aws.amazon.com/cloudtrail/) at the [AWS Organizations](https://aws.amazon.com/organizations/) level so that you never have to think about setting it up again (or live with that perpetual niggling fear that someone has tampered with it inside your account).
 
 Typically you'll see [AWS CloudTrail](https://aws.amazon.com/cloudtrail/) enabled within an account and recording events into an [S3 Bucket](https://aws.amazon.com/s3/). When it is done this way though, there is always a possibility that a rogue actor, with the right permissions, can tampered with it. However [AWS CloudTrail](https://aws.amazon.com/cloudtrail/) can also be enabled through [AWS Organizations](https://aws.amazon.com/organizations/). This means you can pick your Security/Audit account to receive **ALL** the trail events and the individual accounts don't get a chance to tamper with them as they never see the trail. You even get the additional benefit that any new accounts that get added to your [AWS Organizations](https://aws.amazon.com/organizations/) automatically start recording events into the bucket.
 
@@ -26,7 +26,7 @@ When I asked around about this feature no one else knew about it! Big shout out 
 
 These are the bits you'll need before we get started:
 
-1. An AWS Account to host your [AWS CloudTrail](https://aws.amazon.com/cloudtrail/) events. Typically this is your Security/Audit account but you can do all of this in the same account.
+1. An AWS Account to host your [AWS CloudTrail](https://aws.amazon.com/cloudtrail/) events. Typically, this is your Security/Audit account, but you can do all of this in the same account.
 2. [AWS Organizations](https://aws.amazon.com/organizations/) enabled on your account.
 3. An Inception Pipeline deployed into your Security/Audit account. We'll cover this in the next section below.
 
@@ -44,11 +44,11 @@ Before you can enable your Organizational [CloudTrail](https://aws.amazon.com/cl
     | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
     | ParamBucketPrefix                             | A prefix for the bucket used to store the CloudTrail logs. A value of `-cloudtrail` is appended to this name to form the complete bucket name.    |
     | ParamKmsKeyAlias                              | A human friendly alias for the KMS key used to protect the files stored in S3.                                                                    |
-    | ParamMasterAccount                            | The 12 digit AWS Account Id of your AWS Organizations' master account. It is used to grant the appropriate levels of access between the accounts. |
+    | ParamMasterAccount                            | The 12-digit AWS Account Id of your AWS Organizations' master account. It is used to grant the appropriate levels of access between the accounts. |
     | ParamTransitionLogsToGlacierAfterThisManyDays | To save on storage costs, move files older than this many days to Glacier storage. Defaults to 14 days.                                           |
     | ParamExpireLogsFromGlacierAfterThisManyDays   | To save on storage costs, delete files older than this many days from Glacier. Defaults to approximately 6 months (180 days).                     |
 
-4. Deploy the pipeline and wait for it to complete. Once it has you will need to extract the following values from the infrastructure stack. These will be used when configuring the CloutTrail trail in the next section:
+4. Deploy the pipeline and wait for it to complete. Once it has you will need to extract the following values from the infrastructure stack. These will be used when configuring the CloudTrail trail in the next section:
 
     | Name       | Description                                                       |
     | ---------- | ----------------------------------------------------------------- |

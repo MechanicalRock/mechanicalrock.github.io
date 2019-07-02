@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Seeds of Inception - Part 7"
-date:   2019-07-07
+date:   2019-07-09
 tags: AWS Organizations CloudTrail S3 KMS IAM
 author: Pete Yandell
 image: img/inception-pipelines/seed_germination.png
@@ -18,9 +18,11 @@ image: img/inception-pipelines/seed_germination.png
 
 Hi, I'm Pipeline Pete and I welcome you to "AWS things you should know about but don't". In this lesson we'll learn how to enable [AWS CloudTrail](https://aws.amazon.com/cloudtrail/) at the [AWS Organizations](https://aws.amazon.com/organizations/) level so that you never have to think about setting it up again (or live with that perpetual niggling fear that someone has tampered with it inside your account).
 
-Typically you'll see [AWS CloudTrail](https://aws.amazon.com/cloudtrail/) enabled within an account and recording events into an [S3 Bucket](https://aws.amazon.com/s3/). When it is done this way though, there is always a possibility that a rogue actor, with the right permissions, can tamper with it. However [AWS CloudTrail](https://aws.amazon.com/cloudtrail/) can also be enabled through [AWS Organizations](https://aws.amazon.com/organizations/). This means you can pick your Security/Audit account to receive **ALL** the trail events and the individual accounts don't get a chance to tamper with them as they never see the trail. You even get the additional benefit that any new accounts that get added to your [AWS Organizations](https://aws.amazon.com/organizations/) automatically start recording events into the bucket.
+Typically you'll see [AWS CloudTrail](https://aws.amazon.com/cloudtrail/) enabled within a single account and recording events into a local [S3 Bucket](https://aws.amazon.com/s3/). When it is done this way though, there is always a possibility that a rogue actor, with the right permissions, can tamper with it.
 
-When I asked around about this feature no one else knew about it! Big shout out to [James](https://www.linkedin.com/in/jamesbromberger) for pointing me in the right direction!
+[AWS CloudTrail](https://aws.amazon.com/cloudtrail/) can also be enabled through [AWS Organizations](https://aws.amazon.com/organizations/). This means you can pick your Security/Audit account to receive **ALL** the trail events and the individual accounts don't get a chance to tamper with them as they never see the trail. You even get the additional benefit that any new accounts that get added to your [AWS Organizations](https://aws.amazon.com/organizations/) automatically start recording events into the bucket.
+
+When I asked around about this feature no one else knew about it! Big shout out to [James Bromberger](https://www.linkedin.com/in/jamesbromberger) for pointing me in the right direction!
 
 ## Prerequisites
 
@@ -28,25 +30,25 @@ These are the bits you'll need before we get started:
 
 1. An AWS Account to host your [AWS CloudTrail](https://aws.amazon.com/cloudtrail/) events. Typically, this is your Security/Audit account, but you can do all of this in the same account.
 2. [AWS Organizations](https://aws.amazon.com/organizations/) enabled on your account.
-3. An Inception Pipeline deployed into your Security/Audit account. We'll cover this in the next section below.
+3. An Inception Pipeline deployed into your Security/Audit account. We'll cover this in the next section.
 
 ## Deploying the pipeline
 
 Before you can enable your Organizational [CloudTrail](https://aws.amazon.com/cloudtrail/) you need to first deploy a couple of pieces of infrastructure. These are an [S3](https://aws.amazon.com/s3/) bucket to store the events in and a [KMS](https://aws.amazon.com/kms/) key to protect them. To get you started I've prepared an Inception Pipeline for you to deploy. If you've never deployed one before, I highly recommend reading my original post - ["Seeds of Inception - Seeding your Account with an Inception Pipeline"](https://mechanicalrock.github.io/2018/03/01/inception-pipelines-pt1.html).
 
-**Warning!** Unlike most AWS services, to enable [CloudTrail](https://aws.amazon.com/cloudtrail/) to write to the [S3 bucket](https://aws.amazon.com/s3/) and use the [KMS key](https://aws.amazon.com/kms/) these resources need to be created in North Virginia. This means you must create the pipeline below in `us-east-1`.
+**Warning!** When [AWS CloudTrail](https://aws.amazon.com/cloudtrail/) is enabled through [AWS Organizations](https://aws.amazon.com/organizations/), it requires that the [S3 bucket](https://aws.amazon.com/s3/) and [KMS key](https://aws.amazon.com/kms/) reside in the North Virginia region. This means you must create the pipeline below in `us-east-1`, which I have already set for you in the `init.sh` script.
 
 1. Checkout the code [from here](https://github.com/MechanicalRock/InceptionPipeline/tree/post/part-7).
 2. Change all the Inception Pipeline values in the `aws_seed.json` and `aws_seed-cli-parameters.json` files to your specific values. See the [original post](https://mechanicalrock.github.io/2018/03/01/inception-pipelines-pt1.html) if you need a refresher on how to do this.
 3. Open the `infrastructure/capability-global-cloudtrail.json` and set the following values:
 
-    | Name                                          | Description                                                                                                                                       |
-    | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | ParamBucketPrefix                             | A prefix for the bucket used to store the CloudTrail logs. A value of `-cloudtrail` is appended to this name to form the complete bucket name.    |
-    | ParamKmsKeyAlias                              | A human friendly alias for the KMS key used to protect the files stored in S3.                                                                    |
-    | ParamMasterAccount                            | The 12-digit AWS Account Id of your AWS Organizations' master account. It is used to grant the appropriate levels of access between the accounts. |
-    | ParamTransitionLogsToGlacierAfterThisManyDays | To save on storage costs, move files older than this many days to Glacier storage. Defaults to 14 days.                                           |
-    | ParamExpireLogsFromGlacierAfterThisManyDays   | To save on storage costs, delete files older than this many days from Glacier. Defaults to approximately 6 months (180 days).                     |
+    | Name                                          | Description                                                                                                                                      |
+    | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | ParamBucketPrefix                             | A prefix for the bucket used to store the CloudTrail logs. A value of `-cloudtrail` is appended to this name to form the complete bucket name.   |
+    | ParamKmsKeyAlias                              | A human friendly alias for the KMS key used to protect the files stored in S3.                                                                   |
+    | ParamMasterAccount                            | The 12-digit AWS Account ID of your AWS Organizations master account. It is used to grant the appropriate levels of access between the accounts. |
+    | ParamTransitionLogsToGlacierAfterThisManyDays | To save on storage costs, move files older than this many days to Glacier storage. Defaults to 14 days.                                          |
+    | ParamExpireLogsFromGlacierAfterThisManyDays   | To save on storage costs, delete files older than this many days from Glacier. Defaults to approximately 6 months (180 days).                    |
 
 4. Deploy the pipeline and wait for it to complete. Once it has you will need to extract the following values from the infrastructure stack. These will be used when configuring the CloudTrail trail in the next section:
 

@@ -9,7 +9,7 @@ image: img/blog/virtual-concierge-intruder-detection-with-deeplens/architecture.
 
 ## Introduction
 
-Virtual Convierge is an office assistant written to help detect intruders that enter the Mechanical Rock office.
+Virtual Concierge is an office assistant written to help detect intruders that enter the Mechanical Rock office.
 
 ## Architecture
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Virtual Concierge - Intruder Dectection with AWS DeepLens"
+title:  "Virtual Concierge - Intruder Detection with AWS DeepLens"
 date:   2019-07-12
 tags: devops iot greengrass aws deeplens
 author: Nathan Glover

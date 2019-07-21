@@ -62,7 +62,7 @@ Like many AWS services, EventBridge is extremely cheap, and free if your events 
 events. Even if you choose to integrate with a third party SaaS product or generate your own custom
 events, it's still only \$1 per million events.
 
-We've helped client build many serverless systems, that are event driven. If you think we can help
+We've helped clients build many serverless systems that are event driven. If you think we can help
 you, feel free to [contact us][contact-us] or [tweet us](https://twitter.com/mechanicalrock_) your
 ideas for how you might use EventBridge.
 

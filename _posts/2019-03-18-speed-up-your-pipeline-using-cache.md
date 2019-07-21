@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Speed up your pipeline using the cache
+title: Speed up your pipeline using the cache
 date: 2019-03-29
 tags: codebuild aws docker cache continuous-integration
 author: JK Gunnink
@@ -18,6 +18,7 @@ that developers expect.
 
 The application is a containerised ruby-on-rails application which has two
 status checks which are required before any work can be merged in. They are:
+
 - Build the image and test
 - Build the image for production
 
@@ -33,10 +34,11 @@ container types or image dependencies at the top of the file. [Read more about d
 here](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#leverage-build-cache).
 
 We started out with a buildspec file that looked like so:
+
 ```yaml
 env:
   variables:
-     RACK_ENV: "test"
+    RACK_ENV: "test"
 
 phases:
   install:
@@ -54,7 +56,9 @@ phases:
       - rake db:test:prepare
       - rspec spec
 ```
+
 As can be seen in the file, we simply ran an AWS codebuild image based on the ruby image, then we:
+
 - spun up a postgres database
 - installed node
 - installed the gems
@@ -62,13 +66,14 @@ As can be seen in the file, we simply ran an AWS codebuild image based on the ru
 
 By taking advantage of packaging the application in a docker container using a separate dockerfile,
 we ended up with a config that was as follows:
+
 ```yaml
 version: 0.2
 
 env:
   variables:
-     REPO_URL: <Account ID>.dkr.ecr.ap-southeast-2.amazonaws.com/my-application
-     REF_NAME: my-application-tests
+    REPO_URL: <Account ID>.dkr.ecr.ap-southeast-2.amazonaws.com/my-application
+    REF_NAME: my-application-tests
 
 phases:
   install:
@@ -88,9 +93,11 @@ phases:
     commands:
       - docker push $REPO_URL
 ```
+
 And a docker-compose file:
+
 ```yaml
-version: '3'
+version: "3"
 services:
   postgres:
     image: postgres:alpine
@@ -111,7 +118,9 @@ services:
     environment:
       DB_HOST_URL: postgres
 ```
+
 For rails, we use RSpec as the test runner. The script specfied in the docker-compose file is:
+
 ```bash
 #!/bin/sh
 bundle exec rake db:test:prepare && bundle exec rspec spec
@@ -134,4 +143,4 @@ The proof is in the pudding:
 
 There you have it, using docker layers as a cache to speed up your continuous integration. Give it a
 try and let us know how much time you saved! Tweet at us
-[@mechanicalrock_](https://twitter.com/mechanicalrock_io) with your results!
+[@mechanicalrock\_](https://twitter.com/mechanicalrock_) with your results!

@@ -23,17 +23,17 @@ According to the EventBridge landing page:
 > because it takes care of event ingestion and delivery, security, authorization, and error handling
 > for you.
 
-Building on the CloudWatch service which can be used a an event trigger, EventBridge allows events
+Building on the CloudWatch service which can be used as an event trigger, EventBridge allows events
 from AWS and external services to be captured by EventBridge and forwarded on to a destination that
 fits the event's use case based on it's contents.
 
 Some architectures and patterns come to mind when dealing with events, one such example is the
-rapids, rivers and ponds architecture. EventBridge allows you to filter events from many sources, at
-potentially high volume (rapids), and based on the event forward it through to the next service in
-it's lifecycle (rivers) before it finishes at it's desitination. As a comparison, a current
-implementation might be to recieve an event from CloudWatch which is sent to a lambda, this is then
-invoked and sent on which is slow and requires compute as well as an additional unnecessary step of
-compute, which needs to be tested and validated.
+[rapids, rivers and ponds architecture](https://www.youtube.com/watch?v=Cmc4zBOb4OA). EventBridge
+allows you to filter events from many sources, at potentially high volume (rapids), and based on the
+event forward it through to the next service in it's lifecycle (rivers) before it finishes at it's
+desitination. As a comparison, a current approach would be to use SNS, with SNS Filters. To
+integrate with CloudWatch Events, it requires an event dispatcher to forward events from CloudWatch
+to SNS - which adds latency and additional cost.
 
 ![Event Bridge Architecture]({{ site.url }}/img/eventbridge-arch.png)
 
@@ -46,12 +46,13 @@ where an existing application has to make some kind of web-hook to respond to an
 For example, let's say a developer has completed some work that a product manager was especially
 keen to see done, and that manager was following the ticket. Previously, that work would fire off
 some kind of webhook and a listening service (eg, API Gateway, Lambda) would have had to be
-listening out for it, and process it in some way. With event bridge, that event being listened out
-for, and based on the rules, eg (work completed, product owner following ticket, etc) the event
-makes it's way through the rules and filter sets to its destination. Given that a single rule can
-route to multiple targets, all of which are processed in parallel, and that rules allow different
-application components to look for and process the events that are of interest to them, in our
-scenario, multiple things can happen when our developer closes out that piece of work.
+listening out for it, and process it in some way i.e. post a Slack message to a channel or send an
+email off to relevant subscribed parties. With event bridge, that event being listened out for, and
+based on the rules, eg (work completed, product owner following ticket, etc) the event makes it's
+way through the rules and filter sets to its destination. Given that a single rule can route to
+multiple targets, all of which are processed in parallel, and that rules allow different application
+components to look for and process the events that are of interest to them, in our scenario,
+multiple things can happen when our developer closes out that piece of work.
 
 - Notify the build service to deploy a new version of the app
 - Send an email to the product manager of the followed work

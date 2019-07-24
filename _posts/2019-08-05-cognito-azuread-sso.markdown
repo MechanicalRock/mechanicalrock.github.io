@@ -86,6 +86,6 @@ Once you've made this work one time, you'll find it easy to share among your tea
 
 
 ### References
-* https://github.com/MechanicalRock/cognito-sso-azure
-* https://medium.com/@zippicoder/setup-aws-cognito-user-pool-with-an-azure-ad-identity-provider-to-perform-single-sign-on-sso
-* https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-group-claims
+* [https://github.com/MechanicalRock/cognito-sso-azure](https://github.com/MechanicalRock/cognito-sso-azure)
+* [https://medium.com/@zippicoder/setup-aws-cognito-user-pool-with-an-azure-ad-identity-provider-to-perform-single-sign-on-sso-7ff5aa36fc2a](https://medium.com/@zippicoder/setup-aws-cognito-user-pool-with-an-azure-ad-identity-provider-to-perform-single-sign-on-sso-7ff5aa36fc2a)
+* [https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-group-claims](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-group-claims)

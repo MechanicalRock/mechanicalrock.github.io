@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Securing your web applications in AWS using SSO with Azure Active Directory"
-date:   2019-07-23
+date:   2019-08-05
 tags: aws cognito oidc saml2 sso azure
 author: Paul Symons
 image: 

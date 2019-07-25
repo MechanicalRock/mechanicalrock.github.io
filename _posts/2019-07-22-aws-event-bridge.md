@@ -1,7 +1,7 @@
 ---
 layout: post
-title: AWS Event Bridge Introduced
-date: 2019-03-29
+title: AWS Annouces Event Bridge
+date: 2019-07-26
 tags: aws event-bridge
 author: JK Gunnink
 ---

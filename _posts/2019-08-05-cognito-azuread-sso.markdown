@@ -17,7 +17,7 @@ At [Mechanical Rock](https://www.mechanicalrock.io/our-expertise), two of our pi
 * [Cloud Native Applications](https://mechanicalrock.io/our-expertise/cloud-native-applications), and 
 * [Enterprise DevOps](https://mechanicalrock.io/our-expertise/enterprise-devops)
 
- We leverage _best of breed_ cloud native and managed services to build high quality, cutting edge solutions. Delivering these solutions using Infrastructure-As-Code (IAC) is not simply part of our commitment to architecting steadfast **continuous integration delivery** workflows; it underpins the way we collaborate and share learnings with the client teams we engage with.
+ We leverage _best of breed_ cloud native and managed services to build high quality, cutting edge solutions. Delivering these solutions using Infrastructure-As-Code (IAC) is not simply part of our commitment to architecting steadfast **continuous integration** workflows; it underpins the way we collaborate and share learnings with the client teams we engage with.
 
 ### An opinionated web authentication method
 

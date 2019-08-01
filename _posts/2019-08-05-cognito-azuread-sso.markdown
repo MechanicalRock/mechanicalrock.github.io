@@ -45,13 +45,13 @@ Whilst AWS Cognito is a powerful security product, it is not without some signif
 
 DevOps practitioners have also been left wanting by Cognito's poor cloudformation support. With virtually no updates since 2017, current Cloudformation support covers perhaps 50% of what CLI and SDK users can do with Cognito, leaving users to write their own custom resources for common Cognito use cases.
 
-This brings us to reason for this post - and [the supporting repository](https://github.com/MechanicalRock/cognito-sso-azure) - to provide an **infrastructure-as-code** solution for setting up and managing an AWS ALB + Cognito and Azure AD single sign on. 
+This brings us to reason for this post - and [the supporting repository](https://github.com/MechanicalRock/cognito-sso-azure) - to provide an **infrastructure-as-code** solution for setting up and managing an AWS ALB, Cognito and Azure AD single sign on. 
 
 The repository helps you setup the following:
-- a CodePipeline for managing your cloudformation resources
+- CodePipeline for managing your cloudformation resources
 - Cognito Custom Resources to assist in (automated) configuration
-- Cognito User Pool, Pool Client, Federated SAML identity Provider, Resource Servers, etc.
-- Application Load Balancer, Listener and rules to defer authentication to Cognito
+- Cognito User Pool, Pool Client, Federated SAML Identity Provider, Resource Servers, etc.
+- Application Load Balancer, Listener and Rules to defer authentication to Cognito
 
 ## Getting Cognito working with Azure Active Directory
 
@@ -59,12 +59,12 @@ The flow of setting up single sign on tends to go as follows:
 
 ![cognito in action](/img/cognito-flow.gif)
 
-A notable pain point is that when ever you need to amend the attributes associated with your user pool, then the whole user pool must be recreated, meaning a new user pool ID is generated. In turn, this means that the `Entity Id` within your Azure Enterprise Application - which contains the user pool ID - must be updated. If you are lucky, this is something you can do yourself, but that is unlikely to be the case in most large organisations.
+A notable pain point is that when ever you need to amend the attributes associated with your user pool, the whole user pool must be recreated, meaning a new user pool ID is generated. This means that the `Entity Id` within your Azure Enterprise Application - which contains the user pool ID - must be updated. If you are lucky, this is something you can do yourself, but that is unlikely to be the case in most large organisations.
 
 
 ### Mapping attributes from Azure to Cognito attributes
 
-Typical attributes to configure in a user pool will be a principal name and email. Ensure that they are configured with `mutable` set to `true` so that Cognito can continue to synchronize the dynamic users it creates, with those users in Azure Active Directory. It's often a good idea to also include the `groups` attribute.
+Typical attributes to configure in a user pool will be a principal name and email. Ensure that they are configured with `mutable` set to `true` so that Cognito can continue to synchronise the dynamic users it creates, with those users in Azure Active Directory. It's often a good idea to also include the `groups` attribute.
 
 It's an unfortunate trait of Cognito that it is not possible to amend custom attributes once created - including their `mutable` flag - so it's good to understand what attributes you need as early as possible, to avoid having to re-create the Cognito User Pool over and over.
 
@@ -81,7 +81,7 @@ There can be various stumbling blocks along the way when bringing together a sin
 * If you are not getting AD groups in your token, ensure you have enabled them in the _User Attributes & Claims_ screen of your Azure Enterprise Application
 * If you get Cognito errors about redirect_uri, ensure your Cognito App Client settings _Reply URLs_ are correct (e.g. https://**your-load-balancer-address-or-domain**/oauth2/idpresponse) - note that you can include multiple reply and logout URLs by comma separating the URLs
 
-Once you've made this work one time, you'll find it easy to share among your team and customers in the future, and repeat over and again. 
+Once you've made this work once, you'll find it easy to share among your team and customers in the future, and repeat over and again. 
 
 
 ### References

@@ -4,6 +4,7 @@ title:  "Securing your web applications in AWS using SSO with Azure Active Direc
 date:   2019-08-05
 tags: aws cognito oidc saml2 sso azure
 author: Paul Symons
+image: img/blog/cognito-sso-azure/old-key.jpg
 ---
 
 It's a fairly common scenario where you want to secure a web application in the cloud; but with so many technologies and different ways to secure your applications, it can be difficult to know where to get started. You may have questions, such as:
@@ -29,7 +30,7 @@ The solution we will focus on here is a pattern we commonly use when working wit
 - AWS Cognito as _Authentication Service_
 - AWS Application Load Balancer as authentication proxy to our web application
 
-![cognito sso webapp design](/img/cognito-sso-design.jpg)
+![cognito sso webapp design](/img/blog/cognito-azure-sso/cognito-sso-design.jpg)
 
 Our example assumes a web application running on ECS or EC2 or similar, but in reality it can be anything that can update a Load Balancer Target Group.
 
@@ -57,7 +58,7 @@ The repository helps you setup the following:
 
 The flow of setting up single sign on tends to go as follows:
 
-![cognito in action](/img/cognito-flow.gif)
+![cognito in action](/img/blog/cognito-azure-sso/cognito-flow.gif)
 
 A notable pain point is that when ever you need to amend the attributes associated with your user pool, the whole user pool must be recreated, meaning a new user pool ID is generated. This means that the `Entity Id` within your Azure Enterprise Application - which contains the user pool ID - must be updated. If you are lucky, this is something you can do yourself, but that is unlikely to be the case in most large organisations.
 

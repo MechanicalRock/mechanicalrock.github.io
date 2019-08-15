@@ -2,7 +2,7 @@
 layout: post
 title:  "Technical Debt"
 date:   2019-08-05
-tags: aws cognito oidc saml2 sso azure
+tags: debt devops dora 
 author: Matt Tyler
 image:
 ---

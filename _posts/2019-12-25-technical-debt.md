@@ -23,31 +23,43 @@ TODO: Putting a price on technical debt may be difficult but that doesn't make i
 
 It is impossible to measure the intangible technical debt, but this property does not always extend to its effects. We can find another measurement (or more) that can act as a suitable proxy. This is not dissimilar to maintenance practices in heavy industry. You can never know for certain when a piece of equipment is going to fail, but you can measure how well maintenance crews are adhering to a planned maintenance schedule. In most cases this is a reasonable indication of equipment health*. What measures could we identify that could act as reasonable proxies for the amount of technical debt across one or more software systems?
 
-If we are to find a substitute for technical debt we first need to figure out what attributes it would have. For a  measure to be beneficial it must be difficult to exploit for individual gain at the expense of the business. Software developers can be brazen creatures. What may be viewed as cheating by the general populace, a developer may deem as a clever use of mechanics. Any metrics we choose should have as few side effects as possible. Ideally such such a metric should have a positive correlation with software best practices. Reducing technical debt via some proxy (whatever form that takes) is not practical if it conflicts with good hygiene (e.g. writing tests).
+If we are to find a substitute for technical debt we first need to figure out what attributes it would have. For a measure to be beneficial it must be difficult to exploit for individual gain at the expense of the business. Software developers can be brazen creatures. What may be viewed as cheating by the general populace, a developer may deem as a clever use of mechanics. Any metrics we choose should have as few side effects as possible. Ideally such such a metric should have a positive correlation with software best practices. Reducing technical debt via some proxy (whatever form that takes) is not practical if it conflicts with good hygiene (e.g. writing tests).
 
 I believe a suitable proxy for technical debt can be found in existing literature on software delivery. The State of DevOps Report (Forsgren, N. et al. 2018) produced by DevOps Research and Assessment (hereby refered to as "the DORA Report") is compiled annually and details the habits of high performing software teams. It is one of the most rigourous studies on software development, produced from surveying and observing hundreds of teams across the world. If we are to come upon a satisfactory measure of technical debt, it would likely be in the DORA report. The report distinguishes two key measures of software delivery performance; throughput and stability. Throughput is measured via deployment frequency and lead time for changes. Stability is measured via time to restore a service and the change failure rate. I believe that change lead time and time to restore service are useful signals of the level of technical debt a project has acrued. Both of these marry well with the effects of technical debt discussed earlier, which included decreased velocity and increasingly risky changes.*
 
 TODO: Why is change lead time a good measure
+$$$ terms
 
 TODO: Why is MTTR a good measure
+$$$ terms
 
 This raises an interesting question to me; if software requires no additional features, and is never in need of repair, is it free of technical debt? Imagine two bodies of work. One has the former traits, along with the reputation for having been terrible to work with by the authors. The other is a more mediocre example of software development, currently in active development and incurring under 5 hours of downtime per year. Which suggests the lesser liability? If I fixate on the numbers in the shadow of our prior definition, I would be led to say the first system has less technical debt. But I guarantee that many would argue in favour of the second. There is an element of potential within technical debt; the absolute zero of which only occurs when the last change to be made is to turn it off.
 
 Waiting for a situation to become untenable is no-ones ideal scenario but we can find ways to mitigate the effects. A development team should be able to reach a consensus as to what are acceptable limits to change-lead-time and MTTR. If these limits are exceeded, it should be acceptable for the development team to focus on reducing them until they are within a tolerable range. Beyer, B. et al. (2016) offer a similar concept called "Error budgets". Specialist engineers are deployed to increase the reliability of critical services that have often been developed by other business units. These engineers assume on-call duties for the service provided that the service meets a minimum standard of stability. If this minimum standard is breached the engineers are within their rights to refuse support until the system can meet it. A development team could enter into a similar contract to relieve technical debt.
 
-TODO: Another strategy to contain technical debt presides within Conways Law
-
-TODO: Reduce technical debt via interface
+As a body of software becomes larger it becomes difficult to maintain. This is aggravated by the inconvenient truth that software engineers are not tethered to their creations. They leave and new blood takes their place. New engineers need to understand the legacy left by the predecessors sans the education of having built the system in the first place. It is unreasonable to expect that a new engineer is going to be as effective as the seasoned veteran. We recognise nobody joins a new company with knowledge of it's internal processes, politics and three-letter-acryonyms, and so we should expect the same of it's software systems. Reducing the amount of learning required to be effective is a suitable means to ensuring that turnover does not effect the mean-time-to-repair and change-lead-time. This also provides the freedom required for specialisation.
 
 TODO: Image of communication links / Image
+
+Specialisation is commonly exploited. For a team of twenty engineers sharing responsibility across twenty systems may feel like working on a crowded train. Drawing boundaries within the system and assigning responsibility for a particular subset of the group is how we commonly manage this. This works well provided that each smaller team still remains large enough to manage the burden of the subsystem. All we have actually done is (hopefully) distribute our engineers efficiently. Kepp in mind this redistribution occurs whether your team is working on microservices or a monolith. Any attempt to fight this is akin to trying to nail the wind to the ground, so you would be better off learning how to live with it. Managing your domain boundaries can be an effective way to reduce mean-time-to-repair and change-lead-time. This may not remove technical debt, but managing it becomes easier.
+
+TODO: Reduce technical debt via interface
+A close relative to muffling the effects of technical debt via smaller teams and specialisations is that of outsourcing the work to some third party. 
+points capex vs opex, economies of scale, focus, reduces opportunity for greedy optimization, defines a boundary of responsibility.
 
 > Debt certainly isn't always a bad thing. A mortgage can help you afford a home. Student loans can be a necessity in getting a good job. Both are investments worth making, and both come with fairly low interest rates. - Jean Chatzky
 
 TODO: Good Debt vs Bad Debt
+Remove undifferentiated heavy lifting
+Define bad debt
+Use analogies from real life
 
 TODO: Examples of Good Debt
+business logic
 
 TODO: Is technical debt even a useful to talk about?
+proxy measures vs technical debt
+summaries realistic strategies for dealing with it
 
 > Blessed are the young, for they shall inherit the national debt. - Herbet Hoover
 

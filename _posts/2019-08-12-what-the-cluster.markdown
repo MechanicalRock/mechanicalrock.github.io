@@ -14,15 +14,15 @@ I recently attended a Snowflake 4 day partner bootcamp in Melbourne to get some 
 * Snowflake is a zero-management data warehouse-as-a-service.
 * Snowflake deals with all the parts of setting up a data warehouse solution so you don’t have to; you get to play with all the bells and whistles to tune snowflake into your ideal data warehouse solution.
 * Snowflake deals with all the management and setting up of your data warehouse so you can focus on the processes you care about.
-* Snofwlake has a fail safe which stores your historical data which is non configurable and only accessible by contacting Snowflake support. You get a 7 day fail safe as default, this feature can’t be turned off.
-* You can share your tables and materialised views with consumers who do not have a snowflake account by using reader accounts.
+* Snowflake comes with a fail safe which stores your historical data. This is non configurable and only accessible by contacting Snowflake support. Snowflake will take a copy of all tables, views, etc and store this for seven days and is only to be used to retrieve data in a case of damage or system failure. You get a seven day fail safe as default and this feature can’t be turned off.
+* You can share your tables and materialized views with consumers who do not have a snowflake account by using reader accounts.
 
 
 One of the reoccurring themes was clusters. Snowflake uses the term cluster a lot!
 
 ### Data Cluster
 
-This is how data is ordered and sorted in micro-partitions. Snowflake will cluster your data automatically into micro-partitions to allow for faster retrieval of frequently requested data.Micro-partitions is Snowflakes unique way of storing large amounts of data in a way that enables fast retrieval of frequently accessed data. Micro-partitions are immmutable , compressed and encrypted at rest.
+This is how data is ordered and sorted in micro-partitions. Snowflake will cluster your data automatically into micro-partitions to allow for faster retrieval of frequently requested data.Micro-partitions is Snowflakes unique way of storing large amounts of data in a way that enables fast retrieval of frequently accessed data. Micro-partitions are immutable , compressed and encrypted at rest.
 You can evaluate how your table is clustered by looking at certain columns that your users will interface with.
 
 ```sql
@@ -48,7 +48,7 @@ ALTER TABLE UNICORNS RECLUSTER;
 ### Multi Cluster Warehouses
 
 Multi cluster warehouses can automatically scale out and spin up more compute clusters based on user concurrency needs. With multi cluster warehouses you can configure the minimum and maximum number of server clusters up to a maximum of ten. Snowflake documentation is really good and you can find out how much multi cluster warehouses will cost you in credits in different scenarios [here:](https://docs.snowflake.net/manuals/user-guide/warehouses-multicluster.html)
-The two scaling strategies allow you to run using mazimised clusters, when you start your warehouse it will automatically use all the clusters.Alternatively you can use the auto scaling strategy so that clusters will be started up only when they are needed.
+The two scaling strategies allow you to run using mazimized clusters, when you start your warehouse it will automatically use all the clusters.Alternatively you can use the auto scaling strategy so that clusters will be started up only when they are needed.
 
 Setting up your warehouse is as simple as: 
 ```sql
@@ -63,7 +63,7 @@ COMMENT = 'unicorn finder';
 
 ### Wrapping up
 
-Snowflake is a powerful and fast data warehousing soloution with a lot of terminoligy to get your head around. Once you do you can start designing your own soloution, do you need a single compute cluster or a multi cluster warehouse? Now that you know about all the different Snowflake clustering terms, you can start Snowlaking for yourself.Stil not sure? We would be more than happy to help you.
+Snowflake is a powerful and fast data warehousing solution with a lot of terminology to get your head around. Once you do you can start designing your own solution, do you need a single compute cluster or a multi cluster warehouse? Now that you know about all the different Snowflake clustering terms, you can start Snowlaking for yourself.Stil not sure? We would be more than happy to help you.
 
 Go forth and cluster.
 

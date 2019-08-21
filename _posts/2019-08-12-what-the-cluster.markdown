@@ -63,7 +63,7 @@ COMMENT = 'unicorn finder';
 
 ### Wrapping up
 
-Snowflake is a fast and powerful data warehousing solution with a lot of terminology to get your head around. Once you do you can start designing your own solution, do you need a single compute cluster or a multi cluster warehouse? Now that you know about all the different Snowflake clustering terms, you can start Snowlaking for yourself.Stil not sure? We would be more than happy to help you.
+Snowflake is a fast and powerful data warehousing solution with a lot of terminology to get your head around. Once you do you can start designing your own solution, do you need a single compute cluster or a multi cluster warehouse? Now that you know about all the different Snowflake clustering terms, you can start Snowflaking for yourself.Still not sure? We would be more than happy to help you.
 
 Go forth and cluster.
 

@@ -47,8 +47,7 @@ ALTER TABLE UNICORNS RECLUSTER;
 
 ### Multi Cluster Warehouses
 
-Multi cluster warehouses can automatically scale out and spin up more compute clusters based on user concurrency needs. With multi cluster warehouses you can configure the minimum and maximum number of server clusters up to a maximum of ten. Snowflake documentation is really good and you can find out how much multi cluster warehouses will cost you in credits in different scenarios in the [here](https://docs.snowflake.net/manuals/user-guide/warehouses-multicluster.html).
-The two scaling strategies allow you to run using maximised clusters, when you start your warehouse it will automatically use all the clusters. Alternatively you can use the auto scaling strategy so that clusters will be started up only when they are needed.
+Multi cluster warehouses can automatically scale out and spin up more compute clusters based on user concurrency needs. With multi cluster warehouses you can configure the minimum and maximum number of server clusters up to a maximum of ten. Snowflake documentation is really good and you can find out how much multi cluster warehouses will cost you in credits in different scenarios in the [here](https://docs.snowflake.net/manuals/user-guide/warehouses-multicluster.html). The two scaling strategies allow you to run using maximised clusters, when you start your warehouse it will automatically use all the clusters. Alternatively you can use the auto scaling strategy so that clusters will be started up only when they are needed.
 
 Setting up your warehouse is as simple as: 
 ```sql
@@ -60,6 +59,10 @@ MAX_CLUSTER_COUNT = 5
 INITIALLY_SUSPENDED = TRUE
 COMMENT = 'unicorn finder';
 ```
+ This being said **ALWAYS** remember to terminate your warehouses. While your warehouses are running they are costing you money.
+ ``` sql
+ alter warehouse UNICORN_WH suspend
+ ```
 
 ### Wrapping up
 

@@ -48,7 +48,7 @@ ALTER TABLE UNICORNS RECLUSTER;
 ### Multi Cluster Warehouses
 
 Multi cluster warehouses can automatically scale out and spin up more compute clusters based on user concurrency needs. With multi cluster warehouses you can configure the minimum and maximum number of server clusters up to a maximum of ten. Snowflake documentation is really good and you can find out how much multi cluster warehouses will cost you in credits in different scenarios [here:](https://docs.snowflake.net/manuals/user-guide/warehouses-multicluster.html)
-The two scaling strategies allow you to run using mazimized clusters, when you start your warehouse it will automatically use all the clusters.Alternatively you can use the auto scaling strategy so that clusters will be started up only when they are needed.
+The two scaling strategies allow you to run using maximised clusters, when you start your warehouse it will automatically use all the clusters.Alternatively you can use the auto scaling strategy so that clusters will be started up only when they are needed.
 
 Setting up your warehouse is as simple as: 
 ```sql

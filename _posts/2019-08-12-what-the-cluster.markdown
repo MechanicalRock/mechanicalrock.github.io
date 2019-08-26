@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Snowflake: What the cluster"
-date:   2019-08-12
+date:   2019-08-26
 tags: snowflake
 author: Natalie Laing
 image: img/snow.jpg
@@ -12,10 +12,10 @@ I recently attended a Snowflake 4 day partner bootcamp in Melbourne to get some 
 
 * Snowflake is a data warehouse built for the cloud that can handle structured and semi-structured data. Snowflake supports an unlimited number of simultaneous users so multiple groups of users can access data at the same time with no performance degradation.
 * Snowflake is a zero-management data warehouse-as-a-service.
-* Snowflake deals with all the parts of setting up a data warehouse solution so you don’t have to; you get to play with all the bells and whistles to tune snowflake into your ideal data warehouse solution.
+* Snowflake deals with all the parts of setting up a data warehouse solution so you don’t have to; you get to play with all the bells and whistles to tune Snowflake into your ideal data warehouse solution.
 * Snowflake deals with all the management and setting up of your data warehouse so you can focus on the processes you care about.
 * Snowflake comes with a fail safe which stores your historical data. This is non configurable and only accessible by contacting Snowflake support. Snowflake will take a copy of all your tables and views then store them for seven days and is only to be used to retrieve data in a case of damage or system failure. You get a seven day fail safe as default and this feature can’t be turned off.
-* You can share your tables and materialized views with consumers who do not have a snowflake account by using reader accounts.
+* You can share your tables and materialized views with consumers who do not have a Snowflake account by using reader accounts.
 
 
 One of the reoccurring themes was clusters. Snowflake uses the term cluster a lot!
@@ -36,7 +36,7 @@ A compute cluster is a collection of one or more VMs connected within a mesh. Al
 
 ### Cluster Keys
 
-Used to help keep all frequently accessed data in the same micro-partition for faster retrieval. This is only ideal for very large tables as snowflake automatically clusters your data into micro-partitions . Using cluster keys will override snowflakes natural clustering.
+Used to help keep all frequently accessed data in the same micro-partition for faster retrieval. This is only ideal for very large tables as Snowflake automatically clusters your data into micro-partitions . Using cluster keys will override Snowflakes natural clustering.
 So say you want to find unicorns; you want to know how old they are, how big they are and where they were last spotted. This is the information you need to go forth and find unicorns so you want this information to be stored in the same micro-partition so you can get hold of this vital information fast.
 Cluster keys are used to keep frequently accessed data in the same micro-partition. So if I wanted to re cluster my UNICORNS table from above I could set clustering keys on AGE,SIZE and LOCATION.
 
@@ -47,7 +47,7 @@ ALTER TABLE UNICORNS RECLUSTER;
 
 ### Multi Cluster Warehouses
 
-Multi cluster warehouses can automatically scale out and spin up more compute clusters based on user concurrency needs. With multi cluster warehouses you can configure the minimum and maximum number of server clusters up to a maximum of ten. Snowflake documentation is really good and you can find out how much multi cluster warehouses will cost you in credits in different scenarios in the [here](https://docs.snowflake.net/manuals/user-guide/warehouses-multicluster.html). The two scaling strategies allow you to run using maximised clusters, when you start your warehouse it will automatically use all the clusters. Alternatively you can use the auto scaling strategy so that clusters will be started up only when they are needed.
+Multi cluster warehouses can automatically scale out and spin up more compute clusters based on user concurrency needs. With multi cluster warehouses you can configure the minimum and maximum number of server clusters up to a maximum of ten. Snowflake documentation is really good and you can find out how much multi cluster warehouses will cost you in credits in different scenarios in the [here](https://docs.Snowflake.net/manuals/user-guide/warehouses-multicluster.html). The two scaling strategies allow you to run using maximised clusters, when you start your warehouse it will automatically use all the clusters. Alternatively you can use the auto scaling strategy so that clusters will be started up only when they are needed. This means that you can set your warehouse scale to up to a maximum of eight clusters and a minimum of one so when it's a busy period your warehouse will automatically start up the clusters it needs without you having to go in and manually start up more clusters. On the other side of that once traffic starts to slow down Snowflake will start to close the clusters it's not using. This means you will only be paying for the resources you use.
 
 Setting up your warehouse is as simple as: 
 ```sql
@@ -70,7 +70,7 @@ Snowflake is a fast and powerful data warehousing solution with a lot of termino
 
 Go forth and cluster.
 
-If you think we can help you cluster unicorns in Snowflake, feel free to [contact-us](https://www.mechanicalrock.io/lets-get-started)
+If you think we can help you cluster unicorns in Snowflake, feel free to [contact-us](https://www.mechanicalrock.io/lets-get-started). While you are there you might want to check out our data platforms page located [here](https://www.mechanicalrock.io/our-expertise/automated-data-platforms).
 
 ### References
 

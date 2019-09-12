@@ -65,7 +65,7 @@ Imagine a project structure like the following;
 │       └── cloudformationproduct.ts
 ```
 
-In this case, the `index.ts` file contains the handler logic. It consumes entries from an SQS queue that contain the resource type and the resource ARN. The folder structure for the resources is deliberately designed to match the resource type records to make it easy to work out what file needs to be imported - e.g. `AWS::S3::Bucket` would map to the file in `s3/bucket`.
+In this case, the `index.ts` file contains the handler logic. It consumes entries from an SQS queue that contain the resource type and the resource ARN. The folder structure for the resources is deliberately designed to match the resource type records to make it easy to work out what file needs to be imported - e.g. `AWS::S3::Bucket` would map to the file in `s3/bucket`. It is important to have some sort of safe event-to-module mapping to prevent against an event injection that could load unsafe code. Further down I also use a webpack feature that happens to limit what code can be dynamically imported; but admittedly any security improvements were coincidence.
 
 ```typescript
 import { SQSHandler, SQSRecord } from "aws-lambda";

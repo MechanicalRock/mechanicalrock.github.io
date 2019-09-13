@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "AWS Deep Racer"
-date:   2019-09-23
+date:   2019-09-16
 tags: aws ai machine-learning
 author: Tim Myerscough
 image: img/deep-racer/terminator.jpg

@@ -69,6 +69,8 @@ There are a few strategies to help reduce the disconnect between the simulated a
 
 In this post, I've given a brief introduction into AWS Deep Racer and Reinforcement learning.  In a future post, I shall cover creating your first model.  
 
+There are a [few Latency workshop tickets](https://ti.to/latency/latency-2019/en) remaining, including DeepRacer workshop - register today.  
+
 See you at Latency!
 
 <sub><sup>*HotDog Image by <a href="https://pixabay.com/users/HannahChen-816528/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=657039">Hannah Chen</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=657039">Pixabay</a>*</sup></sub>

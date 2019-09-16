@@ -4,7 +4,7 @@ title:  "AWS Deep Racer"
 date:   2019-09-16
 tags: aws ai machine-learning
 author: Tim Myerscough
-image: img/deep-racer/terminator.jpg
+image: img/deep-racer/deep-racer-logo.png
 ---
 AWS Deep Racer was announced at [AWS Re:Invent 2018](https://www.youtube.com/watch?v=dwUJVYEhxGM).  It provides a framework for getting started with AI, specifically reinforcement learning.  I'm really excited that we shall be kicking off an AWS DeepRacer league in Perth at [Latency][latency-conf] 2019.
 

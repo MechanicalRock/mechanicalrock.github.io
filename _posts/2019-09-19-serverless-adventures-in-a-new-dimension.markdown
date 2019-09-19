@@ -22,9 +22,9 @@ To the rest of us living in a 3rd dimension, we can see that it’s not a line, 
 
 ## Software Step Changes
 
-![Level Up](/img/serverless/level-up.jpg "Level Up!")
-
 Why is this important? Let’s take the internet for example. Before the internet, people bought their software from a shop. Software could be written slowly because the distribution chain was slow. But then the internet opened up a new dimension for people to distribute software. A small group of people who recognised the power of this new dimension started writing software in their houses and distributing it online. Suddenly, software could be distributed instantly and cheaply, value could be given to customers faster and customer feedback could even be translated into new features quicker.
+
+![Level Up](/img/serverless/level_up.jpg "Level Up!")
 
 The people who harnessed the power of this new dimension led the way into a new era and the old era pretty much became obsolete. Now most of the software we use everyday is downloaded from an app store.
 

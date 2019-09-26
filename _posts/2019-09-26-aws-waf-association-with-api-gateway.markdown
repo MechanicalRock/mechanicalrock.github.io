@@ -7,13 +7,13 @@ author: Natalie Laing
 image: img/snow.jpg
 ---
 
-I was recently trying to attach a WAF regional ACL to my api Gateway using cloudformation and I ran 
+I was recently trying to attach a WAF regional ACL to an api Gateway using cloudformation and I ran 
 into problems when the api gateway was created using serverless.
 The majority of the docs that I found online were how to attach your WAF to an ELB I don't know whether this is because support for attaching WAF to api gateway was announced in November 2018 where support for ELB's has been around since 2016.
 
-I tried to hardcode my arn and ID into the AWS::WAFRegional::WebACLAssociation properties and still when
-I went into the AWS console the ACL and api gateway was not associated in my test account but they were
-in my production account. So I spent way too much time looking over my api gateway arn and trying to figure out
+I tried to hardcode the arn and web ACL id into the AWS::WAFRegional::WebACLAssociation properties and still when
+I went into the AWS console the ACL and api gateway was not associated in the test account but they were
+in the production account. So I spent way too much time looking over the api gateway arn and trying to figure out
 why it just wasn't working for me.
 
 
@@ -29,7 +29,7 @@ if(Cloudfront) {
 ```
 
 ### Common gotchas
-The errors I encountered from deploying my stack were not very helpful, I would get tons of null error responses.
+The errors I encountered when deploying the stack were not very helpful, I would get tons of null error responses.
 * YAML indentation 
 * Formatting your api gateway arn. This should look like: 
 ```yml 
@@ -122,7 +122,7 @@ Type: AWS::WAFRegional::WebACL
 
 ### Wrapping up
 
-After X amount of hours spent trying to associate my WAF ACL to my api gateway, I finally got my development and production accounts associated with the correct ACL.
+After X amount of hours spent trying to associate a WAF ACL to an api gateway, I finally got the development and production accounts associated with the correct ACL.
 Hopefully, after reading this blog, this means you don't have to.
 
 

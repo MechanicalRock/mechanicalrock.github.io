@@ -4,17 +4,15 @@ title:  "AWS WAF association with Api Gateway"
 date:   2019-09-26
 tags: AWS API WAF
 author: Natalie Laing
-image: img/snow.jpg
+image: img/lock.png
 ---
 
 I was recently trying to attach a WAF regional ACL to an api Gateway using cloudformation and I ran 
 into problems when the api gateway was created using serverless.
-The majority of the docs that I found online were how to attach your WAF to an ELB I don't know whether this is because support for attaching WAF to api gateway was announced in November 2018 where support for ELB's has been around since 2016.
+The majority of the docs that I found online outlined how to attach your WAF to an ELB, I'm unsure whether this is because support for attaching WAF to api gateway was announced in November 2018 where support for ELB's has been around since 2016.
 
-I tried to hardcode the arn and web ACL id into the AWS::WAFRegional::WebACLAssociation properties and still when
-I went into the AWS console the ACL and api gateway was not associated in the test account but they were
-in the production account. So I spent way too much time looking over the api gateway arn and trying to figure out
-why it just wasn't working for me.
+I tried to hardcode the arn and web ACL id into the AWS::WAFRegional::WebACLAssociation properties and still when I went into the AWS console the ACL and api gateway was not associated in the test account but they were
+in the production account. I spent way too much time looking over the api gateway arn and trying to ascertain why it wasn't functioning correctly.
 
 
 ### WAF v WAF Regional
@@ -29,18 +27,18 @@ if(Cloudfront) {
 ```
 
 ### Common gotchas
-The errors I encountered when deploying the stack were not very helpful, I would get tons of null error responses.
+The errors I encountered when deploying the stack were inadequate, I would get an abundance of null error responses.
 * YAML indentation 
 * Formatting your api gateway arn. This should look like: 
 ```yml 
 arn:aws:apigateway:{region}::/restapis/{rest_api_id}/stages/{stage_name}
 ```
 * Find out where the api gateway was created, was it in your cloudformation or a serverless deployment.
-*  ```Status Code: 400; Error Code: WAFInvalidParameterException```  This could be a whole list of reasons according to the aws docs so have fun finding out which one it is.
+*  ```Status Code: 400; Error Code: WAFInvalidParameterException```  This could be a whole list of reasons according to the aws documentation so have fun figuring out which one it is.
 
 ### Solution
-So how did I solve the issues I was having? 
-Make sure you have all the resources needed to set up your ACL, these include but are not limited to:
+So how did I resolve the issues I was having? 
+Ensure you have all the resources needed to set up your ACL, these include but are not limited to:
 * AWS::WAFRegional::WebACL
 * AWS::WAFRegional::Rule
 * AWS::WAFRegional::WebACLAssociation
@@ -95,14 +93,14 @@ Properties:
     Ref: YourRegionalWafWebAcl
 ```
 
-So now remember that serverless file I mentioned? 
+So remember that serverless file I mentioned? 
 If your api was created through serverless you will need to run ```npm i serverless-associate-waf```
-in your serverless yml you will need to call this plugin:
+in your serverless yml you will need to utilize this plugin:
 ```
 plugins:
     - serverless-associate-waf
 ```
-You will then need to add this:
+You will then need to append the following snippet:
 ```
 custom:
   associateWaf:

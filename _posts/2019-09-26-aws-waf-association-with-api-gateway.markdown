@@ -7,17 +7,16 @@ author: Natalie Laing
 image: img/lock.png
 ---
 
-I was recently trying to attach a WAF (Web Application Firewall) regional ACL (Access Control List) to an API (Application Programming Interface) Gateway using cloudformation and I ran into problems when the API gateway was created using Serverless Framework.
-The majority of the docs that I found online outlined how to attach your WAF to an ELB (Elastic Load Balancer), My suspicion is because support for attaching WAF to API gateway was announced in November 2018 where support for ELB's has been around since 2016.
+I was recently trying to attach a WAF (Web Application Firewall) regional ACL (Access Control List) to an API Gateway using CloudFormation and I ran into problems when the API Gateway was created using Serverless Framework.
+The majority of the docs that I found online outlined how to attach your WAF to an ELB (Elastic Load Balancer), My suspicion is because support for attaching WAF to API Gateway was announced in November 2018 where support for ELB's has been around since 2016.
 
-I tried to hardcode the ARN (Amazon Resource Name) and web ACL id into the AWS::WAFRegional::WebACLAssociation properties and still when I went into the AWS console the ACL and API gateway was not associated in the test account but they were in the production account. I spent way too much time looking over the API gateway ARN and trying to ascertain why it wasn't functioning correctly.
-
+I tried to hardcode the ARN and web ACL id into the AWS::WAFRegional::WebACLAssociation properties and still when I went into the AWS console the ACL and API Gateway was not associated in the test account but they were in the production account. I spent way too much time looking over the API Gateway ARN and trying to ascertain why it wasn't functioning correctly.
 
 ### WAF v WAF Regional
 
-Amazons Web Applications Firewall allows you to attach your WAF ACL to your API gateway. Your API gateway will be region-specific so where you would use AWS::WAF::WebACL to attach to cloudfront traditionally you will need to use the regional WAF resource type AWS::WAFRegional::WebACL.
+Amazons Web Applications Firewall allows you to attach your WAF ACL to your API Gateway. Your API Gateway will be region-specific so where you would use AWS::WAF::WebACL to attach to CloudFront traditionally you will need to use the regional WAF resource type AWS::WAFRegional::WebACL.
 ```js
-if(Cloudfront) { 
+if(CloudFront) { 
     return AWS WAF 
 } else { 
     return AWS WAF Regional
@@ -27,11 +26,11 @@ if(Cloudfront) {
 ### Common gotchas
 The errors I encountered when deploying the stack were inadequate, I would get a lot of null error responses.
 * YAML indentation 
-* Formatting your API gateway ARN. This should look like: 
+* Formatting your API Gateway ARN. This should look like: 
 ```yml 
 arn:aws:apigateway:{region}::/restapis/{rest_api_id}/stages/{stage_name}
 ```
-* Find out where the API gateway was created, was it in your cloudformation or a serverless deployment.
+* Find out where the API Gateway was created, was it in your CloudFormation or a Serverless Framework deployment.
 *  ```Status Code: 400; Error Code: WAFInvalidParameterException```  This could be a whole list of reasons according to the aws documentation so have fun figuring out which one it is.
 
 ### Solution
@@ -92,7 +91,7 @@ YourWebACLAssociation:
 ```
 
 So remember that serverless file I mentioned? 
-If your API was created through serverless you will need to run ```npm i serverless-associate-waf```
+If your API was created using the Serverless Framework you will need to run ```npm i serverless-associate-waf```
 in your serverless yml you will need to utilize this plugin:
 ```
 plugins:
@@ -115,14 +114,13 @@ The name must be the name you specified in your web ACL.
       Name: Web ACL to block SQL injection in the query string ** HERE **
 ```
 
-
 ### Wrapping up
 
-After X amount of hours spent trying to associate a WAF ACL to an API gateway, I finally got the development and production accounts associated with the correct ACL.
+After X amount of hours spent trying to associate a WAF ACL to an API Gateway, I finally got the development and production accounts associated with the correct ACL.
 Hopefully, after reading this blog, this means you don't have to.
 
 
-If you think we can help you secure your API gateways, feel free to [contact-us](https://www.mechanicalrock.io/lets-get-started).
+If you think we can help you secure your API Gateways, feel free to [contact-us](https://www.mechanicalrock.io/lets-get-started).
 
 ### References
 
@@ -130,3 +128,8 @@ If you think we can help you secure your API gateways, feel free to [contact-us]
 * [https://aws.amazon.com/blogs/compute/amazon-api-gateway-adds-support-for-aws-waf](https://aws.amazon.com/blogs/compute/amazon-api-gateway-adds-support-for-aws-waf/)
 * [https://docs.aws.amazon.com/waf/latest/APIReference/API_regional_GetWebACLForResource.html](https://docs.aws.amazon.com/waf/latest/APIReference/API_regional_GetWebACLForResource.html)
 * [https://www.npmjs.com/package/serverless-associate-waf](https://www.npmjs.com/package/serverless-associate-waf)
+
+### Further Reading
+* [https://whatis.techtarget.com/definition/API-gateway-application-programming-interface-gateway](https://whatis.techtarget.com/definition/API-gateway-application-programming-interface-gateway)
+* [https://en.wikipedia.org/wiki/API_management](https://en.wikipedia.org/wiki/API_management)
+* [https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)

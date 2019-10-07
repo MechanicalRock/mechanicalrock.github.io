@@ -72,23 +72,23 @@ YourRegionalWafWebAcl:
             Ref: YourRegionalSqlInjRule
 
 YourRegionalSqlInjRule: 
-Type: AWS::WAFRegional::Rule
-Properties: 
-    Name: YourRegionalSqlInjRule
-    MetricName : YourRegionalSqlInjRule
-    Predicates: 
-    -
-        DataId :  
-        Ref : YourRegionalSqlInjDetection
-        Negated : false
-        Type : YourSqlInjectionMatch
+    Type: AWS::WAFRegional::Rule
+    Properties: 
+        Name: YourRegionalSqlInjRule
+        MetricName : YourRegionalSqlInjRule
+        Predicates: 
+        -
+            DataId :  
+                Ref : YourRegionalSqlInjDetection
+            Negated : false
+            Type : YourSqlInjectionMatch
 
 YourWebACLAssociation:
-Type: AWS::WAFRegional::WebACLAssociation
-Properties:
-    ResourceArn: !Ref YourApiARN
-    WebACLId: 
-    Ref: YourRegionalWafWebAcl
+    Type: AWS::WAFRegional::WebACLAssociation
+    Properties:
+        ResourceArn: !Ref YourApiARN
+        WebACLId: 
+        Ref: YourRegionalWafWebAcl
 ```
 
 So remember that serverless file I mentioned? 
@@ -107,7 +107,7 @@ custom:
 
 The name must be the name you specified in your web ACL.
 ```yml
-Type: AWS::WAFRegional::WebACL
+    Type: AWS::WAFRegional::WebACL
     Properties: 
       DefaultAction: 
         Type: ALLOW

@@ -7,7 +7,7 @@ author: Natalie Laing
 image: img/lock.png
 ---
 
-I was recently trying to attach a WAF (Web Application Firewall) regional ACL (Access Control List) to an  [API Gateway](https://whatis.techtarget.com/definition/API-gateway-application-programming-interface-gateway) using CloudFormation and I ran into problems when the API Gateway was created using Serverless Framework.
+I was recently trying to attach a WAF (Web Application Firewall) regional ACL (Access Control List) to an  [API Gateway](https://whatis.techtarget.com/definition/API-gateway-application-programming-interface-gateway) using CloudFormation and I ran into problems when the API Gateway was created using [Serverless Framework](https://serverless.com/).
 The majority of the docs that I found online outlined how to attach your WAF to an ELB (Elastic Load Balancer), My suspicion is because support for attaching WAF to API Gateway was announced in November 2018 where support for ELB's has been around since 2016.
 
 I tried to hardcode the [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) and web ACL id into the AWS::WAFRegional::WebACLAssociation properties and still when I went into the AWS console the ACL and API Gateway was not associated in the test account but they were in the production account. I spent way too much time looking over the API Gateway ARN and trying to ascertain why it wasn't functioning correctly.

@@ -59,7 +59,7 @@ This is all great, but how do we know that this is not just a ‘new shiny’. T
 
 ![Not Just Lambda](/img/serverless/serverless_services.png "Not Just Lambda")
 
-People I talk to often immediately equate ‘serverless’ with cloud functions such as ‘AWS Lambda’. While this is one of the AWS serverless offerings, it is only a small part of a very rich ecosystem. There is API Gateway to handle web requests, Cognito to handle your authentication, S3 and DynamoDB for storage. SQS for message queues. And CloudWatch and X-Ray for monitoring.
+People I talk to often immediately equate ‘serverless’ with cloud functions such as ‘AWS Lambda’. While this is one of the AWS serverless offerings, it is only a small part of a very rich ecosystem. There is API Gateway to handle web requests, Cognito to handle your authentication, S3 and DynamoDB for storage, SQS for message queues. And CloudWatch and X-Ray for monitoring.
 
 S3 and SQS you say? But they have been around for ages! Yes they have. And they are serverless. Do you need to manage any servers to use them?
 

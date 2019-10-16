@@ -68,4 +68,6 @@ As much as I am an advocate of serverless, I know that it is not the answer to e
 
 If you are running heavy batch-based workloads, then there is better technology for you to use. But this is also key: platform and architecture are part of your tooling choices, and having an understanding of your needs and the options available to you will surely put you on the path to becoming an ‘Elite Performer’ yourself.
 
+Are you ready to take the first step? Reach out to contact-my@mechanicalrock.io
+
 

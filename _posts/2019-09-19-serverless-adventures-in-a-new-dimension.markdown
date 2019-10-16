@@ -4,6 +4,7 @@ title:  "Serverless: Adventures in a New Dimension"
 date:   2019-09-19
 tags: Serverless Cloud Native
 author: Richard Forshaw
+image: img/serverless/serverless-icon.png
 ---
 
 I have been exploring opportunities in Kuala Lumpur and Singapore for Mechanical Rock, and during this time it’s been clear that the area is further behind the adoption curve than Australia. Australia has the luxury of being populated with companies and developers with a good appetite for learning and implementing new technology. The Malaysia peninsular however is still in an ‘understanding’ phase.

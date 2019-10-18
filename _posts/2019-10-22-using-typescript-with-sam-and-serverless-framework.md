@@ -265,6 +265,6 @@ This allows me to debug my tests, but it does require executing a full test run.
 
 Although it is in beta, I've found the [Jest Test Explorer](https://marketplace.visualstudio.com/items?itemName=rtbenfield.vscode-jest-test-adapter) to best fit this kind of selective debug/execution flow, but your mileage may vary.
 
-Hopefully this has given you some ideas on how to configure typescript with your serverless projects. It really isn't too scary, but it is difficult to work out given the variation in project configurations that you can found on the internet. With a bit of effort, you can get the advantages of typescript, while still having access to a fast compilation time and a good debugging experience.
+Hopefully this has given you some ideas on how to configure typescript with your serverless projects. It really isn't too scary, but it is difficult to work out given the variation in project configurations that can be found on the internet. With a bit of effort, you can get the advantages of typescript, while still having access to a fast compilation time and a reasonably good debugging experience.
 
 Having troubles with typescript? Dilemmas with debugging? [Feel free to reach out!](https://twitter.com/mechanicalrock_)

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Using Typescript with SAM & Serverless Framework"
-date:   2019-09-27
+date: 2019-10-22
 tags: aws lambda typescript sam serverless 
 author: Matt Tyler
 image: img/lambda.png

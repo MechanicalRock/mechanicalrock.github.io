@@ -9,7 +9,7 @@ image: img/lambda.png
 
 Making it easy to deploy code to AWS is a major focus of most serverless frameworks. Python and Javascript tend to be well supported in this regard, and more or less work right out of the box. Handling dependencies, like those installed via package.json, and languages that compile down to javascript (like typescript), can be tricky at times.
 
-Typescript throws a few spanners into the process. Typescript requires an extra compilation step and many tutorials out there don't include such a step so it is not entirely clear where and how to insert it in the process. More steps are required to enable local debugging though source-maps, which again complicates the process for beginners.
+Typescript throws a few spanners into the process. Typescript requires an extra compilation step and many tutorials out there don't include such a step, so it is not entirely clear where and how to insert it in the process. More steps are required to enable local debugging though source-maps, which again complicates the process for beginners.
 
 My gold standard for typescript compatibility would include the following things:
 

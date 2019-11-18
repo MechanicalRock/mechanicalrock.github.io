@@ -38,13 +38,13 @@ After getting my story straight, I spent many hours talking to myself reading ou
 
 ![Pete freaking face with banner]({{ site.url }}/img/inception-pipelines/s2o-how-it-was/banner-freaking.jpg)
 
-Last year at [Latency 2018](https://www.latencyconf.io/#/pastconferences), I presented a lightening talk called "Implementing AWS X-Ray in your lambdas in less than 5 minutes, with cheat sheets!" to approximately 200 people. The talk went quite well, and I wasn't nervous beforehand, partly because I had a cold and couldn't see the crowd. But this year it felt soooo much different!! Check out the crowd below!
+Last year at [Latency 2018](https://www.latencyconf.io/#/pastconferences), I presented a lightning talk called "Implementing AWS X-Ray in your lambdas in less than 5 minutes, with cheat sheets!" to approximately 200 people. The talk went quite well, and I wasn't nervous beforehand, partly because I had a cold and couldn't see the crowd. But this year it felt soooo much different!! Check out the crowd below!
 
 ![The crowd]({{ site.url }}/img/inception-pipelines/s2o-how-it-was/banner-crowding.jpg)
 
 15 minutes beforehand, I had run my run sheet up, everything was primed and ready and I was just counting down. Tick tock, tick tock, tick tock. Finally, I was ready to go! Up I jumped, plugged in my laptop and it was show time. A special call out, and thank-you, to Min for the fantastic introduction.
 
-I feel I got off to a pretty good start and covered almost all the points that I wanted to cover in my introduction. The first hurdle that I needed to cross was getting my code seeded and building in AWS. I was a little ahead of schedule and needed a little bit ad-libbing, but everything was going well. The next hurdle was running the game and again everything operated smoothly. The final hurdle was my downfall. This hurdle was where I ran a load-testing tool that was supposed to overload the game. Except it didn't. Turns out I just didn't have enough bandwidth to kill it. What I needed, from past runs, was about 6-7000 hits within 3 minutes; and I managed to just get to 3000.
+I feel I got off to a pretty good start and covered almost all the points that I wanted to cover in my introduction. The first hurdle that I needed to cross was getting my code seeded and building in AWS. I was a little ahead of schedule and needed a little bit ad-libbing, but everything was going well. The next hurdle was running the game and again everything operated smoothly. The final hurdle was my downfall. This hurdle was where I ran a load-testing tool that was supposed to overload the game. Except it didn't. Turns out I just didn't have enough bandwidth to kill it. What I needed from past runs was about 6-7000 hits within 3 minutes; and I managed to just get to 3000.
 
 The Demo Gods failed me by not failing me. Sigh.
 

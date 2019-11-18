@@ -56,4 +56,4 @@ In reflection, how was it presenting to 300 people? It was a blast!! My personal
 
 Right before I wrap up this post, I want to thank the Latency organising committee for selecting me and giving me the opportunity to present. I believe the speaker videos will be up on the [Latency website](https://www.latencyconf.io/#/) soonish if you missed me at Latency, or just want to rewatch me in glorious action. And if you want to see the code, it's up on [GitHub here](https://github.com/mechanicalpete/serverless-to-observerless).
 
-As always, reach out if you'd like and coffee and a chat!
+As always, reach out if you'd like a coffee and a chat!

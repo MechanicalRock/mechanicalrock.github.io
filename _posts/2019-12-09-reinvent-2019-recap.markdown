@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "re:Invent 2019 Recap"
-date: 2019-12-06
+date: 2019-12-09
 tags: aws reinvent recap
 author: Nathan Glover
 image: /img/blog/reinvent-2019-recap/reinvent-opener.png

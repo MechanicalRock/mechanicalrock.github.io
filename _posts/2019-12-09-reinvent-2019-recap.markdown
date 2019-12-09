@@ -59,10 +59,10 @@ re:Invent 2019 had a lot to offer in the machine learning & AI space whith most 
 
 SageMaker Studio was an exciting announcement as it marks a huge jump forward for the existing notebook platform AWS had to offer. SageMaker Studio presents itself as a single pane of glass for all ML workflows, and it isn't lying about that.
 
-In the past I've had critisism for the lacklustre effort put into making SageMaker as useful as the competitions offerings (Google Notebooks, JupyterLab). Most of my personal problems came from:
+In the past I've had criticism for the lacklustre effort put into making SageMaker as useful as the competitions offerings (Google Notebooks, JupyterLab). Most of my personal problems came from:
 
 * No way to change instance type under notebook without shutting down experiments
-* Very lacking visualization / graphing capabilities
+* Very lacking visualisation / graphing capabilities
 * Model debugging & monitoring (couldn't easily run tensorboardX)
 
 Luckily all the capabilities above (and more) are supported in SageMaker Studio.
@@ -75,7 +75,7 @@ Luckily all the capabilities above (and more) are supported in SageMaker Studio.
 
 Auto ML has been available on competing clouds for a while now ([Custom Vision AI](http://customvision.ai/), [Cloud AutoML](https://cloud.google.com/automl/)) so it was expected that AWS would be launching their own player in the ring.
 
-The idea behind **Auto Machine Learning** is that you are able to upload bulk data and with minimal direction on what features and characteristics you would like to see, the platform should be able to create a general model for you. It is usually very useful for quickly validating problems as it can setup some simple ML experiments for you without too much engineering work.
+The idea behind **Auto Machine Learning** is that you are able to upload bulk data and with minimal direction on what features and characteristics you would like to see and the platform should be able to create a general model for you. It is usually very useful for quickly validating problems as it can setup some simple ML experiments for you without too much engineering work.
 
 SageMaker AutoPilot took this existing idea and (hopefully) has improved on it with a number of extra features like:
 
@@ -128,3 +128,11 @@ Since this list was very bias towards things that stood out to myself, I'll drop
   * Allows you to provision warm instances of Lambda to remove cold starts
 * [AWS Step Functions Express Workflows](https://aws.amazon.com/blogs/aws/new-aws-step-functions-express-workflows-high-performance-low-cost/)
   * Effectively splitting Step Functions up into a cheap (but short lived) option called Express
+
+### Closing Thoughts
+
+Attending re:Invent was a really rewarding expereience that I don't think can be replicated through the web sessions. Being able to chat with other passionate people who were in the same service spaces as me really ignited a fire in me to keep experimenting and work with the newest features.
+
+I personally also had the opportunity as an AWS Community Hero to also attend a number of networking events. I esspecially enjoyed meeting the new machine learning & data heroes and finding out what parts of the new SageMaker offerings were most exciting to them.
+
+If you have any questions or maybe you want to have a deeper chat about any of the new releases from re:Invent, please reach out to us on twitter [@mechanicalrock_](https://twitter.com/mechanicalrock_)!

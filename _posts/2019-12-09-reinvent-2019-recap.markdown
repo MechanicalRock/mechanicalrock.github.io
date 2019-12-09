@@ -131,8 +131,8 @@ Since this list was very bias towards things that stood out to myself, I'll drop
 
 ### Closing Thoughts
 
-Attending re:Invent was a really rewarding expereience that I don't think can be replicated through the web sessions. Being able to chat with other passionate people who were in the same service spaces as me really ignited a fire in me to keep experimenting and work with the newest features.
+Attending re:Invent was a really rewarding experience that I don't think can be replicated through the web sessions. Being able to chat with other passionate people who were in the same service spaces as me really ignited a fire in me to keep experimenting and work with the newest features.
 
-I personally also had the opportunity as an AWS Community Hero to also attend a number of networking events. I esspecially enjoyed meeting the new machine learning & data heroes and finding out what parts of the new SageMaker offerings were most exciting to them.
+I personally also had the opportunity as an AWS Community Hero to also attend a number of networking events. I especially enjoyed meeting the new machine learning & data heroes and finding out what parts of the new SageMaker offerings were most exciting to them.
 
 If you have any questions or maybe you want to have a deeper chat about any of the new releases from re:Invent, please reach out to us on twitter [@mechanicalrock_](https://twitter.com/mechanicalrock_)!

@@ -1,13 +1,15 @@
 ---
 layout: post
 title:  "Build & Release Serverless Apps with Github Actions"
-date:   2019-08-05
+date: 2020-01-06
 tags: serverless github cicd 
 author: Matt Tyler
-image: img/lambda.png
+image: img/sam-actions.png
 ---
 
-I was lucky enough to recently get invited to the Github Actions Beta programme. I have also been doing a lot of work with AWS SAM, and had been looking to publish some common serverless patterns to the Serverless Application Repository. As a proponent of all things serverless, I was wondering how Github Actions could be configured to enable publishing to the AWS Serverless Application Repository,
+<center><img src="/img/sam-actions.png" /></center>
+<br/>
+I was lucky enough to get invited to the Github Actions Beta programme. I have also been doing a lot of work with AWS SAM, and had been looking to publish some common serverless patterns to the Serverless Application Repository. As a proponent of all things serverless, I was wondering how Github Actions could be configured to enable publishing to the AWS Serverless Application Repository,
 
 # What is the Serverless Application Model?
 
@@ -39,9 +41,7 @@ When I'm comfortable to make a new release, I push a tag in semantic version for
 
 This is not dissimilar to the 'split build and release' pipeline that [Forrest Brazeal](https://forrestbrazeal.com/) mentions on [Serverless Chats](https://www.serverlesschats.com/14). It is my preferred pipeline to use when a package repository is a non-negotiable element, either because it is a reusable template (e.g. library code) or the deployment involves needed to pull from a central repository (e.g. container orchestration systems). I'm usually less concerned with splitting build and release for something I expect to continuously releasing off the head of master, like an internal application or SaaS product. In this cases I'm not normally delegating control of what version is used to the client.
 
-Additionally, I prefer my CI system to have limited git permissions. I've seen plenty of pipelines that do auto-tagging and/or create commits. I am generally not a fan of this, as I prefer the flow of data (in this case changes to the repository) to be one way. I personally find it very annoying parsing out auto-generated commits from a repositories history, and at worst I've seen teams accidently overwrite history and/or destroy their code bases. For these reasons I try to avoid it.
-
--- image goes here
+I prefer my CI system to have limited git permissions. I've seen plenty of pipelines that do auto-tagging and/or create commits. I am generally not a fan of this, as I prefer the flow of data (in this case changes to the repository) to be one way. I personally find it very annoying parsing out auto-generated commits from a repositories history, and at worst I've seen teams accidently overwrite history and/or destroy their code bases. For these reasons I try to avoid it.
 
 # Creating a Github Actions Workflow
 
@@ -359,7 +359,7 @@ echo "$output"
 
 If this is the first time the application is published to the serverless application repository it will be set to private mode. To share the pattern to additional accounts or to set it to public, you will need to login to the AWS Console to perform extra configuration.
 
--- insert screenshot for github actions
+![Github Actions](/img/github-actions.png)
 
 # Conclusion
 

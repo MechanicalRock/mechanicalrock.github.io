@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "AWS CodeBuild Reports"
-date: 2019-12-24
+date: 2019-12-27
 tags: aws codebuild reports testing devops
 author: JK Gunnink
 image: /img/blog/codebuild-reports/.png

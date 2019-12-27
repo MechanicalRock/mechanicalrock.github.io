@@ -11,19 +11,18 @@ image: /img/blog/codebuild-reports/.png
 
 AWS (Amazon Web Services) [recently
 introduced](https://aws.amazon.com/blogs/devops/test-reports-with-aws-codebuild/) a new feature to
-the CodeBuild service. Reports. In a nutshell, it enables developers and testers to see a summary of
-their automated tests which are executed in AWS CodeBuild. Additional stats and metadata about your
-CodeBuild run are also available.
+the CodeBuild service called [Test
+Reports](https://docs.aws.amazon.com/codebuild/latest/userguide/test-reporting.html). In a nutshell
+it enables developers and testers to see a summary of their automated tests which are executed in
+AWS CodeBuild. Additional stats and metadata about the CodeBuild run is also available.
 
 # Getting stuck in
 
-Getting setup is fairly straight forward. There is a requirement that your test runner can output
-the test results to a JUnit XML file or a Cucumber JSON formatted file. If so, you can use the
-outputted file to send to the reported to generate a pretty looking interface for that XML.
-
-To do so, all you need to do is add the following to your buildspec.yml file. Note that the
+Getting setup is fairly straight forward. There is a requirement that your test runner outputs the
+test results in a JUnit XML or Cucumber JSON formatted file. Once you have the generated file in the
+correct format you just need to add the following to your `buildspec.yml` file. Note that the
 indentation is at the front of the file, so it's not a step in the `phases` section of the buildspec
-file, rather in it's own section at the end.
+file, rather in its own section at the end.
 
 Example:
 ```yaml
@@ -44,7 +43,7 @@ With the generated output the reporting tool generated a nice looking report as 
 As can be seen from the above image, there's some indication around pass rates, how long the tests
 took to run, as well as a test stat for each of the tests that ran in the execution around time to
 run the spec etc (not pictured). In the case above, there are 3,221 tests that were executed in
-about 4 and a half minutes of which 8 were skipped meaning an overall 99.75% pass rate.
+about four and a half minutes of which 8 were skipped meaning an overall 99.75% pass rate.
 
 {:refdef: style="text-align: center;"}
 <img src="/img/blog/codebuild-reports/report-trends.png">
@@ -58,9 +57,9 @@ it was expecting.
 
 Give me all the graphs and delicious reporting tools now!
 
-So you're sold!? Excellent luckily it's pretty straightforward to setup and get going. If you've
+So, you're sold!? Excellent luckily it's pretty straightforward to setup and get going. If you've
 already got the `reports` bit setup in your buildspec, as I outlined above, then all you need to do
-it setup the required IAM policies for your codebuild instance. Here's some handy cloudformation you
+is setup the required IAM policies for your CodeBuild instance. Here's some handy CloudFormation you
 may find useful:
 
 ```yaml

@@ -33,11 +33,11 @@ My typical CI pattern for something contains the following elements;
 
 1. A continuous integration process that builds and tests every push/merge to every branch.
 
-This is to ensure that the branch can be built and tested correctly before pushed to master. If this fails, I want to prevent the code from being merged to master. Once merged, the state of the master branch has changed and therefore I want the tests to be re-executed to ensure the head of master remains in a releasable state.
+   This is to ensure that the branch can be built and tested correctly before pushed to master. If this fails, I want to prevent the code from being merged to master. Once merged, the state of the master branch has changed and therefore I want the tests to be re-executed to ensure the head of master remains in a releasable state.
 
 2. A process that releases an artifact when a tag is pushed to the head of master.
 
-When I'm comfortable to make a new release, I push a tag in semantic version format to the master branch. This should cause an artifact to be released to an appropriate repository e.g. docker hub, serverless application repository, NPM etc. I may reuse an artifact that has already been built and tested when a merge occurred to master, but more often than not it is just simpler to rebuild and release.
+   When I'm comfortable to make a new release, I push a tag in semantic version format to the master branch. This should cause an artifact to be released to an appropriate repository e.g. docker hub, serverless application repository, NPM etc. I may reuse an artifact that has already been built and tested when a merge occurred to master, but more often than not it is just simpler to rebuild and release.
 
 This is not dissimilar to the 'split build and release' pipeline that [Forrest Brazeal](https://forrestbrazeal.com/) mentions on [Serverless Chats](https://www.serverlesschats.com/14). It is my preferred pipeline to use when a package repository is a non-negotiable element, either because it is a reusable template (e.g. library code) or the deployment involves needed to pull from a central repository (e.g. container orchestration systems). I'm usually less concerned with splitting build and release for something I expect to continuously releasing off the head of master, like an internal application or SaaS product. In this cases I'm not normally delegating control of what version is used to the client.
 

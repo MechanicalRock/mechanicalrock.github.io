@@ -1,5 +1,5 @@
-FROM ruby:2.4.1
+FROM ruby:2.5.3
 
 RUN gem install docker-api \
-                serverspec \
-                jekyll
+  serverspec \
+  jekyll

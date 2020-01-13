@@ -4,11 +4,15 @@ title: Build & Deploy a Serverless Express API to AWS
 date: 2020-01-13
 tags: javascript tutorial serverless sam
 author: Matthew Tyler
+image: img/serverless-express.png
 ---
+
+<center><img src="/img/serverless-express.png" /></center>
+<br/>
 
 # Introduction
 
-Released in 2015, AWS API Gateway allows developers to build and publish APIs that can be consumed by clients over public internet and virtual private cloud networks. At Re:Invent 2019, announced a significant addition to the service, that they have called "HTTP APIs". The HTTP API is a direct response to customers who wanted to build simple HTTP backed API's, who did not need the complete feature set of API Gateway. The new HTTP API service is perfect for hosting lamba backend applications that are written in popular HTTP Frameworks like Express, Flask, .NET etc.
+Released in 2015, AWS API Gateway allows developers to build and publish APIs that can be consumed by clients over public internet and virtual private cloud networks. At Re:Invent 2019, AWS announced a significant addition to the service that they have called "HTTP APIs". The HTTP API is a direct response to customers who wanted to build simple HTTP backed API's, who did not need the complete feature set of API Gateway. The new HTTP API service is perfect for hosting Lamba backend applications that are written in popular HTTP Frameworks like Express, Flask, .NET etc.
 
 # How is this different from the existing API Gateway
 
@@ -16,9 +20,11 @@ This existing API Gateway has A LOT of features. Someone who wants to build an a
 
 # Let's create a hello world app with SAM!
 
-Let's build a very simple guestbook API using Express. The guestbook will be used to record a comment, the name of the person who made the comment, and the time the comment was made. We will add an additional endpoint that can retrieve all the comments that have been made, starting with the latest comment. We will use S3 to store the comments. Note that I could use an RDBMS or NoSQL database for this - but because I only care about exposing the ability to list and create entries, I can get away with simple object storage.
+Let's build a very simple guestbook API using Express. The guestbook will be used to record a comment, the name of the person who made the comment, and the time the comment was made. We will add an additional endpoint that can retrieve all the comments that have been made, starting with the latest comment. We will use S3 to store the comments. Note that while I could use an RDBMS or NoSQL database for this, as I only have a requirement for a pageable list this is overkill. If I needed to retrieve comments by an ID or some other attribute, then I would start looking at storage solutions with flexible options for retrieving data.
 
 We will build this all using the AWS Serverless Application Model (SAM).
+
+The complete (finished) example is available [here](https://github.com/matt-tyler/simple-node-api).
 
 # Setting up your environment for AWS development
 
@@ -40,7 +46,7 @@ Before we get started we will need to install a few tools to do this. We will ne
 
     (This)[https://medium.com/blechatech/how-to-setup-aws-credentials-for-new-code-cc80c44cc67] article does a reasonable job of explaining what is required, as does the [official documentation](https://github.com/aws/aws-cli) for the AWS CLI.
 
-    They way I typically test to see whether things are working is to create an S3 bucket in my account - I will then issue an `aws s3 ls` call. If the bucket I made is returned in the call, I know that everything is set up correctly.
+    The way I typically test to see whether things are working is to create an S3 bucket in my account - I will then issue an `aws s3 ls` call. If the bucket I made is returned in the call, I know that everything is set up correctly.
 
 4. Ensure you have nodejs 12 installed.
 
@@ -189,8 +195,7 @@ REPORT RequestId: 6bb44d66-e096-124b-5ce9-5f1f1fea88f9  Init Duration: 473.40 ms
 
 We can see the 'hello world' response inside the JSON payload that was returned from our lambda function.
 
-Now let's deploy the application - to do this we will perform a guided deploy.
-
+Now let's deploy the application - to do this we will perform a guided deploy. Upon completion of a guided deploy, a configuration file will be created that allows future deploys to use our previous responses.
 ```
 sam deploy --guided
 ```
@@ -218,7 +223,7 @@ Configuring SAM deploy
 
         Looking for resources needed for deployment: Found!
 
-                Managed S3 bucket: aws-sam-cli-managed-default-samclisourcebucket-5elb445a2eu1
+                Managed S3 bucket: <aws-sam-cli-managed-default-samclisourcebucket-HASH>
                 A different default S3 bucket can be set in samconfig.toml
 
         Saved arguments to config file
@@ -232,7 +237,7 @@ Configuring SAM deploy
         Stack name                 : simple-node-api
         Region                     : ap-southeast-2
         Confirm changeset          : True
-        Deployment s3 bucket       : aws-sam-cli-managed-default-samclisourcebucket-5elb445a2eu1
+        Deployment s3 bucket       : <aws-sam-cli-managed-default-samclisourcebucket-HASH>
         Capabilities               : ["CAPABILITY_IAM"]
         Parameter overrides        : {}
 
@@ -256,7 +261,7 @@ Operation                           LogicalResourceId                   Resource
 + Add                               ServerlessHttpApi                   AWS::ApiGatewayV2::Api            
 ---------------------------------------------------------------------------------------------------------
 
-Changeset created successfully. arn:aws:cloudformation:ap-southeast-2:990231343307:changeSet/samcli-deploy1577946076/01b8938e-9205-4489-b1a2-0599a8ebfc41
+Changeset created successfully. arn:aws:cloudformation:ap-southeast-2:<ACCOUNT_ID>:changeSet/samcli-deploy1577946076/01b8938e-9205-4489-b1a2-0599a8ebfc41
 
 
 Previewing CloudFormation changeset before deployment
@@ -419,21 +424,23 @@ async function writeMessage(s3, message, author) {
 }
 ```
 
-Reading messages out is also relatively simple. This code will list out 'maxItems' worth of objects, continuing to iterate based on the continuation token. The contents of each object is then retrieved and returned along with the next continuation token if there are more results available. The tokens are used to paginate the results.
+Reading messages out is also relatively simple. This code will list out 'maxItems' worth of objects, continuing to iterate based on the continuation token. The contents of each object is then retrieved and returned along with the next continuation token if there are more results available. The tokens are used to paginate the results. Note that I did have to base64 encode/decode the token to ensure query arguments were not mangled by express' query argument parsing (though this is not an unusual thing to do).
 
 ```javascript
 async function getMessages(client, maxItems, token) {
     const { Contents, NextContinuationToken } = await client.listObjectsV2({
         MaxKeys: maxItems,
-        ContinuationToken: token
+        ContinuationToken: token || 
+            new Buffer(token, 'base64').toString('ascii')
     }).promise();
 
     const res = await Promise.all(Contents
-        .map(({ Key }) => s3.get_object({ Key }).promise()));
+        .map(({ Key }) => client.getObject({ Key }).promise()));
 
     return {
         Items: res.map(({ Body }) => JSON.parse(Body)),
-        NextToken: NextContinuationToken
+        NextToken: NextContinuationToken || 
+            new Buffer(NextContinuationToken, 'ascii').toString('base64')
     }
 }
 ```
@@ -443,7 +450,8 @@ You can learn more about pagination in serverless applications from Serverless H
 After doing another round of `sam build && sam deploy`, let's curl our new API.
 
 ```bash
-ENDPOINT=https://c3q2o99qxh.execute-api.ap-southeast-2.amazonaws.com
+# Your API endpoint address is available from the output of your deployment
+ENDPOINT=<ENDPOINT>
 
 # this should return nothing e.g. {"Items":[]}
 curl $ENDPOINT
@@ -512,7 +520,7 @@ If we curl the endpoint we should recieve the following
 }
 ```
 
-Paging through the result set is possible by using the maxItems query parameter. If we set it to 1 e.g. `curl $ENDPOINT?maxItems=1`, we will receive the first item and a token to retrieve more data.
+Paging through the result set is possible by using the maxItems query parameter. If we set it to 1 e.g. `curl "$ENDPOINT?maxItems=1"`, we will receive the first item and a token to retrieve more data.
 
 ```json
 {
@@ -527,7 +535,7 @@ Paging through the result set is possible by using the maxItems query parameter.
 }
 ```
 
-Now using the value of NextToken, we can retrieve the next value;
+Now using the value of NextToken, we can retrieve the next value using `curl "$ENDPOINT?maxItems=1&token=MU5ZVjBnR0Nza2g1cXF4Nm5HSDZoUU5IaFg4bjk4R0Z1Uzc2TkFlQWY3blI0S0xDak5DQVZ6cG5aZy92aEQxMHFUeUJJd1A5cC8xRnNFME9Hakw2VnJlczBRWVdnaWVpTm8vTnhLREhvMUlZQ2UwSCtVVHd6SXVCL0NFSlJ5OE15bktHUjNFa0QwNnNybUlqeW9RekdrMUwvTDR0NHUyTlQ="
 
 ```json
 {

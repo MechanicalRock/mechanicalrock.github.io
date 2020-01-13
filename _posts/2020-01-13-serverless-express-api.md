@@ -12,7 +12,7 @@ image: img/serverless-express.png
 
 # Introduction
 
-Released in 2015, AWS API Gateway allows developers to build and publish APIs that can be consumed by clients over public internet and virtual private cloud networks. At Re:Invent 2019, AWS announced a significant addition to the service that they have called "HTTP APIs". The HTTP API is a direct response to customers who wanted to build simple HTTP backed API's, who did not need the complete feature set of API Gateway. The new HTTP API service is perfect for hosting Lamba backend applications that are written in popular HTTP Frameworks like Express, Flask, .NET etc.
+Released in 2015, AWS API Gateway allows developers to build and publish APIs that can be consumed by clients over public internet and virtual private cloud networks. At Re:Invent 2019, AWS announced a significant addition to the service that they have called "HTTP APIs". The HTTP API is a direct response to customers who wanted to build simple HTTP backed API's, who did not need the complete feature set of API Gateway. The new HTTP API service is perfect for hosting Lamba backend applications that are written in popular HTTP Frameworks like Express, Flask, .NET etc. This wouldn't be my first choice when building a new application, and isn't how we typically build applications at Mechanical Rock - but it's certainly going to be useful for a particular set of developers, so why not take a look?
 
 # How is this different from the existing API Gateway
 

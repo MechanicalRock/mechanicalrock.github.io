@@ -20,7 +20,7 @@ This existing API Gateway has A LOT of features. Someone who wants to build an a
 
 # Let's create a hello world app with SAM!
 
-Let's build a very simple guestbook API using Express. The guestbook will be used to record a comment, the name of the person who made the comment, and the time the comment was made. We will add an additional endpoint that can retrieve all the comments that have been made, starting with the latest comment. We will use S3 to store the comments. Note that while I could use an RDBMS or NoSQL database for this, as I only have a requirement for a pageable list this is overkill. If I needed to retrieve comments by an ID or some other attribute, then I would start looking at storage solutions with flexible options for retrieving data.
+Let's build a very simple guestbook API using Express. The guestbook will be used to record a comment, the name of the person who made the comment, and the time the comment was made. We will add an additional endpoint that can retrieve all the comments that have been made, starting with the latest comment. We will use S3 to store the comments. Note that while I could use an RDBMS or NoSQL database for this, as I only have a requirement for a pageable list this is overkill. If I needed to retrieve comments by an ID or some other attribute, then I would start looking at storage solutions with flexible options for retrieving data. (note: this makes deleting the API a bit of a pain - because unless the comments bucket is empty the stack will fail to delete. Keep in mind that you will need to delete the bucket independently of the stack when you remove this application from your account).
 
 We will build this all using the AWS Serverless Application Model (SAM).
 
@@ -550,7 +550,7 @@ Now using the value of NextToken, we can retrieve the next value using `curl "$E
 }
 ```
 
-# A security perspective
+# What next?
 
 We now have a basic API working but there are still issues that remain.
 
@@ -562,9 +562,16 @@ We now have a basic API working but there are still issues that remain.
 
     There is a potential for the API to be used in an injection attacked. For example, a malicious javascript payload could be sent to the service and this could be executed by a browser upon retrieving a message. Whilst the client should ultimately be responsible for protecting against this, it would not be a bad idea to add some level of detection/sanitisation on the server side to make this less likely.
 
-# TODO
+3. The API is not particularly usable.
 
-Conclude
-Github links
-header image
-etc
+    Sure, we've curl'ed some endpoints to show everything kinda works, but we would typically call the API from a frontend. This isn't very easy to do at the moment - we should generate some code that we can call from the client to consume the API.
+
+4. We have not accounted for observability
+
+    We are currently not logging anything, or tracing calls to other services, or keeping track of metrics. We should add structured logging, trace calls with X-Ray, and create CloudWatch metrics, in order to make this a production-ready service.
+
+I intend to address this points in future articles.
+
+In closing, I hope this gives you a good starting point to building serverless applications. The new HTTP features in API Gateway are a good way to get start if you are already familiar with an in existing framework like Express and Flask. Hopefully this has also given you insight into the great SAM tooling that is available from AWS as well.
+
+Starting out with Serverless? [Contact Mechanical Rock to Get Started!](https://www.mechanicalrock.io/lets-get-started)

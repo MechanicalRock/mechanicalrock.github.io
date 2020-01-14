@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Build & Deploy a Serverless Express API to AWS
-date: 2020-01-13
+date: 2020-01-14
 tags: javascript tutorial serverless sam
 author: Matthew Tyler
 image: img/serverless-express.png
@@ -54,20 +54,20 @@ Before we get started we will need to install a few tools to do this. We will ne
 
 1. First create a directory to that will contain the project.
 
-```bash
-mkdir -p projects && cd projects
-```
+    ```bash
+    mkdir -p projects && cd projects
+    ```
 
 2. Now we can initialize the project using the AWS SAM CLI.
 
-```bash
-sam init --no-interactive \
-    --runtime nodejs12.x \
-    --dependency-manager npm \
-    --output-dir . \
-    --name simple-node-api \
-    --app-template hello-world
-```
+    ```bash
+    sam init --no-interactive \
+        --runtime nodejs12.x \
+        --dependency-manager npm \
+        --output-dir . \
+        --name simple-node-api \
+        --app-template hello-world
+    ```
 
 This will generate the following structure:
 

@@ -366,7 +366,7 @@ openapi-generator generate \
   -p npmVersion=1.0.0
 ```
 
-Assuming this worked, it should have output a bunch of files into the 'client-ts' directory. Admittedly, it looked a little a messy, so I a couple of things -
+Assuming this worked, it should have output a bunch of files into the 'client-ts' directory. Admittedly, it looked a little a messy, so I made a couple of changes.
 
 1. I moved all the typescript files under a new 'src' directory.
 2. I modified the tsconfig file so that root directory pointed to the new 'src' directory -
@@ -379,7 +379,7 @@ Assuming this worked, it should have output a bunch of files into the 'client-ts
     "module": "commonjs",
     "noImplicitAny": true,
     "outDir": "dist",
-    "rootDir": "./src"
+    "rootDir": "./src",
     "typeRoots": [
       "node_modules/@types"
     ]

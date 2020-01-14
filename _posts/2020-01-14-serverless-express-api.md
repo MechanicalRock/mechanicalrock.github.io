@@ -570,7 +570,7 @@ We now have a basic API working but there are still issues that remain.
 
     We are currently not logging anything, or tracing calls to other services, or keeping track of metrics. We should add structured logging, trace calls with X-Ray, and create CloudWatch metrics, in order to make this a production-ready service.
 
-I intend to address this points in future articles.
+I intend to address these points in future articles.
 
 In closing, I hope this gives you a good starting point to building serverless applications. The new HTTP features in API Gateway are a good way to get start if you are already familiar with an in existing framework like Express and Flask. Hopefully this has also given you insight into the great SAM tooling that is available from AWS as well.
 

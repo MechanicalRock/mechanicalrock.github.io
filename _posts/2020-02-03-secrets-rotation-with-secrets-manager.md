@@ -12,12 +12,6 @@ TODO: replace cover image
 <center><img src="/img/" /></center>
 <br/>
 
-pull based deployment to s3 / dynamic branching pipelines
-wishlist - pass role for IAM
-type providers - javascript support
-type providers - share a registry out to an organization
-
-
 # Introduction
 
 A constant frustration of mine is sharing secret material between two services. A good deal of the time, this is to allow Service A to access Service B. Unfortunately, I've seen a lot instances of hardcoding credentials between both services. There are lot of things wrong with this.

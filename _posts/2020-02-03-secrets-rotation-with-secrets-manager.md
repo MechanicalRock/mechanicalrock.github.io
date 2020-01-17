@@ -76,12 +76,11 @@ We also wanted to exchange a JWT from a third party identity provider for a sign
 
     To use CloudFront signing, you must generate a set of keys in IAM. This must be done via the Console, and can only be done by the root user of the account. There is no way to rotate these keys other than manually, and you get one set of keys for all distributions in your account.
 
-Our solution to get around this is to generate our own keys using AWS Secrets Manager on tighter rotation schedule, and implement our own signing/validation flows in Lambda @ Edge. The following diagram illustrates roughly what needs to happen.
+My solution to get around this is to generate my own keys using AWS Secrets Manager on tighter rotation schedule, and implement my own signing/validation flows in Lambda @ Edge. The following diagram illustrates roughly what needs to happen.
 
-TODO: Insert Image Here
+<center><img src="/img/rotation/cf-flow.png" /></center>
 
 The critical piece of the puzzle is having a secret and rotating it, and then retrieving it, so this is what I'll cover now. 
-
 
 # Building a CloudFormation Template
 

@@ -280,9 +280,7 @@ This retrieve the current version of the secret and returns early if the version
 
 # Kicking the Tyres
 
-TODO: push code to repo
-
-A completed example is available in the respository [here]() as SAM template. Let's try it out - you will need to install the aws-cli and aws-sam-cli, and clone the repo to follow on.
+A completed example is available in the respository [here](https://github.com/matt-tyler/secret-rotation-example) as a SAM template. Let's try it out - you will need to install the aws-cli and aws-sam-cli, and clone the repo to follow on.
 
 Running `sam build && sam deploy --guided` with correct credentials will allow you to deploy the solution.
 

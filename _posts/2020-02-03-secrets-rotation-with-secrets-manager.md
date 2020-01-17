@@ -4,12 +4,10 @@ title: Rotation of Secrets with AWS Secrets Manager
 date: 2020-02-03
 tags: javascript tutorial aws secrets
 author: Matthew Tyler
-image: 
+image: img/rotation/title.png
 ---
 
-TODO: replace cover image
-
-<center><img src="/img/" /></center>
+<center><img src="/img/rotation/title.png" /></center>
 <br/>
 
 # Introduction
@@ -34,17 +32,23 @@ Can't we cut out the middle-man? Let's learn how understanding secret rotation c
 
 Secret rotation essentially works by keeping two values of a secret valid at any time. When a rotation is performed, we generate a new secret and deprecated the oldest version.
 
-TODO: Insert Image Here
+1. Initially we start with two valid secrets, the 'nth-1' value and the 'nth' value. These are typically marked with a label, denoting one as the 'current' (most recently generated) secret, and the other as 'previous'. Any requests for a secret will return the current value, but any requests that are sent using the previous secret should (in the best case) still work.
 
-1. Initially we start with two valid secrets, the 'nth-1' value and the 'nth' value. These are typically marked with a label, denoting one as the 'current' (most recently generated) secret, and the other as 'previous'. Any requests for a secret will return the current value, but any requests that are sent using the previous secret should still work.
+<center><img src="/img/rotation/step01.png" /></center>
+
 2. At some point, a rotation is initiated. This results in the creation of the 'n+1' value. This then goes into a 'pending' state.
+
+<center><img src="/img/rotation/step02.png" /></center>
+
 3. The pending secret is transferred to the other system, e.g. where it needs to be set as a new password. If this works, currently three different passwords should work to access the system.
 4. Usually the system would perform a test now to ensure the new secret works, before it removes any existing secrets.
-5. Assuming the test passed, we can proceed to shuffle the secrets around. The 'nth+1' secret is now labeled as the 'current' secret, and the 'nth' secret is now labeled as previous. The 'nth-1' secret is now unlabeled, marking it as deprecated. The rotation has now completed.
+5. Assuming the test passed, we can proceed to shuffle the secrets around. The 'nth+1' secret is now labeled as the 'current' secret, and the 'nth' secret is now labeled as previous. The 'nth-1' secret is now unlabeled, marking it as deprecated, and will be deleted at some point. The rotation has now completed.
+
+<center><img src="/img/rotation/step03.png" /></center>
 
 Most importantly, this is all automated so I never even need to know what the secret is - my services just need to be able to reference the address of the secret to fetch the value.
 
-There are problems with this method for some systems. If you must absolutely use a one-user, one-password scenario because that is all the protected system supports, systems that have pulled an older secret will need to attempt to refresh the secret on an authorization failure. You can avoid this is if the systems is capable of handling multiple users. AWS has pretty good documentation on a few common secrets rotation scenarios, and it is worth reading if you want to understand secrets rotation in more detail.
+There are problems with this method for some systems. If you must absolutely use a one-user, one-password scenario because that is all the protected system supports, systems that have pulled an older secret will need to attempt to refresh the secret on an authorization failure. You can avoid this is if the system is capable of handling multiple users. AWS has pretty good documentation on a few common secrets rotation scenarios, and it is worth reading if you want to understand secrets rotation in more detail.
 
 [Rotating Secrets - One User, One Password](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets-one-user-one-password.html)
 [Rotating Secrets - Switch Between Existing Users](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets-two-users.html)
@@ -62,13 +66,13 @@ AWS Secrets Manager is a secrets management service (obviously) that is primaril
 
 I wasn't all too long ago we were building out a CloudFormation template that would act as an 'enterprise' ready, one-click method to deploy single-page-applications built with frameworks like react and angular. This involved ensuring that a lot of authentications flows were handled server-side, and that web content would be protected as well. No login - no content. This involved a fair amount of thought, and involved a collection of Lambda @ Edge functions with CloudFront to provide the neccesary redirect functionality. 
 
-We also wanted to exchange a JWT from a third party identity provider for a signed cookie, in order to protect access to the content behind CloudFront. [This is actually standard functionality in CloudFormation]() but we had a few issues with how it all works;
+We also wanted to exchange a JWT from a third party identity provider for a signed cookie, in order to protect access to the content behind CloudFront. [This is actually standard functionality in CloudFormation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-cookies.html) but we had a few issues with how it all works;
 
 1. It clashed with a requirement to provide deep-linking functionality
 
     Users would commonly receive links to specific paths in an application - e.g. orders in an ordering system. We would therefore need to accept some information about the original request, i.e. the path, and send it back in a cookie along along with the instruction to redirect to the login page if the user was unauthorized. This allows the client application to redirect the user to a specific path upon login. We would need to perform some additional work via Lambda @ Edge, but we found that using CloudFront signed cookies would prevent this as the request would be 403 rejected before triggering the Lambda. We were therefore prevented from inspecting the request.
 
-2. CloudFront signing kind of sucks
+2. The way CloudFront keys are generated (atm) kind of sucks
 
     To use CloudFront signing, you must generate a set of keys in IAM. This must be done via the Console, and can only be done by the root user of the account. There is no way to rotate these keys other than manually, and you get one set of keys for all distributions in your account.
 
@@ -382,7 +386,7 @@ In my examples, I'm referring to using Lambda functions. These will be recycled 
 
 By now you should have a rough idea how secrets rotation works, and how to implement a simple rotation function using AWS Secrets Manager. I really do hope you have realised how useful the practice is over the alternatives, and going forward, it will become 'the way' to do things. 
 
-Because seriously, every time I see an application secret on a post-it note or stored in plain-text somewhere I die a little inside.
+Because seriously... every time I see an application secret on a post-it note or stored in plain-text somewhere I die a little inside.
 
 Want to get all secret squirrel? Contact Mechanical Rock to Get Started!](https://www.mechanicalrock.io/lets-get-started)
 

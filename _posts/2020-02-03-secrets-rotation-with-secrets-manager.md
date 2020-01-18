@@ -16,7 +16,7 @@ A constant frustration of mine is sharing secret material between two services. 
 
 > Chaos ensues if the secret ever needs to change
 
-Secrets management is often a chore. If you aren't changing a secret often, you aren't practicing it, and therefore it will be difficult to do when you need to it. The last thing you want to do is trying to work out how to change a secret after it has been compromised.
+Secrets management is a chore and often ignored out of benign neglect. Avoid it and you will find you will struggle to do perform it when it really counts. The last thing you should want to do is try to work out how to rotate a secret after it has been compromised.
 
 > It's brittle
 

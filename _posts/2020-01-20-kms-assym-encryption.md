@@ -10,7 +10,6 @@ image: img/asym.png
 <center><img src="/img/asym.png" /></center>
 <br/>
 
-
 # Introduction
 
 I was recently doing some proof-of-concept work that required performing encryption using keys generated from AWS KMS (Key Management Service). I could find plenty of examples using symmetric encryption, but couldn't find an end-to-end guide that showed how to generate keys from AWS and then use them to encrypt and decrypt data. To that end, I hope this guide will be helpful to anyone else that may need to do this.
@@ -38,7 +37,7 @@ The first thing we need to do is to create a customer managed key (CMK). This ke
 KMS_CMK_ID=$(aws kms create-key -o json | jq -r '.KeyMetadata.KeyId')
 ```
 
-After this has been done, we can generate a key pair. This is done with the command `generate-data-key-pair-without-plaintext`. This will a generate key-pair that can be used to encrypt and decrypt data. The public key is sent back as base64 encoded plaintext, whilst the private key will be sent back as base64 encoded text, that was encrypted using CMK that we just created. We will use the public key to encrypt our messages. To decrypt, we first must make a call to AWS KMS to decrypt the private key, and then we use unencrypted response to decode our message.
+After this has been done, we can generate a key pair. This is done with the command `generate-data-key-pair-without-plaintext`. This will a generate key-pair that can be used to encrypt and decrypt data. The public key is sent back as base64 encoded plaintext, whilst the private key will be sent back as base64 encoded text, that was encrypted using the CMK that we just created. We will use the public key to encrypt our messages. To decrypt, we first must make a call to AWS KMS to decrypt the private key, and then we use the unencrypted response to decode our message.
 
 We'll now create a key-pair.
 
@@ -81,7 +80,7 @@ $(aws kms decrypt \
 EOF
 ```
 
-This will base64 decode private key ciphertext blob that we received when generated the key, sends it off for decryption (the ciphertext includes the details of the key that encrypted it, so it does not need to be specified in the decrypt operation), and we receive an unecrypted, base64 encoded private key. In a way roundabout way, requiring this mechanism ensures that only roles/users that have access to the decrypt operation of the CMK have the ability to access and use the private data key.
+This will base64 decode the private key ciphertext blob that we received when generated the key, and send it off for decryption (the ciphertext includes the details of the key that encrypted it, so it does not need to be specified in the decrypt operation), and we receive an unecrypted, base64 encoded private key. In a roundabout way, requiring this mechanism ensures that only roles/users that have access to the decrypt operation of the CMK have the ability to access and use the private data key.
 
 We can now use the key to decrypt the message with openssl.
 

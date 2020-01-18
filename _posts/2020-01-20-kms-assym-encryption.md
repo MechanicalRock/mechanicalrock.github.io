@@ -7,6 +7,10 @@ author: Matt Tyler
 image: img/asym.png
 ---
 
+<center><img src="/img/asym.png" /></center>
+<br/>
+
+
 # Introduction
 
 I was recently doing some proof-of-concept work that required performing encryption using keys generated from AWS KMS (Key Management Service). I could find plenty of examples using symmetric encryption, but couldn't find an end-to-end guide that showed how to generate keys from AWS and then use them to encrypt and decrypt data. To that end, I hope this guide will be helpful to anyone else that may need to do this.

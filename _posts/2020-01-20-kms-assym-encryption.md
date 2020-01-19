@@ -12,7 +12,7 @@ image: img/asym.png
 
 # Introduction
 
-I was recently doing some proof-of-concept work that required performing encryption using keys generated from AWS KMS (Key Management Service). I could find plenty of examples using symmetric encryption, but couldn't find an end-to-end guide that showed how to generate keys from AWS and then use them to encrypt and decrypt data. To that end, I hope this guide will be helpful to anyone else that may need to do this.
+I was recently doing some proof-of-concept work that required performing encryption using keys generated from AWS Key Management Service (KMS). I could find plenty of examples using symmetric encryption, but couldn't find an end-to-end guide that showed how to generate keys from AWS and then use them to encrypt and decrypt data. To that end, I hope this guide will be helpful to anyone else that may need to do this.
 
 # Why would I want to do this?
 
@@ -32,12 +32,16 @@ In addition to an active AWS account, you will need to have installed;
 
 The first thing we need to do is to create a customer managed key (CMK). This key will be used to encrypt the private key. The private key will be used later to decrypt our secret payload.
 
+<center><img src="/img/asynckeys/step01.png" /></center>
+
 ```bash
 # This will create our key and store the ID of the created key
 KMS_CMK_ID=$(aws kms create-key -o json | jq -r '.KeyMetadata.KeyId')
 ```
 
 After this has been done, we can generate a key pair. This is done with the command `generate-data-key-pair-without-plaintext`. This will a generate key-pair that can be used to encrypt and decrypt data. The public key is sent back as base64 encoded plaintext, whilst the private key will be sent back as base64 encoded text, that was encrypted using the CMK that we just created. We will use the public key to encrypt our messages. To decrypt, we first must make a call to AWS KMS to decrypt the private key, and then we use the unencrypted response to decode our message.
+
+<center><img src="/img/asynckeys/step02.png" /></center>
 
 We'll now create a key-pair.
 
@@ -56,6 +60,8 @@ EOF
 
 Once this is done we can encrypt our message with the public key using openssl. You can do so with the following commands.
 
+<center><img src="/img/asynckeys/step03.png" /></center>
+
 ```bash
 echo "My top secret message" > ./input.txt
 
@@ -68,6 +74,8 @@ openssl pkeyutl -encrypt -pubin \
 This will have output the encrypted text to the `input.txt.encrypted` file. If you try to read the file, you'll notice it has been scrambled.
 
 Now we need to decrypt the file. The first thing we need to do is recover the unecrypted private key. We can do this with the following commands.
+
+<center><img src="/img/asynckeys/step04.png" /></center><br/>
 
 ```bash
 cat << EOF > private.key
@@ -84,6 +92,8 @@ This will base64 decode the private key ciphertext blob that we received when ge
 
 We can now use the key to decrypt the message with openssl.
 
+<center><img src="/img/asynckeys/step05.png" /></center><br/>
+
 ```bash
 openssl pkeyutl -decrypt \
     -inkey private.key \
@@ -95,4 +105,4 @@ You can run `diff input.txt input.txt.decrypted` to confirm that the decrypted m
 
 Hopefully this practical example has helped you understand how to use AWS KMS data keys.
 
-Got Data that needs securing? [Contact Mechanical Rock to Get Started!](https://www.mechanicalrock.io/lets-get-started)
+Got data that needs securing? [Contact Mechanical Rock to Get Started!](https://www.mechanicalrock.io/lets-get-started)

@@ -370,7 +370,10 @@ buildDeployReactNonProd.addToRolePolicy(
 In this way, we allow the build account a specific permission to the role that runs the CodeBuild
 instance for the react application. We then grant that CodeBuild instance write privileges to the
 destination bucket in the workload account in order to be able to output the react application to
-the bucket.
+the bucket. Let's take a look a the finished product:
+{:refdef: style="text-align: center;"}
+<img src="/img/cdk_pipeline.png">
+{: refdef}
 
 ## In summary
 

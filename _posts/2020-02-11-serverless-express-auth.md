@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Build & Deploy a Serverless Express API to AWS
+title: How to Protect a Serverless Express API with OpenID Connect
 date: 2020-02-11
 tags: javascript tutorial serverless sam
 author: Matthew Tyler

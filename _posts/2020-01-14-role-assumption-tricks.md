@@ -32,30 +32,69 @@ Setting up cross account role assumption can be a little confusing if you have n
 
    The role will need to have a trust policy like the following;
 
-   ```yaml
-
+   ```json
+    {
+      "Version": "2012-10-17",
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::1234567890:root"
+        ]
+      }
+    }
    ```
 
    By calling out the account root, you are effectively delegating responsibility to the other account to manage who is allowed to access this role. Note however, that you cannot use wildcards in the trust policy, so you either trust the whole account or something more specific
 
 3. Within the source account, create a role that is capable of assuming the role in the target account
 
-   It will require IAM permissions that look like the following
+   It will require IAM permissions that look like the following;
 
-   ```yaml
-
+   ```json
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Action": "sts:AssumeRole",
+          "Resource": "arn:aws:iam::098765431:role/role-to-assume",
+        }
+      ]
+    }
    ```
 
 Imagine we were to assume a role in another account to access S3 from within that context. The following code will assume role using the javascript SDK for this scenario, and provide those credentials to the S3 account. Using plain STS client calls, it looks like the following;
 
 ```javascript
+import { S3, STS, Credentials } from "aws-sdk";
 
+const { 
+  Credentials: { 
+    AccessKeyId: accessKeyId, 
+    SecretAccessKey: secretAccessKey,
+    SessionToken: sessionToken 
+  } 
+} = await new STS().assumeRole({
+  RoleArn: "arn:aws:iam::0987654321:role/role-to-assume"
+}).promise();
+
+const client = new S3({
+  credentials: new Credentials({ accessKeyId, secretAccessKey, SessionToken })
+});
 ```
 
-Using ChainableTemporaryCredentials we can somewhat skip a bit of the ceremony by using the following;
+There's obviously a lot of boilerplate here, primarily because of the changing case of the input and output parameters between the response of the STS call and the credentials object. Removing this boilerplate was my reason for writing my own helper library in the first place. Now that ChainableTemporaryCredentials is around, we get rid of some the ceremony. Check this out;
 
-```javascript
+```typescript
+import { S3, ChainableTemporaryCredentials } from "aws-sdk";
 
+const credentials = new ChainableTemporaryCredentials({
+  params: {
+    // Any parameters used by STS AssumeRole can be used here eg; RoleSessionName etc
+    RoleArn: "arn:aws:iam::0987654321:role/role-to-assume"
+  }
+});
+
+const client = new S3({ credentials });
 ```
 
 # Role Chaining
@@ -64,10 +103,23 @@ Extending this to a third role that is assumable from a 'middle' role isn't an a
 
 <image showing the trusts>
 
-Using ChainableTemporaryCredentials we can perform the double-assumption by adding an additional parameter;
+Using ChainableTemporaryCredentials we can perform the double-assumption by adding an additional parameter. 'masterCredentials' can be used to specify how the credentials to the top level call should be acquired.
 
-```javascript
+```typescript
+import { S3, ChainableTemporaryCredentials } from "aws-sdk";
 
+const credentials = new ChainableTemporaryCredentials({
+  params: {
+    RoleArn: "arn:aws:iam::0101010101:role/next-role-to-assume"
+  },
+  masterCredentials: new AWS.ChainableTemporaryCredentials({
+    params: { 
+      RoleArn: "arn:aws:iam::0987654321:role/role-to-assume"
+    }
+  })
+});
+
+const client = new S3({ credentials });
 ```
 
 Simples! You can probably imagine how ugly it gets when directly using STS calls, hence why I wrote my own library to handle it!

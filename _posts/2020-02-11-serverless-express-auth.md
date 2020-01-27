@@ -16,7 +16,7 @@ In a previous installment we mentioned that our endpoints were not protected by 
 
 As long as you have access to an identity provider that vends JWTs using one of the OAuth2 flows, you should be good to go. I'm going to use Amazon Cognito, but it should not be too difficult to use another provider. All examples here will use the implicit flow which is appropriate for a single-page application talking to a REST API. Other flows may be more appropriate for different situations.
 
-The completed code can be found [here](). Feel free to clone the repository and follow along. I'll let you know when to deploy the various bits.
+The completed code can be found [here](https://github.com/matt-tyler/simple-node-api-auth). Feel free to clone the repository and follow along. I'll let you know when to deploy the various bits.
 
 # Step One: Provision an Auth Provider
 

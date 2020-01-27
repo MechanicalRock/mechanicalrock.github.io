@@ -2,7 +2,7 @@
 layout: post
 title: Build & Deploy a Serverless Express API with OpenAPI
 date: 2020-01-27
-tags: javascript tutorial serverless sam
+tags: javascript tutorial serverless aws
 author: Matthew Tyler
 image: img/serverless-express.png
 ---
@@ -13,6 +13,8 @@ image: img/serverless-express.png
 # Introduction
 
 APIs are everywhere these days as the popularity of microservices continues to increase and cloud usage skyrockets. Everyone and their dog is building an API from the scrappiest start-up to the crustiest enterprise. Unfortunately I see a lot of wasted development effort spent on regression testing and hand-cranking client code by would-be API architects. Time, effort, money - all things that can be saved by crafting an API specification using a format like OpenAPI.
+
+The code for this tutorial can be found [here](https://github.com/matt-tyler/simple-node-api-openapi).
 
 # What is OpenAPI
 

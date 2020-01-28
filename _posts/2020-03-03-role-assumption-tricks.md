@@ -1,7 +1,7 @@
 ---
 layout: post
 title: AWS STS Role Chaining
-date: 2020-01-14
+date: 2020-03-03
 tags: javascript tutorial serverless sam
 author: Matthew Tyler
 image: 
@@ -12,19 +12,19 @@ image:
 
 # Introduction
 
-At some in your career using AWS, you'll find it nessecary to learn a little about how assuming roles in other accounts works. If your working on a personal account, chances are you used to logging in with a user that you have created for yourself. When you join a company using AWS, it's more likely that they have a multiple account set up using AWS Organizations with AWS SSO - in which case you will log into a specific account using a role via federated access. Likewise, you are probably used to needing to create roles for various services (like Lambda), and provide a service trust so that the service can use a role.
+At some point in your career using AWS, you'll find it nessecary to learn a little about how assuming roles in other accounts works. If your working on a personal account, chances are you used to logging in with an IAM user that you have created for yourself. When you join a company using AWS, it's more likely that they have a multi-account set-up using AWS Organizations with AWS SSO - in which case you will log into a specific account using a role via federated access. Likewise, you are probably used to needing to create roles for various services (like Lambda), and provide a service trust so that the service can use a role.
 
-I've done a lot of control-plane work in my time, and this has nessecitated understanding a fair amount about how assuming roles works. A more complicated trick I've had to pull of is building automation that required role chaining - assuming a role into an account, and from there, assuming a role into another account. You can think of this as using an account similar to how one would use a jump-box. Most of the time this has been to meet a security policy, delegating permissions management to an account managed by some central authority. This allows that party responsibility for access control, and the ability to closely monitor what is happening. 
+I've done a lot of control-plane work in my time, and this has nessecitated understanding a fair amount about how assuming roles works. A more complicated trick I've had to pull off is building automation that required role chaining - assuming a role into an account and from there, assuming a role into another account. You can think of this as using an account similar to how one would use a jump-box (or bastion host for non-Australians). Most of the time this has been to meet a security policy, delegating permissions management to an account managed by some central authority. This allows that party responsibility for access control, and the ability to closely monitor what is happening. 
 
 <image of a double jump>
 
 Assuming a role via the Javascript SDK is relatively simple, but is has become easier in recent times through the addition of a new credential provider in late 2018, known as 'ChainableTemporaryCredentials'. Prior to this, I used my own custom library which allowed me to do perform role chaining. However, my library did not not refresh credentials when they expired; this was less important for me because I tended to only use the library within lambda functions, and not long running compute. 'ChainableTemporaryCredentials' does handle credential refreshing, so it is a better solution than what I came up with.
 
-Before we get into the specifics though, let's discuss a little bit about role-assumption works in the simple two-account model.
+Before we get into the specifics though, let's discuss a little bit about how role-assumption works in the simple two-account model.
 
 # Cross Account Role Assumption
 
-Setting up cross account role assumption can be a little confusing if you have never done it, but it will become second nature the more you do it. It works like this;
+Setting up cross account role assumption can be a little confusing if you have never done it, but it will become second nature the more you do it. It works like this:
 
 1. Create a role in the target account, that will ultimately be assumed by another account. Give it the nessecary permissions to do what will be required of it.
 
@@ -126,6 +126,6 @@ Simples! You can probably imagine how ugly it gets when directly using STS calls
 
 # Conclusion
 
-We had a brief look at how cross-account role assumption works, and how to set it up in the simple two account case. We showed how to do this STS calls, and how the ChainableTemporaryCredentials provider in Javascript SDK makes this easier. Then we added a third role, and showed how to perform role chaining via the credential provider. We gained an appreciation for how this makes the entire process simpler!
+We had a brief look at how cross-account role assumption works, and how to set it up in the simple two account case. We showed how to do this STS calls and how the ChainableTemporaryCredentials provider in Javascript SDK makes this easier. Then we added a third role, and showed how to perform role chaining via the credential provider. We gained an appreciation for how this makes the entire process simpler!
 
 IAM got you feeling chained up? [Contact Mechanical Rock to Get Started!](https://www.mechanicalrock.io/lets-get-started)

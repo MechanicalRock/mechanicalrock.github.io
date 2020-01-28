@@ -9,7 +9,11 @@ image: img/inception-pipelines/seed_germination.png
 
 The [inception pipeline][inception-pipeline-post] which Mechanical Rock's very own Pete Yandell
 pioneered back in early 2018 was created as a way to manage a pipeline through code, which even has
-the ability to update itself through CloudFormation steps.
+the ability to update itself through CloudFormation steps. What I love about it is not only the self
+managing aspect, but also that there is checked in history (so you can easily go back to a point in
+time), accountability, and repeatability. Because you're not using the console to setup your
+infrastructure, reproducing it should disaster strike is minutes of deployment time for resources to
+provision.
 
 Using this for a few projects over the past 18 months or so has highlighted its value as projects
 develop, more steps are added, additional permissions are required or locked down and once you have
@@ -24,8 +28,8 @@ to deploy. Enter: [Cloud Development Kit](https://aws.amazon.com/cdk/).
 The CDK is a relatively new tool from AWS which enables developers to build infrastructure at insane
 speed compared to more historic/traditional methods of writing out lines and lines of YAML or JSON.
 Using programming languages such as Typescript or Python, developers can make use of functions to
-scaffold code quickly, and under the hood the toolkit implements best-practices of cloud development
-which, for example is the principle of least privilege.
+scaffold code quickly, and under the hood the toolkit implements best-practices of secure
+development which, for example is the principle of least privilege.
 
 Let me give you an example. Let's say I want to create an S3 bucket with CloudFront to serve a react
 application.
@@ -260,10 +264,9 @@ synthesis of the CDK application we're working with.
 <img src="/img/cdk_synth_out.png">
 {: refdef}
 
-In order to facilitate the CloudFormation step which would deploy infrastructure in our destination
-account, we'll need to give the destination account permissions and roles for the CloudFormation
-step to assume in order to be able to do the things it needs to to deploy. This is where our
-intermediate step comes in for the BuildAndAdministerPipeline stage.
+In order to allow the pipeline to deploy cross-account, we need to provision a role and permissions
+for CloudFormation to assume. We do this through the intermediate step in the
+BuildAndAdministerPipeline stage.
 
 So the revised stage now looks like this:
 
@@ -332,15 +335,16 @@ websiteBucket.grantWrite(new iam.AccountPrincipal(buildPipelineStack.codebuildIn
 ```
 
 When I synthesised the template, the CDK would see that I needed to grant permissions to a bucket
-which lived in another account so what it would do is try to create that account first, but the
+which lived in another account so what it would do is try to create that permissions first, but the
 problem is here is that the pipeline has to create the resources in the first place since it's the
-root of all things for this project.
+root of all things for this project. So it is effectively trying to create permissions for something
+that doesn't exist.
 
-Being aware of what things need each other in other stacks is super important thing to consider,
-when doing your infrastructure-as-code. To combat this, I observed how I had handled this in the
-past with YAML/JSON CloudFormation templates and noticed a naming scheme/convention which we follow
-in order to provision resources, when the circular dependencies like this exist. As a solution I
-followed a similar convention to proceed.
+Being aware of cross stack dependencies is super important thing to consider, when doing your
+infrastructure-as-code. To combat this, I observed how I had handled this in the past with YAML/JSON
+CloudFormation templates and noticed a naming scheme/convention which we follow in order to
+provision resources, when the circular dependencies like this exist. As a solution I followed a
+similar convention to proceed.
 
 Now, at the top of the Pipeline file for the CDK stack we have:
 
@@ -367,7 +371,7 @@ buildDeployReactNonProd.addToRolePolicy(
 );
 ```
 
-In this way, we allow the build account a specific permission to the role that runs the CodeBuild
+In this way, we allow the build service a specific permission to the role that runs the CodeBuild
 instance for the react application. We then grant that CodeBuild instance write privileges to the
 destination bucket in the workload account in order to be able to output the react application to
 the bucket. Let's take a look a the finished product:

@@ -14,11 +14,11 @@ image: img/serverless-express.png
 
 APIs are everywhere these days as the popularity of microservices continues to increase and cloud usage skyrockets. Everyone and their dog is building an API from the scrappiest start-up to the crustiest enterprise. Unfortunately I see a lot of wasted development effort spent on regression testing and hand-cranking client code by would-be API architects. Time, effort, money - all things that can be saved by crafting an API specification using a format like OpenAPI.
 
-The code for this tutorial can be found [here](https://github.com/matt-tyler/simple-node-api-openapi).
+I'll take you through creating an OpenAPI specification for the guestbook application we created previously. The code for this tutorial can be found [here](https://github.com/matt-tyler/simple-node-api-openapi). We will continue to use AWS SAM to build and deploy the application.
 
 # What is OpenAPI
 
-OpenAPI is a description format for describing REST API's. You may know it by a previous name: Swagger. API specifications are written in yaml or json. There is an entire ecosystem of tools that allow you to parse  these specifications and perform various actions; all the way from producing documentation, to generating code in various languages that will allow you to talk to the API. The latter is the feature I personally find most useful; it removes the pain of needing to completely handroll client code code for a new API.
+OpenAPI is a description format for describing REST API's. You may know it by a previous name: Swagger. API specifications are written in yaml or json. There is an entire ecosystem of tools that allow you to parse these specifications and perform various actions, all the way from producing documentation to generating code in various languages that will allow you to talk to the API. The latter is the feature I personally find most useful as it removes the pain of needing to completely handroll client code code for a new API.
 
 # OpenAPI Both Ways
 
@@ -368,10 +368,10 @@ openapi-generator generate \
   -p npmVersion=1.0.0
 ```
 
-Assuming this worked, it should have output a bunch of files into the 'client-ts' directory. Admittedly, it looked a little a messy, so I made a couple of changes.
+Assuming this worked, it should have output a bunch of files into the 'client-ts' directory. Admittedly, it will look a little a messy, so we need to make a few more changes.
 
-1. I moved all the typescript files under a new 'src' directory.
-2. I modified the tsconfig file so that root directory pointed to the new 'src' directory -
+1. Move all the typescript files under a new 'src' directory.
+2. Modify the tsconfig file so that root directory pointed to the new 'src' directory -
 
 ```json
 {

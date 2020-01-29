@@ -16,7 +16,8 @@ At some point in your career using AWS, you'll find it nessecary to learn a litt
 
 I've done a lot of control-plane work in my time, and this has nessecitated understanding a fair amount about how assuming roles works. A more complicated trick I've had to pull off is building automation that required role chaining - assuming a role into an account and from there, assuming a role into another account. You can think of this as using an account similar to how one would use a jump-box (or bastion host for non-Australians). Most of the time this has been to meet a security policy, delegating permissions management to an account managed by some central authority. This allows that party responsibility for access control, and the ability to closely monitor what is happening. 
 
-<image of a double jump>
+<center><img src="/img/role-chaining/iam-double-jump.png" /></center>
+<br/>
 
 Assuming a role via the Javascript SDK is relatively simple, but is has become easier in recent times through the addition of a new credential provider in late 2018, known as 'ChainableTemporaryCredentials'. Prior to this, I used my own custom library which allowed me to do perform role chaining. However, my library did not not refresh credentials when they expired; this was less important for me because I tended to only use the library within lambda functions, and not long running compute. 'ChainableTemporaryCredentials' does handle credential refreshing, so it is a better solution than what I came up with.
 
@@ -26,7 +27,7 @@ Before we get into the specifics though, let's discuss a little bit about how ro
 
 Setting up cross account role assumption can be a little confusing if you have never done it, but it will become second nature the more you do it. It works like this:
 
-1. Create a role in the target account, that will ultimately be assumed by another account. Give it the nessecary permissions to do what will be required of it.
+1. Create a role in the target account, that will ultimately be assumed by another account. Give it the necessary permissions to do what will be required of it.
 
 2. Adjust the 'AssumeRolePolicy' or 'trust', of the target role. 
 
@@ -39,7 +40,8 @@ Setting up cross account role assumption can be a little confusing if you have n
         "AWS": [
           "arn:aws:iam::1234567890:root"
         ]
-      }
+      },
+      "Action": "sts:AssumeRole"
     }
    ```
 
@@ -101,7 +103,8 @@ const client = new S3({ credentials });
 
 Extending this to a third role that is assumable from a 'middle' role isn't an awful lot different from the example with two roles. We simply add another role, and place a trust on the role in the middle.
 
-<image showing the trusts>
+<center><img src="/img/role-chaining/iam-double-jump-trust.png" /></center>
+<br/>
 
 Using ChainableTemporaryCredentials we can perform the double-assumption by adding an additional parameter. 'masterCredentials' can be used to specify how the credentials to the top level call should be acquired.
 

@@ -119,7 +119,7 @@ through a CloudFormation step.
 Let's take a look at the code pipeline construct in its current form:
 
 ```typescript
-new codepipeline.Pipeline(this, "CDJBuildPipeline", {
+new codepipeline.Pipeline(this, "BuildPipeline", {
   stages: [
     {
       stageName: "Source",
@@ -183,7 +183,7 @@ const prodAccount = { account: "789", region: "ap-southeast-2" };
 
 const app = new cdk.App();
 
-new CdjBuildPipelineStack(app, "BuildPipelineStack", {
+new BuildPipelineStack(app, "BuildPipelineStack", {
   env: buildAccount,
   nonProd: nonProdAccount,
 });
@@ -239,7 +239,7 @@ we generate the build cdk stage of the pipeline. The artifacts array needs to be
 
 ```typescript
 artifacts: {
-  "base-directory": "cdj-build-pipeline/dist",
+  "base-directory": "build-pipeline/dist",
   files: [
     `${this.stackName}.template.json`,
     `${CRSS}.template.json`,

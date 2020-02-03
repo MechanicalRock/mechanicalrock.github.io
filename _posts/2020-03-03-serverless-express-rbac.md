@@ -78,9 +78,10 @@ There are obviously extensions to this, and AWS has implemented many of them via
 # But How?
 
 https://twitter.com/ben11kehoe/status/1221485404362366976
+
 AWS has been adding a lot of features to use OAuth directly with API Gateway, skipping Cognito Identity Pools and AWS IAM. I think this is regressive. A lot of useful functionality is coming out of it, but we should hope to get that IAM-side instead.
 
-In a perfect world this would all be handled by some native mechanism that is present in the cloud provider, as alluded to by Ben Kehoe's statement. There exists various mechanisms in AWS to do parts of the process but they do not currently all align to solve the whole problem. Fundamentally, some mechanism is required to enable us to practically use the IAM policy evaluation engine upon the principals, attributes and resources that WE define, and not just the ones available natively in the platform..
+In a perfect world this would all be handled by some native mechanism that is present in the cloud provider, as alluded to by Ben Kehoe's statement. There exists various mechanisms in AWS to do parts of the process but they do not currently all align to solve the whole problem. Fundamentally, some mechanism is required to enable us to practically use the IAM policy evaluation engine upon the principals, attributes and resources that WE define, and not just the ones available natively in the platform.
 
 Cognito does a good job of handling user registration and various token related tasks, but it does not currently propogate the information necessary to perform these kinds of policy decisions. This is a future that is probably coming, as illustrated by new ABAC mechanisms introduced via tags, and exemplified by propagating session tags in AWS SSO.
 
@@ -90,6 +91,8 @@ This would keep the policy definition and evaluation mechanism inside the platfo
 
 Unfortunately this isn't supported yet via Cognito and API Gateway. HTTP API is even more restrictive, only allowing the use of a JWT, so we are even further away from native IAM controls. So until the time comes that the feature set of HTTP API authorizers increases, and until a robust session tag mechanism appears in cognito, we will need to take a [code-wise, cloud-foolish](https://forrestbrazeal.com/2020/01/05/code-wise-cloud-foolish-avoiding-bad-technology-choices/
 ) approach and implement our own mechanism for defining and evaluating access policies.
+
+To make matters worse, HTTP API Gateway JWT authorizers must have an Aud claim on the token, which cognito access tokens do not include. Scopes are also not included on Cognito ID tokens. As far as I can tell, this means that you can't use the scope check feature on JWT authorizers if you are using Cognito. You can get around this using cognito user pool groups, which is what I will demonstrate going forward.
 
 # Policy Evaluation Engines
 
@@ -182,7 +185,9 @@ At the top we have defined the roles along with their related unique permissions
 The next step is to wire this all up in Express. As a first step, I tried to locate all the policy related logic in a single file.
 
 ```javascript
-const enforcerPromise = newEnforcer(
+const casbin = require('casbin');
+
+const enforcerPromise = casbin.newEnforcer(
     // I have inlined the model and policy as a string literal.
     // I have not repeated it here because it is already above.
     casbin.newModel(model),
@@ -199,7 +204,7 @@ async function addRolesToUser(sub, roles) {
 }
 
 module.exports.enforce = enforce;
-module.export.addRolesToUser = addRolesToUser;
+module.exports.addRolesToUser = addRolesToUser;
 ```
 
 We initialize a casbin enforcer, and then export two functions. The first of these functions is for policy evaluation against the request. The second is to load the users groups/roles into casbin, so that policy evaluation can function correctly.
@@ -209,7 +214,7 @@ The next step is too hook into the express system via middleware.
 ```javascript
 // ...
 const rbac = require('./rbac');
-const jwt = requrie('jsonwebtoken')
+const jwt = require('jsonwebtoken')
 
 // ...
 
@@ -220,23 +225,29 @@ const methodToAction = {
     DELETE: 'delete'
 }
 
-app.use((err, req, res, next) => {
-    const token = req.header['Authorization'];
-    const { sub, 'cognito:groups': groups } = jwt.decode(token, { json: true });
+app.use((req, res, next) => {
+    const token = req.headers['authorization'];
+    const decoded = jwt.decode(token, { json: true });
+    const { sub } = decoded;
+    const groups = decoded['cognito:groups'] || [];
     const { path: obj } = req;
     const act = methodToAction[req.method];
-    
-    try {
-        await rbac.addRolesToUser(sub, groups);
-        if (await rbac.enforce(sub, obj, act)) {
-            next();
-        } else {
-            res.status(403).json({ message: 'Forbidden' });
-        }
-    } catch (err) {
+    console.log({ sub, obj, act});
+    console.log(sub, groups);
+    rbac.addRolesToUser(sub, groups).then(() => {
+        rbac.enforce(sub, obj, act)
+            .then(pass => {
+                if (pass) {
+                    next()
+                } else {
+                    res.status(403).json({ message: 'Forbidden' });
+                }
+            })
+    })
+    .catch(err => {
         console.log(err);
         throw err;
-    }
+    });
 });
 ```
 
@@ -249,14 +260,86 @@ Now every time a request is sent, the following happens;
 5. The subject, object, and action of the request are evaluated against the policy.
 6. Either it evaluates successfully against the policy and the request continues, or a 400 client error is returned.
 
-Reconfigure Cognito
+Cognito requires a little bit of additional configuration. The template is available in the repository, but let's call out some new additions.
 
-Can we Read? Can we write? Can we delete?
+```yaml
+  User:
+    Type: AWS::Cognito::UserPoolUser
+    Properties:
+      UserPoolId: !Ref UserPool
+      Username: !Ref Email
+      DesiredDeliveryMediums:
+        - EMAIL
+      UserAttributes:
+        - Name: email
+          Value: !Ref Email
+
+  CommentReaderGroup:
+    Type: AWS::Cognito::UserPoolGroup
+    Properties: 
+      Description: Comment Reader
+      GroupName: reader
+      Precedence: 0
+      UserPoolId: !Ref UserPool
+
+  CommentDeleterGroup:
+    Type: AWS::Cognito::UserPoolGroup
+    Properties: 
+      Description: Comment Deleter
+      GroupName: deleter
+      Precedence: 0
+      UserPoolId: !Ref UserPool
+
+  AttachUserToWriterGroup:
+    Type: AWS::Cognito::UserPoolUserToGroupAttachment
+    Properties: 
+      GroupName: !Ref CommentWriterGroup
+      Username: !Ref User
+      UserPoolId: !Ref UserPool
+
+  AttachUserToReaderGroup:
+    Type: AWS::Cognito::UserPoolUserToGroupAttachment
+    Properties: 
+      GroupName: !Ref CommentReaderGroup
+      Username: !Ref User
+      UserPoolId: !Ref UserPool
+
+  AttachUserToDeleterGroup:
+    Type: AWS::Cognito::UserPoolUserToGroupAttachment
+    Properties: 
+      GroupName: !Ref CommentDeleterGroup
+      Username: !Ref User
+      UserPoolId: !Ref UserPool
+```
+
+Most of this involves the addition of some groups that match the roles referenced in the policy; reader, writer and deleter. I've added the generated user to all of these groups. As I've said previously, make sure to use an email address you own when instantiating the cognito template, as it will send a password to your email address.
+
+To get everything going, download the repository, and deploy the `cognito-template.yaml` file. Use the outputs from this stack as inputs to the SAM template that defines the API, by invoking `sam build && sam deploy --guided`. The outputs of the SAM template contains a login URL that can be used to access the login page. From this, you can login and acquire the ID token from the callback URL.
+
+Fill in the ENDPOINT variable using the address of your API, and use the id_token from the login callback URL for the TOKEN variable.
+
+```bash
+ENDPOINT=''
+
+TOKEN=''
+
+curl -H "Authorization: $TOKEN" $ENDPOINT https://aofawfjzw7.execute-api.ap-southeast-2.amazonaws.com
+
+curl -XPOST -H "Content-Type: text/plain" -H "Authorization: $TOKEN" -d "Message: My Message" $ENDPOINT
+```
+
+You'll find that both calls will succeed, as we have given the user identified by the token permissions to read, write and delete.
+
+Now we'll remove our user from the groups. To do this go to Cognito in the AWS Console. Select 'User Pools' and click on the one that we created. From here, select users, and click on the only user. The groups will be displayed at the top. Click the 'x's to remove all the groups from the user.
+
+Try to run the above script again. It still succeeded, why?
+
+Well, we are still sending a verified token that contains all the users groups, and we did not regenerate this token after we removed the groups. It will eventually expire, but until then it will still confer the priviledges associated with the user. You could instead query the users groups from cognito directly on every request, but this will add additional latency. Like most things, it's a trade-off. Try logging in again and issuing the requests with a new token. You'll find it still works.
+
+Try adding different combinations of groups, hit the API, and see what happens!
 
 # Summary
-- Explained the limitations of scopes, OAuth 2 is not enough
-- Discussed RBAC and ABAC
-- Explained policy authorization
-- Used Casbin to implement role based authentication
+
+We had a brief discussion around the limitations of scopes, and raised a scenario to explain what is not covered by the specification. We then briefly introduced ABAC and RBAC styles of access policy, and introduced the possibility of better implementation within AWS Cognito in future. We then considered policy authorization, and discussed some popular access policy evaluation libraries. Of these libraries, we chose to use Casbin to demonstrate how to build a policy model. We use casbin to add a middleware to our guestbook express application, which evaluated whether a user had access to specific resources based on their membership of cognito groups.
 
 Feeling RBAC'ed into a corner? [Mechanical Rock can help!](https://www.mechanicalrock.io/lets-get-started)

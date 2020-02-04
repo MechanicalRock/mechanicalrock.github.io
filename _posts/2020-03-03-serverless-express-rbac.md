@@ -332,11 +332,14 @@ You'll find that both calls will succeed, as we have given the user identified b
 
 Now we'll remove our user from the groups. To do this go to Cognito in the AWS Console. Select 'User Pools' and click on the one that we created. From here, select users, and click on the only user. The groups will be displayed at the top. Click the 'x's to remove all the groups from the user.
 
+<center><img src="/img/cognito.png" /></center>
+<br/>
+
 Try to run the above script again. It still succeeded, why?
 
-Well, we are still sending a verified token that contains all the users groups, and we did not regenerate this token after we removed the groups. It will eventually expire, but until then it will still confer the priviledges associated with the user. You could instead query the users groups from cognito directly on every request, but this will add additional latency. Like most things, it's a trade-off. Try logging in again and issuing the requests with a new token. You'll find it still works.
+Well, we are still sending a verified token that contains all the users groups, and we did not regenerate this token after we removed the groups. It will eventually expire, but until then it will still confer the priviledges associated with the user. You could instead query the users groups from cognito directly on every request, but this will add additional latency. Like most things, it's a trade-off. Try logging in again and issuing the requests with a new token. You'll find that the request is rejected as expected.
 
-Try adding different combinations of groups, hit the API, and see what happens!
+Try adding different combinations of groups, hit the API, and see what happens! Modify the policy and redeploy! Experiment a bit!
 
 # Summary
 

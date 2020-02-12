@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Serverless Express API - Logging & Tracing
+title: Practical Logging and Tracing Advice For Serverless Apps
 date: 2020-03-10
 tags: javascript tutorial serverless aws
 author: Matthew Tyler
@@ -46,10 +46,23 @@ There exist many different standards/implementations for tracing, which have inc
 
 # When to Log vs When to Trace?
 
-It can be very difficult to distinguish when you should logging versus when you should be tracing.
+It can be very difficult to distinguish when you should be logging versus when you should be tracing. There is an incredible amount of overlap between the two, so I'm going to limit myself to discussing what to do within the context of a serverless application running on AWS. There will be a fair amount of 'opinion' going on here so of course, take everything with a grain of salt and be prepared to use your own judgement.
+
+We'll start with tracing, because there is one clear advantage that is built in with X-Ray that you do not get with your own homegrown logging/tracing solutions, and this service integration. X-Ray is integrated with many different AWS services, and this gives you information in your traces that you will simply not be able to get any other way. An example of this is dynamodb service integration, in which the traces produced by the dynamodb service will include a lot of useful information about query performance. If you are building with serverless best practices which would include usage of as many managed services as possible, it would be senseless not to take advantage of this.
+
+In addition, various AWS services will happily propogate your X-Ray trace IDs. This will enable you to create maps of request as they propogate through your services. Unfortunately, not every AWS service will propogate trace ID's (event bridge being a notable example), and creating traces across account boundaries is a labourious process. If you have separated your services into different accounts, you may find 'logging' your traces or using a third party tracing service is necessary.
+
+Which brings me to logging. I generally prefer to keep logging pretty simple. I will generally:
+- Log the request as soon it is received, to give me enough context as to what 'started' the particular transaction.
+- Log any information that would indicate *branching* logic, if it occurs. e.g. if, else, case statements.
+- Log any *unhandled* errors that might occur, e.g. those I allow to flow up to the handler. If something is caught and recovered from - I consider that branching logic.
+
+Some of this will depend on how you structure your lambda code. I try to branch as little as feasibly possible, deferring to step functions for logic control/flow if it is required. As a result of this, it's not uncommon to see only two logging statements in my code. I usually do not bother to log a statement that indicates success of a particular function, unless I need this information for constructing metrics. A lot of services have reasonable support for constructing this without logs (like API Gateway), so this is not a step I would usually need to take.
 
 # How to Log?
 
 # How to Trace?
+
+# Practical Example
 
 # Conclusion

@@ -234,7 +234,7 @@ We will be at [ReactConf](https://reactconfau.com/), come say hi.
 
 * [https://knowyourmeme.com/photos/557213-feels](https://knowyourmeme.com/photos/557213-feels)
 * [https://create-react-app.dev/docs/making-a-progressive-web-app/](https://create-react-app.dev/docs/making-a-progressive-web-app/)
-* Halpern, B. (2020). What the heck is a "Progressive Web App"? Seriously. - DEV Community ��‍����‍��. [online] Dev.to. Available at: https://dev.to/ben/what-the-heck-is-a-progressive-web-app-seriously-923 [Accessed 7 Feb. 2020].
+* Halpern, B. (2020). What the heck is a "Progressive Web App"? Seriously. - DEV Community 👩‍💻👨‍💻. [online] Dev.to. Available at: https://dev.to/ben/what-the-heck-is-a-progressive-web-app-seriously-923 [Accessed 7 Feb. 2020].
 [https://dev.to/ben/what-the-heck-is-a-progressive-web-app-seriously-923](https://dev.to/ben/what-the-heck-is-a-progressive-web-app-seriously-923)
 * [https://medium.com/@chinmaya.cp/custom-service-worker-in-cra-create-react-app-3b401d24b875](https://medium.com/@chinmaya.cp/custom-service-worker-in-cra-create-react-app-3b401d24b875)
 

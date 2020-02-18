@@ -15,8 +15,12 @@ image: img/code.jpg
 
 ![in the feels](/img/blog/pwa/feels.jpeg)
 
+The term PWA was coined in 2015, by designer Frances Berriman and Google Chrome engineer Alex Russell. 
+
 To create a PWA you are going to need a service worker. A service worker is a script that is run in the background and acts as a network proxy between your app and the server to deliver that efficient caching strategy and offline capability PWA's are known for. 
 Your request will go to your service worker, the service worker will check if what you are requesting is available in the cache. If it can extract the request data from the cache it will otherwise it will send the request to the server.
+
+ PWA will require a manifest file that details how the app should behave when installed such as what name and icon will be displayed to the user.
 
 ![service worker](/img/blog/pwa/service-worker.png)
 
@@ -36,6 +40,20 @@ Handy checklist:
     * You want that high-performance audit score.
 
 * **Do you want your users to be able to install your PWA to their home screen?**
+
+**What are the pros and cons**
+
+
+| Pros                                        | Cons          | 
+| --------------------------------------------|:-------------:|
+| Faster lead times, your time to production can be measured in minutes in comparison to a native app which required app store reviews | IOS support is limited |
+| Deploy Multiple times per day| |
+| Time to recovery can be measured in hours apposed to days |  |
+|Development is much faster with the ability to produce MVP in 4 - 12 weeks|  |
+|Fast feedback loops| | 
+|Integration with your device hardware| | 
+|Offline capability| | 
+|install your app to your home screen as apposed to finding and downloading it from an app store | | 
 
 ### Getting started
 
@@ -126,10 +144,11 @@ Now you have the base that you will need to get started and you can build from h
 ### Cache me if you can
 
 Now you are ready to start caching the assets that matter to your use case.
+By using an effective caching strategy you can reduce subsequent load times. So instead of your request going over the network, the request can be retrieved from your local cache.  
 It is worth noting that you can implement server-side or client-side caching. I will be focusing on client-side caching on the browser.
 
 Server-side caching would be useful in the following use case:
-You are implementing a car sales website, you know a customer is only interested in 4x4’s. You can cache images on the 4x4 page because you know that is where the user is going to go.
+You are implementing a house sales PWA. When the user selects their shortlist items you can have the main images cached because you know the user is going to want to look at their shortlist items.
 
 I used workbox for caching, to start using workbox I added the following to my sw.js file
 
@@ -220,3 +239,5 @@ We will be at [ReactConf](https://reactconfau.com/), come say hi.
 
 ### Further Reading
 * [https://medium.com/izettle-engineering/beginners-guide-to-web-push-notifications-using-service-workers-cb3474a17679](https://medium.com/izettle-engineering/beginners-guide-to-web-push-notifications-using-service-workers-cb3474a17679)
+* [https://greenspector.com/en/articles/2017-11-21-is-twitter-lite-really-that-lite-for-your-battery-life/](https://greenspector.com/en/articles/2017-11-21-is-twitter-lite-really-that-lite-for-your-battery-life/)
+* [https://serviceworkies.com](https://serviceworkies.com)

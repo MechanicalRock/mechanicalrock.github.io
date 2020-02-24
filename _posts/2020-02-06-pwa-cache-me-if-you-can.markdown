@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "PWA Cache me if you can"
+title: "PWA: Cache me if you can"
 date: 2020-02-06
 tags: PWA react
 author: Natalie Laing

@@ -15,11 +15,10 @@ image: img/code.jpg
 
 ![in the feels](/img/blog/pwa/feels.jpeg)
 
-The term PWA was coined in 2015, by designer Frances Berriman and Google Chrome engineer Alex Russell. 
+PWA stands for Progressive Web App. The term PWA was coined in 2015, by designer Frances Berriman and Google Chrome engineer Alex Russell. 
 
-To create a PWA, you are going to need a service worker. A service worker is a script that is run in the background and acts as a network proxy between your app and the server to deliver that efficient caching strategy and offline capability PWA's are known for. 
+A progressive web app takes advantage of features from native apps such as the usage of native hardware(webcam), push notifications and installability giving the look and feel of a native application. This is achieved using a service worker. A service worker is a script that is run in the background and acts as a network proxy between your app and the server to deliver that efficient caching strategy and offline capability PWA's are known for. 
 Your request will go to your service worker; the service worker will check if what you are requesting is available in the cache. If it can extract the request data from the cache otherwise it will send the request to the server.
-
 A PWA will require a manifest file that details how the app should behave when installed such as what name and icon will be displayed to the user.
 
 ![service worker](/img/blog/pwa/service-worker.png)
@@ -40,6 +39,7 @@ Handy checklist:
 * You want that high-performance audit score.
 
 * **Do you want your users to be able to install your PWA to their home screen?**
+* Users can install your PWA to their mobile or desktop home screens.
 
 **What are the pros and cons**
 
@@ -123,21 +123,21 @@ self.addEventListener('activate', event => {
 In your index.html you want to register your service worker, point this to the service worker file you created in the above step.
 
 ```js
-
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-        navigator.serviceWorker.register('sw.js').then(function (registration) {
-            console.log('Worker registration successful', registration.scope);
-        }, function (err) {
-            console.log('Worker registration failed', err);
-        }).catch(function (err) {
-            console.log(err);
+<script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('sw.js').then(function(registration) {
+          console.log('Worker registration successful', registration.scope);
+        }, function(err) {
+          console.log('Worker registration failed', err);
+        }).catch(function(err) {
+          console.log(err);
         });
-    });
-} else {
-    console.log('Service Worker is not supported by browser.');
-}
-
+      });
+    } else {
+      console.log('Service Worker is not supported by browser.');
+    }
+</script>
 ```
 Now you have the base that you will need to get started,  you can build from here.
 
@@ -150,7 +150,8 @@ It is worth noting that you can implement server-side or client-side caching. I 
 Server-side caching would be useful in the following use case:
 You are implementing a house sales PWA. When the user selects their shortlist items you can have the main images cached because you know the user is going to want to look at their shortlist items.
 
-I used workbox for caching, to start using workbox I added the following to my sw.js file
+I used workbox for caching, to start using Workbox I added the following to my sw.js file.
+Check out Workbox [here.](https://developers.google.com/web/tools/workbox)
 
 ```js
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');

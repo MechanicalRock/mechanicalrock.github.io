@@ -6,7 +6,6 @@ tags: devops networking transitgateway aws
 author: Marcelo Aravena
 ---
 
-# A DevOps Guide to AWS Transit Gateway
 ![alt text](/img/transit-plane-gateway.png)
 ### On-Premise to Cloud Network Infrastructure Modernization
 
@@ -18,7 +17,7 @@ As you start making more use of AWS Cloud resources and services to help your co
 
 Today we will focus on how to deploy an AWS Multi-Account, Muli-VPC Transit Gateway Hub and Spoke Networking solution to integrate with your On-Premise network via a VPN connection.  Workload VPC's will be isolated from each other, meaning that each Workload VPC will only be allowed to communicate with the central "Networking" Account VPC and the On-Premise network. Workload VPC Subnets will all be private, with the Networking VPC hosting private and public subnets for Egress Internet traffic. 
 
-As a bonuse with Transit Gateway, we now get Centralized Monitoring with [Transit Gateway Network Manager](https://aws.amazon.com/transit-gateway/network-manager/) .  Providing centralized logs, Geo-location of your network connectivity  and realtime network topology maps showing connectivity status from VPN all the way down to the VPC level.  
+As a bonus with Transit Gateway, we now get Centralized Monitoring with [Transit Gateway Network Manager](https://aws.amazon.com/transit-gateway/network-manager/) .  Providing centralized logs, Geo-location of your network connectivity  and realtime network topology maps showing connectivity status from VPN all the way down to the VPC level.  
 
 The Architecture we are going to deploy as code(Cloudformation) is illustrated below:
 
@@ -26,7 +25,7 @@ The Architecture we are going to deploy as code(Cloudformation) is illustrated b
 
 
 ### Laying down the foundations needed to build the Networking Infrastructure
-The first step is to organize your AWS accounts with AWS Organizations, creating an Organization which will house the AWS accounts needed for your company to operate in the cloud. To configure this, login to your AWS Console Root/Master account and setup the account structure within an Organization.  As a minimum, you should have the following accounts members of the AWS Organization you create:
+The first step is to choose whether you want to use AWS Organizations or not.  Structure your accounts in an Organization if you want to automate the process of accepting Resource Sharing invitations when adding or removing accounts to your AWS Organization, otherwise you can manually add the AWS account Id's to allow access to the shared resource as you add and remove accounts.  Here is a sample account setup, all members of the same Organization:
 - Tooling/Build Account: Centralized CI/CD infrastructure with Codepipeline deploying Cloudformation templates across the Networking and Workload Accounts
 - Networking Account: Centralized Networking Hub, hosting Transit Gateway and Egress Internet.
 - Internal Sandbox Account: Experimentation account
@@ -34,13 +33,13 @@ The first step is to organize your AWS accounts with AWS Organizations, creating
 - Internal Production Account: Runs your application for production use
 - Security Account: SIEM Infrastructure, watch this space for an AWS SIEM solution coming soon
 
-Whilst in AWS Organizations, enable the Resource Access Manager service at the Organization level, this will allow us to deploy and share aws transit gateway resource between accounts with auto-accept, automating the process. This applies to any account that is a member of the Organization created.  You can choose to Not allow External Accounts when we create the shared resource through cloudformation. 
+If you chose to use AWS Organizations, enable the Resource Access Manager service at the Organization level, this will allow us to deploy and share aws transit gateway resource to accounts with auto-accept, automating the process. This applies to any account that is a member of the Organization created.  You can choose to Not allow External Accounts when we create the shared resource through cloudformation. 
 
-We are now ready to configure the build pipeline in our Build/Tooling Account to deploy our infrastructure across the accounts.  We get to adopt Pipeline-Pete's legendary Inception Pipeline. Each account will have their own cloudformation deployed from the Tooling account, utlising the cross-acount assume role for codepipeline and the Deployer role with specific permissions to create the AWS resources required. Each Workload Account will have their own account management pipeline and private code-commit repository.
+We are now ready to configure the build pipeline in our Build/Tooling Account to deploy our infrastructure across the accounts.  We get to adopt Pipeline-Pete's legendary Inception Pipeline. Each account will have their own cloudformation deployed from the Tooling account, utilising the cross-acount assume role for codepipeline and the Deployer role with specific permissions to create the AWS resources required. Each Workload Account will have their own account management pipeline and private code-commit repository.
 
 ### VPC CIDR and Subnet Planning
 
-Before we start deploying the infrastucture, we need to scope out and plan the IP Ranges the VPC CIDR's will use and slice them into Subnets that align with applications architecture.  The plan is to have the on-premise network forward all traffic destined for the 10.1.0.0/16 AWS network to the VPN associated with Transit Gateway, which means we need to create all of our VPC CIDR's under 10.1.0.0/16.  To segment the 10.1.0.0/16 across our VPC's, we will use 10.1.0.0/21 for the first VPC CIDR, followed by 10.1.8.0/21 etc..  Here is the complete breakdown of VPC CIDR and Subnets.  It's important to get this right before anything is deployed, there are many online subnetting tools to help you size out what you need, or if you're an old school networking dude, 1's and 0 bit counting and masking it is! 00001010.00000001.00001000.00000000 
+Before we start deploying the infrastructure, we need to scope out and plan the IP Ranges the VPC CIDR's will use and slice them into Subnets that align with applications architecture.  The plan is to have the on-premise network forward all traffic destined for the 10.1.0.0/16 AWS network to the VPN associated with Transit Gateway, which means we need to create all of our VPC CIDR's under 10.1.0.0/16.  To segment the 10.1.0.0/16 across our VPC's, we will use 10.1.0.0/21 for the first VPC CIDR, followed by 10.1.8.0/21 etc..  Here is the complete breakdown of VPC CIDR and Subnets.  It's important to get this right before anything is deployed, there are many online subnetting tools to help you size out what you need, or if you're an old school networking dude, 1's and 0 bit counting and masking it is! 00001010.00000001.00001000.00000000 
 
 ![alt text](/img/VPC-CIDR-Subnet.png)
 
@@ -73,8 +72,8 @@ With the base VPC's and subnets deployed, we can now start deploying Transit Gat
             Export:
                 Name: TransitGatewayId
 
-By disabling Default Route Table Association and Propagation, you get control over which Transit Gateway Table you can associate with, allowing you to restrict workload VPC(Eg, Sandox) to communicate with other Workload VPC(Eg, Production) or other specific requirements you may have.  AutoAcceptSharedAttachments are enabled so we don't have to manually accept invitations
-of shared resource for each account added to the AWS Organization Business Unit.  Choose a unique ASN number for AmazonSideAsn.  
+By disabling Default Route Table Association and Propagation, you get control over which Transit Gateway Route Table you can associate with, allowing you to restrict workload VPC(Eg, Sandox) to communicate with other Workload VPC(Eg, Production) or other specific requirements you may have.  AutoAcceptSharedAttachments are enabled so we don't have to manually accept invitations
+of a shared resource.  Choose a unique ASN number for AmazonSideAsn.  
 
     TGWResourceAccessShare:
         Type: AWS::RAM::ResourceShare
@@ -93,7 +92,7 @@ of shared resource for each account added to the AWS Organization Business Unit.
 When sharing the Transit Gateway resource with the AWS Organization Id as the principal, all account members of the Organization you have created will automatically get access to the Transit Gateway resource in their VPC. Make sure you keep "AllowExternalPrincipals" as false, unless you really want to expose the Transit Gateway Resource to an AWS account you dont manage.
 
 ### Site to Site VPN Deployment
-Now that we have a Transit Gateway in place (That was easy!), we can bring up the VPN and Customer Gateway resources on the AWS side, which will give us the option to download a configuration guide specific the on-premise VPN gateway appliance.
+Now that we have a Transit Gateway in place (That was easy!), we can bring up the VPN and Customer Gateway resources on the AWS side.  Just a heads up on the behaviour of the VPN connection with AWS, if there is no traffic over a period of time, the tunnel will go down, so as traffic starts to come through the VPN again, and the tunnel is down due to no activity, there will be a lag of about 3-5 seconds as the tunnel comes back online.  If your application is sensitive to this initial lag, you should be able to configure keepalive packets to be more frequent so the tunnel does not go down, anything lower than 10 seconds should be fine.
 
 #### Cloudformation Snippets for Customer Gateway and Site to Site VPN
     VpnCustomerGateway:
@@ -117,11 +116,10 @@ The main configuration item for the Customer Gateway is the public facing IP Add
             Value: VPN Connection to ACME On-Prem Datacentre
         TransitGatewayId: !ImportValue TransitGatewayId
         Type: ipsec.1
-We opted here for StaticRoutes, mainly because it was the compatible with how the on-premise appliance was configured with the rest of their environment.
-The VPN Site to Site configuration is what associates the VPN traffic with Transit Gateway to enable routing between AWS and your On-Premise network, in our case the 192.168.1.0/24 on-premise network. Once the VPN resource is deployed, the Transit Gateway VPN Attachment will automatically be added.  You can then download a configuration from the AWS VPC-VPN console by clicking on "Download Configuration" where you will be prompted to enter the model and release versions of your on-premise gateway appliance to assist in configuring the appliance specific to AWS requirements. 
+We opted here for StaticRoutes, mainly because it was compatible with how the on-premise appliance was configured with the rest of their environment.  The VPN Site to Site configuration is what associates the VPN traffic with Transit Gateway to enable routing between AWS and your On-Premise network, in our case the 192.168.1.0/24 on-premise network. Once the VPN resource is deployed, the Transit Gateway VPN Attachment will automatically be added.  You can then download a configuration from the AWS VPC-VPN console by clicking on "Download Configuration" where you will be prompted to enter the model and release versions of your on-premise gateway appliance to assist in configuring the appliance specific to AWS requirements. 
 
 ### VPC Routing Table Configuration
-The AWS Workload Account's (Sandbox, Staging, Production), will have similar VPC configurations, with the main differences being the CIDR ranges with no overlap. The AWS Networking Account VPC Configuration will be slightly different as it will be the "Internet Gateway" for the Internal Accounts, which have resources living in the private subnets only.  To save cost, we won't deploy a NAT gateway to each Workload account's private subnets, we will be using the Centralized Networking account to deploy an Internet Gateway in the public subnet and a NAT in the Private subnet.  Workload VPC's will have all traffic (0.0.0.0/0) routed to Transit Gateway and let all routing decisions be made there. With Centralized Internet Egress traffic it makes it easier to monitor and manage a single internet egress point for multiple VPC's spread across different AWS Accounts.  Because we have already shared the Transit Gateway resource from the Networking Account to all other accounts members of the same Organization Unit, we can now use the transit gateway as an option to route traffic to in the workload VPC's.  You can refer to the Architecture diagram on what routes to create for each VPC.
+The AWS Workload Account's (Sandbox, Staging, Production), will have similar VPC configurations, with the main differences being the CIDR ranges with no overlap. The AWS Networking Account VPC Configuration will be slightly different as it will be the "Internet Gateway" for the Internal Accounts, which have resources living in the private subnets only.  To save cost, we won't deploy a NAT gateway to each Workload account's private subnets, we will be using the Centralized Networking account to deploy an Internet Gateway in the public subnet and a NAT in the Private subnet.  Workload VPC's will have all traffic (0.0.0.0/0) routed to Transit Gateway and let all routing decisions be made there. With Centralized Internet Egress traffic it makes it easier to monitor and manage a single internet egress point for multiple VPC's spread across different AWS Accounts.  Because we have already shared the Transit Gateway resource from the Networking Account to all other accounts members of the same Organization Unit, we can now use the transit gateway as an option to route traffic on the workload VPC's.  You can refer to the Architecture diagram on what routes to create for each VPC.
 
 #### Workload VPC's Route Table Cloudformation
     TransitGatewayAttachmentVPC:
@@ -257,7 +255,7 @@ Only one of the Workload VPC Attachments is shown as an example
             DestinationCidrBlock: '10.1.8.0/21'
             TransitGatewayRouteTableId: !Ref WorkloadVpcToNetworkingVpcRouteTable
 
-#### Wrapping ia all up
-We now have Transit Gateway Hub and Spoke topology deployed all as Infrastructure as Code across multiple accounts, with the Networking Account configured as the Hub.  The best part is the visibility we have over the whole network now, which is provided by Transit Gateway Network Manager.  You will notice that the topology view has an uncanny resemblance to AWS Xray.. but for networking connections from your VPN all the way to your VPC's.  You can immediately identify where the network issues are, without having to start pinging, tracerouting, digging your way through the networkings manually, realtime status of the whole network is displayed in a user friendly manner, just follow the bouncing ball.
+#### Wrapping it all up
+We now have Transit Gateway Hub and Spoke topology deployed all as Infrastructure as Code across multiple accounts, with the Networking Account configured as the Hub.  The best part is the visibility we have over the whole network now, which is provided by Transit Gateway Network Manager.  You will notice that the topology view has an uncanny resemblance to AWS Xray.. but for networking connections from your VPN all the way to your VPC's.  You can immediately identify where the network issues are, without having to start pinging, tracerouting, digging your way through networks manually, realtime status of the whole network is displayed in a user friendly manner, just follow the bouncing packet.
 
-Are you now ready to board the flight to Transit Gateway?.. Mechanical Rock have your boarding passes ready 
+Are you ready to board the flight to Transit Gateway?.. Mechanical Rock have your boarding passes ready 

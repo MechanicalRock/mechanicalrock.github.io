@@ -29,7 +29,7 @@ Handy checklist:
 
 * **Do you require offline access?** 
 * You can cache important assets and serve them to the user to view when they are offline or have inadequate internet connection.
-* So your app requires users to upload files or images but they lose connection, your PWA can save those files locally and send them to the server once you reconnect to the internet.
+* So your app requires users to upload files or images, but they lose connection, your PWA can save those files locally and send them to the server once you reconnect to the internet.
 
 * **Is security important?**
 * a requirement of PWA's is they must be served over HTTPS.
@@ -150,7 +150,7 @@ It is worth noting that you can implement server-side or client-side caching. I 
 Server-side caching would be useful in the following use case:
 You are implementing a house sales PWA. When the user selects their shortlist items you can have the main images cached because you know the user is going to want to look at their shortlist items.
 
-I used workbox for caching, to start using Workbox I added the following to my sw.js file.
+I used Workbox for caching, to start using Workbox I added the following to my sw.js file.
 Check out Workbox [here.](https://developers.google.com/web/tools/workbox)
 
 ```js

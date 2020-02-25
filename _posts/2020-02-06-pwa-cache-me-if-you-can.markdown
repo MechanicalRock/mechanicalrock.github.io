@@ -17,8 +17,8 @@ image: img/code.jpg
 
 PWA stands for Progressive Web App. The term PWA was coined in 2015, by designer Frances Berriman and Google Chrome engineer Alex Russell. 
 
-A progressive web app takes advantage of features from native apps such as the usage of native hardware(webcam), push notifications and installability giving the look and feel of a native application. This is achieved using a service worker. A service worker is a script that is run in the background and acts as a network proxy between your app and the server to deliver that efficient caching strategy and offline capability PWA's are known for. 
-Your request will go to your service worker; the service worker will check if what you are requesting is available in the cache. If it can extract the request data from the cache otherwise it will send the request to the server.
+A progressive web app takes advantage of features from native apps such as using native hardware such as the camera, push notifications and the ability to install to provide the look and feel of a native application. This is achieved using a service worker. A service worker is a script that is run in the background and acts as a network proxy between your app and the server to deliver that efficient caching strategy and offline capability PWA's are known for. 
+Your request will go to your service worker; the service worker will check if what you are requesting is available in the cache. If it can extract the request data from the cache it will use that data, otherwise, it will send the request to the server.
 A PWA will require a manifest file that details how the app should behave when installed such as what name and icon will be displayed to the user.
 
 ![service worker](/img/blog/pwa/service-worker.png)
@@ -29,14 +29,14 @@ Handy checklist:
 
 * **Do you require offline access?** 
 * You can cache important assets and serve them to the user to view when they are offline or have inadequate internet connection.
-* So your app requires users to upload files or images, but they lose connection, your PWA can save those files locally and send them to the server once you reconnect to the internet.
+* If your app requires users to upload files or images, but they lose connection, your PWA can save those files locally and send them to the server once you reconnect to the internet.
 
 * **Is security important?**
 * a requirement of PWA's is they must be served over HTTPS.
 
 * **Do you want faster load times?**
 * Do you care about your users? Then load times will be extremely important to keep your users on your PWA.
-* You want that high-performance audit score.
+* You want that high-performance audit score. Check out [Lighthouse](https://developers.google.com/web/tools/lighthouse)
 
 * **Do you want your users to be able to install your PWA to their home screen?**
 * Users can install your PWA to their mobile or desktop home screens.
@@ -58,7 +58,7 @@ Handy checklist:
 ### Getting started
 
 ```js
-npx create-react-app my-app-name --template typescript —use-npm
+npx Create-React-App my-app-name --template Typescript --use-NPM
 ```
 We are going to run the create react app script with a typescript template and using npm. Replace my-app-name with the name of your app. This will set up your directory with all the juicy things you are going to need to create a PWA.
 

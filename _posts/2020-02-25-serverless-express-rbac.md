@@ -16,15 +16,15 @@ We added a JWT Authorizer to our API in the last installment. A user that wanted
 
 Code for this tutorial can be found [here](https://github.com/matt-tyler/simple-node-api-rbac).
 
-# Claims and Scope - Practically.
+# Claims and Scope - Practically
 
 A better way to describe these is to consider a practical example. Scopes were originally conceived as a way for the user to offer consent to a third-party. The canonical example everyone uses is LinkedIn, but that's a little worn out, so let's use a bank as an example.
 
-Imagine a company (completely indepedent of the bank) launches a new web service. This service aims to analyze your spending history of your savings account and produce detailed reports and suggestions to help you save money. To do this they require you to give over your username and password for your banking account, as this will need login in to your account to scrape the information.
+Imagine a company (completely independent of the bank) launches a new web service. This service aims to analyze your spending history of your savings account and produce detailed reports and suggestions to help you save money. To do this they require you to give over your username and password for your banking account, as this will need login in to your account to scrape the information.
 
 This is bad because they have access to credentials which are not limited to the job that they are intending to perform, and also because there is no way for the user to consent to the specific activities they want to perform. 
 
-OAuth2 solves these both these problems. With OAuth2, registering with the service would result in a redirect to the bank's authorization page. The bank would list the permissions that the service is requesting (e.g.; read statements), allowing the user to explicitly consent to the delegation of permissions. If they accept, credentials would be issued that would allow the service to request informtion about the users bank statements.
+OAuth2 solves these both these problems. With OAuth2, registering with the service would result in a redirect to the bank's authorization page. The bank would list the permissions that the service is requesting (e.g.; read statements), allowing the user to explicitly consent to the delegation of permissions. If they accept, credentials would be issued that would allow the service to request information about the users bank statements.
 
 OAuth2 works well in this case. However, the restrictions of permissions leads people to incorrectly assume that all that is required for access control is the scopes and claims which is not strictly true. A typically token issued by a bank (like the one in the example) might look like this;
 
@@ -47,11 +47,11 @@ Sometime it is, and sometime it isn't. I think it is a fair assertion that some 
 
 # Policy Evaluation
 
-There are quite a few different policy evaluation mechanisms out there, though they often follow a fairly basic pattern. Most use some kind of declaritive language that works on subjects, actions, and objects/resources, and indicates whether a user is allowed to do something.
+There are quite a few different policy evaluation mechanisms out there, though they often follow a fairly basic pattern. Most use some kind of declarative language that works on subjects, actions, and objects/resources, and indicates whether a user is allowed to do something.
 
 - Subject
 
-  The subject is the actor that is attemtping to do something; in most cases, this is a user or some system identity.
+  The subject is the actor that is attempting to do something; in most cases, this is a user or some system identity.
 
   In AWS, this is usually the identity of the caller for a typical IAM permission, or the identity in the principal statement for a resource based policy.
 
@@ -83,16 +83,16 @@ AWS has been adding a lot of features to use OAuth directly with API Gateway, sk
 
 In a perfect world this would all be handled by some native mechanism that is present in the cloud provider, as alluded to by Ben Kehoe's statement. There exists various mechanisms in AWS to do parts of the process but they do not currently all align to solve the whole problem. Fundamentally, some mechanism is required to enable us to practically use the IAM policy evaluation engine upon the principals, attributes and resources that WE define, and not just the ones available natively in the platform.
 
-Cognito does a good job of handling user registration and various token related tasks, but it does not currently propogate the information necessary to perform these kinds of policy decisions. This is a future that is probably coming, as illustrated by new ABAC mechanisms introduced via tags, and exemplified by propagating session tags in AWS SSO.
+Cognito does a good job of handling user registration and various token related tasks, but it does not currently propagate the information necessary to perform these kinds of policy decisions. This is a future that is probably coming, as illustrated by new ABAC mechanisms introduced via tags, and exemplified by propagating session tags in AWS SSO.
 
-We could see a world where a user would log in via Cognito and receive access to an IAM role via a pair of credentials. These credentials would be bound to session-tags that were created by the platform, that would include information about the users precise identity, which could then be used to scale-back their permissions e.g. prevent them from reading certain rows from dynamodb via the leadingkey condition, or restrict reading of S3 files to specific prefix. Likewise, requested scopes or group membership within user pools (or other third party directories) could propogate other information to session tags to enable further flexibility within access policies. 
+We could see a world where a user would log in via Cognito and receive access to an IAM role via a pair of credentials. These credentials would be bound to session-tags that were created by the platform, that would include information about the users precise identity, which could then be used to scale-back their permissions e.g. prevent them from reading certain rows from DynamoDB via the leadingkey condition, or restrict reading of S3 files to specific prefix. Likewise, requested scopes or group membership within user pools (or other third party directories) could propagate other information to session tags to enable further flexibility within access policies. 
 
 This would keep the policy definition and evaluation mechanism inside the platform/infrastructure level, and outside of the application domain.
 
-Unfortunately this isn't supported yet via Cognito and API Gateway. HTTP API is even more restrictive, only allowing the use of a JWT, so we are even further away from native IAM controls. So until the time comes that the feature set of HTTP API authorizers increases, and until a robust session tag mechanism appears in cognito, we will need to take a [code-wise, cloud-foolish](https://forrestbrazeal.com/2020/01/05/code-wise-cloud-foolish-avoiding-bad-technology-choices/
+Unfortunately this isn't supported yet via Cognito and API Gateway. HTTP API is even more restrictive, only allowing the use of a JWT, so we are even further away from native IAM controls. So until the time comes that the feature set of HTTP API authorizers increases, and until a robust session tag mechanism appears in Cognito, we will need to take a [code-wise, cloud-foolish](https://forrestbrazeal.com/2020/01/05/code-wise-cloud-foolish-avoiding-bad-technology-choices/
 ) approach and implement our own mechanism for defining and evaluating access policies.
 
-To make matters worse, HTTP API Gateway JWT authorizers must have an Aud claim on the token, which cognito access tokens do not include. Scopes are also not included on Cognito ID tokens. As far as I can tell, this means that you can't use the scope check feature on JWT authorizers if you are using Cognito. You can get around this using cognito user pool groups, which is what I will demonstrate going forward.
+To make matters worse, HTTP API Gateway JWT authorizers must have an Aud claim on the token, which Cognito access tokens do not include. Scopes are also not included on Cognito ID tokens. As far as I can tell, this means that you can't use the scope check feature on JWT authorizers if you are using Cognito. You can get around this using Cognito user pool groups, which is what I will demonstrate going forward.
 
 # Policy Evaluation Engines
 
@@ -323,7 +323,7 @@ ENDPOINT=''
 
 TOKEN=''
 
-curl -H "Authorization: $TOKEN" $ENDPOINT https://aofawfjzw7.execute-api.ap-southeast-2.amazonaws.com
+curl -H "Authorization: $TOKEN" $ENDPOINT
 
 curl -XPOST -H "Content-Type: text/plain" -H "Authorization: $TOKEN" -d "Message: My Message" $ENDPOINT
 ```
@@ -337,12 +337,12 @@ Now we'll remove our user from the groups. To do this go to Cognito in the AWS C
 
 Try to run the above script again. It still succeeded, why?
 
-Well, we are still sending a verified token that contains all the users groups, and we did not regenerate this token after we removed the groups. It will eventually expire, but until then it will still confer the priviledges associated with the user. You could instead query the users groups from cognito directly on every request, but this will add additional latency. Like most things, it's a trade-off. Try logging in again and issuing the requests with a new token. You'll find that the request is rejected as expected.
+Well, we are still sending a verified token that contains all the users groups, and we did not regenerate this token after we removed the groups. It will eventually expire, but until then it will still confer the privileges associated with the user. You could instead query the users groups from Cognito directly on every request, but this will add additional latency. Like most things, it's a trade-off. Try logging in again and issuing the requests with a new token. You'll find that the request is rejected as expected.
 
 Try adding different combinations of groups, hit the API, and see what happens! Modify the policy and redeploy! Experiment a bit!
 
 # Summary
 
-We had a brief discussion around the limitations of scopes, and raised a scenario to explain what is not covered by the specification. We then briefly introduced ABAC and RBAC styles of access policy, and introduced the possibility of better implementation within AWS Cognito in future. We then considered policy authorization, and discussed some popular access policy evaluation libraries. Of these libraries, we chose to use Casbin to demonstrate how to build a policy model. We use casbin to add a middleware to our guestbook express application, which evaluated whether a user had access to specific resources based on their membership of cognito groups.
+We had a brief discussion around the limitations of scopes, and raised a scenario to explain what is not covered by the specification. We then briefly introduced ABAC and RBAC styles of access policy, and introduced the possibility of better implementation within AWS Cognito in future. We then considered policy authorization, and discussed some popular access policy evaluation libraries. Of these libraries, we chose to use Casbin to demonstrate how to build a policy model. We use Casbin to add a middleware to our guestbook express application, which evaluated whether a user had access to specific resources based on their membership of Cognito groups.
 
 Feeling RBAC'ed into a corner? [Mechanical Rock can help!](https://www.mechanicalrock.io/lets-get-started)

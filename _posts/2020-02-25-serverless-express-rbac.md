@@ -77,11 +77,9 @@ There are obviously extensions to this, and AWS has implemented many of them via
 
 # But How?
 
-https://twitter.com/ben11kehoe/status/1221485404362366976
-
 AWS has been adding a lot of features to use OAuth directly with API Gateway, skipping Cognito Identity Pools and AWS IAM. I think this is regressive. A lot of useful functionality is coming out of it, but we should hope to get that IAM-side instead.
 
-In a perfect world this would all be handled by some native mechanism that is present in the cloud provider, as alluded to by Ben Kehoe's statement. There exists various mechanisms in AWS to do parts of the process but they do not currently all align to solve the whole problem. Fundamentally, some mechanism is required to enable us to practically use the IAM policy evaluation engine upon the principals, attributes and resources that WE define, and not just the ones available natively in the platform.
+In a perfect world this would all be handled by some native mechanism that is present in the cloud provider, as alluded to by [Ben Kehoe's statement](https://twitter.com/ben11kehoe/status/1221485404362366976). There exists various mechanisms in AWS to do parts of the process but they do not currently all align to solve the whole problem. Fundamentally, some mechanism is required to enable us to practically use the IAM policy evaluation engine upon the principals, attributes and resources that WE define, and not just the ones available natively in the platform.
 
 Cognito does a good job of handling user registration and various token related tasks, but it does not currently propagate the information necessary to perform these kinds of policy decisions. This is a future that is probably coming, as illustrated by new ABAC mechanisms introduced via tags, and exemplified by propagating session tags in AWS SSO.
 

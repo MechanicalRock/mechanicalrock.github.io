@@ -1,0 +1,67 @@
+---
+layout: post
+title:  "ReactConf 2020"
+date:   2020-02-27
+tags: react 
+author: Natalie Laing
+image: 
+---
+
+## Introduction 
+React Conf AU is the 
+## Day 1
+![day 1](/img/blog/reactConf/conf_day1.jpg)
+
+### Keynote css in js
+Max Stoiber(Gatsby) 
+
+The father of styled components took us through css in js a history.
+Max expressed his passion for open source and encouraged everyone to create an open source project and share them with him.
+60% of React installs now come with css in js.
+
+Max's pro tips
+```
+ Make it work , make it right, make it fast.
+
+ share early, share often.
+
+ Document all the things. 
+```
+_Max Stoiber 2020_
+
+### Themeability is the path to dark mode
+Diana Mounter(GitHub NYC)
+
+Diana walked us through how github has been improving it themeability from using starting with two developerts in 2017 to hiring their first react developer in 2018.
+She guided us on their journey from hard coded hex color values to using variables and styles components.
+
+On the path to the ~~dark side~~ dark mode Diana and her team realised that colour is relative and simply inverting the colours would not acheive true dark mode.
+
+``` colour is relative ``` _Diana Mounter 2020_ 
+
+## (Proto)typing innovation in BBC News
+James Dooley(BBC news labs)
+
+How a team of artists, developers and engineers get prototypes ready in 6 weeks for the BBC and how this team is always pushing the boundaries to keep the BBC relevant in todays tech savy world.
+We learned about Skippy the alexa integrated app that allows people to skip through news stories and how the BBC news labs team used Draft.js to improve the transcribe process of BBC journalists.
+
+``` Get what you can for free ``` _James Dooley 2020_
+
+## Modern Forms in React
+Erik Rasmussen(Redux form)
+
+## react-beautiful-dnd: Behind the magic
+Alex Rerdon(Atlassian)
+
+## 10 x your teamwork through pair programming
+Michael Milewski & Selena Small(Fresho! Melbourne)
+
+## The first two seconds: Faster page loads with React
+## Reactronica: Music as a Function of State
+
+### Day 2
+### Wrapping up
+
+
+### References
+* 

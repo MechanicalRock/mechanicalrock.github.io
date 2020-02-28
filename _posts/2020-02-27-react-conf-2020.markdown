@@ -8,12 +8,13 @@ image:
 ---
 
 ## Introduction 
-React Conf AU is the 
+React Conf AU is the first React conference in the southern hemisphere and it didn't dissapoint. The quality of speakers was spot on, meet the faces behind the projects you use on a daily basis.
+
 ## Day 1
 ![day 1](/img/blog/reactConf/conf_day1.jpg)
 
 ### Keynote css in js
-Max Stoiber(Gatsby) 
+Max Stoiber (Gatsby) 
 
 The father of styled components took us through css in js a history.
 Max expressed his passion for open source and encouraged everyone to create an open source project and share them with him.
@@ -30,7 +31,7 @@ Max's pro tips
 _Max Stoiber 2020_
 
 ### Themeability is the path to dark mode
-Diana Mounter(GitHub NYC)
+Diana Mounter (GitHub NYC)
 
 Diana walked us through how github has been improving it themeability from using starting with two developerts in 2017 to hiring their first react developer in 2018.
 She guided us on their journey from hard coded hex color values to using variables and styles components.
@@ -40,7 +41,7 @@ On the path to the ~~dark side~~ dark mode Diana and her team realised that colo
 ``` colour is relative ``` _Diana Mounter 2020_ 
 
 ## (Proto)typing innovation in BBC News
-James Dooley(BBC news labs)
+James Dooley (BBC news labs)
 
 How a team of artists, developers and engineers get prototypes ready in 6 weeks for the BBC and how this team is always pushing the boundaries to keep the BBC relevant in todays tech savy world.
 We learned about Skippy the alexa integrated app that allows people to skip through news stories and how the BBC news labs team used Draft.js to improve the transcribe process of BBC journalists.
@@ -48,18 +49,56 @@ We learned about Skippy the alexa integrated app that allows people to skip thro
 ``` Get what you can for free ``` _James Dooley 2020_
 
 ## Modern Forms in React
-Erik Rasmussen(Redux form)
+Erik Rasmussen (Redux form)
+
+```
+If the new React Context API and Suspense killed Redux (they didn’t), surely Hooks kill the need for a form library, right? Well, not exactly. Managing form state is more than just holding your current values in state; it’s about sync and async validation errors, and much more! But that doesn’t mean that Hooks are irrelevant to the situation. Hooks make building forms in React easier than ever before.
+``` 
+_Erik Rasmussen 2020_
 
 ## react-beautiful-dnd: Behind the magic
-Alex Rerdon(Atlassian)
+Alex Reardon (Atlassian)
 
-## 10 x your teamwork through pair programming
-Michael Milewski & Selena Small(Fresho! Melbourne)
+Alex showed us the corelation between developers and magicians by going behind the magic of react dnd.We learned how snapshots and different sensors (mouse,keyboard and touch to name a few) work together to move the position of list components within the same list and different lists.
+One of my favourite parts fro, this talk  was how accessability comes out of the box with react dnd allowing users with sight imparements to interact and move list items.
+
+```I love moments of wonder when you pull off an illusion``` _Alex Reardon 2020_
 
 ## The first two seconds: Faster page loads with React
+Josh Duck (ClipChamp Brisbane)
+
+How did ABC speed up their performance in the fist two seconds? Server side rendering, hydration and css media queries.
+When using lighthouse audits what matters is the FPC(First Contenful Paint) and your render blocking (assets? need word here). 
+What can you do ?
+* fix cache headers 
+* Ensure static assets are zipped
+* Use font swapping
+* Make use of preloading
+* lazy load images where/ if you can. This will soon be naitively supported.
+
+```blink slow ``` _Josh Duck 2020_
+
 ## Reactronica: Music as a Function of State
+Kaho Cheung (State Library of NSW, DX Lab Sydney)
+
+We were treated to an amazing demo of reacttronica by Kaho.
+
+[reactronica](https://reactronica.com/)
 
 ### Day 2
+
+## Rethinking Design Practices
+Mark Dalgleish (SEEK Melbourne)
+
+```Our design systems are not working to their full potential``` _Mark Dalgleish  2020_
+
+## Write fewer tests! Model-based testing in React
+David Khourshid (Microsoft Orlando)
+
+``` What if we could generate testswithout writing them? And what if we could regenerate tests without rewriting them?
+``` 
+_David Khourshid 2020_
+
 ### Wrapping up
 
 

@@ -51,6 +51,18 @@ We learned about Skippy the alexa integrated app that allows people to skip thro
 ## Modern Forms in React
 Erik Rasmussen (Redux form)
 
+The creator of [Redux Form](https://redux-form.com/8.3.0/), [Final Form](https://github.com/final-form/final-form), [React Final Form](https://github.com/final-form/react-final-form) and  why Final Form should be the Final Form you will need (Disclaimer: for now).
+
+Why Final Form: 
+
+* It's subscription based (This should be enough)
+* Standalone from state managment.
+* Much smaller size than Redux Form.
+* It's framework agnostic.
+
+
+Form and Field components can make use of subscriptions and is a boolean type.
+
 ```
 If the new React Context API and Suspense killed Redux (they didn’t), surely Hooks kill the need for a form library, right? Well, not exactly. Managing form state is more than just holding your current values in state; it’s about sync and async validation errors, and much more! But that doesn’t mean that Hooks are irrelevant to the situation. Hooks make building forms in React easier than ever before.
 ``` 
@@ -59,7 +71,7 @@ _Erik Rasmussen 2020_
 ## react-beautiful-dnd: Behind the magic
 Alex Reardon (Atlassian)
 
-Alex showed us the corelation between developers and magicians by going behind the magic of react dnd.We learned how snapshots and different sensors (mouse,keyboard and touch to name a few) work together to move the position of list components within the same list and different lists.
+Alex showed us the corelation between developers and magicians by going behind the magic of [React DnD](https://react-dnd.github.io/react-dnd/docs/overview).We learned how snapshots and different sensors (mouse,keyboard and touch to name a few) work together to move the position of list components within the same list and different lists.
 One of my favourite parts fro, this talk  was how accessability comes out of the box with react dnd allowing users with sight imparements to interact and move list items.
 
 ```I love moments of wonder when you pull off an illusion``` _Alex Reardon 2020_
@@ -70,7 +82,7 @@ Josh Duck (ClipChamp Brisbane)
 How did ABC speed up their performance in the fist two seconds? Server side rendering, hydration and css media queries.
 When using lighthouse audits what matters is the FPC(First Contenful Paint) and your render blocking (assets? need word here). 
 What can you do ?
-* fix cache headers 
+* Fix cache headers 
 * Ensure static assets are zipped
 * Use font swapping
 * Make use of preloading
@@ -81,23 +93,38 @@ What can you do ?
 ## Reactronica: Music as a Function of State
 Kaho Cheung (State Library of NSW, DX Lab Sydney)
 
-We were treated to an amazing demo of reacttronica by Kaho.
-
-[reactronica](https://reactronica.com/)
+We were treated to an amazing demo of reactronica by Kaho. All I can say is Kaho can really drop a beat and if you get the chance you should really check it out at [Reactronica](https://reactronica.com/).
 
 ### Day 2
+![day 2](/img/blog/reactConf/conf_day2.jpg)
 
 ## Rethinking Design Practices
 Mark Dalgleish (SEEK Melbourne)
+
+Using [Braid](https://www.npmjs.com/package/braid-design-system) and playroom designers and developers can work together and break down the barriers of coding for designers. Designers can design in the browser without the need to setup their enviroment or worry about importing modules.
+
 
 ```Our design systems are not working to their full potential``` _Mark Dalgleish  2020_
 
 ## Write fewer tests! Model-based testing in React
 David Khourshid (Microsoft Orlando)
 
-``` What if we could generate testswithout writing them? And what if we could regenerate tests without rewriting them?
+How to use model based testing to generate end to end tests using React testing library, Puppeteer, Jest and x state.
+1) Create your model
+2) Generate abstract tests
+3) Make them real
+4) Execute tests
+
+[x state](https://xstate.js.org/)
+
+``` What if we could generate tests without writing them? And what if we could regenerate tests without rewriting them?
 ``` 
 _David Khourshid 2020_
+
+## A GraphQL Survival Kit
+Petra Gulicher (Independent Sydney)
+
+``` Don’t burn your sh*t after a festival ``` _Petra Gulicher 2020_
 
 ### Wrapping up
 

@@ -2,13 +2,13 @@
 layout: post
 title:  "ReactConf 2020"
 date:   2020-02-27
-tags: react 
+tags: React Sydney
 author: Natalie Laing
-image: 
+image: /img/blog/reactConf/react.png
 ---
 
 ## Introduction 
-React Conf AU is the first React conference in the southern hemisphere and it didn't dissapoint. The quality of speakers was spot on, meet the faces behind the projects you use on a daily basis.
+React Conf AU is the first React conference in the southern hemisphere and it didn't disappoint. The quality of speakers was spot on, meet the faces behind the projects that make React what it is today.
 
 ## Day 1
 ![day 1](/img/blog/reactConf/conf_day1.jpg)
@@ -16,47 +16,49 @@ React Conf AU is the first React conference in the southern hemisphere and it di
 ### Keynote css in js
 Max Stoiber (Gatsby) 
 
-The father of styled components took us through css in js a history.
-Max expressed his passion for open source and encouraged everyone to create an open source project and share them with him.
-60% of React installs now come with css in js.
+
+The father of styled components took us through CSS in js a history.
+Max expressed his passion for open source and encouraged everyone to create an open-source project and share them with him.
+
+60% of React installs now come with CSS in js.
 
 Max's pro tips
 ```
- Make it work , make it right, make it fast.
+ Make it work, make it right, make it fast.
 
- share early, share often.
+ Share early, share often.
 
  Document all the things. 
 ```
-_Max Stoiber 2020_
+_Max Stoiber ReactConf 2020_
 
 ### Themeability is the path to dark mode
 Diana Mounter (GitHub NYC)
 
-Diana walked us through how github has been improving it themeability from using starting with two developerts in 2017 to hiring their first react developer in 2018.
-She guided us on their journey from hard coded hex color values to using variables and styles components.
+Diana walked us through how GitHub has been improving its themeability from using starting with two developers in 2017 to hiring their first react developer in 2018.
+She guided us on their journey from hardcoded hex color values to using variables and styled components.
 
-On the path to the ~~dark side~~ dark mode Diana and her team realised that colour is relative and simply inverting the colours would not acheive true dark mode.
+On the path to the ~~dark side~~ dark mode, Diana and her team realised that colour is relative and simply inverting the colours would not achieve true dark mode.
 
-``` colour is relative ``` _Diana Mounter 2020_ 
+``` colour is relative ``` _Diana Mounter ReactConf 2020_ 
 
 ## (Proto)typing innovation in BBC News
 James Dooley (BBC news labs)
 
-How a team of artists, developers and engineers get prototypes ready in 6 weeks for the BBC and how this team is always pushing the boundaries to keep the BBC relevant in todays tech savy world.
-We learned about Skippy the alexa integrated app that allows people to skip through news stories and how the BBC news labs team used Draft.js to improve the transcribe process of BBC journalists.
+How a team of artists, developers, and engineers get prototypes ready in 6 weeks for the BBC and how this team is always pushing the boundaries to keep the BBC relevant in today's tech-savvy world.
+We learned about Skippy the Alexa integrated app that allows people to skip through news stories and how the BBC news labs team used Draft.js to improve the transcribe process of BBC journalists.
 
-``` Get what you can for free ``` _James Dooley 2020_
+``` Get what you can for free ``` _James Dooley ReactConf 2020_
 
 ## Modern Forms in React
 Erik Rasmussen (Redux form)
 
-The creator of [Redux Form](https://redux-form.com/8.3.0/), [Final Form](https://github.com/final-form/final-form), [React Final Form](https://github.com/final-form/react-final-form) and  why Final Form should be the Final Form you will need (Disclaimer: for now).
+The creator of [Redux Form](https://redux-form.com/8.3.0/), [Final Form](https://github.com/final-form/final-form), [React Final Form](https://github.com/final-form/react-final-form) and why Final Form should be the Final Form you will need (Disclaimer: for now).
 
 Why Final Form: 
 
-* It's subscription based (This should be enough)
-* Standalone from state managment.
+* It's subscription-based (This should be enough)
+* Standalone from state management.
 * Much smaller size than Redux Form.
 * It's framework agnostic.
 
@@ -66,34 +68,34 @@ Form and Field components can make use of subscriptions and is a boolean type.
 ```
 If the new React Context API and Suspense killed Redux (they didn’t), surely Hooks kill the need for a form library, right? Well, not exactly. Managing form state is more than just holding your current values in state; it’s about sync and async validation errors, and much more! But that doesn’t mean that Hooks are irrelevant to the situation. Hooks make building forms in React easier than ever before.
 ``` 
-_Erik Rasmussen 2020_
+_Erik Rasmussen ReactConf 2020_
 
 ## react-beautiful-dnd: Behind the magic
 Alex Reardon (Atlassian)
 
-Alex showed us the corelation between developers and magicians by going behind the magic of [React DnD](https://react-dnd.github.io/react-dnd/docs/overview).We learned how snapshots and different sensors (mouse,keyboard and touch to name a few) work together to move the position of list components within the same list and different lists.
-One of my favourite parts fro, this talk  was how accessability comes out of the box with react dnd allowing users with sight imparements to interact and move list items.
+Alex showed us the correlation between developers and magicians by going behind the magic of [React DnD](https://react-dnd.github.io/react-dnd/docs/overview). We learned how snapshots and different sensors (mouse, keyboard, and touch to name a few) work together to move the position of list components within the same list and different lists.
+One of my favorite parts from this talk was how accessibility comes out of the box with react dnd allowing users with sight impairments to interact and move list items.
 
-```I love moments of wonder when you pull off an illusion``` _Alex Reardon 2020_
+```I love moments of wonder when you pull off an illusion``` _Alex Reardon ReactConf 2020_
 
 ## The first two seconds: Faster page loads with React
 Josh Duck (ClipChamp Brisbane)
 
-How did ABC speed up their performance in the fist two seconds? Server side rendering, hydration and css media queries.
-When using lighthouse audits what matters is the FPC(First Contenful Paint) and your render blocking (assets? need word here). 
-What can you do ?
+How did ABC speed up its performance in the first two seconds? Server-side rendering, hydration and CSS media queries.
+When using lighthouse audits which matter are the FPC(First Contentful Paint) and your render-blocking assets. 
+What can you do?
 * Fix cache headers 
 * Ensure static assets are zipped
 * Use font swapping
 * Make use of preloading
-* lazy load images where/ if you can. This will soon be naitively supported.
+* lazy load images where/ if you can. This will soon be natively supported.
 
-```blink slow ``` _Josh Duck 2020_
+```blink slow ``` _Josh Duck ReactConf 2020_
 
 ## Reactronica: Music as a Function of State
 Kaho Cheung (State Library of NSW, DX Lab Sydney)
 
-We were treated to an amazing demo of reactronica by Kaho. All I can say is Kaho can really drop a beat and if you get the chance you should really check it out at [Reactronica](https://reactronica.com/).
+We were treated to an amazing demo of Reactronica by Kaho. All I can say is Kaho can really drop a beat and if you get the chance you should really check it out at [Reactronica](https://reactronica.com/).
 
 ### Day 2
 ![day 2](/img/blog/reactConf/conf_day2.jpg)
@@ -104,12 +106,12 @@ Mark Dalgleish (SEEK Melbourne)
 Using [Braid](https://www.npmjs.com/package/braid-design-system) and playroom designers and developers can work together and break down the barriers of coding for designers. Designers can design in the browser without the need to setup their enviroment or worry about importing modules.
 
 
-```Our design systems are not working to their full potential``` _Mark Dalgleish  2020_
+```Our design systems are not working to their full potential``` _Mark Dalgleish ReactConf 2020_
 
 ## Write fewer tests! Model-based testing in React
 David Khourshid (Microsoft Orlando)
 
-How to use model based testing to generate end to end tests using React testing library, Puppeteer, Jest and x state.
+How to use model-based testing to generate end to end tests using React testing library, Puppeteer, Jest and x state.
 1) Create your model
 2) Generate abstract tests
 3) Make them real
@@ -117,17 +119,28 @@ How to use model based testing to generate end to end tests using React testing 
 
 [x state](https://xstate.js.org/)
 
+| Pros | Cons | 
+| --------------------------------------------|:-------------:|
+| Implementation agnostic  | Steep learning curve |
+| Flexible | Limited tooling |
+| Reduce cost/time| No guarantees 
+| Edge case discovery  | | 
+|Little Maintenance | |
+
 ``` What if we could generate tests without writing them? And what if we could regenerate tests without rewriting them?
 ``` 
-_David Khourshid 2020_
+_David Khourshid ReactConf 2020_
 
-## A GraphQL Survival Kit
-Petra Gulicher (Independent Sydney)
+## Powerful REST in a GraphQL world
+Tejas Kumar (G2i Berlin)
 
-``` Don’t burn your sh*t after a festival ``` _Petra Gulicher 2020_
+Tejas is one of those people who just has amazing stage presence, beiing the last talk of the second day could be quite daunting. People are already tired from lunch and it being the last day of the conference. Tejas picked everyone up and showed us how to use REST in GraphQL by demonstrating how to use giphy end to end with type safety. 
+
+``` Innovate against constraints,chose better over bitter and support open source ``` _Tejas Kumar ReactConf 2020_
 
 ### Wrapping up
-
+ReactConf AU the first-ever ReactConf in Australia did not disappoint. I look forward to seeing the lineup next year.
+  ``` Don’t burn your sh*t after a festival ``` _Petra Gulicher ReactConf 2020_ 
 
 ### References
-* 
+[React Logo](https://www.cleanpng.com/png-react-javascript-angularjs-ionic-atom-2904925/download-png.html)

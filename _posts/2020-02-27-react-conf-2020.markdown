@@ -36,7 +36,7 @@ _Max Stoiber ReactConf 2020_
 Diana Mounter (GitHub NYC)
 
 Diana walked us through how GitHub has been improving its themeability from using starting with two developers in 2017 to hiring their first react developer in 2018.
-She guided us on their journey from hardcoded hex color values to using variables and styled components.
+Diana guided us on GitHub's journey from hardcoded hex color values to using variables and styled components.
 
 On the path to the ~~dark side~~ dark mode, Diana and her team realised that colour is relative and simply inverting the colours would not achieve true dark mode.
 
@@ -66,7 +66,7 @@ Why Final Form:
 Form and Field components can make use of subscriptions and is a boolean type.
 
 ```
-If the new React Context API and Suspense killed Redux (they didn’t), surely Hooks kill the need for a form library, right? Well, not exactly. Managing form state is more than just holding your current values in state; it’s about sync and async validation errors, and much more! But that doesn’t mean that Hooks are irrelevant to the situation. Hooks make building forms in React easier than ever before.
+Hooks make building forms in React easier than ever before.
 ``` 
 _Erik Rasmussen ReactConf 2020_
 
@@ -103,7 +103,7 @@ We were treated to an amazing demo of Reactronica by Kaho. All I can say is Kaho
 ## Rethinking Design Practices
 Mark Dalgleish (SEEK Melbourne)
 
-Using [Braid](https://www.npmjs.com/package/braid-design-system) and playroom designers and developers can work together and break down the barriers of coding for designers. Designers can design in the browser without the need to setup their enviroment or worry about importing modules.
+Using [Braid](https://www.npmjs.com/package/braid-design-system) and playroom designers and developers can work together and break down the barriers of coding for designers. Designers can design in the browser without the need to setup their enviroment or worry about importing modules. This allows designers to share urls with developers and vice versa.
 
 
 ```Our design systems are not working to their full potential``` _Mark Dalgleish ReactConf 2020_
@@ -111,13 +111,12 @@ Using [Braid](https://www.npmjs.com/package/braid-design-system) and playroom de
 ## Write fewer tests! Model-based testing in React
 David Khourshid (Microsoft Orlando)
 
-How to use model-based testing to generate end to end tests using React testing library, Puppeteer, Jest and x state.
+How to use model-based testing to generate end to end tests using React testing library, Puppeteer, Jest and [x state](https://xstate.js.org/)
+
 1) Create your model
 2) Generate abstract tests
 3) Make them real
 4) Execute tests
-
-[x state](https://xstate.js.org/)
 
 | Pros | Cons | 
 | --------------------------------------------|:-------------:|

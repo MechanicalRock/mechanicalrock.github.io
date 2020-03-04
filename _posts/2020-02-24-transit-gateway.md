@@ -262,4 +262,4 @@ I have included just one of the Workload VPC Associations(Production) as an exam
 #### Wrapping it all up
 We now have a Transit Gateway Hub and Spoke architecture deployed using Infrastructure as Code, with the Networking Account configured as the Hub.  The best part is the visibility we now have over the whole network, which is provided by Transit Gateway Network Manager.  You will notice that the topology view has an uncanny resemblance to AWS Xray.. but for networking connectivity of your VPN all the way to your VPC's.  Identifying network issues will not be as arduous with realtime status of the whole network displayed in a user friendly manner, just follow the bouncing packet.
 
-Are you ready to board the flight to Transit Gateway?.. Mechanical Rock have your boarding passes ready 
+Are you ready to board the flight to Transit Gateway?.. Mechanical Rock have your boarding passes ready at [Mechanical Rock Ticketing](https://www.mechanicalrock.io/lets-get-started/)

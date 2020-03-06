@@ -8,24 +8,24 @@ image: /img/blog/reactConf/react.png
 ---
 
 ## Introduction 
-Why I loved React Conf and why I think you would to. 
-We have all been to conferences which have good intentions but struggle to keep your attention, this was not a problem React Conf AU had. The day started with a welcome to country including a smoking ceremony and the icing on the cake was the coffee and gelato.
+Why I loved ReactConf and why I think you would too. 
+We have all been to conferences which have good intentions but struggle to keep your attention, this was not a problem ReactConf AU had. The day started with a welcome to country including an aboriginal smoking ceremony and the icing on the cake was the copious amount of coffee and gelato.
 
-**Did you know:** React Conf AU is the first React conference in the southern hemisphere.
+_Did you know ReactConf AU is the first React conference in the southern hemisphere?_
 
 Below are my personal highlights from the two day conference. 
 
 ## Day 1
 ![day 1](/img/blog/reactConf/conf_day1.jpg)
 
-### Keynote css in js
+### Keynote CSS-in-JS
 Max Stoiber (Gatsby) 
 
 
-The father of styled components took us through a history of CSS in js from [JSS](https://cssinjs.org/?v=v10.0.4)(2014) to [theme-ui](https://theme-ui.com/)(2019).
+The father of styled components took us through a history of CSS-in-JS from [JSS](https://cssinjs.org/?v=v10.0.4)(2014) to [theme-ui](https://theme-ui.com/)(2019).
 Max expressed his passion for open source and encouraged everyone to create an open-source project and share them with him.
 
-**Did you know**  60% of React installs now come with CSS in js.
+**Did you know**  60% of React installs now come with CSS-in-JS.
 
 Max's pro tips
 ```
@@ -40,22 +40,48 @@ _Max Stoiber ReactConf 2020_
 ### Themeability is the path to dark mode
 Diana Mounter (GitHub NYC)
 
-Diana walked us through how GitHub has been improving its themeability from using starting with two developers in 2017 to hiring their first react developer in 2018.
-Diana guided us on GitHub's journey from hardcoded hex color values to using variables and styled components.
+Diana walked us through how GitHub has been improving its themeability from starting with two developers in 2017 to hiring their first react developer in 2018.
+Diana guided us on GitHub's journey from 2449 hardcoded hex color values which caused chaos when brand colours changed to using variables and styled components.
+
+From: 
+```
+$brandPrimary: #f00;
+$brandSecondary: #222;
+```
+
+To: 
+```
+Alias   .bg-purple-light    Variable    $purple-000     Value   #f5f0ff	  	       
+Alias   .bg-purple          Variable    $purple-500     Value   #6f42c1	          	       
+```
+This was half of the battle. There was a mixture of aliases and variables being used in the code base. In 2018 [Primer](https://primer.style/) was born, and github was on it's way using themeability to obtain consistecy. You can find information on Primers CSS framework, React components and most adorably Octicons.
 
 On the path to the ~~dark side~~ dark mode, Diana and her team realised that colour is relative and simply inverting the colours would not achieve true dark mode.
 
 ``` colour is relative ``` _Diana Mounter ReactConf 2020_ 
 
-## (Proto)typing innovation in BBC News
+![Henry Munsell colour tree](/img/blog/reactConf/colourTree.png)
+
+
+### (Proto)typing innovation in BBC News
 James Dooley (BBC news labs)
 
 How a team of artists, developers, and engineers got prototypes ready in 6 weeks for the BBC and how this team is always pushing the boundaries to keep the BBC relevant in today's tech-savvy world.
-We learned about Skippy the Alexa integrated app that allows people to skip through news stories and how the BBC news labs team used Draft.js to improve the transcribe process of BBC journalists.
+We learned about [Skippy](https://bbcnewslabs.co.uk/projects/voice-user-interfaces/) the Alexa integrated app that allows people to skip through news stories. This was acheived by clipping together hundreds of hours of broadcasting voice data while utilizing [react-dnd](https://www.npmjs.com/package/react-dnd) and [react-sortable-tree](https://www.npmjs.com/package/react-sortable-tree). 
+The production of Skippy made way for a new department within the BBC, the voice + AI department.
+
+**Did you know:** 1 hour of media takes roughly 3-4 hours to manually trancscribe.
+
+BBC news labs team then created [OCTO](https://bbcnewslabs.co.uk/projects/octo/) to improve the transcribe process of BBC journalists. OCTO enbles users to select their media and have a transcript output. This had it's flaws when it came to editing the output as external factors such as noise could have an unwanted affect on a users output. Make way for [react-transcript-editor](https://www.npmjs.com/package/react-transcript-editor) which made use of [Draft.js](https://www.npmjs.com/package/draft-js). React-transcript-editor captured timing information on every word which enables you to click on any part of your transcript and resume playing your video or audio media.
+
 
 ``` Get what you can for free ``` _James Dooley ReactConf 2020_
 
-## Modern Forms in React
+![react-transcript-editor](/img/blog/reactConf/transcribe.gif)
+
+
+
+### Modern Forms in React
 Erik Rasmussen (Redux form)
 
 The creator of [Redux Form](https://redux-form.com/8.3.0/), [Final Form](https://github.com/final-form/final-form), [React Final Form](https://github.com/final-form/react-final-form) and why Final Form should be the Final Form you will need (Disclaimer: for now).
@@ -68,22 +94,31 @@ Why Final Form:
 * It's framework agnostic.
 
 
-Form and Field components can make use of subscriptions and is a boolean type.
+Form and Field components can make use of subscriptions and is a boolean type. Give this a go in this [sandbox](https://final-form.org/docs/react-final-form/examples/subscriptions).
 
 ```
 Hooks make building forms in React easier than ever before.
 ``` 
 _Erik Rasmussen ReactConf 2020_
 
-## react-beautiful-dnd: Behind the magic
+**Without Subscriptions**
+ ![no subscription](/img/blog/reactConf/NoSub.gif)
+
+**With Subscriptions**
+ ![with subscription](/img/blog/reactConf/Sub.gif)
+
+
+### react-beautiful-dnd: Behind the magic
 Alex Reardon (Atlassian)
 
-Alex showed us the correlation between developers and magicians by going behind the magic of [React DnD](https://react-dnd.github.io/react-dnd/docs/overview). We learned how snapshots and different sensors (mouse, keyboard, and touch to name a few) work together to move the position of list components within the same list and different lists.
-One of my favorite parts from this talk was how accessibility comes out of the box with react dnd allowing users with sight impairments to interact and move list items.
+Alex showed us the correlation between developers and magicians by going behind the magic of [react-beautiful-dnd](https://www.npmjs.com/package/react-beautiful-dnd). We learned how snapshots and different sensors (mouse, keyboard, and touch to name a few) work together to move the position of list components within the same list and different lists.
+One of my favorite parts from this talk was how accessibility comes out of the box with react-beautiful-dnd allowing users with sight impairments to interact and move list items.
 
 ```I love moments of wonder when you pull off an illusion``` _Alex Reardon ReactConf 2020_
 
-## The first two seconds: Faster page loads with React
+![react-beautiful-dnd](/img/blog/reactConf/dnd.gif)
+
+### The first two seconds: Faster page loads with React
 Josh Duck (ClipChamp Brisbane)
 
 How did ABC speed up its performance in the first two seconds? Server-side rendering, hydration and CSS media queries.
@@ -97,15 +132,10 @@ What can you do?
 
 ```blink slow ``` _Josh Duck ReactConf 2020_
 
-## Reactronica: Music as a Function of State
-Kaho Cheung (State Library of NSW, DX Lab Sydney)
-
-We were treated to an amazing demo of Reactronica by Kaho. All I can say is Kaho can really drop a beat and if you get the chance you should really check it out at [Reactronica](https://reactronica.com/).
-
-### Day 2
+## Day 2
 ![day 2](/img/blog/reactConf/conf_day2.jpg)
 
-## Rethinking Design Practices
+### Rethinking Design Practices
 Mark Dalgleish (SEEK Melbourne)
 
 Using [Braid](https://www.npmjs.com/package/braid-design-system) and playroom designers and developers can work together and break down the barriers of coding for designers. Designers can design in the browser without the need to setup their enviroment or worry about importing modules. This allows designers to share urls with developers and vice versa.
@@ -113,7 +143,7 @@ Using [Braid](https://www.npmjs.com/package/braid-design-system) and playroom de
 
 ```Our design systems are not working to their full potential``` _Mark Dalgleish ReactConf 2020_
 
-## Write fewer tests! Model-based testing in React
+### Write fewer tests! Model-based testing in React
 David Khourshid (Microsoft Orlando)
 
 How to use model-based testing to generate end to end tests using React testing library, Puppeteer, Jest and [x state](https://xstate.js.org/)
@@ -138,14 +168,14 @@ How to use model-based testing to generate end to end tests using React testing 
 ``` 
 _David Khourshid ReactConf 2020_
 
-## Powerful REST in a GraphQL world
+### Powerful REST in a GraphQL world
 Tejas Kumar (G2i Berlin)
 
 Tejas is one of those people who just has amazing stage presence, beiing the last talk of the second day could be quite daunting. People are already tired from lunch and it being the last day of the conference. Tejas picked everyone up and showed us how to use REST in GraphQL by demonstrating how to use giphy end to end with type safety. 
 
 ``` Innovate against constraints,chose better over bitter and support open source ``` _Tejas Kumar ReactConf 2020_
 
-### Wrapping up
+## Wrapping up
 My takeaways from the event would be to support your community and open source. Some of the things I can't wait to try in my work would be:
 *  Final form subscriptions, this is so powerful how you can tell your form what you care about and in turn when it should re-render. Gone are the days where your form would needlessly re-render after every keystroke.
 * Model-based testing, I hope to give this a go using x state after the compelling talk by David Khourshid and how amazing model-based testing can be. I want to know what scenarios model-based testing would be more beneficial to me.
@@ -157,3 +187,6 @@ On that note ``` Don’t burn your sh*t after a festival ``` _Petra Gulicher Rea
 
 ### References
 [React Logo](https://www.cleanpng.com/png-react-javascript-angularjs-ionic-atom-2904925/download-png.html)
+[By File:Munsell 1943 color solid cylindrical coordinates.png: SharkDderivative work: Datumizer - This file was derived from:  Munsell 1943 color solid cylindrical coordinates.png:, CC BY-SA 3.0,](https://commons.wikimedia.org/w/index.php?curid=86105969)
+[react-beautiful-dnd image](https://www.npmjs.com/package/react-beautiful-dnd)
+[react-transcript-editor image](https://github.com/bbc/react-transcript-editor/issues/150)

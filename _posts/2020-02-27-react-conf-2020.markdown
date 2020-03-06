@@ -8,7 +8,12 @@ image: /img/blog/reactConf/react.png
 ---
 
 ## Introduction 
-React Conf AU is the first React conference in the southern hemisphere and it didn't disappoint. The quality of speakers was spot on, meet the faces behind the projects that make React what it is today.
+Why I loved React Conf and why I think you would to. 
+We have all been to conferences which have good intentions but struggle to keep your attention, this was not a problem React Conf AU had. The day started with a welcome to country including a smoking ceremony and the icing on the cake was the coffee and gelato.
+
+**Did you know:** React Conf AU is the first React conference in the southern hemisphere.
+
+Below are my personal highlights from the two day conference. 
 
 ## Day 1
 ![day 1](/img/blog/reactConf/conf_day1.jpg)
@@ -17,10 +22,10 @@ React Conf AU is the first React conference in the southern hemisphere and it di
 Max Stoiber (Gatsby) 
 
 
-The father of styled components took us through CSS in js a history.
+The father of styled components took us through a history of CSS in js from [JSS](https://cssinjs.org/?v=v10.0.4)(2014) to [theme-ui](https://theme-ui.com/)(2019).
 Max expressed his passion for open source and encouraged everyone to create an open-source project and share them with him.
 
-60% of React installs now come with CSS in js.
+**Did you know**  60% of React installs now come with CSS in js.
 
 Max's pro tips
 ```
@@ -45,7 +50,7 @@ On the path to the ~~dark side~~ dark mode, Diana and her team realised that col
 ## (Proto)typing innovation in BBC News
 James Dooley (BBC news labs)
 
-How a team of artists, developers, and engineers get prototypes ready in 6 weeks for the BBC and how this team is always pushing the boundaries to keep the BBC relevant in today's tech-savvy world.
+How a team of artists, developers, and engineers got prototypes ready in 6 weeks for the BBC and how this team is always pushing the boundaries to keep the BBC relevant in today's tech-savvy world.
 We learned about Skippy the Alexa integrated app that allows people to skip through news stories and how the BBC news labs team used Draft.js to improve the transcribe process of BBC journalists.
 
 ``` Get what you can for free ``` _James Dooley ReactConf 2020_
@@ -138,8 +143,14 @@ Tejas is one of those people who just has amazing stage presence, beiing the las
 ``` Innovate against constraints,chose better over bitter and support open source ``` _Tejas Kumar ReactConf 2020_
 
 ### Wrapping up
-ReactConf AU the first-ever ReactConf in Australia did not disappoint. I look forward to seeing the lineup next year.
-  ``` Don’t burn your sh*t after a festival ``` _Petra Gulicher ReactConf 2020_ 
+My takeaways from the event would be to support your community and open source. Some of the things I can't wait to try in my work would be:
+*  Final form subscriptions, this is so powerful how you can tell your form what you care about and in turn when it should re-render. Gone are the days where your form would needlessly re-render after every keystroke.
+* Model-based testing, I hope to give this a go using x state after the compelling talk by David Khourshid and how amazing model-based testing can be. I want to know what scenarios model-based testing would be more beneficial to me.
+
+ReactConf AU the first-ever ReactConf in Australia did not disappoint and I look forward to seeing the lineup next year.
+Videos from the event have now been released and you can view them [here](https://www.youtube.com/channel/UCH8zjP2Ee58coDIFwniFO5w/videos).
+
+On that note ``` Don’t burn your sh*t after a festival ``` _Petra Gulicher ReactConf 2020_ 
 
 ### References
 [React Logo](https://www.cleanpng.com/png-react-javascript-angularjs-ionic-atom-2904925/download-png.html)

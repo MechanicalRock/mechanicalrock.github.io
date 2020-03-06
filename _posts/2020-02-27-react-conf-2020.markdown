@@ -119,8 +119,11 @@ David Khourshid (Microsoft Orlando)
 How to use model-based testing to generate end to end tests using React testing library, Puppeteer, Jest and [x state](https://xstate.js.org/)
 
 1) Create your model
+
 2) Generate abstract tests
+
 3) Make them real
+
 4) Execute tests
 
 | Pros | Cons | 

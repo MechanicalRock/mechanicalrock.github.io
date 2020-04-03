@@ -33,15 +33,14 @@ Resources:
   CoffeeShopAppSyncApi:
     Type: AWS::AppSync::GraphQLApi
     Properties:
-			Name: CoffeeShopAppSyncApi
-			AuthenticationType: API_Key
+      Name: CoffeeShopAppSyncApi
+      AuthenticationType: API_Key
 
-	CoffeeShopAppSyncApiKey:
-		Type: AWS::AppSync::ApiKey
-		Properties:
-			ApiId: !GetAtt CoffeeShopAppSyncApi.ApiId
+  CoffeeShopAppSyncApiKey:
+    Type: AWS::AppSync::ApiKey
+    Properties:
+      ApiId: !GetAtt CoffeeShopAppSyncApi.ApiId
       Description: API key for graphQL Api
-
 ```
 
 There are two resources in the template.
@@ -55,37 +54,35 @@ In this case, we are using an API key to protect the API, so we will need to cre
 Now we have the API ready, we will need to create AppSync schema for the API
 
 ```yml
-	CoffeeShopAppSyncSchema:
-		Type: AWS::AppSync::GraphQLSchema
-		Properties:
-		ApiId: !GetAtt CoffeeShopAppSyncApi.ApiId
-    Definition : |
-
-			input orderInput {
-			 id: String
-			 coffee: String
-			 size: String
-			}
-
-			type Order {
-			 id: String
-			 coffee: String
-			 size: String
-			}
-
-			type Mutation {
-			createOrder(input: orderInput): Order
-			}
-
-			type Query{
-			getOrder(id: String): Order
-			}
-
-			schema {
-			query: Query
-			mutation: Mutation
+CoffeeShopAppSyncSchema:
+  Type: AWS::AppSync::GraphQLSchema
+  Properties:
+    ApiId: !GetAtt CoffeeShopAppSyncApi.ApiId
+    Definition: |
+      input orderInput {
+        id: String
+        coffee: String
+        size: String
       }
 
+      type Order {
+        id: String
+        coffee: String
+        size: String
+      }
+
+      type Mutation {
+      createOrder(input: orderInput): Order
+      }
+
+      type Query{
+      getOrder(id: String): Order
+      }
+
+      schema {
+      query: Query
+      mutation: Mutation
+      }
 ```
 
 The schema that we created serves the purpose of ensuring the data from the client matches the schema before mapping to the resolver.
@@ -148,8 +145,8 @@ Adding resolver for a mutation, query or subscription automatically coverts argu
 
 ```yml
 CreateOrderResolver:
-	Type: AWS:: AppSync::Resolver
-	Properties:
+  Type: AWS:: AppSync::Resolver
+  Properties:
     ApiId: !GetAtt CoffeeShopAppSyncApi.ApiId
     TypeName: Mutation
     FieldName: createOrder
@@ -167,8 +164,8 @@ CreateOrderResolver:
         $util.toJson($context.result)
 
 GetOrderResolver:
-	Type: AWS:: AppSync::Resolver
-	Properties:
+  Type: AWS:: AppSync::Resolver
+  Properties:
     ApiId: !GetAtt CoffeeShopAppSyncApi.ApiId
     TypeName: Query
     FieldName: getOrder

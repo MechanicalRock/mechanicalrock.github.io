@@ -45,8 +45,9 @@ Resources:
 
 There are two resources in the template.
 
-Firstly, it is creating the resource for AppSyncAPI. There are few methods available for authentication type. We will use API_KEY in this case, there are also other alternatives such as
+Firstly, it is creating the resource for AppSyncAPI. There are few methods available for authentication type such as
 
+- API_KEY
 - AWS_IAM
 - AMAZON_COGNITO_USER_POOLS
 - OPENID_CONNECT.

@@ -102,37 +102,36 @@ In this case, we will use DynamoDb as our data source.
 
 ```yml
 CoffeeShopDynamoDB:
-	Type: AWS::DynamoDB::Table
-	Properties:
-		TableName: 'CoffeeShopTable'
-		AttributeDefinitions:
-			- AttributeName: 'id'
-			  AttributeType: 'S'
-			- AttributeName: 'resourceId'
-			  AttributeType: 'S'
-		KeySchema:
-			- AttributeName: 'id'
-			  KeyType: 'HASH'
-			- AttributeName: 'resourceId'
-			  KeyType: 'RANGE'
-		ProvisionedThroughput:
-			ReadCapacityUnits: 3
-			WriteCapacityUnits: 1
-		Projection:
-      ProjectionType: 'ALL'
+  Type: AWS::DynamoDB::Table
+  Properties:
+    TableName: "CoffeeShopTable"
+    AttributeDefinitions:
+      - AttributeName: "id"
+        AttributeType: "S"
+      - AttributeName: "resourceId"
+        AttributeType: "S"
+    KeySchema:
+      - AttributeName: "id"
+        KeyType: "HASH"
+      - AttributeName: "resourceId"
+        KeyType: "RANGE"
+    ProvisionedThroughput:
+      ReadCapacityUnits: 3
+      WriteCapacityUnits: 1
+    Projection:
+      ProjectionType: "ALL"
 
 CoffeeShopDynamoDBDataSource:
-	Type: AWS::AppSync::DataSource
-	Properties:
-		ApiId :  !GetAtt CoffeeShopAppSyncApi.ApiId
-		Name: CoffeeShopDynamoDBDataSource
-		Description: Contain order data from coffee shop
-		Type: “AMAZON_DYNAMODB”
-		ServiceRoleArn: arn:aws:iam::xxxxxxxxxxxx:role/xxxxxxxxx
-		DynamoDBConfig:
-			TableName: CoffeeShopTable
+  Type: AWS::AppSync::DataSource
+  Properties:
+    ApiId: !GetAtt CoffeeShopAppSyncApi.ApiId
+    Name: CoffeeShopDynamoDBDataSource
+    Description: Contain order data from coffee shop
+    Type: “AMAZON_DYNAMODB”
+    ServiceRoleArn: arn:aws:iam::xxxxxxxxxxxx:role/xxxxxxxxx
+    DynamoDBConfig:
+      TableName: CoffeeShopTable
       AwsRegion: ap-southeash-2
-
 ```
 
 From the template, we are provisioning new dynamoDB table for the API. It has the attribute id as the hash key and resourceId as the range key for the table.

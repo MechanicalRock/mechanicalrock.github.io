@@ -52,19 +52,10 @@ This pillar is primarily serviced as part of the CloudWatch suite on AWS. CloudW
 
 API Gateway is a good example of a service that has good default metrics collection out of the box - under specific circumstances. API Gateway collects metrics on each route and method e.g. /mypath for method POST. This does require that you configure separate paths in API Gateway; building a lambda-lith, as we have done with express, does not capture this level of detail because we delegating the handling of routing to the lambda function. Generally, the more configuration that is captured at the platform layer, the more information is available to AWS, and hence AWS can be provide more out-of-the-box.
 
-The following is an example of metrics and dashboards that are provided out-of-the-box for the API Gateway service.
+The following is an example of metrics and dashboards that are provided out-of-the-box for the API Gateway service. They must be enabled by setting 'DetailedMetricsEnabled' in CloudFormation, or setting it via an API.
 
-# screenshot
-
-Alarms can likewise be configured like such throught the console,
-
-# something here
-
-or through CloudFormation.
-
-# something else here
-
-Dashboards are similary available
+<center><img src="/img/expressmetrics/metrics-list.png" /></center>
+<br/>
 
 I am of the opinion that you should avoid custom instrumentation as much possible and allow the platform to take care of it. For AWS that will generally mean configuring your application through platform-level configuration (e.g. CloudFormation) as much as possible. The less code you need to write the better. Other platforms offer similar capability at the code-level but this is usually limited to virtual-machine based languages like Java and C#, where tools are capable of injecting hooks into the language runtime based on intimate knowledge of particular frameworks. This is a bit harder to do in languages like Go and Rust (and even Python and Javascript), and usually restricts developers to a handful of frameworks. I personally find the AWS approach far more flexible.
 
@@ -79,7 +70,7 @@ The former used to be the only way to create custom metrics. This involved needi
 
 Your other alternative is to use the CloudWatch Embedded Logs format. This is the best option if you are already shipping logs to CloudWatch, either via native integration (e.g. because you are using Lambda) or the CloudWatch Logs agent. By structuring your logs in a specific JSON format, CloudWatch will  parse your logs for metrics that are embedded within your log messages; creating and recording metrics automatically. This does mean that you need to move to a JSON-based structured logging format, but if you are not currently structuring your logs this is good step to take.
 
-AWS has released a few libraries to make using the embedded format a little easier. The library for node.js (which includes TypeScript definitions) is available [here]().
+AWS has released a few libraries to make using the embedded format a little easier. The library for node.js (which includes TypeScript definitions) is available [here](https://github.com/awslabs/aws-embedded-metrics-node).
 
 The structure of embedded format is fairly similar to the API calls you would have made using the PutMetrics call, so I'll stick to explaining just the embedded format. Each log message is limited to 256kb. Each log message must be in JSON format and include the following node at the root of the document.
 
@@ -137,7 +128,188 @@ The CloudWatch metrics array is essentially calling out definitions of various a
 
 In this example, we can see 'functionVersion' has been called out as dimension in the array, with a corresponding metric of 'time' of unit milliseconds. The requestId will be more or less ignored, as it is a simple logging attribute. The 'PutMetrics' API call follows more or less the same structure, it just wouldn't include any simple logging attributes.
 
-# Kicking The Tyres.
+# Kicking The Tyres
 
+Code is available [here](https://github.com/matt-tyler/simple-node-api-metrics).
+
+We will adjust our logging by installing the node logging library that AWS provides that conforms to the embedded metrics specification.
+
+```bash
+npm install --save aws-embedded-metrics
+```
+
+Like before, we will import some functions from the library
+
+```javascript
+const { createMetricsLogger, Unit } = require("aws-embedded-metrics");
+```
+
+and we'll configure the library by adjusting some middleware.
+
+```javascript
+app.use((req, res, next) => {
+    req['segment'] = xray.getSegment();
+    const logger = createMetricsLogger();
+    logger.setNamespace("simple-node-api");
+    logger.setProperty("RequestId", req.headers["x-request-id"])
+    req['logger'] = logger;
+    next();
+});
+```
+
+Here I have created a new namespace ("simple-node-api"), and added a property to record the request identifier.
+
+OK, great. Now we need to record a metric. For the purposes of demonstration, I'll record the time taken for the authorization middleware to make pass/fail decision. I'm obviously already getting that from X-Ray, but this is purely for demonstration purposes. The middlware now looks like this...
+
+```javascript
+app.use((req, res, next) => {
+    const { headers, segment, method, logger, path: obj } = req;
+    xray.captureAsyncFunc('Auth Middleware', subsegment => {
+        const token = headers['authorization'].replace("Bearer ", "");
+        const decoded = jwt.decode(token, { json: true });
+        const { sub } = decoded;
+        const groups = decoded['cognito:groups'] || [];
+        const act = methodToAction[method];
+
+        req.logger.setProperty("subject", sub);
+        req.logger.setProperty("object", obj);
+        req.logger.setProperty("groups", groups);
+        req.logger.putDimensions({ "action": act});
+
+        const currentTime = new Date().getTime();
+        
+        rbac.addRolesToUser(sub, groups).then(() => {
+            rbac.enforce(sub, obj, act)
+                .then(pass => {
+                    subsegment.close();
+                    if (pass) {
+                        req.logger.putDimensions({ "Authorization": "success" })
+                        req.logger.putMetric("evaluationTime", new Date().getTime() - currentTime, Unit.Milliseconds)
+                        // the call to 'flush' will log out the message
+                        req.logger.flush().then(() => next())
+                    } else {
+                        req.logger.putDimensions({ "Authorization": "failure" });
+                        // the call to 'flush' will log out the message
+                        req.logger.flush().then(() => res.status(403).json({message: "Forbidden"}))
+                    }
+                })
+        }).catch(() => subsegment.close());
+    }, segment);
+});
+```
+
+The first thing to occur is setting various properties to record the subject, object and group. I'll make a dimension out of 'action' which is only set to read or write, and therefore is not a high-cardinality attribute. I take the current time, and when evaluation has finished, I can record the time it finished. I then record the difference in time as a metric. The metric will have a dimension to indicate whether it succeeded or failed.
+
+The output in the CloudWatch logs will look like the following...
+
+```json
+{
+    "LogGroup": "simple-node-api-ExpressBackend-V53ZHQ8TGB1Y",
+    "ServiceName": "simple-node-api-ExpressBackend-V53ZHQ8TGB1Y",
+    "ServiceType": "AWS::Lambda::Function",
+    "action": "read",
+    "Authorization": "success",
+    "RequestId": "KgRJujF0SwMEPLQ=",
+    "subject": "0348f283-442b-4e5c-a9a8-da6d3f284ea9",
+    "object": "/",
+    "groups": [
+        "writer",
+        "deleter",
+        "reader"
+    ],
+    "executionEnvironment": "AWS_Lambda_nodejs12.x",
+    "memorySize": "128",
+    "functionVersion": "$LATEST",
+    "logStreamId": "2020/04/05/[$LATEST]8514dba7bc7d4a8bbb48505f02ad6380",
+    "traceId": "Root=1-5e899571-26ba38ebe8846762aedb813e;Parent=dc867b62be8a635d;Sampled=1",
+    "_aws": {
+        "Timestamp": 1586074994255,
+        "CloudWatchMetrics": [
+            {
+                "Dimensions": [
+                    [
+                        "LogGroup",
+                        "ServiceName",
+                        "ServiceType",
+                        "action"
+                    ],
+                    [
+                        "LogGroup",
+                        "ServiceName",
+                        "ServiceType",
+                        "Authorization"
+                    ]
+                ],
+                "Metrics": [
+                    {
+                        "Name": "evaluationTime",
+                        "Unit": "Milliseconds"
+                    }
+                ],
+                "Namespace": "simple-node-api"
+            }
+        ]
+    },
+    "evaluationTime": 241
+}
+```
+
+Once the code is deployed through `sam build && sam deploy --guided`, we can send some requests off which should make the metrics appear in the console. A script like the following can help with that.
+
+```bash
+#!/bin/zsh
+
+# Your API endpoint address is available from the output of your deployment
+ENDPOINT=https://otax9va024.execute-api.ap-southeast-2.amazonaws.com
+
+# Aquire a token through your cognito endpoint
+TOKEN=''
+
+# this should return nothing e.g. {"Items":[]}
+curl $ENDPOINT
+
+# now send some data
+for i in {1..10}; do
+    curl -XPOST -H "Content-Type: text/plain" -H "Authorization: Bearer $TOKEN" -d "Message: $i" $ENDPOINT
+done
+
+curl -H "Authorization: $TOKEN" $ENDPOINT
+```
+
+In the console we can find the metrics that we previously defined.
+
+<center><img src="/img/expressmetrics/metrics-list.png" /></center>
+<br/>
+
+We can graph metrics with various kinds of aggregations including averages...
+
+<center><img src="/img/expressmetrics/metrics-avg.png" /></center>
+<br/>
+
+or percentiles...
+
+<center><img src="/img/expressmetrics/metrics-p99.png" /></center>
+<br/>
+
+We can also define alarms...
+
+<center><img src="/img/expressmetrics/alarm.png" /></center>
+<br/>
+
+when certain conditions are reach...
+
+<center><img src="/img/expressmetrics/alarm-conditions.png" /></center>
+<br/>
+
+and preview them against recent metric collection.
+
+<center><img src="/img/expressmetrics/alarm-threshold.png" /></center>
+<br/>
+
+Simples!
+
+# Conclusion
+
+In this article we took a look at the last pillar of observability: metrics. We discussed various ways metrics are used out in the real world, and how they compare in usage to logging and tracing. We then look at ways we can use metrics in AWS, either through in-built metrics provided by the platform, or by defining custom metrics. We defined our custom metric in the serverless express up using the CloudWatch embedded logs format through an AWS provided logging library. We then viewed this metric in the console, and saw how to set up alarms on it.
 
 'Everying-on-Fire' becoming 'Business-as-Usual'? [Contact Mechanical Rock to Get Help!](https://www.mechanicalrock.io/lets-get-started)

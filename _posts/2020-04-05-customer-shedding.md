@@ -27,20 +27,20 @@ The greatest liklihood is that the current eCommerce platform is a mix of legacy
 
 That legacy technology could be a bottleneck.
 
-For example, we at Mechanical Rock built a serverless [Progressive Web Application](https://www.mechanicalrock.io/docs/case-studies/pwa-capability-report.pdf) for a customer. It was all singing and all dancing, with offline capability and lightspeed responsiveness. However, there was a problem. When integrating with backend corporate systems, we found that one in particular, which we shall call 'SOP' for the purposes of this example, could take no more than 10 requests per second. Even when the teams responsible for 'SOP' increased the resources available, this was the limit. 
+For example, we at Mechanical Rock built a serverless [Progressive Web Application](https://www.mechanicalrock.io/docs/case-studies/pwa-capability-report.pdf) for a customer. It was all singing and all dancing, with offline capability and lightspeed responsiveness. However, there was a problem. When integrating with backend corporate systems, we found one in particular, which we shall call 'SOP' for the purposes of this example, could take no more than 10 requests per second. Even when the teams responsible for 'SOP' increased the resources available, this was the limit. 
 
-This meant we needed another strategy to reduce the number of errors. Modern technology provides this in abundance. We built a .... words 
+This meant we needed another strategy to reduce the number of errors. Modern technology provides this in abundance. We built a .... words
 
 Picture?
 
 
 # DDoS
 
-A distributed denial-of-service (DDoS) attack is a malicious attempt to disrupt normal traffic of a targeted server, service or network by overwhelming the target or its surrounding infrastructure with a flood of traffic. GitHub DDoS attacks are probably the most famous, when they first revealed in 2018 it was hit with an attack that peaked at 1.35Tbps.
+A distributed denial-of-service (DDoS) attack is a malicious attempt to disrupt normal traffic of a targeted server, service or network by overwhelming the target or its surrounding infrastructure with a flood of traffic. GitHub DDoS attacks are probably the most famous, when they revealed in 2018 it was hit with an attack that peaked at 1.35Tbps.
 
-My personal opinion is that there are better ways than a customer queue to deal with a DDoS attack. In the AWS world it involves followung well-architected principles around autoscaling across availability zones, and using Route 53, CloudFront and AWS Shield in conjunction. 
+My personal opinion is that there are better ways than a customer queue to deal with a DDoS attack. In the AWS world it involves following well-architected principles around autoscaling across availability zones, using Route 53, CloudFront, Web Application Firewall (WAF) and AWS Shield in conjunction.
 
-Picture?
+![Common eCommerce Security Pattern](/img/ecom-sec-pattern.jpg "Common Security Pattern")
 
 # Conclusion
 

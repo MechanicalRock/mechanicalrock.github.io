@@ -29,21 +29,18 @@ That legacy technology could be a bottleneck.
 
 For example, we at Mechanical Rock built a serverless [Progressive Web Application](https://www.mechanicalrock.io/docs/case-studies/pwa-capability-report.pdf) for a customer. It was all singing and all dancing, with offline capability and lightspeed responsiveness. However, there was a problem. When integrating with backend corporate systems, we found one in particular, which we shall call 'SOP' for the purposes of this example, could take no more than 10 requests per second. Even when the teams responsible for 'SOP' increased the resources available, this was the limit. 
 
-This meant we needed another strategy to reduce the number of errors. Modern technology provides this in abundance. We built a .... words
-
-Picture?
-
+This meant we needed another strategy to reduce the number of errors and provide a seamless experience for the users. Modern technology provides the ability to do this in abundance. We shifted the API from synchronous to a fake asynchronous design - because there was no guarantee any request could finish in a reasonable amount of time. We cached requests using DynamoDB to throttle the number of requests we sent downstream.
 
 # DDoS
 
 A distributed denial-of-service (DDoS) attack is a malicious attempt to disrupt normal traffic of a targeted server, service or network by overwhelming the target or its surrounding infrastructure with a flood of traffic. GitHub DDoS attacks are probably the most famous, when they revealed in 2018 it was hit with an attack that peaked at 1.35Tbps. More recently, the Australian Government attributed the crashing myGov site as being offline due to a DDoS attack. This however, turned out to be a [poorly architected system](https://www.zdnet.com/article/government-wheels-out-census-excuse-and-blames-mygov-crash-on-ddos/), which could not cope with the increase in demand due to job losses associated with the pandemic.
 
-My personal opinion is that there are better ways than a customer queue to deal with a DDoS attack. In the AWS world it involves following well-architected principles around autoscaling across availability zones, using Route 53, CloudFront, Web Application Firewall (WAF) and AWS Shield in conjunction.
+My opinion is that there are better ways than a customer queue to deal with a potential DDoS attack. In the AWS world it involves following well-architected principles around autoscaling across availability zones, using Route 53, CloudFront, Web Application Firewall (WAF) and AWS Shield in conjunction with one another.
 
 ![Common eCommerce Security Pattern](/img/ecom-sec-pattern.jpg "Common Security Pattern")
 
 # Conclusion
 
-In Summary, there is no excuse for pissing off your customer today. Spend your money on addressing that, not on short term, throwaway approaches which damage your brand irreparably.
+It is highly likely that there is a level of complexity surrounding the decision to implement this queue, which we may never be privy to. However, there is no excuse for sacricficing new and existing customers because of it. Spend your money on addressing that, not on short term, throwaway approaches which damage your brand irreparably.
 
 Starting out with Serverless? [Contact Mechanical Rock to Get Started!](https://www.mechanicalrock.io/lets-get-started)

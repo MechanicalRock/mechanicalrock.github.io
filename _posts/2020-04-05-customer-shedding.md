@@ -19,17 +19,23 @@ Customers in this day and age do not expect to wait or have a shitty user experi
 
 Everyone in modern software development knows that 'the cloud' can easily cope with increases in demand, if you architect it correctly. Through using autoscaling techniques you can fairly easily monitor your applications and automatically adjust capacity across multiple services to maintain predictable performance. You can even set this up using dreaded clickops methods if you are so inclined!
 
-Now, I am pretty sure that K-Mart has embarked on their own [AWS journey](https://www.itnews.com.au/news/kmart-australia-wants-to-strangle-its-mainframe-out-of-existence-535110), which makes this scenario even harder to understand. So, why would a company potentially purchase a queuing system (or build it) and then spend time and money to implement it. I am assuming that this queuing system also requires compute resources to run, so it would consume even more $$'s. The money spent to implement this and the potential lost revenue of those waiting online shoppers must have been less than the alternative.. Which may have been the collapse of the entire site and the loss of all online revenue? I'm not convinced, but we may never know.
+Now, I am pretty sure that K-Mart has embarked on their own [AWS journey](https://www.itnews.com.au/news/kmart-australia-wants-to-strangle-its-mainframe-out-of-existence-535110), which makes this scenario even harder to understand. So, why would a company potentially purchase such a visible 'load shedding' queuing system (or build it) and then spend time and money to implement it. I am assuming that this queuing system also requires compute resources to run, so it would consume even more $$'s. The money spent to implement this and the potential lost revenue of those waiting online shoppers must have been less than the alternative.. Which may have been the collapse of the entire site and the loss of all online revenue? I'm not convinced, but we may never know.
+
+# Going Deeper
+
+Unfortunately, autoscaling doesn't solve all problems. A valid solution may be 'load shedding' but in less overt ways than a page admitting one customer at a time to your website. When a server is overloaded, it has an opportunity to triage incoming requests to decide which ones to accept and which ones to turn away. The most important request that a server will receive is a ping request from a load balancer. If the server doesn't respond to ping requests in time, the load balancer will stop sending new requests to that server for a period of time, and the server will sit idle. And in this scenario, the last thing we want to do is to reduce the size of our fleets. This strategy will differ from service to service, but provides an insight into what you could do.
+
+Newer, more 'cloud native' services such as DynamoDB, offer predictable performance and availability at scale. Even if a workload bursts quickly and exceeds the provisioned resources, DynamoDB maintains predictable performance for that workload. AWS Lambda provides an even broader example of the focus on predictable performance. When we use Lambda to implement a service, each API call runs in its own execution environment with consistent amounts of compute resources allocated to it, and that execution environment works on only that one request at a time. This differs from a server-based paradigm, where a given server works on multiple APIs.
 
 # Downstream Bottlenecks
 
-The greatest liklihood is that the current eCommerce platform is a mix of legacy and newer technologies. 
+The greatest liklihood is that the current eCommerce platform is a mix of legacy and newer technologies.
 
-That legacy technology could be a bottleneck.
+> That legacy technology could be a bottleneck.
 
 For example, we at Mechanical Rock built a serverless [Progressive Web Application](https://www.mechanicalrock.io/docs/case-studies/pwa-capability-report.pdf) for a customer. It was all singing and all dancing, with offline capability and lightspeed responsiveness. However, there was a problem. When integrating with backend corporate systems, we found one in particular, which we shall call 'SOP' for the purposes of this example, could take no more than 10 requests per second. Even when the teams responsible for 'SOP' increased the resources available, this was the limit. 
 
-This meant we needed another strategy to reduce the number of errors and provide a seamless experience for the users. Modern technology provides the ability to do this in abundance. We shifted the API from synchronous to a fake asynchronous design - because there was no guarantee any request could finish in a reasonable amount of time. We cached requests using DynamoDB to throttle the number of requests we sent downstream.
+This meant we needed a strategy to reduce the number of errors and provide a seamless experience for users. Modern technology provides the ability to do this in abundance. We shifted the API from synchronous to a fake asynchronous design - because there was no guarantee any request could finish in a reasonable amount of time. We cached requests using DynamoDB to throttle the number of requests we sent downstream.
 
 # DDoS
 

@@ -54,7 +54,7 @@ API Gateway is a good example of a service that has good default metrics collect
 
 The following is an example of metrics and dashboards that are provided out-of-the-box for the API Gateway service. They must be enabled by setting 'DetailedMetricsEnabled' in CloudFormation, or setting it via an API.
 
-<center><img src="/img/expressmetrics/metrics-list.png" /></center>
+<center><img src="/img/expressmetrics/metrics-detailed.png" /></center>
 <br/>
 
 I am of the opinion that you should avoid custom instrumentation as much possible and allow the platform to take care of it. For AWS that will generally mean configuring your application through platform-level configuration (e.g. CloudFormation) as much as possible. The less code you need to write the better. Other platforms offer similar capability at the code-level but this is usually limited to virtual-machine based languages like Java and C#, where tools are capable of injecting hooks into the language runtime based on intimate knowledge of particular frameworks. This is a bit harder to do in languages like Go and Rust (and even Python and Javascript), and usually restricts developers to a handful of frameworks. I personally find the AWS approach far more flexible.
@@ -283,12 +283,12 @@ In the console we can find the metrics that we previously defined.
 
 We can graph metrics with various kinds of aggregations including averages...
 
-<center><img src="/img/expressmetrics/metrics-avg.png" /></center>
+<center><img src="/img/expressmetrics/metrics-chart-avg.png" /></center>
 <br/>
 
 or percentiles...
 
-<center><img src="/img/expressmetrics/metrics-p99.png" /></center>
+<center><img src="/img/expressmetrics/metrics-chart-p99.png" /></center>
 <br/>
 
 We can also define alarms...
@@ -296,7 +296,7 @@ We can also define alarms...
 <center><img src="/img/expressmetrics/alarm.png" /></center>
 <br/>
 
-when certain conditions are reach...
+when certain conditions are reached...
 
 <center><img src="/img/expressmetrics/alarm-conditions.png" /></center>
 <br/>

@@ -36,7 +36,7 @@ Picture?
 
 # DDoS
 
-A distributed denial-of-service (DDoS) attack is a malicious attempt to disrupt normal traffic of a targeted server, service or network by overwhelming the target or its surrounding infrastructure with a flood of traffic. GitHub DDoS attacks are probably the most famous, when they revealed in 2018 it was hit with an attack that peaked at 1.35Tbps.
+A distributed denial-of-service (DDoS) attack is a malicious attempt to disrupt normal traffic of a targeted server, service or network by overwhelming the target or its surrounding infrastructure with a flood of traffic. GitHub DDoS attacks are probably the most famous, when they revealed in 2018 it was hit with an attack that peaked at 1.35Tbps. More recently, the Australian Government attributed the crashing myGov site as being offline due to a DDoS attack. This however, turned out to be a [poorly architected system](https://www.zdnet.com/article/government-wheels-out-census-excuse-and-blames-mygov-crash-on-ddos/), which could not cope with the increase in demand due to job losses associated with the pandemic.
 
 My personal opinion is that there are better ways than a customer queue to deal with a DDoS attack. In the AWS world it involves following well-architected principles around autoscaling across availability zones, using Route 53, CloudFront, Web Application Firewall (WAF) and AWS Shield in conjunction.
 

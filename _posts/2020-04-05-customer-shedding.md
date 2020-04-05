@@ -44,6 +44,6 @@ Picture?
 
 # Conclusion
 
-In Summary, there is no excuse for pissing off your customer today. Spend your money on addressing that, not on short term, throwaway approaches which damage your brand irreparabley.
+In Summary, there is no excuse for pissing off your customer today. Spend your money on addressing that, not on short term, throwaway approaches which damage your brand irreparably.
 
 Starting out with Serverless? [Contact Mechanical Rock to Get Started!](https://www.mechanicalrock.io/lets-get-started)

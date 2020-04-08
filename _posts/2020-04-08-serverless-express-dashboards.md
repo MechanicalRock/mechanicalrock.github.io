@@ -12,7 +12,7 @@ image: img/serverless-express.png
 
 # Introduction
 
-The last installment started to cover off on observability of our applications. Observability helps us to answer questions about how well applications our running in production. We can than use this information to improve our applications over time. Logging, Tracing and Metrics are commonly referred to as the 'three pillars of observability'. We previously had a look at logging and tracing. Logging allows us to keep persist statements about things that are occuring in our application for various purposes. Tracing is somewhat similar to logging, except it works across system boundaries to 'trace' how a request travels through various parts of a distributed systems architecture. I have not covered the third and final pillar, metrics, so let's dive into it!
+The last installment started to cover off on observability of our applications. Observability helps us to answer questions about how well our applications are running in production. We can than use this information to improve our applications over time. Logging, Tracing and Metrics are commonly referred to as the 'three pillars of observability'. We previously had a look at logging and tracing. Logging allows us to keep persist statements about things that are occuring in our application for various purposes. Tracing is somewhat similar to logging, except it works across system boundaries to 'trace' how a request travels through various parts of a distributed systems architecture. I have not covered the third and final pillar, metrics, so let's dive into it!
 
 # Metrics, Dashboards, Alerts - What Are They Good For?
 
@@ -38,7 +38,7 @@ e.g. If the system breaches a threshold of errors in a defined period, we should
 
 Metrics need not be restricted to software engineering concerns like uptime and requests-per-second. Metrics that are related to the domain your business operates in (e.g. number of orders) can be very valuable.
 
-In most cases, metrics only help to answer fairly generic questions of performance over time e.g. the 'what'. To understand 'how', and 'why', tracing and logging are generally more helpful. This doesn't stop metrics from getting a disproportionate amount of attention. Metrics are extremely seductive because they are so easy to understand at a glance (green = good, red = bad). A time-poor engineering manager can easily make the transisition to a poor engineering manager by placing too much emphasis on metrics. It's important to realise metrics are like sugar; best taken in moderation as part of a balanced diet.
+In most cases, metrics only help to answer fairly generic questions of performance over time e.g. the 'what'. To understand 'how', and 'why', tracing and logging are generally more helpful. This doesn't stop metrics from getting a disproportionate amount of attention. Metrics are extremely seductive because they are so easy to understand at a glance (green = good, red = bad). A time-poor engineering manager can easily make the transition to a poor engineering manager by placing too much emphasis on metrics. It's important to realize metrics are like sugar; best taken in moderation as part of a balanced diet.
 
 The worst outcome with metrics is something known as 'Dashboard Hell'. A team will create a new dashboard and alert for every incident that occurs which wastes significant amounts of engineering effort. Either a team will resolve the underlying causes of the incident (rendering the alerts useless), or the team will eventually be unable to cope with the number of dashboards and incoming alerts, leading to alarm fatigue. Building metrics and alerts at the expense of addressing underlying engineering issues will always result in a dysfunctional team and terrible services.
 
@@ -159,7 +159,7 @@ app.use((req, res, next) => {
 
 Here I have created a new namespace ("simple-node-api"), and added a property to record the request identifier.
 
-OK, great. Now we need to record a metric. For the purposes of demonstration, I'll record the time taken for the authorization middleware to make pass/fail decision. I'm obviously already getting that from X-Ray, but this is purely for demonstration purposes. The middlware now looks like this...
+OK, great. Now we need to record a metric. For the purposes of demonstration, I'll record the time taken for the authorization middleware to make pass/fail decision. I'm obviously already getting that from X-Ray, but this is purely for demonstration purposes. The middleware now looks like this...
 
 ```javascript
 app.use((req, res, next) => {
@@ -310,6 +310,6 @@ Simples!
 
 # Conclusion
 
-In this article we took a look at the last pillar of observability: metrics. We discussed various ways metrics are used out in the real world, and how they compare in usage to logging and tracing. We then look at ways we can use metrics in AWS, either through in-built metrics provided by the platform, or by defining custom metrics. We defined our custom metric in the serverless express up using the CloudWatch embedded logs format through an AWS provided logging library. We then viewed this metric in the console, and saw how to set up alarms on it.
+In this article we took a look at the last pillar of observability: metrics. We discussed various ways metrics are used out in the real world, and how they compare in usage to logging and tracing. We then look at ways we can use metrics in AWS, either through in-built metrics provided by the platform, or by defining custom metrics. We defined our custom metric in the serverless express app using the CloudWatch embedded logs format through an AWS provided logging library. We then viewed this metric in the console, and saw how to set up alarms on it.
 
 'Everying-on-Fire' becoming 'Business-as-Usual'? [Contact Mechanical Rock to Get Help!](https://www.mechanicalrock.io/lets-get-started)

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Serverless Express Without The Express (Or Lambda)
-date: 2020-04-01
+date: 2020-04-22
 tags: javascript tutorial serverless aws
 author: Matthew Tyler
 image: img/serverless-express.png
@@ -22,19 +22,19 @@ Let's begin by designing the DynamoDB table. Theses are the following access pat
 
 1. I want users to be able to post comments.
 
-   This will logically require a field to hold author and message data.
+    This will logically require a field to hold author and message data.
 
 2. I want users to be able to delete their own comments.
 
-   This means I will need a way to uniquely identify a particular comment, via an ID field.
+    This means I will need a way to uniquely identify a particular comment, via an ID field.
 
 3. I want to be able to list comments by user, most recent comments first.
 
-   This will require some sort of time field.
+    This will require some sort of time field.
 
 4. I want to able to list all comments, most recent comments first.
 
-   This adds nothing new field-wise (or does it?), but it may influence our indexing.
+    This adds nothing new field-wise (or does it?), but it may influence our indexing.
 
 I've settled on the following fields/indexes
 

@@ -12,7 +12,7 @@ image: img/serverless-express.png
 
 # Introduction
 
-It often comes as a surprise to many developers that you don't actually need lambda when building certain kinds of API's with API Gateway. Many simple CRUD applications don't need it at all and can get away with service integrations to DynamoDB. In doing so, you no longer need to pay for the cost of a lambda execution, or incur additionaly latency from needing to invoke a lambda function. If all your lambda function does it store data in DynamoDB, you probably don't need that lambda function. The serverless express guestbook application that I've been using as an example is a good case study in this. In the last installment, we implemented X-Ray tracing and noticed that storing and retrieving comments from S3 is quite slow. Let's refactor that to use DynamoDB, and remove the lambda functions in the process!
+It often comes as a surprise to many developers that you don't actually need lambda when building certain kinds of API's with API Gateway. Many simple CRUD applications don't need it at all and can get away with service integrations to DynamoDB. In doing so, you no longer need to pay for the cost of a lambda execution, or incur additionaly latency from needing to invoke a lambda function. If all your lambda function does it store data in DynamoDB, you probably don't need that lambda function. The serverless express guestbook application that I've been using as an example is a good case study in this. In a previous installment, we implemented X-Ray tracing and noticed that storing and retrieving comments from S3 is quite slow. Let's refactor that to use DynamoDB, and remove the lambda functions in the process!
 
 All code for this tutorial is available [here](https://github.com/matt-tyler/simple-node-api-sls). Aside from the tools required from previous installments (The AWS SAM CLI), it will help to have Postman installed to excercise the API later.
 
@@ -46,7 +46,7 @@ I've settled on the following fields/indexes
 - pk_d: A local secondary index (LSI) that uses 'd' to sort the entries. This allows me to query a users comments in order by the time they were made
 - t: A static value that represents the type of entry. This will contain the string 'comment'
 - t_d: A global secondary index (GSI) to sort all comments by the date they were made.
-  This is required to be able to query all comments and return them in the order they were made. Table scans do not return items in global order (only by partition order), so we require an additional partition key that all comments can belong to, and an associated sort-key.
+  This is required to be able to query all comments and return them in the order they were made. Table scans do not return items in global order (only by partition order), so we require an additional partition key that all comments can belong to, and an associated sort key.
 
 To create the table in CloudFormation, you can use the following definition.
 
@@ -167,9 +167,9 @@ Finally, we will need two roles to manage read and writing to the database. Thes
 
 # The OpenAPI Definition
 
-Our OpenAPI template requires several adjustments. Most of these I based off of the (Real World Serverless)[] application, which at the time, was the only public example I could find of an application that used the OpenAPI version 3 template format successfully.
+Our OpenAPI template requires several adjustments. Most of these I based off of the (Real World Serverless)[https://github.com/awslabs/realworld-serverless-application] application. At the time this was the only public example I could find of an application that used the OpenAPI version 3 template format successfully.
 
-We start with the following definitions to enable request validation and define CORS headers for error responses.
+We start with the following definitions to enable request validation and define CORS headers for error responses. This is a bit more difficult to configure correctly in an API Gateway REST API than is in HTTP APIs; so if you hate CORS, you'll probably love HTTP APIs.
 
 ```yaml
 openapi: 3.0.1
@@ -370,9 +370,9 @@ Now we need to define a request template.
                 }
 ```
 
-Firstly I've ensure that the X-Ray Trace ID header is propagated into the request via the request parameters. This will allow me to see DynamoDB in the request trace. The next step is to define a VTL mapping template. The templates are defined on a per-Content-Type basis. I've decided to only accept 'application/json', so only one template is present.
+Firstly I've ensured that the X-Ray Trace ID header is propagated into the request via the request parameters. This will allow me to see DynamoDB in the request trace. The next step is to define a VTL mapping template. The templates are defined on a per-Content-Type basis. I've decided to only accept 'application/json', so only one template is present.
 
-The template defines the payload that is sent to the DynamoDB query endpoint, which follows the specification detailed [here](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_Query.html). Several rows start with a '#' symbol - I've used these to inject additional properties where needed. For example, if the 'maxItems' query parameter was specified, I'll include it in the query, otherwise default to the value 10. I additionally check for a base64 encoded token, and inject it as the ExclusiveStartKey, if it is available. This allows the user to paginate through the results provided by the endpoint.
+The template defines the payload that is sent to the DynamoDB query endpoint, which follows the specification detailed [here](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_Query.html). Several rows start with a '#' symbol - I've used these to inject additional properties where needed. For example, if the 'maxItems' query parameter was specified, I'll include it in the query, otherwise default to the value 10. I additionally check for a base64 encoded token, and inject it as the ExclusiveStartKey if it is present. This allows the user to paginate through the results provided by the endpoint.
 
 Further information is available on special VTL parameters [here](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html).
 
@@ -448,7 +448,7 @@ And review a trace for a specific request.
 <center><img src="/img/express-sls/xray-trace-get.png" /></center>
 <br/>
 
-For those who followed our previous installment, you'll remember that to get all of the comments originally took around 1.6 seconds, when each comment was stored in S3. This is significantly faster at 60ms per request. That's 26 times faster, which is a pretty big improvement. The moral of the story is to perhaps not use S3 in such a scenario - use DynamoDB.
+For those who followed our previous installment, you'll remember that to get all of the comments originally took around 1.6 seconds when each comment was stored in S3. This is significantly faster at 60ms per request. That's 26 times faster, which is a pretty big improvement. The moral of the story is to perhaps not use S3 in such a scenario - use DynamoDB.
 
 # Other Considerations and Commentary
 
@@ -456,30 +456,30 @@ HTTP API's do not yet have all the features of REST API's. This largely seems to
 
 > HTTP API vs REST API
 
-At the moment HTTP API's do not support direct service integrations but that are probably on the roadmap. AWS has stated that HTTP API's will eventually hit feature parity with REST API's. Note as well, the performance improvement was derived mainly from switching out S3 for DynamoDB - in a future installment, I will do a more Apples-to-Apples comparision of REST API vs HTTP API. AWS has claimed that HTTP API's are 60% faster than REST APIs, so I expect that HTTP API with Lambda will have comparable performance to REST APIs with Service Integrations, at least for this application.
+At the moment HTTP API's do not support direct service integrations but they are probably on the roadmap. AWS has stated that HTTP API's will eventually hit feature parity with REST API's. The performance improvement was derived mainly from switching out S3 for DynamoDB - in a future installment, I will do a more Apples-to-Apples comparision of REST API vs HTTP API. AWS has claimed that HTTP API's are 60% faster than REST APIs, so I expect that HTTP API with Lambda will have comparable performance to REST APIs with Service Integrations - at least for this application anyway.
 
 > Authentication - IAM vs JWT
 
-The serverless express applications used JWTs authorization because it is all that HTTP API's support. REST API's have a more robust selection. In this case I chose to use IAM Authorization. I personally prefer native IAM controls, because it lets me piggy-back on to a more robust RBAC mechanism that I do not need to write myself. In practice this can make things complicated, because in practice it can require using cognito identity pools to vend out AWS credentials via a token exchange. As mentioned in prior installments, Casbin can be used if you want to stick to just using JWTs.
+The serverless express applications used JWTs authorization because it is all that HTTP API's support. REST API's have a more robust selection. In this case I chose to use IAM Authorization. I personally prefer native IAM controls, because it lets me piggy-back on to a more robust RBAC mechanism that I do not need to write myself. In practice this can make things complicated, because in practice it can require using cognito identity pools to vend out AWS credentials via a token exchange. As mentioned in prior installments, Casbin (or some other policy engine) can be used if you want to stick to just using JWTs.
 
 > OpenAPI Document Pollution
 
-It often bothers people that they must include amazon extensions in the OpenAPI document. I can understand wanting to keep the document 'pure' from vendor pollution. To do this, it is possible to define the vendor extensions in a separate file, and then merge the two files afterwards as part of your build process. Alternatively, AWS have their own IDL, called [Smithy](). Smithy can be used to generate an OpenAPI definition file with and without API Gateway extensions. Some users may find this useful if they want to publish their OpenAPI document free from vendor properties that may expose implementation details. I plan to go into specifics in a future installment.
+It bothers some developers that they must include AWS extensions in the OpenAPI document. I can understand wanting to keep the document 'pure' from vendor pollution. To do this, it is possible to define the vendor extensions in a separate file, and then merge the two files afterwards as part of your build process. Alternatively, AWS have their own IDL, called [Smithy](https://awslabs.github.io/smithy/). Smithy can be used to generate an OpenAPI definition file with and without API Gateway extensions. Some users may find this useful if they want to publish their OpenAPI document free from vendor properties that may expose implementation details.
 
 > Pagination
 
-There are limited ways to implement pagination when using VTL extensions. In my example, I used base 64 encoding in a vain attempt to hide implementationd details, but anyone can simple decode the token. They could then rely on implementation detail that may change in future, which may break their application. The real-world serverless application example instead uses a KMS key to encrypt the pagination data, so that this cannot occur. There is no way to do this in VTL though, so you must use more flexible compute, like lambda, to do so.
+There are limited ways to implement pagination when using VTL extensions. In my example, I used base 64 encoding in a vain attempt to hide implementationd details, but anyone can simply decode the token. They could then rely on implementation detail that may change in future, which may break their application. The real-world serverless application example instead uses a KMS key to encrypt the pagination data, so that this cannot occur. There is no way to do this in VTL though, so you must use more flexible compute, like lambda, to do so.
 
 > Testing
 
-Testing is much harder with VTL - as it requires deploying and excercising the API directly. This is more akin to an End-to-End test, where-as you may be able to get away with a unit test when using lambda. That said - you should be performing end-to-end testing on your API anyway, so I don't normally consider this a deal-breaker.
+Testing is much harder with VTL - as it requires deploying and excercising the API directly. This is more akin to an End-to-End test, but you may be able to get away with a unit test when using lambda. That said - you should be performing end-to-end testing on your API anyway so I don't normally consider this a deal-breaker, personally.
 
 > Instrumentation
 
-A cool side effect of going the VTL path is we didn't really need to write any custom logging or instrumentation code - it's provided entirely out of the box via X-Ray integration, and in-built logging.
+A cool side effect of going the VTL path is we didn't really need to write any custom logging or instrumentation code - it's provided entirely out of the box via X-Ray integration, and in-built logging. It's a little more work to do this via lambda functions.
 
 # Conclusion
 
 We decided to take a step back and implement our API using REST API. We used service integrations to remove our lambda functions from the equation. We built a CloudFormation template to deploy our API with DynamoDB. We updated our OpenAPI definition with API Gateway extensions, which allowed us to use the DynamoDB service integration. We implemented authorization via native IAM controls. We then sent a few requests off using postman, and review the performance of the application using X-Ray. Finally, we finished with a discussion of the differences between this approach and that of the HTTP API-Lambda method.
 
-Serverless is More [Contact Mechanical Rock to Get Started!](https://www.mechanicalrock.io/lets-get-started)
+Do more with (server)less! [Contact Mechanical Rock to Get Started!](https://www.mechanicalrock.io/lets-get-started)

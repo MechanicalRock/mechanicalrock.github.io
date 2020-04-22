@@ -12,9 +12,9 @@ image: img/serverless-express.png
 
 # Introduction
 
-It often comes as a surprise to many developers that you don't actually need lambda when building certain kinds of API's with API Gateway. Many simple CRUD applications don't need it at all and can get away with service integrations to DynamoDB. In doing so, you no longer need to pay for the cost of a lambda execution, or incur additionaly latency from needing to invoke a lambda function. If all your lambda function does it store data in DynamoDB, you probably don't need that lambda function. The serverless express guestbook application that I've been using as an example is a good case study in this. In a previous installment, we implemented X-Ray tracing and noticed that storing and retrieving comments from S3 is quite slow. Let's refactor that to use DynamoDB, and remove the lambda functions in the process!
+It often comes as a surprise to many developers that you don't actually need lambda when building certain kinds of API's with API Gateway. Many simple CRUD applications don't need it at all and can get away with service integrations to DynamoDB. In doing so, you no longer need to pay for the cost of a lambda execution, or incur additional latency from needing to invoke a lambda function. If all your lambda function does it store data in DynamoDB, you probably don't need that lambda function. The serverless express guestbook application that I've been using as an example is a good case study in this. In a previous installment, we implemented X-Ray tracing and noticed that storing and retrieving comments from S3 is quite slow. Let's refactor that to use DynamoDB, and remove the lambda functions in the process!
 
-All code for this tutorial is available [here](https://github.com/matt-tyler/simple-node-api-sls). Aside from the tools required from previous installments (The AWS SAM CLI), it will help to have Postman installed to excercise the API later.
+All code for this tutorial is available [here](https://github.com/matt-tyler/simple-node-api-sls). Aside from the tools required from previous installments (The AWS SAM CLI), it will help to have Postman installed to exercise the API later.
 
 # Database Design
 
@@ -376,7 +376,7 @@ The template defines the payload that is sent to the DynamoDB query endpoint, wh
 
 Further information is available on special VTL parameters [here](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html).
 
-I've also implemented an endpoint to create comments - which is far simpler. Peruse it at your own leisure. I've left additional endpoints as an excercise for the reader.
+I've also implemented an endpoint to create comments - which is far simpler. Peruse it at your own leisure. I've left additional endpoints as an exercise for the reader.
 
 ```yaml
 components:
@@ -399,7 +399,7 @@ Each endpoint will have the following additional property. This enables AWS_IAM 
         - sigv4: []
 ```
 
-# Deploy and Excercise the API
+# Deploy and Exercise the API
 
 Deploying the API, as always, can be done through a simple `sam build && sam deploy` command initiated at the root of the repository.
 
@@ -468,11 +468,11 @@ It bothers some developers that they must include AWS extensions in the OpenAPI 
 
 > Pagination
 
-There are limited ways to implement pagination when using VTL extensions. In my example, I used base 64 encoding in a vain attempt to hide implementationd details, but anyone can simply decode the token. They could then rely on implementation detail that may change in future, which may break their application. The real-world serverless application example instead uses a KMS key to encrypt the pagination data, so that this cannot occur. There is no way to do this in VTL though, so you must use more flexible compute, like lambda, to do so.
+There are limited ways to implement pagination when using VTL extensions. In my example, I used base 64 encoding in a vain attempt to hide implementation details, but anyone can simply decode the token. They could then rely on implementation detail that may change in future, which may break their application. The real-world serverless application example instead uses a KMS key to encrypt the pagination data, so that this cannot occur. There is no way to do this in VTL though, so you must use more flexible compute, like lambda, to do so.
 
 > Testing
 
-Testing is much harder with VTL - as it requires deploying and excercising the API directly. This is more akin to an End-to-End test, but you may be able to get away with a unit test when using lambda. That said - you should be performing end-to-end testing on your API anyway so I don't normally consider this a deal-breaker, personally.
+Testing is much harder with VTL - as it requires deploying and exercising the API directly. This is more akin to an End-to-End test, but you may be able to get away with a unit test when using lambda. That said - you should be performing end-to-end testing on your API anyway so I don't normally consider this a deal-breaker, personally.
 
 > Instrumentation
 

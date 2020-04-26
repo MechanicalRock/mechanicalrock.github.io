@@ -4,18 +4,18 @@ title: How To Split Functions From Your SAM API Definition
 date: 2020-04-28
 tags: serverless aws lambda javascript
 author: Matthew Tyler
-image: /img/something.png
+image: /img/amazon_api_gateway.png
 ---
 
-<center><img src="/img/something.png" /></center>
+<center><img src="/img/amazon_api_gateway.png" /></center>
 <br/>
 
 # Introduction
-A few people have asked whether it’s possible to split lambda functions from SAM templates when creating lambda-backed API Gateway’s. The answer to that question is a little bit complicated.
+A few people have asked whether it’s possible to split lambda functions from SAM templates when creating a lambda-backed API Gateway. The answer to that question is a little bit complicated.
 
-Are you defining lambda functions using the “aws::serverless::function” type, and are intending to use the ‘event’ property to hook these functions up? The answer in this case is unfortunately “no”. The macro transformation, which is called via the “Transform: AWS::Serverless-2016-10-31” directive at the top, does not work this way. It relies on being able to resolve the presence of both the API resource and the function resource from within the same template. It needs to do this to be able to modify the API resource with additional details about the lambda functions. Other function events operate in the same manner.
+Are you defining lambda functions using the 'aws::serverless::function' type, and are intending to use the ‘event’ property to hook these functions up? The answer in this case is unfortunately 'no'. The macro transformation, which is called via the “Transform: AWS::Serverless-2016-10-31” directive at the top, does not work this way. It relies on being able to resolve the presence of both the API resource and the function resource from within the same template. It needs to do this to be able to modify the API resource with additional details about the lambda functions. Other function events operate in the same manner.
 
-If either of these resources is missing it cannot do anything. CloudFormation cannot descend into the execution context of nested templates in order to make the necessary modifications. Nested templates simply do not work that way. In spite of how much easier SAM makes it to do Infrastructure-as-Code, in reality it is still limited by the underlying CloudFormation service. CDK has similar limitations.
+If either of these resources is missing it cannot do anything. CloudFormation cannot descend into the execution context of nested templates in order to make the necessary modifications. Nested templates simply do not work that way. In spite of how much easier SAM makes it to do Infrastructure-as-Code, in reality it is still limited by the underlying CloudFormation service; CDK has similar limitations.
 
 However, this does not mean that defining lambda functions outside of the API resource context is completely impossible. So how do you do it?
 

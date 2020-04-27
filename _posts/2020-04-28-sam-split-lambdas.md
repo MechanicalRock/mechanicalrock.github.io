@@ -10,7 +10,6 @@ image: /img/amazon_api_gateway.png
 <center><img src="/img/amazon_api_gateway.png" /></center>
 <br/>
 
-# Introduction
 A few people have asked whether it’s possible to split lambda functions from SAM templates when creating a lambda-backed API Gateway. The answer to that question is a little bit complicated.
 
 Are you defining lambda functions using the 'aws::serverless::function' type, and are intending to use the ‘event’ property to hook these functions up? The answer in this case is unfortunately 'no'. The macro transformation, which is called via the “Transform: AWS::Serverless-2016-10-31” directive at the top, does not work this way. It relies on being able to resolve the presence of both the API resource and the function resource from within the same template. It needs to do this to be able to modify the API resource with additional details about the lambda functions. Other function events operate in the same manner.

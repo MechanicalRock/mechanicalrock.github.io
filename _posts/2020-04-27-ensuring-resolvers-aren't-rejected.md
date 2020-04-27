@@ -13,13 +13,13 @@ Mapping Templates are written in Apache Velocity Template Language ([VTL](https:
 
 Except, they really can be code sometimes.
 
-Although, you can programtically achieve quite a lot with VTL, especially as AppSync exposes some additional helper [utils](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-util-reference.html) as well as the mappings to the [Java String class](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-mapping-template-reference-programming-guide.html#strings) for basic string operations, it can be tricky to determine how your use of this templating language will play out at runtime since these particular features are unique to the AppSync environment.
+Although, you can programatically achieve quite a lot with VTL, especially as AppSync exposes some additional helper [utils](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-util-reference.html) as well as the mappings to the [Java String class](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-mapping-template-reference-programming-guide.html#strings) for basic string operations, it can be tricky to determine how your use of this templating language will play out at runtime since these particular features are unique to the AppSync environment.
 
 If you're using the Amplify framework you can use the emulation tools provided for fully testing GraphQL APIs as is documented in this [AWS blog](https://aws.amazon.com/blogs/aws/new-local-mocking-and-testing-with-the-amplify-cli/). However, if for some reason you are not using Amplify, you may feel stretched for options in this space as the only other advertised way of testing these templates is through the AWS AppSync console, but this means that you have already committed to deploying AppSync resources in some capacity to get to this point.
 
 ![Console - Edit Resolver ]({{ site.url }}/img/editResolver-console.png)
 
-Having found myself recently in this exact predicament I embarked on a search for "a better way". I came across some packages deep within the murky depths of the Amplify framework and discovered that by reverse engineering one of two of these packages, I could reproduce the VTL environment in development. This allowed me to develop VTL templates test first and get a super fast feedback loop into the JSON documents my templates were outputting before I deployed them anywhere.
+Having found myself recently in this exact predicament, I embarked on a search for "a better way". I came across some packages deep within the murky depths of the Amplify framework and discovered that by reverse engineering one or two of these packages I could reproduce the VTL environment in development. This allowed me to develop VTL templates test first and get a super fast feedback loop into the JSON documents my templates were outputting before I deployed them anywhere.
 
 Below is a trivial example where I use a VTL template to create a JSON document that will perform a DynamoDB PutItem operation. There is no syntax highlighting support for VTL in markdown so I have included an image instead.
 
@@ -74,4 +74,4 @@ function createVtlContext<T> (args: T) {
 }
 ```
 
-Having the ability to unit test my resolver mapping templates means that I can run these tests as part of a test suite in my CI/CD pipeline, making sure that these templates at least make sense before deploying new resolvers to my GraphQL API.
+Having the ability to unit test my resolver mapping templates means I can use these tests to aid my development efforts as well as run these tests as part of a test suite in my CI/CD pipeline, making sure that these templates at least make sense before deploying new resolvers to my GraphQL API.

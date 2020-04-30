@@ -12,7 +12,7 @@ image: /img/amazon_api_gateway.png
 
 A few people have asked whether it’s possible to split lambda functions from SAM templates when creating a lambda-backed API Gateway. The answer to that question is a little bit complicated.
 
-Are you defining lambda functions using the 'aws::serverless::function' type, and are intending to use the ‘event’ property to hook these functions up? The answer in this case is unfortunately 'no'. The macro transformation, which is called via the “Transform: AWS::Serverless-2016-10-31” directive at the top, does not work this way. It relies on being able to resolve the presence of both the API resource and the function resource from within the same template. It needs to do this to be able to modify the API resource with additional details about the lambda functions. Other function events operate in the same manner.
+Are you defining lambda functions using the 'AWS::Serverless::Function' type, and you are intending to use the ‘event’ property to hook these functions up? The answer in this case is unfortunately 'no'. The macro transformation, which is called via the “Transform: AWS::Serverless-2016-10-31” directive at the top, does not work this way. It relies on being able to resolve the presence of both the API resource and the function resource from within the same template. It needs to do this to be able to modify the API resource with additional details about the lambda functions. Other function events operate in the same manner.
 
 If either of these resources is missing it cannot do anything. CloudFormation cannot descend into the execution context of nested templates in order to make the necessary modifications. Nested templates simply do not work that way. In spite of how much easier SAM makes it to do Infrastructure-as-Code, in reality it is still limited by the underlying CloudFormation service; CDK has similar limitations.
 
@@ -86,7 +86,7 @@ Outputs:
       Fn::Sub: https://${Api}.execute-api.${AWS::Region}.amazonaws.com/
 ```
 
-Note that we are using 'AWS::Serverless::Application' resource to reference the nested template. When using the 'sam package' command, sam will upload the template to an S3 bucket and rewrite the reference appropriately. When deploying the packaged template, the referenced template will be instantiated as a nested stack. As the nested template in this example is using a CloudFormation macro, you will need to ensure that you enable 'CAPABILITY_AUTO_EXPAND' when deploying the template.
+Note that we are using 'AWS::Serverless::Application' resource to reference the nested template. When using the 'sam package' command, sam will upload the template to an S3 bucket and rewrite the reference appropriately. When deploying the packaged template, the referenced template will be instantiated as a nested stack. As the nested template in this example is using a CloudFormation macro, you will need to ensure that you enable 'CAPABILITY_AUTO_EXPAND' when deploying the template. Note that we 'AWS::Include' the api.yaml file; this function will insert the API definition into the template, and allow us to resolve any references that are in it.
 
 Now let's inspect the 'Api' resource, of which the most important aspect is the 'DefinitionBody' property. This references our OpenAPI document which in turn references our lambda function. I've extracted the most important part.
 

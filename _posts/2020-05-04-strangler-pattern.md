@@ -25,7 +25,7 @@ There are countless examples of how large scale IT rewrite projects fail.  Both 
 
 Instead, you need a mechanism to refactor and replace parts of a system whilst maintaining production availability.  You require telemetry to evaluate the changes you make.
 
-# The solution
+# The Solution
 
 The strangler pattern provides an approach to controlled re-architecture.  
 

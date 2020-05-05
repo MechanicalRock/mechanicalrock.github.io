@@ -17,11 +17,11 @@ Is there a better way?  One where you can break apart your legacy monolith.  Whi
 In the modern world of agile development, architecture has no end state.  Business must be able to respond to ever changing demands meaning software architecture must be equally adaptive.  A modern architecture supports small incremental changes with sufficient feedback loops to evaluate the effectiveness.  There are a number of approaches available when dealing with your legacy architecture and moving towards an evolutionary architecture, but one approach I'd like to cover in this post is the [Strangler Pattern](https://martinfowler.com/bliki/StranglerFigApplication.html).  I shall give an overview of the strangler pattern and also detail a couple of case studies of where we have applied it successfully.
 
 # The Context
-Consider migration to the cloud, [Infrastructure Modernisation](https://www.mechanicalrock.io/our-expertise/infrastructure-modernisation), or [Serverless technology](https://www.mechanicalrock.io/our-expertise/cloud-native-solutions).  How can we move faster whilst dealing with legacy systems?
+[Infrastructure modernisation]((https://www.mechanicalrock.io/our-expertise/infrastructure-modernisation)) offers tangible benefits including reduced operating costs, scalable performance and greater uptime by using technologies such as [serverless](https://www.mechanicalrock.io/our-expertise/cloud-native-solutions). However, migrating legacy systems to the cloud is not straight forward.  How can we move faster whilst dealing with legacy systems?
 
-You can't stop everything, down tools and re-write from scratch.  What's more, if you tried you would likely be caught out by the [Second System Effect](https://en.wikipedia.org/wiki/Second-system_effect): a re-write shall solve the issues of the past but actually results in bloated complexity and over-runs.  "We can solve the issues of the past and re-write the system that took us 6+ years, in 12 months.".  The reality?  Eighteen months down the line: you are still building on the original system; the new system supports ~20% of the functionality of the original; technical debt has accrued in the push deliver; your beautiful clean new architecture has turned into a big ball of mud and what's more your frustrated customers have left for the nimble upstart that has eaten your lunch.
+You can't stop everything, down tools and re-write from scratch.  What's more, if you tried you would likely be caught out by the [Second System Effect](https://en.wikipedia.org/wiki/Second-system_effect): a re-write shall solve the issues of the past but actually results in bloated complexity and over-runs.  "We can solve the issues of the past and re-write the system that took us 6+ years, in 12 months.".  The reality?  Eighteen months down the line: you are still building on the original system; the new system supports ~20% of the functionality of the original; technical debt has accrued in the push to deliver; your beautiful clean new architecture has turned into a big ball of mud and what's more your frustrated customers have left for the nimble upstart that has eaten your lunch.
 
-There are countless examples of how large scale IT rewrite projects fail.  Both in [government](https://en.wikipedia.org/wiki/Expeditionary_Combat_Support_System) and the [private](https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/) sector. 
+There are countless examples of how large scale IT rewrite projects fail: both in [government](https://en.wikipedia.org/wiki/Expeditionary_Combat_Support_System) and the [private](https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/) sector. 
 
 Instead, you need a mechanism to refactor and replace parts of a system whilst maintaining production availability.  You require telemetry to evaluate the changes you make.
 
@@ -63,7 +63,7 @@ It is not intended to persist indefinitely.  Instead it provides a pathway to ma
 
 # Considerations
 
-* Break up the system based on new service boundaries or integration layers.
+* Break up the system based on new [service boundaries](https://martinfowler.com/bliki/BoundedContext.html) or [integration layers](https://martinfowler.com/articles/microservices.html#CharacteristicsOfAMicroserviceArchitecture).
 * Removal of the strangler facade, and any unused legacy code is an important step to simplify the overall solution.
 * Adequate monitoring and observability is required to validate the new service is fit for purpose.
 

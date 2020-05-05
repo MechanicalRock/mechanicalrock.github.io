@@ -9,7 +9,7 @@ Welcome!
 * Create a branch, using the format: `article/summary-title`
 * Add your post under `_posts` using the format: `yyyy-mm-dd-summary-title.markdown`
 * View your post locally (see below)
-* Create a pull request - once approved it will be live.
+* Create a pull request - once approved it will be live (if not post dated).
 
 References:
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Azure AD Authentication in Cypress Tests
-date: 2020-04-29
+date: 2020-05-05
 tags: azure ad activedirectory cypress authentication adal react
 author: Tim Veletta
 image: img/blog/azure-ad-cypress/header.png

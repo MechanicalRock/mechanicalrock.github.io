@@ -7,13 +7,13 @@ author: Rick Foxcroft
 image: img/appsync.png
 ---
 
-If you're using AppSync, you will no doubt have come across resolver mapping templates. To paraphrase the AWS [docs](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-mapping-template-reference-overview.html), resolvers link a GraphQL query or mutation via a mapping template to a datasource and a mapping template is a way to indicate to AppSync how to translate an incoming GraphQL request into instructions that can be used to operate on your datasource.
+If you're using AppSync, you will no doubt have come across resolver mapping templates. To paraphrase the AWS [docs](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-mapping-template-reference-overview.html), resolvers link a GraphQL query or mutation via a mapping template to a datasource. A mapping template is a way to indicate to AppSync how to translate an incoming GraphQL request into instructions that can be used to operate on your datasource.
 
 Mapping Templates are written in Apache Velocity Template Language ([VTL](https://velocity.apache.org/engine/1.7/user-guide.html)) and take the GraphQL request as input and produce a JSON document containing the resolver instructions as output. Mapping templates are great because they allow you to interact directly with AWS datastores such as DynamoDB, ElasticSearch and RDS. Allowing you to capture simple backend CRUD operations as configuration without the need for managing any related code.
 
 Except, they really can be code sometimes.
 
-Although, you can programatically achieve quite a lot with VTL, especially as AppSync exposes some additional helper [utils](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-util-reference.html) as well as the mappings to the [Java String class](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-mapping-template-reference-programming-guide.html#strings) for basic string operations, it can be tricky to determine how your use of this templating language will play out at runtime since these particular features are unique to the AppSync environment.
+Although you can programatically achieve quite a lot with VTL, especially as AppSync exposes some additional helper [utils](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-util-reference.html) as well as the mappings to the [Java String class](https://docs.aws.amazon.com/appsync/latest/devguide/resolver-mapping-template-reference-programming-guide.html#strings) for basic string operations. It can be tricky to determine how your use of this templating language will play out at runtime since these particular features are unique to the AppSync environment.
 
 If you're using the Amplify framework you can use the emulation tools provided for fully testing GraphQL APIs as is documented in this [AWS blog](https://aws.amazon.com/blogs/aws/new-local-mocking-and-testing-with-the-amplify-cli/). However, if for some reason you are not using Amplify, you may feel stretched for options in this space as the only other advertised way of testing these templates is through the AWS AppSync console, but this means that you have already committed to deploying AppSync resources in some capacity to get to this point.
 
@@ -75,3 +75,5 @@ function createVtlContext<T> (args: T) {
 ```
 
 Having the ability to unit test my resolver mapping templates means I can use these tests to aid my development efforts as well as run these tests as part of a test suite in my CI/CD pipeline, making sure that these templates at least make sense before deploying new resolvers to my GraphQL API.
+
+Although you may have thought it previously impossible to test VTL templates, by following a similar approach to the TypeScript snippet above, you can easily build concise tests that prove the more advanced parts of your VTL templates really do work the way you think they will. By having this capability, you will now be able to experiment with your VTL whilst maintaining confidence in the more intricate areas of what you're building. These templates are the gateway into your API and these methods offer you an opportunity to build the right thing, the first time around.

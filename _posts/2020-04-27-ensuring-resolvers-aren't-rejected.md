@@ -77,3 +77,5 @@ function createVtlContext<T> (args: T) {
 Having the ability to unit test my resolver mapping templates means I can use these tests to aid my development efforts as well as run these tests as part of a test suite in my CI/CD pipeline, making sure that these templates at least make sense before deploying new resolvers to my GraphQL API.
 
 Although you may have thought it previously impossible to test VTL templates, by following a similar approach to the TypeScript snippet above, you can easily build concise tests that prove the more advanced parts of your VTL templates really do work the way you think they will. By having this capability, you will now be able to experiment with your VTL whilst maintaining confidence in the more intricate areas of what you're building. These templates are the gateway into your API and these methods offer you an opportunity to build the right thing, the first time around.
+
+_Feel free to get in touch on [LinkedIn](https://www.linkedin.com/company/mechanical-rock/) or [Twitter](https://twitter.com/mechanicalrock_) if you have any questions._

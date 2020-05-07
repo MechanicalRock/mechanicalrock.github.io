@@ -1,24 +1,24 @@
 ---
 layout: post
 title: Serverless Express Without The Express (Or Lambda) - Client Edition
-date: 2020-04-01
+date: 2020-05-05
 tags: javascript tutorial serverless aws
 author: Matthew Tyler
-image: img/serverless-express.png
+image: img/amazon_api_gateway.png
 ---
 
-<center><img src="/img/serverless-express.png" /></center>
+<center><img src="/img/amazon_api_gateway.png" /></center>
 <br/>
 
 # Introduction
 
-In a previous installment, we investigated converting over the HTTP API we had built to a REST API. In doing so, we switched out the persistence layer to DynamoDB, and moved to VTL-based service integrations over lambdas. We also used IAM authorization instead of using JWTs. We used Postman to test our API because it is easy way to set up Authorization headers that are compatible with IAM authorization. In previous installments though, I showed how to set up generate client code from our OpenAPI definition, and then apply the JWT to the header. This allowed us to write tests in javascript that could be used for end-to-end testing of the API. Can't we do the same when using IAM Authorization? Of course we can! Let's see how!
+In a previous installment, we investigated converting over the HTTP API we had built to a REST API. In doing so, we switched out the persistence layer to DynamoDB, and moved to VTL-based service integrations over lambdas. We also used IAM authorization instead of using JWTs. We used Postman to test our API because it is easy way to set up Authorization headers that are compatible with IAM authorization. In previous installments though, I showed how to set up generate client code from our OpenAPI definition, and then apply the JWT to the header. This allowed us to write tests in javascript that could be used for end-to-end testing of the API. Can we do the same when using IAM Authorization? Of course we can! Let's see how!
 
 All code for this tutorial is available [here](https://github.com/matt-tyler/simple-node-api-sls). It may help to go over the client tool generation section that I wrote previously.
 
 # IAM Authorization and AWS Signature V4
 
-IAM Authorization uses a different method to validate that requests are authorized, and it is called AWS Signature V4. It is a special signature that is applied to a request in the Authorization header. The signature contains information about the request itself, and is signed with access key and secret of the user making the request. This is in contrast to a JWT, which only signs claims that are asserted by the authorization server and does not contain any information about the particular request that is being sent.
+IAM Authorization uses a different method to validate that requests are authorized, and it is called AWS Signature V4. It is a special signature that is applied to a request in the Authorization header. The signature contains information about the request itself, and is signed with an access key and secret of the user making the request. This is in contrast to a JWT, which only signs claims that are asserted by the authorization server and does not contain any information about the particular request that is being sent.
 
 The header typically looks something like this
 
@@ -76,7 +76,7 @@ A hash is then calculated on the canonical request, and a signature is calculate
 
 That's all well and good, but how can we practically use that in a client? In an earlier installment we pre-generated a client that uses a node library, Axios, to send the request. Adding a header that doesn't depend on the content, like a JWT, is fairly easy. How can we do it in this scenario, without having to write signature calculation code every time we want to send a request?
 
-The answer is pretty easy - most good HTTP client libraries will provide some way to intercept requests before they sent off, and responses before they are received. Axios providers 'intercepters' which can transform the request before it is sent to the server. Michael Hart has written a [library](https://github.com/mhart/aws4) to perform the hard work of constructing the signature, so all we have to do is create an interceptor to do the work.
+The answer is pretty easy - most good HTTP client libraries will provide some way to intercept requests before they are sent off, and responses before they are received. Axios providers 'intercepters' which can transform the request before it is sent to the server. Michael Hart has written a [library](https://github.com/mhart/aws4) to perform the hard work of constructing the signature, so all we have to do is create an interceptor to do the work.
 
 What follows is an excerpt.
 
@@ -133,7 +133,7 @@ Assuming your API Gateway endpoint is loaded, this can now be used to sign reque
 
 # A Comparison with JWT Authorizers
 
-It makes sense to talk about the difference between this method and JWT's, given that JWT support is available in HTTP APIs for API Gateway and IAM authorization isn't (it's limited to REST APIs). I don't think this means that AWS is abandoning IAM authorization for API Gateway - JWT's are extremely popular and every customer was implementing their own JWT Authorizer with Lambda. I think IAM authorization has several advantages over JWTs.
+It makes sense to talk about the difference between this method and JWT's, given that JWT support is available in HTTP APIs for API Gateway and IAM authorization isn't (it's limited to REST APIs). I don't think this means that AWS is abandoning IAM authorization for API Gateway - JWT's are extremely popular and every customer was implementing their own JWT Authorizer with Lambda (sometimes incorrectly). I think IAM authorization has several advantages over JWTs.
 
 - It provides a different signature per request, thereby providing a way to ensure the request isn't tampered with.
 - The secret is not exposed in the request, thereby limiting the opportunities to expose the secret, either via a man-in-the-middle attack or similar vector.

@@ -21,7 +21,7 @@ We took up this new approach, and began creating new accounts as needed.  But we
 
 AWS moves and adapts.  When Control Tower first became available, there was no mechanism for integrating existing accounts.  We pursued some work-arounds involving ’non-managed’ Organisations and Roles, and waited and watched.
 
-One solution to this problem is to use “Infrastructure as Code” (IaC)- which means creating assets with automated tools configured by written specifications - code, rather than “click-ops”.  Cloudformation, CDK, Lambda - all of these provide ways to create assets in AWS, and with this approach disaster recovery, re-use of solutions, creation of standard products - all become possible and often easy.  Approaching deployment on AWS using IaC allows re-use, standardisation, industrial-scale deployment, and reduces errors.
+One solution to this problem is to use “Infrastructure as Code” (IaC) - which means creating assets with automated tools configured by written specifications - code, rather than “click-ops”.  Cloudformation, CDK, Lambda - all of these provide ways to create assets in AWS, and with this approach disaster recovery, re-use of solutions, creation of standard products - all become possible and often easy.  Approaching deployment on AWS using IaC allows re-use, standardisation, industrial-scale deployment, and reduces errors.
 
 With proper IaC, reproducing assets in a new account structure is a practical approach to the change over.
 
@@ -38,14 +38,14 @@ Migrating a legacy account requires several broad steps:
 
 # Ready to go
 
-To remove an account from its Organisation, you must log into that account as the root user of that account.  If you haven’t already arranged this, then you can use the ‘Forgotten Password” approach - but you must be able to receive emails sent to that root user.
+To remove an account from its Organisation, you must log into that account as the root user of that account.  If you haven’t already arranged this, then you may use the ‘Forgotten Password” approach - but you must be able to receive emails sent to that root user.
 
 Open a browser session that isn’t otherwise logged in to AWS, and open the page to sign into the Console.  Elect to log in as Root user, and then enter the email associated with the account.  Select ‘Next’.
 <br/><center><img src="/img/migrate-legacy-accounts/AWS_root_login.png" /></center><br/>
 
 On the next screen, if you haven’t already arranged the root password, select the “Forgot your password?” link.  Follow the steps from there to change the password.
 
-Use the password to log in to the AWS Management Console as the Root user.  Open the Organisations page.  You will be informed which Organisation the account is currently a member of, and there is a button to select to leave the Organisation.  Select that.
+Start again as above and use the password to log in to the AWS Management Console as the Root user.  Open the Organisations page.  You will be informed which Organisation the account is currently a member of, and there is a button to select to leave the Organisation.  Select that.
 
 <br/><center><img src="/img/migrate-legacy-accounts/AWS_complete_account_sign-up.png" /></center><br/>
 
@@ -56,7 +56,7 @@ While you are still logged in to this account as the Root user, it may be conven
 
 # Welcome home
 
-Now you must invite the now-independent account to join the new Organisation.  In fact, you could have already done this and found the invitation waiting, but the steps are the same.
+Next you must invite the now-independent account to join the new Organisation.  In fact, you could have already done this and found the invitation waiting, but the steps are the same.
 
 From the Organisation page of the new master account, from a link near but not at the top on the right, select ‘Invitations’.  Fill in the details on the next page to issue the invitation.
 <br/><center><img src="/img/migrate-legacy-accounts/AWS_invite_account_to_Organization.png" /></center><br/>
@@ -66,23 +66,23 @@ In the Organisations page of the independent account, find the invitation and ac
 
 While the newly added account is now included in the new Organisation, we have also needed to visit the SSO console and assign users and/or groups and permissions to make it available through the SSO sign-on page.
 
-The ex-legacy account is now available in the new account structure and using the new account SSO sign-on, but is not yet managed by Control Tower.  For this last, you must enrol the account into Control Tower.
-
 # “You can’t get there from here”
 
-Joining the new Organisation didn't get you into Control Tower.
+The ex-legacy account is now available in the new account structure and using the new account SSO sign-on, but is not yet managed by Control Tower.  For this last, you must enrol the account into Control Tower.
 
 The steps to include the legacy account into the new Organisation leave the account in the root of the Organisation.  AWS offers two approaches to enrolling the account into the Control Tower - one manual ‘click-ops’ and another automated approach allowing bulk enrolments.
 <br/><center><img src="/img/migrate-legacy-accounts/AWS_Account_Factory_Enroll.png" /></center><br/>
+
+The ‘click-ops’ enrolment approach is detailed here: [Enroll Account](https://docs.aws.amazon.com/controltower/latest/userguide/enroll-account.html)<br/>
+The bulk enrolment approach is detailed here: [Enroll Account Solution](https://aws.amazon.com/blogs/field-notes/enroll-existing-aws-accounts-into-aws-control-tower/)<br/>
+
+We used the bulk enrolment approach.
 
 AWS Organizational Units (OU) created by Control Tower are ‘registered’ in Control Tower, but the user may create OUs in other ways which are not registered.
 
 The bulk enrolment process requires that the new accounts to be enrolled are already in an ‘unregistered’ OU.  You can simply create an ‘unregistered’ OU in the Organisations console and move the new accounts into that to carry out the enrolment process.  Part of the enrolment process is to specify the destination OU for the accounts, chosen from the OUs that are ‘registered’ with Control Tower.
 
 In our console, the Root account is not labelled as ‘Registered’ or ‘Unregistered’.  For our case, we simply created an OU named ‘control-tower-staging’ and put our legacy accounts in that prior to enrolling.
-
-The ‘click-ops’ enrolment approach is detailed here: [Enroll Account](https://docs.aws.amazon.com/controltower/latest/userguide/enroll-account.html)<br/>
-The bulk enrolment approach is detailed here: [Enroll Account Solution](https://aws.amazon.com/blogs/field-notes/enroll-existing-aws-accounts-into-aws-control-tower/)<br/>
 
 After setting up the solution, this is the command we used for bulk enrolment:<br/>
 ```bash

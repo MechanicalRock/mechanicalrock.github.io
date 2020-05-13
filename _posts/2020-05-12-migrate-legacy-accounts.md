@@ -69,12 +69,15 @@ AWS Organizational Units (OU) created by Control Tower are ‘registered’ in C
 
 In our console, the Root account is not labelled as ‘Registered’ or ‘Unregistered’.  In our case, we simply created an OU named ‘control-tower-staging’ and put our legacy accounts in that prior to enrolling.
 <br/>
-<br/>The ‘click-ops’ enrolment approach is detailed here:<br/>https://docs.aws.amazon.com/controltower/latest/userguide/enroll-account.html<br/>
-<br/>The bulk enrolment approach is detailed here:<br/>https://aws.amazon.com/blogs/field-notes/enroll-existing-aws-accounts-into-aws-control-tower/<br/>
+<br/>The ‘click-ops’ enrolment approach is detailed here: [Enroll Account](https://docs.aws.amazon.com/controltower/latest/userguide/enroll-account.html)<br/>
+<br/>The bulk enrolment approach is detailed here: [Enroll Account Solution](https://aws.amazon.com/blogs/field-notes/enroll-existing-aws-accounts-into-aws-control-tower/)<br/>
 
 <br/>After setting up the solution, this is the command we used for bulk enrolment:<br/>
-`$ python3 enroll_account.py -o Workload -u control-tower-staging`<br/>
-'control-tower-staging' is the un-registered Organizational Unit the migrated accounts are placed in. 'Workload' is the Organizational Unit they are to be placed in when integrated into Control Tower.
+```bash
+$ python3 enroll_account.py -o Workload -u control-tower-staging
+```
+'control-tower-staging' is the un-registered OU the migrated accounts were placed in temporarily.<br/>
+'Workload' is the registered OU they are to be placed in when integrated into Control Tower.
 
 Note that there are some pre-requisites for enrolling an account - we had to delete some resources and default VPCs in one account that interfered with Control Tower.  The AWS documents above note the requirements, and will be kept up to date, so look there for details.  Some of the pre-requisites were actually added by the bulk enrolment process, so don’t assume you need do everything yourself depending on which route you choose.
 

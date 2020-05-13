@@ -63,15 +63,18 @@ The ex-legacy account is now available in the new account structure and using th
  “You can’t get there from here”
 
 The steps to include the legacy account into the new Organisation leave the account in the root of the Organisation.  AWS offers two approaches to enrolling the account into the Control Tower - one manual ‘click-ops’ and another automated approach allowing bulk enrolments.
+<br/><center><img src="/img/migrate-legacy-accounts/AWS_Account_Factory_Enroll.png" /></center><br/>
 
-AWS Organizational Units (OU) created by Control Tower are ‘registered’ in Control Tower, but the user may create OUs in other ways which are not.  The bulk enrolment process requires that the new accounts to be enrolled are in an ‘unregistered’ OU.  You can simply create one in the Organisations console and move the new accounts into that to carry out the enrolment process.  Part of the enrolment process is to specify the destination OU for the accounts, chosen from the OUs that are ‘registered’ with Control Tower.
+AWS Organizational Units (OU) created by Control Tower are ‘registered’ in Control Tower, but the user may create OUs in other ways which are not registered.
 
-In our console, the Root account is not labelled as ‘Registered’ or ‘Unregistered’.  In our case, we simply created an OU named ‘control-tower-staging’ and put our legacy accounts in that prior to enrolling.
-<br/>
-<br/>The ‘click-ops’ enrolment approach is detailed here: [Enroll Account](https://docs.aws.amazon.com/controltower/latest/userguide/enroll-account.html)<br/>
-<br/>The bulk enrolment approach is detailed here: [Enroll Account Solution](https://aws.amazon.com/blogs/field-notes/enroll-existing-aws-accounts-into-aws-control-tower/)<br/>
+The bulk enrolment process requires that the new accounts to be enrolled are already in an ‘unregistered’ OU.  You can simply create an ‘unregistered’ OU in the Organisations console and move the new accounts into that to carry out the enrolment process.  Part of the enrolment process is to specify the destination OU for the accounts, chosen from the OUs that are ‘registered’ with Control Tower.
 
-<br/>After setting up the solution, this is the command we used for bulk enrolment:<br/>
+In our console, the Root account is not labelled as ‘Registered’ or ‘Unregistered’.  For our case, we simply created an OU named ‘control-tower-staging’ and put our legacy accounts in that prior to enrolling.
+
+The ‘click-ops’ enrolment approach is detailed here: [Enroll Account](https://docs.aws.amazon.com/controltower/latest/userguide/enroll-account.html)<br/>
+The bulk enrolment approach is detailed here: [Enroll Account Solution](https://aws.amazon.com/blogs/field-notes/enroll-existing-aws-accounts-into-aws-control-tower/)<br/>
+
+After setting up the solution, this is the command we used for bulk enrolment:<br/>
 ```bash
 $ python3 enroll_account.py -o Workload -u control-tower-staging
 ```

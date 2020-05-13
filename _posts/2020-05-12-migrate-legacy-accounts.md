@@ -35,27 +35,26 @@ Migrating a legacy account requires several broad steps:
 To remove an account from its Organisation, you must log into that account as the root user of that account.  If you haven’t already arranged this, then you can use the ‘Forgotten Password” approach - but you must be able to receive emails sent to that root user.
 
 Open a browser session that isn’t otherwise logged in to AWS, and open the page to sign into the Console.  Elect to log in as Root user, and then enter the email associated with the account.  Select ‘Next’.
-
-<br/>
-<center><img src="/img/migrate-legacy-accounts/AWS_root_login.png" /></center>
-<br/>
+<br/><center><img src="/img/migrate-legacy-accounts/AWS_root_login.png" /></center><br/>
 
 On the next screen, if you haven’t already arranged the root password, select the “Forgot your password?” link.  Follow the steps from there to change the password.
 
 Use the password to log in to the AWS Management Console as the Root user.  Open the Organisations page.  You will be informed which Organisation the account is currently a member of, and there is a button to select to leave the Organisation.  Select that.
 
-<br/>
-<center><img src="/img/migrate-legacy-accounts/AWS_complete_account_sign-up.png" /></center>
-<br/>
+<br/><center><img src="/img/migrate-legacy-accounts/AWS_complete_account_sign-up.png" /></center><br/>
+
 At this point, you may be informed you must complete steps to leave the Organisation.  AWS needs someone to be accountable for any account.  Elect to complete the sign-up steps, and then leave the Organisation.
 
 While you are still logged in to this account as the Root user, it may be convenient to change the name of the account, or its email to fit in with the scheme you have chosen for your new account structure.  To access these entries, select the ‘My Account’ link in the upper right of the console page.  Make the changes and save them.
+<br/><center><img src="/img/migrate-legacy-accounts/AWS_MyAccount_menu.png" /></center><br/>
 
 Now you must invite the now-independent account to join the new Organisation.  In fact, you could have already done this and found the invitation waiting, but the steps are the same.
 
 From the Organisation page of the new master account, from a link near but not at the top on the right, select ‘Invitations’.  Fill in the details on the next page to issue the invitation.
+<br/><center><img src="/img/migrate-legacy-accounts/AWS_invite_account_to_Organization.png" /></center><br/>
 
 In the Organisations page of the independent account, find the invitation and accept it.
+<br/><center><img src="/img/migrate-legacy-accounts/AWS_accept_Organization_invite.png" /></center><br/>
 
 While the newly added account is now included in the new Organisation, we have also needed to visit the SSO console and assign users and/or groups and permissions to make it available through the SSO sign-on page.
 

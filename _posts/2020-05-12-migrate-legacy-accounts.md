@@ -7,6 +7,8 @@ author: Bret Comstock Waldow
 image: /img/hydra.gif
 ---
 
+# Accounts: then and now
+
 A foundation of working with AWS is having an account.  This is a basic billing/organising unit, and signing up with AWS will result in you having at least one account.
 
 Any work beyond the most basic experimentation usually leads to having many accounts - and this leads to the need to organise them for billing, security, etc.
@@ -15,15 +17,17 @@ We have worked with AWS for years, and have many accounts.  At first, we organis
 
 With time and experience, AWS has now rolled out solutions that encapsulate lessons learned, and advocates using their Control Tower approach to manage accounts.  This works with their SSO (Single Sign On), Service Catalog, and Organisations tools to manage an account structure centrally.  SSO centralises logins, Organisations provides a structure for managing many accounts, Service Catalog can provide a tool for creating (“vending”) new accounts as required, and Control Tower can apply standard requirements (as well as specific ones) to created accounts, and update the requirements as changes are introduced.
 
-We began using this approach, and began creating new accounts as needed.  But we also had a number of legacy accounts which had valuable assets in them, and investigated the possibility of integrating these into our new structures.
+We took up this new approach, and began creating new accounts as needed.  But we also had a number of legacy accounts which had valuable assets in them, and we investigated the possibility of integrating these into our new structures.
 
 AWS moves and adapts.  When Control Tower first became available, there was no mechanism for integrating existing accounts.  We pursued some work-arounds involving ’non-managed’ Organisations and Roles, and waited and watched.
 
-One solution to this problem is to use “Infrastructure as Code” (IaC)- which means always creating assets with automated tools configured by written specifications - code, rather than “click-ops”.  Cloudformation, CDK, Lambda - all of these provide ways to create assets in AWS, and with this approach disaster recovery, re-use of solutions, creation of standard products, all become possible and often easy.  Approaching deployment on AWS using IaC allows re-use, standardisation, industrial-scale deployment, and reduces errors.
+One solution to this problem is to use “Infrastructure as Code” (IaC)- which means creating assets with automated tools configured by written specifications - code, rather than “click-ops”.  Cloudformation, CDK, Lambda - all of these provide ways to create assets in AWS, and with this approach disaster recovery, re-use of solutions, creation of standard products - all become possible and often easy.  Approaching deployment on AWS using IaC allows re-use, standardisation, industrial-scale deployment, and reduces errors.
 
 With proper IaC, reproducing assets in a new account structure is a practical approach to the change over.
 
 However, there may also be situations where actually bringing legacy accounts into a newly created, and more modern, Control Tower based account structure is useful and this article is about what we found using this approach.  AWS provided a solution to this problem recently.  Spoiler: it works.
+
+# Our circumstance
 
 Our legacy accounts were child accounts we had made under our ‘classic’ master account.  In fact, this master account itself had some valuable assets in Route 53 - domains and record sets we have for several of our web assets.  User pools, AD set ups, and connections to 3d party systems are other likely candidates for set ups that aren’t so easy to duplicate anew.
 
@@ -31,6 +35,8 @@ Migrating a legacy account requires several broad steps:
 - Remove the legacy account from any Organisation it is a member of.
 - Invite the legacy account to join the Organisation of the Control Tower structure.
 - Enrol the account into Control Tower.
+
+# Ready to go
 
 To remove an account from its Organisation, you must log into that account as the root user of that account.  If you haven’t already arranged this, then you can use the ‘Forgotten Password” approach - but you must be able to receive emails sent to that root user.
 
@@ -48,6 +54,8 @@ At this point, you may be informed you must complete steps to leave the Organisa
 While you are still logged in to this account as the Root user, it may be convenient to change the name of the account, or its email to fit in with the scheme you have chosen for your new account structure.  To access these entries, select the ‘My Account’ link in the upper right of the console page.  Make the changes and save them.
 <br/><center><img src="/img/migrate-legacy-accounts/AWS_MyAccount_menu.png" /></center><br/>
 
+# Welcome home
+
 Now you must invite the now-independent account to join the new Organisation.  In fact, you could have already done this and found the invitation waiting, but the steps are the same.
 
 From the Organisation page of the new master account, from a link near but not at the top on the right, select ‘Invitations’.  Fill in the details on the next page to issue the invitation.
@@ -60,7 +68,9 @@ While the newly added account is now included in the new Organisation, we have a
 
 The ex-legacy account is now available in the new account structure and using the new account SSO sign-on, but is not yet managed by Control Tower.  For this last, you must enrol the account into Control Tower.
 
- “You can’t get there from here”
+# “You can’t get there from here”
+
+Joining the new Organisation didn't get you into Control Tower.
 
 The steps to include the legacy account into the new Organisation leave the account in the root of the Organisation.  AWS offers two approaches to enrolling the account into the Control Tower - one manual ‘click-ops’ and another automated approach allowing bulk enrolments.
 <br/><center><img src="/img/migrate-legacy-accounts/AWS_Account_Factory_Enroll.png" /></center><br/>

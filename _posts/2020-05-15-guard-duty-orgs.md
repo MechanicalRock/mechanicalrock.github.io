@@ -25,7 +25,7 @@ When Guard Duty discovers a potential problem, it issues a security finding. Usi
 
 For example, this is what a finding looks like in the AWS web console (NOTE; instance IDs, image IDs and IP addresses are fake):
 
-![Guard Duty finding example](/img/gd-finding-example.png)
+![Guard Duty finding example](/img/gd_finding_example.png)
 
 # How can I enable it?
 

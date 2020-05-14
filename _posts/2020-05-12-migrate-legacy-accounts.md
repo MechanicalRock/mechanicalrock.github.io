@@ -4,7 +4,6 @@ title: Get your accounts together!
 date: 2020-05-12
 tags: account control tower sso organizations
 author: Bret Comstock Waldow
-image: /img/hydra.gif
 ---
 
 # Accounts: then and now

@@ -58,8 +58,8 @@ We will use Typescript with NodeJS and the AWS SDK to build these scripts, as th
 
 We'll assume Typescript install and config has been taken care of, but if not here are some resources that may be of assistance:
 
-* https://github.com/microsoft/TypeScript-Node-Starter
-* https://github.com/jsynowiec/node-typescript-boilerplate
+* [TypeScript-Node-Starter](https://github.com/microsoft/TypeScript-Node-Starter)
+* [node-typescript-boilerplate](https://github.com/jsynowiec/node-typescript-boilerplate)
 
 ## Listing all AWS Organizations accounts
 

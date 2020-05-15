@@ -108,7 +108,7 @@ The function below demonstrates the full paginated solution:
 
 ```typescript
 export const getAllAccounts = async (credentials: AWS.Credentials, region: string) => {
-  const orgs = new AWS.Organizations({,
+  const orgs = new AWS.Organizations({
     credentials,
     region,
   })

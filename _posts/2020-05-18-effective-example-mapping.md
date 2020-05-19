@@ -23,9 +23,11 @@ During an Example Mapping session, you are trying to do a number of things:
 In order to help provide structure for one team to Example Mapping sessions, I came up with
 the following experiment:
 
-    **Hypothesis**: People who are new to Example Mapping don’t understand **how** to conduct an Example Mapping Session effectively on their own.
-    **Experiment**: Run an Example Mapping session in a more structured, timeboxed, fashion.
-    **Outcome**: Groups have a better understanding of how to run Example Mapping session, leading to better, more focussed examples and less scope creep.
+> **Hypothesis**: People who are new to Example Mapping don’t understand **how** to conduct an Example Mapping Session effectively on their own.
+>
+> **Experiment**: Run an Example Mapping session in a more structured, timeboxed, fashion.
+>
+> **Outcome**: Groups have a better understanding of how to run Example Mapping session, leading to better, more focussed examples and less scope creep.
 
 Which led to the following structure:
 

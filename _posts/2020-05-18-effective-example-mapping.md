@@ -29,7 +29,7 @@ the following experiment:
 
 Which led to the following structure:
 
-![Example mapping process](/img/example-mapping/example-mapping-process.jpg)
+![Example mapping process](/img/effective-example-mapping/example-mapping-process.jpg)
 
 Looking at each point in more detail.
 

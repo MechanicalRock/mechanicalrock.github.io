@@ -1,6 +1,6 @@
 # mechanicalrock.github.io
 
-Welcome!
+Welcome to our Blog!
 
 [Published blogs](https://mechanicalrock.github.io/)
 

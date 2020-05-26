@@ -31,13 +31,15 @@ Events comprise of two core elements:
 
 ![clean architecture diagram showing onion of layers including handler, integration with ports and adapters, service and domain layers ](/img/microservice-architectures/clean-architecture.png)
 
-By following [clean architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) principles, separating envelope unmarshalling from acting on domain events, provides additional flexibility on your deployment architecture.  For example, you can use the same domain processing logic to handle synchronous requests sent via API gateway or asynchronously via SNS.
+Following [clean architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) principles, such as separating envelope unmarshalling from acting on domain events, provides additional flexibility on your deployment architecture.  For example, you can use the same domain processing logic to handle synchronous requests sent via API gateway or asynchronously via SNS.
 
 Irrespective of whether you use [CQRS](https://martinfowler.com/bliki/CQRS.html), events come in two categories:
 * commands 
 * events
 
-Commands are a request to do something: `requestCheckout`, `updateBalance`, `createMyWidget`.  Commands are inherently transient, may be resubmitted multiple times and may/may not result in action being taken.  Events are a notification that something has happened, or a particular state: `checkoutCompleted`, `balanceUpdated`, `MyWidgetCreated`.  Events occurred at a point in in the past.  Depending on how you choose to interpret events, a key part of the semantics, event re-delivery may be possible.  For example, `accountCreated` may be interpreted as "an account has _just_ been created", or "an account was created at a certain point in time".  The former has implications on event re-delivery, whereas the latter is immutable and less affected by the temporal difference between when the actual creation occurred and when the event was generated.
+Commands are a request to do something: `requestCheckout`, `updateBalance`, `createMyWidget`.  Commands are inherently transient, may be resubmitted multiple times and may/may not result in action being taken.  
+
+Events are a notification that something has happened, or a particular state has been achieved: `checkoutCompleted`, `balanceUpdated`, `MyWidgetCreated`.  Events occurred at a point in in the past.  Depending on how you choose to interpret events, a key part of the semantics, event re-delivery may be possible.  For example, `accountCreated` may be interpreted as "an account has _just_ been created", or "an account was created at a certain point in time".  The former has implications on event re-delivery, whereas the latter is immutable and less affected by the temporal difference between when the actual creation occurred and when the event was generated.
 
 Events force you to think about distributed computing - and what the **business process** should be in the event of failure: "what should happen if payment processing fails?".  This is inherent complexity in all systems, but provides a clear boundary around the domain when building [anti-fragile](https://refuses.github.io/preprints/antifragile.pdf) systems.
 
@@ -53,7 +55,9 @@ The [rivers-rapids pattern](https://www.youtube.com/watch?v=J3ihF11dpJY) enables
 
 ## Domain Oriented
 
-Event driven systems complement, and necessitate, [domain driven design](https://martinfowler.com/tags/domain%20driven%20design.html).  The focus on domain events identify natural service boundaries and decouple producers and consumers.  As a result, a microservice often comprises of a collection of highly cohesive, tightly coupled functions.  Using event boundaries, we are able to disregard the inherent complexity in the production of events the service consumes.  The generation of a [`CreateManagedAccount`](https://docs.aws.amazon.com/controltower/latest/userguide/lifecycle-events.html#create-managed-account) contains a large amount of complexity, orchestrating the creation of a new AWS account.  If you want to deploy a Config Rule, as part of your cloud governance strategy, to all new accounts you can ignore all that incidental complexity and simply respond to the event.  
+Event driven systems complement, and necessitate, [domain driven design](https://martinfowler.com/tags/domain%20driven%20design.html).  The focus on domain events identify natural service boundaries and decouple producers and consumers.  As a result, a microservice often comprises of a collection of highly cohesive, tightly coupled functions.  Using event boundaries, we are able to disregard the inherent complexity in the production of events the service consumes.  
+
+The generation of a [`CreateManagedAccount`](https://docs.aws.amazon.com/controltower/latest/userguide/lifecycle-events.html#create-managed-account) contains a large amount of complexity, orchestrating the creation of a new AWS account.  If you want to deploy a Config Rule, as part of your cloud governance strategy, to all new accounts you can ignore all that incidental complexity and simply respond to the event.  
 
 Using a [serverless mindset](https://www.youtube.com/watch?v=8Rzv68K8ZOY), we can choose to offload any and all complexity in order to focus on the business domain.
 

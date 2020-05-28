@@ -10,7 +10,7 @@ image: img/effective-example-mapping/example-mapping-cards.jpg
 <center><img src="/img/effective-example-mapping/example-mapping-cards.jpg" /></center>
 <br/>
 
-Example Mapping is an effective technique for achieving a focused discussion around a User Story. However, holding effective example mapping sessions takes experience to master. When coaching teams new to example mapping, I have found that they can often struggle in the beginning; leading to discussion wandering and meetings dragging on.
+Example Mapping, [originally created by the team at Cucumber](https://cucumber.io/blog/2015/12/08/example-mapping-introduction), is an effective technique for achieving a focused discussion around a User Story. However, holding effective example mapping sessions takes experience to master. When coaching teams new to example mapping, I have found that they can often struggle in the beginning; leading to discussion wandering and meetings dragging on.
 
 Example mapping focuses on a particular story, but teams often get bogged down discussing out of scope issues. There are other approaches that example mapping complements. If you are looking at the bigger picture: consider [story mapping](https://www.agilealliance.org/glossary/storymap/) or [impact mapping](https://www.impactmapping.org/).
 

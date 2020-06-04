@@ -142,7 +142,7 @@ The last and unspoken requirement can be found in this [complete CloudFormation 
 During your reading you realise that some of the terms in [Object Locking](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html) are a bit vague, so you document them for the rest of the team:
 
 * **LegalHold**: view this as making an object 'read-only'. It is independent to the `LockingMode`; you can specify neither, either or both of Legal Hold and Locking Mode.
-* **LockingMode**: view this has how tamper proof the WORM model is, and has one of the following values:
+* **LockingMode**: view this as how tamper proof the WORM model is, and has one of the following values:
   * **Governance**: Governance mode can be disabled by either an IAM User with the required IAM permissions or by the AWS Account's root user.
   * **Compliance**: Compliance mode cannot be disabled by any user, including the Account's root user.
 

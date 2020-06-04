@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Life-Locks: Or how I discovered two S3 features and learned to love compliance'
-date: 2020-06-05
+date: 2020-06-18
 tags: aws s3 WORM compliance locks lifecycle
 author: Pete Yandell
 ---

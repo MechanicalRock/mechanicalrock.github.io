@@ -1,0 +1,103 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  ParamBucketPrefix:
+    Type: String
+    Description: The bucket name must contain only lowercase letters, numbers, periods (.), and dashes (-).
+    MinLength: 3
+    MaxLength: 63
+  ParamRetentionDays:
+    Type: Number
+    Description: The number of days an upload file is locked for
+    Default: 7
+  ParamCurrentExpirationDays:
+    Type: Number
+    Description: The number of days before a file is marked deleted
+    Default: 8
+  ParamNoncurrentExpirationDays:
+    Type: Number
+    Description: The number of days after becoming soft-deleted that a file is permanently deleted
+    Default: 1
+
+Resources:
+
+  Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${ParamBucketPrefix}-example-lifelocks'
+      LifecycleConfiguration:
+        Rules:
+          - AbortIncompleteMultipartUpload:
+              DaysAfterInitiation: 1
+            ExpirationInDays: !Ref ParamCurrentExpirationDays
+            NoncurrentVersionExpirationInDays: !Ref ParamNoncurrentExpirationDays
+            Status: Enabled # Disabled | Enabled
+      ObjectLockEnabled: true
+      VersioningConfiguration:
+        Status: Enabled
+
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref Bucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: 'RequireObjectLockMode'
+            Effect: Deny
+            Principal: '*'
+            Action:
+              - 's3:PutObject'
+              - 's3:PutObjectRetention'
+            Resource:
+              - !Sub '${Bucket.Arn}/*'
+            Condition:
+                'Null':
+                  's3:object-lock-mode': 'true'
+          - Sid: 'RequireObjectLockModeToBeCompliance'
+            Effect: Deny
+            Principal: '*'
+            Action:
+              - 's3:PutObject'
+              - 's3:PutObjectRetention'
+            Resource:
+              - !Sub '${Bucket.Arn}/*'
+            Condition:
+                'StringNotEqualsIgnoreCase':
+                  's3:object-lock-mode': 'COMPLIANCE'
+          - Sid: 'RequireRetentionDays'
+            Effect: Deny
+            Principal: '*'
+            Action:
+              - 's3:PutObject'
+              - 's3:PutObjectRetention'
+            Resource:
+              - !Sub '${Bucket.Arn}/*'
+            Condition:
+                'Null':
+                  's3:object-lock-remaining-retention-days': 'true'
+          - Sid: 'RequireRetentionToBeThreeDays'
+            Effect: Deny
+            Principal: '*'
+            Action:
+              - 's3:PutObject'
+              - 's3:PutObjectRetention'
+            Resource:
+              - !Sub '${Bucket.Arn}/*'
+            Condition:
+                NumericNotEquals:
+                  's3:object-lock-remaining-retention-days': !Ref ParamRetentionDays
+
+Outputs:
+  BucketName:
+    Value: !Ref Bucket
+  BucketArn:
+    Value: !GetAtt Bucket.Arn
+  BucketDomainName:
+    Value: !GetAtt Bucket.DomainName
+  BucketDualStackDomainName:
+    Value: !GetAtt Bucket.DualStackDomainName
+  BucketRegionalDomainName:
+    Value: !GetAtt Bucket.RegionalDomainName
+  BucketWebsiteUrl:
+    Value: !GetAtt Bucket.WebsiteURL

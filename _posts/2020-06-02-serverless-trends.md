@@ -4,10 +4,10 @@ title: Thoughts on Serverless in 2020
 date: 2020-06-02
 tags: aws serverless cloud
 author: Matthew Tyler
-image: img/vogels.png
+image: img/vogels.jpg
 ---
 
-<center><img src="/img/vogels.png" /></center>
+<center><img src="/img/vogels.jpg" /></center>
 <br/>
 
 While it has felt like the last two months have taken four hundred years, the reality is that we aren't even halfway through 2020. At any rate, it feels like an appropriate time to talk about the trends I see in serverless. More specifically, the things I see happening in the ecosystem, and the current things that bug me when working with serverless. This lies somewhere between having a whinge about the current state of certain things, whilst also noting that I can see serverless has a whole evolving into a method of software development that is both increasingly powerful whilst becoming easier to use.

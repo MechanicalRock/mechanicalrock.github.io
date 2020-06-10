@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Cloud Native Microservcies
+title: Cloud Native Microservices
 date: 2020-06-10
 tags: cloud microservices architecture
 author: Tim Myerscough
@@ -10,7 +10,7 @@ image: img/microservice-architectures/death-star.jpg
 <center><img src="/img/microservice-architectures/death-star.jpg" /></center>
 <br/>
 
-At Mechanical Rock, we build [Cloud Native solutions](https://www.mechanicalrock.io/our-expertise/cloud-native-solutions/), in [small teams](https://www.inc.com/business-insider/jeff-bezos-productivity-tip-two-pizza-rule.html).  We find building using microservice patterns highly effective to simplify our overall approach.  Microservices help us to reduce the [cognitive load](https://youtu.be/haejb5rzKsM) when dealing with complex systems.  Furthermore, serverless technologies provide a natural fit for building microservice architectures that are not only decoupled and highly scalable, but also easy to reason about.
+At Mechanical Rock, we build [Cloud Native Solutions](https://www.mechanicalrock.io/our-expertise/cloud-native-solutions/), in [small teams](https://www.inc.com/business-insider/jeff-bezos-productivity-tip-two-pizza-rule.html).  We find building using microservice patterns highly effective to simplify our overall approach.  Microservices help us to reduce the [cognitive load](https://youtu.be/haejb5rzKsM) when dealing with complex systems.  Furthermore, serverless technologies provide a natural fit for building microservice architectures that are not only decoupled and highly scalable, but also easy to reason about.
 
 Microservices have a [long history](https://www.researchgate.net/profile/Mohammad_Hadi_Valipour/publication/224588022_A_Brief_Survey_of_Software_Architecture_Concepts_and_Service_Oriented_Architecture/links/0a85e5346344791494000000/A-Brief-Survey-of-Software-Architecture-Concepts-and-Service-Oriented-Architecture.pdf), with roots in SOA, and [distributed computing](https://en.wikipedia.org/wiki/Distributed_computing#History).  Microservices is an emotive subject, with arguments both [for](https://martinfowler.com/articles/dont-start-monolith.html) and [against](https://martinfowler.com/bliki/MonolithFirst.html) building microservices from the start.  
 

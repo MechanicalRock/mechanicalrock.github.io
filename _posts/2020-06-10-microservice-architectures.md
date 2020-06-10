@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Cloud Native Microservcies
+title: Cloud Native Microservices
 date: 2020-06-10
 tags: cloud microservices architecture
 author: Tim Myerscough

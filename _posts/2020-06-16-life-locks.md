@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Life-Locks: Or how I discovered two S3 features and learned to love compliance'
-date: 2020-06-18
+date: 2020-06-16
 tags: aws s3 WORM compliance locks lifecycle
 author: Pete Yandell
 ---
@@ -135,7 +135,7 @@ Next you enforce how long uploaded files are protected by using the `s3:object-l
 
 ### Unspoken Requirement
 
-The last and unspoken requirement can be found in this [complete CloudFormation template](/assets/2020-06-03-life-locks-example-template.yml).
+The last and unspoken requirement can be found in this [GitHub Gist](https://gist.github.com/mechanicalpete/10b8aa6a48ece0ea457724bbf9e52a8f){:target="_blank" rel="noopener"} or [complete CloudFormation template file](/assets/2020-06-03-life-locks-example-template.yml){:target="_blank" rel="noopener"}.
 
 ## Definitions
 

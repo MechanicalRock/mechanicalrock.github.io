@@ -19,19 +19,19 @@ The problem with any bastion host is the public attack surface that it leaves ex
 AWS Systems Manager released a feature in 2018 called *Session Manager*, allowing the ability to connect directly to EC2 hosts without the need to expose any ports on those hosts (for example, port 22 for SSH). There are two ways you can make this work:
 
 * Place your EC2 in a public subnet with a public IPV4 address
-* Place your EC2 in a private subnet and create VPC endpoints to SSM related services
+* Place your EC2 in an isolated subnet and create VPC endpoints to SSM related services
 
 Today we'll focus on the second strategy.
 
 ## Use Cases
 
-Here's a couple of scenarios to explain why you might want to use Session Manager to access resources in private subnets.
+Here are two scenarios to explain why you might want to use Session Manager to access resources in private subnets.
 
-The first scenario is that you deploy an application consisting of microservices and a database to private subnets, made public by a load balancer in a public subnet. If you want the ability to test these services within the network, a private bastion might be a good way to do that:
+The first scenario is that you deploy an application consisting of microservices and a database to isolated subnets, made public by a load balancer in a public subnet. If you want the ability to test these services within the network, a private bastion might be a good way to do that:
 
 ![Scenario 1](/img/blog/ssm-private-terminal/scenario1.png)
 
-Another use case is that you have a hybrid network consisting of AWS resources and on-premise networks, perhaps by interconnected by a Transit Gateway attachment. In such scenarios, you may be forbidden from placing EC2 resources in public subnets or you may not even have an Internet Gateway at all:
+Another use case is that you have a hybrid network consisting of AWS resources and on-premise networks, perhaps interconnected by a Transit Gateway attachment. In such scenarios, you may be forbidden from placing EC2 resources in public subnets or you may not even have an Internet Gateway at all:
 
 ![Scenario 2](/img/blog/ssm-private-terminal/scenario2.png)
 
@@ -42,11 +42,11 @@ I decided to do something different for this blog, using CDK instead of CloudFor
 So here's what we are going to create
 
 * A new VPC
-* Some private subnets, route tables and security groups
+* Some isolated subnets, route tables and security groups
 * An EC2 instance to act as the *bastion host*
 * Some VPC Endpoints so our EC2's SSM agent can connect to Session Manager
 
-I'm not going to explain how CDK works ~~because I'm lazy~~, instead I'll just focus on the code and how surprisingly terse it is. I did my app in TypeScript but you could use any of the other supported languages such as JavaScript, Python, Java, and C#/. Net.  The following snippets are taken from the file `lib/blog-ssm-private-terminal-stack.ts`
+I'm not going to explain how CDK works ~~because I'm lazy~~, instead I'll just focus on the code and how surprisingly terse it is. I did my app in TypeScript but you could use any of the other supported languages such as JavaScript, Python, Java, and C#/. Net.  The following snippets are taken from the file `lib/blog-ssm-private-terminal-stack.ts`, found in the Github repo [https://github.com/MechanicalRock/cdk-ssm-private-terminal](https://github.com/MechanicalRock/cdk-ssm-private-terminal).
 
 ## Code
 
@@ -70,7 +70,7 @@ Ok so I'm in my typescript file - I'm going to create my VPC and its subnets and
 
 Wow, this was surprisingly easy. So assuming you installed the cdk cli tool, you can go and run `cdk synth` to generate the cloudformation that this code would create. You might be surprised and you will learn a lot about how much CDK is doing under the hood. Bear it in mind, because the defaults may not always be what you want.
 
-Above you can see that I've specifically stated that I want `ISOLATED` subnets. Public subnets would have an internet gateway, and I believe private subnets will automatically configure you a NAT gateways, which I do not want for my scenarios. You can see I also specified `maxAzs: 1`; the default is to spread across multiple availability zones, which I also don't want for my scenarios.
+Above you can see that I've specifically stated that I want `ISOLATED` subnets. Public subnets would have an internet gateway, and I believe selecting private subnets will automatically configure you a NAT gateway, which I do not want for my scenarios. You can see I also specified `maxAzs: 1`; the default is to spread across multiple availability zones, which I also don't want for my scenarios.
 
 For me, one of the most rewarding things of using CDK (in VSCode) is the code completion, because it often saves you from having to lookup a million pages of documentation on the internet - the libraries are really well documented regarding the intent and default behaviour of the code. If you need more reference docs, jump to the [latest version of the API docs](https://docs.aws.amazon.com/cdk/api/latest/versions.html)
 
@@ -159,6 +159,7 @@ No more slinging around AMI identifiers for me - CDK can look that up for me. I 
 
 After a few minutes, we are ready to try connecting to our instance. 
 Navigating to the console, we can now see our EC2: 
+
 ![EC2 Instance](/img/blog/ssm-private-terminal/ec2-instance.png)
 
 By clicking on the ***Connect*** button, we can choose to use *Session manager* to connect to our new instance:

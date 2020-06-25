@@ -1,16 +1,20 @@
 ---
 layout: post
-title: 'Private Bastion - I'll do what you want me to do'
+title: Private Bastion - I'll do what you want me to do
 date: 2020-07-06
 tags: aws ssm vpc ssh ec2
+image: img/blog/ssm-private-terminal/bastion.jpg
 author: Paul Symons
 ---
+<center><img src="/img/blog/ssm-private-terminal/bastion.jpg" /></center><br/>
 
-This post and its title are inspired by Tina Turner and her 1984 album "Private Dancer". Themes of fortitude, defiance and resiliency echo throughout her life story and her works, yet it is her belief that we can find a better way, that resonates most strongly right now.
+
+This post and its title are inspired by Tina Turner and her 1984 album *Private Dancer*. Themes of fortitude, defiance and resiliency echo throughout her life story and her works, yet it is her belief that we can find a better way, that resonates most strongly right now.
 
 > *May you always find a way to turn poison into medicine* <br/><br/>Tina Turner, 2019
 
-# Private Bastions - Using VPC Endpoints to teleport into your VPC
+<br/>
+## Using VPC Endpoints to teleport into your VPC
 
 [Bastion Hosts](https://en.wikipedia.org/wiki/Bastion_host) are a fairly well known and aged concept - that of a server that acts as a solitary, publicly accessible network access point, placing authorised users within the perimeter of an otherwise private network.
 
@@ -155,7 +159,7 @@ Finally, we go and create our EC2 Instance:
 
 No more slinging around AMI identifiers for me - CDK can look that up for me. I map my role and security group to the new EC2 instance, choose an instance size and off we go. I can now run `cdk deploy` to build this stack in my account:
 
-![cdk deploy](/img/blog/ssm-private-terminal/cdk-deploy.png)
+![cdk deploy](/img/blog/ssm-private-terminal/cdk-deploy.jpg)
 
 After a few minutes, we are ready to try connecting to our instance. 
 Navigating to the console, we can now see our EC2: 

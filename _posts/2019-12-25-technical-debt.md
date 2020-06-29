@@ -34,7 +34,7 @@ Persuading stakeholders to address technical debt is fraught with difficulty. Re
 *Debt, The First 5000 Years* (Graebar, G. 2011) presents some interesting ideas around debt that are applicable to technical debt. The primary thesis of the book is that economies did not spring from barter systems as is commonly thought; economies instead start with a system of promises and IOU's which are later formalized through currency. At the core of this is trust; currency is only effective among a society so as long as everyone can agree on its worth. A correlary to this is that barter systems do exist but they commonly occur between parties that do not trust each other. This is suspiciously close to how technical debt is often handled at most companies: two warring factions, engineering and management, bargaining over how much time can be allocated between feature development and refactoring. It therefore stands to reason that are two ways to improve the situation; 1) increase the level of trust between the two groups, and, 2) find a way to quantify technical debt. Ideally we would do this with dollar figures but this has evaded far greater minds for the better part of the last half-century, so we are unlikely to solve this problem here. Instead we will nominate suitable proxy measurements that are serviceable in its absence, and some ways in which we might restrain the effects of technical debt.
 
 <br/>
-<center><img src="/img/tech-debt-quadrant.png" /></center>
+<center><img src="/img/tech-debt-quadrant.png" alt="The Martin Fowler Technical Debt Quadrant"/></center>
 
 <center><a href="https://martinfowler.com/bliki/TechnicalDebtQuadrant.html">The Tech Debt Quadrant via Martin Fowler</a></center>
 
@@ -44,7 +44,7 @@ It may be impossible to measure the intangible technical debt, but this property
 If we are to find a substitute measure for technical debt we first need to figure out what attributes it would have. For a measure to be beneficial it must be difficult to exploit for individual gain at the expense of the business. Any metrics we choose should have as few side effects as possible. Ideally such such a metric should have a positive correlation with software best practices. Reducing technical debt via some proxy (whatever form that takes) is not practical if it conflicts with good hygiene (e.g. writing tests).
 
 <br/>
-<center><img src="/img/key-metrics.png"/></center>
+<center><img src="/img/key-metrics.png" alt="The Four Key Metrics by DevOps Research and Assessment"/></center>
 
 <center><a href="https://cloud.google.com/devops">The Four Key Metrics via DORA</a></center>
 
@@ -86,7 +86,7 @@ Specialisation is another method to restrain technical debt from effecting devel
 The value of code comes from the problem it solves and the business value it generates, but code itself is ultimately a liability. Maintaining a body of software becomes increasingly difficult as it ages and becomes larger in size. This is further aggravated by the reality that software engineers are not tethered to their creations. They leave and new engineers takes their place. New engineers need to understand the legacy left by the predecessors sans the education of having built the system in the first place. It is unreasonable to expect that a new engineer is going to be as effective as the seasoned veteran. We recognise nobody joins a new company with knowledge of its internal processes, politics and three-letter-acronyms, and so we should expect the same of its software systems. Reducing the amount of learning required to be effective is a suitable means to ensuring that turnover does not effect the mean-time-to-repair and change-lead-time. Both the AWS and Google approaches address this; two-pizza-teams place bounds around the amount of service-related knowledge any team member would be required to know, and SRE practices ensure teams do not become encumbered by poorly operated services. Another way this is addressed is by using popular open-source frameworks; it is cheaper to recruit a competent react.js developer than it is to train someone on a custom in-house framework. The logical conclusion to draw here is that in ideal circumstances the minimum amount of code should be written to derive value, which would be unique to the particular business problem. To write more beyond that would be taking on an additional liability for no improvement in outcome.
 
 <br/>
-<center><img src="/img/tech-debt.png" width="50%"/></center>https://vincentdnl.com/
+<center><img src="/img/tech-debt.png" width="50%" alt="Technical Debt Comic by Vincent Déniel"/></center>https://vincentdnl.com/
 <center><a href="https://vincentdnl.com/drawings/technical-debt">Technical Debt by Vincent Déniel</a></center>
 
 

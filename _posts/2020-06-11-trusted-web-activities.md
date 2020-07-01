@@ -26,8 +26,6 @@ Let's get started!
 
 ### What is a Trusted Web Activity?
 
-In the introduction I mentioned Trusted Web Activities, so what are they?
-
 A [Trusted Web Activity](https://developers.google.com/web/android/trusted-web-activity) (TWA) is a way to make your Progressive Web App (PWA) a first-class citizen on Android. It enables you to bundle your web app in an Android package and publish it to the Google Play Store.
 
 You don't need to make any drastic changes to your existing web app. You also don't need to install native development tools such as Android Studio, or write any native code.

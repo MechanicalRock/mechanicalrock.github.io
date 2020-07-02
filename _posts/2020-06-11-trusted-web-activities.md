@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Trusted Web Activities
-date: 2020-06-11
+date: 2020-07-01
 tags: tutorial pwa PWA webapps spa android react
 author: Simon Bracegirdle
 image: /img/pwa.png

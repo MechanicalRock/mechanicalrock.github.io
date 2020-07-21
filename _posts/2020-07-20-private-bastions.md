@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Private Bastion - I'll do what you want me to do
-date: 2020-07-06
+date: 2020-07-20
 tags: aws ssm vpc ssh ec2
 image: img/blog/ssm-private-terminal/bastion.jpg
 author: Paul Symons

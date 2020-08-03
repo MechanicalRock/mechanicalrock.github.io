@@ -7,3 +7,4 @@ _site
 .idea/
 *.iml
 .vscode/
+.jekyll-cache/

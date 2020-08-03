@@ -8,7 +8,7 @@ author: Pete Yandell
 
 <!--markdownlint-disable MD036 -->
 
-I was recently working on an application migration project, and the question of where to stick environment specific values came up. These were values included server names, API keys, database credentials, schema names, etc
+I was recently working on an application migration project, and the question of where to stick environment specific values came up. These were values that included server names, API keys, database credentials, schema names, etc
 
 This got me thinking, how *do* you determine where to stick these values? It's not always an easy answer when you consider facets such as:
 

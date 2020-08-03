@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Where do I Stick it?
-date: 2020-08-04
+date: 2020-08-03
 tags: aws ssm secrets cloudformation
 author: Pete Yandell
 ---

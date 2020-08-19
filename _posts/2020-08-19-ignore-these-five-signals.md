@@ -66,8 +66,6 @@ We believe that the key to a successful transformation is to build the organisat
 
 A lot will be forgiven through this crisis (for now at least).  We have all been in this together and our customers and employees will be understanding of disruptions and missteps.  This will not be the case in the future, especially when disruptions are more localised.  Leaders must take action now to reflect on how they fared through the crisis, uncover the critical data, and do something with it.
 
-What other signals are relevant for your organisation, and how have you used these to inform recovery plans?  Please add your comments below and share this article with your network to get their thoughts.
-
 ---
 <!-- markdownlint-disable MD033 -->
 <span style="font-size: 0.8em">Tania leads the Enterprise DevOps and Transformation practice at Mechanical Rock, Australia’s leading Cloud Native and DevOps consultancy: "We are committed to helping our West Australian tech community to emerge from this crisis stronger than before.  Please reach out if you would like to chat about any of the ideas discussed here or if you would like some help building resilience in your software delivery organisation.”</span>

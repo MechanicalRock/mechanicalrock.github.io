@@ -1,14 +1,14 @@
 ---
 layout: post
-title: Scaffolding your AWS static site insfrastructure with CDK
+title: Scaffolding your AWS single page application infrastructure with CDK
 date: 2020-08-24
-tags: aws cdk static-site react angular cloud-development-kit infrastructure-as-code
+tags: aws cdk static-site react angular cloud-development-kit infrastructure-as-code spa single-page-application
 author: Tim Veletta
 ---
 
-Many of client jobs we do at Mechanical Rock involve the creation of static sites so it often helps to have a simple, repeatable process for quickly scaffolding one. The AWS Cloud Development Kit (CDK) is a relatively new framework for defining your cloud infrastructure as code to be provisioned with CloudFormation. CDK allows developers of static sites to use the tools they are already familiar with, in this case TypeScript (or JavaScript), to define a template for their infrastructure that can be reused from one project to the next.
+Many of client jobs we do at Mechanical Rock involve the creation of single page applications (SPAs) so it often helps to have a simple, repeatable process for quickly scaffolding one. The AWS Cloud Development Kit (CDK) is a relatively new framework for defining your cloud infrastructure as code to be provisioned with CloudFormation. CDK allows developers of SPAs to use the tools they are already familiar with, in this case TypeScript (or JavaScript), to define a template for their infrastructure that can be reused from one project to the next.
 
-In this post I will detail the process from creating an S3 bucket to host our sites assets through to provisioning certificates to enable HTTPS on our domain and everything in between using CDK. I do assume a some amount of familiarity with CDK, that you have gone through and completed the CDK setup as detailed in [the AWS Documentation](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html) and that you have a static site ready to deploy along with a custom domain name registered through AWS Route 53.
+In this post I will detail the process from creating an S3 bucket to host our sites assets through to provisioning certificates to enable HTTPS on our domain and everything in between using CDK. I do assume a some amount of familiarity with CDK, that you have gone through and completed the CDK setup as detailed in [the AWS Documentation](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html) and that you have a SPA ready to deploy along with a custom domain name registered through AWS Route 53.
 
 The infrastructure we are deploying and the communication points are shown in the diagram below. We are able to break things into 3 distinct chunks that build on our infrastructure starting with an S3 static site. We add to it by implementing CloudFront for serving the site using a Content Delivery Network (CDN) and finally add our own secured domain.
 
@@ -66,9 +66,10 @@ The next stage involves adding CloudFront to ensure our content is served to our
 
 ```typescript
 const bucketConfig: BucketProps = {
-    ...
-    publicReadAccess: false,
-    blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
+  bucketName,
+  publicReadAccess: false,
+  blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
+};
 ```
 
 We then create a new function for managing our CloudFront distribution and start by adding a special CloudFront user called an Origin Access Identity (OAI), giving it permissions to access the files in our S3 bucket and serve them to users.
@@ -228,16 +229,16 @@ new CfnOutput(this, "URL", {
 
 Once we run `cdk synth` and `cdk deploy`, we should see our custom domain in the output. Navigating to it should show our site content along with the SSL certificate.
 
-So there you have it, a reusable template for deploying static sites using AWS CDK. You can view the [full template on GitHub](https://gist.github.com/timveletta/4e751f4add532ed246642d061ad3fcb9) and if you have any questions feel free to contact me on Twitter ([@TimVeletta](https://twitter.com/timveletta)). If you also want to know how to scaffold your build pipelines using CDK, my colleague JK Gunnink [wrote a great article on it](https://mechanicalrock.github.io/2020/01/31/inception-pipeline-cdk.html). At [Mechanical Rock](https://www.mechanicalrock.io/), we love helping clients build scalable, dependable and reusable systems using infrastructure-as-code to achieve their business goals. If you think we can help you, feel free to [contact us](https://www.mechanicalrock.io/lets-get-started).
+So there you have it, a reusable template for deploying single page applications using AWS CDK. You can view the [full template on GitHub](https://gist.github.com/timveletta/4e751f4add532ed246642d061ad3fcb9) and if you have any questions feel free to contact me on Twitter ([@TimVeletta](https://twitter.com/timveletta)). If you also want to know how to scaffold your build pipelines using CDK, my colleague JK Gunnink [wrote a great article on it](https://mechanicalrock.github.io/2020/01/31/inception-pipeline-cdk.html). At [Mechanical Rock](https://www.mechanicalrock.io/), we love helping clients build scalable, dependable and reusable systems using infrastructure-as-code to achieve their business goals. If you think we can help you, feel free to [contact us](https://www.mechanicalrock.io/lets-get-started).
 
 ## Troubleshooting
 
 I ran into a couple of issues in putting together this template and couldn't find a lot of information on how to fix them. I hope this is useful if you are running into similar issues.
 
-#### Failed to create resource. Cannot request more certificates in this account. Contact Customer Service for details.
+### Failed to create resource. Cannot request more certificates in this account. Contact Customer Service for details.
 
 So I had this error message after a number of failed stack updates when initially creating the SSL certificate. Chances are it has already created multiple certificates for the same domain which are in **Pending Validation** state so you have to go through and delete them. Don't forget to change your region to `us-east-1` for this otherwise you won't see the certificates.
 
-#### Failed to create resource. Resource is not in the state certificateValidated.
+### Failed to create resource. Resource is not in the state certificateValidated.
 
 This issue was related to my Route53 settings which caused problems when trying to validate the SSL certificate. To fix it, I had to ensure my domain name servers matched the ones listed in my Hosted Zone.

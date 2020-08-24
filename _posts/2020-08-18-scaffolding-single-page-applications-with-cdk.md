@@ -6,7 +6,7 @@ tags: aws cdk static-site react angular vue cloud-development-kit infrastructure
 author: Tim Veletta
 ---
 
-Many of client jobs we do at Mechanical Rock involve the creation of single page applications (SPAs) so it often helps to have a simple, repeatable process for quickly scaffolding one. The AWS Cloud Development Kit (CDK) is a relatively new framework for defining your cloud infrastructure as code to be provisioned with CloudFormation. CDK allows developers of SPAs to use the tools they are already familiar with, in this case TypeScript (or JavaScript), to define a template for their infrastructure that can be reused from one project to the next.
+Many projects at Mechanical Rock involve the creation of single page applications (SPAs) so it often helps to have a simple, repeatable process for quickly scaffolding one. The AWS Cloud Development Kit (CDK) is a relatively new framework for defining your cloud infrastructure as code to be provisioned with CloudFormation. CDK allows developers of SPAs to use the tools they are already familiar with, in this case TypeScript (or JavaScript), to define a template for their infrastructure that can be reused from one project to the next.
 
 In this post I will detail the process from creating an S3 bucket to host our sites assets through to provisioning certificates to enable HTTPS on our domain and everything in between using CDK. I do assume a some amount of familiarity with CDK, that you have gone through and completed the CDK setup as detailed in [the AWS Documentation](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html) and that you have a SPA ready to deploy along with a custom domain name registered through AWS Route 53.
 

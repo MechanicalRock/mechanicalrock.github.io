@@ -43,3 +43,5 @@ https://www.endoflineblog.com/gitflow-considered-harmful
 https://twitter.com/jezhumble/status/1260930170220769283
 
 https://nvie.com/posts/a-successful-git-branching-model/ 
+
+https://mechanicalrock.github.io/2019/07/01/continuous-deployment-the-first-step-on-the-road-to-recovery.html

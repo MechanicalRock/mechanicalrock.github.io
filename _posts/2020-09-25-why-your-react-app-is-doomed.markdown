@@ -11,7 +11,7 @@ tl;dr React and JSX fundamentally has the wrong compositional interface, and ver
 - Programming is all about solving small problems, and composing them to solve bigger problems
 - The way a program can be composed is very important to its long term "health"
 - React Components are functions from `Props -> JSX`
-- This would be fine is React Components were just "Views" in the MVC sense, i.e. pure rendering logic, no side effects or business logic
+- This would be fine if React Components were just "Views" in the MVC sense, i.e. pure rendering logic, no side effects or business logic
 - However, most people think of a component as a bundle of not only its rendering logic, but its associated business logic, and effects (useState, useQuery, etc)
 - So an enriched React "Component" is not just a function from `Props -> JSX`, `Props -> (JSX, State, IO, UI events, etc)`
 - The React community has had several approaches to solve this issue

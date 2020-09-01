@@ -6,7 +6,7 @@ tags: aws cloudformation lakeformation glue data
 image: img/../.jpg
 author: Zainab Maleki, Simon Bracegirdle
 ---
-<center><img src="/img/kinesis-analytics/realize-real-time-analytics.jpg" /></center><br/>
+<!-- <center><img src="/img/kinesis-analytics/realize-real-time-analytics.jpg" /></center><br/> -->
 
 Placeholder
 

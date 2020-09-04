@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "WiTWA[+] Nominations 2020 "
+title: "WiTWA[+] Nominations 2020"
 date: 2020-09-07
 tags: WiTWA Tech
 author: Natalie Laing
 ---
 
-# Insert photo here
+![Mechanical Rock Ladies](/img/MechRockLadies.png)
 
 <br/>
 

@@ -8,20 +8,18 @@ author: Zainab Maleki, Simon Bracegirdle
 ---
 <!-- <center><img src="/img/kinesis-analytics/realize-real-time-analytics.jpg" /></center><br/> -->
 
-**Placeholder for LakeFormation article**
+## Introduction
 
-## Ideas for article
+If you're building a data platform for your organisation, you may be wondering how to make data in one business area accessible to other areas. You want the technology to support the way your organisation works, or to even enable improvements in how you work.
 
-What are some interesting problems to solve?
+*(Drawing around sharing of data here)*
 
-- How to share data between distributed data lakes in different accounts?
-  - Managing access control
-  - How to query
-  - How to copy data?
+But how can we achieve this in the context of a data lake built on AWS?
 
-- Comparison? Strengths of different approaches
-  - LF vs Glue vs S3 access points for data sharing?
-  - Distributed lakes vs centralised lakes?
+AWS Glue is a managed service that enables crawling of data repositories to help assemble a data catalog, as well as providing tools for Extract, Transform and Load (ETL). But, one of the challenges with using AWS Glue is sharing the data catalog and the underlying repositories amongst AWS accounts.
 
-- How to roll out data landing zones as a service catalog product?
+This is where AWS Lake Formation can step in. AWS Lake Formation is another managed service that builds upon the capabilities of AWS Glue. What it offers is streamlining access management and enable easier cross-account sharing of resources.
+
+If that sounds like something that can be of use to you, then please keep reading. We'll go though the steps of setting up a cross-account resource sharing scenario with AWS LakeFormation.
+
 

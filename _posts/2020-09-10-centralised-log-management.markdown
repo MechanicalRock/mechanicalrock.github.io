@@ -120,9 +120,9 @@ This is commonly referred to as the **small file problem** and though it's descr
 
 For a few files the effect is negligible, however when you scale it to thousands of files and many concurrent users, it is very noticeable. The solution is to periodically create *rollups* <sup>[3]</sup> of those files. This is commonly done with Spark jobs that will aim to:
 
-* rewrite data into columnar formats such as **Parquet** for optimized reading
+* rewrite data into columnar formats such as **Parquet** for optimised reading
 * compress the data for better performance and storage density
-* compact many small files in to larger files optimized for scalable compute query engines
+* compact many small files in to larger files optimised for scalable compute query engines
 
 ![Compacting small data files to larger aggregates](/img/blog/clm/data-compaction.png)
 

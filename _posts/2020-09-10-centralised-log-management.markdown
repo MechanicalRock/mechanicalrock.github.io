@@ -128,10 +128,10 @@ There are many different ways to achieve this goal - a few are outlined below
 
 |method|pros|cons|
 |-|-|-|
-|EMR Cluster Spark Jobs| <ul><li>pre-baked hadoop environment</li><li>transient clusters with spot instances could be cheaper</li></ul>|<ul><li>high complexity</li></ul>|
-|Glue PySpark/Scala Jobs| <ul><li>serverless</li><li>simple</li></ul> | <ul><li>More expensive at scale</li></ul>|
-|Airflow / Luigi, etc.| <ul><li>Full Workflow Management for your ETL</li></ul> | <ul><li>not cloud native</li><li>operational complexity</li></ul>|
-|Kinesis Firehose Transformations| <ul><li>Embedded transformation</li><li>Backup mode to allow capturing raw data</ul>|<ul><li>Poor Documentation</li><li>May see poor economies of scale with high throughput</li></ul>|
+|EMR Cluster Spark Jobs| - pre-baked hadoop environment<br/>- transient clusters with spot instances could be cheaper|- high complexity|
+|Glue PySpark/Scala Jobs| - serverless<br/>- simple | - More expensive at scale|
+|Airflow / Luigi, etc.| - Full Workflow Management for your ETL | - not cloud native<br/>- operational complexity|
+|Kinesis Firehose Transformations| - Embedded transformation<br/>- Backup mode to allow capturing raw data|- Poor Documentation<br/>- May see poor economies of scale with high throughput|
 
 # References
 

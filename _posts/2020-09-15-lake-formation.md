@@ -23,3 +23,22 @@ This is where AWS Lake Formation can step in. AWS Lake Formation is another mana
 If that sounds like something that can be of use to you, then please keep reading. We'll go though the steps of setting up a cross-account resource sharing scenario with AWS LakeFormation.
 
 
+## Scenario overview
+
+e.g. What problem are solving? What are we building? Architecture diagram
+
+## Establish our source lake
+
+e.g. Source bucket, sample data, crawler. Introduction to some Lake Formation basic concepts.
+
+## Cross-account grant
+
+e.g. create grant, look at RAM etc
+
+## Query/ETL in target lake
+
+e.g. local lake grants, ETL Job/Athena integration etc
+
+## Summary
+
+e.g. What did we build? What did we learn? How would we summarise our view of Lake Formation?

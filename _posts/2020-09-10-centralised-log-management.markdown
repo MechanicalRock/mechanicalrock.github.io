@@ -66,7 +66,7 @@ For example, imagine you have firewall devices that log connection state events.
 
 ![Bad Example of Sparse Data](/img/blog/clm/sparse-data.jpg)
 
-Whilst Elasticsearch is great as a search layer or as part of a centralised log management platform, sometimes organisations want to build consistent data models around their various unconformed data sources. This is where this architecture really shines - the raw data is also written to S3 where it can later be processed into a conformed model (to iron out schema differences, clean data) for generalised reporting. This processed stage can then be accessible dynamically using tools like AWS Athena, AWS Redshift Spectrum, or Snowflake External Tables. This would typically be considered a part of the ***warm storage*** layer.
+Whilst Elasticsearch is great as a search layer or as part of a centralised log management platform, sometimes organisations want to build consistent data models around their various unconformed data sources. This is where this architecture really shines - the raw data is also written to S3 where it can later be processed into a conformed model (to iron out schema differences, clean data) for generalised reporting. This processed stage can then be accessible dynamically using tools such as AWS Athena, AWS Redshift Spectrum, Snowflake External Tables, etc. This would typically be considered a part of the ***warm storage*** layer.
 
 
 # Transformation
@@ -148,8 +148,8 @@ If centralised log management is truly all you are looking for, you should serio
 
 # References
 
-[1] https://docs.aws.amazon.com/firehose/latest/APIReference/API_BufferingHints.html
+[1] [https://docs.aws.amazon.com/firehose/latest/APIReference/API_BufferingHints.html](https://docs.aws.amazon.com/firehose/latest/APIReference/API_BufferingHints.html)
 
-[2] https://magoosh.com/data-science/what-is-sparse-data/
+[2] [https://magoosh.com/data-science/what-is-sparse-data/](https://magoosh.com/data-science/what-is-sparse-data/)
 
-[3] https://mungingdata.com/apache-spark/compacting-files/
+[3] [https://mungingdata.com/apache-spark/compacting-files/](https://mungingdata.com/apache-spark/compacting-files/)

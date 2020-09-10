@@ -14,7 +14,7 @@ Many organisations have some form of centralised log management - or a dire need
 
 By now, most large organisations will also have realised that maintaining these capabilities is a significant challenge - from rightsizing elasticsearch to ensuring high availability and striking the balance between log retention and hot storage cost.
 
-So today, I wanted to investigate, what would it look like to create a basic cloud hosted centralised log management system, for an organisation generating log data on premise? In our examples we will consider log sources such as
+So today, I wanted to investigate, what would it look like to create a basic cloud hosted centralised log management system, for an organisation generating log data on-premise? In our examples we will consider log sources such as
 
 * Active Directory domain controllers
 * Linux syslog files
@@ -22,7 +22,7 @@ So today, I wanted to investigate, what would it look like to create a basic clo
 
 However, you can ingest any data that you are capable of shipping across your network - it could be router / traffic logs, alarm system telemetry, sensor data, etc. If you want to be able to search it, this pattern should work for you.
 
-A core concept of this architecture is making use of **Kinesis** Firehose and its compatible agents to effectively replace the both log shippers and the **Logstash** component of the ELK stack. Kinesis Firehose is a serverless delivery stream that - at its simplest - takes what you put in it, and dumps it somewhere. It currently supports destinations such as S3, ElasticSearch, RedShift and Splunk. As your requirements grow, so too can Kinesis Firehose stretch to accommodate you, both in features and pricing. For example, it can perform transformations on your behalf; compress your data; change the data format (e.g. from JSON to Parquet). While some of these features will add extra cost per GB processed, it can be a really useful tool to conform your data prior to ingestion, or provide both raw and transform data outputs from a single input stream.
+A core concept of this architecture is making use of **Kinesis** Firehose and its compatible agents to effectively replace both log shippers and the **Logstash** component of the ELK stack. Kinesis Firehose is a serverless delivery stream that - at its simplest - takes what you put in it, and dumps it somewhere. It currently supports destinations such as S3, ElasticSearch, RedShift and Splunk. As your requirements grow, so too can Kinesis Firehose stretch to accommodate you, both in features and pricing. For example, it can perform transformations on your behalf; compress your data; change the data format (e.g. from JSON to Parquet). While some of these features will add extra cost per GB processed, it can be a really useful tool to conform your data prior to ingestion, or provide both raw and transform data outputs from a single input stream.
 
 
 # Our Architecture

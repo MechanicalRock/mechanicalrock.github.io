@@ -1,70 +1,84 @@
 ---
 layout: post
-title: "Adding code build reports to cypress e2e tests using CDK"
+title: "Adding CodeBuild reports to Cypress e2e tests using CDK"
 date: 2020-09-09
 tags: aws codebuild reports testing devops
 author: Natalie Laing
 image:
 ---
 
+![Cypress CodeBuild report](/img/Cypress-CodeBuildReport.png)
+
 ## Set up your infrastructure:
 
-In your non prod and prod deployment add the following to your post build.
+Firstly you will need to set up your infrastructure as code, in this scenario that happens to be using AWS CDK.
 
-Instead of the browser parameter you can use the Cypress_BASE_URL parameter and set cypress to check your non prod and prod sites.
-E.g.
-
-```ts
-CYPRESS_BASE_URL=https://my-site-goes-here.com
-```
+In your non prod and prod deployment stack add the following to your post build.
+When you run Cypress in your local development you will see that is is waiting for a response from localhost to run the tests against. In the post build we can tell Cypress to go and run the integration tests on the specified url.
 
 ```ts
-
 post_build: {
-           commands: [
-             "BROWSER=none npm run start & npx wait-on http://localhost:3000",
-             "cd ../e2e && npm ci",
-             "npm run report",
-           ],
-         },
+    commands: [
+      "cd ../e2e && npm ci",
+      "CYPRESS_BASE_URL=https://my-site-goes-here.com npm run report"
+    ],
+  }
 ```
 
-In your non prod and prod deployment add the following to your reports section add references to the files you want the code build reports to pick up. I included my unit tests and e2e tests.
+In your non prod and prod deployment stack add the following to your reports section.
+This adds the references to the files you want CodeBuild reports to generate. I included my unit tests and e2e tests.
+
+Create an IAM policy which allows logging:
+
+- logs:CreateLogStream
+- logs:CreateLogGroup
+- logs:PutLogEvents
+
+Create an IAM policy which allows reporting:
+
+- codebuild:CreateReportGroup
+- codebuild:CreateReport
+- codebuild:UpdateReport
+- codebuild:BatchPutTestCases
 
 ```ts
 reports: {
     CIReports: {
-      files: ["frontend/junit.xml", "e2e/cypress/results/*.xml"],
-      "discard-paths": "yes",
+        files: ["frontend/junit.xml", "e2e/cypress/results/*.xml"],
+        "discard-paths": "yes",
+      },
     },
-  },
 
-new iam.PolicyStatement({
-    actions: ["logs:CreateLogStream", "logs:CreateLogGroup", "logs:PutLogEvents"],
-    effect: iam.Effect.ALLOW,
-    resources: [
-      `arn:aws:logs:${props.nonProdEnv.region}:${props.nonProdEnv.account}:log-group:/aws/codebuild/cloud-journey-simluation-*`,
-    ],
-}),
+    new iam.PolicyStatement({
+        actions: ["logs:CreateLogStream", "logs:CreateLogGroup", "logs:PutLogEvents"],
+        effect: iam.Effect.ALLOW,
+        resources: [
+          `arn:aws:logs:${props.nonProdEnv.region}:${props.nonProdEnv.account}:log-group:/aws/codebuild/your-file-path-*`,
+        ],
+    }),
 
-new iam.PolicyStatement({
-    actions: [
-      "codebuild:CreateReportGroup",
-      "codebuild:CreateReport",
-      "codebuild:UpdateReport",
-      "codebuild:BatchPutTestCases",
-    ],
-    effect: iam.Effect.ALLOW,
-    resources: [
-      `arn:aws:codebuild:${props.nonProdEnv.region}:${props.nonProdEnv.account}:report-group/cloud-journey-simluation-*`,
-    ],
-})
+    new iam.PolicyStatement({
+        actions: [
+          "codebuild:CreateReportGroup",
+          "codebuild:CreateReport",
+          "codebuild:UpdateReport",
+          "codebuild:BatchPutTestCases",
+        ],
+        effect: iam.Effect.ALLOW,
+        resources: [
+          `arn:aws:codebuild:${props.nonProdEnv.region}:${props.nonProdEnv.account}:report-group/your-file-path-*`,
+        ],
+    })
 ```
 
 ## Reporter config.json
 
 In the reporter config specify what reporters you will be using in the reporter enabled property.
-I used mocha junit reporter and specified where I want my files to be saved. This will need to be unique so I used [hash] to give the file a unique hash value so that I can merge these for the code build report.
+I used mocha junit reporter and specified where I want my files to be saved. This will need to be unique so I used [hash] to give the file a unique hash value so that I can merge these for the CodeBuild report.
+
+**BEWARE: CodeBuild reports are very specific about what file formats are accepted**
+
+For more information check out the documentation [here](https://docs.aws.amazon.com/codebuild/latest/userguide/test-reporting.html)
 
 ```json
 {
@@ -77,26 +91,28 @@ I used mocha junit reporter and specified where I want my files to be saved. Thi
 
 ## Cypress.json
 
-In the cypress json specify the reporter config we set up above.
+In the Cypress json specify the reporter config we set up above.
 
 ```json
-"reporter": "cypress-multi-reporters",
+"reporter": "Cypress-multi-reporters",
  "reporterOptions": {
    "configFile": "reporter-config.json"
  }
 ```
 
-## Package.json - in your cypress directory
+## Package.json - in your Cypress directory
 
-In the package.json in your cypress directory set up the following script commands.
-If the reports folder already exists then we want to remove everything in that folder before we run the E2E test.
+In the package.json in your Cypress directory set up the following script commands.
+If the reports folder already exists then we want to remove everything in that folder before we run the e2e test.
 
 ```json
 "scripts": {
-   "test": "cypress run",
-   "cypress:open": "cypress open",
-   "delete:reports": "rm cypress/results/* || true",
-   "prereport": "npm run delete:reports",
-   "report": "cypress run --reporter cypress-multi-reporters --reporter-options configFile=reporter-config.json"
- }
+    "test": "Cypress run",
+    "cypress:open": "cypress open",
+    "delete:reports": "rm cypress/results/* || true",
+    "prereport": "npm run delete:reports",
+    "report": "cypress run --reporter cypress-multi-reporters --reporter-options configFile=reporter-config.json"
+}
 ```
+
+## Wrapping up

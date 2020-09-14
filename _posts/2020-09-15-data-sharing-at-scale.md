@@ -276,7 +276,7 @@ In Lake Formation console, click on databases -> create database button
 
 Choose a name for your link database and select the shared database from the list. If you have shared a single table instead of all tables, database name does not appear here. In that case, you will need to create a resource link table.
 
-https://docs.aws.amazon.com/lake-formation/latest/dg/create-resource-link-table.html
+[https://docs.aws.amazon.com/lake-formation/latest/dg/create-resource-link-table.html]
 
 <center><img src="/img/lake-formation/07.png" /></center><br/>
 
@@ -284,7 +284,7 @@ Next you need to grant access to your role to be able to select from the table:
 
 <center><img src="/img/lake-formation/08.png" /></center><br/>
 
-This is quite powerful feature as it enables the administrator of each account's lake to have full control over access to that lake. That also applies to resources that shared from other accounts.
+This is quite a powerful feature because it enables the administrator of each account's lake to have full control over access to that lake. That also applies to resources that shared from other accounts.
 
 ## Testing the access in the consumer account
 
@@ -298,7 +298,7 @@ Once you open Athena console, you should be able to see your like database and t
 
 ## Summary
 
-In this post we learnt how to manage cross-account access control to a data catalog with Lake Formation. This enabled us to query a data store from another account, without compromising on security.
+In this post we learnt how to manage cross-account access to a data catalog with Lake Formation. This enabled us to query a data store from another account, without compromising on security.
 
 If we used AWS Glue on its own, we would have created bucket policies, catalog policies, and IAM policies. This would have required knowledge of the underlying data storage in S3. These are details we don't want to worry about.
 

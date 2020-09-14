@@ -84,7 +84,7 @@ The second step in setting up lake formation is to change the Lake Formation per
 
 To enable Lake Formation Permissions, go to settings, untick both “Use only IAM access control for new databases” and  “Use only IAM access control for new tables” and press save.
 
-__TODO Screenshot here__
+<center><img src="/img/lake-formation/03.png" /></center><br/>
 
 ## Establish our source lake
 
@@ -212,13 +212,13 @@ aws cloudformation update-stack --stack-name my-source-glue-stack --template-bod
 
 When you have deployed the crawler, you should be able to see and run it in the Glue Console. 
 
-__TODO Screenshot here__
+<center><img src="/img/lake-formation/04.png" /></center><br/>
 
 Click on run and wait for your crawler to be completed.
 
 Once your crawler runs successfully, you can go to tables menu item and see your table being generated.
 
-__TODO Screenshot here__
+<center><img src="/img/lake-formation/05.png" /></center><br/>
 
 ## Cross-account grant
 
@@ -263,7 +263,7 @@ Resources:
 
 2) Turn on Lake Formation grants:
 
-__TODO Screenshot here__
+<center><img src="/img/lake-formation/06.png" /></center><br/>
 
 Now you need to create a resource link to the database in the data lake account. Unfortunately, this is not available via CloudFormation yet.
 In Lake Formation console, click on databases -> create database button 
@@ -272,11 +272,11 @@ Choose a name for your link database and select the shared database from the lis
 
 https://docs.aws.amazon.com/lake-formation/latest/dg/create-resource-link-table.html
 
-__TODO Screenshot here__
+<center><img src="/img/lake-formation/07.png" /></center><br/>
 
 Next you need to grant access to your role to be able to select from the table
 
-__TODO Screenshot here__
+<center><img src="/img/lake-formation/08.png" /></center><br/>
 
 
 ## Testing the access in the consumer account
@@ -287,7 +287,7 @@ Note: If you have never used Athena in your account, you will need to create a s
 
 Once you open Athena console, you should be able to see your like database and table schema. Now all there is to do is to query the table and make sure it returns the result successfully. 
 
-__TODO Screenshot here__
+<center><img src="/img/lake-formation/09.png" /></center><br/>
 
 ## Summary
 

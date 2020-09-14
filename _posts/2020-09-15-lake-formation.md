@@ -52,13 +52,13 @@ The consuming account will need:
 
 - _A way to query the data in the source account_ – AWS Athena queries on the AWS Lake Formation resource links to the source account.
 
-__TODO Diagram here__
+<center><img src="/img/lake-formation/01-diagram.png" /></center><br/>
 
 ## Setting up Lake Formation
 
 To start with Lake Formation you will need to first assign a Lake Formation Administrator. The administrator will then be able to manage access to resources in the data catalog within the same account and across accounts.
 
-__TODO Screenshot here__
+<center><img src="/img/lake-formation/02.png" /></center><br/>
 
 The Lake Formation administrator can either be an IAM user or IAM role. To Setup an IAM role as the administrator, you will need to deploy below CloudFormation code:
 

@@ -36,7 +36,7 @@ This is where [AWS Lake Formation](https://aws.amazon.com/lake-formation) can st
 
 Lake Formation provides a simple granting mechanism that will be familiar to SQL experts. The target of these grants can be IAM identities, or it can be an AWS account or an entire AWS Organisation or OU.
 
-After creating a grant, Lake Formation integrates with AWS Resource Access Manager to create a cross-account resource share. Lake Administrators in the target account will then see the shared catalog resources in their local data catalog.
+After creating a grant, Lake Formation integrates with AWS Resource Access Manager to create a cross-account resource share. Lake Formation Administrators in the target account will then see the shared catalog resources in their local data catalog.
 
 ## Scenario overview
 
@@ -92,7 +92,7 @@ To enable Lake Formation Permissions, go to settings, untick both “Use only IA
 
 In this blog post we are focusing on the cross-account sharing of Lake Formation, therefore the assumption is you have already ingested your data from the source into an S3 bucket.
 
-Let’s get a starting point, which would be our source bucket and a Glue database for putting our catalog objects into. The following CloudFormation snippet will create those resources:
+Our starting point will be our source bucket and a Glue database for putting our catalog objects into. The following CloudFormation snippet will create those resources:
 
 ```yml
   MySourceDataStore:
@@ -284,7 +284,7 @@ Next you need to grant access to your role to be able to select from the table:
 
 <center><img src="/img/lake-formation/08.png" /></center><br/>
 
-This is quite a powerful feature because it enables the administrator of each account's lake to have full control over access to that lake. That also applies to resources that shared from other accounts.
+This is quite a powerful feature because it enables the administrator of each account's lake to have full control over access to that lake. That also applies to resources that are shared from other accounts.
 
 ## Testing the access in the consumer account
 

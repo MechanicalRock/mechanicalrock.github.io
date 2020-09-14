@@ -10,7 +10,7 @@ author: Zainab Maleki, Simon Bracegirdle
 
 ## Introduction
 
-If you're building a data platform for your organisation, you may be wondering how to make data in one business area accessible to other areas. You want the technology to support the way your organisation works, or to enable improvements in how you work.
+If you're building a data platform for your organisation, you may be wondering how to make data in one business area accessible to other areas. You want the technology to support the way your organisation works and enable you to scale without creating headaches.
 
 For example, let’s say that you’re building a dashboard as part of a solution for a customer. The dashboard aggregates data from stores belonging to other departments:
 
@@ -18,7 +18,7 @@ For example, let’s say that you’re building a dashboard as part of a solutio
 
 How can we solve this problem for a data platform built on AWS? These data stores are in completely different AWS accounts belonging to different teams.
 
-How do we know what data is available in each of those stores, what the schema of the data is, and how can we get access to them?
+How do we know what data is available in each of those stores? What is the schema of the data? How can we get access to it?
 
 If these sound like problems that are relevant to you, then please keep reading! We'll go through the steps of building a cross-account resource sharing solution with AWS Lake Formation.
 

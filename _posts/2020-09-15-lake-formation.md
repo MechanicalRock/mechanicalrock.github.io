@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Lake Formation
+title: Data sharing at scale
 date: 2020-09-15
 tags: aws cloudformation lakeformation glue data
 image: img/../.jpg
 author: Zainab Maleki, Simon Bracegirdle
 ---
-<!-- <center><img src="/img/kinesis-analytics/realize-real-time-analytics.jpg" /></center><br/> -->
+<center><img src="/img/lake-formation/binary-arrows_Web.jpg" /></center><br/>
 
 ## Introduction
 
@@ -14,7 +14,7 @@ If you're building a data platform for your organisation, you may be wondering h
 
 For example, let’s say that you’re building a dashboard as part of a solution for a customer. The dashboard aggregates data from stores belonging to other departments:
 
-__TODO Diagram here__
+<center><img src="/img/lake-formation/00.png" /></center><br/>
 
 How can we solve this problem for a data platform built on AWS? These data stores are in completely different AWS accounts belonging to different teams.
 

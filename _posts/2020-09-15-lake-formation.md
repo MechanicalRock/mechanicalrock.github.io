@@ -10,15 +10,15 @@ author: Zainab Maleki, Simon Bracegirdle
 
 ## Introduction
 
-If you're building a data platform for your organisation, you may be wondering how to make data in one business area accessible to other areas. You want the technology to support the way your organisation works, or to even enable improvements in how you work.
+If you're building a data platform for your organisation, you may be wondering how to make data in one business area accessible to other areas. You want the technology to support the way your organisation works, or to enable improvements in how you work.
 
-For example, let’s say that you’re building an analytics solution and it may involve some dashboards. The dashboard aggregates data from data stores belonging to two other departments, as demonstrated in the diagram below:
+For example, let’s say that you’re building a dashboard as part of a solution for a customer. The dashboard aggregates data from stores belonging to other departments:
 
 __TODO Diagram here__
 
-How can we solve this problem in the context of a data platform built on AWS? These data stores may be located in completely different AWS accounts and those accounts are owned by different teams.
+How can we solve this problem for a data platform built on AWS? These data stores are in completely different AWS accounts belonging to different teams.
 
-As members of another department, how do we know what data is available in each of those stores, what the schema of that data is, and how do we get access to it?
+How do we know what data is available in each of those stores, what the schema of the data is, and how can we get access to them?
 
 If these sound like problems that are relevant to you, then please keep reading! We'll go through the steps of building a cross-account resource sharing solution with AWS Lake Formation.
 
@@ -40,7 +40,7 @@ After creating a grant, Lake Formation integrates with AWS Resource Access Manag
 
 ## Scenario overview
 
-If we recall, our goal is to share data across AWS accounts to enable a multi-data source analytics solution. Now that we have an idea of what services can be useful, let’s start to think about what our end to end technical solution looks like.
+Our goal is to share data across AWS accounts to enable a multi-source data analytics solution. Now that we have an idea of what services can be useful, let’s start to think about what our end to end technical solution looks like.
 
 The source accounts will need:
 
@@ -51,6 +51,8 @@ The source accounts will need:
 The consuming account will need:
 
 - _A way to query the data in the source account_ – AWS Athena queries on the AWS Lake Formation resource links to the source account.
+
+The diagram below demonstrates how those components can work together for this solution:
 
 <center><img src="/img/lake-formation/01-diagram.png" /></center><br/>
 
@@ -224,7 +226,7 @@ Once your crawler runs successfully, you can go to tables menu item and see your
 
 Once you have your Glue database and tables created, you will be able to manage the database access via Lake Formation. 
 
-To enable cross-account access, you will need to add a Lake Formation grant with specifying the consumer account number
+To enable cross-account access, you will need to add a Lake Formation grant and specify the consumer account number.
 
 ```yml
  CrossAccountLakeGrants:
@@ -243,7 +245,11 @@ To enable cross-account access, you will need to add a Lake Formation grant with
           # TableWildcard: [] // WhildCard is not available via cloudformation yet 
 ```
 
+This will automatically create a resource share with AWS Resource Access Manager (RAM), and the administrator will see the shared database in their Glue Catalog.
+
 ## Setting up permissions in the consumer account
+
+We have shared the table from the source account to the consumer account. But, by default only the administrator of the consumer lake will have access to those shared resources. To enable other IAM users or roles to access the resources, we'll need to create grants.
 
 Login into the consumer account and setup Lake Formation base settings:
 
@@ -274,10 +280,11 @@ https://docs.aws.amazon.com/lake-formation/latest/dg/create-resource-link-table.
 
 <center><img src="/img/lake-formation/07.png" /></center><br/>
 
-Next you need to grant access to your role to be able to select from the table
+Next you need to grant access to your role to be able to select from the table:
 
 <center><img src="/img/lake-formation/08.png" /></center><br/>
 
+This is quite powerful feature as it enables the administrator of each account's lake to have full control over access to that lake. That also applies to resources that shared from other accounts.
 
 ## Testing the access in the consumer account
 
@@ -285,7 +292,7 @@ Open Athena from the console.
 
 Note: If you have never used Athena in your account, you will need to create a s3 bucket and set it as your query result location in settings for Athena.
 
-Once you open Athena console, you should be able to see your like database and table schema. Now all there is to do is to query the table and make sure it returns the result successfully. 
+Once you open Athena console, you should be able to see your like database and table schema. Now all there is to do is to query the table and make sure it returns the result. 
 
 <center><img src="/img/lake-formation/09.png" /></center><br/>
 
@@ -293,6 +300,8 @@ Once you open Athena console, you should be able to see your like database and t
 
 In this post we learnt how to manage cross-account access control to a data catalog with Lake Formation. This enabled us to query a data store from another account, without compromising on security.
 
-If we were to have used AWS Glue on its own, we would have had to create bucket policies, catalog policies, and IAM policies in the consuming account. This would have required knowledge of the underlying data storage in S3. Lake Formation simplifies this by creating a single layer of access control through simple grants. Shared resources then appear in the data catalog of the consuming account, resulting in a seamless experience.
+If we used AWS Glue on its own, we would have created bucket policies, catalog policies, and IAM policies. This would have required knowledge of the underlying data storage in S3. These are details we don't want to worry about.
 
-Thanks for reading. If you would like to learn more about cross-account data patterns, then feel free to get in [contact with us](https://au.linkedin.com/company/mechanical-rock).
+Lake Formation simplifies this by creating a single layer of access control through [grants](https://docs.aws.amazon.com/lake-formation/latest/dg/lake-formation-permissions.html). Shared resources appear in the data catalog of the consuming account, resulting in a seamless experience.
+
+Thanks for reading this introduction to Lake Formation. If you would like to learn more about cross-account data patterns, then feel free to get in [contact with us](https://au.linkedin.com/company/mechanical-rock).

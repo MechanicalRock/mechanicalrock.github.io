@@ -20,7 +20,7 @@ How can we solve this problem in the context of a data platform built on AWS? Th
 
 As members of another department, how do we know what data is available in each of those stores, what the schema of that data is, and how do we get access to it?
 
-If these sound like problems that’s relevant to you, then please keep reading! We'll go though the steps of building a cross-account resource sharing solution with AWS Lake Formation.
+If these sound like problems that are relevant to you, then please keep reading! We'll go through the steps of building a cross-account resource sharing solution with AWS Lake Formation.
 
 ## Which AWS services can help?
 
@@ -52,11 +52,11 @@ __TODO Diagram here__
 
 ## Setting up Lake Formation
 
-To start with Lake Formation you will need to first assign a Lake Formation Administrator.  
+To start with Lake Formation you will need to first assign a Lake Formation Administrator. The administrator will then be able to manage access to resources in the data catalog within the same account and across accounts.
 
 __TODO Screenshot here__
 
-LakeFormation administrator can either be an IAM user or SSO role. To Setup a SSO role as LakeFormation administrator you will need to deploy below CloudFormation code.
+The Lake Formation administrator can either be an IAM user or IAM role. To Setup an IAM role as the administrator, you will need to deploy below CloudFormation code:
 
 ```yml
 AWSTemplateFormatVersion: '2010-09-09'
@@ -70,21 +70,21 @@ Resources:
         - DataLakePrincipalIdentifier: arn:aws:iam::100000123000:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_56cabj890003333
 ```
 
-To deploy the above CloudFormation stack, store the file as datalake.yml and run below command.
+To deploy the above CloudFormation stack, store the template in the file `datalake.yml` locally and run the following command:
 
 ```sh
 aws cloudformation create-stack --stack-name my-source-glue-stack --template-body file://datalake.yml --capabilities "CAPABILITY_NAMED_IAM"
 ```
 
-The second step in setting up lake formation is to change the LakeFormation permission model from IAM to LakeFormation native grants. Unfortunately this setup is not available via CloudFormation. 
+The second step in setting up lake formation is to change the Lake Formation permission model from IAM to Lake Formation native grants. Unfortunately, this setup is not available via CloudFormation at this time, so we'll need to make the change in the AWS console.
 
-To enable LakeFormation Permissions go to settings, untick both “Use only IAM access control for new databases” and  “Use only IAM access control for new tables” and press save.
+To enable Lake Formation Permissions, go to settings, untick both “Use only IAM access control for new databases” and  “Use only IAM access control for new tables” and press save.
 
 __TODO Screenshot here__
 
 ## Establish our source lake
 
-In this blog post we are focusing on the cross-account sharing of Lake Formation, therefore the assumption is you have already ingested your data from the source into a s3 bucket.
+In this blog post we are focusing on the cross-account sharing of Lake Formation, therefore the assumption is you have already ingested your data from the source into an S3 bucket.
 
 Let’s get a starting point, which would be our source bucket and a Glue database for putting our catalog objects into. The following CloudFormation snippet will create those resources:
 
@@ -109,13 +109,13 @@ Let’s get a starting point, which would be our source bucket and a Glue databa
         Description: String
 ```
 
-Add the above code in your datalake.yml and run below update command.
+Add the above code in your datalake.yml and run the update command below:
 
 ```sh
 aws cloudformation update-stack --stack-name my-source-glue-stack --template-body file://datalake.yml --capabilities "CAPABILITY_NAMED_IAM"
 ```
 
-Let’s copy over some data into the bucket. To do that, download below CSV file and upload it into your bucket.
+Let’s copy over some data into the bucket. To do that, download the CSV file below and upload it into your bucket.
 
 __TODO Link to CSV file__
 
@@ -218,9 +218,9 @@ __TODO Screenshot here__
 
 ## Cross-account grant
 
-Once you have your Glue database and tables created, you will be able to mange the database access via Lake Formation. 
+Once you have your Glue database and tables created, you will be able to manage the database access via Lake Formation. 
 
-To enable cross-account access, you will need to add a LakeFormation grant with specifying the consumer account number
+To enable cross-account access, you will need to add a Lake Formation grant with specifying the consumer account number
 
 ```yml
  CrossAccountLakeGrants:
@@ -241,9 +241,9 @@ To enable cross-account access, you will need to add a LakeFormation grant with 
 
 ## Setting up permissions in the consumer account
 
-Login into the consumer account and setup LakeFormation base settings:
+Login into the consumer account and setup Lake Formation base settings:
 
-1) Setup a LakeFormation administrator:
+1) Setup a Lake Formation administrator:
 
 ```yml
 AWSTemplateFormatVersion: '2010-09-09'
@@ -257,14 +257,14 @@ Resources:
         - DataLakePrincipalIdentifier: arn:aws:iam::300000000015:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_56cabj890003333
 ```
 
-2) Turn on LakeFormation grants:
+2) Turn on Lake Formation grants:
 
 __TODO Screenshot here__
 
-Now you need to create a resource link to the database in the data lake account. Unfortunately this is not available via CloudFormation yet.
-In LakeFormation console, click on databases -> create database button 
+Now you need to create a resource link to the database in the data lake account. Unfortunately, this is not available via CloudFormation yet.
+In Lake Formation console, click on databases -> create database button 
 
-Choose a name for your link db and select the shared database from the list. If you have shared a single table instead of all tables, database name does not appear here. In that case you will need to create a resource link table.
+Choose a name for your link database and select the shared database from the list. If you have shared a single table instead of all tables, database name does not appear here. In that case, you will need to create a resource link table.
 
 https://docs.aws.amazon.com/lake-formation/latest/dg/create-resource-link-table.html
 
@@ -287,4 +287,8 @@ __TODO Screenshot here__
 
 ## Summary
 
-e.g. What did we build? What did we learn? How would we summarise our view of Lake Formation?
+In this post we learnt how to manage cross-account access control to a data catalog with Lake Formation. This enabled us to query a data store from another account, without compromising on security.
+
+If we were to have used AWS Glue on its own, we would have had to create bucket policies, catalog policies, and IAM policies in the consuming account. This would have required knowledge of the underlying data storage in S3. Lake Formation simplifies this by creating a single layer of access control through simple grants. Shared resources then appear in the data catalog of the consuming account, resulting in a seamless experience.
+
+Thanks for reading. If you would like to learn more about cross-account data patterns, then feel free to get in [contact with us](https://au.linkedin.com/company/mechanical-rock).

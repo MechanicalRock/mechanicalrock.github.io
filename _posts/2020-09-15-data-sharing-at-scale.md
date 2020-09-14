@@ -24,7 +24,7 @@ If these sound like problems that are relevant to you, then please keep reading!
 
 ## Which AWS services can help?
 
-One service that can help is AWS Glue – a managed service that enables crawling of data repositories to help assemble a data catalog. Glue also provides tools for Extract, Transform and Load (ETL), called Jobs.
+One service that can help is [AWS Glue](https://aws.amazon.com/glue) – a managed service that enables crawling of data repositories to help assemble a data catalog. Glue also provides tools for Extract, Transform and Load (ETL), called Jobs.
 
 But, one of the challenges with using AWS Glue is sharing resources across AWS accounts.
 
@@ -32,7 +32,7 @@ You can share access in Glue using role-based access control with IAM roles and 
 
 In our scenario, the consumer wants access to a given table in the source Catalog, and isn't concerned with the details of storage.
 
-This is where AWS Lake Formation can step in. AWS Lake Formation is another managed service that builds upon the capabilities of AWS Glue. It streamlines access management and eases [cross-account sharing of resources](https://docs.aws.amazon.com/lake-formation/latest/dg/sharing-catalog-resources.html).
+This is where [AWS Lake Formation](https://aws.amazon.com/lake-formation) can step in. AWS Lake Formation is another managed service that builds upon the capabilities of AWS Glue. It streamlines access management and eases [cross-account sharing of resources](https://docs.aws.amazon.com/lake-formation/latest/dg/sharing-catalog-resources.html).
 
 Lake Formation provides a simple granting mechanism that will be familiar to SQL experts. The target of these grants can be IAM identities, or it can be an AWS account or an entire AWS Organisation or OU.
 

@@ -123,7 +123,7 @@ aws cloudformation update-stack --stack-name my-source-glue-stack --template-bod
 
 Let’s copy over some data into the bucket. To do that, download the CSV file below and upload it into your bucket.
 
-__TODO Link to CSV file__
+[Example CSV File](/assets/employee-500.csv){:target="_blank" rel="noopener"}.
 
 You can upload the file using AWS CLI or from the S3 console:
 

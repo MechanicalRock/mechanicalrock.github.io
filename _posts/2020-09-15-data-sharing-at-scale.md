@@ -134,7 +134,7 @@ aws s3 sync . s3://my-source-bucket
 Now, let’s add the crawler and give it permission to read the bucket and write to the catalog:
 
 ```yml
-MySourceCrawlerRole:
+  MySourceCrawlerRole:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:

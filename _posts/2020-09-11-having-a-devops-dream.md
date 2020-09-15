@@ -4,9 +4,10 @@ title: Having A DevOps Dream
 date: 2020-09-11
 tags: devops cloudnative product-development product
 author: Tim Myerscough
+image: img/devops-dream/dds_mobile.jpg
 ---
 
-<centre><a href="https://devops.games"><img src="/img/devops-dream/DDS_Banner.png" alt=DevOps Dream Banner /></a></centre>
+<centre><a href="https://devops.games"><img src="/img/devops-dream/dds_mobile.jpg" alt="A person in their workplace playing DevOps Dream on a mobile phone." /></a></centre>
 
 <br/>
 In case you hadn't heard, we did a thing! We released [DevOps Dream](https://dream.devops.games/) on 19th August 2020.  I'd like to share our motivations and give some insights behind the scenes.  Along the way, you might just pick up some tips on how you can Live the Dream and beat the game! ;o)

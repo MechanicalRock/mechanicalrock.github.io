@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Data sharing at scale
+title: How to share your data effectively in a cloud native data lake?
 date: 2020-09-15
 tags: aws cloudformation lakeformation glue data
 image: img/../.jpg

@@ -12,31 +12,25 @@ author: Zainab Maleki, Simon Bracegirdle
 
 If you're building a data platform for your organisation, you may be wondering how to make data in one business area accessible to other areas. You want the technology to support the way your organisation works and enable you to scale without creating headaches.
 
-For example, let’s say that you’re building a dashboard as part of a solution for a customer. The dashboard aggregates data from stores belonging to other departments:
+For example, let’s say you’re building a dashboard as part of a solution for a customer. The dashboard aggregates data from stores belonging to other departments.
 
 <center><img src="/img/lake-formation/00.png" /></center><br/>
 
-How can we solve this problem for a data platform built on AWS? These data stores are in completely different AWS accounts belonging to different teams.
-
-How do we know what data is available in each of those stores? What is the schema of the data? How can we get access to it?
+How can we solve this problem for a data platform built on AWS? These data stores are in completely different AWS accounts belonging to different teams. How do we know what data is available in each of those stores? What is the schema of the data? How can we get access to it?
 
 If these sound like problems that are relevant to you, then please keep reading! We'll go through the steps of building a cross-account resource sharing solution with AWS Lake Formation.
 
 ## Which AWS services can help?
 
-One service that can help is [AWS Glue](https://aws.amazon.com/glue) – a managed service that enables crawling of data repositories to help assemble a data catalog. Glue also provides tools for Extract, Transform and Load (ETL), called Jobs.
+One service that can help is [AWS Glue](https://aws.amazon.com/glue), a managed service that enables crawling of data repositories to help assemble a data catalog. Glue also provides tools for Extract, Transform and Load (ETL), called Jobs.
 
-But, one of the challenges with using AWS Glue is sharing resources across AWS accounts.
+But, one of the challenges with AWS Glue is sharing resources across AWS accounts. You can share access in Glue using role-based access control with IAM roles and policies, however this requires knowledge of the underlying storage mechanism (i.e. the S3 bucket name and path). You also need to create policies on both the Glue Catalog and S3 Bucket.
 
-You can share access in Glue using role-based access control with IAM roles and policies. But, this requires knowledge of the underlying storage mechanism (i.e. the S3 bucket name and path). You also need to create policies on both the Glue Catalog and S3 Bucket.
-
-In our scenario, the consumer wants access to a given table in the source Catalog, and isn't concerned with the details of storage.
-
-This is where [AWS Lake Formation](https://aws.amazon.com/lake-formation) can step in. AWS Lake Formation is another managed service that builds upon the capabilities of AWS Glue. It streamlines access management and eases [cross-account sharing of resources](https://docs.aws.amazon.com/lake-formation/latest/dg/sharing-catalog-resources.html).
+In our scenario, the consumer wants access to a given table in the source catalog and is not concerned with the details of storage. This is where [AWS Lake Formation](https://aws.amazon.com/lake-formation) can step in. AWS Lake Formation is another managed service that builds upon the capabilities of AWS Glue. It streamlines access management and eases [cross-account sharing of resources](https://docs.aws.amazon.com/lake-formation/latest/dg/sharing-catalog-resources.html).
 
 Lake Formation provides a simple granting mechanism that will be familiar to SQL experts. The target of these grants can be IAM identities, or it can be an AWS account or an entire AWS Organisation or OU.
 
-After creating a grant, Lake Formation integrates with AWS Resource Access Manager to create a cross-account resource share. Lake Formation Administrators in the target account will then see the shared catalog resources in their local data catalog.
+After creating a grant, Lake Formation integrates with AWS Resource Access Manager to create a cross-account resource share. Lake Formation administrators in the target account will then see the shared catalog resources in their local data catalog.
 
 ## Scenario overview
 

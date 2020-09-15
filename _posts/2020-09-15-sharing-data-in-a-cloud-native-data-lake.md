@@ -1,9 +1,9 @@
 ---
 layout: post
-title: How to share your data effectively in a cloud native data lake?
+title: Sharing data effectively in a cloud native data lake
 date: 2020-09-15
 tags: aws cloudformation lakeformation glue data
-image: img/../.jpg
+image: img/lake-formation/binary-arrows_Web.jpg
 author: Zainab Maleki, Simon Bracegirdle
 ---
 <center><img src="/img/lake-formation/binary-arrows_Web.jpg" /></center><br/>
@@ -227,7 +227,7 @@ To enable cross-account access, you will need to add a Lake Formation grant and 
     Type: AWS::LakeFormation::Permissions
     Properties:
       DataLakePrincipal:
-        DataLakePrincipalIdentifier: "300000000015" // Consumer account number
+        DataLakePrincipalIdentifier: "300000000015" # Consumer account number
       Permissions:
         - SELECT
       PermissionsWithGrantOption:
@@ -236,7 +236,7 @@ To enable cross-account access, you will need to add a Lake Formation grant and 
         TableResource:
           DatabaseName: !Ref MySourceGlueDatabase
           Name: !Sub 'my_source_data_store_ap_southeast_2_${AWS::AccountId}'
-          # TableWildcard: [] // WhildCard is not available via cloudformation yet 
+          # TableWildcard: [] # WildCard is not available via cloudformation yet 
 ```
 
 This will automatically create a resource share with AWS Resource Access Manager (RAM), and the administrator will see the shared database in their Glue Catalog.
@@ -298,4 +298,4 @@ If we used AWS Glue on its own, we would have created bucket policies, catalog p
 
 Lake Formation simplifies this by creating a single layer of access control through [grants](https://docs.aws.amazon.com/lake-formation/latest/dg/lake-formation-permissions.html). Shared resources appear in the data catalog of the consuming account, resulting in a seamless experience.
 
-Thanks for reading this introduction to Lake Formation. If you would like to learn more about cross-account data patterns, then feel free to get in [contact with us](https://au.linkedin.com/company/mechanical-rock).
+Thanks for reading this introduction to Lake Formation. If you would like to learn more about cross-account data patterns, feel free to get in [contact with us](https://mechanicalrock.io/lets-get-started).

@@ -12,6 +12,7 @@ image: /img/reports.png
 ## Introduction
 
 I was recently working on a project where the project owner wanted to be able to visualize our tests in one place without having to navigate through the code base.
+
 This enabled us to visualize the following in our report group:
 
 - Pass rate
@@ -137,5 +138,9 @@ If the reports folder already exists then we want to remove everything in that f
 ```
 
 ## Wrapping up
+
+We satisfied the project owners need to visualize test coverage in one place. Happy PO happy life.
+
+If you have any questions, feel free to [contact-us](https://www.mechanicalrock.io/lets-get-started).
 
 ![Cypress CodeBuild report](/img/Cypress-CodeBuildReport.png)

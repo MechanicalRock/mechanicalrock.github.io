@@ -12,13 +12,19 @@ Set the story - explain the design decision and conversation that led to this - 
 
 Explain what gitflow is
 
-We've made no mystery of our dislike of GitFlow and our preference for Trunk-Based Development (establish company/personal stance on why gitflow sucks)
+We've made no mystery of our dislike of GitFlow and our preference for Trunk-Based Development. We want to improve the flow of software into production thereby allowing users to get value faster. The way to do this responsibly is to automate as much testing and verification as possible and reduce the number of steps that involve human intervention. This is easiest to obtain when working in the Trunk-Based model. Merging from branch-to-branch-to-branch introduces additional steps that we feel does not add any value to the software development process, as everything has to land on master eventually anyway.
+
+ (establish company/personal stance on why gitflow sucks)
 
 But it isn't just us. (Establish many sources that hate GitFlow - culminating in Jez Humble and the creator of Git Flow calling it unsuitable)
 
 Restate issues with GitFlow like a broken record
 
 Manual gates have many of the same properties & drawbacks as GitFlow
+
+Which brings me to the point made in the headline - Manual Gates are functionally GitFlow. If you are attempting to do Trunk-Based-Development, but you have manual gates between stages in your CI/CD pipeline, this is fundamentally the same as GitFlow with merging between environments. In each case someone has to manually inspect the currently deployed environment, decide it's healthy, then take some action to promote the software into the next environment. In each case they both have the same impacts on the flow of software into the production environment.
+
+I'm not suggesting developers remove manual gates and leave nothing in their place. Steps need to be taken to add in automated verification to ensure promotion can proceed in safe manner. This typically not very easy to do - hence why a lot of teams tend to fallback on to manual review. But it is neccesary to do so, and I imagine it will become easier as more and more developers become accustomed to integrating it into their pipelines.
 
 What are your alternatives? Automated Verification
 

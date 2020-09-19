@@ -52,6 +52,28 @@ Of course, you may not need all that CodeBuild offers so lambda might be a cheap
 
 CloudWatch Synthetics is a cool, relatively new service that is capable of doing things like generating traffic for test purposes, load-testing, and taking snapshots of web user interfaces like one might do with puppeteer. Whilst it won't handle the whole verify and rollback process, it can be useful for making the verification step more accurate and valuable.
 
+# Conclusion
+
+I really do get it - writing tests that work well against live environment is hard. It feels like a better use of time in the early stages of a product to instead invest that time in the product itself and maybe it is. However if this is the situation you are in take the time to think tactically and make an informed decision. Review the list of possible ways to introduce automated testing, select what is likely to give you the best return-on-investment, and plan for when the best time to make that investment is. This could be a timeframe (we want to have this in place by the end of the year), when you reach a certain load (we need to consider this when we have 200 daily active users), or when your team reaches a certain size.
+
+
+
+
+Continuous Integration - code is automatically merged into mainline
+- Paired on with no gated review (architectural choices)
+- Linting and static analysis
+- Automated code-coverage checks - reject if coverage decreases
+- Deployed to a dynamic environment - integrations test ran against environment
+- Automatically merged to master
+
+Continuous Deployment
+- Re-run checks and deploy to environments
+- Potential re-use of CI testing
+
+
+Technical differences
+- CI needs dynamic creation of isolated environments (potentially complicated)
+- CD tends to require static environments - may deploy to multiple environments (AZ/Regional)
 
 
 What are your alternatives? Automated Verification

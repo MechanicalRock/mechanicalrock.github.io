@@ -10,17 +10,21 @@ Introduction - establish
 
 Set the story - explain the design decision and conversation that led to this - culiminating in my deciding that manual gates are git-flow in a wig
 
-Explain what gitflow is
+GitFlow is popular branching model that was first put forward in 2010. It works by maintaining several branches that center around different scenarios; features, releases and hotfixes. It's support for a number of different development scenarios is probably the main contributor to it's continued popularity. A lead developer looking for a branching model is likely to come across GitFlow and several others, and select it because it addresses a number of hypothetical concerns more explicitly then other models.
 
-We've made no mystery of our dislike of GitFlow and our preference for Trunk-Based Development. We want to improve the flow of software into production thereby allowing users to get value faster. The way to do this responsibly is to automate as much testing and verification as possible and reduce the number of steps that involve human intervention. This is easiest to obtain when working in the Trunk-Based model. Merging from branch-to-branch-to-branch introduces additional steps that we feel does not add any value to the software development process, as everything has to land on master eventually anyway.
+This doesn't come without cost and teams may find themselves paying for insurance they do not need. The GitFlow branching model is complicated and is reasonably strict about what branches can be merged into what target branch and the circumstances in which this happens. The number of long-lived branches increases, and I've seen less disciplined teams wind up in situations with conflicting versions of a product running on separate branches. This is all fun-and-games until a customer wants feature A and feature B, but these exist in conflicting versions. The only way to do avoid this scenario is to dilligently ensure that everything makes it back to mainline as fast as possible. This is a key feature of another model, Trunk-Based-Development, and similar models such as GitHub Flow.
 
- (establish company/personal stance on why gitflow sucks)
+We've made no mystery of our dislike of GitFlow and our preference for Trunk-Based Development. We want to improve the flow of software into production thereby allowing users to get value faster. The way to do this responsibly is to automate as much testing and verification as possible and reduce the number of steps that involve human intervention. This is easiest to obtain when working in the Trunk-Based model. Merging from branch-to-branch-to-branch introduces additional steps that we feel does not add any value to the software development process, as everything should land on master eventually anyway.
 
-But it isn't just us. (Establish many sources that hate GitFlow - culminating in Jez Humble and the creator of Git Flow calling it unsuitable)
+But it isn't just us. The creator of GitFlow has somewhat denounced it recently, explaining that it was designed for a world in which consumers typically hosted versions of the software themselves. This is very different from the present where the typical delivery model is via SaaS-based web and mobile applications. The CEO of GitLab has raised similar concerns, and GitHub themselves publish their own methodology which is more in line with Trunk-Based Development. DevOps pioneer, author of the Phoenix Project, and fellow of DevOps Research and Assessment (DORA), Jez Humble, has had similar misgivings about the GitFlow.
+
+ <!-- pointing out that is suboptimal for todays SaaS-based web applications, and other software that is typically deploying in continuous manner. 
+
+(Establish many sources that hate GitFlow - culminating in Jez Humble and the creator of Git Flow calling it unsuitable)
 
 Restate issues with GitFlow like a broken record
 
-Manual gates have many of the same properties & drawbacks as GitFlow
+Manual gates have many of the same properties & drawbacks as GitFlow -->
 
 Which brings me to the point made in the headline - Manual Gates are functionally GitFlow. If you are attempting to do Trunk-Based-Development, but you have manual gates between stages in your CI/CD pipeline, this is fundamentally the same as GitFlow with merging between environments. In each case someone has to manually inspect the currently deployed environment, decide whether it is healthy, then take some action to promote the software into the next environment. In each case they both have the same impacts on the flow of software into the production environment - waiting for a human to make a decision.
 
@@ -54,7 +58,7 @@ CloudWatch Synthetics is a cool, relatively new service that is capable of doing
 
 # Conclusion
 
-I really do get it - writing tests that work well against live environment is hard. It feels like a better use of time in the early stages of a product to instead invest that time in the product itself and maybe it is. However if this is the situation you are in take the time to think tactically and make an informed decision. Review the list of possible ways to introduce automated testing, select what is likely to give you the best return-on-investment, and plan for when the best time to make that investment is. This could be a timeframe (we want to have this in place by the end of the year), when you reach a certain load (we need to consider this when we have 200 daily active users), or when your team reaches a certain size.
+I really do get it - writing tests that work well against live environment is hard. It feels like a better use of time in the early stages of a product to instead invest that time in the product itself and maybe it is. However if this is the situation you are in take the time to think tactically and make an informed decision. Review the list of possible ways to introduce automated testing, select what is likely to give you the best return-on-investment, and plan for when the best time to make that investment is. This could be a timeframe (we want to have this in place by the end of the year), when you reach a certain load (we need to consider this when we have 200 daily active users), or when your team reaches a certain size. Ideally teams should focus on reducing friction into production and that can only be achieved by removing steps that require human intervention.
 
 
 

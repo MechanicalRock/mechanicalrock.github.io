@@ -27,9 +27,11 @@ So the difference is pretty clear - *one advises, one does*.
 
 ## In Practice
 
-In reality, however, the lines are often blurred between advising and doing. We, for instance, call ourselves *consultants* but often do a mix of engagements which are advising, or advising AND doing. When companies only do the doing and call themselves *consultants*, that is just deception. Even worse, when companies call themselves consultants, but then hire *contractors* to deliver the work, that is worse than deception, it is downright duplicitous.
+In reality, however, the lines are often blurred between advising and doing. We, for instance, call ourselves *consultants* but often do a mix of engagements which are advising, or advising AND doing.
 
-It is common for the *client* to come to a *consultant* and expect to be provided with a solution, but it is the consultants job to make this into a 50/50 proposition. A *consultant* needs to keep the *client* engaged and ensure they have skin in the game.
+It is also common for the *client* to come to a us and expect to be provided with a solution, but it is the consultants job to make this into a 50/50 proposition. A *consultant* needs to keep the *client* engaged and ensure they have skin in the game.
+
+When companies only do the doing and call themselves *consultants*, that is just deception. Even worse, when companies call themselves consultants, but then hire *contractors* to deliver the work, that is worse than deception, it is downright duplicitous.
 
 ## A Different Perspective
 
@@ -39,14 +41,14 @@ In the UK, the right to substitute a worker is one of the key status tests that 
 
 ## Where To From Here
 
-I have worked hard to differentiate my businesses from the commonly held view of "Contractors", it is a trigger for me when people do not understand the difference, albeit subtle at times.
+I work hard to differentiate my businesses from the commonly held view of *contractors, so it is a trigger for me when people do not understand the difference, albeit subtle at times.
 
-Companies who operate as glorified recruitment firms continue to be successful, so the market must know more than me! Or perhaps the market doesn't know more than me and the people that make these decisions don't care or are motivated in ways which I am not familiar with. 
+Companies who operate as glorified recruitment firms continue to be successful, so the market must know more than me! Or perhaps the market doesn't know more than me and the people that make these decisions don't care or are motivated in ways which I am not familiar with.
 
 > “It is a mistake to assume that clients make decisions to begin projects and use consultants based on purely rational reasons. More often than not, the client’s primary question is: “Is this consultant someone I can trust?” - Peter Block, Flawless Consulting
 
 
-Either way, best practice dictates that if you ever see me in the street, please ensure you do not use the words *consultant* and *contractor* interchangeably. 
+Either way, best practice dictates that if you ever see me in the street, please ensure you do not use the words *consultant* and *contractor* interchangeably.
 
 ## Rant Over
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Having A DevOps Dream
-date: 2020-09-11
+date: 2020-09-22
 tags: devops cloudnative product-development product
 author: Tim Myerscough
 image: img/devops-dream/dds_mobile.jpg

@@ -21,7 +21,7 @@ Nothing [gets my goat up](https://www.urbandictionary.com/define.php?term=Get%20
 
 The *consultant bible* (here at Mechanical Rock at least), Flawless Consulting by Peter Block, defines a *consultant* as a person in a position to have some influence over an individual, a group, or an organisation but has no direct power to make changes or implement programs. The recipient of this advice is called the *client*.
 
-A *contractor*, as defined by the Cambridge Dictionary, is a person or company that arranges to supply materials or workers for building or for moving goods.
+A *contractor*, as defined by the Cambridge Dictionary, is a person or company that arranges to supply materials or workers for building or for moving goods and services.
 
 So the difference is pretty clear - *one advises, one does*.
 
@@ -33,7 +33,7 @@ In reality, however, the lines are often blurred between advising and doing. We,
 
 I lived for many years in the UK and was a professional contractor for a time. IT Contracting is (well, maybe no longer) a way of life for many there. It is a way to earn a great income, with low tax, and also have the flexibility to move around. But it is independant, highly mercenary and is focused around delivering a service, not providing a consulting service. Running a business in the UK, as result, can be a challenge. In a land so permeated by independant contractors, creating an identity and a culture when the lure of the contractor Pound is so prevalent is hard. Contractors, by nature, are not aligned to a "consulting" companies values & goals and also more often than not the promise of the processes which influenced the *client* to choose them in the first place.
 
-In the UK, the ability to substitute a worker is one of the key status tests that HMRC would look for during an IR35 investigation. In my opinion it is not only the right to substitute but the *ability* to do it. If you have built a real company (sorry contractors, but running a one man band is very different to building a business), then this is easy, as a core set of skills prevail amongst your employees. This is also true in Australia, but the tax legislation is different in the sense that the economic benefit is not as high, but the risk is just as large.
+In the UK, the right to substitute a worker is one of the key status tests that HMRC would look for during an IR35 investigation. In my opinion it is not only the right to substitute but the *ability* to do it. If you have built a real company (sorry contractors, but running a one man band is very different to building a business), then this is easy, as a core set of skills prevail amongst your employees. This is also true in Australia, but the tax legislation is different in the sense that the economic benefit is not as high, but the risk is just as large.
 
 As I have worked hard to differentiate my businesses from the commonly held view of "Contractors", it is a trigger for me when people do not understand the difference, albeit subtle at times.
 
@@ -41,4 +41,4 @@ Companies who operate as glorified recruitment firms continue to be successful, 
 
 ## Rant Over
 
-Love Hamish
+Love, Hamish

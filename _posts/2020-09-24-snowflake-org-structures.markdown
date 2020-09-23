@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Which Snowflake Organization and Account Pattern is right for you?
-date: 2020-09-24
+date: 2020-09-23
 tags: cloud data snowflake organizations accounts
 image: img/blog/sos/banner-sos.jpg
 author: Paul Symons

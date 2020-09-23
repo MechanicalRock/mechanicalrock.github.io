@@ -29,15 +29,24 @@ So the difference is pretty clear - *one advises, one does*.
 
 In reality, however, the lines are often blurred between advising and doing. We, for instance, call ourselves *consultants* but often do a mix of engagements which are advising, or advising AND doing. When companies only do the doing and call themselves *consultants*, that is just deception. Even worse, when companies call themselves consultants, but then hire *contractors* to deliver the work, that is worse than deception, it is downright duplicitous.
 
+It is common for the *client* to come to a *consultant* and expect to be provided with a solution, but it is the consultants job to make this into a 50/50 proposition. A *consultant* needs to keep the *client* engaged and ensure they have skin in the game.
+
 ## A Different Perspective
 
 I lived for many years in the UK and was a professional contractor for a time. IT Contracting is (well, maybe no longer) a way of life for many there. It is a way to earn a great income, with low tax, and also have the flexibility to move around. But it is independant, highly mercenary and is focused around delivering a service, not providing a consulting service. Running a business in the UK, as result, can be a challenge. In a land so permeated by independant contractors, creating an identity and a culture when the lure of the contractor Pound is so prevalent is hard. Contractors, by nature, are not aligned to a "consulting" companies values & goals and also more often than not the promise of the processes which influenced the *client* to choose them in the first place.
 
 In the UK, the right to substitute a worker is one of the key status tests that HMRC would look for during an IR35 investigation. In my opinion it is not only the right to substitute but the *ability* to do it. If you have built a real company (sorry contractors, but running a one man band is very different to building a business), then this is easy, as a core set of skills prevail amongst your employees. This is also true in Australia, but the tax legislation is different in the sense that the economic benefit is not as high, but the risk is just as large.
 
-As I have worked hard to differentiate my businesses from the commonly held view of "Contractors", it is a trigger for me when people do not understand the difference, albeit subtle at times.
+## Where To From Here
 
-Companies who operate as glorified recruitment firms continue to be successful, so the market must know more than me! Or perhaps the market doesn't know more than me and the people that make these decisions don't care or are motivated in ways which I am not familiar with. Either way, best practice dictates that if you ever see me in the street, please ensure you do not use the words *consultant* and *contractor* interchangeably. 
+I have worked hard to differentiate my businesses from the commonly held view of "Contractors", it is a trigger for me when people do not understand the difference, albeit subtle at times.
+
+Companies who operate as glorified recruitment firms continue to be successful, so the market must know more than me! Or perhaps the market doesn't know more than me and the people that make these decisions don't care or are motivated in ways which I am not familiar with. 
+
+> “It is a mistake to assume that clients make decisions to begin projects and use consultants based on purely rational reasons. More often than not, the client’s primary question is: “Is this consultant someone I can trust?” - Peter Block, Flawless Consulting
+
+
+Either way, best practice dictates that if you ever see me in the street, please ensure you do not use the words *consultant* and *contractor* interchangeably. 
 
 ## Rant Over
 

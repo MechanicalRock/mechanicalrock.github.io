@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Which Snowflake Organization and Account Pattern is right for you?
-date: 2020-09-22
+date: 2020-09-24
 tags: cloud data snowflake organizations accounts
 image: img/blog/sos/banner-sos.jpg
 author: Paul Symons
@@ -43,12 +43,21 @@ I won't cover the specifics of the account vending, because as a private preview
 
 #### Multi Organizational Capability
 
-Maintaing multiple Snowflake Organizations can be used to enable:
+Maintaining multiple Snowflake Organizations can be used to enable:
 
 * Separate / Split Billing across an organisation
 * Independent ownership / accountability with shared management 
 
 Yet it also comes with complications that we will elaborate on later.
+
+#### Single Organization Features
+
+Remaining in a single Snowflake Organization carries a number of key benefits
+
+* Use of the [Snowflake Private Data Exchange](https://docs.snowflake.com/en/user-guide/data-exchange.html) across your Snowflake Organization accounts as a way to catalog, publish and discover datasets within your participating accounts.
+* Replication of databases across cloud regions
+* Consolidated Billing with per account breakdown
+
 
 
 ### Snowflake Organizations in comparison to AWS Organizations
@@ -100,19 +109,23 @@ In the following diagram, you will note that in order to share with accounts in 
 While there may be genuine reasons for requiring individual Snowflake Organizations, it will add complexity and likely some additional cost as well.
 
 ![Multiple Organizations](/img/blog/sos/multi-cloud-multi-org.jpg)
+<center><em>Independent operation of organizations, separate remittance; disparate views of global Snowflake operation</em></center>
 
 #### Single Organization, Multiple Regions / Clouds, Multiple Accounts
 
 Next is an alternative structure that keeps everything managed through a single Snowflake Organization. This allows accounts to replicate some of their databases to other accounts in the organization that operate in different cloud regions, effectively opening up opportunities for cross cloud / region sharing.
 
 This scenario is likely to be a common choice for many geographically or multi cloud businesses. It can also be an effective cross cloud / region redundancy architecture, where [databases can be failed over to alternate regions to which they are being replicated](https://docs.snowflake.com/en/user-guide/database-failover-intro.html).
+
 ![Single Organization, Multi Region](/img/blog/sos/multi-cloud-single-org.jpg)
+<center><em>In the single organization view, all costs are payable by the organization owner; yet the owner will also receive a breakdown of costs for each account within the organization</em></center>
 
 
 #### Single Organization, Single Region / Cloud, Multiple Accounts
 This is going to be perhaps the most common pattern for many large organisations that work within a single cloud region. By working in a single cloud region, cross account sharing is supported. Master and reference data sets can be shared by a corporate account for access by all other divisional accounts within the same region.
 
 ![Single Organization, Single Cloud/Region](/img/blog/sos/single-cloudregion-single-org.jpg)
+<center><em>Same region organization structure minimizes data movement and cost</em></center>
 
 ### Think about the money
 
@@ -125,6 +138,8 @@ How should you make sense of all this when it comes to cost? The following page 
 ### Summary
 
 This was a brief introduction to Snowflake Organizations, and how it relates to support for secure sharing between accounts and recently released features such as database replication across cloud regions.
+
+With Snowflake, cost modelling and management is critical to maximising your value from the service. Customers should weigh carefully the different options and implications, to match their aspirations and capabilities appropriately.
 
 No matter the size of your company or organisation, Mechanical Rock are eager to listen to your challenges and meet them head on. [Get in touch with Mechanical Rock](https://mechanicalrock.io/lets-get-started) today to accelerate your journey!
 

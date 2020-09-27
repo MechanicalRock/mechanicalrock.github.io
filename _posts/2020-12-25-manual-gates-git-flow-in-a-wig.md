@@ -6,7 +6,21 @@ tags: devops ci cd gitflow trunk
 author: Matt Tyler
 ---
 
-Introduction - establish 
+Over last few years I've spent a lot of time working in the CI/CD salt mines. The simplest expression of a CI/CD pipeline is depicted below; we begin with pulling the source code, go through to a build and test stage, and deploy to an environment.
+
+Most teams will start with this. At some point, the team itself will decide there is too much risk deploying directly to production, and will decide they need an additional environment. Enter the test (or nonproduction, or development, or QC) stage. They put in a manual gate between deployment phases and everything is fine. The pipeline starts to get used in other projects and the world keeps turning.
+
+Then a new project comes along, and decides two stages isn't enough. They want another one. It could be for User Acceptance Testing. It could be for training. At any rate it gets shoved into the pipeline between the nonproduction and production stages and the world kicks on; although the teams have noticed that this project does not deploy to production as often.
+
+Time kicks on. Other teams decide they need another environment. Others add other types of verification steps into the pipeline. As they get more and more complicated, the likelihood of code getting through all the way without manual intervention decreases. Frustrated with increasing complexity, teams find ways to circument the pipeline in order to deploy manually. Incidents start to increase in frequency and duration. Engineers moving between teams are frustrated because the pipelines have wildly diverged.
+
+Sounding familiar?
+
+- No-one cares about your pipeline - Forrest Brazeal
+
+I've watched this story unfold multiple times. At the core of the story I've noticed it arises out of a need for two things - manual gating and multiple environments. On the surface both of these things are entirely reasonable options but they seem to result in a productivity death spiral. I've since come to the conclusion that these are tools that one needs to have in their toolbox - the problem stems from how teams choose to implement them. I believe that these two features should be implemented via your branching model, and not via discrete steps in the CI/CD pipeline.
+
+Introduction - establish
 
 Set the story - explain the design decision and conversation that led to this - culiminating in my deciding that manual gates are git-flow in a wig
 

@@ -8,16 +8,16 @@ author: Matt Tyler
 
 Over last few years I've spent a lot of time working in the CI/CD salt mines. The simplest expression of a CI/CD pipeline is depicted below; we begin with pulling the source code, go through to a build and test stage, and deploy to an environment.
 
-<insert image of simple pipeline>
-
+<center><img src="/img/manual-gates/simple-1.png" /></center>
+<br/>
 Most teams will start with this. At some point, the team itself will decide there is too much risk deploying directly to production, and will decide they need an additional environment. Enter the test (or nonproduction, or development, or QC) stage. They put in a manual gate between deployment phases and everything is fine. The pipeline starts to get used in other projects and the world keeps turning.
 
-<insert image of a two stage pipeline gates>
-
+<center><img src="/img/manual-gates/simple-2.png" /></center>
+<br/>
 Then a new project comes along, and decides two stages isn't enough. They want another one. It could be for User Acceptance Testing. It could be for training. At any rate it gets shoved into the pipeline between the nonproduction and production stages and the world kicks on; although the teams have noticed that this project does not deploy to production as often.
 
-<insert image of a three stage pipeline with gates>
-
+<center><img src="/img/manual-gates/simple-3.png" /></center>
+<br/>
 More time passes. Other teams decide they need another environment. Others add other types of verification steps into the pipeline. As they get more and more complicated, the likelihood of code getting through all the way without manual intervention decreases. Frustrated with increasing complexity, teams find ways to circument the pipeline in order to deploy manually. Incidents start to increase in frequency and duration. Engineers moving between teams are frustrated because the pipelines have wildly diverged.
 
 Sounding familiar?
@@ -100,7 +100,7 @@ It might also seem that I'm agitating for fewer environments in the CI/CD pipeli
 
 <insert image>
 
-Each of these environments is about stopping faulty or incorrect software hitting production. Concerns such as User Acceptance Testing should not block the path to production - this should have happened before code hit the master branch. Training environments should also not be sequested from the environments in the main pipeline. If I haven't been clear up to this point, let me restate it - the environments that are present in your main pipeline to production should not have any other function but ensuring that you can reliably deploy code to production that will not cause an unintentional degredation.
+Each of these environments is about stopping faulty or incorrect software hitting production. Concerns such as User Acceptance Testing should not block the path to production - this should have happened before code hit the master branch. Training environments should not be poached from the environments in the main pipeline. If I haven't been clear up to this point, let me restate it - the environments that are present in your main pipeline to production should not have any other function but ensuring that you can reliably deploy code to production that will not cause an unintentional degredation.
 
 To continue that point, I often seem teams that will have a "development" environment in their pipeline. This is a step above developers running entire copies of the system in their local environment, but it still comes with issues. It can be difficult to accurately determine exactly what is running in this environment when multiple developers are deploying changes to such an environment, which can make it difficult to ensure working code is making it's way towards production. This is often ensures that a manual gate is introduced and that it never leaves. If developers must be able to run an isolated copy of the system, it is better to implement this via developer sandboxes or dynamic environments that are free of the pipeline. Recognise that the purpose of such an environment isn't to safely deploy code to production, but to aide the developer in feature development, and as such it doesn't belong in the production pipeline.
 
@@ -108,17 +108,28 @@ To continue that point, I often seem teams that will have a "development" enviro
 
 Assume we are deploying software-as-a-service. This could be an internal or customer facing service.
 
-1. Customers only consume the service from code that has been deployed to the master branch.
+1. Customers only consume the service from code that has been merged to the master branch.
 
 2. Features that are ready for consumption are merged to the master branch.
 
-3. We have one pipeline that is 'subscribed' to master branch.
+3. We have one pipeline that is 'subscribed' to the master branch.
 
-4. All environments in the pipeline exist for the sole purpose of ensuring that changes do not degrade the service.
+4. All environments in the pipeline exist for the sole purpose of ensuring that changes do not degrade the customer-facing instance.
 
-5. Developers may create a simplified version of the master pipeline - except there is no final "production" stage, and there is only one pre-production stage that executes all set of tests against that one environment. There is no automated rollback - developers will fix-forward.
+5. Developers may create a simplified version of the master pipeline - except there is no final "production" stage, and there is only one pre-production stage that executes all tests against that one environment. There is no automated rollback - developers are expected to fix-forward.
 
-6. UAT, training, and copies of the service exist on their own branches with their own copies of the master pipeline subscribed to them. Changes may be merged into these branches before or after they reach master, depending on business goals.
+6. UAT, training, and copies of the service exist on their own branches with their own copies of the pipeline subscribed to them. Changes may be merged into these branches before or after they reach master depending on the circumstances.
+
+Illustrated, we might expect this to look something like the following graphic.
+
+<insert image>
+
+This has quite a few things going for it.
+
+- We have decoupled environments that have potential manual verification (e.g. UAT) from the path to production.
+- There is a clear method for creating additional environments (e.g. UAT, dev) such that they don't impact the path to production.
+- It can support different branching models with little impact to any current delivery pipelines that may be in use.
+- Decide you don't need additional environments besides pre-prod and prod (e.g. true Trunk-Based Development)? Fine. Just don't create additional environments subscribed to branches.
 
 # Conclusion
 

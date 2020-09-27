@@ -28,13 +28,13 @@ I've watched this story unfold multiple times. At the core of the story I've not
 
 - there is a missing paragraph here, probably -
 
-GitFlow is popular branching model that was first put forward in 2010. It works by maintaining several branches that center around different scenarios; features, releases and hotfixes. It's support for a number of different development scenarios is probably the main contributor to it's continued popularity. A lead developer looking for a branching model is likely to come across GitFlow and several others, and select it because it addresses a number of hypothetical concerns more explicitly then other models.
+GitFlow (Driessen, V. 2010) is popular branching model that was first put forward in 2010. It works by maintaining several branches that center around different scenarios; features, releases and hotfixes. It's support for a number of different development scenarios is probably the main contributor to it's continued popularity. A lead developer looking for a branching model is likely to come across GitFlow and several others, and select it because it addresses a number of hypothetical concerns more explicitly then other models.
 
 This doesn't come without cost and teams may find themselves paying for insurance they do not need. The GitFlow branching model is complicated and is reasonably strict about what branches can be merged into what target branch and the circumstances in which this happens. The number of long-lived branches increases, and I've seen less disciplined teams wind up in situations with conflicting versions of a product running on separate branches. This is all fun-and-games until a customer wants feature A and feature B, but these exist in conflicting versions. The only way to avoid this scenario is to dilligently ensure that everything makes it back to mainline as fast as possible. This is a key feature of another model, Trunk-Based-Development, and similar models such as GitHub Flow.
 
-We've made no mystery of our dislike of GitFlow and our preference for Trunk-Based Development. We want to improve the flow of software into production thereby allowing users to get value faster. The way to do this responsibly is to automate as much testing and verification as possible and reduce the number of steps that involve human intervention. This is easiest to obtain when working in the Trunk-Based model. Merging from branch-to-branch-to-branch introduces additional steps that we feel does not add any value to the software development process, as everything should land on master eventually anyway.
+We've made no mystery of our dislike of GitFlow and our preference for Trunk-Based Development (Myerscough, T. 2019). We want to improve the flow of software into production thereby allowing users to get value faster. The way to do this responsibly is to automate as much testing and verification as possible and reduce the number of steps that involve human intervention. This is easiest to obtain when working in the Trunk-Based model. Merging from branch-to-branch-to-branch introduces additional steps that we feel does not add any value to the software development process, as everything should land on master eventually anyway.
 
-But it isn't just us. The creator of GitFlow has somewhat denounced it recently *, explaining that it was designed for a world in which consumers typically hosted versions of the software themselves. This is very different from the present where the typical delivery model is via SaaS-based web and mobile applications. The CEO of GitLab has raised similar concerns *, and GitHub themselves publish their own methodology which is more in line with Trunk-Based Development *. DevOps pioneer, author of the Phoenix Project, and fellow of DevOps Research and Assessment (DORA), Jez Humble, has had similar misgivings about the GitFlow.
+But it isn't just us. The creator of GitFlow has somewhat denounced it recently (Driessen, V. 2010), explaining that it was designed for a world in which consumers typically hosted versions of the software themselves. This is very different from the present where the typical delivery model is via SaaS-based web and mobile applications. The CEO of GitLab has raised similar concerns (Sijbrandij, S. 2015), and GitHub themselves publish their own methodology which is more in line with Trunk-Based Development (GitHub. 2020). DevOps pioneer, author of the Phoenix Project, and fellow of DevOps Research and Assessment (DORA), Jez Humble, has had similar misgivings about the GitFlow (Humble, J. 2020).
 
 > never use git flow. It’s a horrible way to solve the problem the creator used it for, and also a really horrible way to build software generally - Jez Humble
 
@@ -132,48 +132,14 @@ This has quite a few things going for it.
 
 I do get it - writing tests that work well against live environment is hard. It feels like a better use of time in the early stages of a product to instead invest that time in the product itself and maybe it is. However if this is the situation you are in take the time to think tactically and make an informed decision. Review the list of possible ways to introduce automated testing, select what is likely to give you the best return-on-investment, and plan for when the best time to make that investment is. This could be a timeframe (we want to have this in place by the end of the year), when you reach a certain load (we need to consider this when we have 200 daily active users), or when your team reaches a certain size. Ideally teams should focus on reducing friction into production and that can only be achieved by removing steps that require human intervention.
 
+# References
 
+[1] Driessen, V. (2010) A Successful Git Branching Model. Available at https://nvie.com/posts/a-successful-git-branching-model/
 
+[2] Myerscough, T. (2019) Continuous Deployment - The First Step on Your Road to Recovery. Available at https://mechanicalrock.github.io/2019/07/01/continuous-deployment-the-first-step-on-the-road-to-recovery.html
 
-Continuous Integration - code is automatically merged into mainline
-- Paired on with no gated review (architectural choices)
-- Linting and static analysis
-- Automated code-coverage checks - reject if coverage decreases
-- Deployed to a dynamic environment - integrations test ran against environment
-- Automatically merged to master
+[3] Sijbrandij, S. (2015) Comment on "GitFlow Considered Harmful". Available at https://news.ycombinator.com/item?id=9744059
 
-Continuous Deployment
-- Re-run checks and deploy to environments
-- Potential re-use of CI testing
+[4] GitHub. (2020) Understanding the GitHub flow. Available at https://guides.github.com/introduction/flow/
 
-
-Technical differences
-- CI needs dynamic creation of isolated environments (potentially complicated)
-- CD tends to require static environments - may deploy to multiple environments (AZ/Regional)
-
-
-What are your alternatives? Automated Verification
-
-Lists of different ways to do it
-- CloudFormation CloudWatch Alarms
-- CloudWatch Synthetics
-- Test Runners (native codepipeline)
-- Step Functions / Lambda Functions
-
-
-/// Notes dump
-
-
-"GitLab CEO here. I agree that GitFlow is needlessly complex and that there should be one main branch. The author advises to merge in feature branches by rebasing them on master. I think that it is harmful to rewrite history. You will lose cherry-picks, references in issues and testing results (CI) of those commits if you give them a new identifier.
-
-The power of git is the ability to work in parallel without getting in each-others way. No longer having a linear history is an acceptable consequence. In reality the history was never linear to begin with. It is better to have a messy but realistic history if you want to trace back what happend and who did and tested what at what time. I prefer my code to be clean and my history to be correct.
-
-I prefer to start with GitHub flow (merging feature branches without rebasing) and described how to deal with different environments and release branches in GitLab Flow https://about.gitlab.com/2014/09/29/gitlab-flow/" - https://news.ycombinator.com/item?id=9744059
-
-https://www.endoflineblog.com/gitflow-considered-harmful
-
-https://twitter.com/jezhumble/status/1260930170220769283
-
-https://nvie.com/posts/a-successful-git-branching-model/ 
-
-https://mechanicalrock.github.io/2019/07/01/continuous-deployment-the-first-step-on-the-road-to-recovery.html
+[5] Humble. J (2020) Available at https://twitter.com/jezhumble/status/1260930170220769283

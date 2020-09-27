@@ -22,13 +22,11 @@ More time passes. Other teams decide they need another environment. Others add o
 
 Sounding familiar?
 
-- No-one cares about your pipeline - Forrest Brazeal
+> First of all, nobody cares how cool your CI/CD pipeline is. - Forrest Brazeal
 
 I've watched this story unfold multiple times. At the core of the story I've noticed it arises out of a need for two things - manual gating and multiple environments. On the surface both of these things are entirely reasonable options but they seem to result in a productivity death spiral. I've since come to the conclusion that these are tools that one needs to have in their toolbox - the problem stems from how teams choose to implement them. I believe that these two features should be implemented via your branching model, and not via discrete steps in the CI/CD pipeline. Let's first consider the GitFlow branching model.
 
-<!-- Introduction - establish
-
-Set the story - explain the design decision and conversation that led to this - culminating in my deciding that manual gates are git-flow in a wig -->
+- there is a missing paragraph here, probably -
 
 GitFlow is popular branching model that was first put forward in 2010. It works by maintaining several branches that center around different scenarios; features, releases and hotfixes. It's support for a number of different development scenarios is probably the main contributor to it's continued popularity. A lead developer looking for a branching model is likely to come across GitFlow and several others, and select it because it addresses a number of hypothetical concerns more explicitly then other models.
 
@@ -36,15 +34,9 @@ This doesn't come without cost and teams may find themselves paying for insuranc
 
 We've made no mystery of our dislike of GitFlow and our preference for Trunk-Based Development. We want to improve the flow of software into production thereby allowing users to get value faster. The way to do this responsibly is to automate as much testing and verification as possible and reduce the number of steps that involve human intervention. This is easiest to obtain when working in the Trunk-Based model. Merging from branch-to-branch-to-branch introduces additional steps that we feel does not add any value to the software development process, as everything should land on master eventually anyway.
 
-But it isn't just us. The creator of GitFlow has somewhat denounced it recently, explaining that it was designed for a world in which consumers typically hosted versions of the software themselves. This is very different from the present where the typical delivery model is via SaaS-based web and mobile applications. The CEO of GitLab has raised similar concerns, and GitHub themselves publish their own methodology which is more in line with Trunk-Based Development. DevOps pioneer, author of the Phoenix Project, and fellow of DevOps Research and Assessment (DORA), Jez Humble, has had similar misgivings about the GitFlow.
+But it isn't just us. The creator of GitFlow has somewhat denounced it recently *, explaining that it was designed for a world in which consumers typically hosted versions of the software themselves. This is very different from the present where the typical delivery model is via SaaS-based web and mobile applications. The CEO of GitLab has raised similar concerns *, and GitHub themselves publish their own methodology which is more in line with Trunk-Based Development *. DevOps pioneer, author of the Phoenix Project, and fellow of DevOps Research and Assessment (DORA), Jez Humble, has had similar misgivings about the GitFlow.
 
- <!-- pointing out that is suboptimal for todays SaaS-based web applications, and other software that is typically deploying in continuous manner. 
-
-(Establish many sources that hate GitFlow - culminating in Jez Humble and the creator of Git Flow calling it unsuitable)
-
-Restate issues with GitFlow like a broken record
-
-Manual gates have many of the same properties & drawbacks as GitFlow -->
+> never use git flow. It’s a horrible way to solve the problem the creator used it for, and also a really horrible way to build software generally - Jez Humble
 
 Which brings me to the point made in the headline - Manual Gates are functionally GitFlow. If you are attempting to do Trunk-Based-Development, but you have manual gates between stages in your CI/CD pipeline, this is fundamentally the same as GitFlow with merging between environments. In each case someone has to manually inspect the currently deployed environment, decide whether it is healthy, then take some action to promote the software into the next environment. In each case they both have the same impacts on the flow of software into the production environment - waiting for a human to make a decision.
 
@@ -52,7 +44,7 @@ Which brings me to the point made in the headline - Manual Gates are functionall
 
 Yes. Sort of. To be honest, manual gates are only bad because 99% of the time they are used to facilitate manual testing. What about the other 1%? I believe the only time a gate is useful is to control when software hits production. You may only want deploy during off-peak times or on certain days for stability reasons e.g. if the software has all the feature it needs for an important event that will happen on Wednesday, it perhaps stands to reason to wait till Thursday before rolling out a non-essential feature.
 
-I'm not suggesting developers remove manual gates and leave nothing in their place. Steps need to be taken to add in automated verification to ensure promotion can proceed in safe manner and historically this has not been easy to do. It involves diverting expensive engineering effort from feature development to a support function, hence why a lot of teams tend to stick with manual review. But it is neccesary to do so, and I imagine it will become easier as more and more developers become accustomed to integrating it into their pipelines.
+I'm not suggesting developers remove manual gates and leave nothing in their place. Steps need to be taken to add in automated verification to ensure promotion can proceed in safe manner and historically this has not been easy to do. It involves diverting expensive engineering effort from feature development to a support function, hence why a lot of teams tend to stick with manual review. But it is neccesary to do so, and I imagine it will become easier as more developers become accustomed to integrating it into their pipelines.
 
 What are the tools available to you to perform automated verification of your environments in AWS? It really depends on the primitives you have chosen (containers, serverless, horse and cart etc), but here is a short list to get you started.
 
@@ -86,19 +78,23 @@ It might also seem that I'm agitating for fewer environments in the CI/CD pipeli
 
 1. A simple pipeline is constructed that deploys straight to production
 
-<insert image>
+<center><img src="/img/manual-gates/evolve-1.png" /></center>
+<br/>
 
 2. A pre-production environment is created with a gate, in order to manually verify an environment before it reaches production.
 
-<insert image>
+<center><img src="/img/manual-gates/evolve-2.png" /></center>
+<br/>
 
 3. The tests that are run during gating are automated, there-by replacing the automated gate with automatic verification.
 
-<insert image>
+<center><img src="/img/manual-gates/evolve-3.png" /></center>
+<br/>
 
 4. The automated test suite begins to get slower as it both increases in size and complexity. The developers notice that this is due to bootstrapping external resources. The developers create an additional pre-production environment, and split the tests. Tests are run with mocked dependencies against the first pre-production environment, where-as real dependencies are used against the second pre-production environment.
 
-<insert image>
+<center><img src="/img/manual-gates/evolve-4.png" /></center>
+<br/>
 
 Each of these environments is about stopping faulty or incorrect software hitting production. Concerns such as User Acceptance Testing should not block the path to production - this should have happened before code hit the master branch. Training environments should not be poached from the environments in the main pipeline. If I haven't been clear up to this point, let me restate it - the environments that are present in your main pipeline to production should not have any other function but ensuring that you can reliably deploy code to production that will not cause an unintentional degredation.
 
@@ -122,7 +118,8 @@ Assume we are deploying software-as-a-service. This could be an internal or cust
 
 Illustrated, we might expect this to look something like the following graphic.
 
-<insert image>
+<center><img src="/img/manual-gates/model.png" /></center>
+<br/>
 
 This has quite a few things going for it.
 

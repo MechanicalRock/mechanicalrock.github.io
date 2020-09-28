@@ -4,8 +4,10 @@ title: Serverless Kubernetes with Cloudrun
 date: 2020-09-28
 tags: containers serverless docker kubernetes
 author: JK Gunnink
-image:
+image: img/cloudrun_header.png
 ---
+
+![Cloudrun_Header]({{ site.base_url }}/img/cloudrun_header.png)
 
 A short while ago, Mr Brown-shoe himself [presented a talk at Yow! in Perth][yow-link] on the great debate of Kubernetes
 vs serverless, and which was to be the clear winner. Long story short it turned out that serverless is, by far a clear

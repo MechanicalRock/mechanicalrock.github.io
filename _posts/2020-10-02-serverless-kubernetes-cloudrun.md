@@ -23,7 +23,16 @@ winner in nearly all categories of:
 If memory serves, the only category which Kubernetes came out a winner for according to the talk was in the performance
 category. And whilst this is still true, the margins are closing, and at a significant rate. AWS recently announced
 provisioned lambda capacity - so your functions are always warm reducing the latent cold-start times, and it seems that
-GCP's Cloud Run service is getting faster each week.
+GCP's Cloud Run service is getting faster each week. Not to mention the pricing point. For Kubernetes to actually become
+an overall winner in pricing compared to a serverless function you need to be processing a hell of a lot of events.
+According to the [YouTube talk from Josh][josh-youtube-talk]:
+
+![Inflection Point]({{ site.base_url}}/img/cloudrun_significant_numbers.png)
+
+> It is millions upon millions of requests per month before Kubernetes becomes cheaper.
+> Around 20,000 requests per second.
+
+Per second. That's a lot of requests.
 
 For those still not in the serverless functions world or just beginning to make their first foray, it can be quite a
 mind bender to understand a number of things, like deployment, logging, tracing, general observability of how it's all
@@ -115,3 +124,4 @@ provider, and joined as a Silver Member. If you think we can help you, feel free
 [cloud-run-pricing]: https://cloud.google.com/run/#section-13
 [linkedin-mechrock]: https://www.linkedin.com/search/results/people/?facetCurrentCompany=[%2218148543%22]
 [cncf-link]: https://www.cncf.io/certification/kcsp/
+[josh-youtube-talk]: https://www.youtube.com/watch?v=YzsKp6Je8eY&feature=youtu.be&t=2301

@@ -9,7 +9,7 @@ image: img/cloudrun_header.png
 
 ![Cloudrun_Header]({{ site.base_url }}/img/cloudrun_header.png)
 
-A short while ago, Mr Brown-shoe himself [presented a talk at Yow! in Perth][yow-link] on the great debate of Kubernetes
+A short while ago, Mr Brown-shoe himself [presented a talk at DDD in Perth][ddd-link] on the great debate of Kubernetes
 vs serverless, and which was to be the clear winner. Long story short it turned out that serverless is, by far a clear
 winner in nearly all categories of:
 
@@ -107,7 +107,7 @@ provider, and joined as a Silver Member. If you think we can help you, feel free
 [mr-twitter]: https://twitter.com/mechanicalrock_
 [contact-us]: https://www.mechanicalrock.io/lets-get-started
 [jk-twitter]: https://twitter.com/jgunnink
-[yow-link]: https://dddperth.com/agenda/2019?sessionId=35e1174f-8d50-48db-a410-d53c3c8ddf73
+[DDD-link]: https://dddperth.com/agenda/2019?sessionId=35e1174f-8d50-48db-a410-d53c3c8ddf73
 [cloud-run-link]: https://cloud.google.com/run/
 [k-native-link]: https://knative.dev/docs/
 [knative-gcp-link]: https://cloud.google.com/knative/

@@ -52,9 +52,13 @@ which is built with [knative][k-native-link] which, according to the website:
 > even in a third-party data center.
 
 What does that mean for developers and operations? In short, you can run a container for the length of time it takes to
-handle an event. [Cloud Run uses Knative][knative-gcp-link] to offer a serverless container service. This means
-developers who create HTTP applications can now package their app up into a container and deploy it to Cloud Run and
-have their app run on-demand whenever a HTTP request comes in.
+handle an event. For example if you run a blog application in your container, an event might be a GET request to the
+container running the API, it handles the request and sends it back to the client. Then, the container is terminated
+since it's handled the event. It's worth also pointing out that an event cannot last for longer than 15 minutes.
+So if you need longer, you may want to consider alternative compute requirements.
+[Cloud Run uses Knative][knative-gcp-link] to offer a serverless container service. This means developers who create
+HTTP applications can now package their app up into a container and deploy it to Cloud Run and have their app run
+on-demand whenever a HTTP request comes in.
 
 Now, granted there are a number of use-cases where running Kubernetes does in-fact benefit the user over running a
 serverless, on-demand version of their app, especially those cases where high-performance and ultra-low latency are

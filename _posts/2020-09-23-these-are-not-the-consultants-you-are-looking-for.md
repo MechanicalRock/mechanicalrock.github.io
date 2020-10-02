@@ -29,7 +29,7 @@ So the difference is pretty clear - *one advises, one does*.
 
 In reality, however, the lines are often blurred between advising and doing. We, for instance, call ourselves *consultants* but often do a mix of engagements which are advising, or advising AND doing.
 
-It is also common for the *client* to come to a us and expect to be provided with a solution, but it is the consultants job to make this into a 50/50 proposition. A *consultant* needs to keep the *client* engaged and ensure they have skin in the game.
+It is also common for the *client* to come to us and expect to be provided with a solution, but it is the consultants job to make this into a 50/50 proposition. A *consultant* needs to keep the *client* engaged and ensure they have skin in the game.
 
 When companies only do the doing and call themselves *consultants*, that is just deception. Even worse, when companies call themselves consultants, but then hire *contractors* to deliver the work, that is worse than deception, it is downright duplicitous.
 

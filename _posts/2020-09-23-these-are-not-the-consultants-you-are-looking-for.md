@@ -41,12 +41,11 @@ In the UK, the right to substitute a worker is one of the key status tests that 
 
 ## Where To From Here
 
-I work hard to differentiate my businesses from the commonly held view of *contractors, so it is a trigger for me when people do not understand the difference, albeit subtle at times.
+I work hard to differentiate my businesses from the commonly held view of *contractors*, so it is a trigger for me when people do not understand the difference, albeit subtle at times.
 
-Companies who operate as glorified recruitment firms continue to be successful, so the market must know more than me! Or perhaps the market doesn't know more than me and the people that make these decisions don't care or are motivated in ways which I am not familiar with.
+Companies who operate as glorified recruitment firms continue to be successful, so the market **must** know more than me! Or perhaps the market doesn't know more than me and the people that make these decisions don't care or are motivated in ways which I am not familiar with.
 
 > “It is a mistake to assume that clients make decisions to begin projects and use consultants based on purely rational reasons. More often than not, the client’s primary question is: “Is this consultant someone I can trust?” - Peter Block, Flawless Consulting
-
 
 Either way, best practice dictates that if you ever see me in the street, please ensure you do not use the words *consultant* and *contractor* interchangeably.
 

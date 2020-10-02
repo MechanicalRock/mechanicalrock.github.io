@@ -11,7 +11,7 @@ image: img/consultants.jpeg
 
 <br/>
 
-# Warning: this post contains a number of opinionated hot takes formed over the last 20 years of running companies in various countries and contracting or consulting in these countries. If this is not the sort of post you are looking for, then look away now..
+**Warning: this post contains a number of opinionated hot takes formed over the last 20 years of running companies in various countries and contracting or consulting in these countries. If this is not the sort of post you are looking for, then look away now..**
 
 <br/>
 
@@ -21,7 +21,7 @@ Nothing [gets my goat up](https://www.urbandictionary.com/define.php?term=Get%20
 
 The *consultant bible* (here at Mechanical Rock at least), Flawless Consulting by Peter Block, defines a *consultant* as a person in a position to have some influence over an individual, a group, or an organisation but has no direct power to make changes or implement programs. The recipient of this advice is called the *client*.
 
-A *contractor*, as defined by the Cambridge Dictionary, is a person or company that arranges to supply materials or workers for building or for moving goods and services.
+A *contractor*, as defined by the Cambridge Dictionary, is a person or company that arranges to supply materials or workers for building or for moving goods and/or services.
 
 So the difference is pretty clear - *one advises, one does*.
 

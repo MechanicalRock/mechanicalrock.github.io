@@ -8,7 +8,7 @@ author: Matt Tyler
 
 The secret to delivering value to your customers faster is ensuring that your path to getting that value out is as lean as possible. The key to unencumbering your pipeline is limiting the amount of time that the next step in your pipeline spends waiting for all the preceding steps to finish. For most software, this means reducing the amount of manual processes involved. This generally manifests itself via waiting for an external approval; examples of which could appear from ceremonial change-management procedures (CAB anyone?), handovers to external testing teams etc.
 
-Rome wasn't a built in a day, and it can be difficult to institute the kind of change needed to deliver better software, faster, in an organisation that has has been doing certain things a certain way for years, and has created internal power structures to sustain "how things are done around here". It would certainly be easier to remove the waste on day one it may exceed the amount of political capital that a team is willing to spend. An alternative method is to understand the current way of working and try to find a bridge to a brighter future that does not involve significant reconfiguration of critical infrastructure (in this case, your pipelines).
+Rome wasn't a built in a day, and it can be difficult to institute the kind of change needed to deliver better software, faster, in an organisation that has been doing certain things a certain way for years, and has created internal power structures to sustain "how things are done around here". It would certainly be easier to remove the waste on day one it though that may exceed the amount of political capital that a team is willing to spend. An alternative method is to understand the current way of working and try to find a bridge to a brighter future that does not involve significant reconfiguration of critical infrastructure (in this case, your pipelines).
 
 The key to this is ensuring that whatever pipeline you use to deploy to production is as close to the 'final state' as possible. This means you do not encumber the pipeline itself with the opinions of any external processes. Ideally no manual approvals occur between a commit hitting mainline and it reaching production. If you are required to have manual reviews and approvals these occur at the time of a pull-request.
 
@@ -16,7 +16,7 @@ The removal of discrete environments from the pipeline (e.g. the typical test ->
 
 The argument I often hear is that pushing a "later" change may break a feature that other developers have been working on for awhile, and therefore they should wait for those developers to finish. To them I say, "too bad". Pushing smaller changes frequently increases velocity, and reduces the chance of a conflict later on. Merge conflicts are the consequences we accept when we choose to release a batch of changes together; one group of developers need not pay for the sins of another.
 
-At the core of it - your deployment pipeline should be just for that - deployment. Do not allow your internal processes to creep into the pipeline. Instead think of a model where your environments are 'subscribed' to branches in source control. The head of the branch determines the desired state of the environment. A key to this is selecting an appropriate branch model. I've already warned against using GitFlow, so let's have a look at some alternatives.
+At the core of it - your deployment pipeline should be just for that - deployment. Do not allow your internal processes to creep into the pipeline. Instead think of a model where your environments are 'subscribed' to branches in source control. The head of the branch determines the desired state of the environment. A key to this is selecting an appropriate branching model. I've already warned against using GitFlow, so let's have a look at some alternatives.
 
 ## GitHub Flow
 
@@ -65,5 +65,9 @@ The main differences between GitLab Flow and this are:
 - The production environment tracks the head of the main branch
 - Development teams create short-lived branches for feature development and may subscribe these branches to an ancilliary pipeline
 - Development teams may merge into other branches to replicate environment staging, but the final destination is the master branch (as it is in Trunk-Based Development).
+
+# Other Alternatives?
+
+Another model that I've seen reasonably frequent is a pipeline that splits the concerns of building an artifact from its release into an environment. I've heard this referred to as a "split-release" pipeline. One can generally observe this most frequently in teams that are packaging their applications as containers. In this case there isn't an obvious 'subscription' to the head of a branch due to the disconnect between source control and the running environment. There may however be some implicit connection that is configured via triggering the release to an environment when a new artifact is created via the build pipeline. In any case it does not matter to me how continuous deployment happens, just that it does. Not automating the test and release process (instead opting for a manual intervention), is a sure way to increase the risk of the deployment via batching changes together.
 
 # Conclusion

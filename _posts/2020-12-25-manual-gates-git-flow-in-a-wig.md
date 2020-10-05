@@ -4,6 +4,7 @@ title: Manual Gates, or "GitFlow in a Wig"
 date: 2020-08-19
 tags: devops ci cd gitflow trunk
 author: Matt Tyler
+image: img/pipeline.png
 ---
 
 Over last few years I've spent a lot of time working in the CI/CD salt mines. The simplest expression of a CI/CD pipeline is depicted below; we begin with pulling the source code, go through to a build and test stage, and deploy to an environment.

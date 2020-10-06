@@ -9,6 +9,10 @@ image: img/devops-dream/dds_mobile.jpg
 
 <centre><a href="https://devops.games"><img src="/img/devops-dream/dds_mobile.jpg" alt="A person in their workplace playing DevOps Dream on a mobile phone." /></a></centre>
 
+This post is part of a series covering our development of DevOps Dream:
+1. Having a DevOps Dream
+1. [Living the DevOps Dream][3]
+
 <br/>
 In case you hadn't heard, we did a thing! We released [DevOps Dream](https://dream.devops.games/) on 19th August 2020.  I'd like to share our motivations and give some insights behind the scenes.  Along the way, you might just pick up some tips on how you can Live the Dream and beat the game! ;o)
 
@@ -63,7 +67,7 @@ The result was an organised mess of cards and string, covering the positive and 
 By the end of the day, we were able to combine our game engine with a storyboard of how the game could flow.
 ![prototype game flow](/img/devops-dream/td-mockup.png)
 
-How we turned The Dream into a reality is a story for another day....
+How we turned The Dream into a reality is a [story for another day][3]....
 
 ## So how do I Live the Dream?
 
@@ -88,3 +92,4 @@ If you'd like to make your own DevOps Dream become a reality - [let's chat](http
 
 [1]: https://services.google.com/fh/files/misc/state-of-devops-2019.pdf
 [2]: https://services.google.com/fh/files/misc/state-of-devops-2017.pdf
+[3]: /2020/10/xx/living-the-devops-dream.html

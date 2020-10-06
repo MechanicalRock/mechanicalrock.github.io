@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Manual Gates, or "GitFlow in a Wig"
-date: 2020-08-19
+date: 2020-10-06
 tags: devops ci cd gitflow trunk
 author: Matt Tyler
 image: img/pipeline.png

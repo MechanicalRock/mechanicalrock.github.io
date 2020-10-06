@@ -4,7 +4,7 @@ title:  "ReactConf 2020"
 date:   2020-03-02
 tags: React Sydney
 author: Natalie Laing
-image: /img/blog/reactConf/react.png
+image: img/blog/reactConf/react.png
 ---
 
 ## Introduction 

@@ -4,7 +4,7 @@ title: Rolling Out Amazon Guard​Duty to AWS Organizations
 date: 2020-05-15
 tags: aws guardduty organizations security landing-zone detection guard-rails
 author: Simon Bracegirdle
-image: /img/gd_logo.png
+image: img/gd_logo.png
 ---
 
 <center><img src="/img/gd_logo.png" /></center>

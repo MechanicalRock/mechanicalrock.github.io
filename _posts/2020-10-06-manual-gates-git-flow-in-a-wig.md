@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Manual Gates, or "GitFlow in a Wig"
+title: Manual Gates, or 'GitFlow in a Wig'
 date: 2020-10-06
 tags: devops ci cd gitflow trunk
 author: Matt Tyler
@@ -43,7 +43,7 @@ Which brings me to the point made in the headline - Manual Gates are functionall
 
 # Are Manual Gates That Bad?
 
-Yes. Sort of. To be honest, manual gates are only bad because 99% of the time they are used to facilitate manual testing. What about the other 1%? I believe the only time a gate is useful is to control when software hits production. You may only want deploy during off-peak times or on certain days for stability reasons e.g. if the software has all the feature it needs for an important event that will happen on Wednesday, it perhaps stands to reason to wait till Thursday before rolling out a non-essential feature. 
+Yes. Sort of. To be honest, manual gates are only bad because 99% of the time they are used to facilitate manual testing. What about the other 1%? I believe the only time a gate is useful is to control when software hits production. You may only want deploy during off-peak times or on certain days for stability reasons e.g. if the software has all the feature it needs for an important event that will happen on Wednesday, it perhaps stands to reason to wait till Thursday before rolling out a non-essential feature.
 
 Be aware though that the introduction of manual gates will create a disconnect between merge and deployment. This results in the "batching" of many changes that will be released to production at once. Although any pre-production testing you may have done will reduce the likelihood of an incident, the true test of anything is running it in production with real traffic. As Mike Tyson once said, "everybody has a plan until they get punched in the face". The risk is obviously still there for smaller changes, but it can be more involved to discover what particular change was the root cause of the failed deployment. This will increase your mean-time-to-repair - a small value of which is a strong signal of a high performing software team (Forsgren, N. et al. 2018).
 
@@ -79,22 +79,22 @@ CloudWatch Synthetics is a cool, relatively new service that is capable of doing
 
 It might also seem that I'm agitating for fewer environments in the CI/CD pipeline but this isn't the case. I'm agitating for environments with a purpose behind them, of which the sole focus is ensuring the fastest and safest deployment possible. Let's look at the below evolution of a pipeline.
 
-1. A simple pipeline is constructed that deploys straight to production
+* A simple pipeline is constructed that deploys straight to production
 
 <center><img src="/img/manual-gates/evolve-1.png" /></center>
 <br/>
 
-2. A pre-production environment is created with a gate, in order to manually verify an environment before it reaches production.
+* A pre-production environment is created with a gate, in order to manually verify an environment before it reaches production.
 
 <center><img src="/img/manual-gates/evolve-2.png" /></center>
 <br/>
 
-3. The tests that are run during gating are automated, there-by replacing the automated gate with automatic verification.
+* The tests that are run during gating are automated, there-by replacing the automated gate with automatic verification.
 
 <center><img src="/img/manual-gates/evolve-3.png" /></center>
 <br/>
 
-4. The automated test suite begins to get slower as it both increases in size and complexity. The developers notice that this is due to bootstrapping external resources. The developers create an additional pre-production environment, and split the tests. Tests are run with mocked dependencies against the first pre-production environment, where-as real dependencies are used against the second pre-production environment.
+* The automated test suite begins to get slower as it both increases in size and complexity. The developers notice that this is due to bootstrapping external resources. The developers create an additional pre-production environment, and split the tests. Tests are run with mocked dependencies against the first pre-production environment, where-as real dependencies are used against the second pre-production environment.
 
 <center><img src="/img/manual-gates/evolve-4.png" /></center>
 <br/>

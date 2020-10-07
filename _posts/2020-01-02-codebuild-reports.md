@@ -4,7 +4,7 @@ title:  "AWS CodeBuild Reports"
 date: 2020-01-02
 tags: aws codebuild reports testing devops
 author: JK Gunnink
-image: /img/blog/codebuild-reports/.png
+image: img/blog/codebuild-reports/report-trends.png
 ---
 
 # Introducing CodeBuild Reports

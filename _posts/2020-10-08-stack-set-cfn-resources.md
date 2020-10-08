@@ -94,7 +94,7 @@ MyCrossRegionBucketStackSet:
 
 ## StackSet roles and relationships
 
-Note that we have used the `SELF_MANAGED` value for `PermissionModel`. This means that we need to ensure an execution role and administration role exist with a trust relationship in place. Unless you specify otherwise via the parameters, it will look for roles with the name `AWSCloudFormationStackSetAdministrationRole` for administartion and `AWSCloudFormationStackSetExecutionRole` for execution [by default](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html).
+Note that we have used the `SELF_MANAGED` value for `PermissionModel`. This means that we need to ensure an execution role and administration role exist with a trust relationship in place. Unless you specify otherwise via the parameters, it will look for roles with the name `AWSCloudFormationStackSetAdministrationRole` for administration and `AWSCloudFormationStackSetExecutionRole` for execution [by default](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html).
 
 <center><img src="/img/stacksets_perms_master_target.png" /></center>
 <br/>

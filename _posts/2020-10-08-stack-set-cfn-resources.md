@@ -103,7 +103,9 @@ If these roles do not exist in your account, you can use the CloudFormation reso
 
 ## Creating the Administration role
 
-The administration role is the top-level role assumed by CloudFormation to orchestrate the StackSet:
+The administration role is the top-level role assumed by CloudFormation to orchestrate the StackSet.
+
+We can use the CloudFormation snippet below within a template to create it. It will allow the CloudFormation service itself to assume the role, and will allow all actions within CloudFormation.
 
 ```yaml
 AdministrationRole:

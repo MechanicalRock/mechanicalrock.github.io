@@ -45,17 +45,16 @@ What is a wider remit in software delivery terms? Lets use the 5 items identifie
 
 4. To understand if the **problem should be solved in code** you need to go back to the problem domain and question where the value lies. This requires challenging conventional thinking and in essence **debating** skills. Many times the person who has come up with the problem has already made up their mind on what the solution should look like - "It has to be a web app" or "It must be a native app", when it could be delivered via Google Forms, with no code.
 
-5. **Coding skills** are still very important. There are many ways to write code; one way is going to be the right way to someone and you can guarantee that the same way is also the wrong way to someone. But coding is still only one part of it. We need to get feedback on everything we develop either directly with the Problem Owner (preferred) or via an intermediary. This again requires **communication** skills to exchange and solidify understanding.
+5. **Coding skills** are still very important. There are many ways to write code; one way is going to be the right way to someone and you can guarantee that the same way is also the wrong way to another person. But coding is still only one part of it. We need to get feedback on everything we develop, either directly with the Problem Owner (preferred) or via an intermediary. This again requires **communication** skills to exchange and solidify understanding.
 
 ## It Doesn't Stop There
 
 Building software is not just about solving problems. It is also about helping others solve problems too. Part of any "wider remit" would be a coaching, mentoring and leadership aspect, whilst remaining technical. 
 
-- how do we plan and bring it all together
-- how do we ensure everyone on the team is getting the support they need
-- how do we deliver software aligned to our companies goal and vision
+- how do we ensure everyone on the team is getting the support they need?
+- how do we deliver software aligned to our companies goal and vision?
 
-Planning is an underrated activity. In the words of Benjamin Franklin.. 
+Planning is also an underrated activity and undervalued skill by many developers. In the words of Benjamin Franklin.. 
 
 > "Failing to plan is planning to fail"
 

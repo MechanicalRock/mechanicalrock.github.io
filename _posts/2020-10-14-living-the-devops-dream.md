@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Living The DevOps Dream
-date: 2020-10-13
+date: 2020-10-14
 tags: devops cloudnative product-development product
 author: Tim Myerscough
 ---

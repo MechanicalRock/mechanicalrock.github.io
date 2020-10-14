@@ -14,7 +14,7 @@ This post is part of a series covering our development of DevOps Dream:
 1. [Living the DevOps Dream][3]
 
 <br/>
-In case you hadn't heard, we did a thing! We released [DevOps Dream](https://dream.devops.games/) on 19th August 2020.  I'd like to share our motivations and give some insights behind the scenes.  Along the way, you might just pick up some tips on how you can Live the Dream and beat the game! ;o)
+In case you hadn't heard, we did a thing! We released [DevOps Dream](https://devops.games/) on 19th August 2020.  I'd like to share our motivations and give some insights behind the scenes.  Along the way, you might just pick up some tips on how you can Live the Dream and beat the game! ;o)
 
 We've been stoked by the response on social media so far. We initially reached out to our network, but have been so happy how it's expanded beyond just the local Perth community:
 

@@ -71,7 +71,7 @@ To achieve this they build credibility by:
 2. Prioritising investments - focusing on those initiatives that deliver the most value in the shortest time.
 3. Delivering on commitments - foster trust by delivering on your promises and don’t be afraid to trumpet the benefits of your successes to a wide audience.
 
-# 5. Finance, friend of foe? Embrace them anyway.
+# 5. Finance, friend or foe? Embrace them anyway.
 
 > Maya Leibman, EVP and CIO, and Ross Clanton, Chief Architect, American Airlines - “DevOps: Approaching Cruising Altitude”
 

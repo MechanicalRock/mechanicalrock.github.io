@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Automating cross-account infrastructure with the new CloudFormation StackSet resources
-date: 2020-10-08
+date: 2020-10-26
 tags: devops ci cd cloudformation infrastructure-as-code aws cross-account
 author: Simon Bracegirdle
 image: img/cloudformation.png

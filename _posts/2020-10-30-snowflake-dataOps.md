@@ -6,50 +6,58 @@ tags: devops, dataops, aws, snowflake, ci, cd, flyway
 author: Zainab Maleki
 image: img/blog/dataops/dataOps.jpg
 ---
-DevOps practices have been known, utilised and perfected over the past a few years to allow speed and agility in the development life cycles. While all the advancements has happened in development lands, data domains had yet been to catchup. DataOps is a concept that allows applying devOps practices to data life cycles to not only achieve speed and agility but also to deliver trusted and high quality data to our data residents.
-Similar to DevOps, DataOps minimises manual interventions by codifying data related changes and deployment through automated CI/CD tools.
 
-In this blog post I will show you how to create your Snowflake dataOps pipeline using AWS developer tools and Flyway.
+<center><img src="/img/blog/dataops/dataOps.jpg" /></center><br/>
 
- 
-# snowflake-dataops
+DevOps practices have been known, utilised and perfected over the past few years to allow speed and agility in the development life cycles. While all the advancements have happened in development lands, data domains have not kept pace. DataOps is a concept that allows applying DevOps practices to data life cycles to not only achieve speed and agility but also to deliver trusted and high-quality data.
+Like DevOps, DataOps minimises manual interventions by codifying data related changes and deployment through automated CI/CD tools.
+<br/>
+In this blog post, I will show you how to create your Snowflake DataOps pipeline using AWS developer tools and Flyway.
 
+<div style="background-color: #fff3cd ; border-color: #ffeeba; color: #856404; border-radius: .25rem; padding: .75rem 1.25rem;"><strong>Warning!</strong><br/>This is very hands-on blog post. Get ready to get your hands dirty &#128525;</div> <br/>
 
-This repo includes a dataOps approach to deploy changes into Snowflake using AWS Developer tools.
-
-Services used: 
-1. CodeCommit
-2. CodeBuild
-3. CodePipeline
-4. Cloudformation
-5. Flyway
-
-## Getting started
+## Let's get Started:
 
 To get started you will need to follow below steps:
-1. Download this repository as a zip folder
-2. Unzip and cd into the folder
-3. Create a RSA public and private key. Type below two commands in your command line
+
+# Step 1:
+Download below repository as a zip folder. Once downloaded unzip it and cd into the folder<br/>
+<a href="https://github.com/MechanicalRock/snowflake-dataops">Snowflake Dataops Repository</a>
+
+This repo uses below services to implement an automated deployment cycle to Snowflake. All the pipeline and related infrastructure are created through code using AWS cloudformation.
+
+* CodeCommit
+* CodeBuild
+* CodePipeline
+* Cloudformation
+* Flyway
+
+# Step 2:
+Create a RSA public and private key. Type below two commands in your command line
 ```
 openssl genrsa 2048 | openssl pkcs8 -topk8 -inform PEM -out keys/rsa_key.p8 -nocrypt
 openssl rsa -in keys/rsa_key.p8 -pubout -out keys/rsa_key.pub
 ```
 
-4. Create a snowflake service user and assign RSA public key to it
+# Step 3:
+Create a snowflake service user and assign RSA public key to it
 Note: Remove/exclude the header and footer of the private key
 ```
 create user pipeline_sys_user;
 alter user pipeline_sys_user set rsa_public_key_2='MIIBIjANBgkqh...';
 ```
+# Step 4:
+Store the password in aws secrets manager as plain text and name it "snowflake/pipeline_sys_user/secret"
 
-3. Store the password in aws secrets manager as plain text and name it "snowflake/pipeline_sys_user/secret"
 
-
-4. Open aws_seed.yaml file and update line number 404 with the arn to your secret manager password
+# Step 5:
+Open aws_seed.yaml file and update line number 404 with the arn to your secret manager password
 ```
   - <The arn to the secrets manager that holds Snowflake Password>
 ```
-5. Create other Snowflake resources including: SnowflakeMigrationDatabaseName, SnowflakeWarehouse and SnowflakeRole
+
+# Step 6:
+Create other Snowflake resources including: SnowflakeMigrationDatabaseName, SnowflakeWarehouse and SnowflakeRole
 ```
 CREATE DATABASE pipeline_db_migration_plan;
 
@@ -64,7 +72,8 @@ GRANT ALL ON SCHEMA public TO ROLE pipeline_role;
 grant role SYSADMIN to role pipeline_role;
 
 ```
-6. Update both parameter files pipeline/aws_seed-cli-parameters.json and aws_seed.json to match resources you created in snowflake
+# Step 7:
+Update both parameter files pipeline/aws_seed-cli-parameters.json and aws_seed.json to match resources you created in snowflake
 
 ```
  "SnowflakeUsername": "pipeline_sys_user",
@@ -92,14 +101,13 @@ grant role SYSADMIN to role pipeline_role;
   }
 ```
 
-7. Deploy
+# Step 8:
+Deploy
 
 
 
-<br>
 
-This repo uses Inception Pipeline for creating CI/CD pattern using AWS developer tools. Please refer to below links for more details:
-
+# References:
 1. [Seeds of Inception - Seeding your Account with an Inception Pipeline](https://mechanicalrock.github.io/2018/03/01/inception-pipelines-pt1.html)
 2. [Seeds of Inception - Sprouting some website goodness](https://mechanicalrock.github.io/2018/04/01/inception-pipelines-pt2.html)
 3. [Seeds of Inception - Sharing the website goodness](https://mechanicalrock.github.io/2018/05/18/inception-pipelines-pt3.html)

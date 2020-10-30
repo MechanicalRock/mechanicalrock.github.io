@@ -65,7 +65,7 @@ Open aws_seed.yaml file and update line number 404 with the arn to your secret m
 ```
 
 # Step 3: Creating Snowflake resources
-Now it is time to create Snowflake database, roles, grants and other resources that pipeline require tin order to implement changes in snowflake.
+Now it is time to create Snowflake database, roles, grants and other resources that pipeline require in order to implement changes in snowflake.
 <i>Run below commands on Snowflake worksheet or execute them using snowsql</i>
 ```
 CREATE DATABASE pipeline_db_migration_plan;

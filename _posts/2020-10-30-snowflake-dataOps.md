@@ -9,18 +9,20 @@ image: img/blog/dataops/dataOps.jpg
 
 <center><img src="/img/blog/dataops/dataOps.jpg" /></center><br/>
 
-DevOps practices have been known, utilised and perfected over the past few years to allow speed and agility in the development life cycles. While all the advancements have happened in development lands, data domains have not kept pace. DataOps is a concept that allows applying DevOps practices to data life cycles to not only achieve speed and agility but also to deliver trusted and high-quality data.
+# What is DataOps?
+
+DevOps practices have been known, utilised and perfected over the past few years to allow speed and agility in the development life cycles. While all the advancements have happened in development lands, data domains have not kept pace. DataOps is a concept that allows applying DevOps practices to data life cycles to not only achieve speed and agility but also to deliver trusted and high-quality data.<br/>
 Like DevOps, DataOps minimises manual interventions by codifying data related changes and deployment through automated CI/CD tools.
 <br/>
 In this blog post, I will show you how to create your Snowflake DataOps pipeline using AWS developer tools and Flyway.
 
-<div style="background-color: #fff3cd ; border-color: #ffeeba; color: #856404; border-radius: .25rem; padding: .75rem 1.25rem;"><strong>Warning!</strong><br/>This is very hands-on blog post. Get ready to get your hands dirty &#128525;</div> <br/>
+<div style="background-color: #fff3cd ; border-color: #ffeeba; color: #856404; border-radius: .25rem; padding: .75rem 1.25rem;"><strong>Warning!</strong><br/>This is a very hands-on blog post. Get ready to get your hands dirty &#128525;</div> <br/>
 
 ## Let's get Started:
 
 To get started you will need to follow below steps:
 
-# Step 1:
+# Step 1: Downloading the template
 Download below repository as a zip folder. Once downloaded unzip it and cd into the folder<br/>
 <a href="https://github.com/MechanicalRock/snowflake-dataops">Snowflake Dataops Repository</a>
 
@@ -34,12 +36,12 @@ This repo uses below services to implement an automated deployment cycle to Snow
 
 # Step 2: Setup Snowflake Credentials
 
-To allow your pipeline to get access to Snowflake you will need to first create a RSA public and private key. Type below two commands in your command line
+To allow your pipeline to get access to Snowflake, you will need to first create a RSA public and private key. You can create the keys using openssl by running below commands in your command line
 ```
 openssl genrsa 2048 | openssl pkcs8 -topk8 -inform PEM -out keys/rsa_key.p8 -nocrypt
 openssl rsa -in keys/rsa_key.p8 -pubout -out keys/rsa_key.pub
 ```
-Once you created the keys, you then need to create a Snowflake user and assign the RSA piblic key to it.
+Once keys are created, you then need to create a Snowflake user and assign the RSA public key to it. <i>Run below commands on Snowflake worksheet or execute them using snowsql</i>
 
 Note: Remove/exclude the header and footer of the public key
 ```
@@ -47,20 +49,24 @@ create user pipeline_sys_user;
 alter user pipeline_sys_user set rsa_public_key_2='MIIBIjANBgkqh...';
 ```
 
-Now in order for your pipeline to use the private key to access snowflake, you need to store it in AWS secrets manager. 
+Next, in order for your pipeline to use the private key, you must store it in AWS secrets manager. 
 
-Note: Remove/exclude the header and footer of the private key
+Store the private key in aws secrets manager as plain text and remove/exclude the header and footer of the private key
+<center><img src="/img/blog/dataops/secretsmanager-1.png" /></center><br/>
+Make sure to name it "snowflake/pipeline_sys_user"
+<center><img src="/img/blog/dataops/secretsmanager-2.png" /></center><br/>
 
-Store the private key in aws secrets manager as plain text and name it "snowflake/pipeline_sys_user/secret"
-
-Last step is allowing the code build in your pipeline to access the key in secrets manager
+Last step is allowing code build in your pipeline to access the key in secrets manager.
+To do that find out the arn of your secrets manager:
+<center><img src="/img/blog/dataops/secretsmanager-3.png" /></center><br/>
 Open aws_seed.yaml file and update line number 404 with the arn to your secret manager password
 ```
   - <The arn to the secrets manager that holds Snowflake Password>
 ```
 
-# Step 2:
-Create other Snowflake resources and grants: 
+# Step 3: Creating Snowflake resources
+Now it is time to create Snowflake database, roles, grants and other resources that pipeline require tin order to implement changes in snowflake.
+<i>Run below commands on Snowflake worksheet or execute them using snowsql</i>
 ```
 CREATE DATABASE pipeline_db_migration_plan;
 
@@ -77,7 +83,7 @@ grant role SYSADMIN to role pipeline_role;
 ```
 
 Optional:
-In my sql scripts, I am creating tables in my_db database and my_schema schema. So if you want my sql scripts run seccessfully on your snowflake account, you will need to run below statements too 
+In my sql scripts, I am creating tables in my_db database and my_schema schema. So if you want my template scripts run seccessfully on your snowflake account, you will need to run below statements too 
 ```
 create database my_db;
 grant all on database my_db to role pipeline_role;
@@ -86,10 +92,12 @@ create schema my_schema;
 grant all on schema my_schema to role pipeline_role;
 ```
 
-# Step 3: Update pipeline parameters
+# Step 4: Update pipeline parameters 
+Last step before creating your pipeline is to update parameters with the naming conventions you used to create your snowflake resources. If you have followed my naming convention you probably will not need to change anything except SnowflakeAccount.
 Update both parameter files pipeline/aws_seed-cli-parameters.json and aws_seed.json to match resources you created in snowflake
 
 ```
+ "SnowflakeAccount": "<ACCOUNTNAME>.<REGION>",
  "SnowflakeUsername": "pipeline_sys_user",
  "SnowflakeMigrationDatabaseName": "pipeline_db_migration_plan",
  "SnowflakeWarehouse": "pipeline_warehouse",
@@ -97,6 +105,10 @@ Update both parameter files pipeline/aws_seed-cli-parameters.json and aws_seed.j
 ```
 
 ```
+  {
+    "ParameterKey": "SnowflakeAccount",
+    "ParameterValue": "<ACCOUNTNAME>.<REGION>"
+  },
   {
     "ParameterKey": "SnowflakeUsername",
     "ParameterValue": "pipeline_sys_user"
@@ -121,11 +133,27 @@ To deploy the infrastructure for your pipeline, you will need to first setup you
 ```
 sh pipeline/init.sh
 ```
+Make sure all the steps goes through successfully. The above init script executes two major steps:
+1. Creating the cloudformation stack for deploying all the AWS infrastructure including CodePipeline, Codebuild and Codecommit
+2. Pushing your codebase into the newly created Codecommit repository
 
-Make sure all the steps goes through successfully
+If the second step fails because of your git config settings, you will need to make sure to run them again
+<center><img src="/img/blog/dataops/init.png" /></center><br/>
+Now you can check codepipeline and see a green end to end deployment
+<left><img src="/img/blog/dataops/codepipeline.png" /></left><br/>
+
+This repo uses Flyway to deploy Snowflake changes. To deploy new changes, all you need is placing your new sql scripts in the sql folder and pushing it to codecommit.
+
+Make sure to follow Flyway the naming conventions. All version sql files should start with V__ and repeatable scripts should start with R___
+<img src="/img/blog/dataops/flyway.png" /><br/>
 
 
 # References:
+
+Flyway: 
+https://flywaydb.org/documentation/database/snowflake
+
+Inception Pipeline:
 1. [Seeds of Inception - Seeding your Account with an Inception Pipeline](https://mechanicalrock.github.io/2018/03/01/inception-pipelines-pt1.html)
 2. [Seeds of Inception - Sprouting some website goodness](https://mechanicalrock.github.io/2018/04/01/inception-pipelines-pt2.html)
 3. [Seeds of Inception - Sharing the website goodness](https://mechanicalrock.github.io/2018/05/18/inception-pipelines-pt3.html)
@@ -133,3 +161,5 @@ Make sure all the steps goes through successfully
 5. [Seeds of Inception - Access all accounts](https://mechanicalrock.github.io/2018/07/31/inception-pipelines-pt5.html)
 6. [Seeds of Inception - Initiating the Seeding](https://mechanicalrock.github.io//2018/08/27/inception-pipelines-pt6)
 7. [Seeds of Inception - Global CloudTrail](https://mechanicalrock.github.io/2019/07/09/inception-pipelines-pt7.html)
+
+Please feel free to [get in touch with us](https://mechanicalrock.io/lets-get-started) if you need any help with implementing DataOps patterns and Snowflake Automatic Resource Vending in your organisation.

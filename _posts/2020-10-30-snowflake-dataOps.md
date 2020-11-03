@@ -1,7 +1,7 @@
 ---
 layout: post
 title: DataOps with AWS and Snowflake
-date: 2020-10-27
+date: 2020-11-3
 tags: devops, dataops, aws, snowflake, ci, cd, flyway
 author: Zainab Maleki
 image: img/blog/dataops/dataOps.jpg

@@ -37,14 +37,14 @@ This repo uses below services to implement an automated deployment cycle to Snow
 # Step 2: Setup Snowflake Credentials
 
 To allow your pipeline to get access to Snowflake, you will need to first create an RSA public and private key. You can create the keys using openssl by running below commands in your command line
-```
+```sh
 openssl genrsa 2048 | openssl pkcs8 -topk8 -inform PEM -out keys/rsa_key.p8 -nocrypt
 openssl rsa -in keys/rsa_key.p8 -pubout -out keys/rsa_key.pub
 ```
 Once keys are created, you then need to create a Snowflake user and assign the RSA public key to it. <i>Run below commands on Snowflake worksheet or execute them using snowsql</i>
 
 Note: Remove/exclude the header and footer of the public key
-```
+```sql
 create user pipeline_sys_user;
 alter user pipeline_sys_user set rsa_public_key_2='MIIBIjANBgkqh...';
 ```
@@ -64,7 +64,8 @@ Hold onto your secrets manager arn. You will need to place it in the parameter f
 # Step 3: Creating Snowflake resources
 Now it is time to create Snowflake database, roles, grants and other resources that pipeline require in order to implement changes in snowflake.
 <i>Run below commands on Snowflake worksheet or execute them using snowsql</i>
-```
+
+```sql
 CREATE DATABASE pipeline_db_migration_plan;
 
 CREATE ROLE pipeline_role;
@@ -81,7 +82,7 @@ grant role SYSADMIN to role pipeline_role;
 
 Optional:
 In my sql scripts, I am creating tables in my_db database and my_schema schema. So if you want my template scripts run successfully on your snowflake account, you will need to run below statements too 
-```
+```sql
 create database my_db;
 grant all on database my_db to role pipeline_role;
 
@@ -93,7 +94,7 @@ grant all on schema my_schema to role pipeline_role;
 Last step before creating your pipeline is to update parameters with the naming conventions you used to create your snowflake resources. If you have followed my naming convention you probably will not need to change anything except SnowflakeAccount and SnowflakeSecretsManagerARN.
 Update both parameter files pipeline/aws_seed-cli-parameters.json and aws_seed.json to match resources you created in snowflake
 
-```
+```json
  "SnowflakeAccount": "<ACCOUNTNAME>.<REGION>",
  "SnowflakeUsername": "pipeline_sys_user",
  "SnowflakeMigrationDatabaseName": "pipeline_db_migration_plan",
@@ -102,7 +103,7 @@ Update both parameter files pipeline/aws_seed-cli-parameters.json and aws_seed.j
  "SnowflakeSecretsManagerARN": "<The arn to the secrets manager that holds Snowflake private key>"
 ```
 
-```
+```json
   {
     "ParameterKey": "SnowflakeAccount",
     "ParameterValue": "<ACCOUNTNAME>.<REGION>"
@@ -133,7 +134,7 @@ Update both parameter files pipeline/aws_seed-cli-parameters.json and aws_seed.j
 To deploy the infrastructure for your pipeline, you will need to first setup your aws credentials in your terminal. Once it is done, execute init.sh file.<br/>
 <i>Note: the aws user/role you are running the init script as will need admin-like privileges, e.g. be able to create iam roles</i>
 
-```
+```sh
 sh pipeline/init.sh
 ```
 Make sure all the steps goes through successfully. The above init script executes two major steps:
@@ -147,8 +148,8 @@ Now you can check codepipeline and see a green end to end deployment
 
 This repo uses Flyway to deploy Snowflake changes. To deploy new changes, all you need is placing your new sql scripts in the sql folder and pushing it to codecommit.
 
-Make sure to follow Flyway the naming conventions. All version sql files should start with V__ and repeatable scripts should start with R___
+Make sure to follow Flyway naming conventions. All versioned sql files should start with V__ and repeatable scripts should start with R___
 <img src="/img/blog/dataops/flyway.png" /><br/><br/>
 
 
-Please feel free to [get in touch with us](https://mechanicalrock.io/lets-get-started) if you need any help with implementing DataOps patterns and Snowflake Automatic Resource Vending in your organisation.
+If you need any help implementing DataOps patterns and automated data pipelines in your organization, feel free to [get in touch with us](https://mechanicalrock.io/lets-get-started).

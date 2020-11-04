@@ -150,15 +150,16 @@ Managing by numbers went out of favour some time in the 1980’s . At least is s
 
 Edwards Deming summed it up best in his 1986 book “Out of the Crisis” (p76):
 
-<div style="textAlign: center">
+<div style="text-align: center; margin: 0 10%">
 
 "If you have a stable system, then there is no use to specify a goal.You will get whatever the system will deliver. A goal beyond the capability of a system will not be reached.
-
+<br/>
 "If you have not a stable system, then again there is no point in setting a goal. There is no way to know what the system will produce.
-
+<br/>
 "To manage, one must lead. To lead, one must understand the work that he and his people are responsible for. Who is the customer (the next stage) and how can we better serve that customer? An incoming manager, to lead, and to manage at the source of improvement, must learn. He must learn from his people what they are doing and must learn a lot of new subject matter.
-
+<br/>
 "As we have already remarked, management by numerical goal, is an attempt to manage without knowledge of what to do, and in fact is usually management by fear."
+<br/>
 
 </div>
 

@@ -99,7 +99,7 @@ And if you automate the process you bring a level of repeatability and stability
 
 It’s also important to realise that you can decouple the software deployment process from the release of functionality (to users). Having code in production does not mean that it is available for users, just that it’s not sitting around cluttering up pre-production environments and multiplying the complexity of making code changes. Using patterns like '[feature flags](https://martinfowler.com/articles/feature-toggles.html)', changes can be deployed incrementally and then switched on at the appropriate time.
 
-Change Failure Rate
+## Change Failure Rate
 
 ![change-failure-rate]({{ site.base_url }}/img/software-eating/change-failure-rate.png)
 

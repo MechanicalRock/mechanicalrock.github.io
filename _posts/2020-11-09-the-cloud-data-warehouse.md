@@ -36,7 +36,7 @@ As many organisations evolve to consist of more multi-disciplinary teams, so too
 
 ### Resilient Architecture
 
-One of the most understated advantages of Cloud Data Warehouses is the resiliency and availability. To be clear, we are talking about service reliability, over data reliability (more on that in the next post). Many large organisations who have presence in multiple data centres for availability concerns are beginning to transition their secondary data centres to be cloud based. Whilst there can be significant operational and capital expenditure savings from this, it often leaves organisations with the old world problems of
+One of the most understated advantages of Cloud Data Warehouses is the resiliency and availability. To be clear, we are talking about service reliability, over data reliability (more on that in the next post). Many large organisations who have presence in multiple data centres for availability concerns are beginning to transition their secondary data centres to be cloud based. Whilst there can be significant operational and capital expenditure savings from this, it often leaves organisations with old world problems:
 
 * working at the virtualization layer
 * low utilization of warm standbys

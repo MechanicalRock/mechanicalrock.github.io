@@ -22,7 +22,6 @@ This blog post is in two parts; in the first part, we will elaborate on modern C
 
 ## The Cloud Data Warehouse
 
-
 A Data Warehouse is an **enabling technology** for your business to **make decisions** in relation to **the data you gather**. By arranging, conforming, and curating your data to radiate the key performance indicators of your business, a Data Warehouse forms one half of *the presentation layer* - alongside visualisation tools - that enable users in your organisation to identify insights. At least, this is the **traditional view**.
 
 Modern Cloud Data Warehouses can support the existing status quo, including various data modelling methodologies such as Kimball, Inmon or Data Vault for example. Additionally, sticking the word ***cloud*** in front of *data warehouse* does what you would expect cloud to do, in addressing many of the technological limitations or complications associated with traditional Data Warehouses - namely storage availability, compute scalability, and high availability.

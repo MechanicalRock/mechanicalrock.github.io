@@ -18,7 +18,7 @@ I recently took a little time to read through [The Analytics Guide Book](https:/
 
 It's rare to see a book presented in such an accessible way that manages to balance complexity and insight - I recommend it to anyone looking to re-evaluate how they maximise return on investment from their data.
 
-This blog post is in two parts; in this article we will elaborate on modern Cloud Data Warehouses; in the second part we will focus on how their features allow a more flexible and agile way of delivering analytics engineering, as described in the Analytics Guide Book.
+This blog post is in two parts; in the first part, we will elaborate on modern Cloud Data Warehouses; in the second part we will focus on how their features allow a more flexible and agile way of delivering analytics engineering, as described in the Analytics Guide Book.
 
 ## The Cloud Data Warehouse
 

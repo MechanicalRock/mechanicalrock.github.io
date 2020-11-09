@@ -40,7 +40,16 @@ First, let's start by defining some of these common terms and acronyms.
 
  **Online Transactional Processing** refers to systems of record that we might expect to experience a high degree of write activity as well as read activity. Historically this has indicated data mutability, though recent software architectures such as Event Sourcing demand immutable systems of record. Whilst it is common for OLTP systems to be comprised of relational databases, it is also common for document or NoSQL databases to take this role also.
 
- **Online Analytical Processing** refers to technologies and methodologies designed to respond to complex analytical queries with the best performance possible. It is highly focused on read performance and often incorporates different database technologies, as well as specific data modelling and normalization techniques.
+ **Online Analytical Processing** refers to technologies and methodologies designed to respond to complex analytical queries with the best performance possible. It is highly focused on read performance and often incorporates different database technologies, specific data modelling and normalization techniques, and an absence of enforced constraints and table indices. OLAP systems tend to be vastly outnumbered by OLTP systems (in fact many organisations may have only one OLAP system), yet the variety and volume of data contained is usually much greater.
+
+ **Data Lakes** are the organisation of data at rest for a variety of purposes. It can comprise of structured and unstructured data, and its utility typically goes beyond general analytics and reporting requirements. For example it could include streaming video data, raw text, audio recordings as well as traditional structured data exported or streamed from OLTP systems.
+
+ Organisations have been building data lakes for years and whilst many began on premise, most are built in the cloud these days due to:
+ * decreasing cost of cloud storage
+ * availability of high quality managed cloud services to compute on bulk data
+ * increased resilience and storage features (e.g. lifecycling) of cloud storage
+
+ The key point to understand is that **for the specific use case of general analytics and reporting**, cloud data warehouses are **combining the best of OLAP and Data Lakes** into one cohesive service offering: where storage is cheap but resilient; compute is scalable and priced on usage; and operational overhead is low.
 
 
 
@@ -120,7 +129,7 @@ At the end of the day, you need to choose a solution your organisation is capabl
 
 ## Successfully transitioning to a Cloud Data Warehouse
 
-When planning a migration to a Cloud Data Warehouse you need to consider:
+When planning a migration to a Cloud Data Warehouse, you need to consider:
 
 * How to transition skilled database administrators and operations staff to cloud?
 * What extra skills are required with a Cloud Data Warehouse?
@@ -161,6 +170,13 @@ These challenges have to be addressed to ensure value for money from your invest
 * How to limit network access to specific locations or users or both
 * How to design security hierarchies to prevent leakage of data from new ingress and egress patterns
 * How to report user behaviour and security activity to existing SIEM systems
+
+These challenges are not new, but many organisations legitimately fear taking these concerns into public cloud environments. It's safe to say that Cloud Data Warehouses have answers to the questions above, yet the burden remains on the customer to configure and report on these concerns.
+
+As a [DevOps Consultancy](https://mechanicalrock.io/our-expertise/enterprise-devops), this is our bread and butter and so if you find any of the following are missing from your solutions, you should be asking why:
+* Principles of Least Privilege and Declaritive Security Controls in relation to all roles accessing and managing your data
+* Automated pipelines for management of Data Warehouse Security, structure and data transit
+* Automated Compliance assessment and notification in relation to your risk controls for infrastructure and security
 
 ## Wrapping Up
 

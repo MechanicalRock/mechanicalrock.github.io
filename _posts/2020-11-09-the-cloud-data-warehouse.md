@@ -6,7 +6,7 @@ tags: cloud data warehouse snowflake bigquery redshift
 image: img/blog/sos/snowcdw/banner.jpg
 author: Paul Symons
 ---
-<center><img src="/img/blog/snowcdw/banner.jpg" /></center><br/>
+<center><img title="Dashboards - https://unsplash.com/photos/JKUTrJ4vK00" src="/img/blog/snowcdw/banner.jpg" /></center><br/>
 
 ## The Modern Analytics Engineering Stack
 
@@ -40,7 +40,7 @@ First, let's start by defining some of these common terms and acronyms.
 
  **Online Transactional Processing** refers to systems of record that we might expect to experience a high degree of write activity as well as read activity. Historically this has indicated data mutability, though recent software architectures such as Event Sourcing demand immutable systems of record. Whilst it is common for OLTP systems to be comprised of relational databases, it is also common for document or NoSQL databases to take this role also.
 
- **Online Analytical Processing** refers to technologies and methodologies designed to respond to complex analytical queries with the best performance possible. It is highly focused on read performance and often incorporates different database technologies, specific data modelling and normalization techniques, and an absence of enforced constraints and table indices. OLAP systems tend to be vastly outnumbered by OLTP systems (in fact many organisations may have only one OLAP system), yet the variety and volume of data contained is usually much greater.
+ **Online Analytical Processing** refers to technologies and methodologies designed to respond to complex analytical queries with the best performance possible. It is highly focused on read performance and often incorporates different database technologies, specific data modelling and normalization techniques, and an absence of enforced constraints and table indices. OLAP systems tend to be vastly outnumbered by OLTP systems (in fact many organisations may have only one OLAP system), yet the variety and volume of data contained is usually much greater in an OLAP system.
 
  **Data Lakes** are the organisation of data at rest for a variety of purposes. It can comprise of structured and unstructured data, and its utility typically goes beyond general analytics and reporting requirements. For example it could include streaming video data, raw text, audio recordings as well as traditional structured data exported or streamed from OLTP systems.
 
@@ -112,18 +112,18 @@ I would favour or at least consider **BigQuery** when any of the following apply
 * Data Warehouse workload was focused on data science or machine learning
 * There is a business requirement to stream data to the warehouse in near realtime
 
-I would consider **RedShift** when any of the following apply
+I would consider **Amazon Redshift** when any of the following apply
 * I have a fairly constant and stable utilisation profile that is well suited to pre-purchasing reserved instances for cost optimization
-* I want to to provide a unified data warehouse access layer comprised of federated AWS sources (e.g. operational RDS databases, S3) in order to build out native RedShift data marts
+* I want to to provide a unified data warehouse access layer comprised of federated AWS sources (e.g. operational RDS databases, S3) in order to build out native Redshift data marts
 
 **For most other use cases, I would favour Snowflake**.
 
-You may notice that we haven't discussed Amazon Redshift too much in our consideration of Cloud Data Warehouse solutions; we have and continue to work with customers using RedShift and are happy to continue doing so. Yet there are reasons why we often reach for other solutions:
+You may notice that we haven't discussed Amazon Redshift too much in our consideration of Cloud Data Warehouse solutions; we have and continue to work with customers using Redshift and are happy to continue doing so. Yet there are reasons why we often reach for other solutions:
 
-* RedShift has struggled to keep pace with the feature sets of competitors such as BigQuery and Snowflake
+* Redshift has struggled to keep pace with the feature sets of competitors such as BigQuery and Snowflake
 * It is generally more engineering intensive, considering administration, utilisation and optimisation - managing infrastructure is still a customer concern
 * Storage and Compute separation is primitive - whilst this is improving with recent RA3 nodes, the price premium to be paid is a disincentive, for something that still doesn't match what competitors are offering (true on-demand usage)
-* Lack of high availability - RedShift clusters are limited to operating in a single availability zone. Whilst a cluster can generally recover simply from individual data node failures, a power loss to a whole AZ would require customers to create a new cluster from snapshots in a different AZ
+* Lack of high availability - Redshift clusters are limited to operating in a single availability zone. Whilst a cluster can generally recover simply from individual data node failures, a power loss to a whole AZ would require customers to create a new cluster from snapshots in a different AZ
 
 At the end of the day, you need to choose a solution your organisation is capable of supporting. Just make sure you compare apples with apples however and consider both the [labour cost and the service costs](https://www.holistics.io/blog/the-two-philosophies-of-cost-in-data-engineering/) involved in your warehouse. 
 
@@ -143,7 +143,7 @@ New themes emerge with Cloud Data Warehouses. The technology or implementations 
 
 Traditional IT project funding, delineated by long-term capital versus short-term operational expenditure, tends to pit spenders against controllers with little regard for each other's position. In many ways, cloud computing has confused this mud wrestling melee, by removing the asset curtain of hardware and licensing that is traditionally used to hide costs.
 
-![IT Tug of War - two dogs wrestling](/img/blog/snowcdw/tugofwar.jpg)
+![IT Tug of War - two dogs wrestling - https://unsplash.com/photos/IFK5ROpTimo](/img/blog/snowcdw/tugofwar.jpg)
 
 Though cloud platforms simplify TCO by offering managed services and abstracting hardware and licensing costs, the challenge of estimating and assessing cost for business cases remains. The war stories and lessons learned of cloud pioneers, have been distilled into behaviours and practices commonly labelled as **FinOps**.
 
@@ -192,9 +192,3 @@ So do your homework - assess your whole data lifecycle, and take the opportunity
 The biggest cost you face is that of the missed opportunity. 
 
 If you are ready to accelerate your growth, get in touch with us at [Mechanical Rock](https://mechanicalrock.io/our-expertise/)
-
-
-## References
-
-* [Title Image](https://unsplash.com/photos/JKUTrJ4vK00)
-* [Tug of War](https://unsplash.com/photos/IFK5ROpTimo)

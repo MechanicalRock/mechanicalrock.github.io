@@ -6,16 +6,6 @@ tags: snowflake dynamodb aws data elt s3
 author: Paul Symons
 image: img/blog/dynamodb-to-snowflake/logo.jpg
 ---
-<style type="text/css">
-  @media only screen and (min-width: 1000px) {
-    h2, h3 {
-      margin-top:1em;
-    }
-    div.wrapper { 
-      max-width:900px;
-    }
-  }
-</style>
 
 In this article we are going to discuss a new way to batch load your DynamoDB tables directly into Snowflake without proprietary tools. But first...
 

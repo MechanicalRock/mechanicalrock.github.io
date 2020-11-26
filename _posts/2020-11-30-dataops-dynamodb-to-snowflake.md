@@ -53,7 +53,7 @@ At the time of writing, the new export functionality is only available in the AW
 The outcomes of this article are to demonstrate how to:
 * Schedule a **regular export of your DynamoDB table to S3**
 * **Understand export structures and metadata**, and how to use it effectively to work with multiple export copies
-* **Transform raw data exported** from DynamoDB into multiple tables to meet your requirements.
+* **Transform raw data exported** from DynamoDB into multiple tables to meet your requirements
 
 The goal is to provide analysts both the data they need in the structure they expect, combined with the visibility and techniques to adapt it over time, as the data changes.
 
@@ -354,8 +354,8 @@ Both of these will be effective though there are complications and cost consider
 
 When working with production systems, you don't want to be creating views in your SQL workbench.
 
-* Use a [DataOps Pipeline](https://mechanicalrock.github.io/2020/11/03/snowflake-dataOps.html) to setup and manage your Cloud Data Warehouse.
-* Materialize and Transform your data with a tool like [DBT](https://www.getdbt.com/) once it is available in your warehouse.
+* Use a [DataOps Pipeline](https://mechanicalrock.github.io/2020/11/03/snowflake-dataOps.html) to setup and manage your Cloud Data Warehouse
+* Materialize and Transform your data with a tool like [DBT](https://www.getdbt.com/) once it is available in your warehouse
 
 More on that in a future blog post!
 

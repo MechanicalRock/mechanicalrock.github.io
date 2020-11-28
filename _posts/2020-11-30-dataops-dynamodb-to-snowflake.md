@@ -49,7 +49,7 @@ The goal is to provide analysts both the data they need in the structure they ex
 
 ## Our Scenario
 
-> &#9432; &nbsp; All source code and data files for this blog post are available in the [dynamo db export to snowflake](https://) repository.
+> &#9432; &nbsp; All source code and data files for this blog post are available in the [dynamo db export to snowflake](https://github.com/MechanicalRock/dynamodb-to-snowflake) repository.
 
 This demonstration will use weather data from [Australia's Bureau of Meteorology](http://www.bom.gov.au/climate/data-services/) (BOM). They have a variety of data available from local weather stations, which is helpful for constructing an example of a single table design based on facts such as:
 * Maximum Temperature

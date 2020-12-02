@@ -21,7 +21,7 @@ These supercomputers are generally used to solve complex problems in the researc
 - Perform complex molecular simulations 
 - Predict the weather forecast
 - Quantum Physics
-- and much moree
+- and much more
 
 Just like you need a professional race car driver to drive a formula 1 car to its maximum potential, you ideally need users of supercomputers to be experts or specialists in their field who also understand what makes HPC technology fly.
 

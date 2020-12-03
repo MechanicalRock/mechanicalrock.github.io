@@ -2,7 +2,7 @@
 layout: post
 title: It's a Bird.. It's a Plane… No! It’s Supercompute in the Cloud!
 date: 2020-12-03
-tags: cloud hpc supercpompute
+tags: cloud hpc supercompute lustre aws batch
 image: img/blog/hpc/cloud_computing_datacentre.jpg
 author: Marcelo Aravena
 ---

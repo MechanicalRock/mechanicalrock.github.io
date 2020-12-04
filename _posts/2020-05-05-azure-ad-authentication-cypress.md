@@ -23,29 +23,20 @@ In our Cypress code, we add a custom _command_ to authenticate. Commands are use
 Cypress.Commands.add("login", () => {
   cy.request({
     method: "POST",
-    url: `https://login.microsoftonline.com/${Cypress.config(
-      "tenantId"
-    )}/oauth2/token`,
+    url: `https://login.microsoftonline.com/${Cypress.config("tenantId")}/oauth2/token`,
     form: true,
     body: {
       grant_type: "client_credentials",
       client_id: Cypress.config("clientId"),
       client_secret: Cypress.config("clientSecret"),
-      resource: Cypress.config("clientId"),
     },
-  }).then((response) => {
+  }).then(response => {
     const ADALToken = response.body.access_token;
     const expiresOn = response.body.expires_on;
 
     localStorage.setItem("adal.token.keys", `${Cypress.config("clientId")}|`);
-    localStorage.setItem(
-      `adal.access.token.key${Cypress.config("clientId")}`,
-      ADALToken
-    );
-    localStorage.setItem(
-      `adal.expiration.key${Cypress.config("clientId")}`,
-      expiresOn
-    );
+    localStorage.setItem(`adal.access.token.key${Cypress.config("clientId")}`, ADALToken);
+    localStorage.setItem(`adal.expiration.key${Cypress.config("clientId")}`, expiresOn);
     localStorage.setItem("adal.idtoken", ADALToken);
   });
 });
@@ -79,7 +70,7 @@ runWithAdal(
   () => {
     ReactDOM.render(<App />, document.getElementById("root"));
   },
-  DO_NOT_LOGIN
+  DO_NOT_LOGIN,
 );
 ```
 
@@ -135,3 +126,5 @@ There you have it, we have managed to set up our Cypress tests to authenticate w
 Manual tests taking up all your time and not finding issues before they get to users? We can help!
 
 [Contact Mechanical Rock to Get Started!](https://www.mechanicalrock.io/lets-get-started)
+
+Update 4th December 2020: The article has been updated to remove the resource key from the login command body which is POSTed to the AzureAD endpoint for authentication, as it is no longer required.

@@ -3,10 +3,10 @@ layout: post
 title: It's a Bird.. It's a Plane… No! It’s Supercompute in the Cloud!
 date: 2020-12-03
 tags: cloud hpc supercompute lustre aws batch
-image: img/blog/hpc/cloud_computing_datacentre.jpg
+image: img/blog/hpc/super_cloud-servers.jpg
 author: Marcelo Aravena
 ---
-<center><img src="/img/blog/hpc/cloud_computing_datacentre.jpg" /></center><br/>
+<center><img src="/img/blog/hpc/super_cloud-servers.jpg" /></center><br/>
 
 
 
@@ -109,12 +109,12 @@ Lets take for example Seismic Data or even what the **SKA** [Square Kilometre Ar
 <center><img src="/img/blog/hpc/hsm-storage.png" /></center><br/>
 
 
-Do you really want to maintain such a system yourself?  AWS have solved this problem by having FSx for Lustre integrate natively with Amazon S3, making it easy to access your S3 data to run data processing workloads.  FSx for Lustre transparently presents S3 objects as files and allows you to write results back to S3, which also means we now have access to a tiered storage solution with S3 lifecycle policies! **Viola!** Brilliant work AWS! Coming from a background where maintaining Lustre and HSM solutions for on-premise HPC is a 24x7 job equating to a high TCO, This is a huge win in my books...  Just a word of caution though.. Yes you now have automated your data management strategy with most of the responsibility shifting to AWS, but as we are now migrating your data to a cheaper storage tier in the cloud, please **DO** your homework and math on the costs to retrieve the data from the archive storage tiers along with potential egress charges. You have been warned **$$$**
+Do you really want to maintain such a system yourself?  AWS have solved this problem by having FSx for Lustre integrate natively with Amazon S3, making it easy to access your S3 data to run data processing workloads.  FSx for Lustre transparently presents S3 objects as files and allows you to write results back to S3, which also means we now have access to a tiered storage solution with S3 lifecycle policies! **Voila!** Brilliant work AWS! Coming from a background where maintaining Lustre and HSM solutions for on-premise HPC is a 24x7 job equating to a high TCO, This is a huge win in my books...  Just a word of caution though.. Yes you now have automated your data management strategy with most of the responsibility shifting to AWS, but as we are now migrating your data to a cheaper storage tier in the cloud, please **DO** your homework and math on the costs to retrieve the data from the archive storage tiers along with potential egress charges. You have been warned **$$$**
 
 Another way to help reduce the volume of data being migrated to the cloud is to have a pre-processing step at the Edge - **Hybrid Cloud or Edge Computing**, which is when Kubernetes can be a good option to consider as it can cater for a wide variety of use cases.  This will help reduce your data footprint in the cloud, where you only transfer the pre-processed(cleansed, filtered, noise reduction) data for the core computational workloads in cloud rather than “all” the raw data. You can have the raw data written to tape or disk for archiving in a secure vault somewhere.
 
 
-### Cloud Supercomputing fighting the good fight!
+### Cloud Supercomputing - Fighting the good fight!
 
 Supercomputing cloud platforms have come a long way in helping make available the technology to a wider audience who are looking to process large volumes of data, model complex simulations, weather forecasting or even to help accelerate the search for corona virus treatments and vaccines which will help us understand the nature of the virus and to potentially model the spread of the outbreak.  On the flip side to that, with the global use and the rapid technological advancement of Supercomputing technology, experts and world leaders are starting to get nervous about the future of global security if it’s not regulated properly.  So let’s focus on fighting the good fight! If you are interested in learning more about HPC/Supercompute in the cloud, I would love to chat with you over a few beers or coffee!  Or If you are ready to shift your HPC workloads to the cloud and need some guidance, get in touch with us at [Mechanical Rock](https://mechanicalrock.io/lets-get-started)
 

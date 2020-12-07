@@ -6,7 +6,7 @@ tags: cloud hpc supercompute lustre aws batch
 image: img/blog/hpc/super_cloud-servers.jpg
 author: Marcelo Aravena
 ---
-<center><img src="/img/blog/hpc/super_cloud-servers.jpg" /></center><br/>
+<center><img src="/img/blog/hpc/super_cloud-servers.jpg" title="Images from istockphoto and Funidelia" /></center><br/>
 
 
 

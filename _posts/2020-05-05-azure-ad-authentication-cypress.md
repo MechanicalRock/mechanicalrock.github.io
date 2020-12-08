@@ -7,6 +7,8 @@ author: Tim Veletta
 image: img/blog/azure-ad-cypress/header.png
 ---
 
+_Update 4th December 2020: The article has been updated to remove the resource key from the login command body which is POSTed to the AzureAD endpoint for authentication, as it is no longer required._
+
 [Cypress](https://cypress.io) is a browser-based, end-to-end testing framework which makes testing easy and, dare I say it, fun. At Mechanical Rock, we are using Cypress to automate the testing of user flows and interactions with our applications to reduce feedback cycles and prevent issues from affecting users. It has been useful for developers since Cypress tests are relatively easy to write, run and debug. Our clients have also benefited as we are able to automate testing that would have been done manually otherwise.
 
 Our preferred Cypress set up is a discussion for another blog post; in this post, I'd like to focus on an issue we ran into recently when trying to set up Azure Active Directory (AD) authentication for use within our Cypress tests.
@@ -126,5 +128,3 @@ There you have it, we have managed to set up our Cypress tests to authenticate w
 Manual tests taking up all your time and not finding issues before they get to users? We can help!
 
 [Contact Mechanical Rock to Get Started!](https://www.mechanicalrock.io/lets-get-started)
-
-Update 4th December 2020: The article has been updated to remove the resource key from the login command body which is POSTed to the AzureAD endpoint for authentication, as it is no longer required.

@@ -1,13 +1,13 @@
 ---
 layout: post
 title: Monitoring resource compliance with AWS Security Hub
-date: 2020-12-17
+date: 2020-12-22
 tags: devops ci cd cloudformation infrastructure-as-code aws cross-account security
 author: Simon Bracegirdle
 image: img/sh-logo-256.png
 ---
 
-Engineers and administrators; are you often wondering how to maintain consistent security best practice in the cloud? With DevOps and agile all the rage, how do you keep your infrastructure secure in these fast paced environments? If you're running on AWS, [Security Hub](https://aws.amazon.com/security-hub/) is one tool that can help.
+Do you often wonder about how to maintain consistent security best practice in the cloud? With DevOps and agile being all the rage, how do you keep your infrastructure secure in these fast paced environments? If you're running on AWS, [Security Hub](https://aws.amazon.com/security-hub/) is one tool that can help.
 
 ## What is Security Hub?
 
@@ -46,7 +46,9 @@ aws securityhub update-organization-configuration --auto-enable
 
 That's it! You should now have the [CIS AWS Foundations benchmark](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-cis.html) and [AWS Foundational Security Best Practices standard](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp.html) packs enabled in all accounts by default.
 
-## Compliance pack review
+## What else to consider after deployment?
+
+### Compliance pack review
 
 Once you have enabled Security Hub, we recommend reviewing the individual security controls for each of the compliance packs:
 
@@ -55,11 +57,11 @@ Once you have enabled Security Hub, we recommend reviewing the individual securi
 
 Not all controls will be relevant to your organisation, also there is some overlap between the two default packs. Also, we should enable rules that apply to global services in one region (e.g. IAM rules).
 
-An example of a rule that we disabled is Foundations [S3.5](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#fsbp-s3-5); "S3 buckets should require requests to use Secure Socket Layer". We felt that it's a low risk issue, is not applicable in all cases, can be auto remediated, and is inconvenient to add to every single S3 bucket.
+An example of a rule that we disabled is Foundations [S3.5](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#fsbp-s3-5); "S3 buckets should require requests to use Secure Socket Layer". We felt that it's a low risk issue, is not applicable in all cases, can be auto remediated, and is laborious to add to every single S3 bucket.
 
 An example of duplication between CIS and Foundations is, CIS rule [1.1](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#securityhub-standards-cis-controls-1.1) and [IAM.4](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#fsbp-iam-4). Both check that the root user is not used, so you may like to disable one or the other.
 
-## Rule toggler
+### Disabling irrelevant rules
 
 Once you have an idea of the rules you want to enable, you need to roll it out. You can use [Stack Sets](/2020/10/26/stack-set-cfn-resources.html) or [Control Tower Customisations](https://aws.amazon.com/solutions/implementations/customizations-for-aws-control-tower/) to roll that out to all accounts and regions.
 
@@ -177,7 +179,7 @@ Here's an example of parameters to supply to the template. Those in the lists wi
 ```
 
 
-## EventBridge rule for filtering
+### Notifications and alerts
 
 Now that you have Security Hub enabled and configured, you may want to subscribe to events. For example, you may want Slack or email notifications when Security Hub reports a failing security control.
 
@@ -222,9 +224,9 @@ Where `CISRuleIds` is a list of CIS rule IDs (e.g. `1.1`).
 
 If you then subscribe to the topic, you can receive Security Hub notifications via Email, SMS or [ChatOps](https://aws.amazon.com/blogs/devops/introducing-aws-chatbot-chatops-for-aws/). In our case, we created our own custom Slack application to manage notifications. We won't cover that in this article, but perhaps a separate one in the future!
 
-## Avoiding duplicate notifications
+### Avoiding re-notification
 
-Findings identified by Security Hub will perpetually remain in a `NEW` [workflow state](https://docs.aws.amazon.com/securityhub/latest/userguide/finding-workflow-status.html) until you resolve the finding, or manually adjust the state to `NOTIFIED` or `SUPRESSED`. This will send duplicate notifications for the same finding if re-checked at a later date, creating excessive noise for the team to sift through.
+Findings identified by Security Hub will perpetually remain in a `NEW` [workflow state](https://docs.aws.amazon.com/securityhub/latest/userguide/finding-workflow-status.html) until you resolve the finding, or manually adjust the state to `NOTIFIED` or `SUPRESSED`. It will re-send notifications for the same finding if updated at a later date, creating excessive noise for the team to sift through.
 
 To deal with this, we created an inline lambda function (this time with NodeJS for variety) in CloudFormation to automatically progress `NEW` notifications to `NOTIFIED`:
 

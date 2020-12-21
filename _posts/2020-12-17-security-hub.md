@@ -19,14 +19,13 @@ For engineers and administrators responsible for managing infrastructure, this i
 
 Whilst it's becoming easier to manage multi-account environments, there are some challenges in the rollout of Security Hub that you'll want to keep in mind. In this article, we'll cover our experience, and tips for ensuring a smooth rollout and keeping it relevant for your organisation.
 
-
 ## Multi-account rollout of Security Hub
 
 *Before we start, a warning; enabling Security Hub and compliance packs will cause a large number of AWS Config rules to execute for the first time across your accounts. If you have subscribed to AWS Config notifications (e.g. default AWS Control Tower setup), then you will receive a large influx of notifications during the rollout. We recommend you disable these subscriptions temporarily.*
 
 Also, as we recommend for all cloud services, please review the pricing pages for [AWS Security Hub](https://aws.amazon.com/security-hub/pricing/) and [AWS Config](https://aws.amazon.com/config/pricing/) to assess their suitability for your budget. Enabling AWS Config does cause charges for configuration items recorded on every resource change, so keep that in mind.
 
-Now, the first step to using Security Hub is to elect the admin account and then enable all other accounts as members. It consolidates findings into the admin account for each region to give a centralised view of your security state.
+Now, the first step to using Security Hub is to elect the admin account and then enable all other accounts as members. It consolidates findings into the admin account for each region to give a centralised view of your security state. If you have a security or audit focused account, then that's a good candidate.
 
 The method we used to rollout Security Hub at the time was the [Security Hub Enabler](https://github.com/aws-samples/aws-control-tower-securityhub-enabler) tool provided by AWS. As of November 2020, Security Hub now supports [AWS Organizations](https://aws.amazon.com/organizations/), which is a much simpler method for enabling Security Hub.
 

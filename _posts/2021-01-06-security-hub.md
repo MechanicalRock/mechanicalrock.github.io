@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Monitoring resource compliance with AWS Security Hub
-date: 2020-12-22
+date: 2021-01-06
 tags: devops ci cd cloudformation infrastructure-as-code aws cross-account security
 author: Simon Bracegirdle
 image: img/sh-logo-256.png

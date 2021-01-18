@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 7 steps to create a Serverless GPS solution
+title: 7 Steps to Create a Serverless Tracking Solution
 date: 2021-01-11
 tags: cloudformation serverless appsync dynamodb
 author: Shermayne Lee
@@ -29,7 +29,7 @@ In my solution, I have a Dragino-LGT-92 tracking device. It is a handheld LORAWA
 
 ## Second Step: Register the LORA tracking device
 
-So I have a LoRaWAN device; I need a platform to manage my device and connect the device to the internet.
+After I bought a LoRaWAN tracking device, I need a platform to manage my device and connect the device to the internet.
 
 Before I start, let's understand a few terms I will frequently use in this post.
 
@@ -54,9 +54,9 @@ I have a Lora tracking device ready to connect to the internet wirelessly via Th
 
 **Before you start**
 
-- You will need to create an account with The Thing Network (TTN) if I don’t already have one.
+- You will need to create an account with The Thing Network (TTN) if you don’t already have one.
 - You will need to have the device unique identifier (EUI) from the device
-- The device will get activate via Over The Air Activation (OTAA)
+- The device will get activated via Over The Air Activation (OTAA)
 - Select handler to handle the data that is in my region
 - You could also format and decode the payload to the desired format in the console.
 
@@ -190,6 +190,6 @@ Properties:
 
 In conclusion, those are the seven steps that I used to build a simple GPS tracking device.
 
-I hope this blog post has inspired some ideas to make you think about how you can apply serverless technology to your daily life.
+I hope this blog post has inspired you to think about how you can apply serverless technology to your problem.
 
-Thanks for reading. If you are stuck and would like to know more about serverlesss, [contact with us](https://mechanicalrock.io/lets-get-started).
+Thanks for reading. If you would like to know more about serverlesss, [contact with us](https://mechanicalrock.io/lets-get-started).

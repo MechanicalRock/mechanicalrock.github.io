@@ -4,7 +4,6 @@ title: Ruby functions on Google Cloud. A guide for automated testing and deploym
 date: 2021-01-19T23:22:39+08:00
 tags: [google-cloud, functions, serverless, gcp, continuous integration, continuous deployment, ci, cd]
 author: Jean-Klaas Gunnink
-image: img/ruby-functions-cover.jpg
 description:
   Google Cloud recently announced the general availability of cloud functions in the Ruby programming language. Find out
   by example, how to automate the testing and deployment of your code.
@@ -241,4 +240,5 @@ you can use what you learned here. You can find me on [Twitter](https://twitter.
 - [Google announcing ruby functions](https://cloud.google.com/blog/products/application-development/ruby-comes-to-cloud-functions)
 - [Functions framework overview](https://googlecloudplatform.github.io/functions-framework-ruby/v0.7.0/index.html)
 
-_This post was originally made to JKs Blog. It has been republished here with permission. You can find the original post [here](https://jeanklaas.com/blog/ruby_cloud_functions_ci-cd/)_
+_This post was originally made to JKs Blog. It has been republished here with permission. You can find the original post
+[here](https://jeanklaas.com/blog/ruby_cloud_functions_ci-cd/)_

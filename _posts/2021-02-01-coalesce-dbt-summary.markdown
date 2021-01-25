@@ -264,7 +264,7 @@ I came away invigorated after watching Coalesce 2020, not only about the topics 
 
 It's often easy to imagine the future dystopically, in light of data mining and privacy violations. However, it inspired in me a more local, contextualized growth opportunity for companies to understand better what makes them tick, and what really determines their success, based on data instead of *gut feel*. I truly believe DBT and the wider movements around ELT are making these capabilities more accessible than ever for businesses of all shapes and sizes.
 
-I'll end this post with a panel discussion from Coalesce 2020 - *Hiring a diverse data team* - it educated me a lot on diversity and inclusion beyond the surface, and how to really find your best team by reaching out to all qualifying candidates in the first instance. There are so many learnings in this talk, but to call out just a few
+I'll end this post with a panel discussion from Coalesce 2020 - *Hiring a diverse data team* - it educated me a lot on diversity and inclusion beyond the surface, and how to really find your best team by reaching out to all qualifying candidates in the first instance. There are so many learnings in this talk, but to call out just a few:
 
 * Hire for aptitude over educational prestige
 * Look beyond your immediate network of peers

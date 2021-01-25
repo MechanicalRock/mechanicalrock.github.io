@@ -137,7 +137,7 @@ Carly gives a great backgrounder on the industry and experiences of working in E
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/C_R6VHJfQn4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-In this broadly focused video, Drew draws parallels between period of styles art, and the evolution of data processing. It's a great experience in zooming out and seeing the bigger picture - in this case, how the decomposition of data platforms in to stacks of more de-coupled components, focused more around the teams and capabilities organisations have, the challenges for which customers are truly seeking answers, and the capability to adapt to change and advancements in technology.
+In this broadly focused video, Drew draws parallels between periods of art, and the evolution of data processing. It's a great exercise in zooming out and seeing the bigger picture - in this case, how the decomposition of data platforms in to stacks of more de-coupled components, focused more around the teams and capabilities organisations have, the challenges for which customers are truly seeking answers, and the capability to adapt to change and advancements in technology.
 
 ### How JetBlue became a Data-Driven airline using DBT
 
@@ -149,14 +149,14 @@ This video is a clear favourite for me, simply for the sheer volume and depth of
 * Why a Transition Plan is a fundamental keystone to the success of any large data migration
 * How DBT helped JetBlue significantly increase their internal contributor rate towards data work
 
-Amongst these topics were many other themes including the importance of engaging for change early within an organisation, investing in the training of your people, and the commitment to sunsetting your legacy systems. Check it out!
+Amongst these topics were many other themes including the importance of early engagement when introducing change to an organisation, investing in the training of your people, and the commitment to sunsetting your legacy systems. Check it out!
 
 
 ### How JetBlue secures and protects data with DBT and Snowflake
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/NPQOTm1XITw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Everyone at some point will need to deal with privacy requirements in a data warehouse, and this shorter talk gives a great overview of JetBlue's iterative journey to tackling this challenge. To me, the greatest part of the story is how the goal is achieved latterly by policy, as opposed to processing. 
+Everyone at some point will need to deal with privacy requirements in a data warehouse, and this shorter talk gives a great overview of JetBlue's iterative journey to tackling this challenge. To me, the greatest part of the story is how the goal is achieved latterly by policy, as opposed to processing; this typifies to me how Cloud Data Warehouses are stepping up to meet common customer challenges.
 
 
 ### Organisational Epistemelogy - how do we know stuff?
@@ -167,7 +167,7 @@ I am going to be honest and admit that this talk hit me right in the feels. You 
 
 Throughout our careers we variously play roles of mentor, mentee, leader, contributor, etc. - often many of those roles at the same time. This presentation reflects on organisational knowledge and consensus building, and made me muse on *How do we get better at getting better?*
 
-In particular, Tristan's comparison of the nervous systems of Jellyfish (a ["nervenet"](https://en.wikipedia.org/wiki/Nerve_net)), compared against the predominant animalian [central nervous system](https://en.wikipedia.org/wiki/Central_nervous_system), provides a compelling context by which to explore the way we not only share and disseminate information within an organisation, but how it can affect we can grow and scale. In many ways it is similar to how [AWS EventBridge simplifies building cross-account capabilities](https://aws.amazon.com/blogs/compute/simplifying-cross-account-access-with-amazon-eventbridge-resource-policies/) in the cloud.
+In particular, Tristan's comparison of the nervous systems of Jellyfish (a ["nervenet"](https://en.wikipedia.org/wiki/Nerve_net)), compared against the predominant animalian [central nervous system](https://en.wikipedia.org/wiki/Central_nervous_system), provides a compelling context by which to explore the way we not only share and disseminate information within an organisation, but how it can affect the way we grow and scale. In many ways it is similar to how [AWS EventBridge simplifies building cross-account capabilities](https://aws.amazon.com/blogs/compute/simplifying-cross-account-access-with-amazon-eventbridge-resource-policies/) in the cloud.
 
 In the end, Tristan ties it back to the modern data stack and importantly, what is required to maintain trust in a landscape where decision makers *"plug directly into the spinal cord"*
 
@@ -230,15 +230,15 @@ One of my highlights from this presentation was a comment Emilie makes in the Q&
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/zFBfV-25dS4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-In brief, this presentation focuses on finding the hallowed nexus - of Effective Data Communication - between
+In brief, this presentation focuses on finding the hallowed nexus of Effective Data Communication between
 
 1. Engineering Practice
 1. Stakeholder Involvement
 1. Company Discoverability (of data) 
 
-Despite being a shorter presentation, this one was not short of insights - I took away some great reminders
+Despite being a shorter presentation, it was not short of insights - I took away some great reminders
 
-* Taxonomy of terms - speaking the same language - acts as an essential foundation for common understanding across disparate teams
+* Embracing Taxonomy - *"speaking the same language"* - acts as an essential foundation for common understanding across disparate teams
 * Ensuring your stakeholder group can adequately critique your assumptions
 * Data teams should seek to remove themselves as an intermediary in discussions around data
 
@@ -259,7 +259,7 @@ In this super-concise but jam-packed presentation, Andrea illustrates the value 
 * Anchor the knowledge gleaned into documentation to accelerate shared learning and growth
 * Set context around dashboards to manage expectations and state original purpose and assumptions / caveats
 
-In particular, I liked the suggestion to encourage and collaborate with early adopters, a formulate I've seen work well and also echoed in JetBlue's transition to a data-driven organisation.
+In particular, I liked the suggestion to encourage and collaborate with early adopters, a formula I've seen work well and also echoed in JetBlue's transition to a data-driven organisation.
 
 
 ## Summary

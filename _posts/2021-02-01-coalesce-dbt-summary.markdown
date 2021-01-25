@@ -9,6 +9,13 @@ image: img/blog/coalesce2020/banner.jpg
 
 In this article, I want to share some of my highlights from the recent [Coalesce 2020](https://www.getdbt.com/coalesce) conference, where analytics teams from all over the world shared their experiences about improving and accelerating [Analytics Engineering](https://blog.getdbt.com/what-is-an-analytics-engineer/), and how adopting [DBT](https://www.getdbt.com) has often played a pivotal role. Held as a virtual conference in December 2020 by [FishTown Analytics](https://www.fishtownanalytics.com/), it was presented for, and by, the community of DBT users worldwide.
 
+## **D**ata **B**uild **T**ool - a quick recap
+
+To understand what DBT is for and how to use it, you should first read their own [introductory documentation](https://docs.getdbt.com/docs/introduction), but to paraphrase from the first page:
+
+> *dbt does the T in ELT (Extract, Load, Transform) processes – **it doesn’t extract or load data**, but it’s extremely good at transforming data that’s already loaded into your warehouse.*
+
+It is a remarkable tool, but perhaps more remarkable are the ways it helps teams to parallelise, stabilise and democratise their practice and knowledge of data in the organisations where they work. 
 
 ## Aim
 The conference headlined with this statement:
@@ -31,15 +38,6 @@ Whilst the blog re-tells the learnings of the book through the lens of Urban Des
 The DBT community is an amazing [Power-Up](https://en.wikipedia.org/wiki/Power-up) for anyone seeking to improve what they can do, with the data they have access to.
 
 You can watch the [Coalesce 2020 Sessions Playlist](https://www.youtube.com/watch?v=M8oi7nSaWps&list=PL0QYlrC86xQmPf9QUceFdOarYcv3ETSsz&index=1&ab_channel=dbt) on YouTube.
-
-
-## **D**ata **B**uild **T**ool - a quick recap
-
-To understand what DBT is for and how to use it, you should first read their own [introductory documentation](https://docs.getdbt.com/docs/introduction), but to paraphrase from the first page:
-
-> *dbt does the T in ELT (Extract, Load, Transform) processes – **it doesn’t extract or load data**, but it’s extremely good at transforming data that’s already loaded into your warehouse.*
-
-It is a remarkable tool, but perhaps more remarkable are the ways it helps teams to parallelise, stabilise and democratise their practice and knowledge of data in the organisations where they work. 
 
 
 ## Favourite Takeaway
@@ -85,7 +83,7 @@ Many teams reflected on their strategies - beyond using collaborative workflows 
 
 In two very different talks, both Tristan Handy and Andrea Kopitz teach us that accepted knowledge is effectively the building of organisational consensus. Andrea's comment around creating some documentation - even if only temporarily useful - is often better than no documentation at all. It re-iterated to me also the importance of being assertive and descriptive in documentation to allow others to challenge, so that together we may reach a better consensus.
 
-On a more technical level, I took away from many talks the success teams had encountered by consolidating the knowledge and business logic of data domain and insight generation within their DBT projects, and how this had promoted more transparency and trust between consumers and producers / curators of data.
+On a more technical level, many talks focused on the success teams encountered by consolidating the knowledge and business logic of data domain and insight generation within their DBT projects, and how this had promoted more transparency and trust between consumers and producers of data.
 
 
 ### The Right Testing Matters
@@ -94,7 +92,7 @@ There were a couple of great talks about testing in Coalesce 2020; beyond introd
 
 * The importance of testing as part of [SRE](https://sre.google/sre-book/table-of-contents/) obligations and meeting service level agreements
 * Different types of testing, e.g. modelling regression vs. data regression, including periodic factors
-* Comparing the value of testing against the cost of troubleshooting queries from consumers
+* The value of testing compared to the cost of troubleshooting queries from consumers
 * The use of testing as a form of documentation about expectations and subject matter expertise
 
 One important reminder I took away was, ensure to test the right thing: avoid vanity tests and appreciate that needs and expectations, as well as data, change over time - and therefore, so should your tests; even if it means deprecation.
@@ -111,7 +109,7 @@ Perhaps the most enduring theme throughout the presentations was trust:
 
 Trust exists in many contexts; some examples were how teams build trust amongst themselves with testing and documentation; how they maintain it with peer teams using SLAs, relationships and communication, and good engineering practice; how they build it with stakeholders and decision makers, to boost their standing and perception as a critical partner within an organisation.
 
-I sensed in many presentations the burden within data teams that their work should reflect the most true view possible of their organisation. The concept of trust featured heavily in many of their endeavours. All of the following stood out as important assets in building and maintaining that trust.
+I sensed in many presentations a burden within data teams that their work should reflect the most holistic view possible of their organisation. The concept of trust featured heavily in many of their endeavours. All of the following stood out as important assets in building and maintaining that trust.
 
 - Engagement and Discoverability of Data
 - Operational Resiliency of Data Services and Products
@@ -119,9 +117,7 @@ I sensed in many presentations the burden within data teams that their work shou
 - Knowledge Formation and Consensus Building
 - Finding and Partnering with the right stakeholders
 
-In researching this article, I found a useful EY article by Amy Brachio that discusses [relationships between risk and trust](https://www.ey.com/en_au/wef/four-ways-to-build-a-relationship-between-risk-and-trust): it summarises many of the subtle dynamics highlighted in various talks from Coalesce 2020. For example, when considering risks around stakeholder engagement - in particular, that you are working with the right stakeholders - Coalesce 2020 taught me that if you are not being challenged on your assertions by your stakeholders, then perhaps they are not fully representative of the customers you believe you serve.
-
-
+If your stakeholders never challenge the assertions you make, then perhaps they are not fully representative of the customers you believe you serve. 
 
 ## Highlighted Talks
 
@@ -159,7 +155,7 @@ Amongst these topics were many other themes including the importance of early en
 Everyone at some point will need to deal with privacy requirements in a data warehouse, and this shorter talk gives a great overview of JetBlue's iterative journey to tackling this challenge. To me, the greatest part of the story is how the goal is achieved latterly by policy, as opposed to processing; this typifies to me how Cloud Data Warehouses are stepping up to meet common customer challenges.
 
 
-### Organisational Epistemelogy - how do we know stuff?
+### Organisational Epistemelogy - Or, how do we know stuff?
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/r75Rd48toBk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -264,7 +260,9 @@ In particular, I liked the suggestion to encourage and collaborate with early ad
 
 ## Summary
 
-I came away invigorated after watching Coalesce 2020, not only about the topics and community around DBT, but of the future and rapid growth we will see in data; it's often easy to imagine this dystopically in light of data mining and privacy violations, however it inspired in me a more local, contextualized growth opportunity for companies to understand better what makes them tick, and what really determines their success, based on data instead of *gut feel*. I truly believe DBT and the wider movements around ELT are making these capabilities more accessible than ever for businesses of all shapes and sizes.
+I came away invigorated after watching Coalesce 2020, not only about the topics and community around DBT, but of the future and rapid growth we will see in data.
+
+It's often easy to imagine the future dystopically, in light of data mining and privacy violations. However, it inspired in me a more local, contextualized growth opportunity for companies to understand better what makes them tick, and what really determines their success, based on data instead of *gut feel*. I truly believe DBT and the wider movements around ELT are making these capabilities more accessible than ever for businesses of all shapes and sizes.
 
 I'll end this post with a panel discussion from Coalesce 2020 - *Hiring a diverse data team* - it educated me a lot on diversity and inclusion beyond the surface, and how to really find your best team by reaching out to all qualifying candidates in the first instance. There are so many learnings in this talk, but to call out just a few
 

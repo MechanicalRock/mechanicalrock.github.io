@@ -5,6 +5,7 @@ date: 2021-01-25
 tags: data dbt elt etl transformation
 author: Paul Symons
 image: img/blog/coalesce2020/banner.jpg
+description: Highlights from the Coalesce 2020 DBT Conference. DBT is open source software, transforming the way organisations work with Data Warehouses
 ---
 
 In this article, I want to share some of my highlights from the recent [Coalesce 2020](https://www.getdbt.com/coalesce) conference, where analytics teams from all over the world shared their experiences about improving and accelerating [Analytics Engineering](https://blog.getdbt.com/what-is-an-analytics-engineer/), and how adopting [DBT](https://www.getdbt.com) has often played a pivotal role. Held as a virtual conference in December 2020 by [FishTown Analytics](https://www.fishtownanalytics.com/), it was presented for, and by, the community of DBT users worldwide.

@@ -3,6 +3,7 @@ layout: post
 title: The Cloud Data Warehouse - How Do You Like Yours?
 date: 2020-11-09
 tags: cloud data warehouse snowflake bigquery redshift
+description: An introduction to Cloud Data Warehouses, and why they are changing the way organisations thinking about producing their insights
 image: img/blog/sos/snowcdw/banner.jpg
 author: Paul Symons
 ---

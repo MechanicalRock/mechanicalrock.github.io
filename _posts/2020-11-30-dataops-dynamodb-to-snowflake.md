@@ -4,6 +4,7 @@ title: Batch ELT from AWS DynamoDB to Snowflake
 date: 2020-11-30
 tags: snowflake dynamodb aws data elt s3
 author: Paul Symons
+description: Practical example of working with semi-structured data from DynamoDB in Snowflake Cloud Data Warehouse
 image: img/blog/dynamodb-to-snowflake/logo.jpg
 ---
 

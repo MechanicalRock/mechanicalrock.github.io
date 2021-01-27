@@ -4,6 +4,7 @@ title: Centralised Log Management with a Data Lake hustle on the side
 date: 2020-09-10
 tags: aws kinesis firehose elasticsearch kibana logs hybrid
 image: img/blog/clm/banner-clm.jpg
+description: A reference architecture for implementing a cloud native centralised log management system, with long term persistence to a data lake.
 author: Paul Symons
 ---
 <center><img src="/img/blog/clm/banner-clm.jpg" /></center><br/>

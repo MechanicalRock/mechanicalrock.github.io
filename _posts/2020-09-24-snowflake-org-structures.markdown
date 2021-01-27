@@ -4,6 +4,7 @@ title: Which Snowflake Organization and Account Pattern is right for you?
 date: 2020-09-23
 tags: cloud data snowflake organizations accounts
 image: img/blog/sos/banner-sos.jpg
+description: An overview of the Snowflake Organizations feature, and what it can do for your business
 author: Paul Symons
 ---
 <center><img src="/img/blog/sos/banner-sos.jpg" /></center><br/>

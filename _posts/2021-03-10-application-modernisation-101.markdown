@@ -48,45 +48,20 @@ Regarding the tradeoff between initial investment and return, there’s a clear 
 
 It’s easy to see that embarking on a rehosting exercise of moving all your applications and services to VM’s in the cloud is a quick and cheap exercise, but as the graph shows, the costs with this approach won’t end when the instances are powered up. Overall, a one for one swap rarely works out cost effective, and none of the benefits of scalability, availability and resilience are gained. If you have the time, smart decision makers are opting for the long game, and really leveraging off the benefits of rearchitecting, refactoring and rebuilding for cloud native deployments.
 
-##Pros and Cons
+## Pros and Cons
 
 
 
-Rehost
-Replatform
-Refactor/Rebuild
-Upfront Cost
-Low
-Medium/High
-High
-Ongoing Cost
-High
-Medium
-Low
-Implementation Timeline
-Short
-Medium
-Long
-Complexity
-Low
-Medium
-High
-Scalability
-Low
-High
-High
-Fault Tolerance
-Medium
-High
-High
-Availability
-Medium
-High
-High
-Skills availability
-High
-Low
-Medium
+|                       |Rehost|Replatform|Refactor/Rebuild|
+|-----------------------|------|----------|----------------|
+|Upfront Cost|Low|Medium/High|High|
+|Ongoing Cost|High|Medium|Low|
+|Implementation Timeline|Short|Medium|Long|
+|Complexity|Low|Medium|High|
+|Scalability|Low|High|High|
+|Fault Tolerance|Medium|High|High|
+|Availability|Medium|High|High|
+|Skills availability|High|Low|Medium|
 
 ** Please note, these categorisations are indicative and relative that depend completely on the Application/Workload. There are a multitude of exceptions to these rules of thumb.
 

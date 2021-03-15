@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Cognito Demysitifed
-date: 2021-02-24
+date: 2021-03-15
 tags: rbac serverless security aws cognito
 author: Nate Jombwe
 image: img/blog/cognito-demystified/confused.jpg

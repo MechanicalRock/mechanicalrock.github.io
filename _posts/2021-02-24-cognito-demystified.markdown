@@ -14,7 +14,7 @@ Cognito, in my opinion, is one of the most valuable services that is currently o
 
 ## Modern Problem, Modern Solution. 🚀
 
-Say you are a cryptocurrency fanatic, and you are determined to spread your distinctive, in-depth, Google search acquired knowledge to others on the internet in the form of a subscription service (knowing the demographic of those of you reading this, this isnt far fetched). Like any good subscription service, you aim to release diluted content to the masses for free, littered with advertisements, and place the good stuff behind a paywall. Building a website on AWS delivering text based content likely will not be a challenge, although you're going to have to decide how to manage user accounts, metadata, and subscription information. Furthermore, how are you going to protect your money making content?  How are you going to do this at scale? How are you going to make the user experience seamless? Will Dogecoin ever reach the moon?
+Say you are a cryptocurrency fanatic, and you are determined to spread your distinctive, in-depth, Google search acquired knowledge to others on the internet in the form of a subscription service (knowing the demographic of those of you reading this, this isn't far fetched). Like any good subscription service, you aim to release diluted content to the masses for free, littered with advertisements, and place the good stuff behind a paywall. Building a website on AWS delivering text based content likely will not be a challenge, although you're going to have to decide how to manage user accounts, metadata, and subscription information. Furthermore, how are you going to protect your money making content?  How are you going to do this at scale? How are you going to make the user experience seamless? Will Dogecoin ever reach the moon?
 
 Well hear this, Amazon Cognito lets you add user sign-up, sign-in, and access control to your web and mobile apps quickly and easily. Amazon Cognito scales to millions of users and supports sign-in with social identity providers, such as Apple, Facebook, Google, and Amazon, and enterprise identity providers via SAML 2.0 and OpenID Connect. In more relatable terms, Cognito enables you to provide a user account experience for your app that is on par with what people are used to nowadays. No Dogecoin required.
 
@@ -23,11 +23,11 @@ Well hear this, Amazon Cognito lets you add user sign-up, sign-in, and access co
 
 ### User Pools
 
-**In the simplest terms possible, a User Pool is a user directory.** Like any decent directory, it allows you to create, confirm, and manage users accounts. Beyond basic diretory features and storing user meta-data such as the names, addresses, and phone numbers of you users, User Pools provide the capabilty for users to sign in through third party identity providers like Google, Facebook, Amazon, Apple, through SAML identity providers, or directly into the pool itself. Additionally, you can create an AWS Lambda function that is triggered during user pool operations such as user sign-up, confirmation, and sign-in (authentication) with a [Lambda trigger](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html). You can even add authentication challenges, migrate users, and customize verification messages.
+**In the simplest terms possible, a User Pool is a user directory.** Like any decent directory, it allows you to create, confirm, and manage users accounts. Beyond basic diretory features and storing user meta-data such as the names, addresses, and phone numbers of you users, User Pools provide the capabilty for users to sign in through third party identity providers like Google, Facebook, Amazon, Apple, through SAML identity providers, or directly into the pool itself. Additionally, you can create an AWS Lambda function that is triggered during user pool operations such as user sign-up, confirmation, and sign-in (authentication) with a [Lambda trigger](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html). You can even add authentication challenges, migrate users, and customise verification messages.
 
 So in terms of developing a solution to manage user accounts, metadata, and subscription information, User Pools are a pretty good fit. 
 
-Common scenarios such as Accessing Server-side Resources after Sign-in, and Accessing Resources with API Gateway and Lambda After Sign-in, are laid out in detail [here](https://docs.aws.amazon.com/cognito/latest/developerguide/accessing-resources.html)
+Common scenarios such as Accessing Server-side Resources after Sign-in, and Accessing Resources with API Gateway and Lambda After Sign-in, are laid out in detail [here](https://docs.aws.amazon.com/cognito/latest/developerguide/accessing-resources.html).
 
 #### Tokens 
 ![Basic User Pool Usage](/img/blog/cognito-demystified/scenario-authentication-cup.png)  <br />
@@ -87,7 +87,7 @@ The permissions in access policies attached to a role are effective across all u
 
 Maybe not as concise as I thought! I haven't even spoken about User Pool Groups yet...nevertheless, hopefully cognito seems a bit less scary - there's plenty of information here to get you started. The best way of learning is doing, so if Cognito sounds like it could work for you, do it. Whats the worst that could happen? 😉
 <br /><br />
-If you are interested in learning more about progressive product development in the cloud, get in touch and let's have a chat over a coffee - my shout!  Or if you are ready to build a slick, efficient, scalable application in the cloud and need some guidance, get in touch with us at [Mechanical Rock](https://mechanicalrock.io/lets-get-started)
+If you are interested in learning more about progressive product development in the cloud, get in touch and let's have a chat over a coffee - my shout!  Or if you are ready to build a slick, efficient, scalable application in the cloud and need some guidance, get in touch with us at [Mechanical Rock](https://mechanicalrock.io/lets-get-started).
 
 
 

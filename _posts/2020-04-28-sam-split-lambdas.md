@@ -4,7 +4,7 @@ title: How To Split Functions From Your SAM API Definition
 date: 2020-04-28
 tags: serverless aws lambda javascript
 author: Matthew Tyler
-image: /img/amazon_api_gateway.png
+image: img/amazon_api_gateway.png
 ---
 
 <center><img src="/img/amazon_api_gateway.png" /></center>

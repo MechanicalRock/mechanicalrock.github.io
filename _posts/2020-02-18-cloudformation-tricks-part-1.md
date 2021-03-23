@@ -4,7 +4,7 @@ title: Improve Your CloudFormation Game with these 9 Tips
 date: 2020-03-17
 tags: javascript tutorial aws
 author: Matthew Tyler
-image: /img/cfn-icon.png
+image: img/cfn-icon.png
 ---
 
 <center><img src="/img/cfn-icon.png" /></center>

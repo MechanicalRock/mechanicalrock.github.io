@@ -1,4 +1,4 @@
-# mechanicalrock.github.io
+# mechanicalrock.github.io - Amazing Project
 
 Welcome to our Blog!
 

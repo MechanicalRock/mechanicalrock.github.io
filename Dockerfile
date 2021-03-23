@@ -13,4 +13,4 @@ VOLUME /app
 WORKDIR /app
 
 # Support future dated posts
-CMD ["jekyll", "serve", "--future"]
+CMD ["jekyll", "serve", "--future", "--incremental"]

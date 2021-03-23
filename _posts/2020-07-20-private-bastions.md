@@ -4,6 +4,7 @@ title: Private Bastion - I'll do what you want me to do
 date: 2020-07-20
 tags: aws ssm vpc ssh ec2
 image: img/blog/ssm-private-terminal/bastion.jpg
+description: A CDK based guide to implementing non-public bastion servers (jump box) using AWS Systems Manager Session Manager
 author: Paul Symons
 ---
 <center><img src="/img/blog/ssm-private-terminal/bastion.jpg" /></center><br/>

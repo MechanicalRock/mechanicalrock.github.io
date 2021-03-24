@@ -17,13 +17,13 @@ Do you use Python CustomResources in your CloudFormation stacks?
 
 You may have already received correspondence directly from AWS but here's your final reminder that if you use Python for CloudFormation Lambda backed CustomResources, then you may need to act before 01 April 2021.
 
-Starting on 01 April 2021, AWS Lambda will no longer support the `botocore.requests` library in Python runtimes.
+Starting on 01 April 2021, AWS Lambda [will no longer support][1] the `botocore.vendored.requests` library in Python runtimes.
 
 Any AWS CloudFormation stacks that use the Python runtime for Lambda-backed Custom Resources must be updated to ensure you can continue to maintain your cloud infrastructure. If you do not act now, after 01 April 2021 you will no longer be able to create, update or delete those custom resources.
 
 ## Why is this happening?
 
-For more information on the background to the change, please see the referenced blog post[1]
+For more information on the background to the change, please see the [referenced blog post][1]
 
 ## Am I affected?
 

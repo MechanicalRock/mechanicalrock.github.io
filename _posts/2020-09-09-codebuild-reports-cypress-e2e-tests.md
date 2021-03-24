@@ -129,7 +129,7 @@ If the reports folder already exists then we want to remove everything in that f
 
 ## Wrapping up
 
-CodeBuild reports enabled us to merge our unit tests and e2e tests into codebuild report. This allowed us to visualise the failure rate and average duration. This enabled the product owner to get a holistic view of the project in a centralised location.
+CodeBuild reports enabled us to merge our unit tests and e2e tests into codebuild reports. This allowed us to visualise the failure rate and average duration. This enabled the product owner to get a holistic view of the project in a centralised location.
 
 If you have any questions, feel free to [contact-us](https://www.mechanicalrock.io/lets-get-started).
 

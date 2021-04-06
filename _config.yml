@@ -22,7 +22,7 @@ url: https://mechanicalrock.github.io # the base hostname & protocol for your si
 twitter_username: mechanicalrock_
 github_username:  mechanicalrock
 paginate: 10
-paginate_path: "/page:num/"
+paginate_path: "/pages/:num/"
 
 # Build settings
 markdown: kramdown

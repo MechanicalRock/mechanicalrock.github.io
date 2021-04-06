@@ -21,6 +21,8 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: https://mechanicalrock.github.io # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: mechanicalrock_
 github_username:  mechanicalrock
+paginate: 10
+paginate_path: "/page:num/"
 
 # Build settings
 markdown: kramdown
@@ -28,6 +30,7 @@ theme: minima
 plugins:
   - jekyll-feed
   - jemoji
+  - jekyll-paginate
 
 # Don't display future posts
 future: false

@@ -13,6 +13,23 @@ a, a:visited {
 	color: #40BFB4;
 }
 
+.pager {
+    display: flex;
+}
+
+.pagination {
+    display: flex;
+    flex-grow: 1;
+    list-style-type: none;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.pagination li {
+    float: left;
+    padding-right: 10px;
+}
+
 .social-media-list > li > a {
 	float: right;
 }

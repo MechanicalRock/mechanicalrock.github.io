@@ -6,10 +6,12 @@ layout: default
     {%- if page.title -%}
       <h1 class="page-heading">{{ page.title }}</h1>
     {%- endif -%}
-  
+
+    <div class="gcse-search"></div>
+
+    <div class="posts">
     {{ content }}
-  
-  
+    
     {% if site.paginate %}
       {% assign posts = paginator.posts %}
     {% else %}
@@ -59,5 +61,87 @@ layout: default
       {%- endif %}
   
     {%- endif -%}
+  </div>
   
   </div>
+
+<script async src="https://cse.google.com/cse.js?cx=21d864d4651009588"></script>
+<script>
+  var searchButtonExists = setInterval(() => {
+    var searchButton = document.getElementsByClassName("gsc-search-button-v2")[0];
+    if(searchButton)
+    {
+      searchButton.addEventListener("click", hidePosts);
+      clearInterval(searchButtonExists);
+    }
+  }, 100);
+
+  var clearButtonExists = setInterval(() => {
+    var clearButton = document.getElementsByClassName("gsst_a")[0];
+    if(clearButton)
+    {
+      clearButton.addEventListener("click", showPosts);
+      clearInterval(clearButtonExists);
+    }
+  }, 100);
+
+  var searchInputExists = setInterval(() => {
+    var searchInput = document.getElementById("gsc-i-id1");
+    if(searchInput)
+    {
+      searchInput.addEventListener("input", showPosts);
+      clearInterval(searchInputExists);
+    }
+  }, 100);
+
+  var posts = document.getElementsByClassName("posts");
+  if(posts.length == 0)
+  {
+    console.error("Posts element not found.");
+  }
+
+  function hidePosts()
+  {
+    var searchInputBox = document.getElementsByClassName("gsc-input-box");
+    if(searchInputBox.length == 0)
+    {
+      return;
+    }
+
+    var searchInput =  searchInputBox[0].getElementsByTagName("input");
+
+    if(searchInput.length == 0 || !searchInput[0].value)
+    {
+      return;
+    }
+
+    var results = document.getElementsByClassName("gsc-results-wrapper-nooverlay")[0];
+
+    results.style.display = "block";
+
+    posts[0].style.display = "none";
+  }
+
+  function showPosts()
+  {
+    var searchInputBox = document.getElementsByClassName("gsc-input-box");
+    if(searchInputBox.length == 0)
+    {
+      return;
+    }
+
+    var searchInput =  searchInputBox[0].getElementsByTagName("input");
+
+    if(searchInput.length == 0 || searchInput[0].value)
+    {
+      return;
+    }
+
+    var results = document.getElementsByClassName("gsc-results-wrapper-nooverlay")[0];
+
+    results.style.display = "none";
+
+    posts[0].style.display = "block";
+  }
+
+</script>

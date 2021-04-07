@@ -8,9 +8,15 @@ body {
     font-weight: 400
 }
 
-
-a, a:visited {
+a {
 	color: #40BFB4;
+}
+a:visited {
+    color: #231f20;
+}
+
+a:hover {
+    color:#e8e5e2;
 }
 
 .pager {
@@ -37,4 +43,90 @@ a, a:visited {
 .footnote {
     font-size: "-2";
     color: #666;
+}
+
+/*
+    Google Search Box
+*/
+
+.gsc-control-cse.gsc-control-cse-en {
+    padding-left: unset;
+    padding-right: unset;
+    padding-top: unset;
+}
+
+.gsc-control-wrapper-cse table {
+    border: unset;
+    margin-bottom: unset;
+}
+
+.gsc-control-wrapper-cse table td  {
+    border: unset;
+}
+
+.gsc-control-wrapper-cse table th, table td {
+    padding: unset;
+}
+
+.gsc-control-wrapper-cse a {
+    padding-top: 7px;
+}
+
+/*
+    Google search results
+*/
+
+/* Remove breadcrumbs */
+.gs-webResult.gs-result .gsc-url-top {
+    display: none;
+}
+
+/* Result title */
+.gs-webResult.gs-result .gs-title a.gs-title:link, .gs-webResult.gs-result a.gs-title:link b {
+    font-size: 24px;
+}
+
+/* Result snippet and result information */
+.gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gsc-table-cell-snippet-close .gs-bidi-start-align.gs-snippet,
+.gsc-result-info-container .gsc-result-info,
+.gsc-orderby .gsc-orderby-label.gsc-inline-block  {
+    font-size: 14px;
+    color: #828282;
+}
+
+/* Results sort */
+.gsc-selected-option-container.gsc-inline-block,
+.gsc-option-menu-container.gsc-inline-block .gsc-option-menu,
+.gsc-option-menu .gsc-option-menu-item,
+.gsc-option-menu-item.gsc-option-menu-item-highlighted:not(:hover) {
+    background-color: #fff;
+    color: #40bfb4;
+    font-size: 13px;
+}
+
+.gsc-selected-option-container.gsc-inline-block,
+.gsc-option-menu-container.gsc-inline-block .gsc-option-menu {
+    border: 1px solid rgba(64, 191, 180, 0.5);
+}
+
+.gsc-option-menu-container.gsc-inline-block .gsc-option-menu{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.gsc-option-menu .gsc-option-menu-item{
+    padding:0px 28px 0px 10px;
+}
+
+.gsc-selected-option-container.gsc-inline-block:active,
+.gsc-selected-option-container.gsc-inline-block:hover,
+.gsc-option-menu-item.gsc-option-menu-item-highlighted,
+.gsc-option-menu-item:hover {
+    color: #fff;
+    border-color: #1da89c;
+    background-color: #40bfb4;
+} 
+
+
+.gsc-option-menu-item.gsc-option-menu-item-highlighted{
+    font-weight: bold;
 }

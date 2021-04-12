@@ -8,11 +8,23 @@ body {
     font-weight: 400
 }
 
-a {
+h3 {
+    margin-bottom: unset;
+}
+
+a,
+.page:visited,
+.change-pages-set:visited
+{
 	color: #40BFB4;
 }
+
+.page.active {
+    font-weight: bold;
+}
+
 a:visited {
-    color: #231f20;
+    color: #1A73E8;
 }
 
 a:hover {
@@ -72,9 +84,21 @@ a:hover {
     padding-top: 7px;
 }
 
-/*
-    Google search results
-*/
+/* Clear button */
+.gsst_b .gsst_a .gscb_a {
+    color: #231f20;
+}
+
+.gsst_b .gsst_a .gscb_a:hover {
+    color:#e8e5e2;
+}
+
+/* Remove search button on click outline */
+.gsc-search-button.gsc-search-button-v2 {
+    outline:none ;
+}
+
+/* Google search results */
 
 /* Remove breadcrumbs */
 .gs-webResult.gs-result .gsc-url-top {
@@ -89,12 +113,13 @@ a:hover {
 /* Result snippet and result information */
 .gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gsc-table-cell-snippet-close .gs-bidi-start-align.gs-snippet,
 .gsc-result-info-container .gsc-result-info,
-.gsc-orderby .gsc-orderby-label.gsc-inline-block  {
+.gsc-orderby .gsc-orderby-label.gsc-inline-block,
+.post-snippet  {
     font-size: 14px;
     color: #828282;
 }
 
-/* Results sort */
+/* Results sort dropdown */
 .gsc-selected-option-container.gsc-inline-block,
 .gsc-option-menu-container.gsc-inline-block .gsc-option-menu,
 .gsc-option-menu .gsc-option-menu-item,
@@ -126,7 +151,54 @@ a:hover {
     background-color: #40bfb4;
 } 
 
-
 .gsc-option-menu-item.gsc-option-menu-item-highlighted{
     font-weight: bold;
+}
+
+.gsc-results-wrapper-nooverlay .gsc-above-wrapper-area {
+    border-bottom: none;
+}
+
+/* Hide Search on Google footer */
+.gcsc-more-maybe-branding-root {
+    display: none;
+}
+
+/* Stylize pagination */
+.gsc-cursor-box.gs-bidi-start-align {
+    display: flex;
+    justify-content: center;
+}
+
+.gsc-cursor-box.gs-bidi-start-align .gsc-cursor .gsc-cursor-page {
+    font-size: 16px;
+    color: #40bfb4;
+    outline: none;
+}
+
+.gsc-cursor-box.gs-bidi-start-align .gsc-cursor .gsc-cursor-page:hover {
+    color:#e8e5e2;
+}
+
+.google-result-meta {
+    font-size: 14px;
+    color: #828282;
+}
+
+/* Web result block */
+.gs-webResult.gs-result .gsc-thumbnail-inside,
+.gs-webResult.gs-result .gsc-table-result { 
+    padding: unset;
+}
+
+/* No results message */
+.gsc-webResult.gsc-result .gs-no-results-result .gs-snippet,
+.gsc-webResult.gsc-result .gs-error-result .gs-snippet {
+    background-color:unset;
+    border: unset;
+    display: inline-block;
+    margin: unset;
+    padding: unset;
+    color: #231f20;
+    font-size: 24px;
 }

@@ -4,10 +4,19 @@
     {% assign default_paths = site.pages | map: "path" %}
     {% assign page_paths = site.header_pages | default: default_paths %}
 
-    <a href="https://www.mechanicalrock.github.io" class="logo-holder">
+    <a href="https://www.mechanicalrock.io" class="logo-holder">
       <img class="logo logo-dark" alt="logo" src="/assets/logo-dark.png">
     </a> 
 
+    <div class="gcse-searchbox"></div>
+
+    <div class="searchresults-modal">
+      <div class="searchresults-modal-content">
+        <div class="close-modal" onclick="closeSearchResultsModal()">x</div>
+        <div class="gcse-searchresults">
+      </div>
+      </div>
+    </div>
   
     {% if page_paths %}
       <nav class="site-nav">
@@ -18,3 +27,5 @@
     {% endif %}
   </div>
 </header>
+<script async src="https://cse.google.com/cse.js?cx=21d864d4651009588"></script>
+<script src="/js/gsce-custom.js"></script>

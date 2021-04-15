@@ -7,8 +7,6 @@ layout: default
       <h1 class="page-heading">{{ page.title }}</h1>
     {%- endif -%}
 
-    <div class="gcse-search"></div>
-
     <div class="home-page-posts">
     {{ content }}
     
@@ -53,7 +51,7 @@ layout: default
   </div>
 
 <script async src="https://cse.google.com/cse.js?cx=21d864d4651009588"></script>
-<script src="/js/gsce-custom.js"></script>
+<script src="/js/paginate.js"></script>
 <script>
   var totalPages = {{ paginator.total_pages }}
   var paginatePath = {{ site.paginate_path | replace: ':num', "" }};

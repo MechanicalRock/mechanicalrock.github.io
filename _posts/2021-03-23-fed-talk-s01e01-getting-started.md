@@ -20,7 +20,7 @@ This series will contain multiple episodes, chronologically ordered to equip you
 * Episode 3: Routing
 * Episode 4: Testing and Developing components
 
-## :brain: Mindset
+## :thought_balloon: Mindset
 **Does what you’re building already have an affiliated Design System (DS), or a living Style Guide, or at least some kind of Branding documentation?**
 
 If the answer is yes, that’s great, you have a basis to work from and extend off. My mentality in this case is
@@ -72,7 +72,7 @@ In all of my use cases I’ve found Material UI (MUI) to have everything I need.
 :light_bulb_on: The point of this is to not sway you from the other UI libraries, instead, it was to get you thinking and continuously keep comparing what’s out there.
 
 ---
-## :race_car: Let's get started!
+## :rocket: Let's get started!
 ### Create React App
 
 ```bash
@@ -156,8 +156,46 @@ However, if you use the `<Icon />` component, be mindful of accessibility requir
 <Typography variant="srOnly">Create a user</Typography>
 ```
 
-
 For this series we will be using MUI Icons, which inherently use <SVGIcon /> (a richer, accessible component)
+
+---
+
+## :wrench: App Preparation
+Now that the core libraries have been installed I would then remove all the demonstration content from the `src/App.tsx` file. Following that, we should start to shape our App’s basis by doing the following.
+
+### CssBaseline
+> <br >Use the CssBaseline component to kickstart an elegant, consistent, and simple baseline to build upon.<br ><br >
+
+Edit your `App.tsx` file to look something like:
+
+![App.tsx sceenshot](/img/fed-talk/s01e01/app.png)
+
+Upon saving those changes and loading your App, you’ll notice a new `<style>` tag being injected in the `<head>`:
+
+![CSS Baseline style tag](/img/fed-talk/s01e01/basline-screenshot.png)
+
+What this is doing is configuring the browser to print as consistent as it can across all browsers.
+
+> <br >
+> Page
+> <br ><br >The <html> and <body> elements are updated to provide better page-wide defaults. More specifically:
+> - The margin in all browsers is removed.
+> - The default Material Design background color is applied. It's using theme.palette.background.default for standard devices and a white background for print devices.
+> <br ><br >
+> Layout
+> <br ><br >
+> box-sizing is set globally on the <html> element to border-box. Every element—including *::before and *::after are declared to inherit this property, which ensures that the declared width of the element is never exceeded due to padding or border.
+> <br ><br >
+> Typography
+> <br ><br >
+> No base font-size is declared on the <html>, but 16px is assumed (the browser default). You can learn more about the implications of changing the <html> default font size in the theme documentation page.
+>
+> Set the theme.typography.body2 style on the <body> element.
+> Set the font-weight to theme.typography.fontWeightBold for the <b> and <strong> elements.
+> Custom font-smoothing is enabled for better display of the Roboto font.
+>
+> https://material-ui.com/components/css-baseline/
+> <br >
 
 ---
 

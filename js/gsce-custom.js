@@ -2,11 +2,16 @@ const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 window.__gcse = {
     searchCallbacks: {
       web: {
-        starting: showSearchResultsModal,
+        starting: setSearchQuery,
+        ready: showSearchResultsModal,
         rendered: getDateFromLink,
       },
     },
   };
+
+function setSearchQuery(gname, query) {
+    document.getElementsByClassName("searchresults-modal-title")[0].innerHTML= "Showing results for: " + query;
+}
 
 function showSearchResultsModal() {
     var searchResultsModal = document.getElementsByClassName('searchresults-modal')[0];

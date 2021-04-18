@@ -31,9 +31,6 @@ layout: default
               {{ post.title | escape }}
             </a>
           </h3>
-          <div class="post-snippet">
-            {{ post.content | strip_html | truncatewords: 22}}
-          </div>
         </li>
         {%- endfor -%}
       </ul>

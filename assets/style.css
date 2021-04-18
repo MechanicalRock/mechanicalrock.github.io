@@ -115,11 +115,8 @@ table td {
 
 /* Result snippet and result information */
 .gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gsc-table-cell-snippet-close .gs-bidi-start-align.gs-snippet,
-.gsc-result-info-container .gsc-result-info,
-.gsc-orderby .gsc-orderby-label.gsc-inline-block,
-.post-snippet  {
-    font-size: 14px;
-    color: #828282;
+.gsc-orderby .gsc-orderby-label.gsc-inline-block  {
+    display: none;
 }
 
 /* Results sort dropdown */
@@ -206,6 +203,7 @@ table td {
     font-size: 24px;
 }
 
+
 .searchresults-modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -214,7 +212,7 @@ table td {
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    background-color: rgba(200, 200, 200, 0.4);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .searchresults-modal-content {

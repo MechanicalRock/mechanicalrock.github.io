@@ -12,7 +12,7 @@ image: /img/fed-talk/cover-ep1-740.png
 
 I’ve been meaning to write a Front-End Developer (FED) series for quite some time now. Having worked in many industries, building many Web Apps on different stacks and Design Systems, I’m here to share my learnings and hopefully you will get something out of it.
 
-These days it's very easy for new developers to get up and running using tooling such as `create-react-app`. Tooling such as this are great as it speeds up repetitive tasks and automates all of a React's initial constructs, enabling developers to be able to build, test and deploy their applications. But, great tooling can also restrict one's knowledge of understanding what actually happens during and after its compilation.
+These days it's very easy for new developers to get up and running using tooling such as `create-react-app`. Tooling such as this is great as it speeds up repetitive tasks and automates all of a React's initial constructs, enabling developers to be able to build, test and deploy their applications. But, great tooling can also restrict one's knowledge of understanding what actually happens during and after its compilation.
 
 This series will contain many episodes, each ordered with hope to equip you with a typical FED experience on how to build React Apps. As it stands the following subjects have been identified:
 

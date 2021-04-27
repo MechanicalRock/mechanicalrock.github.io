@@ -102,8 +102,8 @@ I’ve chosen 3 libraries to compare, each slightly different in their philosoph
 | React Version          |                                                                          | ^16.8.0                                                                   |                                                          |
 | Typescript?            |                                                                          |   (v3.2+)                                                                 |                                                          |
 | Browser Support        | IE: 11<br>Edge: >= 80<br>Firefox:>= 60<br>Chrome: >= 60<br>Safari: >= 10 | IE: 11<br>Edge: >= 14<br>Firefox: >= 52<br>Chrome: >= 49<br>Safari: >= 10 | IE:<br>Edge:<br>Firefox:<br>Chrome:<br>Safari:           |
-| Roadmap                | [Github Discussions](https://github.com/twbs/bootstrap/discussions){:target="_blank"}                            | [MUI Roadmap](https://material-ui.com/discover-more/roadmap/#roadmap){:target="_blank"}                    | [Github Discussions](https://github.com/tailwindlabs/headlessui/discussions){:target="_blank"}   |
-| Design Figma Artifacts | [Figma link](https://www.figma.com/community/file/876022745968684318){:target="_blank"}                  | [Figma link](https://www.figma.com/community/file/880534892514982400){:target="_blank"}                   | [Figma link](https://www.figma.com/community/file/958383439532195363){:target="_blank"}  |
+| Roadmap                | [Github Discussions](https://github.com/twbs/bootstrap/discussions){:target="_blank" rel="noopener"}                            | [MUI Roadmap](https://material-ui.com/discover-more/roadmap/#roadmap){:target="_blank" rel="noopener"}                    | [Github Discussions](https://github.com/tailwindlabs/headlessui/discussions){:target="_blank" rel="noopener"}   |
+| Design Figma Artifacts | [Figma link](https://www.figma.com/community/file/876022745968684318){:target="_blank" rel="noopener"}                  | [Figma link](https://www.figma.com/community/file/880534892514982400){:target="_blank" rel="noopener"}                   | [Figma link](https://www.figma.com/community/file/958383439532195363){:target="_blank" rel="noopener"}  |
 
 In all my use cases I’ve found Material UI (MUI) to have everything I need. The amount of developer tools their library provide are perfect for my React apps. So for the rest of this journey, we will be focusing on building a React App, using Material UI to help us.
 
@@ -184,7 +184,7 @@ Their SVGs come available in a few variations:
 | ![Filled Icon](/img/fed-talk/s01e01/icon-filled.png)      | ![Outlined Icon](/img/fed-talk/s01e01/icon-outlined.png)        | ![Rounded Icon](/img/fed-talk/s01e01/icon-rounded.png) | ![Two Tone Icon](/img/fed-talk/s01e01/icon-twoTone.png) | ![Sharp Icon](/img/fed-talk/s01e01/icon-sharp.png) |
 
 
-If their SVG library does not satisfy your needs, MUI have conveniently created a component `<Icon />` where you can inject any of [Font Awesome](https://fontawesome.com/){:target="_blank"} classes into the component.
+If their SVG library does not satisfy your needs, MUI have conveniently created a component `<Icon />` where you can inject any of [Font Awesome](https://fontawesome.com/){:target="_blank" rel="noopener"} classes into the component.
 
 ```ts
 <Icon className="fa fa-plus-circle" />
@@ -237,7 +237,7 @@ This is configuring the browser to print as consistent as it can across all brow
 > Set the font-weight to theme.typography.fontWeightBold for the `<b>` and `<strong>` elements.
 > Custom font-smoothing is enabled for better display of the Roboto font.
 >
-> [Learn more.](https://material-ui.com/components/css-baseline/){:target="_blank"}
+> [Learn more.](https://material-ui.com/components/css-baseline/){:target="_blank" rel="noopener"}
 > <br >
 
 ### Understanding the “Box Model”
@@ -302,7 +302,7 @@ Charset stands for Character Sets, it instructs the browser to compute the rest 
 > <br>
 > With XML and HTML5, UTF-8 finally arrived and solved a lot of character encoding problems.
 >
-> [Learn more.](https://www.w3schools.com/charsets/default.asp){:target="_blank"}
+> [Learn more.](https://www.w3schools.com/charsets/default.asp){:target="_blank" rel="noopener"}
 
 ```html
 <head>
@@ -335,7 +335,7 @@ The following will output:
 ### Favicon
 A favicon is where you have the ability to brand your website/application. A well defined favicon gets used in browser Tabs, Bookmarks, PWA Install-to-desktop files, PWA Loading Screens, Offline files. They may seem like such a little thing, but all the little things add up to making your brand stand out!
 
-I use [realfavicongenerator](https://realfavicongenerator.net/){:target="_blank"} to generate my favicon set. It’s a great online tool because it emulates how it would look in all devices and browsers. Taking it further, their website also allow you to customise the PWA manifest file, better declaring things like your brand’s colours.
+I use [realfavicongenerator](https://realfavicongenerator.net/){:target="_blank" rel="noopener"} to generate my favicon set. It’s a great online tool because it emulates how it would look in all devices and browsers. Taking it further, their website also allow you to customise the PWA manifest file, better declaring things like your brand’s colours.
 
 After following their generation process you’ll be provided a zip file which have all the static resources required for you to host it in your `public/` folder.
 
@@ -373,7 +373,7 @@ Last thing to cover is the viewport meta tag.
 >
 > Then, when we started surfing the internet using tablets and mobile phones, fixed size web pages were too large to fit the viewport. To fix this, browsers on those devices scaled down the entire web page to fit the screen.
 >
-> [Learn more](https://www.w3schools.com/css/css_rwd_viewport.asp){:target="_blank"}
+> [Learn more](https://www.w3schools.com/css/css_rwd_viewport.asp){:target="_blank" rel="noopener"}
 
 
 | Mobile: without viewport declaration | Mobile: with viewport declaration |
@@ -392,7 +392,7 @@ As you can see the screenshot on the right neatly fits the maximum content into 
 >
 >The initial-scale=1 part sets the initial zoom level when the page is first loaded by the browser.
 >
-> [Lean more.](https://www.w3schools.com/css/css_rwd_viewport.asp){:target="_blank"}
+> [Lean more.](https://www.w3schools.com/css/css_rwd_viewport.asp){:target="_blank" rel="noopener"}
 
 ---
 

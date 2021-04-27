@@ -26,27 +26,27 @@ In today's episode we will bootstrap a React application going into detail durin
 ---
 
 **Table of Contents:**
-- [:thought_balloon: Mindset](#-thought-balloon--mindset)
-- [:thinking: Which UI Library?](#-thinking--which-ui-library-)
+- [:thought_balloon: Mindset](#thought_balloon-mindset)
+- [:thinking: Which UI Library?](#thinking-which-ui-library)
   * [Comparison](#comparison)
-- [:rocket: Let's get started!](#-rocket--let-s-get-started-)
+- [:rocket: Let's get started!](#rocket-lets-get-started)
   * [Create React App](#create-react-app)
   * [Public Folder](#public-folder)
   * [Source Folder](#source-folder)
   * [package.json file](#packagejson-file)
-- [:keyboard: Install Material-UI modules](#-keyboard--install-material-ui-modules)
-  * [@material-ui/core](#-material-ui-core)
-  * [@material-ui/icons](#-material-ui-icons)
-- [:wrench: App Preparation](#-wrench--app-preparation)
+- [:keyboard: Install Material-UI modules](#keyboard-install-material-ui-modules)
+  * [@material-ui/core](#material-uicore)
+  * [@material-ui/icons](#material-uiicons)
+- [:wrench: App Preparation](#wrench-app-preparation)
   * [CssBaseline](#cssbaseline)
-  * [Understanding the “Box Model”](#understanding-the--box-model-)
-  * [What does "box-sizing" actually do?](#what-does--box-sizing--actually-do-)
-- [:massage: Heads Up!](#-punch--heads-up-)
+  * [Understanding the “Box Model”](#understanding-the-box-model)
+  * [What does "box-sizing" actually do?](#what-does-box-sizing-actually-do)
+- [:massage: Heads Up!](#punch-heads-up)
   * [Charset](#charset)
   * [Title](#title)
   * [Favicon](#favicon)
   * [Viewport](#viewport)
-- [:pray: Closing](#-pray--closing)
+- [:pray: Closing](#pray-closing)
 
 ---
 

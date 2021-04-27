@@ -1,13 +1,16 @@
 body {
-    font-size: 1em;
-    line-height: 1.85714286em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: 'Open Sans','Helvetica','Arial',sans-serif;
-    color: #666;
-    font-weight: 400
+    /* font-size: 1em; */
+    /* line-height: 1.85714286em; */
+    /* font-family: 'Open Sans','Helvetica','Arial',sans-serif; */
+    /* color: #666; */
+    font-family: Georgia, Cambria, "Times New Roman";
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.7em;
+    color: #383838;
 }
-
 
 a, a:visited {
 	color: #40BFB4;
@@ -37,4 +40,25 @@ a, a:visited {
 .footnote {
     font-size: "-2";
     color: #666;
+}
+
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure, .highlight {
+    margin-bottom: 1em;
+}
+
+hr {
+    margin: 2em 0;
+}
+
+blockquote {
+    font-style: normal;
+    font-family: sans-serif;
+}
+
+h3 {
+    margin-top: 2em;
+}
+
+.post-title {
+    font-family: 'Open Sans','Helvetica','Arial',sans-serif;
 }

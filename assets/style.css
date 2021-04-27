@@ -1,13 +1,12 @@
 body {
-    font-size: 1em;
-    line-height: 1.85714286em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-size: 1em;
+    line-height: 1.85714286em;
     font-family: 'Open Sans','Helvetica','Arial',sans-serif;
     color: #666;
-    font-weight: 400
-}
 
+}
 
 a, a:visited {
 	color: #40BFB4;
@@ -37,4 +36,39 @@ a, a:visited {
 .footnote {
     font-size: "-2";
     color: #666;
+}
+
+.post-content.serif {
+    font-family: Georgia, Cambria, "Times New Roman";
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.7em;
+    color: #383838;
+}
+
+.post-content.serif h1, .post-content.serif h2, .post-content.serif h3, .post-content.serif h4, .post-content.serif h5, .post-content.serif h6, .post-content.serif p, .post-content.serif blockquote, .post-content.serif pre, .post-content.serif ul, .post-content.serif ol, .post-content.serif dl, .post-content.serif figure, .post-content.serif .highlight {
+    margin-bottom: 1em;
+}
+
+.post-content.serif hr {
+    margin: 2em 0;
+}
+
+.post-content.serif blockquote {
+    font-style: normal;
+    font-family: sans-serif;
+}
+
+.post-content.serif h3 {
+    margin-top: 2em;
+}
+
+.post-content.serif table {
+    border: 1px solid #e8e8e8;
+    font-family: sans-serif;
+    font-size: 0.8em;
+}
+
+.post-content.serif .post-title {
+    font-family: 'Open Sans','Helvetica','Arial',sans-serif;
 }

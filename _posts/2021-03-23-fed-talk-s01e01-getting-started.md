@@ -1,5 +1,6 @@
 ---
 layout: post
+font: serif
 title: "FED Talk! (S01E01): Getting Started"
 date: 2021-04-27
 tags: front-end-development FED-Talk react material-ui design theme
@@ -293,17 +294,15 @@ Open and edit the following file `public/index.html`
 
 Charset stands for Character Sets, it instructs the browser to compute the rest of the document with the defined charset. Example charsets are: **Numb, ASCII, ANSI, 8859, UTF-8.**
 
-> <br>
 > The HTML5 specification encourages web developers to use the UTF-8 character set!
-> <br><br>
-> This has not always been the case. The character encoding for the early web was ASCII.
-> <br><br>
-> Later, from HTML 2.0 to HTML 4.01, ISO-8859-1 was considered as the standard character set.
-> <br><br>
-> With XML and HTML5, UTF-8 finally arrived and solved a lot of character encoding problems. <br><br>
->
-> https://www.w3schools.com/charsets/default.asp
 > <br>
+> This has not always been the case. The character encoding for the early web was ASCII.
+> <br>
+> Later, from HTML 2.0 to HTML 4.01, ISO-8859-1 was considered as the standard character set.
+> <br>
+> With XML and HTML5, UTF-8 finally arrived and solved a lot of character encoding problems.
+>
+> [Learn more.](https://www.w3schools.com/charsets/default.asp)
 
 ```html
 <head>
@@ -316,15 +315,11 @@ Charset stands for Character Sets, it instructs the browser to compute the rest 
 The title tag is a mandatory, text-only tag which sets the document’s title and is visible in your browsers Tab, History & Bookmarks.
 
 :hot_pepper: Hot Tips!
-> <br>
->
 > * Go for a longer, descriptive title (avoid one- or two-word titles)
->
 > * Search engines will display about 50-60 characters of the title, so try not to have titles longer than that
->
 > * Do not use just a list of words as the title (this may reduce the page's position in search results)
 >
-> So, try to make the title as accurate and meaningful as possible!<br><br>
+> So, try to make the title as accurate and meaningful as possible!
 
 ```html
 <head>
@@ -335,7 +330,7 @@ The title tag is a mandatory, text-only tag which sets the document’s title an
 
 The following will output:
 
-![Screenshot of Chrome browser Tab showing "Design System | QuinTRON"](/img/fed-talk/s01e01/title.png)
+![Screenshot of Chrome browser Tab printing the following text 'Design System \| QuinTRON'](/img/fed-talk/s01e01/title.png)
 
 ### Favicon
 A favicon is where you have the ability to brand your website/application. A well defined favicon gets used in browser Tabs, Bookmarks, PWA Install-to-desktop files, PWA Loading Screens, Offline files. They may seem like such a little thing, but all the little things add up to making your brand stand out!
@@ -370,7 +365,6 @@ I end up with this:
 ### Viewport
 Last thing to cover is the viewport meta tag.
 
-> <br>
 >The viewport is the user's visible area of a web page.
 >
 > The viewport varies with the device, and will be smaller on a mobile phone than on a computer screen.
@@ -379,7 +373,7 @@ Last thing to cover is the viewport meta tag.
 >
 > Then, when we started surfing the internet using tablets and mobile phones, fixed size web pages were too large to fit the viewport. To fix this, browsers on those devices scaled down the entire web page to fit the screen.
 >
-> https://www.w3schools.com/css/css_rwd_viewport.asp<br><br>
+> [Learn more](https://www.w3schools.com/css/css_rwd_viewport.asp)
 
 
 | Mobile: without viewport declaration | Mobile: with viewport declaration |
@@ -392,15 +386,13 @@ As you can see the screenshot on the right neatly fits the maximum content into 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 ```
 
-><br>
 >This gives the browser instructions on how to control the page's dimensions and scaling.
 >
 >The width=device-width part sets the width of the page to follow the screen-width of the device (which will vary depending on the device).
 >
 >The initial-scale=1 part sets the initial zoom level when the page is first loaded by the browser.
 >
-> https://www.w3schools.com/css/css_rwd_viewport.asp
-> <br>
+> [Lean more.](https://www.w3schools.com/css/css_rwd_viewport.asp)
 
 ---
 

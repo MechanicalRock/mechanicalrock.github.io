@@ -10,11 +10,11 @@ image: /img/fed-talk/cover-ep1-740.png
 
 ![Front-End Development Talk: Episode 1 - Getting Started](/img/fed-talk/cover-ep1-740.png)
 
-I’ve been meaning to write a Front-End Developer (FED) series for quite some time now. Having worked in many industries, building numerous Web Apps on different stacks and Design Systems, I’m here to share my learnings and hopefully you will get something out of it.
+I’ve been meaning to write a Front-End Developer (FED) series for quite some time now. Having worked in many industries, building many Web Apps on different stacks and Design Systems, I’m here to share my learnings and hopefully you will get something out of it.
 
-These days it's very easy for new developers to get up and running using tooling such as `create-react-app`. Tooling such as this are great as it speeds up repetitive tasks and automates all of a React's initial constructs, enabling developers to be able to build, test and deploy their applications. However, great tooling can also restrict ones knowledge of understanding what actually happens during and after its compilation.
+These days it's very easy for new developers to get up and running using tooling such as `create-react-app`. Tooling such as this are great as it speeds up repetitive tasks and automates all of a React's initial constructs, enabling developers to be able to build, test and deploy their applications. But, great tooling can also restrict one's knowledge of understanding what actually happens during and after its compilation.
 
-This series will contain multiple episodes, chronologically ordered to equip you with a typical FED experience of building React Apps. As it stands the following subjects have been identified:
+This series will contain many episodes, each ordered with hope to equip you with a typical FED experience on how to build React Apps. As it stands the following subjects have been identified:
 
 * Episode 1: Getting Started
 * Episode 2: Theme Providers
@@ -60,13 +60,13 @@ If the answer is yes, that’s great, you have a basis to work from and extend o
 
 If the answer is no, that’s still okay, instead you have prime opportunity to centralize the App’s DS artifacts! My mentality in this case is a bit more involved and requires team/company wide structure to help formulate a cross functional Design → Developer process. We will cover this in more detail throughout the series.
 
-For the remainder of this series we will assume there is no DS, instead, we will build one DS alongside our functional React App! That's the cool thing about this, when you are creating a new App, it’s better practise to create one from the get-go as it helps with testing, its living documentation, it can make design discussions easier etc.
+For the rest of this series we will assume there is no DS, instead, we will build one DS alongside our functional React App! That's the cool thing about this, when you are creating a new App, it’s better practise to create one from the get-go as it helps with testing, its living documentation, it can make design discussions easier etc.
 
->  *I’m flinging the word “Design System” too loose here. We’ll be creating a Living Component Library (a subset of a Design System) as trying to build full a Design System is more than just code artifacts.*
+>  *I’m flinging the word “Design System” too loose here. We’ll be creating a Living Component Library (a subset of a Design System) as trying to build full a Design System is more than code artifacts.*
 
 ## :thinking: Which UI Library?
 
-There has and always will be a handful of UI libraries floating around, battling for top adoption rates but before we pick a library lets be clear what a UI library is and why I think they are necessary to have in your toolbelt.
+There has and always will be a handful of UI libraries floating around, battling for top adoption rates but before we pick a library let's be clear what a UI library is and why they are necessary.
 
 A UI library is a central repository where both design artifacts and developed components are showcased. They contain all the essential building blocks an application requires to start it's creation, things like: Typography, Buttons, Links, Cards, Lists, Tables, Layouts, Responsive design etc. Good UI libraries make it easy for the consumer to define their own Themes and Components, are testable, are accessible and are well documented.
 
@@ -102,10 +102,10 @@ I’ve chosen 3 libraries to compare, each slightly different in their philosoph
 | React Version          |                                                                          | ^16.8.0                                                                   |                                                          |
 | Typescript?            |                                                                          |   (v3.2+)                                                                 |                                                          |
 | Browser Support        | IE: 11<br>Edge: >= 80<br>Firefox:>= 60<br>Chrome: >= 60<br>Safari: >= 10 | IE: 11<br>Edge: >= 14<br>Firefox: >= 52<br>Chrome: >= 49<br>Safari: >= 10 | IE:<br>Edge:<br>Firefox:<br>Chrome:<br>Safari:           |
-| Roadmap                | [Github Discussions](https://github.com/twbs/bootstrap/discussions)                            | [MUI Roadmap](https://material-ui.com/discover-more/roadmap/#roadmap)                    | [Github Discussions](https://github.com/tailwindlabs/headlessui/discussions)   |
-| Design Figma Artifacts | [Figma link](https://www.figma.com/community/file/876022745968684318)                  | [Figma link](https://www.figma.com/community/file/880534892514982400)                   | [Figma link](https://www.figma.com/community/file/958383439532195363)  |
+| Roadmap                | [Github Discussions](https://github.com/twbs/bootstrap/discussions){:target="_blank"}                            | [MUI Roadmap](https://material-ui.com/discover-more/roadmap/#roadmap){:target="_blank"}                    | [Github Discussions](https://github.com/tailwindlabs/headlessui/discussions){:target="_blank"}   |
+| Design Figma Artifacts | [Figma link](https://www.figma.com/community/file/876022745968684318){:target="_blank"}                  | [Figma link](https://www.figma.com/community/file/880534892514982400){:target="_blank"}                   | [Figma link](https://www.figma.com/community/file/958383439532195363){:target="_blank"}  |
 
-In all of my use cases I’ve found Material UI (MUI) to have everything I need. The amount of additional developer tools their library expose are perfect for my React apps. So for the rest of this journey, we will be focusing on building a React App, using Material UI to help us.
+In all my use cases I’ve found Material UI (MUI) to have everything I need. The amount of developer tools their library provide are perfect for my React apps. So for the rest of this journey, we will be focusing on building a React App, using Material UI to help us.
 
 :exclamation: The point of this is to not sway you from the other UI libraries, instead, it was to get you thinking, to keep comparing and seeing what else is out there.
 
@@ -184,7 +184,7 @@ Their SVGs come available in a few variations:
 | ![Filled Icon](/img/fed-talk/s01e01/icon-filled.png)      | ![Outlined Icon](/img/fed-talk/s01e01/icon-outlined.png)        | ![Rounded Icon](/img/fed-talk/s01e01/icon-rounded.png) | ![Two Tone Icon](/img/fed-talk/s01e01/icon-twoTone.png) | ![Sharp Icon](/img/fed-talk/s01e01/icon-sharp.png) |
 
 
-If their SVG library does not satisfy your needs, MUI have conveniently created a component `<Icon />` where you can inject any of [Font Awesome](https://fontawesome.com/) classes into the component.
+If their SVG library does not satisfy your needs, MUI have conveniently created a component `<Icon />` where you can inject any of [Font Awesome](https://fontawesome.com/){:target="_blank"} classes into the component.
 
 ```ts
 <Icon className="fa fa-plus-circle" />
@@ -237,7 +237,7 @@ This is configuring the browser to print as consistent as it can across all brow
 > Set the font-weight to theme.typography.fontWeightBold for the `<b>` and `<strong>` elements.
 > Custom font-smoothing is enabled for better display of the Roboto font.
 >
-> [Learn more.](https://material-ui.com/components/css-baseline/)
+> [Learn more.](https://material-ui.com/components/css-baseline/){:target="_blank"}
 > <br >
 
 ### Understanding the “Box Model”
@@ -274,13 +274,13 @@ By appending the `box-sizing: border-box;` property to each of the 3 boxes, the 
 
 ![3 boxes in a row where their box-sizing is set to border-box](/img/fed-talk/s01e01/boxsize-3.png)
 
-Notice the content area itself shrinks (blue square), but everything else stays the same? That’s the power of applying `box-sizing: border-box;` across the app. It sets an opinionated view on how content can be constructed throughout the app. I personally use this implementation as it stops me from having to calculate dimensions in my head, all I have to do now is provide a width and height and we’re good to go.
+Notice the content area itself shrinks (blue square), but everything else stays the same? That’s the power of applying `box-sizing: border-box;` across the app. It sets an opinionated view on how content can be constructed throughout the app. I use this implementation as it stops me from having to calculate dimensions in my head, all I have to do now is provide a width and height and we’re good to go.
 
 ---
 
 ## :massage: Heads Up!
 
-It’s important to keep your webpage’s Meta information up-to-date as a lot of the information in the `<head>` help define the webpage’s meta-data. This data can be used for numerous things such as:
+It’s important to keep your webpage’s Meta information up-to-date as a lot of the information in the `<head>` help define the webpage’s meta-data. This data can be used for many things such as:
 
 * Describing your page’s content to Web Crawlers (description, author, content type). This is to help with Search Engine Optimisations (SEO)
 * Declaring your documents `charset`
@@ -302,7 +302,7 @@ Charset stands for Character Sets, it instructs the browser to compute the rest 
 > <br>
 > With XML and HTML5, UTF-8 finally arrived and solved a lot of character encoding problems.
 >
-> [Learn more.](https://www.w3schools.com/charsets/default.asp)
+> [Learn more.](https://www.w3schools.com/charsets/default.asp){:target="_blank"}
 
 ```html
 <head>
@@ -335,7 +335,7 @@ The following will output:
 ### Favicon
 A favicon is where you have the ability to brand your website/application. A well defined favicon gets used in browser Tabs, Bookmarks, PWA Install-to-desktop files, PWA Loading Screens, Offline files. They may seem like such a little thing, but all the little things add up to making your brand stand out!
 
-I typically use https://realfavicongenerator.net/ to generate my favicon set. It’s a great online tool because it emulates how it would look in all devices and browsers. Taking it further, their website also allow you to customise the PWA manifest file, better declaring things like your brand’s colours.
+I use [realfavicongenerator](https://realfavicongenerator.net/){:target="_blank"} to generate my favicon set. It’s a great online tool because it emulates how it would look in all devices and browsers. Taking it further, their website also allow you to customise the PWA manifest file, better declaring things like your brand’s colours.
 
 After following their generation process you’ll be provided a zip file which have all the static resources required for you to host it in your `public/` folder.
 
@@ -373,7 +373,7 @@ Last thing to cover is the viewport meta tag.
 >
 > Then, when we started surfing the internet using tablets and mobile phones, fixed size web pages were too large to fit the viewport. To fix this, browsers on those devices scaled down the entire web page to fit the screen.
 >
-> [Learn more](https://www.w3schools.com/css/css_rwd_viewport.asp)
+> [Learn more](https://www.w3schools.com/css/css_rwd_viewport.asp){:target="_blank"}
 
 
 | Mobile: without viewport declaration | Mobile: with viewport declaration |
@@ -392,7 +392,7 @@ As you can see the screenshot on the right neatly fits the maximum content into 
 >
 >The initial-scale=1 part sets the initial zoom level when the page is first loaded by the browser.
 >
-> [Lean more.](https://www.w3schools.com/css/css_rwd_viewport.asp)
+> [Lean more.](https://www.w3schools.com/css/css_rwd_viewport.asp){:target="_blank"}
 
 ---
 

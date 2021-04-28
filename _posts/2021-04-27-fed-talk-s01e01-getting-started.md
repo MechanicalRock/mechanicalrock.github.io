@@ -181,7 +181,7 @@ Their SVGs come available in a few variations:
 
 | Filled | Outlined | Rounded | Two Tone | Sharp |
 |--------|----------|---------|----------|-------|
-| ![Filled Icon](/img/fed-talk/s01e01/icon-filled.png)      | ![Outlined Icon](/img/fed-talk/s01e01/icon-outlined.png)        | ![Rounded Icon](/img/fed-talk/s01e01/icon-rounded.png) | ![Two Tone Icon](/img/fed-talk/s01e01/icon-twoTone.png) | ![Sharp Icon](/img/fed-talk/s01e01/icon-sharp.png) |
+| ![Filled Icon](/img/fed-talk/s01e01/icon-filled.png)      | ![Outlined Icon](/img/fed-talk/s01e01/icon-outlined.png)        | ![Rounded Icon](/img/fed-talk/s01e01/icon-rounded.png) | ![Two Tone Icon](/img/fed-talk/s01e01/icon-twotone.png) | ![Sharp Icon](/img/fed-talk/s01e01/icon-sharp.png) |
 
 
 If their SVG library does not satisfy your needs, MUI have conveniently created a component `<Icon />` where you can inject any of [Font Awesome](https://fontawesome.com/){:target="_blank" rel="noopener"} classes into the component.

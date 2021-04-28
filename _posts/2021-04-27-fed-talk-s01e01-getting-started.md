@@ -173,7 +173,7 @@ The Icons library includes over a thousand icons, conveniently exposed as SvgIco
 npm install @material-ui/icons
 ```
 
-A searchable list of all their icons can be found here: https://material-ui.com/components/material-icons/
+A searchable list of all their icons can be found here: [https://material-ui.com/components/material-icons/](https://material-ui.com/components/material-icons/)
 
 ![A screenshot of what Material UI Icon library looks like](/img/fed-talk/s01e01/mui-icons-screenshot.png)
 
@@ -380,7 +380,7 @@ Last thing to cover is the viewport meta tag.
 |--------|----------|
 | ![Mobile screenshot where the viewport meta tag is not set. Illustrating most of the body content being overflowing outside of the mobile's width, thus making the content unreadable from the very start.](/img/fed-talk/s01e01/viewport-without.png) | ![Mobile screenshot where the viewport meta tag is set. Illustrating all of the body content being showed in mobile's width](/img/fed-talk/s01e01/viewport-with.png) |
 
-As you can see the screenshot on the right neatly fits the maximum content into the devices viewport width. Obviously you’ll need to better style content for mobile, by that’s beside the point.
+As you can see the screenshot on the right neatly fits the maximum content into the devices viewport width. Obviously you’ll need to better style content for mobile, but that’s beside the point.
 
 ```html
   <meta name="viewport" content="width=device-width, initial-scale=1" />

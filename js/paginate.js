@@ -1,9 +1,5 @@
 const VISIBLE_PAGE_NUMBERS = 10;
 
-window.onload = function() {
-    setupPagination();
-}
-
 function setupPagination() 
 {
     var currentPageNumber = getCurrentPageNumber();

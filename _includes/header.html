@@ -1,43 +1,49 @@
 <header class="site-header" role="banner">
-<div class="logo-row">
-  <a href="https://www.mechanicalrock.io" class="logo-holder">
-    <img class="logo logo-dark" alt="logo" src="/assets/logo-dark.png">
-  </a> 
-
-  <div class="header-description">
-    <p>
-    Our team are leaders in AWS and DevOps, 
-    browse or search their collection of blogs below 
-  </p>
-</div>
-</div>
+  <div class="logo-row">
+     <a href="https://www.mechanicalrock.io" class="logo-holder">
+     <img class="logo logo-white" alt="logo" src="/assets/logo-white.png">
+     </a> 
+     <div class="header-description">
+        <p>
+           <b>
+           Our team are leaders in AWS and DevOps, 
+           browse or search their collection of blogs below 
+           </b>
+        </p>
+     </div>
+  </div>
   <div class="wrapper">
-    {% assign default_paths = site.pages | map: "path" %}
-    {% assign page_paths = site.header_pages | default: default_paths %}
-
-    <div class="gcse-searchbox"></div>
-
-    <div class="searchresults-modal">
-      <div class="searchresults-modal-content">
-        <div class="searchresults-modal-close" onclick="closeSearchResultsModal()">×</div>
-        <div class="searchresults-modal-header-row">
-        <div class="searchresults-modal-title"></div>
-      </div>
-      <div class="searchresults-modal-body">
-        <div class="gcse-searchresults">
+     {% assign default_paths = site.pages | map: "path" %}
+     {% assign page_paths = site.header_pages | default: default_paths %}
+     <div class="gcse-searchbox"></div>
+     <div class="searchresults-modal">
+        <div class="searchresults-modal-content">
+           <div class="searchresults-modal-close" onclick="closeSearchResultsModal()">
+              <p>×</p>
+           </div>
+           <div class="searchresults-modal-header-row">
+              <div class="searchresults-modal-title"></div>
+           </div>
+           <div class="searchresults-modal-body">
+              <div class="gcse-searchresults"></div>
+           </div>
         </div>
-      </div>
-      </div>
-    </div>
-  
-    {% if page_paths %}
-      <nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-        <label for="nav-trigger">
-        </label>
-      </nav>
-    {% endif %}
+     </div>
+  </div>
+  {% if page_paths %}
+  <nav class="site-nav">
+     <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+     <label for="nav-trigger">
+     </label>
+  </nav>
+  {% endif %}
   </div>
 </header>
 <script async src="https://cse.google.com/cse.js?cx=21d864d4651009588"></script>
 <script src="/js/gsce-custom.js"></script>
+<script>
+  window.onload = function() {
+    setupPagination();
+    addSearchRowElementInModal();
+}
+</script>

@@ -1,3 +1,7 @@
+window.onload = function() {
+    setupPagination(10);
+}
+
 function setupPagination(visiblePageNumbers) 
 {
     var currentPageNumber = getCurrentPageNumber();
@@ -79,9 +83,9 @@ function setHrefForPage(element, pageNumber)
 }
 
 module.exports = {
-    setHrefForPage,
-    setupPageButton,
-    getSetOfPagesElement,
-    getCurrentPageNumber,
-    setupPagination
-}
+        setHrefForPage,
+        setupPageButton,
+        getSetOfPagesElement,
+        getCurrentPageNumber,
+        setupPagination
+    }

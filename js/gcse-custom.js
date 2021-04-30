@@ -1,5 +1,4 @@
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-var firstSearch = true;
 window.__gcse = {
     searchCallbacks: {
       web: {
@@ -66,10 +65,12 @@ function getDateFromLink()
         webResult.prepend(dateElement);
     }
 }
-  
-function addSearchRowElementInModal() {
-    var searchResultsMeta = document.getElementsByClassName("searchresults-modal-body")[0];
-    var searchboxRowElement = document.createElement("div");
-    searchboxRowElement.className = "searchbox-row";
-    searchResultsMeta.prepend(searchboxRowElement);
-}
+
+module.exports = {
+        getDateFromLink,
+        moveSearchBarToHeader,
+        moveSearchBarToModal,
+        closeSearchResultsModal,
+        showSearchResultsModal,
+        setSearchQuery
+    }

@@ -1,0 +1,580 @@
+---
+layout: post
+font: serif
+title: "FED Talk! (S01E02): Theme Providers"
+date: 2021-04-28
+tags: front-end-development FED-Talk react material-ui design theme
+author: Quintin Maseyk
+image: /img/fed-talk/s01e02/cover-ep2-740.png
+---
+
+![Front-End Development Talk: Episode 2 - Theme Providers](/img/fed-talk/s01e02/cover-ep2-740.png)
+
+In today's episode we will step through how to implement a Theme Provider. We will configure everything from:
+* Typography
+* Breakpoints
+* Padding / Gutters
+* Colour Palette
+* Overriding MUI Styles
+* How to use your Theme
+
+**Lets get started!**
+
+---
+
+**Table of Contents:**
+
+- [:thinking: What's a Theme?](#-thinking--what-s-a-theme-)
+- [:punch: Historic Events](#-punch--historic-events)
+- [Theme Setup](#theme-setup)
+  * [Configure Theme](#configure-theme)
+- [Typography](#typography)
+  * [Type Scale](#type-scale)
+  * [Font Sizing](#font-sizing)
+- [Breakpoints](#breakpoints)
+  * [Configuration](#configuration)
+  * [Accessing Breakpoints](#accessing-breakpoints)
+    + [CSS Media Queries](#css-media-queries)
+    + [JS Media Queries](#js-media-queries)
+
+---
+
+## :thinking: What's a Theme?
+
+Theme's are important as they define the look and feel of your overall application. A good theme engine will allow the development team to configure things once centrally, as opposed to repetitively.
+
+```
+The theme specifies the color of the components, darkness of the surfaces, level of shadow, appropriate opacity of ink elements, etc.
+
+Themes let you apply a consistent tone to your app. It allows you to customize all design aspects of your project in order to meet the specific needs of your business or brand.
+
+To promote greater consistency between apps, light and dark theme types are available to choose from. By default, components use the light theme type.
+```
+
+## :punch: Historic Events
+
+If you're still struggling to convince your Product Owner a Theme is important, here is a list of overhauls large corporations had to undertake just to update their colour for their Brand change.
+
+**Don't become another example!**
+
+* Reference 1 (Github)
+* Reference 2 (Google)
+* Reference 3 (Atlassian)
+
+## Theme Setup
+
+The first thing to do is wrap your Application with MUI's `ThemeProvider` component.
+
+```tsx
+// src/app.tsx
+
+import { CssBaseline, ThemeProvider } from '@material-ui/core';
+
+export default function App() {
+  return (
+    <ThemeProvider> {/* Property 'theme' is missing... */}
+      <CssBaseline />
+      <h1>Design System</h1>
+    </ThemeProvider>
+  );
+}
+```
+
+The above now wraps each of your app's child components with the Theme Provider, thus, exposing your theme via React's Context API, which we will later learn how to use.
+
+Lets now create a new folder in your `src` directory called `theme`. Here is where we can store each of our theme configurations.
+
+Create the following file:
+
+```tsx
+// src/theme/index.tsx
+
+import { createMuiTheme } from '@material-ui/core';
+
+export default createMuiTheme({
+
+})
+```
+
+The output of `createMuiTheme` will create a `Theme` object, which our newly added `ThemeProvider` Higher-order-Component (HoC) requires. Let's plug it in.
+
+```tsx
+// src/app.tsx
+
+import { CssBaseline, ThemeProvider } from '@material-ui/core';
+import Theme from './theme';
+
+export default function App() {
+  return (
+    <ThemeProvider theme={Theme}>
+      <CssBaseline />
+      <h1>Design System</h1>
+    </ThemeProvider>
+  );
+}
+```
+
+### Configure Theme
+
+One of the really neat benefits of using MUI is that their TypeScript definitions are well documented by using VSCode's `"Go to definition"` on any of their module exports.
+
+For example, if we dived into their `createMuiTheme` component, you will see something like this:
+
+```tsx
+// node_modules/@material-ui/core/styles/createMuiTheme.d.ts
+
+import { Breakpoints, BreakpointsOptions } from './createBreakpoints';
+import { Mixins, MixinsOptions } from './createMixins';
+import { Palette, PaletteOptions } from './createPalette';
+import { Typography, TypographyOptions } from './createTypography';
+import { Shadows } from './shadows';
+import { Shape, ShapeOptions } from './shape';
+import { Spacing, SpacingOptions } from './createSpacing';
+import { Transitions, TransitionsOptions } from './transitions';
+import { ZIndex, ZIndexOptions } from './zIndex';
+import { Overrides } from './overrides';
+import { ComponentsProps } from './props';
+
+export type Direction = 'ltr' | 'rtl';
+
+export interface ThemeOptions {
+  shape?: ShapeOptions;
+  breakpoints?: BreakpointsOptions;
+  direction?: Direction;
+  mixins?: MixinsOptions;
+  overrides?: Overrides;
+  palette?: PaletteOptions;
+  props?: ComponentsProps;
+  shadows?: Shadows;
+  spacing?: SpacingOptions;
+  transitions?: TransitionsOptions;
+  typography?: TypographyOptions | ((palette: Palette) => TypographyOptions);
+  zIndex?: ZIndexOptions;
+  unstable_strictMode?: boolean;
+}
+
+export interface Theme {
+  shape: Shape;
+  breakpoints: Breakpoints;
+  direction: Direction;
+  mixins: Mixins;
+  overrides?: Overrides;
+  palette: Palette;
+  props?: ComponentsProps;
+  shadows: Shadows;
+  spacing: Spacing;
+  transitions: Transitions;
+  typography: Typography;
+  zIndex: ZIndex;
+  unstable_strictMode?: boolean;
+}
+
+export default function createMuiTheme(options?: ThemeOptions, ...args: object[]): Theme;
+```
+
+We now know how to interface into this module and populate the `ThemeOptions`.
+
+## Typography
+
+It's important to use the correct Typography for any given media, whether it be for Print, Digital, Low/High resolution devices.
+
+Well defined typography should allow your viewers to clearly distinguish content and its formalities. For example, the font size of a H1 tag should be visually larger than that of a H2, likewise with H2 vs H3 and so on; this is called "Font Scaling". [Find out more on the Type System.](https://material.io/design/typography/the-type-system.html#type-scale)
+
+Let's pick some fonts using [Google Fonts](https://fonts.google.com/), 1 bold for our headings and one other for the rest of our app.
+
+<br>**Step 1: Find your desired header font**
+
+Navigate through their font library until you find one you like (I'm happy with "Krona One"). Then click into the font's box to navigate and read more about the font's details.
+
+![Step 1](/img/fed-talk/s01e02/select-font-1.png)
+
+<br>**Step 2: Add the font to your "Selected families" tray**
+
+Proceeding with your font's selection, make sure to click "Select this style" to add it to your tray.
+
+![Step 2](/img/fed-talk/s01e02/select-font-2.png)
+
+<br>**Step 3: Pair your font with one of their suggestions**
+
+A cool feature Google Fonts provide is that they give you a list of suggestive Pairings for your selected font. If none of the pairings work for you, go back to the home page and find another font. Once you are happy, make sure to add it to your tray.
+
+![Step 3](/img/fed-talk/s01e02/select-font-3.png)
+
+<br>**Step 4: Embed your fonts to your App**
+
+The "Selected families" tray will then allow you to review your selected fonts as well as present you how to embed them in your App. In this case I would use their proposed `<link>` implementation mostly because they provide the `<link rek="preconnect">` line.
+
+![Step 4](/img/fed-talk/s01e02/select-font-4.png)
+
+> The `preconnect` declaration helps improve page load speeds by instructing the browser to connect with another origin, thus hitting all of the connection constraints up front, rather then when the actual resource request gets called.
+> [Find out more.](https://web.dev/uses-rel-preconnect/)
+
+Copy and paste their code snipper into the `<head>` block.
+
+```tsx
+// public/index.html
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="msapplication-TileColor" content="#231f20">
+  <meta name="theme-color" content="#231f20">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#40bfb4">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Jura&family=Krona+One&display=swap" rel="stylesheet">
+  <title>Design System | QuinTRON</title>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+</body>
+
+</html>
+```
+
+This instructs the browser to requested our Google fonts during the App's initial load. The font's themselves will only be apparent once we bind the CSS Font-Families to our html. To do this we'll need to extend our Theme by adding a Typography configuration.
+
+MUI's Typography component allow configuration for the following variants (I've added their default HTML element mapping as inline comments):
+
+```tsx
+export type Variant =
+  | 'h1'        // maps to <h1>
+  | 'h2'        // maps to <h2>
+  | 'h3'        // maps to <h3>
+  | 'h4'        // maps to <h4>
+  | 'h5'        // maps to <h5>
+  | 'h6'        // maps to <h6>
+  | 'subtitle1' // maps to <h6>
+  | 'subtitle2' // maps to <h6>
+  | 'body1'     // maps to <p>
+  | 'body2'     // maps to <p>
+  | 'caption'   // maps to <span>
+  | 'button'    // maps to <button>
+  | 'overline'; // maps to <span>
+```
+
+You can also change the default HTML mappings by implementing the following example:
+
+```tsx
+// theme/index.tsx
+
+const theme = createMuiTheme({
+  props: {
+    MuiTypography: {
+      variantMapping: {
+        body1: 'span', // traditionally set as <p>
+        body2: 'span', // traditionally set as <p>
+      }
+    }
+  }
+});
+```
+
+> :warning:
+>
+> I highly recommend you read all of MUI's Typography definitions and rules for each of the Variants above. They do a good job in explaining how, when and where to use it in your App.
+>
+> [Read more here](https://material.io/design/typography/the-type-system.html#applying-the-type-scale)
+
+We can create our Typography file to configure each of the variants definitions.
+
+```tsx
+// stc/theme/typography.tsx
+
+import { TypographyOptions } from '@material-ui/core/styles/createTypography';
+
+export const typography: TypographyOptions = {
+  h1:         { fontFamily: "'Krona One', sans-serif" },
+  h2:         { fontFamily: "'Krona One', sans-serif" },
+  h3:         { fontFamily: "'Krona One', sans-serif" },
+  h4:         { fontFamily: "'Krona One', sans-serif" },
+  h5:         { fontFamily: "'Krona One', sans-serif" },
+  h6:         { fontFamily: "'Krona One', sans-serif" },
+  subtitle1:  { fontFamily: "'Jura', sans-serif" },
+  subtitle2:  { fontFamily: "'Jura', sans-serif" },
+  body1:      { fontFamily: "'Jura', sans-serif" },
+  body2:      { fontFamily: "'Jura', sans-serif" },
+  caption:    { fontFamily: "'Jura', sans-serif" },
+  button:     { fontFamily: "'Jura', sans-serif" },
+  overline:   { fontFamily: "'Jura', sans-serif" },
+}
+```
+
+*Then add your Typography config to the Theme module.*
+
+```tsx
+// src/theme/index.tsx
+
+import { createMuiTheme } from '@material-ui/core';
+import { typography } from './typography';
+
+export default createMuiTheme({
+  typography
+})
+```
+
+Your Google Font is now bound to MUI Typography components! Let's add some content to our App and test out how it looks.
+
+```tsx
+// src/app.tsx
+
+import { CssBaseline, ThemeProvider } from '@material-ui/core';
+
+import Theme from './theme';
+
+export default function App() {
+  return (
+    <ThemeProvider theme={Theme}>
+      <CssBaseline />
+      <h1>Heading 1</h1>
+      <h2>Heading 2</h2>
+      <h3>Heading 3</h3>
+      <h4>Heading 4</h4>
+      <h5>Heading 5</h5>
+      <h6>Heading 6</h6>
+      <p>Body content</p>
+      <button>Button label</button>
+      <caption>Caption text</caption>
+    </ThemeProvider>
+  );
+}
+```
+
+This is what is looks like:
+
+![Screenshot of Typography without using MUI's Typography component](/img/fed-talk/s01e02/typography-before.png)
+
+:thinking: Hm, I don't see my header font. Ah-huh, it's because I was using the default HTML tags, not MUI's Typography component. Lets converted them like so:
+
+```tsx
+// src/app.tsx
+
+import { Button, CssBaseline, ThemeProvider, Typography } from '@material-ui/core';
+
+import Theme from './theme';
+
+export default function App() {
+  return (
+    <ThemeProvider theme={Theme}>
+      <CssBaseline />
+      <Typography variant="h1">Heading 1</Typography>
+      <Typography variant="h2">Heading 2</Typography>
+      <Typography variant="h3">Heading 3</Typography>
+      <Typography variant="h4">Heading 4</Typography>
+      <Typography variant="h5">Heading 5</Typography>
+      <Typography variant="h6">Heading 6</Typography>
+      <Typography variant="body1">Body content 1</Typography>
+      <Typography variant="body2">Body content 2</Typography>
+      <Typography variant="subtitle1">Subtitle 1</Typography>
+      <Typography variant="subtitle2">Subtitle 2</Typography>
+      <Typography variant="caption">Caption text</Typography>
+      <Typography variant="overline">Overline text</Typography>
+      <Button variant="contained">Button Contained</Button>
+      <Button variant="outlined">Button Outlined</Button>
+      <Button variant="text">Button Text</Button>
+    </ThemeProvider>
+  );
+}
+```
+
+This is now what is looks like:
+
+![Screenshot of Typography while using MUI's Typography component](/img/fed-talk/s01e02/typography-after.png)
+
+:heart: Now that's what the fonts should look like!
+
+### Type Scale
+
+The next obvious step is to implement font scaling across all of our Typography set to provide consistency across the app, for all screen sizes and resolutions.
+
+### Font Sizing
+
+> Material-UI uses rem units for the font size. The browser <html> element default font size is 16px, but browsers have an option to change this value, so rem units allow us to accommodate the user's settings, resulting in a better accessibility support. Users change font size settings for all kinds of reasons, from poor eyesight to choosing optimum settings for devices that can be vastly different in size and viewing distance.
+>
+> To change the font-size of Material-UI you can provide a fontSize property. The default value is 14px.
+>
+> [Learn more](https://material-ui.com/customization/typography/#font-size)
+
+There are two ways to set your app's Font Sizing:
+
+1. Manually declaring each of the variants font sizes, for each of your desired Break-Points in your Typography file. :scream:
+
+2. Using MUi's nifty `responsiveFontSizes` helper to do it for us! :champagne:
+
+For this example we will implement option 2 as it reduces the amount of custom code we need to maintain and defines all the font sizes for us, for each breakpoint. [An interactive demo on how this functionality works can be found here](https://material-ui.com/customization/typography/#font-size)
+
+All we have to do is wrapping our Theme with their function.
+
+```tsx
+// theme/index.tsx
+
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core';
+
+import { typography } from './typography';
+
+export default responsiveFontSizes(createMuiTheme({
+  typography
+}))
+```
+
+Our font sizes are now responsive! The following screenshots illustrate how the H1's font-size grows from mobile through to desktop, each configured against the small (sm), medium (md) and large (lg) breakpoints.
+
+breakpoint:sm
+
+![tbc](/img/fed-talk/s01e02/type-breakpoint-small.png)
+
+breakpoint: md
+
+![tbc](/img/fed-talk/s01e02/type-breakpoint-medium.png)
+
+breakpoint: lg
+
+![tbc](/img/fed-talk/s01e02/type-breakpoint-large.png)
+
+> :bulb:
+> MUI's design principle work off a Mobile-First approach, for example, the font-size style for Large breakpoint overrides that of the Medium and Small (default) font-sizes.
+
+If you wish to change the strength of the font size's resize amount between breakpoints, you can add a `factor` option to the `responsiveFontSizes` function.
+
+```tsx
+// theme/index.tsx
+
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core';
+
+import { typography } from './typography';
+
+export default responsiveFontSizes(createMuiTheme({
+  typography
+}), {
+  factor: 1 // [default is 2] The higher the value, the less difference there is between font sizes on small screens. The lower the value, the bigger font sizes for small screens. The value must be greater than 1.
+})
+```
+
+## Breakpoints
+
+> For optimal user experience, material design interfaces need to be able to adapt their layout at various breakpoints. Material-UI uses a simplified implementation of the original specification.
+
+> The breakpoints are used internally in various components to make them responsive, but you can also take advantage of them for controlling the layout of your application through the Grid and Hidden components.
+
+### Configuration
+
+MUI's Theme implements the following default breakpoints:
+
+* xs, extra-small: 0px
+* sm, small: 600px
+* md, medium: 960px
+* lg, large: 1280px
+* xl, extra-large: 1920px
+
+I've personally never had to change any of the Breakpoint settings even though you are able to reconfigure them.
+
+[Information on how to customize Breakpoints can be found here.](https://material-ui.com/customization/breakpoints/#custom-breakpoints)
+
+> :pencil:
+>
+>Take mental note of the breakpoint keys [`xs`, `sm`, `md`, `lg`, `xl`] as you will use them in the future.
+
+### Accessing Breakpoints
+
+When you get to the stage of developing components you'll eventually have to solve responsive layout issues as to make your App as accessible and fluid as possible.
+
+MUI offer many ways for you to interface into the Theme's breakpoint state whether you wish to statically style your component and its breakpoint changes, or observe breakpoint changes in your Component to logically do something. Lets go through some examples.
+
+#### CSS Media Queries
+For this example imagine you I have a `Card` component which has a heading, text and a call-to-action `Button` at the bottom. You are then tasked to style the Button against different breakpoints.
+
+*Pseudo train of thought*
+* [breakpoints equal to or less than `sm`] the button should span across the full width of the card,
+* [breakpoints equal to or greater than `md`] the button should anchor to the right using its original width.
+* [breakpoints equal to or greater than `lg`] the button should anchor to the right using its original width, and its padding should be larger.
+
+*Final implemtation*
+```tsx
+// Example: CSS Media Queries
+
+const styles = theme => ({
+  button: {
+    [theme.breakpoints.down('sm')]: {
+      width: '100%'
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 'auto'
+    },
+    [theme.breakpoints.up('lg')]: {
+      paddingLeft: '4rem',
+      paddingRight: '4rem'
+    },
+  },
+});
+```
+
+Few things to note:
+1. `breakpoints` is a property of our injected `theme` (via the `ThemeProvider` HoC)
+2. `breakpoints` have 4 functions you can use to select the your target breakpoints:
+* theme.breakpoints.up(key)
+* theme.breakpoints.down(key)
+* theme.breakpoints.only(key)
+* theme.breakpoints.between(start, end)
+3. Declare your breakpoints from smallest to largest as to retain MUI's Mobile-First design principle.
+
+#### JS Media Queries
+For this example imagine you I have a `Table` which has many columns and is read from left to right. This table reads really well on larger screens however the designer has rejigged the Table for mobile screens, thus a second rendition of the `Table` should be rendered in this case.
+
+*Pseudo train of thought*
+* [breakpoints equal to or less than `sm`] should render the `MobileTable`, otherwise the `LargerTable` should be rendered.
+
+*Final implementation*
+```tsx
+// Example: JS Media Queries
+
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
+function TableWrapper() {
+  const theme = useTheme();
+  const mobileBreakpoint = useMediaQuery(theme.breakpoints.down('sm'));
+
+  if (mobileBreakpoint) {
+    return <MobileTable />
+  }
+  return <LargerTable />
+}
+```
+
+Few things to note:
+1. The `useTheme` hook is defined so the `TableWrapper` component has access to the app's `Theme`.
+2. The `useMediaQuery` hook is defined and parameterized with my desired breakpoint for the hook to observe. It's initial value is either `true` or `false`, depending on the clients calculated dimensions.
+3. `useMediaQuery` observe the windows Resize event and will internally recompute the hooks value if the Theme's current breakpoint value changes.
+4. Remember `breakpoints.down(key)`, `breakpoints.up(key)` includes the `key` as part of its Boolean check.
+
+[Learn more on `useMediaQuery`.](https://material-ui.com/components/use-media-query/)
+
+
+
+
+<!-- ## :pray: Closing
+
+At this stage you your application should be wrapped with a theme provider.
+
+You are now ready to move onto the next episode where I’ll be walking you through how to implement Routing in your app, covering:
+
+* Setting up routes,
+* Routes with parameters,
+* Route hooks,
+* Route transitions
+
+---
+
+Don't be shy, [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)
+
+![Mechanical Rock Logo](/img/mr-logo-dark-landscape.jpg) -->
+

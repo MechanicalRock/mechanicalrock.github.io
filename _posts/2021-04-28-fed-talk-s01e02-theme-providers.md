@@ -13,9 +13,9 @@ image: /img/fed-talk/s01e02/cover-ep2-740.png
 In today's episode we will step through how to implement a Theme Provider. We will configure everything from:
 * Typography
 * Breakpoints
-* Padding / Gutters
 * Colour Palette
 * Overriding MUI Styles
+* Layout
 * How to use your Theme
 
 **Lets get started!**
@@ -51,6 +51,8 @@ Themes let you apply a consistent tone to your app. It allows you to customize a
 To promote greater consistency between apps, light and dark theme types are available to choose from. By default, components use the light theme type.
 ```
 
+---
+
 ## :punch: Historic Events
 
 If you're still struggling to convince your Product Owner a Theme is important, here is a list of overhauls large corporations had to undertake just to update their colour for their Brand change.
@@ -60,6 +62,8 @@ If you're still struggling to convince your Product Owner a Theme is important, 
 * Reference 1 (Github)
 * Reference 2 (Google)
 * Reference 3 (Atlassian)
+
+---
 
 ## Theme Setup
 
@@ -173,6 +177,8 @@ export default function createMuiTheme(options?: ThemeOptions, ...args: object[]
 ```
 
 We now know how to interface into this module and populate the `ThemeOptions`.
+
+---
 
 ## Typography
 
@@ -459,6 +465,8 @@ export default responsiveFontSizes(createMuiTheme({
 })
 ```
 
+---
+
 ## Breakpoints
 
 > For optimal user experience, material design interfaces need to be able to adapt their layout at various breakpoints. Material-UI uses a simplified implementation of the original specification.
@@ -557,6 +565,103 @@ Few things to note:
 4. Remember `breakpoints.down(key)`, `breakpoints.up(key)` includes the `key` as part of its Boolean check.
 
 [Learn more on `useMediaQuery`.](https://material-ui.com/components/use-media-query/)
+
+---
+
+## Colour Palette
+
+Some may argue colour is meaningless, others are so passionate about it they can tell you what the hexadecimal code is for a given colour on top fo their head. Either way, colour exists and most are fortunate to witness its array and uses in the world. If used well it can promote your brand and cognitively remind people of your brand, it can indicate a level of severity, attract the eye. Ultimately colour has meaning.
+
+MUI's Theme allow you to configure a palette, which is a make up "colour intention". Here are the colour intentions and their uses.
+
+* **primary** - used to represent primary interface elements for a user. It's the color displayed most frequently across your app's screens and components.
+* **secondary** - used to represent secondary interface elements for a user. It provides more ways to accent and distinguish your product. Having it is optional.
+* **error** - used to represent interface elements that the user should be made aware of.
+* **warning** - used to represent potentially dangerous actions or important messages.
+* **info** - used to present information to the user that is neutral and not necessarily important.
+* **success** - used to indicate the successful completion of an action that user triggered.
+If you want to learn more about color, you can check out the color section.
+
+The following screenshot shows each colour intention and their default values:
+
+![tbc](/img/fed-talk/s01e02/colour-palette.png)
+
+### Choosing Your Colours
+
+MUI's the gift which just keeps giving! The Material Design team have built a "Color Tool" which you can use to plugin your specific colours and visually see them against MUI's base components. The tool also has an Accessibility feature which I encourage you to use as it will report the legibility of your colours.
+
+[Material Design: Color Tool](https://material.io/resources/color/#!/?view.left=0&view.right=0)
+
+I will continue to use the Mechanical Rock brand colours:
+* Primary: #40BFB4
+* Secondary #E15554
+
+![tbc](/img/fed-talk/s01e02/colour-palette-mr.png)
+
+The tool will automatically calculate the Light and Dark values from your provided main colour.
+
+> :thinking:
+>
+> The Accessibility report suggests "White Text" on each of my Primary variants are not legible; the same is mostly true for the Secondary variants. Remind yourself of this in future.
+
+### Apply the Palette
+
+Once you have finalized your Primary and Secondary colours you can then configure them into your Theme. We will create a new Palette file to manage this change (like we did for Typography).
+
+```tsx
+// theme/palette.tsx
+
+import { PaletteOptions } from '@material-ui/core/styles/createPalette';
+
+export const palette: PaletteOptions = {
+  primary: {
+    // light: will be calculated from palette.primary.main,
+    main: '#40bfb4',
+    // dark: will be calculated from palette.primary.main,
+    // contrastText: will be calculated to contrast with palette.primary.main
+  },
+  secondary: {
+    // light: will be calculated from palette.primary.main,
+    main: '#e05450',
+    // dark: will be calculated from palette.secondary.main,
+  },
+  // Used by `getContrastText()` to maximize the contrast between
+  // the background and the text.
+  contrastThreshold: 3,
+  // Used by the functions below to shift a color's luminance by approximately
+  // two indexes within its tonal palette.
+  // E.g., shift from Red 500 to Red 300 or Red 700.
+  tonalOffset: 0.2,
+}
+```
+
+As the comments in the above code snippet suggest, you can let MUI calculate the Light/Dark values for you for free, otherwise manually add them for each Primary and Secondary objects.
+
+Even if you're chosen colours have been reported eligible in the "Color Tool" there is still a chance your foreground text does not contrast well against background shades on your surfaces. The `contrastThreshold` property allows you to amplify or soften the contrast of your text against the background colour.
+
+If you wish to *dim the lights* or make a colour more vivid during events such as hovering over a button, you can tweak the amount against the `tonalOffset` property.
+
+# A collapsible section with markdown
+<details>
+  <summary>Click to expand!</summary>
+
+  ## Heading
+  1. A numbered
+  2. list
+     * With some
+     * Sub bullets
+</details>
+
+---
+
+## Layout
+
+
+Setting your app's initial layout can be daunting. Even though most website layouts are quite consistent these days, there are too many ways to skin a cat! There are too many website implementations lacking well schematic HTML; making me think there is a gap of knowledge on this subject. For example websites which have multiple H1 tags, broken header hierarchy, unnecessary `div`s or `div`s which should be replaced with purposed tags.
+
+> :+1: Our goal as Front-End developers is to make things everything we build accessible!
+
+
 
 
 

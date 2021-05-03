@@ -1,11 +1,13 @@
 ---
 layout: post
 font: serif
-title: "FED Talk! (S01E01): Getting Started"
+title: "Getting Started with React & Material UI"
+description: "In today’s episode we will bootstrap a React app with Material UI and loads more front-end concepts which will take you from novice to pro!"
 date: 2021-04-27
-tags: front-end-development FED-Talk react material-ui design theme
+dateModified: 2021-05-03
+tags: [getting started with react, create react app, react, getting started with Material UI, material-ui]
 author: Quintin Maseyk
-image: /img/fed-talk/cover-ep1-740.png
+image: img/fed-talk/cover-ep1-740.png
 ---
 
 ![Front-End Development Talk: Episode 1 - Getting Started](/img/fed-talk/cover-ep1-740.png)
@@ -34,7 +36,7 @@ In today's episode we will bootstrap a React application going into detail durin
   * [Public Folder](#public-folder)
   * [Source Folder](#source-folder)
   * [package.json file](#packagejson-file)
-- [:keyboard: Install Material-UI modules](#keyboard-install-material-ui-modules)
+- [:keyboard: Getting Started with Material UI](#keyboard-getting-started-with-material-ui)
   * [@material-ui/core](#material-uicore)
   * [@material-ui/icons](#material-uiicons)
 - [:wrench: App Preparation](#wrench-app-preparation)
@@ -142,7 +144,7 @@ More information on how the scripts work can be found here: https://create-react
 
 ---
 
-## :keyboard: Install Material-UI modules
+## :keyboard: Getting Started with Material UI
 Our app will be using both MUI `core` module as our Component Library and Theme engine, along with MUI `icon` module as our Icon library.
 
 ### @material-ui/core

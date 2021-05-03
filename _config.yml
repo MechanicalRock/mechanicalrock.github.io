@@ -20,9 +20,10 @@ description: > # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: https://mechanicalrock.github.io # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: mechanicalrock_
-github_username:  mechanicalrock
+github_username: mechanicalrock
 paginate: 10
-paginate_path: "/pages/:num"
+paginate_path: "/pages/:num/"
+#facebookAppId: [TODO: Obtain FB App Id]
 
 # Build settings
 markdown: kramdown
@@ -35,11 +36,9 @@ plugins:
 # Don't display future posts
 future: false
 
-
 # deployment
 host: 0.0.0.0
 port: 4000
-
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

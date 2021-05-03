@@ -1,11 +1,13 @@
 ---
 layout: post
 font: serif
-title: "FED Talk! (S01E01): Getting Started"
+title: "FED Talk! Episode 1: Getting Started with React & Material UI"
+description: "In today’s episode we will bootstrap a React app with Material UI and loads more front-end concepts which will take you from novice to pro!"
 date: 2021-04-27
-tags: front-end-development FED-Talk react material-ui design theme
+dateModified: 2021-05-03
+tags: [getting started with react, create react app, react, getting started with Material UI, material-ui]
 author: Quintin Maseyk
-image: /img/fed-talk/cover-ep1-740.png
+image: img/fed-talk/cover-ep1-740.png
 ---
 
 ![Front-End Development Talk: Episode 1 - Getting Started](/img/fed-talk/cover-ep1-740.png)
@@ -34,7 +36,7 @@ In today's episode we will bootstrap a React application going into detail durin
   * [Public Folder](#public-folder)
   * [Source Folder](#source-folder)
   * [package.json file](#packagejson-file)
-- [:keyboard: Install Material-UI modules](#keyboard-install-material-ui-modules)
+- [:keyboard: Getting Started with Material UI](#keyboard-getting-started-with-material-ui)
   * [@material-ui/core](#material-uicore)
   * [@material-ui/icons](#material-uiicons)
 - [:wrench: App Preparation](#wrench-app-preparation)
@@ -142,7 +144,7 @@ More information on how the scripts work can be found here: https://create-react
 
 ---
 
-## :keyboard: Install Material-UI modules
+## :keyboard: Getting Started with Material UI
 Our app will be using both MUI `core` module as our Component Library and Theme engine, along with MUI `icon` module as our Icon library.
 
 ### @material-ui/core
@@ -173,7 +175,7 @@ The Icons library includes over a thousand icons, conveniently exposed as SvgIco
 npm install @material-ui/icons
 ```
 
-A searchable list of all their icons can be found here: https://material-ui.com/components/material-icons/
+A searchable list of all their icons can be found here: [https://material-ui.com/components/material-icons/](https://material-ui.com/components/material-icons/)
 
 ![A screenshot of what Material UI Icon library looks like](/img/fed-talk/s01e01/mui-icons-screenshot.png)
 
@@ -181,7 +183,7 @@ Their SVGs come available in a few variations:
 
 | Filled | Outlined | Rounded | Two Tone | Sharp |
 |--------|----------|---------|----------|-------|
-| ![Filled Icon](/img/fed-talk/s01e01/icon-filled.png)      | ![Outlined Icon](/img/fed-talk/s01e01/icon-outlined.png)        | ![Rounded Icon](/img/fed-talk/s01e01/icon-rounded.png) | ![Two Tone Icon](/img/fed-talk/s01e01/icon-twoTone.png) | ![Sharp Icon](/img/fed-talk/s01e01/icon-sharp.png) |
+| ![Filled Icon](/img/fed-talk/s01e01/icon-filled.png)      | ![Outlined Icon](/img/fed-talk/s01e01/icon-outlined.png)        | ![Rounded Icon](/img/fed-talk/s01e01/icon-rounded.png) | ![Two Tone Icon](/img/fed-talk/s01e01/icon-twotone.png) | ![Sharp Icon](/img/fed-talk/s01e01/icon-sharp.png) |
 
 
 If their SVG library does not satisfy your needs, MUI have conveniently created a component `<Icon />` where you can inject any of [Font Awesome](https://fontawesome.com/){:target="_blank" rel="noopener"} classes into the component.
@@ -380,7 +382,7 @@ Last thing to cover is the viewport meta tag.
 |--------|----------|
 | ![Mobile screenshot where the viewport meta tag is not set. Illustrating most of the body content being overflowing outside of the mobile's width, thus making the content unreadable from the very start.](/img/fed-talk/s01e01/viewport-without.png) | ![Mobile screenshot where the viewport meta tag is set. Illustrating all of the body content being showed in mobile's width](/img/fed-talk/s01e01/viewport-with.png) |
 
-As you can see the screenshot on the right neatly fits the maximum content into the devices viewport width. Obviously you’ll need to better style content for mobile, by that’s beside the point.
+As you can see the screenshot on the right neatly fits the maximum content into the devices viewport width. Obviously you’ll need to better style content for mobile, but that’s beside the point.
 
 ```html
   <meta name="viewport" content="width=device-width, initial-scale=1" />

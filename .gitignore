@@ -9,4 +9,3 @@ _site
 .vscode/
 .jekyll-cache/
 node_modules
-node_modules

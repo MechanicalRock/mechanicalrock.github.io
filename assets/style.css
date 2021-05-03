@@ -69,6 +69,12 @@ a, a:visited {
     font-size: 0.8em;
 }
 
+@media screen and (max-width: 425px) {
+    .post-content.serif table {
+        font-size: 0.6em;
+    }
+}
+
 .post-content.serif .post-title {
     font-family: 'Open Sans','Helvetica','Arial',sans-serif;
 }

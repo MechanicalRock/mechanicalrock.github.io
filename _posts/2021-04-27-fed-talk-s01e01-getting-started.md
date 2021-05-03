@@ -1,7 +1,7 @@
 ---
 layout: post
 font: serif
-title: "Getting Started with React & Material UI"
+title: "FED Talk! Episode 1: Getting Started with React & Material UI"
 description: "In today’s episode we will bootstrap a React app with Material UI and loads more front-end concepts which will take you from novice to pro!"
 date: 2021-04-27
 dateModified: 2021-05-03

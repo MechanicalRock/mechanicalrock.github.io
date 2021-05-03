@@ -8,3 +8,5 @@ _site
 *.iml
 .vscode/
 .jekyll-cache/
+node_modules
+node_modules

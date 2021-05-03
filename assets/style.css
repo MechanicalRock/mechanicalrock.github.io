@@ -1,3 +1,5 @@
+@import "gcse-style.css";
+
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -5,11 +7,63 @@ body {
     line-height: 1.85714286em;
     font-family: 'Open Sans','Helvetica','Arial',sans-serif;
     color: #666;
-
 }
 
-a, a:visited {
+.site-header {
+    border: unset;
+}
+
+.logo-holder {
+    width: 15%;
+}
+
+.logo-row {
+    background-color: #333132;
+    display: flex;
+    padding: 20px 15px;
+}
+
+.header-description p{
+    font-size: 25px;
+    text-align: center;
+    color: #fff;
+    margin-bottom: unset;
+}
+
+.header-description{
+    flex-basis: 70%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.wrapper{
+    padding: 15px 15px 5px 15px;
+}
+
+h3 {
+    margin-bottom: unset;
+}
+
+a,
+.page:visited,
+.change-pages-set:visited
+{
 	color: #40BFB4;
+}
+
+.page.active {
+    font-weight: bold;
+}
+
+a:visited {
+    color: #1A73E8;
+}
+
+a:hover {
+    color:#e8e5e2;
 }
 
 .pager {
@@ -36,6 +90,15 @@ a, a:visited {
 .footnote {
     font-size: "-2";
     color: #666;
+}
+
+
+.page-content {
+    padding-top: 10px;
+}
+
+.page-heading {
+    padding-bottom: 15px;
 }
 
 .post-content.serif {

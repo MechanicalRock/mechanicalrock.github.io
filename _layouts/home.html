@@ -44,8 +44,8 @@ layout: default
   
   </div>
 
-<script src="/js/paginate.js"></script>
 <script>
   var totalPages = {{ paginator.total_pages }}
-  var paginatePath = {{ site.paginate_path | replace: ':num', "" }};
+  var paginatePath = {{ site.paginate_path | replace: ':num', "" }}
 </script>
+<script src="/js/paginate.js"></script>

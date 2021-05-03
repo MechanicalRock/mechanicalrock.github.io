@@ -14,14 +14,14 @@ test('appends date to Google result', () => {
         }
     });
     document.body.innerHTML = `
-        <div>
+        <div class="gs-webResult gs-result">
             <div>
                 <div>
                     <div class="gs-per-result-labels" url="${location.origin}/2013/2/1"></div>
                 </div>
             </div>
         </div>
-        <div>
+        <div class="gs-webResult gs-result">
             <div>
                 <div>
                     <div class="gs-per-result-labels" url="${location.origin}/2016/11/25"></div>
@@ -32,14 +32,14 @@ test('appends date to Google result', () => {
     sut.getDateFromLink()
 
     var expected = `
-        <div><div class="google-result-meta">Feb 1, 2013</div>
+        <div class="gs-webResult gs-result"><div class="google-result-meta">Feb 1, 2013</div>
             <div>
                 <div>
                     <div class="gs-per-result-labels" url="${location.origin}/2013/2/1"></div>
                 </div>
             </div>
         </div>
-        <div><div class="google-result-meta">Nov 25, 2016</div>
+        <div class="gs-webResult gs-result"><div class="google-result-meta">Nov 25, 2016</div>
             <div>
                 <div>
                     <div class="gs-per-result-labels" url="${location.origin}/2016/11/25"></div>

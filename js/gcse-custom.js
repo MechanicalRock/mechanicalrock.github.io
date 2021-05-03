@@ -47,9 +47,10 @@ function moveSearchBarToHeader(){
 */
 function getDateFromLink()
 {
-    var searchResults = document.getElementsByClassName("gs-per-result-labels");
-    for(let result of searchResults)
+    var webResults = document.getElementsByClassName("gs-webResult gs-result");
+    for(let webResult of webResults)
     {
+        var result = webResult.getElementsByClassName("gs-per-result-labels")[0];
         var url = result.getAttribute("url");
         if(!url)
         {
@@ -58,7 +59,6 @@ function getDateFromLink()
         
         var dateString = url.substr(location.origin.length + 1, 10);
         var date = new Date(dateString);
-        var webResult = result.parentElement.parentElement.parentElement;
         var dateElement = document.createElement("div");
         dateElement.className = "google-result-meta";
         dateElement.innerHTML = MONTHS[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();

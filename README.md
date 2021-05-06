@@ -48,11 +48,3 @@ Browse to the page: [http://localhost:4000](http://localhost:4000)
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 
-## Errors
-If your blog is not running in your local environment and it previously was, this is most likely a cacheing error in the index.html file. Try:
-
- Deleting the **site file**
-
-`docker-compose build blogserver` 
-
-`docker-compose up blogserver`

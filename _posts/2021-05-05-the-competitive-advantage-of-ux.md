@@ -41,7 +41,7 @@ DevOps is about removing waste to support the flow of value through a system. Th
 
 Within product teams, silos occur when different specialisations work separately. Teams work in a vacuum, doing only their part without wider considerations, constraints, ideas and critiques of the larger team. For example, when development is siloed from UX, designers do not have visibility into software constraints, and therefore the system in which a user experience operates in. Decisions are made with partial context; impeding this flow and therefore value. Considering UX offers a long term competitive advantage “it’s important to understand these relationships from a UX perspective because they illuminate how interactions between enterprise systems can exert significant impacts on the user experience”, ([Amy Chess](https://www.uxmatters.com/mt/archives/2019/03/platform-ux-domain-driven-design-concepts-in-enterprise-ux.php)). Removal of silos allows continuous feedback loops and a shared understanding to foster between designers and developers which removes constraints and enables flow. Without that it is no different to pre-DevOps days.
 
-At Mechanical Rock, we work in cross-functional teams where designers work closely with developers, throughout the entire project, which fosters feedback loops and supports a shared understanding. Moreover, developers and designers are involved in all meetings and decisions, such as example mapping sessions.
+At Mechanical Rock, we work in cross-functional teams where designers work closely with developers, throughout the entire project, which fosters feedback loops and supports a shared understanding. Moreover, developers and designers are involved in all meetings and decisions, such as [example mapping](https://mechanicalrock.github.io/2020/05/18/effective-example-mapping.html) sessions.
 <br /><br />
 
 ### 3. Feedback Loops
@@ -64,7 +64,7 @@ Without this context, designers have an incomplete understanding about the curre
 
 An approach such as a VSM workshop is highly effective in fostering a shared understanding between designers, developers and clients. VSM provides a space for UX and DevOps to work together and this is "essential for DevOps teams to ensure they solve the right problems and are understanding the user’s real needs", ([Barnaby Dracup](https://www.devopsonline.co.uk/integrating-ux-with-devops/)). And this supports a long term competitive advantage.
 
-![Value Stream Mapping workshop](/img/vsm_workshop.jpg)
+![Photograph of a Value Stream Mapping Workshop](/img/Value_Stream_Mapping.jpg)
 <br/>
 _Hamish Tedeschi, CEO, running a VSM workshop with a client_
 

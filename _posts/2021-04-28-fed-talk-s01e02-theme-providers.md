@@ -9,7 +9,7 @@ image: /img/fed-talk/s01e02/cover-ep2-740.png
 tags: [material ui, material ui theme, react, getting started with Material UI]
 ---
 
-![Front-End Development Talk: Episode 2 - Theme Providers](/img/fed-talk/s01e02/cover-ep2-740.png)
+![Front-End Development Talk: Episode 2 - Material UI Theme](/img/fed-talk/s01e02/cover-ep2-740.png)
 
 In today's episode we will step through how to implement a Theme Provider. We will configure everything from:
 * Typography
@@ -37,6 +37,10 @@ In today's episode we will step through how to implement a Theme Provider. We wi
   * [Accessing Breakpoints](#accessing-breakpoints)
     + [CSS Media Queries](#css-media-queries)
     + [JS Media Queries](#js-media-queries)
+- [Colour Palette](#colour-palette)
+  * [Choosing Your Colours](#choosing-your-colours)
+  * [Apply the Palette](#apply-the-palette)
+- [Layout](#layout)
 
 ---
 

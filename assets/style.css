@@ -66,6 +66,11 @@ a:hover {
     color:#e8e5e2;
 }
 
+.page-content img:not(.emoji) {
+    margin: 0 auto;
+    display: block;
+}
+
 .pager {
     display: flex;
 }

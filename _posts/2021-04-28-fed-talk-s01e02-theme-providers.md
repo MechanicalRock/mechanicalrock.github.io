@@ -6,18 +6,17 @@ description: "In today’s episode we will styling all of the base UI elements b
 date: 2021-04-28
 author: Quintin Maseyk
 image: /img/fed-talk/s01e02/cover-ep2-740.png
-tags: [material ui, material ui theme, react, getting started with Material UI]
+tags: [material ui, material ui theme, react, getting started with Material UI,scaffold your app]
 ---
 
 ![Front-End Development Talk: Episode 2 - Material UI Theme](/img/fed-talk/s01e02/cover-ep2-740.png)
 
 In today's episode we will step through how to implement a Theme Provider. We will configure everything from:
-* Typography
+* Typographies
 * Breakpoints
 * Colour Palette
-* Overriding MUI Styles
-* Layout
-* How to use your Theme
+* Buttons
+* Scaffold Your App
 
 **Let's get started!**
 
@@ -48,25 +47,18 @@ In today's episode we will step through how to implement a Theme Provider. We wi
 
 Theme's are important as they define the look and feel of your overall application. A good theme engine will allow the development team to configure things once centrally, as opposed to repetitively.
 
-```
 The theme specifies the color of the components, darkness of the surfaces, level of shadow, appropriate opacity of ink elements, etc.
 
 Themes let you apply a consistent tone to your app. It allows you to customize all design aspects of your project in order to meet the specific needs of your business or brand.
 
 To promote greater consistency between apps, light and dark theme types are available to choose from. By default, components use the light theme type.
-```
+*(@material-ui)*
 
----
+Here's a good example where the Design Manager of GitHub, Diana Mounter, goes in depth the struggles they had trying to make a colour change.
 
-## :punch: Historic Events
-
-If you're still struggling to convince your Product Owner a Theme is important, here is a list of overhauls large corporations had to undertake just to update their colour for their Brand change.
-
-**Don't become another example!**
-
-* Reference 1 (Github)
-* Reference 2 (Google)
-* Reference 3 (Atlassian)
+> When the design systems team at GitHub implemented their colour system in 2017 they were working with Sass, trying to wrangle thousands of disconnected colour values into something more manageable to use. Now they're revisiting colour again, but this time with new tools, new customer goals, and more experience. In the age of dark mode, can what they've learned from CSS-in-JS and component APIs help them in their approach to color themeability? In this talk Diana covers lessons in color systems, theming APIs, and a bit of color theory along the way.
+>
+> [Find out more](https://reactconfau.com/talks/themeability-is-the-path-to-dark-mode?from=talks)
 
 ---
 
@@ -213,7 +205,7 @@ A cool feature Google Fonts provide is that they give you a list of suggestive P
 
 The "Selected families" tray will then allow you to review your selected fonts as well as present you how to embed them in your App. In this case I would use their proposed `<link>` implementation mostly because they provide the `<link rek="preconnect">` line.
 
-![Step 4](/img/fed-talk/s01e02/select-font-4.png)
+![Step 4](/img/fed-talk/s01e02/select-font-4.png){:width="350"}
 
 > The `preconnect` declaration helps improve page load speeds by instructing the browser to connect with another origin, thus hitting all of the connection constraints up front, rather then when the actual resource request gets called.
 > [Find out more.](https://web.dev/uses-rel-preconnect/)
@@ -718,7 +710,76 @@ You should end up seeing this:
 
 ---
 
-## Layout
+## Buttons
+
+> Buttons allow users to take actions, and make choices, with a single tap. (@material-ui)
+
+MUI offer 3 variations of buttons, Contained, Text, Outlined.
+
+**Contained Button**
+Contain buttons should be used for primary user actions. They are pronounced and elevated on the surface.
+
+**Text Button**
+Text buttons are typically used for less-pronounced actions, including those located in `Dialogs` and `Cards`. In cards, text buttons help maintain an emphasis on card content.
+
+**Outlined Button**
+Outlined buttons are medium-emphasis buttons. They contain actions that are important, but aren’t the primary action in an app. Outlined buttons are also a lower emphasis alternative to contained buttons, or a higher emphasis alternative to text buttons.
+
+Let's add a button section to our App by doing the following:
+
+```tsx
+// ui/Buttons/index.tsx
+
+import React from 'react';
+
+import { Button, Container, Typography } from '@material-ui/core';
+
+export default function Buttons() {
+  return (
+    <>
+      <Typography variant="h2">Buttons</Typography>
+      <br />
+
+      <Container maxWidth="xs">
+        <Typography variant="subtitle1" align="center">Contained</Typography>
+        <Button variant="contained" color="default">Default</Button>
+        <Button variant="contained" color="primary">Primary</Button>
+        <Button variant="contained" color="secondary">Secondary</Button>
+        <Button variant="contained" color="primary" disabled>Disabled</Button>
+      </Container>
+      <br />
+
+      <Container maxWidth="xs">
+        <Typography variant="subtitle1" align="center">Text</Typography>
+        <Button variant="text" color="default">Default</Button>
+        <Button variant="text" color="primary">Primary</Button>
+        <Button variant="text" color="secondary">Secondary</Button>
+        <Button variant="text" color="primary" disabled>Disabled</Button>
+      </Container>
+      <br />
+
+      <Container maxWidth="xs">
+        <Typography variant="subtitle1" align="center">Outlined</Typography>
+        <Button variant="outlined" color="default">Default</Button>
+        <Button variant="outlined" color="primary">Primary</Button>
+        <Button variant="outlined" color="secondary">Secondary</Button>
+        <Button variant="outlined" color="primary" disabled>Disabled</Button>
+      </Container>
+    </>
+  )
+}
+```
+
+Don't forget to add it to your `App.tsx` file to see the new content!
+
+We should see something like this:
+
+![A screenshot showing what all 3 of the Button variations look like against each of the colour variations, default, primary, secondary and disabled](/img/fed-talk/s01e02/buttons.png){:width="500"}
+
+
+---
+
+## Scaffold Your App
 
 Setting your app's initial layout can be daunting. Even though most website layouts are quite consistent these days, there are more than 1 way to skin a cat! Too many website implementations lack well schematic HTML, making me think there is a gap of knowledge on this subject. For example websites which have multiple H1 tags, broken header hierarchy, unnecessary `div`s or `div`s which should be replaced with better purposed tags.
 
@@ -733,17 +794,205 @@ For our case the scaffold will look like this for mobile:
 And for desktop:
 ![App bar at the top. Main menu navigation anchored to the left. Body content center columned.](/img/fed-talk/s01e02/desktop-scaffolding.jpg)
 
+### App Bar
+
+> The App Bar displays information and actions relating to the current screen.
+> It provides content and actions related to the current screen.
+> It’s used for branding, screen titles, navigation, and actions.
+>
+> [Learn more](https://material-ui.com/components/app-bar/)
+
+Create a new file to manage your App Bar:
+
+```tsx
+// src/components/AppBar/index.tsx
+
+import React from 'react';
+
+import { AppBar as MuiAppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
+import { MenuRounded } from '@material-ui/icons';
+
+export default function AppBar() {
+  return (
+    <MuiAppBar color="primary" position="sticky">
+      <Toolbar>
+        <IconButton edge="start" aria-label="menu">
+          <MenuRounded />
+        </IconButton>
+        <Typography variant="h6">
+          Component Library
+        </Typography>
+      </Toolbar>
+    </MuiAppBar>
+  )
+}
+```
+
+Few things to note:
+1. We have to cast the imported `AppBar` module to a new name `MuiAppBar` so that we am able to export our own version of the `AppBar` going forward.
+2. We implement the `[position="sticky"]` prop against the `MuiAppBar`. This is so the AppBar will stick to the top of the viewport, even when you scroll beyond its initial position.
+3. We implement the `[edge="start"]` prop against the `IconButton`. This will apply some css to anchor the icon to the left, minus it's original margin offset.
+
+We end up with this:
+
+![Screenshot showing the new App Bar at the top of the page.](/img/fed-talk/s01e02/appbar-mobile.png){:width="400"}
 
 
+### Body Content
+
+Here is where most of your audience will spend their time discovering, interacting or researching for information in your App. The body content itself can obtain many layouts internally, but what's important its abstract layer should be consistent.
+
+Create a new file to manage your Body Content:
+
+```tsx
+// src/components/BodyContent/index.tsx
+
+import React from 'react';
+
+import { Divider, makeStyles } from '@material-ui/core';
+
+import ColourPalette from '../../ui/ColourPalette';
+import Typographies from '../../ui/Typographies';
+
+const useStyles = makeStyles(() => ({
+  root: {
+    margin: '0 auto',
+    maxWidth: '57rem',
+    padding: '2rem 0'
+  }
+}))
+
+export default function BodyContent() {
+  const classes = useStyles();
+
+  return (
+    <main className={classes.root}>
+      <Typographies />
+      <Divider />
+      <ColourPalette />
+    </main>
+  )
+}
+```
+
+Few things to note:
+1. We've created our first CSS-in-JSS example. We had to do this to define some styles against the root element of this component, `<main>`. `makeStyles` export the computed styles as a hook, when we've assigned to a scoped variable named `useStyles`. `useStyles` is then declared inside the body of our `BodyContent` component so we have access to it.
+2. `margin: '0 auto'` will make sure the `<main>` block is centered in the page
+3. `maxWidth: '57rem'` will set the maximum width of the `<main>` block, I felt represented a good readable column width for larger screens.
+4. `padding: '2rem 0'` will apply a consistent 2rem gutter at the top and bottom of the `<main>` block.
+5. We've since migrated the Typographies and ColourPalette components from the `app.tsx` file into this file.
+6. Note the use of the HTML `main` Tag. It's a more accurate tag to use in this case as it encapsulates the intent for the rest of the content.
+
+> [Learn more on the `main` tag](https://www.w3schools.com/tags/tag_main.asp)
+
+Here's a desktop screenshot of showing the box-model of our `<main>` element:
+![Screenshot showing the new Body Content box-model representation, highlighting both the applied margins and padding.](/img/fed-talk/s01e02/bodyContent-desktop-boxmodel.png)
 
 
-<!-- ## :pray: Closing
+### Main Menu Navigation
 
-At this stage you your application should be wrapped with a theme provider.
+The main menu is the primary way for users to navigate around your App. It should contain all the main areas of the App and indicate where the user currently sites in the hierarchy.
 
-You are now ready to move onto the next episode where I’ll be walking you through how to implement Routing in your app, covering:
+Create a new file to manage your Main Menu Navigation:
+```tsx
+// src/components/MainMenu/index.tsx
 
-* Setting up routes,
+import React from 'react';
+
+import { Drawer, List, ListItem, ListItemText } from '@material-ui/core';
+
+function MenuItems() {
+  return (
+    <List>
+      {['1', '2', '3'].map(item => (
+        <ListItem button key={item}>
+          <ListItemText primary={`Menu Item #${item}`} />
+        </ListItem>
+      ))}
+    </List>
+  )
+}
+
+type Props = {
+  openMenu: boolean;
+  setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function MainMenu({ openMenu, setOpenMenu }: Props) {
+  return (
+    <nav aria-label="main menu navigation">
+      <Drawer
+        anchor="left"
+        disablePortal
+        onClose={() => setOpenMenu(false)}
+        open={openMenu}
+        variant="temporary"
+      >
+        <MenuItems />
+      </Drawer>
+    </nav>
+  );
+}
+```
+
+Few things to note:
+1. We're using MUI's `Drawer` component to hold our Menu Items content.
+2. `[anchor="left"]` prop is used to declare where we would like the Menu it transition from.
+3. I've personally declared `[disablePortal=true]` here so the HTML lives inside of the `<nav>` element, thus, making it more accessible and schematically correct.
+4. The `onClose` callback function gets invoke only if the background click-away-listener is present; set by the `[variant="temporary"]` property.
+5. `[open=true]` will transition the Menu in and the opposite will transition the Menu out.
+
+We then have to colocate the `MainMenu` with our `AppBar` component as it has the `Menu` button we need to wire up.
+
+```tsx
+// src/components/AppBar/index.tsx
+
+import React from 'react';
+
+import { AppBar as MuiAppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
+import { MenuRounded } from '@material-ui/icons';
+
+import MainMenu from '../MainMenu';
+
+export default function AppBar() {
+  const [openMenu, setOpenMenu] = React.useState(false);
+
+  return (
+    <>
+      <MuiAppBar color="primary" position="sticky">
+        <Toolbar>
+          <IconButton
+            edge="start"
+            aria-label="menu"
+            onClick={() => setOpenMenu(state => !state)}
+          >
+            <MenuRounded />
+          </IconButton>
+          <Typography variant="h6">
+            Component Library
+          </Typography>
+        </Toolbar>
+      </MuiAppBar>
+      <MainMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
+    </>
+  )
+}
+```
+
+> :bulb: We can better manage this type of state using React's Contextual API. This will be covered in a future episode.
+
+We end up with this:
+![Screenshot showing the new Main Menu Navigation open. The body content is over layed by a dark opaque click away event listener.](/img/fed-talk/s01e02/main-menu-navigation.png)
+
+
+## :pray: Closing
+
+At this stage you your application should be wrapped with a Theme Provider.
+You should have enough knowledge on how to override the styles of MUI components as well as how to create your own styles along side your own components.
+
+You are now ready to move onto the next episode where I’ll be walking you through how to implement Routing in your app, covering the following topics:
+
+* How to setup Routing in your app,
 * Routes with parameters,
 * Route hooks,
 * Route transitions
@@ -752,5 +1001,5 @@ You are now ready to move onto the next episode where I’ll be walking you thro
 
 Don't be shy, [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)
 
-![Mechanical Rock Logo](/img/mr-logo-dark-landscape.jpg) -->
+![Mechanical Rock Logo](/img/mr-logo-dark-landscape.jpg)
 

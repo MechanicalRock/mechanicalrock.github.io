@@ -58,7 +58,7 @@ Themes let you apply a consistent tone to your app. It allows you to customize a
 To promote greater consistency between apps, light and dark theme types are available to choose from. By default, components use the light theme type.
 *(@material-ui)*
 
-Here's a good example where the Design Manager of GitHub, Diana Mounter, goes in depth the struggles they had trying to make a colour change.
+Here's a good example where the Design Manager of GitHub, Diana Mounter, talks in depth the struggles they had trying to make create a Dark theme and where creating a centralized Theme earlier would have made their lives much easier.
 
 > When the design systems team at GitHub implemented their colour system in 2017 they were working with Sass, trying to wrangle thousands of disconnected colour values into something more manageable to use. Now they're revisiting colour again, but this time with new tools, new customer goals, and more experience. In the age of dark mode, can what they've learned from CSS-in-JS and component APIs help them in their approach to color themeability? In this talk Diana covers lessons in color systems, theming APIs, and a bit of color theory along the way.
 >

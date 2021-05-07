@@ -64,7 +64,7 @@ Without this context, designers have an incomplete understanding about the curre
 
 An approach such as a VSM workshop is highly effective in fostering a shared understanding between designers, developers and clients. VSM provides a space for UX and DevOps to work together and this is "essential for DevOps teams to ensure they solve the right problems and are understanding the user’s real needs", ([Barnaby Dracup](https://www.devopsonline.co.uk/integrating-ux-with-devops/)). And this supports a long term competitive advantage.
 
-![Photograph of a Value Stream Mapping Workshop](/img/Value_Stream_Mapping.jpg)
+![Photograph of a Value Stream Mapping Workshop](/img/vsm_workshop.jpg)
 <br/>
 _Hamish Tedeschi, CEO, running a VSM workshop with a client_
 

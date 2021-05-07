@@ -1,11 +1,12 @@
 ---
 layout: post
 font: serif
-title: "FED Talk! (S01E02): Theme Providers"
+title: "FED Talk! Episode 2: Material UI Theme"
+description: "In today’s episode we will styling all of the base UI elements by creating a MUI Theme, taking you from novice to pro!"
 date: 2021-04-28
-tags: front-end-development FED-Talk react material-ui design theme
 author: Quintin Maseyk
 image: /img/fed-talk/s01e02/cover-ep2-740.png
+tags: [material ui, material ui theme, react, getting started with Material UI]
 ---
 
 ![Front-End Development Talk: Episode 2 - Theme Providers](/img/fed-talk/s01e02/cover-ep2-740.png)
@@ -18,7 +19,7 @@ In today's episode we will step through how to implement a Theme Provider. We wi
 * Layout
 * How to use your Theme
 
-**Lets get started!**
+**Let's get started!**
 
 ---
 
@@ -86,7 +87,7 @@ export default function App() {
 
 The above now wraps each of your app's child components with the Theme Provider, thus, exposing your theme via React's Context API, which we will later learn how to use.
 
-Lets now create a new folder in your `src` directory called `theme`. Here is where we can store each of our theme configurations.
+Let's now create a new folder in your `src` directory called `theme`. Here is where we can store each of our theme configurations.
 
 Create the following file:
 
@@ -120,9 +121,7 @@ export default function App() {
 
 ### Configure Theme
 
-One of the really neat benefits of using MUI is that their TypeScript definitions are well documented by using VSCode's `"Go to definition"` on any of their module exports.
-
-For example, if we dived into their `createMuiTheme` component, you will see something like this:
+One of the really neat benefits of using MUI is that their TypeScript definitions are well documented. This is evident by using VSCode's `"Go to definition"` on any of their module exports for example if we dived into their `createMuiTheme` component, you will see something like this:
 
 ```tsx
 // node_modules/@material-ui/core/styles/createMuiTheme.d.ts
@@ -359,7 +358,7 @@ This is what is looks like:
 
 ![Screenshot of Typography without using MUI's Typography component](/img/fed-talk/s01e02/typography-before.png)
 
-:thinking: Hm, I don't see my header font. Ah-huh, it's because I was using the default HTML tags, not MUI's Typography component. Lets converted them like so:
+:thinking: Hm, I don't see my header font. Ah-huh, it's because I was using the default HTML tags, not MUI's Typography component. Let's converted them like so:
 
 ```tsx
 // src/app.tsx
@@ -414,9 +413,9 @@ There are two ways to set your app's Font Sizing:
 
 1. Manually declaring each of the variants font sizes, for each of your desired Break-Points in your Typography file. :scream:
 
-2. Using MUi's nifty `responsiveFontSizes` helper to do it for us! :champagne:
+2. Using MUI's nifty `responsiveFontSizes` helper to do it for us! :champagne:
 
-For this example we will implement option 2 as it reduces the amount of custom code we need to maintain and defines all the font sizes for us, for each breakpoint. [An interactive demo on how this functionality works can be found here](https://material-ui.com/customization/typography/#font-size)
+For this example we will implement option 2 as it reduces the amount of custom code we need to maintain and defines all the font sizes for us for each breakpoint. [An interactive demo on how this functionality works can be found here](https://material-ui.com/customization/typography/#font-size)
 
 All we have to do is wrapping our Theme with their function.
 
@@ -493,12 +492,12 @@ I've personally never had to change any of the Breakpoint settings even though y
 
 ### Accessing Breakpoints
 
-When you get to the stage of developing components you'll eventually have to solve responsive layout issues as to make your App as accessible and fluid as possible.
+When you get to the stage of developing components you'll eventually have to solve responsive layout issues to make your App accessible and as fluid as possible.
 
-MUI offer many ways for you to interface into the Theme's breakpoint state whether you wish to statically style your component and its breakpoint changes, or observe breakpoint changes in your Component to logically do something. Lets go through some examples.
+MUI offer many ways for you to interface into the Theme's breakpoint state whether you wish to statically style your component and its breakpoint changes, or observe breakpoint changes in your Component to logically do something. Let's go through some examples.
 
 #### CSS Media Queries
-For this example imagine you I have a `Card` component which has a heading, text and a call-to-action `Button` at the bottom. You are then tasked to style the Button against different breakpoints.
+For this example imagine you have a `Card` component which has a heading, some text and then a call-to-action `Button` at the bottom. You are then tasked to style the Button against different breakpoints.
 
 *Pseudo train of thought*
 * [breakpoints equal to or less than `sm`] the button should span across the full width of the card,
@@ -526,16 +525,16 @@ const styles = theme => ({
 ```
 
 Few things to note:
-1. `breakpoints` is a property of our injected `theme` (via the `ThemeProvider` HoC)
+1. `breakpoints` is a property exposed from our injected `theme` (via the `ThemeProvider` HoC)
 2. `breakpoints` have 4 functions you can use to select the your target breakpoints:
 * theme.breakpoints.up(key)
 * theme.breakpoints.down(key)
 * theme.breakpoints.only(key)
 * theme.breakpoints.between(start, end)
-3. Declare your breakpoints from smallest to largest as to retain MUI's Mobile-First design principle.
+3. Declare your breakpoints from smallest to largest as to retain MUI's Mobile-First design principle. By not doing this you could experience unexpected behavior.
 
 #### JS Media Queries
-For this example imagine you I have a `Table` which has many columns and is read from left to right. This table reads really well on larger screens however the designer has rejigged the Table for mobile screens, thus a second rendition of the `Table` should be rendered in this case.
+For this example imagine you have a `Table` which has many columns and is read from left to right. This table reads really well on larger screens however the designer has rejigged the Table for mobile screens, thus a second rendition of the `Table` should be rendered in this case.
 
 *Pseudo train of thought*
 * [breakpoints equal to or less than `sm`] should render the `MobileTable`, otherwise the `LargerTable` should be rendered.
@@ -570,7 +569,7 @@ Few things to note:
 
 ## Colour Palette
 
-Some may argue colour is meaningless, others are so passionate about it they can tell you what the hexadecimal code is for a given colour on top fo their head. Either way, colour exists and most are fortunate to witness its array and uses in the world. If used well it can promote your brand and cognitively remind people of your brand, it can indicate a level of severity, attract the eye. Ultimately colour has meaning.
+Colour exists and most are fortunate to witness its array and uses in the world. If used well it can promote your brand and cognitively remind people of your brand, it can indicate a level of severity and attract the eye. Ultimately colour has meaning.
 
 MUI's Theme allow you to configure a palette, which is a make up "colour intention". Here are the colour intentions and their uses.
 
@@ -588,7 +587,7 @@ The following screenshot shows each colour intention and their default values:
 
 ### Choosing Your Colours
 
-MUI's the gift which just keeps giving! The Material Design team have built a "Color Tool" which you can use to plugin your specific colours and visually see them against MUI's base components. The tool also has an Accessibility feature which I encourage you to use as it will report the legibility of your colours.
+MUI's the gift which just keeps giving! The Material Design team have built a "Color Tool" which you can use to plug in your specific colours and visually see them against MUI's base components. The tool also has an Accessibility feature which I encourage you to use as it will report the legibility of your colours.
 
 [Material Design: Color Tool](https://material.io/resources/color/#!/?view.left=0&view.right=0)
 
@@ -641,26 +640,94 @@ Even if you're chosen colours have been reported eligible in the "Color Tool" th
 
 If you wish to *dim the lights* or make a colour more vivid during events such as hovering over a button, you can tweak the amount against the `tonalOffset` property.
 
-# A collapsible section with markdown
-<details>
-  <summary>Click to expand!</summary>
+Let's add a colour section to our App by doing the following:
 
-  ## Heading
-  1. A numbered
-  2. list
-     * With some
-     * Sub bullets
-</details>
+```tsx
+// src/ui/ColourPalette/index.tsx
+
+import React from 'react';
+
+import { Box, Grid, Typography } from '@material-ui/core';
+
+function ColourBox({ intention, variant }: { intention: string; variant: string; }) {
+  const bgColor = `${intention}.${variant}`;
+  const color = intention === 'text' ? 'background.paper' : `${intention}.contrastText`;
+  return (
+    <Grid item xs={12} sm={4}>
+      <Box bgcolor={bgColor} color={color} p={4}>
+        <strong>{bgColor}</strong>
+      </Box>
+    </Grid>
+  )
+}
+
+const palette = [
+  { intention: 'primary', variant: 'main' },
+  { intention: 'secondary', variant: 'main' },
+  { intention: 'error', variant: 'main' },
+  { intention: 'warning', variant: 'main' },
+  { intention: 'info', variant: 'main' },
+  { intention: 'success', variant: 'main' },
+  { intention: 'text', variant: 'primary' },
+  { intention: 'text', variant: 'secondary' },
+  { intention: 'text', variant: 'disabled' }
+]
+export default function ColourPalette() {
+  return (
+    <>
+      <Typography variant="h2">Colour Palette</Typography>
+      <br />
+      <Grid container spacing={1}>
+        {palette.map((p, i) => <ColourBox key={i} {...p} />)}
+      </Grid>
+    </>
+  )
+}
+```
+
+Then Add the new section to our App:
+
+```tsx
+// src/app.tsx
+
+import { CssBaseline, Divider, ThemeProvider } from '@material-ui/core';
+
+import Theme from './theme';
+import ColourPalette from './ui/ColourPalette';
+import Typography from './ui/Typographies';
+
+export default function App() {
+  return (
+    <ThemeProvider theme={Theme}>
+      <CssBaseline />
+      <Typography />
+      <Divider />
+      <ColourPalette />
+    </ThemeProvider>
+  );
+}
+```
+
+You should end up seeing this:
+
+![A 3x3 grid showing each of the Colour Intentions and with their foreground colour and background colour presentations](/img/fed-talk/s01e02/colour-palette-app.png)
 
 ---
 
 ## Layout
 
+Setting your app's initial layout can be daunting. Even though most website layouts are quite consistent these days, there are more than 1 way to skin a cat! Too many website implementations lack well schematic HTML, making me think there is a gap of knowledge on this subject. For example websites which have multiple H1 tags, broken header hierarchy, unnecessary `div`s or `div`s which should be replaced with better purposed tags.
 
-Setting your app's initial layout can be daunting. Even though most website layouts are quite consistent these days, there are too many ways to skin a cat! There are too many website implementations lacking well schematic HTML; making me think there is a gap of knowledge on this subject. For example websites which have multiple H1 tags, broken header hierarchy, unnecessary `div`s or `div`s which should be replaced with purposed tags.
+> :+1: Our goal as Front-End developers is to make everything we build accessible!
 
-> :+1: Our goal as Front-End developers is to make things everything we build accessible!
+Before we can start building out our layout we need to know where the main landmarks are. Will the main menu navigation be in the top of the page (will it be fixed?), or will it be anchored on the left of the page?
+What type of content are you required to display? Blog-like content where content is best presented in the center channel or multimedia, where content can be scaled in a tile fashion?
 
+For our case the scaffold will look like this for mobile:
+![App bar at the top. Main menu navigation hidden, though accessible via the App Bar's menu button. Body content filling the mobile device width.](/img/fed-talk/s01e02/mobile-scaffolding.jpg)
+
+And for desktop:
+![App bar at the top. Main menu navigation anchored to the left. Body content center columned.](/img/fed-talk/s01e02/desktop-scaffolding.jpg)
 
 
 

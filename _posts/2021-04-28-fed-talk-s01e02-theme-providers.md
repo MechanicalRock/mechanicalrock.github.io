@@ -12,11 +12,11 @@ tags: [material ui, material ui theme, react, getting started with Material UI,s
 ![Front-End Development Talk: Episode 2 - Material UI Theme](/img/fed-talk/s01e02/cover-ep2-740.png)
 
 In today's episode we will step through how to implement a Theme Provider. We will configure everything from:
-* Typographies
+* Typography
 * Breakpoints
-* Colour Palette
+* Colours
 * Buttons
-* Scaffold Your App
+* How to scaffold your App
 
 **Let's get started!**
 
@@ -24,8 +24,7 @@ In today's episode we will step through how to implement a Theme Provider. We wi
 
 **Table of Contents:**
 
-- [:thinking: What's a Theme?](#-thinking--what-s-a-theme-)
-- [:punch: Historic Events](#-punch--historic-events)
+- [:thinking: What's a Theme?](#thinking-whats-a-theme)
 - [Theme Setup](#theme-setup)
   * [Configure Theme](#configure-theme)
 - [Typography](#typography)
@@ -39,7 +38,12 @@ In today's episode we will step through how to implement a Theme Provider. We wi
 - [Colour Palette](#colour-palette)
   * [Choosing Your Colours](#choosing-your-colours)
   * [Apply the Palette](#apply-the-palette)
-- [Layout](#layout)
+- [Buttons](#buttons)
+- [Scaffold Your App](#scaffold-your-app)
+  * [App Bar](#app-bar)
+  * [Body Content](#body-content)
+  * [Main Menu Navigation](#main-menu-navigation)
+- [:pray: Closing](#pray-closing)
 
 ---
 

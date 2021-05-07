@@ -27,9 +27,10 @@ Based on this, I believe value and subsqeuent competitive advantage is greatly e
 
 At Mechanical Rock before we start a piece of design work, we run in depth discovery sessions. Developers, designers and the clients are involved. In these sessions, we understand the problem space, dive deeper into the current state and user journey. A shared understanding is fostered as both designers and developers have the same context of the problem space.
 
-Without this session, it is too easy to make assumptions and be driven by the client leading to poor delivery. For example, on a recent project, the client was adamant that the users felt fearful of artifical intelligence and machine learning; however, our user research suggested otherwsie, which opened up new opportunities and allowed us to deliver solutions driven by user data. This is an example, of how UX provides visibility into the problem space and user needs which leads to strong delivery.
+Without this session, it is too easy to make assumptions and be driven by the client leading to poor delivery. For example, on a recent project, the client was adamant that the users felt fearful of artificial intelligence and machine learning; however, our user research suggested otherwise, which opened up new opportunities and allowed us to deliver solutions driven by user data. This is an example, of how UX provides visibility into the problem space and user needs which leads to strong delivery.
 
-![Cypress CodeBuild report](/img/Quickmail_Discovery.jpg)
+![Discovery Workshop](/img/Discovery_workshop.jpg)
+<br/>
 _Karen Cheng, Principal Design Consultant, running a discovery workshop with a client_
 
 <br /><br />
@@ -63,7 +64,8 @@ Without this context, designers have an incomplete understanding about the curre
 
 An approach such as a VSM workshop is highly effective in fostering a shared understanding between designers, developers and clients. VSM provides a space for UX and DevOps to work together and this is "essential for DevOps teams to ensure they solve the right problems and are understanding the user’s real needs", ([Barnaby Dracup](https://www.devopsonline.co.uk/integrating-ux-with-devops/)). And this supports a long term competitive advantage.
 
-![Cypress CodeBuild report](/img/Value_Stream_Mapping.jpg)
+![Value Stream Mapping workshop](/img/vsm_workshop.jpg)
+<br/>
 _Hamish Tedeschi, CEO, running a VSM workshop with a client_
 
 <br /><br />

@@ -2,31 +2,87 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <meta name="theme-color" content="#40BFB4">
   <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
-  <meta
-    name="description"
-    content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
-  />
+  <meta name="description" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
 
+  <link rel="stylesheet" href="/assets/main.css" />
+  <link rel="stylesheet" href="/assets/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Georgia:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <link rel="canonical"
+    href="{% if page.canonical_url %}{{ page.canonical_url }}{% else %}{{ page.url | replace:'index.html','' | absolute_url }}{% endif %}" />
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ " /feed.xml" |
+    relative_url }}" />
+
+  {% if site.facebookAppId %}
+  <meta property="fb:app_id" content="{{ site.facebookAppId }}">
+  {% endif %}
   <meta property="og:type" content="article" />
   <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
-  <meta
-    property="og:description"
-    content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
-  />
+  {% if page.description %}
+  <meta property="og:description" content="{{ page.description }} " />
+  {% endif %}
   <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
   <meta property="og:site_name" content="{{ site.title }}" />
   {% if page.image %}
   <meta property="og:image" content="{{ site.url }}/{{ page.image }}" />
-  {% endif %} <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}"> <link rel="stylesheet" href="{{
-  "/assets/style.css" | relative_url }}">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  {% endif %}
 
-  <link
-    rel="canonical"
-    href="{% if page.canonical_url %}{{ page.canonical_url }}{% else %}{{ page.url | replace:'index.html','' | absolute_url }}{% endif %}"
-  />
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url
-  }}"> {% include google-analytics.html %}
+  <meta property="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  {% if page.description %}
+  <meta property="twitter:description" content="{{ page.description }} " />
+  {% endif %}
+  <meta name="twitter:site" content="{{ site.title }}" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="{{ page.author }}">
+  {% if page.readingTime %}
+  <meta name="twitter:label1" content="Reading time">
+  <meta name="twitter:data1" content="{{ page.readingTime }}">
+  {% endif %}
+  {% if page.image %}
+  <meta name="twitter:image:src" content="{{ site.url }}/{{ page.image }}" />
+  {% endif %}
+
+  <meta property="article:published_time" content="{{ page.date }}">
+  {% if page.dateModified %}
+  <meta property="article:modified_time" content="{{ page.dateModified }}">
+  {% endif %}
+  <meta property="article:author" content="{{ page.author }}">
+  <meta name="author" content="{{ page.author }}">
+
+  <meta name="google-site-verification" content="LhuzmuVNaMTE4_JcYur9qOaK-zXu2bJ6-d0uBYOXATQ" />
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org/",
+    "@type": "Article",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{% if page.canonical_url %}{{ page.canonical_url }}{% else %}{{ page.url | replace:'index.html','' | absolute_url }}{% endif %}"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "{{ page.author }}"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Mechanical Rock",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}/img/mr-logo-dark-landscape.jpg"
+      }
+    },
+    "headline": "{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}",
+    "image": "{{ site.url }}/{{ page.image }}",
+    "datePublished": "{{ page.date }}"
+    "dateModified": "{{ page.dateModified }}"
+  }
+  </script>
+
+  {% include google-analytics.html %}
 </head>

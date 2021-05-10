@@ -1,16 +1,69 @@
+@import "gcse-style.css";
+
 body {
-    font-size: 1em;
-    line-height: 1.85714286em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-size: 1em;
+    line-height: 1.85714286em;
     font-family: 'Open Sans','Helvetica','Arial',sans-serif;
     color: #666;
-    font-weight: 400
 }
 
+.site-header {
+    border: unset;
+}
 
-a, a:visited {
+.logo-holder {
+    width: 15%;
+}
+
+.logo-row {
+    background-color: #333132;
+    display: flex;
+    padding: 20px 15px;
+}
+
+.header-description p{
+    font-size: 25px;
+    text-align: center;
+    color: #fff;
+    margin-bottom: unset;
+}
+
+.header-description{
+    flex-basis: 70%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.wrapper{
+    padding: 15px 15px 5px 15px;
+}
+
+h3 {
+    margin-bottom: unset;
+}
+
+a,
+.page:visited,
+.change-pages-set:visited
+{
 	color: #40BFB4;
+}
+
+.page.active {
+    font-weight: bold;
+}
+
+a:visited {
+    color: #1A73E8;
+}
+
+a:hover {
+    color:#e8e5e2;
 }
 
 .pager {
@@ -37,4 +90,54 @@ a, a:visited {
 .footnote {
     font-size: "-2";
     color: #666;
+}
+
+
+.page-content {
+    padding-top: 10px;
+}
+
+.page-heading {
+    padding-bottom: 15px;
+}
+
+.post-content.serif {
+    font-family: Georgia, Cambria, "Times New Roman";
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.7em;
+    color: #383838;
+}
+
+.post-content.serif h1, .post-content.serif h2, .post-content.serif h3, .post-content.serif h4, .post-content.serif h5, .post-content.serif h6, .post-content.serif p, .post-content.serif blockquote, .post-content.serif pre, .post-content.serif ul, .post-content.serif ol, .post-content.serif dl, .post-content.serif figure, .post-content.serif .highlight {
+    margin-bottom: 1em;
+}
+
+.post-content.serif hr {
+    margin: 2em 0;
+}
+
+.post-content.serif blockquote {
+    font-style: normal;
+    font-family: sans-serif;
+}
+
+.post-content.serif h3 {
+    margin-top: 2em;
+}
+
+.post-content.serif table {
+    border: 1px solid #e8e8e8;
+    font-family: sans-serif;
+    font-size: 0.8em;
+}
+
+@media screen and (max-width: 425px) {
+    .post-content.serif table {
+        font-size: 0.6em;
+    }
+}
+
+.post-content.serif .post-title {
+    font-family: 'Open Sans','Helvetica','Arial',sans-serif;
 }

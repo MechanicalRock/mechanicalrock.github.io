@@ -36,9 +36,15 @@ table td {
 
 /* Remove search button on click outline */
 .gsc-search-button.gsc-search-button-v2 {
-    outline:none ;
+    outline: none;
+    cursor: pointer;
 }
 
+.gsc-search-button.gsc-search-button-v2:hover {
+    outline: none;
+    cursor: pointer;
+    background-color: #e8e5e2;
+}
 
 /* Google search results */
 
@@ -253,6 +259,10 @@ table td {
     background-color: #A1DFDB;
 }
 
+.searchresults-modal-body .gsc-search-button.gsc-search-button-v2:hover{
+    background-color: #40bfb4;
+}
+
 .searchresults-modal-body .gsc-search-button.gsc-search-button-v2 svg {
     fill: #4D4D4D;
 }
@@ -278,3 +288,28 @@ table td {
     color: #e8e5e2;
     cursor: pointer;
 }
+
+/* Loading Spinner */
+.loading-spinner-container{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-spinner {
+    border: 12px solid #e8e5e2; 
+    border-top: 12px solid #4D4D4D; 
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

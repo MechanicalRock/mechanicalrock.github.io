@@ -132,9 +132,9 @@ body {
         padding-bottom: 7em;
     }
 
-    .appBar .gsc-search-box .gsc-input-box input {
-        height: 1.1em !important;
-    }
+    /* .appBar .gsc-search-box .gsc-input-box input {
+        height: 1.8em !important;
+    } */
 
     .logo img {
         height: 2.4em;

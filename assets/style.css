@@ -123,6 +123,34 @@ body {
 }
 
 
+@media screen and (max-width: 425px) {
+    .appBar {
+        align-items: baseline;
+        height: 105px;
+        padding: 0.2em 1em 0.2em 1em;
+        flex-direction: column;
+        padding-bottom: 7em;
+    }
+
+    .logo img {
+        height: 2.4em;
+        padding: 0px 0.4em 0 0;
+    }
+
+    #searchbox-placeholder {
+        width: 100%;
+    }
+
+    table.gsc-search-box td.gsc-input {
+        margin-bottom: 1em;
+    }
+
+    .appBar .gsc-search-box {
+        width: 100%;
+        margin-top: 0.8em;
+    }
+}
+
 h3 {
     margin-bottom: unset;
 }
@@ -248,6 +276,7 @@ a.btn.chevronLeft::before {
     font-family: sans-serif;
     font-size: 0.8em;
 }
+
 
 @media screen and (max-width: 425px) {
     .post-content.serif table {

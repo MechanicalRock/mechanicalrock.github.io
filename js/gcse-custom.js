@@ -2,15 +2,35 @@ const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 window.__gcse = {
     searchCallbacks: {
       web: {
-        starting: setSearchQuery,
-        ready: showSearchResultsModal,
+        starting: startSearch,
+        ready: searchReady,
         rendered: getDateFromLink,
       },
     },
   };
 
+function startLoadingSpinner(){
+    var loadingSpinner = document.getElementsByClassName("loading-spinner-container")[0];
+    loadingSpinner.style.display = "flex";
+}
+
 function setSearchQuery(gname, query) {
     document.getElementsByClassName("searchresults-modal-title")[0].innerHTML= "Showing results for: <b>" + query + "</b>";
+}
+
+function stopLoadingSpinner(){
+    var loadingSpinner = document.getElementsByClassName("loading-spinner-container")[0];
+    loadingSpinner.style.display = "none";
+}
+
+function startSearch(gname, query){
+    startLoadingSpinner();
+    setSearchQuery(gname, query);
+}
+
+function searchReady(){
+    stopLoadingSpinner();
+    showSearchResultsModal();
 }
 
 function showSearchResultsModal() {

@@ -1,5 +1,9 @@
 @import "gcse-style.css";
 
+:root {
+    --color-brand: #40bfb4;
+}
+
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -51,7 +55,7 @@ a,
 .page:visited,
 .change-pages-set:visited
 {
-	color: #40BFB4;
+	color: var(--color-brand);
 }
 
 .page.active {
@@ -62,8 +66,38 @@ a:visited {
     color: #1A73E8;
 }
 
-a:hover {
-    color:#e8e5e2;
+a:hover, a:focus {
+    color:#205854;
+}
+
+a.btn {
+    background-color: var(--color-brand);
+    color: #000;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    font-family: Arial;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+a.btn:hover, a.btn:focus {
+    background-color: #1e5a54;
+    color: white;
+}
+
+a.btn.chevron::before {
+    background-color: var(--color-brand);
+    border-right: 1px solid white;
+    padding: 0.5em 1em;
+    margin-left: -1em;
+    margin-right: 1em;
+    font-weight: normal;
+}
+a.btn.chevronRight::before {
+    content: ">";
+}
+a.btn.chevronLeft::before {
+    content: "<";
 }
 
 .page-content img:not(.emoji) {

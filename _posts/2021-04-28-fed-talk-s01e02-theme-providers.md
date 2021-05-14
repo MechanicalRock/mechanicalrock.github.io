@@ -3,15 +3,15 @@ layout: post
 font: serif
 title: "FED Talk! Episode 2: Material UI Theme"
 description: "In today’s episode we will styling all of the base UI elements by creating a MUI Theme, taking you from novice to pro!"
-date: 2021-04-28
+date: 2021-05-14
 author: Quintin Maseyk
 image: /img/fed-talk/s01e02/cover-ep2-740.png
-tags: [material ui, material ui theme, react, getting started with Material UI,scaffold your app]
+tags: [material ui, material ui theme, react, getting started with Material UI, scaffold your app]
 ---
 
 ![Front-End Development Talk: Episode 2 - Material UI Theme](/img/fed-talk/s01e02/cover-ep2-740.png)
 
-In today's episode we will step through how to implement a Theme Provider. We will configure everything from:
+In today's episode we will step through how to implement your applications theme using Material UI's Theme Provider. We will configure everything from:
 * Typography
 * Breakpoints
 * Colours
@@ -49,7 +49,7 @@ In today's episode we will step through how to implement a Theme Provider. We wi
 
 ## :thinking: What's a Theme?
 
-Theme's are important as they define the look and feel of your overall application. A good theme engine will allow the development team to configure things once centrally, as opposed to repetitively.
+Themes are important as they define the look and feel of your overall application. A good theme engine will allow the development team to configure things once centrally, as opposed to repetitively.
 
 The theme specifies the color of the components, darkness of the surfaces, level of shadow, appropriate opacity of ink elements, etc.
 
@@ -58,7 +58,7 @@ Themes let you apply a consistent tone to your app. It allows you to customize a
 To promote greater consistency between apps, light and dark theme types are available to choose from. By default, components use the light theme type.
 *(@material-ui)*
 
-Here's a good example where the Design Manager of GitHub, Diana Mounter, talks in depth the struggles they had trying to make create a Dark theme and where creating a centralized Theme earlier would have made their lives much easier.
+Here's a good example where the Design Manager of GitHub, Diana Mounter, talks in depth about the struggles they had trying to make create a Dark theme and where creating a centralised theme earlier would have made their lives much easier.
 
 > When the design systems team at GitHub implemented their colour system in 2017 they were working with Sass, trying to wrangle thousands of disconnected colour values into something more manageable to use. Now they're revisiting colour again, but this time with new tools, new customer goals, and more experience. In the age of dark mode, can what they've learned from CSS-in-JS and component APIs help them in their approach to color themeability? In this talk Diana covers lessons in color systems, theming APIs, and a bit of color theory along the way.
 >
@@ -214,7 +214,7 @@ The "Selected families" tray will then allow you to review your selected fonts a
 > The `preconnect` declaration helps improve page load speeds by instructing the browser to connect with another origin, thus hitting all of the connection constraints up front, rather then when the actual resource request gets called.
 > [Find out more.](https://web.dev/uses-rel-preconnect/)
 
-Copy and paste their code snipper into the `<head>` block.
+Copy and paste their code snippet into the `<head>` block.
 
 ```tsx
 // public/index.html
@@ -246,7 +246,7 @@ Copy and paste their code snipper into the `<head>` block.
 </html>
 ```
 
-This instructs the browser to requested our Google fonts during the App's initial load. The font's themselves will only be apparent once we bind the CSS Font-Families to our html. To do this we'll need to extend our Theme by adding a Typography configuration.
+This instructs the browser to request our Google fonts during the App's initial load. The fonts themselves will only be apparent once we bind the CSS Font-Families to our HTML. To do this we'll need to extend our theme by adding a Typography configuration.
 
 MUI's Typography component allow configuration for the following variants (I've added their default HTML element mapping as inline comments):
 
@@ -358,7 +358,7 @@ This is what is looks like:
 
 ![Screenshot of Typography without using MUI's Typography component](/img/fed-talk/s01e02/typography-before.png)
 
-:thinking: Hm, I don't see my header font. Ah-huh, it's because I was using the default HTML tags, not MUI's Typography component. Let's converted them like so:
+:thinking: Hm, I don't see my header font. Ah-huh, it's because I was using the default HTML tags, not MUI's Typography component. Let's convert them like so:
 
 ```tsx
 // src/app.tsx
@@ -559,7 +559,7 @@ function TableWrapper() {
 
 Few things to note:
 1. The `useTheme` hook is defined so the `TableWrapper` component has access to the app's `Theme`.
-2. The `useMediaQuery` hook is defined and parameterized with my desired breakpoint for the hook to observe. It's initial value is either `true` or `false`, depending on the clients calculated dimensions.
+2. The `useMediaQuery` hook is defined and parameterized with my desired breakpoint for the hook to observe. Its initial value is either `true` or `false`, depending on the clients calculated dimensions.
 3. `useMediaQuery` observe the windows Resize event and will internally recompute the hooks value if the Theme's current breakpoint value changes.
 4. Remember `breakpoints.down(key)`, `breakpoints.up(key)` includes the `key` as part of its Boolean check.
 
@@ -780,17 +780,16 @@ We should see something like this:
 
 ![A screenshot showing what all 3 of the Button variations look like against each of the colour variations, default, primary, secondary and disabled](/img/fed-talk/s01e02/buttons.png){:width="500"}
 
-
 ---
 
 ## Scaffold Your App
 
-Setting your app's initial layout can be daunting. Even though most website layouts are quite consistent these days, there are more than 1 way to skin a cat! Too many website implementations lack well schematic HTML, making me think there is a gap of knowledge on this subject. For example websites which have multiple H1 tags, broken header hierarchy, unnecessary `div`s or `div`s which should be replaced with better purposed tags.
+Setting your app's initial layout can be daunting. Even though most website layouts are quite consistent these days, there is more than 1 way to skin a cat! Too many website implementations lack well schematic HTML, making me think there is a gap of knowledge on this subject. For example websites which have multiple H1 tags, broken header hierarchy, unnecessary `div`s or `div`s which should be replaced with better purposed tags.
 
 > :+1: Our goal as Front-End developers is to make everything we build accessible!
 
-Before we can start building out our layout we need to know where the main landmarks are. Will the main menu navigation be in the top of the page (will it be fixed?), or will it be anchored on the left of the page?
-What type of content are you required to display? Blog-like content where content is best presented in the center channel or multimedia, where content can be scaled in a tile fashion?
+Before we can start building out our layout we need to know where the main landmarks are. Will the main menu navigation be on the top of the page (will it be fixed?), or will it be anchored on the left of the page?
+What type of content are you required to display? Blog-like content where content is best presented in the center channel or multimedia, where content can be tiled.
 
 For our case the scaffold will look like this for mobile:
 ![App bar at the top. Main menu navigation hidden, though accessible via the App Bar's menu button. Body content filling the mobile device width.](/img/fed-talk/s01e02/mobile-scaffolding.jpg)
@@ -833,9 +832,9 @@ export default function AppBar() {
 ```
 
 Few things to note:
-1. We have to cast the imported `AppBar` module to a new name `MuiAppBar` so that we am able to export our own version of the `AppBar` going forward.
+1. We have to cast the imported `AppBar` module to a new name `MuiAppBar` so that we are able to export our own version of the `AppBar` going forward.
 2. We implement the `[position="sticky"]` prop against the `MuiAppBar`. This is so the AppBar will stick to the top of the viewport, even when you scroll beyond its initial position.
-3. We implement the `[edge="start"]` prop against the `IconButton`. This will apply some css to anchor the icon to the left, minus it's original margin offset.
+3. We implement the `[edge="start"]` prop against the `IconButton`. This will apply some css to anchor the icon to the left, minus its original margin offset.
 
 We end up with this:
 
@@ -889,13 +888,13 @@ Few things to note:
 
 > [Learn more on the `main` tag](https://www.w3schools.com/tags/tag_main.asp)
 
-Here's a desktop screenshot of showing the box-model of our `<main>` element:
+Here's a desktop screenshot of showing the [box-model](/2021/04/27/fed-talk-s01e01-getting-started#understanding-the-box-model) of our `<main>` element:
 ![Screenshot showing the new Body Content box-model representation, highlighting both the applied margins and padding.](/img/fed-talk/s01e02/bodyContent-desktop-boxmodel.png)
 
 
 ### Main Menu Navigation
 
-The main menu is the primary way for users to navigate around your App. It should contain all the main areas of the App and indicate where the user currently sites in the hierarchy.
+The main menu is the primary way for users to navigate around your App. It should contain all the main areas of the App and indicate where the user currently sits in the hierarchy.
 
 Create a new file to manage your Main Menu Navigation:
 ```tsx
@@ -943,7 +942,7 @@ Few things to note:
 1. We're using MUI's `Drawer` component to hold our Menu Items content.
 2. `[anchor="left"]` prop is used to declare where we would like the Menu it transition from.
 3. I've personally declared `[disablePortal=true]` here so the HTML lives inside of the `<nav>` element, thus, making it more accessible and schematically correct.
-4. The `onClose` callback function gets invoke only if the background click-away-listener is present; set by the `[variant="temporary"]` property.
+4. The `onClose` callback function gets invoked only if the background click-away-listener is present; set by the `[variant="temporary"]` property.
 5. `[open=true]` will transition the Menu in and the opposite will transition the Menu out.
 
 We then have to colocate the `MainMenu` with our `AppBar` component as it has the `Menu` button we need to wire up.
@@ -988,10 +987,11 @@ export default function AppBar() {
 We end up with this:
 ![Screenshot showing the new Main Menu Navigation open. The body content is over layed by a dark opaque click away event listener.](/img/fed-talk/s01e02/main-menu-navigation.png)
 
+---
 
 ## :pray: Closing
 
-At this stage you your application should be wrapped with a Theme Provider.
+At this stage your application should be wrapped with a Theme Provider.
 You should have enough knowledge on how to override the styles of MUI components as well as how to create your own styles along side your own components.
 
 You are now ready to move onto the next episode where I’ll be walking you through how to implement Routing in your app, covering the following topics:
@@ -1000,6 +1000,9 @@ You are now ready to move onto the next episode where I’ll be walking you thro
 * Routes with parameters,
 * Route hooks,
 * Route transitions
+
+
+[Previous Episode: Getting Started with React & Material UI](/2021/04/27/fed-talk-s01e01-getting-started){: .btn.chevron.chevronLeft}
 
 ---
 

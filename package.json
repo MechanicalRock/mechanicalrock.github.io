@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "docker-compose up blogserver"
   },
   "devDependencies": {
     "jest": "^26.6.3"

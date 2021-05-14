@@ -4,7 +4,7 @@ font: serif
 title: "FED Talk! Episode 1: Getting Started with React & Material UI"
 description: "In today’s episode we will bootstrap a React app with Material UI and loads more front-end concepts which will take you from novice to pro!"
 date: 2021-04-27
-dateModified: 2021-05-03
+dateModified: 2021-05-14
 tags: [getting started with react, create react app, react, getting started with Material UI, material-ui]
 author: Quintin Maseyk
 image: img/fed-talk/cover-ep1-740.png
@@ -18,10 +18,10 @@ These days it's very easy for new developers to get up and running using tooling
 
 This series will contain many episodes, each ordered with hope to equip you with a typical FED experience on how to build React Apps. As it stands the following subjects have been identified:
 
-* Episode 1: Getting Started
-* Episode 2: Theme Providers
-* Episode 3: Routing
-* Episode 4: Testing and Developing components
+* [Episode 1: Getting Started](/2021/04/27/fed-talk-s01e01-getting-started)
+* [Episode 2: Theme Providers](/2021/04/28/fed-talk-s01e02-theme-providers)
+* Episode 3: Routing *(coming soon)*
+* Episode 4: Testing and Developing components *(coming soon)*
 
 In today's episode we will bootstrap a React application going into detail during each of the steps. You will be provided a mixture of code snippets, screenshots and external references along the way.
 
@@ -62,7 +62,7 @@ If the answer is yes, that’s great, you have a basis to work from and extend o
 
 If the answer is no, that’s still okay, instead you have prime opportunity to centralize the App’s DS artifacts! My mentality in this case is a bit more involved and requires team/company wide structure to help formulate a cross functional Design → Developer process. We will cover this in more detail throughout the series.
 
-For the rest of this series we will assume there is no DS, instead, we will build one DS alongside our functional React App! That's the cool thing about this, when you are creating a new App, it’s better practise to create one from the get-go as it helps with testing, its living documentation, it can make design discussions easier etc.
+For the rest of this series we will assume there is no DS, instead, we will build one DS alongside our functional React App! That's the cool thing about this, when you are creating a new App, it’s better practice to create one from the get-go as it helps with testing, its living documentation, it can make design discussions easier etc.
 
 >  *I’m flinging the word “Design System” too loose here. We’ll be creating a Living Component Library (a subset of a Design System) as trying to build full a Design System is more than code artifacts.*
 
@@ -77,7 +77,7 @@ A UI library is a central repository where both design artifacts and developed c
 What’s important is to understand the basis of each of the UI libraries, at the end of the day they are just that: a library. The onus is on you to determine:
 
 * When was it created?
-* What does their future roadmap entail and will they continue to support it?
+* What does their future road map entail and will they continue to support it?
 * What major version is it on?
 * How much community support does it have?
 * What browsers do they support and does it align with yours?
@@ -138,7 +138,7 @@ The following folder structures should be shown in your code editor (I’m using
 ![Source Folder Screenshot. The source directory is where you will write most of your code  , containing things such as: Tests, Components, Providers etc...](/img/fed-talk/s01e01/source-folder.png)
 
 ### package.json file
-![Package json file Screenshot. The "dependancies" property is where you should specify node modules which are expected to be used post-build. There is also a property called "devDependancies"; declare node modules there if they are only required to build the Application. The "scripts" property is where you can execute command line scripts. You can add more to this list to do whatevery you like.](/img/fed-talk/s01e01/package-json-file.png)
+![Package json file Screenshot. The "dependancies" property is where you should specify node modules which are expected to be used post-build. There is also a property called "devDependancies"; declare node modules there if they are only required to build the Application. The "scripts" property is where you can execute command line scripts. You can add more to this list to do what ever you like.](/img/fed-talk/s01e01/package-json-file.png)
 
 More information on how the scripts work can be found here: https://create-react-app.dev/docs/available-scripts
 
@@ -402,15 +402,17 @@ As you can see the screenshot on the right neatly fits the maximum content into 
 
 At this stage you should have the shell of a prosperous React App and have gained foundational knowledge of its make-up.
 
-You are now ready to move onto the next episode where I’ll be walking you through how to implement a Theme provider in your app, covering everything from:
+You are now ready to move onto the next episode where I’ll be walking you through how to implement a Material UI Theme provider in your app, covering everything from:
 
 * Typography,
 * Colours,
 * MUI theme and component overrides,
 * Responsive design
 
+[Next Episode: How to setup a Material UI Theme](/2021/04/28/fed-talk-s01e02-theme-providers){: .btn.chevron.chevronRight}
+
 ---
 
-Dont be shy, [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)
+Don't be shy, [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)
 
 ![Mechanical Rock Logo](/img/mr-logo-dark-landscape.jpg)

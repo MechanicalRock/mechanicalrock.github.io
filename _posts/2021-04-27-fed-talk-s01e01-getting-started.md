@@ -5,6 +5,7 @@ title: "FED Talk! Episode 1: Getting Started with React & Material UI"
 description: "In today’s episode we will bootstrap a React app with Material UI and loads more front-end concepts which will take you from novice to pro!"
 date: 2021-04-27
 dateModified: 2021-05-14
+highlight: monokai
 tags: [getting started with react, create react app, react, getting started with Material UI, material-ui]
 author: Quintin Maseyk
 image: img/fed-talk/cover-ep1-740.png

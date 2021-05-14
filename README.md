@@ -21,6 +21,7 @@ title: String // (Recommended length 60 characters)
 description: String // (Recommended length 150-160 characters)
 date: Date
 dateModified: Date // [Optional] Make sure to set this if you make updates to your post after the original Date
+highlight: monokai // [Optional] Will apply the monokai dark highlight theme to each of your page's code blocks.
 tags: String | String[] // (Recommend 5 tags). Make sure your tags are what people Google Search. Make sure your tags are also mentioned in your blog post itself.
 author: String
 image: String // Relevant path directory to your image (do not prefix with a /)

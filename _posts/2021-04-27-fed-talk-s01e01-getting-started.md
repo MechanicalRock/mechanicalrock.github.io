@@ -409,7 +409,7 @@ You are now ready to move onto the next episode where I’ll be walking you thro
 * MUI theme and component overrides,
 * Responsive design
 
-[Next Episode: How to setup a Material UI Theme](/2021/04/28/fed-talk-s01e02-theme-providers){: .btn.chevron.chevronRight}
+[Next Episode: How to setup a Material UI Theme](/2021/05/14/fed-talk-s01e02-theme-providers){: .btn.chevron.chevronRight}
 
 ---
 

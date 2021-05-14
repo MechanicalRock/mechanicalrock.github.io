@@ -62,7 +62,7 @@ Here's a good example where the Design Manager of GitHub, Diana Mounter, talks i
 
 > When the design systems team at GitHub implemented their colour system in 2017 they were working with Sass, trying to wrangle thousands of disconnected colour values into something more manageable to use. Now they're revisiting colour again, but this time with new tools, new customer goals, and more experience. In the age of dark mode, can what they've learned from CSS-in-JS and component APIs help them in their approach to color themeability? In this talk Diana covers lessons in color systems, theming APIs, and a bit of color theory along the way.
 >
-> [Find out more](https://reactconfau.com/talks/themeability-is-the-path-to-dark-mode?from=talks)
+> [Find out more](https://reactconfau.com/talks/themeability-is-the-path-to-dark-mode?from=talks){:target="_blank" rel="noopener"}
 
 ---
 
@@ -183,9 +183,9 @@ We now know how to interface into this module and populate the `ThemeOptions`.
 
 It's important to use the correct Typography for any given media, whether it be for Print, Digital, Low/High resolution devices.
 
-Well defined typography should allow your viewers to clearly distinguish content and its formalities. For example, the font size of a H1 tag should be visually larger than that of a H2, likewise with H2 vs H3 and so on; this is called "Font Scaling". [Find out more on the Type System.](https://material.io/design/typography/the-type-system.html#type-scale)
+Well defined typography should allow your viewers to clearly distinguish content and its formalities. For example, the font size of a H1 tag should be visually larger than that of a H2, likewise with H2 vs H3 and so on; this is called "Font Scaling". [Find out more on the Type System.](https://material.io/design/typography/the-type-system.html#type-scale){:target="_blank" rel="noopener"}
 
-Let's pick some fonts using [Google Fonts](https://fonts.google.com/), 1 bold for our headings and one other for the rest of our app.
+Let's pick some fonts using [Google Fonts](https://fonts.google.com/){:target="_blank" rel="noopener"}, 1 bold for our headings and one other for the rest of our app.
 
 <br>**Step 1: Find your desired header font**
 
@@ -212,7 +212,7 @@ The "Selected families" tray will then allow you to review your selected fonts a
 ![Step 4](/img/fed-talk/s01e02/select-font-4.png){:width="350"}
 
 > The `preconnect` declaration helps improve page load speeds by instructing the browser to connect with another origin, thus hitting all of the connection constraints up front, rather then when the actual resource request gets called.
-> [Find out more.](https://web.dev/uses-rel-preconnect/)
+> [Find out more.](https://web.dev/uses-rel-preconnect/){:target="_blank" rel="noopener"}
 
 Copy and paste their code snippet into the `<head>` block.
 
@@ -288,7 +288,7 @@ const theme = createMuiTheme({
 >
 > I highly recommend you read all of MUI's Typography definitions and rules for each of the Variants above. They do a good job in explaining how, when and where to use it in your App.
 >
-> [Read more here](https://material.io/design/typography/the-type-system.html#applying-the-type-scale)
+> [Read more here](https://material.io/design/typography/the-type-system.html#applying-the-type-scale){:target="_blank" rel="noopener"}
 
 We can create our Typography file to configure each of the variants definitions.
 
@@ -407,7 +407,7 @@ The next obvious step is to implement font scaling across all of our Typography 
 >
 > To change the font-size of Material-UI you can provide a fontSize property. The default value is 14px.
 >
-> [Learn more](https://material-ui.com/customization/typography/#font-size)
+> [Learn more](https://material-ui.com/customization/typography/#font-size){:target="_blank" rel="noopener"}
 
 There are two ways to set your app's Font Sizing:
 
@@ -415,7 +415,7 @@ There are two ways to set your app's Font Sizing:
 
 2. Using MUI's nifty `responsiveFontSizes` helper to do it for us! :champagne:
 
-For this example we will implement option 2 as it reduces the amount of custom code we need to maintain and defines all the font sizes for us for each breakpoint. [An interactive demo on how this functionality works can be found here](https://material-ui.com/customization/typography/#font-size)
+For this example we will implement option 2 as it reduces the amount of custom code we need to maintain and defines all the font sizes for us for each breakpoint. [An interactive demo on how this functionality works can be found here](https://material-ui.com/customization/typography/#font-size){:target="_blank" rel="noopener"}
 
 All we have to do is wrap our theme with their function.
 
@@ -484,7 +484,7 @@ MUI's Theme implements the following default breakpoints:
 
 I've personally never had to change any of the Breakpoint settings even though you are able to reconfigure them.
 
-[Information on how to customize Breakpoints can be found here.](https://material-ui.com/customization/breakpoints/#custom-breakpoints)
+[Information on how to customize Breakpoints can be found here.](https://material-ui.com/customization/breakpoints/#custom-breakpoints){:target="_blank" rel="noopener"}
 
 > :pencil:
 >
@@ -563,7 +563,7 @@ Few things to note:
 3. `useMediaQuery` observe the windows Resize event and will internally recompute the hooks value if the theme's current breakpoint value changes.
 4. Remember `breakpoints.down(key)`, `breakpoints.up(key)` includes the `key` as part of its Boolean check.
 
-[Learn more on `useMediaQuery`.](https://material-ui.com/components/use-media-query/)
+[Learn more on `useMediaQuery`.](https://material-ui.com/components/use-media-query/){:target="_blank" rel="noopener"}
 
 ---
 
@@ -589,7 +589,7 @@ The following screenshot shows each colour intention and their default values:
 
 MUI's the gift which just keeps giving! The Material Design team have built a "Color Tool" which you can use to plug in your specific colours and visually see them against MUI's base components. The tool also has an Accessibility feature which I encourage you to use as it will report the legibility of your colours.
 
-[Material Design: Color Tool](https://material.io/resources/color/#!/?view.left=0&view.right=0)
+[Material Design: Color Tool](https://material.io/resources/color/#!/?view.left=0&view.right=0){:target="_blank" rel="noopener"}
 
 I will continue to use the Mechanical Rock brand colours:
 * Primary: #40BFB4
@@ -806,7 +806,7 @@ And for desktop:
 > It provides content and actions related to the current screen.
 > It’s used for branding, screen titles, navigation, and actions.
 >
-> [Learn more](https://material-ui.com/components/app-bar/)
+> [Learn more](https://material-ui.com/components/app-bar/){:target="_blank" rel="noopener"}
 
 Create a new file to manage your App Bar:
 
@@ -889,7 +889,7 @@ Few things to note:
 5. We've since migrated the Typographies and ColourPalette components from the `app.tsx` file into this file.
 6. Note the use of the HTML `main` Tag. It's a more accurate tag to use in this case as it encapsulates the intent for the rest of the content.
 
-> [Learn more on the `main` tag](https://www.w3schools.com/tags/tag_main.asp)
+> [Learn more on the `main` tag](https://www.w3schools.com/tags/tag_main.asp){:target="_blank" rel="noopener"}
 
 Here's a desktop screenshot of showing the [box-model](/2021/04/27/fed-talk-s01e01-getting-started#understanding-the-box-model) of our `<main>` element:
 ![Screenshot showing the new Body Content box-model representation, highlighting both the applied margins and padding.](/img/fed-talk/s01e02/bodyContent-desktop-boxmodel.png)

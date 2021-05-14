@@ -1,8 +1,16 @@
 @import "gcse-style.css";
 @import "highlight.css";
 
+@font-face {
+  font-family: "Dolce Vita Heavy Bold";
+  font-display: fallback;
+  src: local("Dolce Vita Heavy Bold"), local("Dolce Vita Heavy Bold"),
+    url("/fonts/dolce-vita-heavy-bold.ttf") format("truetype");
+}
+
 :root {
     --color-brand: #40bfb4;
+    --color-grey-dark: #231f20;
 }
 
 body {
@@ -14,39 +22,106 @@ body {
     color: #666;
 }
 
+.font-brand {
+    font-family: Dolce Vita Heavy Bold, Arial;
+}
+
 .site-header {
     border: unset;
+    background-color: var(--color-grey-dark);
 }
 
-.logo-holder {
-    width: 15%;
-}
-
-.logo-row {
-    background-color: #333132;
-    display: flex;
-    padding: 20px 15px;
-}
-
-.header-description p{
-    font-size: 25px;
-    text-align: center;
-    color: #fff;
-    margin-bottom: unset;
-}
-
-.header-description{
-    flex-basis: 70%;
+.header-wrapper {
+    background-color: var(--color-grey-dark);
+    width: 100%;
+    max-width: none;
+    margin-bottom: 3em;
+    margin-top: 0em;
     display: flex;
     justify-content: center;
     flex-direction: column;
+}
+
+.header-wrapper.page-layout-home {
+    margin-bottom: 0;
+}
+.header-wrapper.page-layout-post {
+    height: 0;
+}
+
+.header-wrapper .content {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 48em;
+    padding: 3em 1em 1em;
+    width: 100%;
+}
+
+.home {
+    margin-top: 4em;
+}
+
+.home-heading {
+    color: var(--color-brand);
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.search-text {
+    color: #FFF;
+}
+
+.appBar {
+    align-content: center;
+    align-items: center;
+    background-color: var(--color-grey-dark);
+    box-sizing: border-box;
+    display: flex;
+    height: 64px;
+    justify-content: center;
+    max-height: 64px;
+    padding: 0.2em 1em 0.2em 1.5em;
+    justify-content: space-between;
+}
+
+.logo {
+    align-items: center;
+    color: #FFF !important;
+    display: flex;
+    font-size: 1.2em;
+    font-weight: bold;
+    align-items: center;
+}
+
+.logo img {
+    height: 3em;
+    padding: 0px 0.4em;
+}
+
+.logo span {
+    font-size: 1.1em;
+    line-height: 1em;
+}
+
+.header-description p{
+    color: #fff;
+    font-size: 25px;
+    margin-bottom: unset;
+    text-align: center;
+}
+
+.header-description{
+    display: flex;
+    flex-basis: 70%;
+    flex-direction: column;
+    justify-content: center;
     padding-left: 10px;
     padding-right: 10px;
 }
 
-.wrapper{
-    padding: 15px 15px 5px 15px;
-}
 
 h3 {
     margin-bottom: unset;
@@ -134,11 +209,13 @@ a.btn.chevronLeft::before {
 
 
 .page-content {
-    padding-top: 10px;
+    padding-top: 0;
+    background-color: #FFF;
 }
 
 .page-heading {
-    padding-bottom: 15px;
+    margin-bottom: 1em;
+    color: #333;
 }
 
 .post-content.serif {

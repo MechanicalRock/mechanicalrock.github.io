@@ -417,7 +417,7 @@ There are two ways to set your app's Font Sizing:
 
 For this example we will implement option 2 as it reduces the amount of custom code we need to maintain and defines all the font sizes for us for each breakpoint. [An interactive demo on how this functionality works can be found here](https://material-ui.com/customization/typography/#font-size)
 
-All we have to do is wrapping our Theme with their function.
+All we have to do is wrap our theme with their function.
 
 ```tsx
 // theme/index.tsx
@@ -526,7 +526,7 @@ const styles = theme => ({
 
 Few things to note:
 1. `breakpoints` is a property exposed from our injected `theme` (via the `ThemeProvider` HoC)
-2. `breakpoints` have 4 functions you can use to select the your target breakpoints:
+2. `breakpoints` have 4 functions you can use to select your target breakpoints:
 * theme.breakpoints.up(key)
 * theme.breakpoints.down(key)
 * theme.breakpoints.only(key)
@@ -560,7 +560,7 @@ function TableWrapper() {
 Few things to note:
 1. The `useTheme` hook is defined so the `TableWrapper` component has access to the app's `Theme`.
 2. The `useMediaQuery` hook is defined and parameterized with my desired breakpoint for the hook to observe. Its initial value is either `true` or `false`, depending on the clients calculated dimensions.
-3. `useMediaQuery` observe the windows Resize event and will internally recompute the hooks value if the Theme's current breakpoint value changes.
+3. `useMediaQuery` observe the windows Resize event and will internally recompute the hooks value if the theme's current breakpoint value changes.
 4. Remember `breakpoints.down(key)`, `breakpoints.up(key)` includes the `key` as part of its Boolean check.
 
 [Learn more on `useMediaQuery`.](https://material-ui.com/components/use-media-query/)
@@ -573,13 +573,13 @@ Colour exists and most are fortunate to witness its array and uses in the world.
 
 MUI's Theme allow you to configure a palette, which is a make up "colour intention". Here are the colour intentions and their uses.
 
-* **primary** - used to represent primary interface elements for a user. It's the color displayed most frequently across your app's screens and components.
+* **primary** - used to represent primary interface elements for a user. It's the colour displayed most frequently across your app's screens and components.
 * **secondary** - used to represent secondary interface elements for a user. It provides more ways to accent and distinguish your product. Having it is optional.
 * **error** - used to represent interface elements that the user should be made aware of.
 * **warning** - used to represent potentially dangerous actions or important messages.
 * **info** - used to present information to the user that is neutral and not necessarily important.
-* **success** - used to indicate the successful completion of an action that user triggered.
-If you want to learn more about color, you can check out the color section.
+* **success** - used to indicate the successful completion of an action that a user triggered.
+If you want to learn more about colour, you can check out the colour section.
 
 The following screenshot shows each colour intention and their default values:
 
@@ -636,7 +636,7 @@ export const palette: PaletteOptions = {
 
 As the comments in the above code snippet suggest, you can let MUI calculate the Light/Dark values for you for free, otherwise manually add them for each Primary and Secondary objects.
 
-Even if you're chosen colours have been reported eligible in the "Color Tool" there is still a chance your foreground text does not contrast well against background shades on your surfaces. The `contrastThreshold` property allows you to amplify or soften the contrast of your text against the background colour.
+Even if your chosen colours have been reported eligible in the "Color Tool" there is still a chance your foreground text does not contrast well against background shades on your surfaces. The `contrastThreshold` property allows you to amplify or soften the contrast of your text against the background colour.
 
 If you wish to *dim the lights* or make a colour more vivid during events such as hovering over a button, you can tweak the amount against the `tonalOffset` property.
 
@@ -685,7 +685,7 @@ export default function ColourPalette() {
 }
 ```
 
-Then Add the new section to our App:
+Then add the new section to our App:
 
 ```tsx
 // src/app.tsx
@@ -721,12 +721,15 @@ You should end up seeing this:
 MUI offer 3 variations of buttons, Contained, Text, Outlined.
 
 **Contained Button**
+
 Contain buttons should be used for primary user actions. They are pronounced and elevated on the surface.
 
 **Text Button**
+
 Text buttons are typically used for less-pronounced actions, including those located in `Dialogs` and `Cards`. In cards, text buttons help maintain an emphasis on card content.
 
 **Outlined Button**
+
 Outlined buttons are medium-emphasis buttons. They contain actions that are important, but aren’t the primary action in an app. Outlined buttons are also a lower emphasis alternative to contained buttons, or a higher emphasis alternative to text buttons.
 
 Let's add a button section to our App by doing the following:
@@ -784,7 +787,7 @@ We should see something like this:
 
 ## Scaffold Your App
 
-Setting your app's initial layout can be daunting. Even though most website layouts are quite consistent these days, there is more than 1 way to skin a cat! Too many website implementations lack well schematic HTML, making me think there is a gap of knowledge on this subject. For example websites which have multiple H1 tags, broken header hierarchy, unnecessary `div`s or `div`s which should be replaced with better purposed tags.
+Setting your app's initial layout can be daunting. Even though most website layouts are quite consistent these days, there is more than 1 way to skin a cat! Too many website implementations lack well schematic HTML, making me think there is a gap of knowledge on this subject. For example websites which have multiple H1 tags, broken header hierarchy, unnecessary `div` usage which should be replaced with better purposed tags.
 
 > :+1: Our goal as Front-End developers is to make everything we build accessible!
 

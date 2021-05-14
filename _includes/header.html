@@ -1,39 +1,34 @@
 <div class="loading-spinner-container">
    <div class="loading-spinner"></div>
 </div>
+
 <header class="site-header" role="banner">
-  <div class="logo-row">
-     <a href="https://mechanicalrock.github.io/" class="logo-holder">
-     <img class="logo logo-white" alt="logo" src="/assets/logo-white.png">
-     </a> 
-     <div class="header-description">
-        <p>
-           <b>
-               We are leaders in modern technology practises; browse or search our collection of blogs below
-           </b>
-        </p>
-     </div>
-  </div>
-  <div class="wrapper">
-     {% assign default_paths = site.pages | map: "path" %}
-     {% assign page_paths = site.header_pages | default: default_paths %}
-     <div class="gcse-searchbox"></div>
-     <div class="searchresults-modal">
-        <div class="searchresults-modal-content">
-           <div class="searchresults-modal-close" onclick="closeSearchResultsModal()">
-              <p>×</p>
-           </div>
-           <div class="searchresults-modal-header-row">
-              <div class="searchresults-modal-title"></div>
-           </div>
-           <div class="searchresults-modal-body">
-              <div class="searchbox-row"></div>
-              <div class="gcse-searchresults"></div>
-           </div>
-        </div>
-     </div>
-  </div>
-  </div>
+   <div class="appBar">
+      <a href="https://mechanicalrock.github.io/" class="logo font-brand">
+         <img class="logo-cog" alt="Mechanical Rock Cog" src="/img/logo-cog.png">
+         <span>Mechanical Rock<br />Blogs</span>
+      </a>
+      {% if page.layout != "home" %}
+      {% include searchbox.html %}
+      {% else %}
+      <div />
+      {% endif %}
+   </div>
 </header>
+
+<div class="header-wrapper page-layout-{{ page.layout }}">
+   <div class="content">
+      {% assign default_paths = site.pages | map: "path" %}
+      {% assign page_paths = site.header_pages | default: default_paths %}
+
+      {% if page.layout == "home" %}
+      <h2 class="home-heading">We are leaders in modern technology practises</h2>
+      <span class="search-text">browse or search our collection of blogs below</span>
+      {% include searchbox.html %}
+      {% endif %}
+      {% include search-results.html %}
+   </div>
+</div>
+
 <script async src="https://cse.google.com/cse.js?cx=21d864d4651009588"></script>
 <script src="/js/gcse-custom.js"></script>

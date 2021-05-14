@@ -22,7 +22,7 @@ table td {
 }
 
 .gsc-search-box a {
-    padding-top: 7px;
+    padding-top: 5px;
 }
 
 /* Clear button */
@@ -241,7 +241,8 @@ table td {
 
 /* Search box */
 .searchresults-modal-body #___gcse_0  {
-    width: 40%;
+    width: 100%;
+    padding: 0 0.3em;
 }
 
 .searchresults-modal-body .gsc-input-box {
@@ -251,6 +252,7 @@ table td {
 
 .searchresults-modal-body .gsc-input-box input{
     background-color: #A1DFDB;
+    border-radius: 0.2em;
 }
 
 /* Clear button */
@@ -265,6 +267,7 @@ table td {
 /* Search button */
 .searchresults-modal-body .gsc-search-button.gsc-search-button-v2{
     border-color: #4D4D4D;
+    border-radius: 0.2em;
     background-color: #A1DFDB;
 }
 
@@ -298,6 +301,39 @@ table td {
     cursor: pointer;
 }
 
+/* App Bar Variant */
+.appBar .gsc-search-box {
+    margin: 0;
+    width: 26em;
+}
+.appBar .gsc-search-box table {
+    margin: 0;
+}
+.appBar .gsc-search-box table td {
+    position: relative;
+}
+.appBar .gsc-search-box .gsc-input-box {
+    background-color: var(--color-grey-dark);
+    border-color: #FFF;
+    color: #FFF;
+    border-radius: 0.2em;
+}
+.appBar .gsc-search-box .gsc-input-box input {
+    background-color: transparent;
+    color: white;
+    display: block;
+    height: 1.8em !important;
+}
+.appBar .gsc-search-box .gsc-input-box icon {
+    position: absolute;
+    top: 0.6em;
+    right: 0.6em;
+    color: white;
+    fill: white;
+    width: 1.1em;
+    height: 1.1em;
+}
+
 /* Loading Spinner */
 .loading-spinner-container{
     display: none;
@@ -322,3 +358,4 @@ table td {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+

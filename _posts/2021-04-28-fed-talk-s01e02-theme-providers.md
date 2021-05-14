@@ -4,8 +4,9 @@ font: serif
 title: "FED Talk! Episode 2: Material UI Theme"
 description: "In today’s episode we will styling all of the base UI elements by creating a MUI Theme, taking you from novice to pro!"
 date: 2021-05-14
-author: Quintin Maseyk
+highlight: monokai
 image: /img/fed-talk/s01e02/cover-ep2-740.png
+author: Quintin Maseyk
 tags: [material ui, material ui theme, react, getting started with Material UI, scaffold your app]
 ---
 
@@ -70,7 +71,7 @@ Here's a good example where the Design Manager of GitHub, Diana Mounter, talks i
 
 The first thing to do is wrap your Application with MUI's `ThemeProvider` component.
 
-```tsx
+```typescript
 // src/app.tsx
 
 import { CssBaseline, ThemeProvider } from '@material-ui/core';

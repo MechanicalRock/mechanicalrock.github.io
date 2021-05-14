@@ -123,13 +123,17 @@ body {
 }
 
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 630px) {
     .appBar {
         align-items: baseline;
         height: 105px;
         padding: 0.2em 1em 0.2em 1em;
         flex-direction: column;
         padding-bottom: 7em;
+    }
+
+    .appBar .gsc-search-box .gsc-input-box input {
+        height: 1.1em !important;
     }
 
     .logo img {

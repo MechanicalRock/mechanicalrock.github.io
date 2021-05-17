@@ -6,7 +6,7 @@ description: "What if I told you the best way to manage state within React apps 
 date: 2021-05-18
 highlight: monokai
 author: Tim Veletta
-# image: /img/fed-talk/s01e02/cover-ep2-740.png
+image: /img/blog/react-state-management-context/header.jpg
 tags: [react, react context, state management, redux]
 ---
 

@@ -6,7 +6,7 @@ description: "What if I told you the best way to manage state within React apps 
 date: 2021-05-18
 highlight: monokai
 author: Tim Veletta
-tags: [react, context, state management, redux]
+tags: [react, react context, state management, redux]
 ---
 
 The question of how application state is going to be managed is one of the most important considerations when it comes to building a React application and can often be the difference between ending up with a performant and testable application or a pile of tech debt. There are many state management libraries available for React, with another popping up every other week that it is often difficult to compare and make a decision on which one to use.
@@ -25,7 +25,7 @@ In the Flux Pattern, there is a centralised **Store** which contains state to be
 
 Redux was created as a way of formalising the Flux pattern within your React applications, it provided a structure for managing your _store_, _reducers_ and _actions_ and quickly became the defacto standard for managing state. This resulted in a healthy developer ecosystem being built around Redux including the popular Redux development tools which allowed developers to rewind through actions that have been applied to the store to aid in debugging. One issue Redux helped with is it allowed you to reduce **prop drilling**; where you would pass _component props_ through multiple levels of the component tree resulting in a somewhat negative developer experience.
 
-However, one of the main complaints about Redux has always been the amount of boilerplate code needed to get started. I've seen many teams reach for Redux as a default when starting a new application when the local state management tools built into React is enough for their use case; they will often spend more time setting up Redux than actually building their app. Another issue I've found with Redux is how it enforces a single store for all of your application state which leads to the store being convoluted and any attempts to organise this mess involve deeply nesting your state.
+However, one of the main complaints about Redux has always been the amount of boilerplate code needed to get started. I've seen many teams reach for Redux as a default when starting a new application when the local state management tools built into React is enough for their use case; they will often spend more time setting up Redux than actually building their app. Another issue I've found with Redux is how it enforces a single store for all of your application state which leads to the store being convoluted and any attempts to organise this mess involves deeply nesting your state.
 
 By using Context, we can resolve some of these issues since we are not limited by the opinions enforced by Redux however it does still require some boilerplate code. The benefit of using something built into React is that we can choose to implement it at any time with little to no increase in our overall package size and it is something developers may be familiar with already.
 
@@ -174,4 +174,5 @@ And thats how we are able to manage application state using Context which is bui
 
 There is one thing that should be mentioned and that is *performance*. Whenever the value of the Context changes, it triggers a re-render of all the child components of that Context which, in our use case isn't all that bad. However, if you have a large number of child components or those components are computationally expensive to render, you may want to look at the solutions provided in this [Github Issue](https://github.com/facebook/react/issues/15156#issuecomment-474590693). 
 
-I've included all of the code shown above in a [Github Repository](https://github.com/MechanicalRock/react-provider-example) along with tests and an example of how to increase the performance of your components. If you want to read more about front-end development here at Mechanical Rock I would highly recommend checking out [FED Talk! Episode 1: Getting Started with React & Material UI](https://mechanicalrock.github.io/2021/04/27/fed-talk-s01e01-getting-started.html).
+I've included all of the code shown above in a [Github Repository](https://github.com/MechanicalRock/react-provider-example) along with tests and an example of how to increase the performance of your components. If you want to read more about front-end development here at Mechanical Rock I would highly recommend checking out [FED Talk! Episode 1: Getting Started with React & Material UI](https://mechanicalrock.github.io/2021/04/27/fed-talk-s01e01-getting-started.html). 
+

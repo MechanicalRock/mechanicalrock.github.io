@@ -59,6 +59,8 @@
   <meta name="author" content="{{ page.author }}">
 
   <meta name="google-site-verification" content="LhuzmuVNaMTE4_JcYur9qOaK-zXu2bJ6-d0uBYOXATQ" />
+
+  {% if page.layout != "home" %}
   <script type="application/ld+json">
   {
     "@context": "http://schema.org/",
@@ -81,10 +83,10 @@
     },
     "headline": "{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}",
     "image": "{{ site.url }}/{{ page.image }}",
-    "datePublished": "{{ page.date }}"
-    "dateModified": "{{ page.dateModified }}"
+    "datePublished": "{{ page.date }}"{% if page.dateModified %},"dateModified": "{{ page.dateModified }}"{% endif %}
   }
   </script>
+  {% endif %}
 
   {% include google-analytics.html %}
 </head>

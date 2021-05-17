@@ -22,6 +22,10 @@ body {
     color: #666;
 }
 
+p {
+    word-break: break-word;
+}
+
 .font-brand {
     font-family: Dolce Vita Heavy Bold, Arial;
 }

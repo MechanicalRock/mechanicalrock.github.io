@@ -5,7 +5,7 @@
   font-family: "Dolce Vita Heavy Bold";
   font-display: fallback;
   src: local("Dolce Vita Heavy Bold"), local("Dolce Vita Heavy Bold"),
-    url("/fonts/dolce-vita-heavy-bold.ttf") format("truetype");
+    url("/assets/dolce-vita-heavy-bold.ttf") format("truetype");
 }
 
 :root {

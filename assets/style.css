@@ -126,19 +126,21 @@ p {
     padding-right: 10px;
 }
 
+#searchbox-placeholder {
+    height: 42px;
+}
 
 @media screen and (max-width: 630px) {
     .appBar {
         align-items: baseline;
         height: 105px;
-        padding: 0.2em 1em 0.2em 1em;
+        padding: 1em 1em 7em 1em;
         flex-direction: column;
-        padding-bottom: 7em;
     }
 
-    /* .appBar .gsc-search-box .gsc-input-box input {
-        height: 1.8em !important;
-    } */
+    .appBar .gsc-search-box .gsc-input-box {
+        padding: 0;
+    }
 
     .logo img {
         height: 2.4em;
@@ -185,11 +187,12 @@ a:hover, a:focus {
 a.btn {
     background-color: var(--color-brand);
     color: #000;
-    font-weight: bold;
-    padding: 0.5em 1em;
+    display: block;
     font-family: Arial;
-    transition: all 0.2s ease;
+    padding: 0.5em 1em 0.5em 3.5em;
+    position: relative;
     text-decoration: none;
+    transition: all 0.2s ease;
 }
 
 a.btn:hover, a.btn:focus {
@@ -198,12 +201,17 @@ a.btn:hover, a.btn:focus {
 }
 
 a.btn.chevron::before {
+    align-items: center;
     background-color: var(--color-brand);
     border-right: 1px solid white;
-    padding: 0.5em 1em;
-    margin-left: -1em;
-    margin-right: 1em;
+    display: flex;
     font-weight: normal;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 2.5em;
 }
 a.btn.chevronRight::before {
     content: ">";

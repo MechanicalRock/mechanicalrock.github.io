@@ -3,7 +3,7 @@ layout: post
 font: serif
 title: "Managing React application state with Context"
 description: "What if I told you the best way to manage state within React apps was actually built into React?!"
-date: 2021-05-18
+date: 2021-05-27
 highlight: monokai
 author: Tim Veletta
 image: /img/blog/react-state-management-context/header.jpg

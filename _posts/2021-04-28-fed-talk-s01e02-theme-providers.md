@@ -2,7 +2,7 @@
 layout: post
 font: serif
 title: "FED Talk! Episode 2: Material UI Theme"
-description: "In today’s episode we will styling all of the base UI elements by creating a MUI Theme, taking you from novice to pro!"
+description: "In today’s episode we will style all of the base UI elements by creating a MUI Theme, taking you from novice to pro!"
 date: 2021-05-14
 highlight: monokai
 image: /img/fed-talk/s01e02/cover-ep2-740.png

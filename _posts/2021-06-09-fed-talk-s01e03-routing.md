@@ -64,7 +64,7 @@ The following topics are worth a read:
 * [Information Architecture](https://www.toptal.com/designers/ia/guide-to-information-architecture){:target="_blank" rel="noopener"}
 * [Why sitemaps matter](https://www.semrush.com/blog/xml-sitemap/){:target="_blank" rel="noopener"}
 
-**Will users copy/pasting URLs to deep link into your content?**
+**Will users copy/paste URLs to deep link into your content?**
 
 **Will users bookmark URLs for future use?**
 

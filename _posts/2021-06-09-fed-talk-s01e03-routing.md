@@ -43,7 +43,7 @@ From the get-go React Apps are configured as a **Single Page Application** (SPA)
 This means when you build your App everything is shelled into your projects root `index.html` file made available in the `public` folder. If you create anchor tag links expecting your users to be navigated to another landing URL, it simply will not work as the only `.html` page exported from the build at this stage is the root file.
 This is where the recommended library **React Router** comes into play.
 
-A route is an implementation where we bind the URL into our React App and as React developers we the power to configure routes in a meaningful way.
+A route is an implementation where we bind the URL into our React App and as React developers we have the power to configure routes in a meaningful way.
 For example we can configure:
 * our home page: `/`,
 * nested child pages: `/product-category/products`,

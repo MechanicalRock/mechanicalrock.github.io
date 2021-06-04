@@ -1008,6 +1008,8 @@ You are now ready to move onto the next episode where I’ll be walking you thro
 
 [Previous Episode:<br/><strong>Getting Started with React & Material UI</strong>](/2021/04/27/fed-talk-s01e01-getting-started){: .btn.chevron.chevronLeft}
 
+[Next Episode:<br/><strong>Setting up Routing in React</strong>](/2021/06/09/fed-talk-s01e03-routing){: .btn.chevron.chevronRight}
+
 ---
 
 Don't be shy, [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)

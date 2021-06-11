@@ -2,7 +2,7 @@
 layout: post
 font: serif
 title: "FED Talk! Episode 2: Material UI Theme"
-description: "In today’s episode we will styling all of the base UI elements by creating a MUI Theme, taking you from novice to pro!"
+description: "In today’s episode we will style all of the base UI elements by creating a MUI Theme, taking you from novice to pro!"
 date: 2021-05-14
 highlight: monokai
 image: /img/fed-talk/s01e02/cover-ep2-740.png
@@ -1007,6 +1007,8 @@ You are now ready to move onto the next episode where I’ll be walking you thro
 
 
 [Previous Episode:<br/><strong>Getting Started with React & Material UI</strong>](/2021/04/27/fed-talk-s01e01-getting-started){: .btn.chevron.chevronLeft}
+
+[Next Episode:<br/><strong>Setting up Routing in React</strong>](/2021/06/15/fed-talk-s01e03-routing){: .btn.chevron.chevronRight}
 
 ---
 

@@ -3,7 +3,7 @@ layout: post
 font: serif
 title: "FED Talk! Episode 3: Setting Up Routing in React"
 description: "In today’s episode we will setup routing in our React app, the pro way!"
-date: 2021-06-15
+date: 2021-06-11
 highlight: monokai
 image: /img/fed-talk/s01e03/cover-ep3-740.png
 author: Quintin Maseyk
@@ -530,9 +530,9 @@ export default function Routes() {
 At this stage your application should be wrapped with a Router Component.
 You should have enough knowledge on how to setup your Applications routes, link between pages and use Router hooks to access parameterized data.
 
-You are now ready to move onto the next episode where I’ll be walking you through how to implement a good Component, covering the following topics:
+You are now ready to move onto the next episode where I’ll walk you through how to implement React Components, covering the following topics:
 
-* What makes a good component, well, good?
+* Component Fundamentals
 * Component Composition
 * Performance Considerations
 

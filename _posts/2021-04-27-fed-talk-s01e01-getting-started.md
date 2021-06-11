@@ -21,7 +21,7 @@ This series will contain many episodes, each ordered with hope to equip you with
 
 * [Episode 1: Getting Started](/2021/04/27/fed-talk-s01e01-getting-started)
 * [Episode 2: Theme Providers](/2021/04/28/fed-talk-s01e02-theme-providers)
-* [Episode 3: Routing](/2021/06/09/fed-talk-s01e03-routing)
+* [Episode 3: Routing](/2021/06/11/fed-talk-s01e03-routing)
 * Episode 4: Testing and Developing components *(coming soon)*
 
 In today's episode we will bootstrap a React application going into detail during each of the steps. You will be provided a mixture of code snippets, screenshots and external references along the way.

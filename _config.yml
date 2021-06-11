@@ -29,9 +29,16 @@ paginate_path: "/pages/:num/"
 markdown: kramdown
 theme: minima
 plugins:
+  - jekyll-sitemap
   - jekyll-feed
   - jemoji
   - jekyll-paginate
+
+defaults:
+  - scope:
+      path: "_site/pages/*"
+    values:
+      sitemap: false
 
 # Don't display future posts
 future: false

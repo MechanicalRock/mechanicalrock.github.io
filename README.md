@@ -25,6 +25,7 @@ highlight: monokai // [Optional] Will apply the monokai dark highlight theme to 
 tags: String | String[] // (Recommend 5 tags). Make sure your tags are what people Google Search. Make sure your tags are also mentioned in your blog post itself.
 author: String
 image: String // Relevant path directory to your image (do not prefix with a /)
+sitemap: Boolean // [Optional] By default articles are indexed in the sitemap.xml file. Setting this to false will remove it from the sitemap
 ---
 ```
 

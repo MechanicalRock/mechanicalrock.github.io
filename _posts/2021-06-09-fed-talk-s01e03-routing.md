@@ -3,7 +3,7 @@ layout: post
 font: serif
 title: "FED Talk! Episode 3: Setting Up Routing in React"
 description: "In today’s episode we will setup routing in our React app, the pro way!"
-date: 2021-06-09
+date: 2021-06-15
 highlight: monokai
 image: /img/fed-talk/s01e03/cover-ep3-740.png
 author: Quintin Maseyk
@@ -43,7 +43,7 @@ From the get-go React Apps are configured as a **Single Page Application** (SPA)
 This means when you build your App everything is shelled into your projects root `index.html` file made available in the `public` folder. If you create anchor tag links expecting your users to be navigated to another landing URL, it simply will not work as the only `.html` page exported from the build at this stage is the root file.
 This is where the recommended library **React Router** comes into play.
 
-A route is an implementation where we bind the URL into our React App and as React developers we have the power to configure routes in a meaningful way.
+A **route** is where we bind the URL to our React App and as developers, we can configure them in a meaningful way.
 For example we can configure:
 * our home page: `/`,
 * nested child pages: `/product-category/products`,
@@ -80,7 +80,7 @@ There are 3 areas which can be broken down into smaller digestible bits of conte
 * `/colour-palette`
 * `/buttons`
 
-Take some time to imagine how your App will evolve... I foresee it containing a mixture of information:
+Take some time to imagine how your App will evolve. I foresee it containing a mixture of information:
 
 * Getting Started (Home page): `/`
 * UI: `/ui/*`
@@ -107,7 +107,7 @@ npm install --save-dev @types/react-router-dom
 
 It's best to setup Routes at the highest logical level in your App so all the `Router` contextual information can propagate down to your components.
 
-Update your App code with the following:
+Following on from the previous episode, we can update our App code with the following:
 
 ```tsx
 // src/App.tsx
@@ -316,20 +316,52 @@ Those links are now accessible!
 
 ## Parameterized Routes
 
-Depending on your App's architecture and the data in which it needs to process, there will be a time where you need to configure URL parameters.
-React Router parameters are slightly different to traditional web URL parameters, for example:
+Depending on your App's architecture and the data in which it needs to process, there will be a time where you need to configure parameters.
 
-**React Router Parameters:**
-```
-/productCategory/:category/product/:productId
+There are two type of parameters:
+
+**Path Parameters:**
+
+`/productCategory/:category/product/:productId`
+```tsx
+const { match: { params }} = useParams();
+console.log(params);
+// { category: string?, productId: string? }
+
+const { search } = useLocation();
+console.log(search);
+// ""
 ```
 
-**Traditional URL Parameters:**
-```
-/products-page?category=CATEGORY_ID&productId=PRODUCT_ID
+**Search Parameters:**
+
+`/products-page?category=CATEGORY_ID&productId=PRODUCT_ID`
+```tsx
+const { search } = useLocation();
+console.log(search);
+// "?category=CATEGORY_ID&productId=PRODUCT_ID"
+
+const { match: { params }} = useParams();
+console.log(params);
+// {}
 ```
 
-I like the React Router way as it's readable, relatable and represents the hierarchy of information *(it also removes the dodgy `?*` implementation which people generally ignore anyway)*.
+**You can also combine the two:**
+
+`/productCategory/:category/product/:productId?tab=general`
+```tsx
+const { match: { params }} = useParams();
+console.log(params);
+// { category: string?, productId: string? }
+
+const { search } = useLocation();
+console.log(search);
+// "?tab=general"
+```
+
+It can be hard to differentiate when to use either solution but I draw the line applying the following principles:
+* Use Path params if it follows on the Information Architecture, maintaining its hierarchy.
+* Fallback to Search params if it breaks the above or the Search param is used to alter a smaller section of your App.
 
 For pure example, we can implement Parameterized Routes in our UI Library (this is just for demonstration purposes).
 
@@ -356,7 +388,7 @@ function UIPage({ match: { params: { name } } }: RouteComponentProps<{ name?: st
 
 **Notes:**
 * We've replaced all of the explicit routes with a single pattern match Route. The convention is to add your arbitrarily defined parameter name after the parent route. ie. `/ui/` = parent route. `:name` = parameter name.
-* We've then created a UIPage component so you can see how the parent `Route` component propagates data down.
+* We've then created a `UIPage` component so you can see how the parent `Route` component propagates data down.
 * We've defined the parameter Type inside the `RouteComponentProps` definition so our codebase has reference to it.
 
 Here's a screenshot illustrating how the URL affects the View and what props get passed down through the Route HoC.
@@ -498,10 +530,10 @@ export default function Routes() {
 At this stage your application should be wrapped with a Router Component.
 You should have enough knowledge on how to setup your Applications routes, link between pages and use Router hooks to access parameterized data.
 
-You are now ready to move onto the next episode where I’ll be walking you through how to implement good Component, covering the following topics:
+You are now ready to move onto the next episode where I’ll be walking you through how to implement a good Component, covering the following topics:
 
-* What makes a good component, well, good?,
-* Component Composition,
+* What makes a good component, well, good?
+* Component Composition
 * Performance Considerations
 
 [Previous Episode:<br/><strong>Material UI Theme</strong>](/2021/05/14/fed-talk-s01e02-theme-providers){: .btn.chevron.chevronLeft}

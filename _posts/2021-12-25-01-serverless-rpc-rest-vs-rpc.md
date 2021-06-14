@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Building a Serverless RPC API on AWS: REST vs RPC
-date: 2020-08-19
+date: 2021-12-25
 tags: rest rpc grpc aws api
 author: Matt Tyler
 ---

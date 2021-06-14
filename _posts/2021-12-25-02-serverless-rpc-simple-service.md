@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Building a Serverless RPC API on AWS: A simple RPC service with help from Twitch
-date: 2020-08-19
+date: 2021-12-25
 tags: rpc grpc twirp aws api protobuf
 author: Matt Tyler
 ---
@@ -14,7 +14,7 @@ There are few things we will need to do:
 
 - Install Go & AWS SAM.
 - Install Protobuf
-- Initialize the repository
+- Scaffold the repository
 - Define our service
 - Generate the code
 - Implement our service
@@ -35,7 +35,7 @@ I'm going to deploy the service using AWS SAM out of pure convenience. To follow
 
 You will need a compatible protobuf compiler in order to generate code from the protobuf IDL. You will need a version 3 compiler. The GRPC documentation details [how to install protoc](https://grpc.io/docs/protoc-installation/).
 
-# Initialize the Repository
+# Scaffold the Repository
 
 ---
 

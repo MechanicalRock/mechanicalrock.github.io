@@ -75,7 +75,13 @@ So join me in this blog series where I will -
 - Define an RPC service via Twirp and Protobuf in Golang, and deploy it to AWS
 - Generate validation handling code from the specification, and test this E2E
 - Introduce the AWS Distro for OpenTelemetry (ADOT)
-- Show to construct a lambda container of the application, and add OpenTelemetry support.
-- Show how instrument this application using the AWS Distro for OpenTelemetry
+- Show how to construct a lambda container of the application, and add OpenTelemetry support.
+- Show how to instrument this application using the AWS Distro for OpenTelemetry
 
 Until next time!
+
+---
+
+Don't be shy, [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)
+
+![Mechanical Rock Logo](/img/mr-logo-dark-landscape.jpg)

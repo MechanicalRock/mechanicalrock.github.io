@@ -132,13 +132,18 @@ The value of `children` is everything between the Component's tags. In the above
 
 ## Performance Considerations
 
-It's good to understand how Components can affect your overall Application.
+It's good to understand how Components can affect your overall Application UX, in terms of performance.
 Every time you render a Component it gets attached to React's virtual DOM. React stores the virtual DOM in memory, it represents the UI and maintains all of the Applications State in something called "Fibers". Fibers hold additional information of each of the Components along side the tree and its main purpose is to reconcile changes and enable incremental rendering of the Virtual DOM.
 
-> **Would you prefer to render an entire page or a small subset of the page?**
-> *I know what I would prefer*
+> **Would you prefer to render an entire page or a small subset?**
 
 That's why it's good practice to break down Components into smaller chunks. When a change occurs in the tree the reconciliation process will identify what parts of the tree have made enough noise to warrant it to re-render.
+
+Here's a screenshot of how our AppBar's Toolbar is represented in the Fiber tree:
+![Screenshot of a Fiber node](/img/fed-talk/s01e04/fiber.png)
+
+
+
 
 ---
 

@@ -17,7 +17,7 @@ The mono-lambda is mostly considered an anti-pattern within the serverless commu
 
 Of course, there are situations where a mono-lambda approach can work. However it is important to remember that none of these scenarios preclude one from learning the best-practice serverless approach - they are almost always situational trade-offs that are using to optimize on a specific axis, and this means they require discipline to realise when your team is starting to harm itself.
 
-The most productive software teams are those that can leverage their hard-won experience, whilst also recognising that same experience can be a tomb. Likewise, sometimes what is suggested as best-practice, may not be best-right-now.
+The most productive software teams are those that can leverage their hard-won experience, whilst also recognising that same experience can be a tomb. Likewise, sometimes what is suggested as best-practice, may not be best-right-now. The following list of circumstances is going to seem overly negative - but that is going to be the case whenever you want to go against the grain.
 
 # When you want to trade on framework familiarity
 
@@ -37,7 +37,9 @@ Segmenting an application into many different lambda functions has a good proper
 
 # Summing it up
 
-The mono-lambda approach may be worth taking if your team isn't going to hit any of the major penalties around security surfaces and scalability, AND your team is going to benefit from the efficiencies of using a particular framework. I think i's important for teams to have a bit of experience around each approach, so they can make the right choice based on their particular circumstances.
+This list of circumstances is going to seem overly negative - but that is going to be the case whenever you want to go against the grain. You aren't breaking the rules if you don't know what the rules are.
+
+The mono-lambda approach may be worth taking if your team isn't going to hit any of the major penalties around security surfaces and scalability, AND your team is going to benefit from the efficiencies of using a particular framework. It's important for teams to have a bit of experience around each approach, so they can make the right choice based on their particular circumstances.
 
 ---
 

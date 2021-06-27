@@ -21,7 +21,7 @@ Let's get stuck into it - there are a few things we will need to do first though
 - Integrate with Lambda/API Gateway
 - Deploy the service with AWS SAM
 
-It probably goes without saying but you will need an AWS Account if you wish to deploy the sample service. The following article is available to help with this you require it -> [How do I create and activate a new AWS account?](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
+It probably goes without saying but you will need an AWS Account if you wish to deploy the sample service. The following article is available to help with this you require it: [How do I create and activate a new AWS account?](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
 
 # Install Go
 
@@ -192,6 +192,10 @@ import (
 	pb "github.com/matt-tyler/ledger-one/rpc/ledger"
 )
 
+func NewService(ddb dynamodb.Client) (*Server, error) {
+	return &Server{ddb}, nil
+}
+
 type Server struct {
 	ddb dynamodb.Client
 }
@@ -204,7 +208,9 @@ func (s *Server) ClaimDomain(ctx context.Context, input *pb.ClaimDomainInput) (*
 		},
 	}
 
-	s.ddb.PutItem(ctx, &command)
+	if _, err := s.ddb.PutItem(ctx, &command); err != nil {
+		return nil, err
+	}
 
 	return &pb.ClaimDomainOutput{
 		Domain: &pb.Domain{
@@ -213,6 +219,7 @@ func (s *Server) ClaimDomain(ctx context.Context, input *pb.ClaimDomainInput) (*
 		},
 	}, nil
 }
+
 ```
 
 With that out of the way we've more or less implemented the service, and we now need to add the bits that will get it working in a lambda function.
@@ -254,19 +261,19 @@ import (
 	rpc "github.com/matt-tyler/ledger-one/rpc/ledger"
 )
 
-type APIGatewayV2HTTPHandler = func(ctx context.Context, event events.APIGatewayV2HTTPRequest) (events.APIGatewayV2HTTPResponse, error)
+type APIGatewayProxyHandler = func(ctx context.Context, event events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error)
 
-func createHandler(serveHTTP http.HandlerFunc) APIGatewayV2HTTPHandler {
-	handler := func(ctx context.Context, event events.APIGatewayV2HTTPRequest) (events.APIGatewayV2HTTPResponse, error) {
-		reqAccessorV2 := core.RequestAccessorV2{}
+func createHandler(serveHTTP http.HandlerFunc) APIGatewayProxyHandler {
+	handler := func(ctx context.Context, event events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+		reqAccessorV2 := core.RequestAccessor{}
 		req, err := reqAccessorV2.ProxyEventToHTTPRequest(event)
 		if err != nil {
-			return events.APIGatewayV2HTTPResponse{
+			return events.APIGatewayProxyResponse{
 				StatusCode: 500,
 			}, nil
 		}
 		log.Println(req.Method, req.URL.String())
-		writer := core.NewProxyResponseWriterV2()
+		writer := core.NewProxyResponseWriter()
 
 		serveHTTP(writer, req.WithContext((ctx)))
 		res, err := writer.GetProxyResponse()
@@ -276,7 +283,7 @@ func createHandler(serveHTTP http.HandlerFunc) APIGatewayV2HTTPHandler {
 }
 
 func main() {
-	cfg, err := config.LoadDefaultConfig(context.TODO())
+	cfg, err := config.LoadDefaultConfig(context.Background())
 	if err != nil {
 		log.Panicf("Unable to load SDK config\n, %v", err)
 	}
@@ -286,7 +293,13 @@ func main() {
 		log.Panicln("Failed to find required environment variable: TABLE_NAME")
 	}
 
-	ddb := dynamodb.NewFromConfig(cfg, dynamodb.WithAPIOptions(func(stack *middleware.Stack) error {
+	withEndpoint := func(options *dynamodb.Options) {
+		if endpoint, ok := os.LookupEnv("DDB_ENDPOINT"); ok {
+			options.EndpointResolver = dynamodb.EndpointResolverFromURL(endpoint)
+		}
+	}
+
+	ddb := dynamodb.NewFromConfig(cfg, withEndpoint, dynamodb.WithAPIOptions(func(stack *middleware.Stack) error {
 		// Attach the custom middleware to the beginning of the Initialize step
 		return stack.Initialize.Add(m.DefaultTableNameMiddleware(tableName), middleware.Before)
 	}))
@@ -296,11 +309,12 @@ func main() {
 	// Make the handler available for Remote Procedure Call by AWS Lambda
 	lambda.Start(createHandler(service.ServeHTTP))
 }
+
 ```
 
 Lambda functions written in Go implement the lambda runtime client. The main function is responsible for creating any handlers, which are then passed to `lambda.Start`. The service process will then listen for events and pass them to your handler.
 
-The second piece of magic is the use of `github.com/awslabs/aws-lambda-go-api-proxy/core`. This library allows us to take API Gateway events and convert them into HTTP requests that match the Go HTTP.Request structure. This allows us to provide the same HTTP handlers that most Go frameworks require, thus allowing most Go frameworks an easy way to slot into a lambda function. There are many standard adapters available, but I had to write my own as there was not one for Twirp available.
+The second piece of magic is the use of `github.com/awslabs/aws-lambda-go-api-proxy/core`. This library allows us to take API Gateway events and convert them into HTTP requests that match the Go HTTP.Request structure. This allows us to provide the same HTTP handlers that most Go frameworks require, therefore allowing most Go frameworks an easy way to slot into a lambda function. There are many standard adapters available, but I had to write my own as there was not one for Twirp available.
 
 I also created my own middleware in order to set the table name to the same value in all my subsequent calls to the DynamoDB service. As I only ever intend to make calls to one DynamoDB table, this is the right choice for me to make.
 
@@ -351,6 +365,91 @@ Outputs:
   Endpoint:
     Value: !Sub https://${Gateway}.execute-api.${AWS::Region}.amazonaws.com
 ```
+
+We'll then make some adjustments to our Makefile in order to deploy this. This will involve adding some additional targets that need to be build, as well as adding a deployment command.
+
+Assuming you have credentials available, you should be able to run `make deploy` in order to deploy the service to AWS. The completed makefile (heavily inspired by [this repo](https://github.com/cpliakas/aws-sam-golang-example)) looks as follows.
+
+```makefile
+# These environment variables must be set for deployment to work.
+S3_BUCKET := $(S3_BUCKET)
+STACK_NAME := $(STACK_NAME)
+
+# Common values used throughout the Makefile, not intended to be configured.
+TEMPLATE = template.yaml
+PACKAGED_TEMPLATE = packaged.yaml
+
+download:
+	@echo Download go.mod dependencies
+	@go mod download
+
+install-tools: download
+	@echo Installing tools from tools.go
+	@cat tools.go | grep _ | awk -F'"' '{print $$2}' | xargs -tI % go install %
+
+gen:
+	# Auto-generate code
+	protoc \
+		-I . \
+		--twirp_out=. \
+		--go_out=. rpc/ledger/service.proto
+
+.PHONY: clean
+clean:
+	rm -rf ./bin
+
+.PHONY: build
+build:
+	go build -o bin/ledger cmd/ledger/main.go
+
+.PHONY: build-lambda
+build-lambda:
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build \
+		-a -installsuffix cgo \
+		-o bin/lambda/ledger cmd/ledger/main.go
+
+.PHONY: package
+package: build-lambda
+	sam package \
+		--template-file $(TEMPLATE) \
+		--s3-bucket $(S3_BUCKET) \
+		--output-template-file $(PACKAGED_TEMPLATE)
+
+.PHONY: deploy
+deploy: package
+	sam deploy \
+		--stack-name $(STACK_NAME) \
+		--template-file $(PACKAGED_TEMPLATE) \
+		--capabilities CAPABILITY_IAM
+
+.PHONY: teardown
+teardown:
+	aws cloudformation delete-stack --stack-name $(STACK_NAME)
+```
+
+This requires you to set `S3_BUCKET` and `STACK_NAME` environment variables before running `make deploy`. The former will be the bucket that the binary is stored in, which lambda will pull from in order to execute the service.
+
+After you've deployed to your account, you will able to find it in the API Gateway pane...
+
+<center><img src="/img/rpc/rpc-api-1.png" /></center>
+<br/>
+
+And you can test it by invoking it in the console!
+
+<center><img src="/img/rpc/rpc-api-2.png" /></center>
+<br/>
+
+# Conclusion
+
+We covered a lot of ground here in order to deploy our service. This included scaffolding our repository to work with Go, SAM, and Protobuf for a seamless deployment, as well as integrating the Go Lamda Runtime with Twirp. 
+
+In future installments I will;
+
+- Explain how to write middleware for Go SDK
+- Demonstrate an easy way to validate API input
+- How to instrument our service
+
+And more! 
 
 ---
 

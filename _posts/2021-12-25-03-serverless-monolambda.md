@@ -4,7 +4,11 @@ title: Building a Serverless RPC API on AWS: When is the mono lambda OK?
 date: 2021-12-25
 tags: rpc grpc twirp aws api protobuf
 author: Matt Tyler
+image: img/twirp.png
 ---
+
+<center><img src="/img/twirp.png" /></center>
+<br/>
 
 In the last installment we got the Twirp framework running inside a lambda function to serve requests sent to it via API Gateway. The more astute readers will have noticed that we have essentially installed a framework inside the lambda function to serve multiple routes, otherwise known as the "mono-lambda" pattern.
 

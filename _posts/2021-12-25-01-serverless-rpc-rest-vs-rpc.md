@@ -4,7 +4,11 @@ title: Building a Serverless RPC API on AWS: REST vs RPC
 date: 2021-12-25
 tags: rest rpc grpc aws api
 author: Matt Tyler
+image: img/twirp.png
 ---
+
+<center><img src="/img/twirp.png" /></center>
+<br/>
 
 There are many different ways to design an API but do any amount of searching and you will find that in 2021 there are three that dominate the discussion 
 

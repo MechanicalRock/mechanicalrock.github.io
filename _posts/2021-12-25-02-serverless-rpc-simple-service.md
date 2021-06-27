@@ -4,7 +4,11 @@ title: Building a Serverless RPC API on AWS: A simple RPC service with help from
 date: 2021-12-25
 tags: rpc grpc twirp aws api protobuf
 author: Matt Tyler
+image: img/twirp.png
 ---
+
+<center><img src="/img/twirp.png" /></center>
+<br/>
 
 In the preceding installment, I discussed some of the popular API flavours, and settled on attempting to build an RPC style API. After a brief look around at some RPC frameworks (including GRPC) - I decided to go with [Twirp](https://github.com/twitchtv/twirp) by Twitch.
 

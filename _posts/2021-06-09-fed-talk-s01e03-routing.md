@@ -536,7 +536,6 @@ You are now ready to move onto the next episode where I’ll walk you through ho
 * Component Fundamentals
 * Component Hooks
 * Component Composition
-* Performance Considerations
 
 [Previous Episode:<br/><strong>Material UI Theme</strong>](/2021/05/14/fed-talk-s01e02-theme-providers){: .btn.chevron.chevronLeft}
 

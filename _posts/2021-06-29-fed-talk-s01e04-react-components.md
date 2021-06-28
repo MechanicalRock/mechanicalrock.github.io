@@ -17,7 +17,6 @@ In today's episode we will step through how to implement good React Components, 
 * Component Fundamentals
 * Component Hooks
 * Component Composition
-* Performance Considerations
 
 **Let's get started!**
 

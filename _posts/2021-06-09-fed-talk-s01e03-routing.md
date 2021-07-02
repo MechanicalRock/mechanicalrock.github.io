@@ -4,6 +4,7 @@ font: serif
 title: "FED Talk! Episode 3: Setting Up Routing in React"
 description: "In today’s episode we will setup routing in our React app, the pro way!"
 date: 2021-06-11
+dateModified: 2021-06-29
 highlight: monokai
 image: /img/fed-talk/s01e03/cover-ep3-740.png
 author: Quintin Maseyk
@@ -533,10 +534,31 @@ You should have enough knowledge on how to setup your Applications routes, link 
 You are now ready to move onto the next episode where I’ll walk you through how to implement React Components, covering the following topics:
 
 * Component Fundamentals
+* Component Hooks
 * Component Composition
-* Performance Considerations
 
-[Previous Episode:<br/><strong>Material UI Theme</strong>](/2021/05/14/fed-talk-s01e02-theme-providers){: .btn.chevron.chevronLeft}
+<series-list
+  title="FED Talk! Season 1"
+  active="3"
+  episodes='[
+    {
+      "label": "Getting Started with React & Material UI",
+      "url": "/2021/04/27/fed-talk-s01e01-getting-started"
+    },
+    {
+      "label": "Material UI Theme",
+      "url": "/2021/05/14/fed-talk-s01e02-theme-providers"
+    },
+    {
+      "label": "Setting Up Routes in React",
+      "url": "/2021/06/11/fed-talk-s01e03-routing"
+    },
+    {
+      "label": "React Components",
+      "url": "/2021/07/02/fed-talk-s01e04-react-components"
+    }
+  ]'
+/>
 
 ---
 

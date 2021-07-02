@@ -3,7 +3,7 @@ layout: post
 font: serif
 title: "FED Talk! Episode 4: React Components"
 description: "In today’s episode we talk all things React Components, taking you from novice to pro!"
-date: 2021-06-29
+date: 2021-07-02
 highlight: monokai
 image: /img/fed-talk/s01e04/cover-ep4-740.png
 author: Quintin Maseyk
@@ -25,6 +25,7 @@ In today's episode we will step through how to implement good React Components, 
 **Table of Contents:**
 
 - [Component Fundamentals](#component-fundamentals)
+  * [The Concept of Variants](#the-concept-of-variants)
 - [Component Lifecycle](#component-lifecycle)
   * [Component Mount Phase](#component-mount-phase)
   * [Component Un-Mount Phase](#component-un-mount-phase)
@@ -45,11 +46,9 @@ In today's episode we will step through how to implement good React Components, 
 
 ## Component Fundamentals
 
-> :warning: React Components can be a sensitive topic, so if you get offended jump to the next chapter.
+Components allow us to abstract logic and state away from the the view (DOM). Their existence enables us to think generically and build abstractions, allowing for easily testable and reusable bits of code.
 
-Components allow us to abstract logic and state away from the the view (DOM). Its existence enables us to think generically and build abstractions, thus, build repeatable testable bits of code.
-
-**Long lived the days of re-defining a Button!**
+:champagne: **Long gone the days of re-defining a Button!**
 
 The above statement resonates well with me and I hope it does with you too. Why should we waste our precious time re-writing static code when can do so much more with our talent.
 
@@ -58,14 +57,121 @@ This train of thought can outline the following rules when creating Components:
 * Can it be reused anywhere else? **If yes**, make sure your Typed Interface is concrete, **if no**, can you normalize it's implementation to make it re-usable? **If not**, I call that a *bespoke Component*.
 * Does it refer to another Component in a similar fashion? **If yes**, is there a way you can generalize the two without bloating the Interface? **If no**, it is likely a new Component.
 
-From my experience Applications are made up with lots of the same Components with different `variants`. Variants is a convention which allow the Designer and Developer re-use the same generic implementation of a Component, while specifying a slightly different appeal at the same time. It's good practice to use Variants in your Components as to ultimately stop the bloating of your App and centralize change.
+Let's try and apply some of the above rules in the following examples.
+
+```tsx
+function WholePage() {
+  const [openMenu, setOpenMenu] = React.useState(false);
+
+  return (
+    <>
+      <header>
+        <AppBar>
+          <Toolbar>
+            <IconButton
+              aria-label="menu"
+              onClick={() => setOpenMenu(state => !state)}
+            >
+              <MenuIcon />
+            </IconButton>
+            Component Library
+          </Toolbar>
+        </AppBar>
+        <nav aria-label="main menu navigation">
+          <Drawer
+            anchor="left"
+            disablePortal
+            onClose={() => setOpenMenu(false)}
+            open={openMenu}
+            variant="temporary"
+          >
+            <MenuItems setOpenMenu={setOpenMenu} />
+          </Drawer>
+        </nav>
+      </header>
+      <main>
+        <h1>Component Library</h1>
+        ...lots of components with state changes
+      </main>
+    </>
+  )
+}
+```
+
+**Can the code above be broken down any further?** Absolutely!
+
+Starting from the outside in, there are two clear contexts: Header vs Main sections.
+Additionally, only the Header section requires state management.
+
+> :bulb: Why should the side effect of any state change affect other components and cause them to unnecessary re-render?
+
+Let's break it down further.
+
+
+```tsx
+function HeaderSection() {
+  const [openMenu, setOpenMenu] = React.useState(false);
+
+  return (
+    <header>
+      <AppBar>
+        <Toolbar>
+          <IconButton
+            aria-label="menu"
+            onClick={() => setOpenMenu(state => !state)}
+          >
+            <MenuIcon />
+          </IconButton>
+          Component Library
+        </Toolbar>
+      </AppBar>
+      <nav aria-label="main menu navigation">
+        <Drawer
+          anchor="left"
+          disablePortal
+          onClose={() => setOpenMenu(false)}
+          open={openMenu}
+          variant="temporary"
+        >
+          <MenuItems setOpenMenu={setOpenMenu} />
+        </Drawer>
+      </nav>
+    </header>
+  )
+}
+
+function MainSection() {
+  return (
+    <main>
+      <h1>Component Library</h1>
+      ...lots of components with state changes
+    </main>
+  )
+}
+
+function WholePage() {
+
+  return (
+    <>
+      <HeaderSection />
+      <MainSection />
+    </>
+  )
+}
+```
+
+The above should illustrate how you can better break down your components.
+
+### The Concept of Variants
+
+From my experience Applications are made up with lots of the same Components but with different `variants`. Variants is a convention which allow the Designer and Developer to re-use the same generic implementation of a Component, while specifying a slightly different appeal at the same time. It's good practice to use Variants in your Components as to ultimately stop the bloating of your App and centralize change.
 
 **Why does this really matter?**
 
 I believe it comes down to producing quality software, faster.
 If the argument is you can copy/paste similar code here and there, create bespoke components everywhere, get it working, dust your hands and move on; then maybe you are missing the point where in the event you have to iterate over the branding or content in a harmonious way it'll be difficult. In this case you'll spend more time nitpicking the changes, likely missing a something adjacent to what you recall.
 
-:thumbsup: It's really not that hard to write good React Components, follow on to see.
+> :thumbsup: It's really not that hard to write good React Components, follow on to see.
 
 ---
 
@@ -536,7 +642,28 @@ You are now ready to move onto the next episode where I'll be walking you throug
 * My preference
 * Performance Considerations
 
-[Previous Episode:<br/><strong>Material UI Theme</strong>](/2021/06/11/fed-talk-s01e03-routing){: .btn.chevron.chevronLeft}
+<series-list
+  title="FED Talk! Season 1"
+  active="4"
+  episodes='[
+    {
+      "label": "Getting Started with React & Material UI",
+      "url": "/2021/04/27/fed-talk-s01e01-getting-started"
+    },
+    {
+      "label": "Material UI Theme",
+      "url": "/2021/05/14/fed-talk-s01e02-theme-providers"
+    },
+    {
+      "label": "Setting Up Routes in React",
+      "url": "/2021/06/11/fed-talk-s01e03-routing"
+    },
+    {
+      "label": "React Components",
+      "url": "/2021/07/02/fed-talk-s01e04-react-components"
+    }
+  ]'
+/>
 
 ---
 

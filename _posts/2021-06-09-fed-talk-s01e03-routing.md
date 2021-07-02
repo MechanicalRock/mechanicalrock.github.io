@@ -537,9 +537,28 @@ You are now ready to move onto the next episode where I’ll walk you through ho
 * Component Hooks
 * Component Composition
 
-[Previous Episode:<br/><strong>Material UI Theme</strong>](/2021/05/14/fed-talk-s01e02-theme-providers){: .btn.chevron.chevronLeft}
-
-[Next Episode:<br/><strong>React Components</strong>](/2021/06/29/fed-talk-s01e04-react-components){: .btn.chevron.chevronRight}
+<series-list
+  title="FED Talk! Season 1"
+  active="3"
+  episodes='[
+    {
+      "label": "Getting Started with React & Material UI",
+      "url": "/2021/04/27/fed-talk-s01e01-getting-started"
+    },
+    {
+      "label": "Material UI Theme",
+      "url": "/2021/05/14/fed-talk-s01e02-theme-providers"
+    },
+    {
+      "label": "Setting Up Routes in React",
+      "url": "/2021/06/11/fed-talk-s01e03-routing"
+    },
+    {
+      "label": "React Components",
+      "url": "/2021/07/02/fed-talk-s01e04-react-components"
+    }
+  ]'
+/>
 
 ---
 

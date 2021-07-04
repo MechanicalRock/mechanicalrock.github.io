@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Building a Serverless RPC API on AWS: When is the mono lambda OK?
+title: Building a Serverless RPC API on AWS: Emulating Services Locally With SAM
 date: 2021-12-25
 tags: rpc go twirp aws middleware
 author: Matt Tyler

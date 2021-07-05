@@ -15,7 +15,7 @@ Recently I was trying to integrate Snowflake to SSO with G-suite and I went thro
 
 To get started you first need to create a new SAML app in G-suite. You may require admin access to perform this action:<br/>
 
-Login to https://admin.google.com/ and click on the three lines to open the menu<br/>
+Login to [https://admin.google.com](https://admin.google.com){:target="\_blank" rel="noopener"} and click on the three lines to open the menu<br/>
 
 <center><img src="/img/blog/snowflake-g-suite/01-Gsuite.png" width="250px" height= "100%"/></center><br/>
 

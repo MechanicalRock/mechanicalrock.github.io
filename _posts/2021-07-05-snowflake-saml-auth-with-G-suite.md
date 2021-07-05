@@ -9,7 +9,7 @@ image: img/blog/snowflake-g-suite/heading.jpg
 
 <center><img src="/img/blog/snowflake-g-suite/heading.jpg" /></center><br/>
 
-Recently I was trying to connect snowflake to SSO with G-suite and I went through a world of pain to get it working. Documentations were out of date and did not help with 403 errors that I was continuously receiving. Therefore, I decided to write up this blogpost, hoping it would help someone in future. <br/>
+Recently I was trying to integrate Snowflake to SSO with G-suite and I went through a world of pain to get it working. The documentation was out of date and did not help with 403 error that I was continuously receiving. I have therefore written this blogpost, hoping it would help someone else in the future. <br/>
 
 # G-Suite Setup<br/>
 
@@ -31,11 +31,11 @@ Enter your app details and press continue
 
 <center><img src="/img/blog/snowflake-g-suite/04-Gsuite.png" /></center><br/>
 
-Copy the values of <code>SSO URL</code> , <code>Entity ID</code> and <code>Certificate</code> and click continue. You will need those later when setting up snowflake
+Copy the values of <code>SSO URL</code> , <code>Entity ID</code> and <code>Certificate</code> and click continue. You will need those later when setting up Snowflake
 
 <center><img src="/img/blog/snowflake-g-suite/05-Gsuite.png" /></center><br/>
 
-Recently Snowflake has introduced a friendly name for the account, however in order to setup SSO with G-Suite you need snowflake auto generated account name and region. To retrieve your generated account name run below command in Snowflake.
+Recently Snowflake has introduced a friendly name for the account, however in order to setup SSO with G-Suite you need Snowflake's auto generated account name and region. To retrieve your generated account name run below command in Snowflake.
 
 ```sql
 select t.value:type::varchar as type,
@@ -45,7 +45,7 @@ from table(flatten(input => parse_json(system$whitelist()))) as t;
 
 ```
 
-The regional account name will be in SNOWFLAKE_DEPLOYMENT field
+The regional account name will be in the SNOWFLAKE_DEPLOYMENT field
 
 <center><img src="/img/blog/snowflake-g-suite/06-Gsuite.png" /></center><br/>
 
@@ -79,8 +79,8 @@ Now go to your Snowflake account and set saml_identity_provider on the account l
 <div style="background-color: #fff3cd ; border-color: #ffeeba; color: #856404; border-radius: .25rem; padding: .75rem 1.25rem;"><strong>Note!</strong><br/>
 
 1. When entering the certificate into Snowflake please ensure the certificate is ALL ON ONE LINE (e.g. no carriage returns) along with remove the Begin and End Certificate tags<br/>
-2. issuer value will be from entity ID in your G-suite app<br/>
-3. run below commands using AccountAdmin role<br/>
+2. Issuer value will be from entity ID in your G-suite app<br/>
+3. Run below commands using AccountAdmin role<br/>
 </div> <br/>
 
 ```sql
@@ -100,18 +100,22 @@ alter account set saml_identity_provider = '{
 
 # Verify your connection:
 
-Unfortunately automatic provisioning with G-suite does not work in Snowflake. Therefor you will have to manually create your users in snowflake. Run below command to create your users using their email addresses:
+Unfortunately automatic provisioning with G-suite does not work in Snowflake. Therefor you will have to manually create your users in Snowflake. Run below command to create your users using their email addresses:
 
-<div style="background-color: #fff3cd ; border-color: #ffeeba; color: #856404; border-radius: .25rem; padding: .75rem 1.25rem;"><strong>Note!</strong><br/>You do not need to specify passwords for SSO users in snowflake</div> <br/>
+<div style="background-color: #fff3cd ; border-color: #ffeeba; color: #856404; border-radius: .25rem; padding: .75rem 1.25rem;"><strong>Note!</strong><br/>You do not need to specify passwords for SSO users in Snowflake</div> <br/>
 
 ```sql
 CREATE USER "zainab.maleki@mechanicalrock.io";
 ```
 
-Once all the above setup is completed, now you can test your integration using below URL:
+Once all the above setup is completed, now you can test your integration using the below URL:
 
 <div style="background-color: #fff3cd ; border-color: #ffeeba; color: #856404; border-radius: .25rem; padding: .75rem 1.25rem;"><strong>Note!</strong><br/>If you change any settings, verify it in a cognito browser as I noticed G-Suite sometimes returns cached response</div> <br/>
 
 <code>https://${Your account friendly name}.snowflakecomputing.com/console/login?fedpreview=true</code>
+<br/>
+<br/>
+<br/>
+If you need any help with your Snowflake setup, patterns and best practices, feel free to [get in touch](https://mechanicalrock.io/lets-get-started).<br/>
 
-If you need any help setting up snowflake, feel free to [get in touch with us](https://mechanicalrock.io/lets-get-started).
+![Mechanical Rock Logo](/img/mr-logo-dark-landscape.jpg)

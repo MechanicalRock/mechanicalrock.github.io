@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Building a Serverless RPC API on AWS: Emulating Locally & Testing
+title: Building a Serverless RPC API on AWS: Emulating & Testing Locally
 date: 2021-12-25
 tags: rpc go twirp aws middleware
 author: Matt Tyler
@@ -115,5 +115,109 @@ Cool! So taking stock we were able to -
 3. Send an event to the API, and,
 4. Have our custom code connect to the local database to perform it's function.
 
-OK - but most of us aren't going to test our code like that, right? It would be a lot better if we had some sort of test program that we could execute against some API endpoint, that way it would work on our local instance, or something running in the cloud. So let's try and do that now!
+OK - but most of us aren't going to test our code like that, right? It would be a lot better if we had some sort of test program that we could execute against some API endpoint, that way it would work on our local instance, or something running in the cloud. So let's try to do that now!
+
+We are going to start by creating somewhere to place our code for performing end-to-end testing of the API layer, and create the file where we will place our testing logic...
+
+```
+mkdir -p ./test/e2e
+touch ./test/e2e/e2e_test.go
+```
+
+And then we will add a `TestMain` function. This allows us to do perform some global setup tasks - in our case it will be parsing a command line flag that will tell the client where to send commands to.
+
+```go
+var urlFlag = flag.String("h", "http://localhost:8080", "url")
+
+func TestMain(m *testing.M) {
+	flag.Parse()
+	fmt.Println("im here", *urlFlag)
+	os.Exit(m.Run())
+}
+```
+
+When we generated the code in our earlier installments, it also created client code. We can reuse that now to make it easier to send a request to the endpoint. We are now diverging from curl'ing the endpoint with raw HTTP requests for the sake of convenience.
+
+
+```go
+func TestApi(t *testing.T) {
+	// create the protobuf client
+	client := pb.NewLedgerProtobufClient(*urlFlag, &http.Client{})
+
+	// create the expected output
+	expected := &pb.ClaimDomainOutput{
+		Domain: &pb.Domain{
+			Root:      "example.cm",
+			Subdomain: "myapp",
+		},
+	}
+
+	// send the command
+	result, err := client.ClaimDomain(context.Background(), &pb.ClaimDomainInput{
+		Root:      "example.com",
+		Subdomain: "myapp",
+	})
+
+	// Error out if the command failed
+	if err != nil {
+		t.Error("Failed to create domain: ", err.Error())
+	}
+
+	// Otherwise diff the result with the expected output
+	diff := cmp.Diff(result.Domain, expected.Domain, protocmp.Transform())
+	if diff != "" {
+		// print out the diff if they are not the same
+		t.Error("Unexpected result: ", diff)
+	}
+}
+```
+
+Running the test can be done with `go test ./test/e2e`.
+
+I've deliberately made the test fail - in which case I receive the following output.
+
+```bash
+--- FAIL: TestXxx (0.03s)
+    e2e_test.go:45: Unexpected result:    (*ledger.Domain)(Inverse(protocmp.Transform, protocmp.Message{
+                "@type":     s"ledger.Domain",
+        -       "Root":      string("example.com"),
+        +       "Root":      string("example.cm"),
+                "Subdomain": string("myapp"),
+          }))
+        
+FAIL
+FAIL    github.com/matt-tyler/ledger-one/test/e2e       0.352s
+FAIL
+```
+
+If I fix the error, the output I receive is -
+
+```bash
+ok      github.com/matt-tyler/ledger-one/test/e2e       0.508s
+```
+
+As an alternative to running the test with go test command, I could also do this
+
+```bash
+go test ./test/e2e -c -o ./bin/e2e
+```
+
+Which will create a binary called `./bin/e2e`. I can then execute it like so...
+
+```bash
+./bin/e2e
+```
+
+Which will generate the same output. Compiling a test binary like this can be useful because it can then be run against any endpoint to see if it is compatible with the interface that is described by the tests. This could be useful for seeing if different stages or versions of an API are compatible with each other. Pretty cool!
+
+# Conclusion
+
+We covered a lot of ground here! To begin with, we installed the NoSQL Workbench and the DynamoDB local docker container. Then we learned how to instantiate a DynamoDB-compatible database locally. We then learned how to configure AWS SAM to run our function logic locally, while also configuring it to interact with our DynamoDB-local database. We then were able to excercise our local API with curl on the command line. Then once that was done, we worked out how to create a test binary that we could use to perform end-to-end interactions against our API, whether it is local or not.
+
+Until next time!
+---
+
+Don't be shy, [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)
+
+![Mechanical Rock Logo](/img/mr-logo-dark-landscape.jpg)
 

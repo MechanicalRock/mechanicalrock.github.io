@@ -13,7 +13,7 @@ Recently I was trying to connect snowflake to SSO with G-suite and I went throug
 
 # G-Suite Setup<br/>
 
-To get started you first need to create a new SAML app in G-suit. You may require G-Suite admin access to perform this action:<br/>
+To get started you first need to create a new SAML app in G-suite. You may require admin access to perform this action:<br/>
 
 Login to https://admin.google.com/ and click on the three lines to open the menu<br/>
 

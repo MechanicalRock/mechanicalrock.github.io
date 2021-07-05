@@ -100,7 +100,7 @@ alter account set saml_identity_provider = '{
 
 # Verify your connection:
 
-Unfortunately automatic provisioning with G-suite does not work in Snowflake. Therefor you will have to manually create your users in Snowflake. Run below command to create your users using their email addresses:
+Unfortunately automatic provisioning with G-suite does not work in Snowflake. Therefore you will have to manually create your users in Snowflake. Run below command to create your users using their email addresses:
 
 <div style="background-color: #fff3cd ; border-color: #ffeeba; color: #856404; border-radius: .25rem; padding: .75rem 1.25rem;"><strong>Note!</strong><br/>You do not need to specify passwords for SSO users in Snowflake</div> <br/>
 

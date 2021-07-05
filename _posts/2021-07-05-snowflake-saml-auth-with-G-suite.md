@@ -52,11 +52,11 @@ The regional account name will be in SNOWFLAKE_DEPLOYMENT field
 Back in G-suite enter the Service provider details as below and press Continue.
 ACS URL:
 
-`https://${regionalAccountName in capital case}.{region}.snowflakecomputing.com/fed/login`
+`https://${regionalAccountName}.{region}.snowflakecomputing.com/fed/login`
 
 Entity ID:
 
-`https://${regionalAccountName in capital case}.{region}.snowflakecomputing.com`
+`https://${regionalAccountName}.{region}.snowflakecomputing.com`
 
 <div style="background-color: #fff3cd ; border-color: #ffeeba; color: #856404; border-radius: .25rem; padding: .75rem 1.25rem;"><strong>Note!</strong><br/>Make sure there are no trailing slashes in ACS URL or Entity ID</div> <br/>
 

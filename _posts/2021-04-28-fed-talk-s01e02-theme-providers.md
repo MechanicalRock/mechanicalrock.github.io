@@ -294,7 +294,7 @@ const theme = createMuiTheme({
 We can create our Typography file to configure each of the variants definitions.
 
 ```tsx
-// stc/theme/typography.tsx
+// src/theme/typography.tsx
 
 import { TypographyOptions } from '@material-ui/core/styles/createTypography';
 
@@ -634,7 +634,21 @@ export const palette: PaletteOptions = {
   tonalOffset: 0.2,
 }
 ```
+And replace the default palette of MUI with our newly created palette, through our theme file.
 
+```tsx
+// theme/index.tsx
+
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core';
+
+import { typography } from './typography';
+
+export default responsiveFontSizes(createMuiTheme({
+  typography,
+  palette
+}))
+```
+ 
 As the comments in the above code snippet suggest, you can let MUI calculate the Light/Dark values for you for free, otherwise manually add them for each Primary and Secondary objects.
 
 Even if your chosen colours have been reported eligible in the "Color Tool" there is still a chance your foreground text does not contrast well against background shades on your surfaces. The `contrastThreshold` property allows you to amplify or soften the contrast of your text against the background colour.

@@ -302,7 +302,26 @@ function MenuItems({ setOpenMenu }: { setOpenMenu: React.Dispatch<React.SetState
   )
 }
 
-/* ...Rest of code */
+type Props = {
+  openMenu: boolean;
+  setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function MainMenu({ openMenu, setOpenMenu }: Props) {
+  return (
+    <nav aria-label="main menu navigation">
+      <Drawer
+        anchor="left"
+        disablePortal
+        onClose={() => setOpenMenu(false)}
+        open={openMenu}
+        variant="temporary"
+      >
+        <MenuItems setOpenMenu={setOpenMenu}/>
+      </Drawer>
+    </nav>
+  );
+}
 ```
 
 **Notes:**

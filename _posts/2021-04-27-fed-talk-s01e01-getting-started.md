@@ -4,7 +4,7 @@ font: serif
 title: "FED Talk! Episode 1: Getting Started with React & Material UI"
 description: "In today’s episode we will bootstrap a React app with Material UI and loads more front-end concepts which will take you from novice to pro!"
 date: 2021-04-27
-dateModified: 2021-05-14
+dateModified: 2021-06-29
 highlight: monokai
 tags: [getting started with react, create react app, react, getting started with Material UI, material ui]
 author: Quintin Maseyk
@@ -20,9 +20,10 @@ These days it's very easy for new developers to get up and running using tooling
 This series will contain many episodes, each ordered with hope to equip you with a typical FED experience on how to build React Apps. As it stands the following subjects have been identified:
 
 * [Episode 1: Getting Started](/2021/04/27/fed-talk-s01e01-getting-started)
-* [Episode 2: Theme Providers](/2021/04/28/fed-talk-s01e02-theme-providers)
+* [Episode 2: Theme Providers](/2021/05/14/fed-talk-s01e02-theme-providers)
 * [Episode 3: Routing](/2021/06/11/fed-talk-s01e03-routing)
-* Episode 4: Testing and Developing components *(coming soon)*
+* [Episode 4: React Components](/2021/07/02/fed-talk-s01e04-react-components)
+* Episode 5: Managing State in React *(coming soon)*
 
 In today's episode we will bootstrap a React application going into detail during each of the steps. You will be provided a mixture of code snippets, screenshots and external references along the way.
 
@@ -410,7 +411,28 @@ You are now ready to move onto the next episode where I’ll be walking you thro
 * MUI theme and component overrides,
 * Responsive design
 
-[Next Episode:<br/><strong>How to setup a Material UI Theme</strong>](/2021/05/14/fed-talk-s01e02-theme-providers){: .btn.chevron.chevronRight}
+<series-list
+  title="FED Talk! Season 1"
+  active="1"
+  episodes='[
+    {
+      "label": "Getting Started with React & Material UI",
+      "url": "/2021/04/27/fed-talk-s01e01-getting-started"
+    },
+    {
+      "label": "Material UI Theme",
+      "url": "/2021/05/14/fed-talk-s01e02-theme-providers"
+    },
+    {
+      "label": "Setting Up Routes in React",
+      "url": "/2021/06/11/fed-talk-s01e03-routing"
+    },
+    {
+      "label": "React Components",
+      "url": "/2021/07/02/fed-talk-s01e04-react-components"
+    }
+  ]'
+/>
 
 ---
 

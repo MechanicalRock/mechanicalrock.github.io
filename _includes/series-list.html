@@ -1,0 +1,38 @@
+<link rel="import" href="polymer.html" />
+
+<dom-module id="series-list">
+  <template>
+    <div class="series-list">
+      <div class="title">FED Talk! Season 1</div>
+      <div class="title">[[ series.title ]]</div>
+      <div class="title">[[ series.episodes ]]</div>
+      <ul>
+        <li><span class="episode">1</span>FED Talk! Episode 1: Getting Started with React & Material UI</li>
+        <li><span class="episode">2</span>FED Talk! Episode 2: Material UI Theme</li>
+        <li><span class="episode">3</span>FED Talk! Episode 3: Setting Up Routes in React</li>
+      </ul>
+    </div>
+  </template>
+
+  <!-- Polymer-style Custom Element Boilerplate -->
+  <script>
+    class SeriesList extends Polymer.Element {
+      static get is() { return "series-list"; }
+
+      // Register properties and default values
+      static get properties() {
+        return {
+          title: {
+            type: String,
+            value: 'Really long product title name with keywords'
+          },
+          episodes: {
+            type: Array,
+            value: [ 'http://placehold.it/400x300/' ]
+          },
+        }
+      }
+    }
+    customElements.define( SeriesList.is, SeriesList );
+  </script>
+</dom-module>

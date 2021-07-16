@@ -294,7 +294,7 @@ const theme = createMuiTheme({
 We can create our Typography file to configure each of the variants definitions.
 
 ```tsx
-// stc/theme/typography.tsx
+// src/theme/typography.tsx
 
 import { TypographyOptions } from '@material-ui/core/styles/createTypography';
 
@@ -634,7 +634,21 @@ export const palette: PaletteOptions = {
   tonalOffset: 0.2,
 }
 ```
+And replace the default palette of MUI with our newly created palette, through our theme file.
 
+```tsx
+// theme/index.tsx
+
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core';
+
+import { typography } from './typography';
+
+export default responsiveFontSizes(createMuiTheme({
+  typography,
+  palette
+}))
+```
+ 
 As the comments in the above code snippet suggest, you can let MUI calculate the Light/Dark values for you for free, otherwise manually add them for each Primary and Secondary objects.
 
 Even if your chosen colours have been reported eligible in the "Color Tool" there is still a chance your foreground text does not contrast well against background shades on your surfaces. The `contrastThreshold` property allows you to amplify or soften the contrast of your text against the background colour.
@@ -1005,10 +1019,28 @@ You are now ready to move onto the next episode where I’ll be walking you thro
 * Route hooks,
 * Route transitions
 
-
-[Previous Episode:<br/><strong>Getting Started with React & Material UI</strong>](/2021/04/27/fed-talk-s01e01-getting-started){: .btn.chevron.chevronLeft}
-
-[Next Episode:<br/><strong>Setting up Routing in React</strong>](/2021/06/11/fed-talk-s01e03-routing){: .btn.chevron.chevronRight}
+<series-list
+  title="FED Talk! Season 1"
+  active="2"
+  episodes='[
+    {
+      "label": "Getting Started with React & Material UI",
+      "url": "/2021/04/27/fed-talk-s01e01-getting-started"
+    },
+    {
+      "label": "Material UI Theme",
+      "url": "/2021/05/14/fed-talk-s01e02-theme-providers"
+    },
+    {
+      "label": "Setting Up Routes in React",
+      "url": "/2021/06/11/fed-talk-s01e03-routing"
+    },
+    {
+      "label": "React Components",
+      "url": "/2021/07/02/fed-talk-s01e04-react-components"
+    }
+  ]'
+/>
 
 ---
 

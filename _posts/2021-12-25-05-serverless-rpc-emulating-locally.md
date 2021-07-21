@@ -36,20 +36,37 @@ docker run -p 8000:8000 amazon/dynamodb-local
 
 Then we can open up the workbench - which should look like the following.
 
-Then you need to;
+<center><img src="/img/rpc-local-test/setup-000.png" /></center>
+<br/>
 
-- Click on operation builder & click to add 'New Connection'
+Then you will need to click on operation builder & click to add 'New Connection'; select 'DyamoDB' local, and copy the following details from the screenshot.
 
-- Enter the following details
+<center><img src="/img/rpc-local-test/setup-001.png" /></center>
+<br/>
 
 After selecting the connect, it will open this pane up. Note that we do not have any tables yet. We need to rectify this.
 
 - Click `Data Modeler` and add new data model - `Ledger`
-- Click to add a new table - which we will call `Ledger`.
-- Ensure the `Ledger` table has a partition key of type `string` and name `pk`, as well as sort of type `string` and name `sk`.
+
+<center><img src="/img/rpc-local-test/01-new-data-model.png" /></center>
+<br/>
+
+- Click to add a new table - which we will call `Ledger`. Ensure the `Ledger` table has a partition key of type `string` and name `pk`, as well as sort of type `string` and name `sk`.
+
+<center><img src="/img/rpc-local-test/02-create-table.png" /></center>
+<br/>
+
 - Click `Visualizer` and then click `commit`. You will need to select the `LedgerDB` connection we set-up earlier.
+
+<center><img src="/img/rpc-local-test/03-commit.png" /></center>
+<br/>
+
 - Click back to `Operation Builder` and you will now see that we have a table called `Ledger` available.
-- Note the credentials down for the connection as well.
+
+<center><img src="/img/rpc-local-test/04-op-builder.png" /></center>
+<br/>
+
+NB: Note the credentials down for the connection as well.
 
 We then need to configure our profile; add the following to `~/.aws/credentials` (substituting the credentials you received, of course).
 ```

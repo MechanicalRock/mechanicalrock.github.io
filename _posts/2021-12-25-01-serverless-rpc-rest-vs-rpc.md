@@ -56,7 +56,8 @@ Whilst I ultimately determine that Smithy did not currently meet my needs, it fo
 
 This eventually led me to the following site - [apisyouwonthate.com](apisyouwonthate.com) - which included this particular flow chart in the article ["Picking the right API Paradigm"](https://apisyouwonthate.com/blog/picking-the-right-api-paradigm).
 
-![Choosing an API Paradigm](/img/fed-talk/s01e03/cover-ep3-740.png)
+<center><img src="/img/dfd.png" /></center>
+<br/>
 
 Slight GraphQL bashing aside, I noticed my APIs shared the following qualities
 

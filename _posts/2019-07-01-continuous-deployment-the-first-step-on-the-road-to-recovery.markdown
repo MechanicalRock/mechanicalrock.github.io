@@ -24,7 +24,7 @@ The goals for GitFlow are in direct conflict with continuous delivery and maximi
 
 Maintaining multiple long-lived branches are an inhitibor to flow.  Changes queue on a branch, waiting for release to production.  Divergence between branches adds complexity, the risk of regressions and merge hell.  The risk grows exponentially with the number of branches maintained.  
 
-Teams choose git flow for well intentioned reasons.  Faith in the codebase is low: the impact of change is unknown, caused by insufficient feedback loops.  A viscious cycle develops:
+Teams choose git flow for well intentioned reasons.  Faith in the codebase is low: the impact of change is unknown, caused by insufficient feedback loops.  A vicious cycle develops:
 ![more issues -> lower confidence -> fear -> more batching -> higher risk](/img/continuous-deployment-the-first-step/batching-vicious-cycle.png)
 
 # Releasing the pressure

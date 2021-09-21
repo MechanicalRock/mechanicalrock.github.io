@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Building a Serverless RPC API on AWS: REST vs RPC
-date: 2021-12-25
+date: 2021-09-24
 tags: rest rpc grpc aws api
 author: Matt Tyler
 image: img/twirp.png
@@ -21,9 +21,9 @@ They have an awful lot in common;
 - You can find various examples of software companies implementing new APIs in each today, and,
 - JSON-over-HTTP is pretty commonly used for all three.
 
-If you want examples of each type. A large number of AWS APIs are implement via RPC - DynamoDB being a good example of an RPC API. GitHub provides a fairly idiomatic REST API as well as a GraphQL API. Kubernetes makes fairly heavy use of RPC style APIs via GRPC.
+If you want examples of each type. A large number of AWS APIs are implemented via RPC - DynamoDB being a good example of an RPC API. GitHub provides a fairly idiomatic REST API as well as a GraphQL API. Kubernetes makes fairly heavy use of RPC style APIs via GRPC.
 
-I recently spent a lot of time building a set of APIs to perform some infrastructure related tasks. In this case I went with what I’ve typically done which has included:
+I recently spent a lot of time building a set of APIs to perform some infrastructure related tasks on AWS. In this case I went with what I’ve typically done which has included:
 
 - Designing the API using the OpenAPI document specification, and,
 - Using the specific to generate code for both the client and backend, and,

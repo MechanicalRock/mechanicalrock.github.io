@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Building a Serverless RPC API on AWS: Emulating Services Locally With SAM
-date: 2021-12-25
+title: Building a Serverless RPC API on AWS: Go Middleware
+date: 2021-09-24
 tags: rpc go twirp aws middleware
 author: Matt Tyler
 image: img/twirp.png

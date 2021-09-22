@@ -12,7 +12,7 @@ image: img/twirp.png
 
 In a previous installment I mentioned I had written some middleware to make using the AWS SDK more convenient for me to use. In that article I stated I was using it to ensure the table name of any DynamoDB SDK calls would be made to the same table, but stopped short of explaining how I did it. Well, the time has come to further explain what I did and how.
 
-Code for what I'm covering is available [here](https://github.com/matt-tyle/ledger-part-one).
+Code for what I'm covering is available [here](https://github.com/matt-tyle/ledger-part-one){:target="_blank" rel="noopener"}.
 
 # Why Middleware?
 
@@ -26,12 +26,12 @@ Middleware is pretty big topic so I'll constraint myself to talking about why it
 
 # Do all AWS SDKs support middleware?
 
-As far as I can tell, most of them do! Of note though is that *how* middleware is implemented can differ slightly between different SDK clients. Typically the newer SDK clients e.g. Go v2, Javascript v3 have similar middleware interfaces. This seems to be an effect of being generated via the [Smithy IDL](https://awslabs.github.io/smithy/index.html), where-as older SDKs tended to be generated from the Boto definitions.
+As far as I can tell, most of them do! Of note though is that *how* middleware is implemented can differ slightly between different SDK clients. Typically the newer SDK clients e.g. Go v2, Javascript v3 have similar middleware interfaces. This seems to be an effect of being generated via the [Smithy IDL](https://awslabs.github.io/smithy/index.html){:target="_blank" rel="noopener"}, where-as older SDKs tended to be generated from the Boto definitions.
 
 # Where can I find official documentation on middleware?
 
-Good information for Go SDK v2 is available [here](https://aws.github.io/aws-sdk-go-v2/docs/middleware/).
-The best information I could find for the javascript SDK was [this post on the official AWS Blog](https://aws.amazon.com/blogs/developer/middleware-stack-modular-aws-sdk-js/).
+Good information for Go SDK v2 is available [here](https://aws.github.io/aws-sdk-go-v2/docs/middleware/){:target="_blank" rel="noopener"}.
+The best information I could find for the javascript SDK was [this post on the official AWS Blog](https://aws.amazon.com/blogs/developer/middleware-stack-modular-aws-sdk-js/){:target="_blank" rel="noopener"}.
 
 # Can I see an example?
 

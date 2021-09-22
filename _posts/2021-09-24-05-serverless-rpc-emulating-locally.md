@@ -16,13 +16,13 @@ You will need to perform the following prerequisites, in addition to those in a 
 
 1. Install Docker.
 
-  You can follow the instructions [here](https://docs.docker.com/get-docker/) to get Docker for your particular OS.
+  You can follow the instructions [here](https://docs.docker.com/get-docker/){:target="_blank" rel="noopener"} to get Docker for your particular OS.
 
 2. Pull the DynamoDB local container. This will let you interact with a local instance of a database that is API-compatible with DynamoDB.
 
 `docker pull amazon/dynamodb-local`
 
-3. Install the NoSQL Workbench for DynamoDB. Instructions [here](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.settingup.html).
+3. Install the NoSQL Workbench for DynamoDB. Instructions [here](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.settingup.html){:target="_blank" rel="noopener"}.
 
 This isn't strictly necessary but we are going to use it to build up some intuition via ClickOps before we perform some test automation.
 

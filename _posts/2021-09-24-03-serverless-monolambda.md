@@ -19,7 +19,7 @@ To reiterate slightly, the mono-lambda is generally identified by the following;
 
 The mono-lambda is mostly considered an anti-pattern within the serverless community, as is running traditional web frameworks within a lambda function. A lot of the arguments come down to frameworks bloating the size of the code packages, including many dependencies with increase the attack surface for vulnerabilities, as well as (usually) throwing the principal of least priviledge out the window (as now every route has access to the same IAM role and actions, even if they don't need those permissions).
 
-Of course, there are situations where a mono-lambda approach can work. However it is important to remember that none of these scenarios preclude one from learning the best-practice serverless approach - they are almost always situational trade-offs that are using to optimize on a specific axis, and this means they require discipline to realise when your team is starting to harm itself.
+Of course, there are situations where a mono-lambda approach can work. However it is important to remember that none of these scenarios preclude one from learning the best-practice serverless approach - they are almost always situational trade-offs useful for optimizing on a specific axis, and this means they require discipline to realise when your team is starting to harm itself.
 
 The most productive software teams are those that can leverage their hard-won experience, whilst also recognising that same experience can be a tomb. Likewise, sometimes what is suggested as best-practice, may not be best-right-now. The following list of circumstances is going to seem overly negative - but that is going to be the case whenever you want to go against the grain.
 

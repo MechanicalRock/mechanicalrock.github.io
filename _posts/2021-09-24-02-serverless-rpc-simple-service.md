@@ -10,7 +10,7 @@ image: img/twirp.png
 <center><img src="/img/twirp.png" /></center>
 <br/>
 
-In the preceding installment, I discussed some of the popular API flavours, and settled on attempting to build an RPC style API. After a brief look around at some RPC frameworks (including GRPC) - I decided to go with [Twirp](https://github.com/twitchtv/twirp) by Twitch.
+In the preceding installment, I discussed some of the popular API flavours, and settled on attempting to build an RPC style API. After a brief look around at some RPC frameworks (including GRPC) - I decided to go with [Twirp](https://github.com/twitchtv/twirp){:target="_blank" rel="noopener"} by Twitch.
 
 It has a fair amount in common with gRPC, e.g. the use of protobufs - but doesn’t have a dependence on bidirectional streaming or HTTP 2. This make it easier/possible to use from a lambda function, and this is useful to me because it requires less infrastructure to run. To stand up a GRPC service, I would need to use Fargate and a host of additional VPC related components.
 
@@ -25,21 +25,21 @@ Let's get stuck into it - there are a few things we will need to do first though
 - Integrate with Lambda/API Gateway
 - Deploy the service with AWS SAM
 
-It probably goes without saying but you will need an AWS Account if you wish to deploy the sample service. The following article is available to help with this you require it: [How do I create and activate a new AWS account?](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
+It probably goes without saying but you will need an AWS Account if you wish to deploy the sample service. The following article is available to help with this you require it: [How do I create and activate a new AWS account?](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/){:target="_blank" rel="noopener"}.
 
-All code for this tutorial may be found [here](https://github.com/matt-tyler/ledger-one).
+All code for this tutorial may be found [here](https://github.com/matt-tyler/ledger-one){:target="_blank" rel="noopener"}.
 
 # Install Go
 
-This steps involved will vary depending on your Operating System. For those on Linux or OSX, this will probably mean installing it via your package manager. For all my examples I will be using Go 1.16.x, but any version with Go Module support should be fine. Further Go installation instructions are available [here](https://golang.org/doc/install).
+This steps involved will vary depending on your Operating System. For those on Linux or OSX, this will probably mean installing it via your package manager. For all my examples I will be using Go 1.16.x, but any version with Go Module support should be fine. Further Go installation instructions are available [here](https://golang.org/doc/install){:target="_blank" rel="noopener"}.
 
 # Install AWS SAM
 
-I'm going to deploy the service using AWS SAM out of pure convenience. To follow along you will need to download the AWS SAM CLI, for which you can find instructions [here](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html). I recommend going through the "Getting Started" section to ensure SAM is able to interact with your AWS Account.
+I'm going to deploy the service using AWS SAM out of pure convenience. To follow along you will need to download the AWS SAM CLI, for which you can find instructions [here](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html){:target="_blank" rel="noopener"}. I recommend going through the "Getting Started" section to ensure SAM is able to interact with your AWS Account.
 
 # Install Protobuf
 
-You will need a compatible protobuf compiler in order to generate code from the protobuf IDL. You will need a version 3 compiler. The GRPC documentation details [how to install protoc](https://grpc.io/docs/protoc-installation/).
+You will need a compatible protobuf compiler in order to generate code from the protobuf IDL. You will need a version 3 compiler. The GRPC documentation details [how to install protoc](https://grpc.io/docs/protoc-installation/){:target="_blank" rel="noopener"}.
 
 # Scaffold the Repository
 
@@ -374,7 +374,7 @@ Outputs:
 
 We'll then make some adjustments to our Makefile in order to deploy this. This will involve adding some additional targets that need to be build, as well as adding a deployment command.
 
-Assuming you have credentials available, you should be able to run `make deploy` in order to deploy the service to AWS. The completed makefile (heavily inspired by [this repo](https://github.com/cpliakas/aws-sam-golang-example)) looks as follows.
+Assuming you have credentials available, you should be able to run `make deploy` in order to deploy the service to AWS. The completed makefile (heavily inspired by [this repo](https://github.com/cpliakas/aws-sam-golang-example){:target="_blank" rel="noopener"}) looks as follows.
 
 ```makefile
 # These environment variables must be set for deployment to work.

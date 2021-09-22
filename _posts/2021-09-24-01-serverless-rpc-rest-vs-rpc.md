@@ -52,7 +52,7 @@ resource City {
 }
 ```
 
-Whilst I ultimately determine that Smithy did not currently meet my needs, it found it useful in directing my attention to alternatives. As I spent a lot of my reading AWS service specifications, I did notice the bulk of them are RPC APIs and felt this warranted more of my attention. (If you are interested in Smithy definitions for AWS services, you can find some of them [here](https://github.com/aws/aws-sdk-js-v3/tree/main/codegen/sdk-codegen/aws-models){:target="_blank" rel="noopener"}.)
+Whilst I ultimately determined that Smithy did not currently meet my needs, I found it useful in directing my attention to alternatives. While I was reading AWS service specifications, I did notice the bulk of them are RPC APIs and felt this warranted more of my attention. (If you are interested in Smithy definitions for AWS services, you can find some of them [here](https://github.com/aws/aws-sdk-js-v3/tree/main/codegen/sdk-codegen/aws-models){:target="_blank" rel="noopener"}.)
 
 This eventually led me to the following site - [apisyouwonthate.com](apisyouwonthate.com){:target="_blank" rel="noopener"} - which included this particular flow chart in the article ["Picking the right API Paradigm"](https://apisyouwonthate.com/blog/picking-the-right-api-paradigm){:target="_blank" rel="noopener"}.
 

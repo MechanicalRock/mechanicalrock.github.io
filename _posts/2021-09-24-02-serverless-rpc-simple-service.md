@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Building a Serverless RPC API on AWS: A simple RPC service with help from Twitch
-date: 2021-09-24
+date: 2021-09-23
 tags: rpc grpc twirp aws api protobuf
 author: Matt Tyler
 image: img/twirp.png

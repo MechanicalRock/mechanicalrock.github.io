@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Building a Serverless RPC API on AWS: Emulating & Testing Locally
-date: 2021-12-25
+date: 2021-09-23
 tags: rpc go twirp aws middleware
 author: Matt Tyler
 image: img/twirp.png
@@ -9,6 +9,8 @@ image: img/twirp.png
 
 <center><img src="/img/twirp.png" /></center>
 <br/>
+
+Today we are going to look at how to test our API, but we are going to a step further than simple unit tests. In this installment, we are going to look at standing up our entire stack locally, and test it using DynamoDB Local and SAM. Seeing as we are using Go, I'll also show how to produce a binary that can reused across our local testing environment, as well as a real production environment. Such a binary could be used as part of a deployment phase in a pipeline to verify that everything is working post-deployment.
 
 # Getting Ready
 

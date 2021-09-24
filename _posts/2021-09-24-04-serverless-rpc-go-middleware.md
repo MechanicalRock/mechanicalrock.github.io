@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Building a Serverless RPC API on AWS: Go Middleware
+title: "Building a Serverless RPC API on AWS: Go Middleware"
 date: 2021-09-23
 tags: rpc go twirp aws middleware
 author: Matt Tyler

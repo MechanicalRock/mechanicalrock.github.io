@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Building a Serverless RPC API on AWS: Emulating & Testing Locally
+title: "Building a Serverless RPC API on AWS: Emulating & Testing Locally"
 date: 2021-09-23
 tags: rpc go twirp aws middleware
 author: Matt Tyler

@@ -29,7 +29,7 @@ Teams choose git flow for well intentioned reasons.  Faith in the codebase is lo
 
 # Releasing the pressure
 
-A good practice of [The First Way](https://itrevolution.com/the-three-ways-principles-underpinning-devops/) is [one piece flow](https://www.kaizenworld.com/kaizen/one-piece-flow.html).  Work on single increments of value, delivering them as soon as possible.  
+A good practice of [The First Way](https://itrevolution.com/the-three-ways-principles-underpinning-devops/) is [one piece flow](https://www.kaizenworld.com/kaizen/one-piece-flow.php).  Work on single increments of value, delivering them as soon as possible.  
 
 One piece flow - a simple idea with a simple implementation: continuous deployment. Every commit flows through your continuous delivery pipeline and, assuming all conditions pass, makes its way to production.  The idea and the implementation are simple, but there are a number of fundamental principles that you must adhere to:
  - You have a single pipeline flow changes into production

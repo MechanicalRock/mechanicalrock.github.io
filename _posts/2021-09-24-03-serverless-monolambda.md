@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Building a Serverless RPC API on AWS: When is the mono lambda OK?
+title: "Building a Serverless RPC API on AWS: When is the mono lambda OK?"
 date: 2021-09-23
 tags: rpc grpc twirp aws api protobuf
 author: Matt Tyler

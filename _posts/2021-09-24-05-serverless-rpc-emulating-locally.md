@@ -38,12 +38,12 @@ docker run -p 8000:8000 amazon/dynamodb-local
 
 Then we can open up the workbench - which should look like the following.
 
-<center><img src="/img/rpc-local-test/setup-000.png" /></center>
+<center><img src="/img/rpc-local-test/000-setup.png" /></center>
 <br/>
 
 Then you will need to click on operation builder & click to add 'New Connection'; select 'DyamoDB' local, and copy the following details from the screenshot.
 
-<center><img src="/img/rpc-local-test/setup-001.png" /></center>
+<center><img src="/img/rpc-local-test/001-setup.png" /></center>
 <br/>
 
 After selecting the connect, it will open this pane up. Note that we do not have any tables yet. We need to rectify this.

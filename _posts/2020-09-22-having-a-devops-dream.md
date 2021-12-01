@@ -11,7 +11,7 @@ image: img/devops-dream/dds_mobile.jpg
 
 This post is part of a series covering our development of DevOps Dream:
 1. Having a DevOps Dream
-1. [Living the DevOps Dream][3]
+1. [Living The DevOps Dream][3]
 
 <br/>
 In case you hadn't heard, we did a thing! We released [DevOps Dream](https://devops.games/) on 19th August 2020.  I'd like to share our motivations and give some insights behind the scenes.  Along the way, you might just pick up some tips on how you can Live the Dream and beat the game! ;o)
@@ -92,4 +92,4 @@ If you'd like to make your own DevOps Dream become a reality - [let's chat](http
 
 [1]: https://services.google.com/fh/files/misc/state-of-devops-2019.pdf
 [2]: https://services.google.com/fh/files/misc/state-of-devops-2017.pdf
-[3]: /2020/10/xx/living-the-devops-dream.html
+[3]: /2020/10/14/living-the-devops-dream.html

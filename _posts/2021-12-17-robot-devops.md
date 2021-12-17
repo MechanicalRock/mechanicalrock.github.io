@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Applying DevOps Principles to Robotics
-date: 2021-12-15
+date: 2021-12-17
 tags: devops ci cd robotics aws greengrass
 author: Simon Bracegirdle
 description:
@@ -9,13 +9,13 @@ description:
 ---
 
 
-The robotics industry continues to evolve with a prime example being the [growing adoption of commercial quadruped robots](https://trends.google.com/trends/explore?date=all&q=boston%20dynamics). Interest in the field as a whole also continues to grow steadily over time and more teams are building their own autonomy software to deploy on these platforms.
+The robotics industry continues to evolve as shown by the [growing adoption of commercial quadruped robots](https://trends.google.com/trends/explore?date=all&q=boston%20dynamics). As interest in the field grows so does the number of teams building their own robotics software.
 
-As development accelerates for these teams and they extend their customer base they may look to scale and automate their tooling to support their efforts so that they can continue to maintain a high level of product stability, safety and reliability.
+As adoption of their product grows, Robotics teams may look to automate their tooling so that they can maintain a high delivery rate whilst sustaining product stability, safety and reliability.
 
 [DevOps is also increasing in popularity](https://trends.google.com/trends/explore?date=all&q=devops), with the [Google State of DevOps report](https://cloud.google.com/devops/state-of-devops) indicating an increasing number of high performing teams adopting DevOps habits. The DevOps research shows that the four key metrics — Deployment Frequency, Lead Time, Mean Time to Recovery (MTTR) and Change Failure Rate — are [indicative of teams that deliver more value to customers](https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance).
 
-Can we apply DevOps to Robotics to help teams increase the cadence of their development — a RoboOps approach? Can we take the principles underpinning DevOps and apply it to robotics in a way that will result in more value for robotics customers? 
+But can we apply DevOps principles to Robotics teams to help increase the cadence of their development — a RoboOps approach? Can we apply the principles in a way that will result in more value for robotics customers?
 
 ## What challenges does robotics face?
 

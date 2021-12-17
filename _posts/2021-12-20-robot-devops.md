@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Applying DevOps Principles to Robotics
-date: 2021-12-17
+date: 2021-12-20
 tags: devops ci cd robotics aws greengrass
 author: Simon Bracegirdle
 description:

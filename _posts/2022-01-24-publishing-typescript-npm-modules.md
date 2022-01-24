@@ -1,9 +1,11 @@
 ---
 layout: post
+font: serif
 title: Publishing TypeScript Node Modules
 date: 2022-01-24
 tags: ['typescript', 'npm', 'node', 'material ui', 'react']
 author: Tim Veletta
+highlight: monokai
 description: Understanding how to build your own NPM modules can enable your development teams to share common pieces of code across multiple applications which can accelerate delivery speed. Lets look at building your own modules with TypeScript and publishing them to the NPM registry.
 ---
 
@@ -17,16 +19,16 @@ Firstly, lets initialise a new project by creating an empty directory and runnin
 
 ```json
 {
- "name": "tim-veletta-theme",
- "version": "1.0.0",
- "description": "",
- "main": "index.js",
- "scripts": {
-  "test": "echo \"Error: no test specified\" && exit 1"
- },
- "keywords": [],
- "author": "",
- "license": "ISC"
+	"name": "tim-veletta-theme",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
 }
 ```
 
@@ -50,14 +52,14 @@ Now, we are going to build our custom theme. Start by creating a `src` directory
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
- palette: {
-  primary: {
-   main: '#40bfb4',
-  },
-  secondary: {
-   main: '#e15554',
-  },
- },
+	palette: {
+		primary: {
+			main: '#40bfb4',
+		},
+		secondary: {
+			main: '#e15554',
+		},
+	},
 });
 
 export default theme;
@@ -112,9 +114,9 @@ We are almost ready to publish our module, we just need to tell NPM where our co
 
 ```json
 {
- "main": "dist/index.js",
- "types": "dist/index.d.ts",
- "files": ["/dist"]
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"files": ["/dist"]
 }
 ```
 
@@ -171,16 +173,16 @@ import { ThemeProvider, Typography } from '@mui/material';
 import theme from 'tim-veletta-theme';
 
 function App() {
- return (
-  <ThemeProvider theme={theme}>
-   <Typography variant="h1" color="primary">
-    This should be in the primary color #40bfb4
-   </Typography>
-   <Typography variant="h1" color="secondary">
-    This should be in the secondary color #e15554
-   </Typography>
-  </ThemeProvider>
- );
+	return (
+		<ThemeProvider theme={theme}>
+			<Typography variant="h1" color="primary">
+				This should be in the primary color #40bfb4
+			</Typography>
+			<Typography variant="h1" color="secondary">
+				This should be in the secondary color #e15554
+			</Typography>
+		</ThemeProvider>
+	);
 }
 
 export default App;

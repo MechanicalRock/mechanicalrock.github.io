@@ -159,7 +159,7 @@ npm notice
 + tim-veletta-theme@1.0.0
 ```
 
-There it is! Your module has been added to the NPM registry and anyone using NPM can install it into their project. You can even search the [NPM registry](https://www.npmjs.com/) to see the details of your module.
+There it is! The module has been added to the NPM registry and anyone using the registry can install it into their project. You can view the module on the [NPM registry](https://www.npmjs.com/package/tim-veletta-theme) or the [Github repository](https://github.com/MechanicalRock/tim-veletta-theme).
 
 ![The theme NPM module]({{ site.url }}/img/typescript-npm-modules/theme-npm-module.png)
 
@@ -173,7 +173,10 @@ npm install tim-veletta-theme
 
 This should also install the `@mui/material` and `@emotion/styled` packages for us as they were listed as `peerDependencies` of our module. From here, we can inject our Material UI theme and see it in action!
 
+> You can view the [test repository here](https://github.com/MechanicalRock/module-test)
+
 ```jsx
+// /src/App.js
 import { ThemeProvider, Typography } from '@mui/material';
 import theme from 'tim-veletta-theme';
 

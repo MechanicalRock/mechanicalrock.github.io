@@ -6,7 +6,7 @@ date: 2022-01-24
 tags: ['typescript', 'npm', 'node', 'material ui', 'react']
 author: Tim Veletta
 highlight: monokai
-description: Understanding how to build your own NPM modules can enable your development teams to share common pieces of code across multiple applications which can accelerate delivery speed. Lets look at building your own modules with TypeScript and publishing them to the NPM registry.
+description: Understanding how to build your own NPM modules can enable your development teams to share common pieces of code across multiple applications which can accelerate delivery speed. Let's look at building your own modules with TypeScript and publishing them to the NPM registry.
 ---
 
 We're huge fans of TypeScript here at Mechanical Rock; the typing system and compilation allows us to catch possible errors at compile time, it allows us to refactor with confidence and the editor integration greatly enhances developer productivity. Occasionally, we run into situations where we might want to build a common set of components that can be shared across several applications or even having multiple teams working on separate parts of an application in isolation from one another.
@@ -65,7 +65,7 @@ const theme = createTheme({
 export default theme;
 ```
 
-Thats it! Thats all this project needs in the way of code, but how do we build it and where should we put the output?
+That's it! That's all this project needs in the way of code, but how do we build it and where should we put the output?
 
 Well within our `tsconfig.json`, we can add the following lines to the `compilerOptions`.
 
@@ -78,7 +78,7 @@ Well within our `tsconfig.json`, we can add the following lines to the `compiler
 
 The `outDir` parameter tells TypeScript where to put the compiled TS files while setting `declaration` to `true` ensures the type definition files are generated.
 
-Next, we should add a new script to the `package.json` that will define how we build our project. At this stage, you might also want to add an additional script called `prepublishOnly` that tells NPM to build the project prior to publishing it to the NPM registry.
+Next, we should add a new script to the `package.json` that will define how we build our project. At this stage, you might also want to add a script called `prepublishOnly` that tells NPM to build the project prior to publishing it to the NPM registry.
 
 ```json
 "scripts": {
@@ -87,7 +87,7 @@ Next, we should add a new script to the `package.json` that will define how we b
 }
 ```
 
-Lets try running it with:
+Let's try running it with:
 
 ```sh
 npm run build
@@ -95,9 +95,9 @@ npm run build
 
 Once that command completes successfully, you should notice some files have been added to your project in the `dist` file. If you look through those files, you may notice that it includes references to `@mui/material/styles` since we used that library within the theme code we wrote above. But how do we ensure that projects using our module have `@mui/material` installed?
 
-Well, thats where peer dependencies come in!
+Well, that's where peer dependencies come in!
 
-Peer dependencies are a way of defining what packages our module requires and the particular versions it is compatible with. When installing our module, NPM checks if the peer dependencies exist already within the project and if not, it installs those dependencies. So lets add some `peerDependencies` to our `package.json`.
+Peer dependencies are a way of defining what packages our module requires and the particular versions it is compatible with. When installing our module, NPM checks if the peer dependencies exist already within the project and if not, it installs those dependencies. So let's add some `peerDependencies` to our `package.json`.
 
 ```json
 "peerDependencies": {
@@ -122,7 +122,7 @@ We are almost ready to publish our module, we just need to tell NPM where our co
 
 And finally, we can run `npm publish`.
 
-But wait! Whats this error?!
+But wait! What's this error?!
 
 ```sh
 npm ERR! code ENEEDAUTH
@@ -130,9 +130,9 @@ npm ERR! need auth This command requires you to be logged in.
 npm ERR! need auth You need to authorize this machine using `npm adduser`
 ```
 
-You need an account on NPM (with a verified email address) to be able to publish your package which you can [sign up for here](https://www.npmjs.com/signup). We can then run `npm adduser` with the user credentials we just created to sign into the NPM registry from the command line.
+You need an account on NPM (with a verified email address) to be able to publish your package which you can [sign up for here](https://www.npmjs.com/signup). We can then run `npm adduser` with the user credentials we just created to sign in to the NPM registry from the command line.
 
-Lets try running `npm publish` again.
+Let's try running `npm publish` again.
 
 And we should get the output...
 
@@ -160,7 +160,7 @@ There it is! Your module has been added to the NPM registry and anyone using NPM
 
 ## Using the Package
 
-Lets test out the module in a new React project by installing it with:
+Let's test out the module in a new React project by installing it with:
 
 ```sh
 npm install tim-veletta-theme

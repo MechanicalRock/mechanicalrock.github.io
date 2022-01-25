@@ -6,6 +6,7 @@ date: 2022-01-24
 tags: ['typescript', 'npm', 'node', 'material ui', 'react']
 author: Tim Veletta
 highlight: monokai
+image: /img/typescript-npm-modules/header.jpg
 description: Understanding how to build your own NPM modules can enable your development teams to share common pieces of code across multiple applications which can accelerate delivery speed. Let's look at building your own modules with TypeScript and publishing them to the NPM registry.
 ---
 
@@ -19,16 +20,16 @@ Firstly, lets initialise a new project by creating an empty directory and runnin
 
 ```json
 {
-	"name": "tim-veletta-theme",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC"
+ "name": "tim-veletta-theme",
+ "version": "1.0.0",
+ "description": "",
+ "main": "index.js",
+ "scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1"
+ },
+ "keywords": [],
+ "author": "",
+ "license": "ISC"
 }
 ```
 
@@ -52,14 +53,14 @@ Now, we are going to build our custom theme. Start by creating a `src` directory
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
-	palette: {
-		primary: {
-			main: '#40bfb4',
-		},
-		secondary: {
-			main: '#e15554',
-		},
-	},
+ palette: {
+  primary: {
+   main: '#40bfb4',
+  },
+  secondary: {
+   main: '#e15554',
+  },
+ },
 });
 
 export default theme;
@@ -116,9 +117,9 @@ We are almost ready to publish our module, we just need to tell NPM where our co
 
 ```json
 {
-	"main": "dist/index.js",
-	"types": "dist/index.d.ts",
-	"files": ["/dist"]
+ "main": "dist/index.js",
+ "types": "dist/index.d.ts",
+ "files": ["/dist"]
 }
 ```
 
@@ -160,6 +161,8 @@ npm notice
 
 There it is! Your module has been added to the NPM registry and anyone using NPM can install it into their project. You can even search the [NPM registry](https://www.npmjs.com/) to see the details of your module.
 
+![The theme NPM module]({{ site.url }}/img/typescript-npm-modules/theme-npm-module.png)
+
 ## Using the Package
 
 Let's test out the module in a new React project by installing it with:
@@ -175,16 +178,16 @@ import { ThemeProvider, Typography } from '@mui/material';
 import theme from 'tim-veletta-theme';
 
 function App() {
-	return (
-		<ThemeProvider theme={theme}>
-			<Typography variant="h1" color="primary">
-				This should be in the primary color #40bfb4
-			</Typography>
-			<Typography variant="h1" color="secondary">
-				This should be in the secondary color #e15554
-			</Typography>
-		</ThemeProvider>
-	);
+ return (
+  <ThemeProvider theme={theme}>
+   <Typography variant="h1" color="primary">
+    This should be in the primary color #40bfb4
+   </Typography>
+   <Typography variant="h1" color="secondary">
+    This should be in the secondary color #e15554
+   </Typography>
+  </ThemeProvider>
+ );
 }
 
 export default App;
@@ -192,4 +195,10 @@ export default App;
 
 When we run it in the browser, we should see the text in the primary and secondary colours we set in our module.
 
-![The resulting theme]({{ site.url }}/img/typescript-npm-modules.png)
+![The resulting theme]({{ site.url }}/img/typescript-npm-modules/typescript-npm-modules.png)
+
+So there we have it, you can now build your own NPM modules using TypeScript and make them publicly available on the NPM registry. Often when working with clients we don't want to make modules publicly available so I'll be doing a follow up post on hosting NPM modules privately via either the NPM registry or a private artifact repository so stay tuned for that.
+
+Can we accelerate your delivery speed by building common components or themes that can be used across multiple applications? [Get in touch with us to find out how.](https://www.mechanicalrock.io/lets-get-started/)
+
+> Header image by [Xavi Cabrera](https://unsplash.com/@xavi_cabrera?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/lego?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)

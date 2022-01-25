@@ -97,7 +97,9 @@ Once that command completes successfully, you should notice some files have been
 
 Well, thats where peer dependencies come in!
 
-Peer dependencies are a way of defining what packages our module requires and the particular versions it is compatible with. When installing our module, NPM checks if the peer dependencies exist already within the project and if not, it installs those dependencies. So lets add some `peerDependencies` to our `package.json`.
+Peer dependencies are a way of defining what packages our module requires and the particular versions it is compatible with. When installing our module, NPM checks if the peer dependencies exist already within the project and if they are, that they are of the correct version. If the peer dependencies do not already exist within the project, it installs those dependencies. So lets add some `peerDependencies` to our `package.json`.
+
+> In earlier versions of NPM, peer dependencies were not automatically installed and would raise a warning telling the user to install them. As of NPM v7, peer dependencies are installed by default. You can check which version of NPM you are using with `npm -v`.
 
 ```json
 "peerDependencies": {

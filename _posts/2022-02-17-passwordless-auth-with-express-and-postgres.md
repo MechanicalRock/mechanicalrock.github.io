@@ -5,7 +5,7 @@ description: Tutorial to create a passwordless registration and login system usi
 date: 2022-02-17
 author: Steven Laidlaw
 highlight: monokai
-image:
+image: img/passwordless-auth/header.jpg
 tags: ['auth', 'authentication', 'passwordless', 'one-time password', 'express', 'postgresql', 'psql', 'javascript', 'JWT']
 ---
 
@@ -565,5 +565,7 @@ router.get("/logout", async (req, res) => {
 And we're done! We have successfully created a secure registration and login system using one-time passwords. We can be sure that our data is stored securely and expires quickly enough that a data breach won't give anyone enough time or information to do anything nefarious.
 
 While no system is completely secure, I hope this leaves you confident enough to implement passwordless authentication in your own applications without the risk and issues related to static passwords.
+
+If you have any questions regarding this article feel free to contact us either via [email](mailto:contact@mechanicalrock.io) or our [web form](https://mechanicalrock.io/lets-get-started).
 
 > A more complete version of this code using Handlebars for templating and express-validator for parameter validation (among other things) is available [here](https://github.com/stevenlaidlaw/passwordless-login-express-postgres).

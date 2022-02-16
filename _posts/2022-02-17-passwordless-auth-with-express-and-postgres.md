@@ -87,6 +87,8 @@ EMAIL_HOST=mail.mailserver.com
 EMAIL_FROM=Your App <admin@yourapp.com>
 ```
 
+> Tip: This is not a great way to store secrets in a production app. A secure key store would be more appropriate, but for local development and testing this should be fine.
+
 ## Database Structure
 
 Firstly we must initialise our database to allow users to both register and log-in using the one-time password. For that we will need two tables, `users` and `otp`. Users must contain at least an id and email address field like so:
@@ -351,14 +353,18 @@ router.post("/login", async (req, res) => {
 
 A more complete app will redirect to the registration screen instead of throwing an error here.
 
-Next we need to generate the one-time password. For this we'll be generating a six character alphanumeric passphrase, then encrypting it for storage in the database.
+Next we need to generate the one-time password. For this we'll be generating a six character alphanumeric passphrase using Node's `crypto` functions, then encrypting it for storage in the database.
 
 ```js
 router.post("/login", async (req, res) => {
   ...
   
   // Generate OTP
-  const code = Math.random().toString(32).slice(2, 8).toUpperCase();
+  const code = crypto
+    .randomBytes(256)
+    .toString("hex")
+    .slice(0, 6)
+    .toUpperCase();
   const encrypted_code = bcrypt.hashSync(code, 10);
 });
 ```

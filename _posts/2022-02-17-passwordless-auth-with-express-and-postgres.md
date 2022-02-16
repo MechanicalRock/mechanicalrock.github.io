@@ -36,7 +36,7 @@ Users generally either make them so simple as to be easily guessable, or are reu
 
 These problems are so prevalent that most applications these days either mandate or strongly recommend multi-factor authentication. The most common of these is the one-time password that is either emailed to the user or linked to a special device. The recommendation of this article is that you ditch static passwords altogether due to the aforementioned security risks, and simply implement one-time passwords instead.
 
-So why one-time passwords? First of all they're good for users because they don't have to remember a password. Just put your email address into the login field and they'll be sent an auto-generated password or link to log them in. Secondly these passwords are short-lived, which means that if a data breach _does_ happen then there are no active passwords stored for crackers to log in with or share. As long as a user has access to their email address their accounts will be safe.
+So why one-time passwords? First of all they're good for users because they don't have to remember a password. Just put your email address into the login field and they'll be sent an auto-generated password or link to log them in. Secondly these passwords are short-lived, which means that if a data breach _does_ happen then there are no active passwords stored for crackers to log in with or share, which reduces the attack window dramatically. As long as a user has access to their email address their accounts will be safe.
 
 # Disclaimer
 

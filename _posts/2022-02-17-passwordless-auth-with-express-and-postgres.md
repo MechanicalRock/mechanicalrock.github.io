@@ -2,7 +2,7 @@
 layout: post
 title: Passwordless authentication with Express and PostgreSQL
 description: Tutorial to create a passwordless registration and login system using one-time passwords with ExpressJS and PostgreSQL.
-date: 2022-02-17
+date: 2022-02-16
 author: Steven Laidlaw
 highlight: monokai
 image: img/passwordless-auth/header.jpg

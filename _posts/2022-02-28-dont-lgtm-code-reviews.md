@@ -6,18 +6,24 @@ tags: code cloudnative consultants deployment continuous-delivery devops pattern
 author: Simon Bracegirdle
 image: img/dont-lgtm-code-reviews.jpg
 description:
-  Do you give a cursory review and "LGMT!" on pull requests? Read this to find out how you could bring more rigour to your code review practices and improve the software you deliver.
+  Do you give a cursory review and slap the trusty "LGMT!" on pull requests? Read this to find out how you could bring more rigour to your team's code review practices and improve the software delivered.
 ---
 
 ![Header](/img/dont-lgtm-code-reviews.jpg)
 
 A lot of development teams are doing code reviews these days, it's become the industry norm. But are they done well? The idea of the lazy code review — "LGTM, ship it" — has [become a meme](https://knowyourmeme.com/memes/lgtm), and it's funny because there's an element of truth in it that we've experienced ourselves.
 
+In this post I am to convince you of the value of thorough code reviews and i'll provide some pointers for bringing rigour and methods to increase the value you get out of them.
+
 Let's be honest though, when we're working towards deadlines, it's easy to deprioritise or simplify what we see as low priority tasks to ensure we can meet our commitments. This isn't malicious or lazy, it's human nature.
 
 What's the solution then? There's no quick fix of course — it comes down to individuals and teams, and how much value they place in the benefits of code review. But even if you value code reviews highly, you still need a disciplined, well articulated and well understood approach to overcome the habits of individuals and sustain a high level of review quality over time.
 
-In this post i'll take a small step to convince you of the value of thorough code reviews and I'll provide some pointers for bringing rigour and methods to increase the value you get out of them.
+## What do I mean by code review?
+
+I'm focusing on asynchronous code reviews specifically, also known as pull requests, often done when merging a code change from a branch back to the mainline in git.
+
+There's other forms of code review such as; pairing, code walk throughs and code review meetings, each with their own advantages and drawbacks, but this comparison is not the focus of this post. The approaches I suggest may or may not be applicable to those other forms.
 
 ## Why do code reviews?
 
@@ -36,7 +42,9 @@ Code reviews present an opportunity to learn something for both reviewer and the
 
 Code reviews should be a conversation, and conversations happen to be a good tool to achieve common understanding between two or more individuals.
 
-But this isn't a guarantee. We need to build the habit of asking good questions, providing suggestions and other forms of feedback that move code reviews from a chore into a conversation. Reviews with a reasonable attention to detail and tactful use of language will have this benefit.
+Those conversations should also be [psychologically safe](https://en.wikipedia.org/wiki/Psychological_safety) for both parties — we should be able to speak up with questions and ideas without fear of punishment, blame or judgement. Blameless environments allow members to learn from mistakes and be more engaged in continuous improvement.
+
+But even then success isn't guaranteed. We need to build the habit of asking good questions, providing suggestions and other forms of feedback that move code reviews from a chore into a conversation. Reviews with a reasonable attention to detail and tactful use of tone and language will have this benefit.
 
 Furthermore, this learning opportunity is critically important when one of the participants is more senior than the other. Seniors have a responsibility to provide guidance to their less experienced peers, and code reviews are an opportunity to do so.
 
@@ -52,15 +60,13 @@ Even if the change under review doesn't directly have any bugs in it, but is mis
 
 ### Reason 3 — Sustained delivery over time
 
-If we deliver more maintainable, secure and robust code, in the long run it means we spend less time fixing issues and by extension — more time delivering value to customers. 
-
-For this reason, code reviewers should look for changes that might deter from these goals.
+Code that is buggy or hard to understand will slow down the delivery of value to customers, so code reviewers should look for changes that might work against these goals.
 
 For example; if tests are not added to a change, then it might make it hard to enhance or fix that code next time, it becomes worse if the developer is new and unfamiliar with the intended purpose of the code.
 
 Small paper cuts add up over time to form what is now well known as technical debt. Code bases that have accumulated enough technical debt can exceed a threshold of no return, beyond which they become unmaintainable messes that everyone's scared to touch.
 
-To control the fallout of tech debt, management often bring in manual gates and other heavy approval processes to attempt to limit the damage of any changes. This increases the lead time on changes and reduces the frequency that we deliver to customers.
+To control the fallout of tech debt, management often bring in manual gates and other heavy approval processes to attempt to limit the damage of any changes. This increases the time needed to make changes (lead time) and reduces the frequency that we deliver to customers.
 
 If you're working on a system that needs to continue to serve real customers for the foreseeable future, play the long game and optimise for testability, maintainability and changeability. Code reviews are a critical tool to help sustain that discipline over time.
 
@@ -75,7 +81,7 @@ Here are some cases where you wouldn't do code reviews and why:
 
 Okay, with those points aside and assuming you're interested in code reviews, let's look at some approaches for adding rigour.
 
-## How can we improve our code review approach then?
+## How can we improve our code review approach?
 
 ### Approach 1 — Review in context
 
@@ -183,6 +189,11 @@ Dictating practices from top down is not generally a good idea. If people aren't
 Instead, let the team choose its own path. Discuss together what you think are important attributes of code, and share thoughts on why code review is valuable in your context. Decide as a team the details of how you'll conduct code reviews. For example; Will you use a checklist? What questions are most important during review?
 
 Write down your decisions and the rationale behind them so people that join later have the context of that original decision. That'll inform those people to make their own suggestions for improvement. Writing down decisions also helps for reviewing decisions at a later date to see if the reasons are still valid.
+
+### Approach 5 — Automate the trivial
+
+TODO
+
 
 ## Summary
 

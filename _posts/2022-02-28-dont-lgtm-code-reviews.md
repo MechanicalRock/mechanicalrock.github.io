@@ -218,7 +218,7 @@ Instead, let the team choose its own path. Discuss together what you think are i
 
 Write down your decisions and the rationale behind them so people that join later have the context of that original decision. That'll inform those people to make their own suggestions for improvement. Writing down decisions also helps for reviewing decisions at a later date to see if the reasons are still valid.
 
-### Approach 5 — Automate the trivial
+### Approach 5 — Don't review the trivial or the major
 
 I don't believe we should spend any effort reviewing tasks that can be trivially automated. Automated tasks can save a lot of hassle and wasted effort in looking for small nits during code review.
 
@@ -230,6 +230,9 @@ For example:
 - Code coverage reports can find testing gaps
 - Pull request templates for defaulting the pull request description to the agreed upon structure
 
+We also shouldn't be making or changing major design decisions in a code review. Major architectural design changes late in the process is going to incur a lot of waste. We'd ideally catch these earlier in the process in an architectural review step or similar. This is another reason why pairing is a good option — we can catch design issues earlier and provide that feedback instantaneously.
+
+If you find that changes with poor design are ending up in code review, it could be an opportunity to run a [blameless post-mortem](https://www.atlassian.com/incident-management/postmortem/blameless) to understand where your process is going wrong.
 
 ## Summary
 

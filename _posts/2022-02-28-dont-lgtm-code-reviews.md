@@ -33,12 +33,12 @@ Lets explore the rationale...
 
 ### Reason 1 — Learning opportunity
 
-Code reviews present an opportunity to learn something for both reviewer and the reviewee. Here's some examples:
+Code reviews present an opportunity to learn something for both reviewer and the author. Here's some examples:
 
 - As a reviewer, you may learn about the behaviour of an upcoming feature that you had some assumptions about, which turned out to be wrong.
-- As a reviewee, you may receive some suggestions about how to improve error handling that results in code with less bugs.
+- As a author, you may receive some suggestions about how to improve error handling that results in code with less bugs.
 - As a reviewer, you're confused about the code structure, so you ask a question about it and learn about a new approach.
-- As a reviewee, you may ask the reviewer of what they think about the expected behaviour in the tests you've written, they may present some feedback and ideas.
+- As a author, you may ask the reviewer of what they think about the expected behaviour in the tests you've written, they may present some feedback and ideas.
 
 Code reviews should be a conversation, and conversations happen to be a good tool to achieve common understanding between two or more individuals.
 
@@ -87,15 +87,21 @@ Okay, with those points aside and assuming you're interested in code reviews, le
 
 Most teams use Git these days and so the popular process for code reviews is to create a feature branch and then open a pull request from that feature branch back to the main line. In git platforms such as GitHub, BitBucket and GitLab, the pull request is where the code review takes place.
 
-Most code review tools emphasise the "diff" view, which highlights the files and lines of code that have changed in the branch when compared to the main line. This is a fantastic tool as it makes it clear what the contents of the change are.
+Code review tools emphasise the "diff" view, which highlights the files and lines of code that have changed in the branch when compared to the main line. This is a fantastic tool as it makes it clear what the contents of the change are. The expander that allows us to view more of the file is also useful for getting more context for the changed file.
 
-But the "diff" view doesn't always tell the whole story and could be missing important context.
+But the "diff" has a limited view of the source code. For more complex changes, or changes in a complex context, or if you want to browse around to get an understanding of the code base, opening the change in a full IDE can help to provide the bigger picture of the impact of a change.
 
-For example, if you make a one-line change to the returning statement of a function, what's missing in the diff view is how the callee of that function is interacting with the return value. Without seeing the full picture, you could miss a side effect leading to a bug.
+For example, if you make a one-line change to the returning statement of a function, what's missing in the diff view is how the callee of that function is interacting with the return value. Without seeing the full picture, you could miss a side effect leading to a bug. Opening in an IDE will allow us to use the powerful search features, or the "search for dependencies" feature.
 
-Opening the change in an IDE can help to provide the bigger picture of the impact of a change. Using IDE intellisense features you can drill into referenced objects.
+Tooling in this space is always improving. In 2021 GitHub released https://github.dev, which allows you to open up any file in a web-based Visual Studio editor with the press of the `.` button in a GitHub file or PR view.
 
-Tooling in this space is always improving. In 2021 GitHub released https://github.dev, which allows you to open up any repository in a web-based Visual Studio editor with the press of the `.` button in a GitHub repository.
+The code author should provide as much context in the description of the PR itself. For example:
+
+- Provide a reason for the change — what is the rationale and motivation behind it?
+- Explain the scope of the change — does it cover the entirety of the ticket, or is there more changes to follow?
+- Explain the contents of the change — what have you changed and how does it work?
+
+It's unreasonable to expect authors to remember these points for every change, so leverage [pull request templates](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository) to create a default format to follow.
 
 ### Approach 2 — Use of language and tone
 
@@ -103,11 +109,11 @@ Code reviews are a great opportunity for feedback, but if you're not careful the
 
 It's understandable, it's hard receiving critical feedback on work we've put a lot of effort into, and are under pressure to deliver. If we feel like a reviewer is being overly harsh or difficult, we naturally go into defensive mode.
 
-I think it's critical that the reviewer makes careful choice of words when giving feedback. The reviewee has this responsibility too, but the reviewer is the one that sets the initial tone.
+I think it's critical that the reviewer makes careful choice of words when giving feedback. The author has this responsibility too, but the reviewer is the one that sets the initial tone.
 
 Thankfully, there is an approach that can help us — [conventional comments](https://conventionalcomments.org/). Conventional comments helps by prefixing a label to each comment posted by a reviewer. The prefix describes the intent of the comment. For example; "`question`: could you explain the intent behind this function?". By prefixing an intent to a comment, it helps to provide insight into the motivation behind the comment and belay our fears of harshness.
 
-A `question` indicates a curiosity to learn more about the reviewee's approach. A `suggestion` shows a willingness to have a discussion and be flexible with the reviewee instead of dictate changes. A `nitpick` indicates something minor that the reviewer doesn't feel strongly about.
+A `question` indicates a curiosity to learn more about the author's approach. A `suggestion` shows a willingness to have a discussion and be flexible with the author instead of dictate changes. A `nitpick` indicates something minor that the reviewer doesn't feel strongly about.
 
 There's no label for `do-as-i-say` or `this-is-trash`. Code reviews should be a conversation about the change. When it's a two way dialogue where both parties feel respected and listened to we get the benefits we talked about earlier.
 
@@ -121,7 +127,7 @@ As covered extensively in [The Checklist Manifesto](https://www.goodreads.com/bo
 
 Anecdotally, I once worked in a team that had a well defined code review approach with something resembling a checklist.
 
-When I followed the checklist I gave high quality actionable feedback to reviewees. But over time, I paid less attention to the checklist and I became lazier with my feedback. I became reactive, responding to the code in the diff and how I intuitively perceived it, instead of being proactive and thinking of a wide range of concerns such as security, performance and testability.
+When I followed the checklist I gave high quality actionable feedback to authors. But over time, I paid less attention to the checklist and I became lazier with my feedback. I became reactive, responding to the code in the diff and how I intuitively perceived it, instead of being proactive and thinking of a wide range of concerns such as security, performance and testability.
 
 Sticking to the checklist changes that, it helps the reviewer to drive the discussion and maintain a high standard if you remain disciplined over time. Even after we've been doing reviews for a long time, and we've internalised the checklist, we're human and can forget considerations. The checklist helps us to be consistent.
 
@@ -182,6 +188,12 @@ If your code is secure and maintainable, that's a good start. If it's constantly
 - [ ] Are all read and write operations logged to assist debugging and support?
 - [ ] Are error messages readable and assist debugging and support (e.g. shows key non-sensitive details)?
 
+**Other considerations**
+
+We could introduce other checklist items depending on the code change under review. For example; if we're reviewing a user interface code change, we may ask for a screenshot of the UI and have some checklist items to check for certain styling issues (e.g. bad white-spacing).
+
+If we're reviewing an API change, we may have some checklist items for reviewing the OpenAPI schema, for example to check the correct use of verbs and nouns
+
 ### Approach 4 — Get consensus on approach
 
 Dictating practices from top down is not generally a good idea. If people aren't invested in your practices, or don't understand the motivations behind them and are instead forced to adopt them, they may resent it and not commit to the approach. You won't get the feedback and engagement you're looking for.
@@ -192,7 +204,15 @@ Write down your decisions and the rationale behind them so people that join late
 
 ### Approach 5 — Automate the trivial
 
-TODO
+I don't believe we should spend any effort reviewing tasks that can be trivially automated. Automated tasks can save a lot of hassle and wasted effort in looking for small nits during code review.
+
+For example:
+
+- Automated formatters that ensure we format code according to an agreed upon style guide
+- Static analysis tools and code linters can pick up issues such as unused variables and syntax errors
+- Code build in CI can uncover syntax issues and misconfiguration
+- Code coverage reports can find testing gaps
+- Pull request templates for defaulting the pull request description to the agreed upon structure
 
 
 ## Summary

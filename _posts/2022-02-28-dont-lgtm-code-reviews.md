@@ -25,6 +25,8 @@ I'm focusing on asynchronous code reviews specifically, also known as pull reque
 
 There's other forms of code review such as; pairing, code walk throughs and code review meetings, each with their own advantages and drawbacks, but this comparison is not the focus of this post. The approaches I suggest may or may not be applicable to those other forms.
 
+In fact, pairing is probably a more effective approach to code review than pull requests. With pairing two individuals are working on the same change simultaneously and with a shared understanding of the context. The individual on the keyboard edits the code whilst the other provides feedback and ask questions. But pull requests are more commonplace in the industry, so I won't go into the nuance of pairing in this post.
+
 ## Why do code reviews?
 
 This may be well covered ground, but I think it's always worth revisiting the fundamentals to refresh our appreciation for practices we've adopted. Having a practice without a good reason is not an approach that leads to success in my experience, unless you get lucky.

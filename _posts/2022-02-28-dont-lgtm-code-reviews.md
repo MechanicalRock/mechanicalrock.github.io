@@ -13,7 +13,7 @@ description:
 
 A lot of development teams are doing code reviews these days, it's become the industry norm. But are they done well? The idea of the lazy code review — "LGTM, ship it" — has [become a widespread meme](https://knowyourmeme.com/memes/lgtm), and it's funny because there's an element of truth in it that we've experienced ourselves.
 
-In this post I am to convince you of the value of thorough code reviews and i'll provide some pointers for bringing rigour and methods to increase the value you get out of them.
+In this post I aim to convince you of the value of thorough code reviews and i'll provide some pointers for bringing rigour and methods to increase the value you get out of them.
 
 Let's be honest though, when we're working towards deadlines, it's easy to deprioritise or simplify what we see as low priority tasks to ensure we can meet our commitments. This isn't malicious or lazy, it's human nature.
 
@@ -38,17 +38,17 @@ Lets explore the rationale...
 Code reviews present an opportunity to learn something for both reviewer and the author. Here's some examples:
 
 - As a reviewer, you may learn about the behaviour of an upcoming feature that you had some assumptions about, which turned out to be wrong.
-- As a author, you may receive some suggestions about how to improve error handling that results in code with less bugs.
+- As an author, you may receive some suggestions about how to improve error handling that results in code with less bugs.
 - As a reviewer, you're confused about the code structure, so you ask a question about it and learn about a new approach.
-- As a author, you may ask the reviewer of what they think about the expected behaviour in the tests you've written, they may present some feedback and ideas.
+- As an author, you may ask the reviewer of what they think about the expected behaviour in the tests you've written, they may present some feedback and ideas.
 
-Code reviews should be a conversation, and conversations happen to be a good tool to achieve common understanding between two or more individuals.
+Code reviews should be a conversation.  Conversations happen to be a good tool to achieve common understanding between two or more individuals.
 
 Those conversations should also be [psychologically safe](https://en.wikipedia.org/wiki/Psychological_safety) for both parties — we should be able to speak up with questions and ideas without fear of punishment, blame or judgement. Blameless environments allow members to learn from mistakes and be more engaged in continuous improvement.
 
 But even then success isn't guaranteed. We need to build the habit of asking good questions, providing suggestions and other forms of feedback that move code reviews from a chore into a conversation. Reviews with a reasonable attention to detail and tactful use of tone and language will have this benefit.
 
-Furthermore, this learning opportunity is critically important when one of the participants is more senior than the other. Seniors have a responsibility to provide guidance to their less experienced peers, and code reviews are an opportunity to do so.
+This learning opportunity is critically important when one of the participants is more senior than the other. Seniors have a responsibility to provide guidance to their less experienced peers, and code reviews are an opportunity to do so.
 
 ### Reason 2 — Product quality
 

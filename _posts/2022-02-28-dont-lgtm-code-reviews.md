@@ -11,7 +11,7 @@ description:
 
 ![Header](/img/dont-lgtm-code-reviews.jpg)
 
-A lot of development teams are doing code reviews these days, it's become the industry norm. But are they done well? The idea of the lazy code review — "LGTM, ship it" — has [become a meme](https://knowyourmeme.com/memes/lgtm), and it's funny because there's an element of truth in it that we've experienced ourselves.
+A lot of development teams are doing code reviews these days, it's become the industry norm. But are they done well? The idea of the lazy code review — "LGTM, ship it" — has [become a widespread meme](https://knowyourmeme.com/memes/lgtm), and it's funny because there's an element of truth in it that we've experienced ourselves.
 
 In this post I am to convince you of the value of thorough code reviews and i'll provide some pointers for bringing rigour and methods to increase the value you get out of them.
 
@@ -107,13 +107,13 @@ The code author should provide as much context in the description of the PR itse
 - Explain the scope of the change — does it cover the entirety of the ticket, or is there more changes to follow?
 - Explain the contents of the change — what have you changed and how does it work?
 
-It's unreasonable to expect authors to remember these points for every change, so leverage [pull request templates](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository) to create a default format to follow.
+It's unreasonable to expect authors to remember these points for every change, so leverage [pull request templates](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository) to establish a format to follow.
 
 ### Approach 2 — Use of language and tone
 
 Code reviews are a great opportunity for feedback, but if you're not careful they can also be a source of arguments, defensiveness and frustration. We've all experienced it, I'm guilty of it too.
 
-It's understandable, it's hard receiving critical feedback on work we've put a lot of effort into, and are under pressure to deliver. If we feel like a reviewer is being overly harsh or difficult, we naturally go into defensive mode.
+It's understandable, it's hard receiving critical feedback on work we've put a lot of effort into, and are under pressure to deliver. If we feel like a reviewer is being overly pedantic, we naturally go into defensive mode.
 
 I think it's critical that the reviewer makes careful choice of words when giving feedback. The author has this responsibility too, but the reviewer is the one that sets the initial tone.
 
@@ -122,6 +122,14 @@ Thankfully, there is an approach that can help us — [conventional comments](ht
 A `question` indicates a curiosity to learn more about the author's approach. A `suggestion` shows a willingness to have a discussion and be flexible with the author instead of dictate changes. A `nitpick` indicates something minor that the reviewer doesn't feel strongly about.
 
 There's no label for `do-as-i-say` or `this-is-trash`. Code reviews should be a conversation about the change. When it's a two way dialogue where both parties feel respected and listened to we get the benefits we talked about earlier.
+
+What about as the author? What if you're not getting the feedback that you hoped for? Don't be afraid to ask for it — be clear about what kind of feedback you want and from who.
+
+For example:
+
+> Hi Sam! Could you please take a look at this change and tell me what you think about the way I've structured the code? With your experience in design patterns I'm interested to get your input.
+
+
 
 ### Approach 3 — Checklists
 
@@ -224,6 +232,15 @@ For example:
 ## Summary
 
 Code reviews give you an opportunity to learn through knowledge sharing, increase product quality and sustain delivery over time. Some approaches you can use for success are; viewing the full context of the change, using conventional comments, a code review checklist and getting team consensus.
+
+The ideal code review for me depends on what kind of change we're reviewing, but would involve:
+
+- Clear context and description of the change by the author.
+- A respectful and insightful discussion between author and reviewers.
+- Both the author and reviewers learnt something that they can bring to future changes.
+- Results in a high quality code change that brings value to the customer.
+
+With the approaches outlined in this post, we can trend towards that ideal.
 
 If you or your team would like help with code reviews or anything to do with cloud native software, then [please get in contact with us](https://www.mechanicalrock.io/lets-get-started).
 

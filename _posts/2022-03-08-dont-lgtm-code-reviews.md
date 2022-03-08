@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Doesn't look good to me — a requiem for thorough code reviews
-date: 2022-02-28
+date: 2022-03-08
 tags: code cloudnative consultants deployment continuous-delivery devops patterns review software test testing
 author: Simon Bracegirdle
 image: img/dont-lgtm-code-reviews.jpg

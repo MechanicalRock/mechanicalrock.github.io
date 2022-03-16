@@ -92,9 +92,11 @@ If you'd like your API's secured, feel free to [contact-us](https://www.mechanic
 
 ### References
 
-- [https://aws.amazon.com/about-aws/whats-new/2016/12/AWS-WAF-now-available-on-Application-Load-Balancer/](https://aws.amazon.com/about-aws/whats-new/2016/12/AWS-WAF-now-available-on-Application-Load-Balancer/)
-- [https://aws.amazon.com/blogs/compute/amazon-api-gateway-adds-support-for-aws-waf](https://aws.amazon.com/blogs/compute/amazon-api-gateway-adds-support-for-aws-waf/)
-- [https://docs.aws.amazon.com/waf/latest/APIReference/API_regional_GetWebACLForResource.html](https://docs.aws.amazon.com/waf/latest/APIReference/API_regional_GetWebACLForResource.html)
+- [https://mechanicalrock.github.io/2019/09/26/aws-waf-association-with-api-gateway.html](https://mechanicalrock.github.io/2019/09/26/aws-waf-association-with-api-gateway.html)
+- [https://docs.aws.amazon.com/waf/latest/APIReference/Welcome.html](https://docs.aws.amazon.com/waf/latest/APIReference/Welcome.html)
+- [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webacl.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webacl.html)
+- [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webaclassociation.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webaclassociation.html)
+- [https://www.codeproject.com/Articles/5325719/How-to-Create-Regional-Web-ACL-WAFv2-with-CloudFor](https://www.codeproject.com/Articles/5325719/How-to-Create-Regional-Web-ACL-WAFv2-with-CloudFor)
 - [https://www.npmjs.com/package/serverless-associate-waf](https://www.npmjs.com/package/serverless-associate-waf)
 
 ### Further Reading

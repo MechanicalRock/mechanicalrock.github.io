@@ -82,11 +82,11 @@ custom:
     version: V2
 ```
 
-The name must be the name you specified in your web ACL.
+The name must be the name you specified in your WebACL.
 
 ### Wrapping up
 
-And viola, that's it. Simple right? It took me countless hours to get this configuration right. Hopefully after reading this post you won't have to!
+And voila, that's it. Simple right? It took me countless hours to get this configuration right. Hopefully after reading this post you won't have to!
 
 If you'd like your API's secured, feel free to [contact-us](https://www.mechanicalrock.io/lets-get-started).
 

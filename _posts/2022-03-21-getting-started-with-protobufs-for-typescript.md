@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Working with Protobufs in Typescript
-description: Tutorial for how to use Protobufs with Typescript
-date: 2022-03-30
+title: Getting Started with Protobufs for Typescript
+description: Tutorial for how to start using Protobufs with Typescript
+date: 2022-03-21
 author: Ed Newsom
 highlight: monokai
 image: img/blog/protobuf-ts/protobuf-ts.jpg
@@ -11,7 +11,7 @@ tags: ["protobuf", "typescript", "tutorial", "protoc", "npm"]
 
 ![Protobufs and TypeScript](/img/blog/protobuf-ts/protobuf-ts.png)
 
-# Working with Protobufs in Typescript
+# Getting Started with Protobufs for Typescript
 
 [Click here to skip to the interesting technical bits](#making-it-work) 
 

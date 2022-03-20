@@ -35,15 +35,15 @@ or [Click here for the code repository in Github and skip all the words](https:/
 
 ## How Did We Get Here?
 
-So a little while ago I got told "we need an OpenTelemetry API so that customers can send us data, oh, and it needs to be serverless". This post is about a small part of that rabbit hole because after peeling back the layers I realised I needed to learn Protobufs. My first reaction was to groan because I had tried to learn Protobufs a while back and failed, twice.  Admittedly, on both occasions, I did not have an application to focus on and other shiny things distracted me. So before trying again, I asked some of my infinitely more experienced colleagues here at [Mechanical Rock](https://mechanicalrock.io) if it was just me or is the documentation for learning Protobufs from zero really '@#^%'? There was some great discussion on this and then they sent me on my way with a more than a few useful hints.
+So a little while ago I got told "we need an OpenTelemetry API so that customers can send us data, oh, and it needs to be serverless". This post is about a small part of that rabbit hole because after peeling back the layers I realised I needed to learn Protobufs. My first reaction was to groan because I had tried to learn Protobufs a while back and failed, twice.  Admittedly, on both occasions, I did not have an application to focus on and other shiny things distracted me. So before trying again, I asked some of my infinitely more experienced colleagues here at [Mechanical Rock](https://mechanicalrock.io) if it was just me or is the documentation for learning Protobufs from zero really '@#^%'? There was some great discussion on this and then they sent me on my way with more than a few useful hints.
 
 Having got to the point where I understand enough to use them in anger, I now realise that trying to learn Protobufs for Typescript as a first step was probably the problem. There is almost nothing useful out there for learning Protobufs with Typescript. I actually had to revert to my first love, Python, before I could transfer that newly minted knowledge to TypeScript. As a result, I though I would put together this example for anyone else who is fighting along this path.
 
 ## Other Stuff & Assumptions
 
-I am going to skip over the why Protobufs vs XML and the like, there's lots of that out there and if you are still reading this you probably have been told to just get on any make it work.
+I am going to skip over the why Protobufs vs XML and the like, there's lots of that out there and if you are still reading this you probably have been told to just get on and make it work.
 
-I'm assuming you know: node.js, Typescript, npm and Jest. We are using Mac/Linux here (sorry Windows users but you can deal with your own world of pain). We will not be hand-holding you through the entire application build, but instead will be focusing on the concepts and things you'll need to know to to do the basics with Protobufs.
+I'm assuming you know: node.js, Typescript, npm and Jest. I am using Mac/Linux here (sorry Windows users but you can deal with your own world of pain). I will not be hand-holding you through the entire application build, but instead will be focusing on the concepts and things you'll need to know to to do the basics with Protobufs.
 
 # Making It Work
 We're going to work through an end to end process to demonstrate the key points to be able to do the basics with Protobufs and TypeScript.
@@ -175,7 +175,7 @@ const myAddressBook: AddressBook = {
   ],
 };
 ```
-This is almost identical to the original JSON object we used in the [data structure section above](#define-the-data-structure-for-your-messages), how fantastic is that!  There are two differences in the above that take advantage of some awesome idiomatic Typescript and make life really easy:
+This is almost identical to the original JSON object used in the [data structure section above](#define-the-data-structure-for-your-messages), how fantastic is that!  There are two differences in the above that take advantage of some awesome idiomatic Typescript and make life really easy:
 - The object type assignment `AddressBook` which allows you to use type checking for creating valid messages
 - The `phoneType` is assigned through an enum, e.g. `Person_PhoneType.MOBILE`
 
@@ -216,8 +216,13 @@ You can now:
 
 For a next step, I would recommend spending spending some time understanding the [proto3 data structure](https://developers.google.com/protocol-buffers/docs/proto3) so that you can more easily build you own message structures.
 
+If you have any questions regarding this article or want a chat about anything cloud native, feel free to contact us either via [email](mailto:contact@mechanicalrock.io) or our [web form](https://mechanicalrock.io/lets-get-started).
 
-# How do do this so it looks like most published tutorials
+<br>
+<br>
+<hr></hr>
+
+## How to do this so it looks like most published tutorials
 Most tutorials you find out there use a message class object with function calls to assign data to fields.  I have included this section for completeness and because I did go through this method before settling on my preferred solution above.   Particularly for data interchange you are likely to have a JSON object that you need to get into a Protobuf message and working through every data item and calling a function to assign to a field is tedious and results in more lines of code than necessary. Also, my comment above _*When you read the docs and get presented with ["The API is not well-documented yet"](https://github.com/protocolbuffers/protobuf/tree/master/js#api) you can be forgiven for wanting to cry and giving up_* reflects some of the pain I experienced when working through this method.
 
 So, very quickly:

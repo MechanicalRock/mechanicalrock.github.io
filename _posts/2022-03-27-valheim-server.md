@@ -78,7 +78,7 @@ Its a game and is not a critical workload, and so far have not found it to be an
 If the game is set to public: true, the server can be searched for using the in game server browser. Save some $$$.
 
 ### Secret Manager, but why?
-Good practise, Lord Meyers will sense a disturbance in the code...be afraid.
+Good practise, Lord Myerscough will sense a disturbance in the code...be afraid.
 
 
 ### Cost. 

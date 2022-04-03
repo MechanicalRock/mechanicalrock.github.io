@@ -15,6 +15,8 @@ Do you want to set up your own Valheim Server? Are you sick of waiting for your 
 
 Now, if you are like me, where I decide 9 pm is when I should do that documentation I've been procrastinating on, the hours that my friends play and I play rarely aligns, hence the need for a dedicated server. I’ve seen a few online tutorials on how to set up your own Valheim Server, but I took it as an opportunity to do what any semi self-loathing programmer does.... ignore it all and decide I can do better...I mean attempt to do it myself as a learning opportunity.
 
+If you just want the code, here you go: [ Valheim-Server-on-AWS-Part-1 ](https://github.com/JMiocevich/Valheim-Server-on-AWS-Part-1)
+
 We are gonna separate this post into two parts. Part 1 will be the bare minimum to get a server up and running, whilst part 2 will include some fancier bells and whistles.
 
 So let's cover some basic criteria on what creating your own virtual Vikings adventure land will entail:
@@ -34,18 +36,6 @@ Part 2:
 - Edit server settings through discord
 - Automatic IP address retrieval through discord
 
-If you just want the code, here you go: [ Valheim-Server-on-AWS-Part-1 ](https://github.com/JMiocevich/Valheim-Server-on-AWS-Part-1)
-
-For some other resources I have encountered during my travels and my experience with them, see below:
-
-| The Thing                                                                                                                                           | My thoughts                                                                                                                                                                                                                                                                                       |
-| --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [ lloesche valheim-server docker ](https://github.com/lloesche/valheim-server-docker)                                                                 | Awesome repo, this setup takes large advantage on the great work done my lloesche!                                                                                                                                                                                                                     |
-| [ How to host a dedicated Valheim server on  Amazon Lightsail ](https://aws.amazon.com/getting-started/hands-on/valheim-on-aws/)                      | Tried it, didn't work, costs too much. Be careful if you try this, lightsail assigns an Elastic IP address even if you delete the lightsail instance. This leaves an unassigned IP on your account $$$. Had to remove it via CLI as it wasn't clear that this happened or how to remove it in lightsail interface |
-| [ Valheim with terraform ](https://github.com/wahlfeld/valheim-on-aws)                                                                               | I don't know terraform, but looked good, would use it as a resource if you wanted to go down this path                                                                                                                                                                                             |
-| [ Valheim server with awsCDK ](https://briancaffey.github.io/2021/03/18/on-demand-dedicated-serverless-valheim-server-with-cdk-discrod-interactions/) | Similar to what I want to do, but using CDK, provided some inspiration on how to use discord                                                                                                                                                                                                      |
-| [ Valheim on AWS (Sam template) ](https://github.com/pwmcintyre/valheim-aws)                                                                          | A great repo, lots of very useful snippets, particularly on using s3 on hydrating/dehydrating the world on startup and shutdown, however, has some code practises I did not like and has not been updated in a while with some commands not working as expected out of the box.                                                                                                         |
-
 ***
 <br/>
 ## Instructions
@@ -62,9 +52,6 @@ The following/requirements are needed.
 
 See [ setup instructions ](https://github.com/JMiocevich/Valheim-Server-on-AWS-Part-1/blob/main/README.md) for step by step instructions on setup.
 
-
-
-<br/>
 ## Discussion and Reasoning
 
 ### Why Fargate?
@@ -129,3 +116,15 @@ Until next time!
 If you have questions, feel free to [reach out](contact@mechanicalrock.io), or dont... or buy me a coffee, I fully condone bribery by food.
 
 
+
+***
+<br/>
+## References
+
+| The Thing                                                                                                                                           | My thoughts                                                                                                                                                                                                                                                                                       |
+| --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [ lloesche valheim-server docker ](https://github.com/lloesche/valheim-server-docker)                                                                 | Awesome repo, this setup takes large advantage on the great work done my lloesche!                                                                                                                                                                                                                     |
+| [ How to host a dedicated Valheim server on  Amazon Lightsail ](https://aws.amazon.com/getting-started/hands-on/valheim-on-aws/)                      | Tried it, didn't work, costs too much. Be careful if you try this, lightsail assigns an Elastic IP address even if you delete the lightsail instance. This leaves an unassigned IP on your account $$$. Had to remove it via CLI as it wasn't clear that this happened or how to remove it in lightsail interface |
+| [ Valheim with terraform ](https://github.com/wahlfeld/valheim-on-aws)                                                                               | I don't know terraform, but looked good, would use it as a resource if you wanted to go down this path                                                                                                                                                                                             |
+| [ Valheim server with awsCDK ](https://briancaffey.github.io/2021/03/18/on-demand-dedicated-serverless-valheim-server-with-cdk-discrod-interactions/) | Similar to what I want to do, but using CDK, provided some inspiration on how to use discord                                                                                                                                                                                                      |
+| [ Valheim on AWS (Sam template) ](https://github.com/pwmcintyre/valheim-aws)                                                                          | A great repo, lots of very useful snippets, particularly on using s3 on hydrating/dehydrating the world on startup and shutdown, however, has some code practises I did not like and has not been updated in a while with some commands not working as expected out of the box.                                                                                                         |

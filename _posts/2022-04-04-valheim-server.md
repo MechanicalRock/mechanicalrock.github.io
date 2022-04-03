@@ -113,7 +113,7 @@ Now that you are a certified Viking nerd, [click here](https://www.youtube.com/w
 Until next time!
 ---
 
-If you have questions, feel free to [reach out](contact@mechanicalrock.io), or dont... or buy me a coffee, I fully condone bribery by food.
+If you have questions, feel free to [reach out](https://www.mechanicalrock.io/lets-get-started), or dont... or buy me a coffee, I fully condone bribery by food.
 
 
 

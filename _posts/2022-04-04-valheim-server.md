@@ -75,7 +75,7 @@ tps://github.com/lloesche/valheim-server-docker), allows for simple deployment w
 It's a game and is not a critical workload, and so far have not found it to be any problem in availability. Also $$$.
 
 ### Why Lambda Functions for server start/stop
-In future a discord command/HTTP endpoint will be implemented to invoke this lambda, allowing for an easy server start, currently, it needs to be invoked manually via the CLI or console. The stop function allows for cloud watch to trigger an SNS topic, which in turn invokes the lambda stop function.
+In future, a discord command/HTTP endpoint will be implemented to invoke this lambda, allowing for an easy server start, currently, it needs to be invoked manually via the CLI or console. The stop function allows for cloud watch to trigger an SNS topic, which in turn invokes the lambda stop function.
 
 
 ### Why discord notification?

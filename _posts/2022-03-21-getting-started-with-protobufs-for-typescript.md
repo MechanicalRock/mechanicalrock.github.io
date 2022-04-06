@@ -35,9 +35,9 @@ or [Click here for the code repository in Github and skip all the words](https:/
 
 ## How Did We Get Here?
 
-So a little while ago I got told "we need an OpenTelemetry API so that customers can send us data, oh, and it needs to be serverless". This post is about a small part of that rabbit hole because after peeling back the layers I realised I needed to learn Protobufs. My first reaction was to groan because I had tried to learn Protobufs a while back and failed, twice.  Admittedly, on both occasions, I did not have an application to focus on and other shiny things distracted me. So before trying again, I asked some of my infinitely more experienced colleagues here at [Mechanical Rock](https://mechanicalrock.io) if it was just me or is the documentation for learning Protobufs from zero really '@#^%'? There was some great discussion on this and then they sent me on my way with more than a few useful hints.
+A little while ago I got told "we need an OpenTelemetry API so that customers can send us data, oh, and it needs to be serverless". This post is about a small part of that rabbit hole because after peeling back the layers I realised I needed to learn Protobufs. My first reaction was to groan because I had tried to learn Protobufs a while back and failed twice.  Admittedly on both occasions, I did not have an application to focus on and other shiny things distracted me. So before trying again I asked some of my infinitely more experienced colleagues here at [Mechanical Rock](https://mechanicalrock.io) if it was just me or is the documentation for learning Protobufs from zero really '@#^%'? There was some great discussion on this and then they sent me on my way with more than a few useful hints.
 
-Having got to the point where I understand enough to use them in anger, I now realise that trying to learn Protobufs for Typescript as a first step was probably the problem. There is almost nothing useful out there for learning Protobufs with Typescript. I actually had to revert to my first love, Python, before I could transfer that newly minted knowledge to TypeScript. As a result, I though I would put together this example for anyone else who is fighting along this path.
+Having got to the point where I understand enough to use them in anger, I realised that trying to learn Protobufs for Typescript as a first step was probably the problem. There is almost nothing useful out there for learning Protobufs with Typescript. I actually had to revert to my first love, Python, before I could transfer that newly minted knowledge to TypeScript. As a result, I though I would put together this example for anyone else who is fighting along this path.
 
 ## Other Stuff & Assumptions
 
@@ -57,7 +57,7 @@ We're going to work through an end to end process to demonstrate the key points 
 
 ## Define the Data Structure for Your Messages
 
-First thing to realise about Protobufs are they are just an efficient (small data size) way of encoding messages. Next thing to realise is that these messages have a pre-defined data structure. You need to know that data structure at both ends, to serialize the message before sending and then de-serialize the message back into something useable when it has been received. This is what the `.proto` files are for, they define the data structure of the messages in a language independent format.
+First thing to realise about Protobufs is that they are just an efficient (small data size) way of encoding messages. Next thing to realise is that these messages have a pre-defined data structure. You need to know that data structure at both ends, to serialize the message before sending and then de-serialize the message back into something useable when it has been received. This is what the `.proto` files are for, they define the data structure of the messages in a language independent format.
 
 In this example, we are going to keep it really simple because the [proto3 data structure](https://developers.google.com/protocol-buffers/docs/proto3) is not the interesting bit for this post. I am also shamelessly basing this on the [Google Protobuf Tutorials](https://developers.google.com/protocol-buffers/docs/tutorials) because I am sure you have already been there, hence using the Address Book example.
 
@@ -124,11 +124,11 @@ This is the first bit that didn’t quite make sense, there's some magic that's 
 - For this you need the `protoc` compiler. Download and install the [prebuilt binary](https://github.com/protocolbuffers/protobuf/releases)
   - For Mac and Linux you just have to copy the `protoc` file into a location on your `$PATH`. On my Mac I copied this into `/usr/local/bin/`.
 
-However, this only generates code for [some languages](https://github.com/protocolbuffers/protobuf#protobuf-runtime-installation). From that list we're interested in JavaScript, which is included.
+However, this only generates code for [some languages](https://github.com/protocolbuffers/protobuf#protobuf-runtime-installation). From that list we're interested in JavaScript.
 
 The bit that isn’t included with `protoc` is generating the Typescript types. For that you need a plugin like the [`ts-proto`](https://www.npmjs.com/package/ts-proto) npm package that acts as a plugin for `protoc`.
 
-So start a TypeScript project and create an `addressBook.proto` file as above in the same project. Then run:
+First, start a TypeScript project and create an `addressBook.proto` file as above in the same project. Then run:
 
 - `npm install ts-protoc-gen`
 

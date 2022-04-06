@@ -13,35 +13,19 @@ tags: ["protobuf", "typescript", "tutorial", "protoc", "npm"]
 
 # Getting Started with Protobufs for Typescript
 
-[Click here to skip to the interesting technical bits](#making-it-work) 
+[Click here to skip to the technical bits](#making-it-work) 
 
 or [Click here for the code repository in Github and skip all the words](https://github.com/MechanicalRock/protobuf-example-ts)
-
-<details>
-  <summary>Contents</summary>
-
-- [How Did We Get Here?](#how-did-we-get-here)
-- [Other Stuff & Assumptions](#other-stuff--assumptions)
-- [Making It Work](#making-it-work)
-  - [Define the data structure for your messages](#define-the-data-structure-for-your-messages)
-  - [Compile the TypeScript files you will use in your code](#compile-the-typescript-you-will-use-in-your-code)
-  - [Create a message](#create-a-message)
-  - [Serialise the message to Protobuf](#serialise-the-message-to-protobuf)
-  - [De-serialise the message](#de-serialise-the-message)
-- [Closing thoughts](#closing-thoughts)
-- [How do do this so it looks like most published tutorials](#how-do-do-this-so-it-looks-like-most-published-tutorials)
-
-</details>
 
 ## How Did We Get Here?
 
 A little while ago I got told "we need an OpenTelemetry API so that customers can send us data, oh, and it needs to be serverless". This post is about a small part of that rabbit hole because after peeling back the layers I realised I needed to learn Protobufs. My first reaction was to groan because I had tried to learn Protobufs a while back and failed twice.  Admittedly on both occasions, I did not have an application to focus on and other shiny things distracted me. So before trying again I asked some of my infinitely more experienced colleagues here at [Mechanical Rock](https://mechanicalrock.io) if it was just me or is the documentation for learning Protobufs from zero really '@#^%'? There was some great discussion on this and then they sent me on my way with more than a few useful hints.
 
-Having got to the point where I understand enough to use them in anger, I realised that trying to learn Protobufs for Typescript as a first step was probably the problem. There is almost nothing useful out there for learning Protobufs with Typescript. I actually had to revert to my first love, Python, before I could transfer that newly minted knowledge to TypeScript. As a result, I though I would put together this example for anyone else who is fighting along this path.
+Having got to the point where I understand enough to use them in anger, I realised that trying to learn Protobufs for Typescript as a first step was probably the problem. There is almost nothing useful out there for learning Protobufs with Typescript. I actually had to revert to my first love, Python, before I could transfer that newly minted knowledge to TypeScript. As a result, I thought I would put together this example for anyone else who is fighting along this path.
 
 ## Other Stuff & Assumptions
 
-I am going to skip over the why Protobufs vs XML and the like, there's lots of that out there and if you are still reading this you probably have been told to just get on and make it work.
+I am going to skip over the why Protobufs vs XML and the like; there's lots of that out there and if you are still reading this you probably have been told to just get on and make it work.
 
 I'm assuming you know: node.js, Typescript, npm and Jest. I am using Mac/Linux here (sorry Windows users but you can deal with your own world of pain). I will not be hand-holding you through the entire application build, but instead will be focusing on the concepts and things you'll need to know to to do the basics with Protobufs.
 

@@ -192,7 +192,6 @@ If you have any questions regarding this article or want a chat about anything c
 
 <br>
 <br>
-<hr></hr>
 
 ## How to do this so it looks like most published tutorials
 Most tutorials you find out there use a message class object with function calls to assign data to fields.  I have included this section for completeness and because I did go through this method before settling on my preferred solution above. Particularly for data interchange you are likely to have a JSON object that you need to get into a Protobuf message and working through every data item and calling a function to assign to a field is tedious and results in more lines of code than necessary. Also, my comment above _*When you read the docs and get presented with ["The API is not well-documented yet"](https://github.com/protocolbuffers/protobuf/tree/master/js#api) you can be forgiven for wanting to cry and giving up_* reflects some of the pain I experienced when working through this method.

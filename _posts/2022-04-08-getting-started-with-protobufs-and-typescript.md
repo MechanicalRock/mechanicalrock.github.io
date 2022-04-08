@@ -2,7 +2,7 @@
 layout: post
 title: Getting Started with Protobufs and Typescript
 description: Tutorial for how to start using Protobufs with Typescript
-date: 2022-4-7
+date: 2022-04-08
 author: Ed Newsom
 image: img/blog/protobuf-ts/protobuf-ts.jpg
 tags: ["protobuf", "typescript", "tutorial", "protoc", "npm"]

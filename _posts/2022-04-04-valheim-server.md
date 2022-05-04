@@ -13,7 +13,7 @@ description:
 
 Do you want to set up your own Valheim Server? Are you sick of waiting for your friend to figure out how to port forward their local server? Has your wallet been raided by an 'easy' online game hosting solution? Then this is the blog post for you! Read on if you want to become a certified Viking nerd.
 
-Now, if you are like me, where I decide 9 pm is when I should do that documentation I've been procrastinating on, the hours that my friends play and I play rarely aligns, hence the need for a dedicated server. I’ve seen a few online tutorials on how to set up your own Valheim Server, but I took it as an opportunity to do what any semi self-loathing programmer does.... ignore it all and decide I can do better...I mean attempt to do it myself as a learning opportunity.
+Now, if you are like me, where I decide 9 pm is when I should do that documentation I've been procrastinating on, the hours that my friends and I play rarely aligns, hence the need for a dedicated server. I’ve seen a few online tutorials on how to set up your own Valheim Server, but I took it as an opportunity to do what any semi self-loathing programmer does.... ignore it all and decide I can do better...I mean attempt to do it myself as a learning opportunity.
 
 If you just want the code, here you go: [ Valheim-Server-on-AWS-Part-1 ](https://github.com/JMiocevich/Valheim-Server-on-AWS-Part-1)
 

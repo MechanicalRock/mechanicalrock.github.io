@@ -14,7 +14,7 @@ Introduction
 
 In an application, the client sends requests to the backend server and gets responses. Sometimes, the backend needs to notify the client whenever that response changes. Applications that use real-time data, needs a mechanism where the server can push an updated response. In this tutorial, you’ll learn how to bring a realtime functionality into your app by implementing AWS AppSync and GraphQL subscriptions. The goal is to implement a graphql subscription simply with "@aws_subscribe" directive.
 
-Note that, this article doesn't specify a data source because the data source could be anything, a Lambda, Amazon DynamoDB, or Amazon OpenSearch Service. Also, I consider you have already set up your infrastructure if you don't still know how to do that, I would highly recommend to have a read through [This amazing article from Shermayne Lee](https://mechanicalrock.github.io/2020/05/04/putting-the-serverless-in-graphQL-with-AppSync.html).
+Note that, this article doesn't specify a data source because the data source could be anything, a Lambda, Amazon DynamoDB, or Amazon OpenSearch Service. Also, I assume you have already set up your infrastructure if you don't still know how to do that, I would highly recommend to have a read through [This amazing article from Shermayne Lee](https://mechanicalrock.github.io/2020/05/04/putting-the-serverless-in-graphQL-with-AppSync.html).
 
 Let's review some basics:
 

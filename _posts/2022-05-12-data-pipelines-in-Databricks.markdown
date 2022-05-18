@@ -58,7 +58,7 @@ Once you identify a broken test you can then go in and fix any issues and re-sta
 
 ### Great expectations
 
-![https://docs.greatexpectations.io/docs/](/img/blog/databricks-data-pipeline/GE.png)
+<br/>
 One of the testing tools used was great expectations for data quality testing and this was incorporated directly into the data pipeline unlike the unit tests.
 
 This allowed us to test for some of the following:

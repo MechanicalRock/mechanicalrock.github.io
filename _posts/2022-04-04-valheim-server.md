@@ -55,8 +55,7 @@ See [ setup instructions ](https://github.com/JMiocevich/Valheim-Server-on-AWS-P
 ## Discussion and Reasoning
 
 ### Why Fargate?
-Takes advantage of [valheim-server docker](ht
-tps://github.com/lloesche/valheim-server-docker), allows for simple deployment without having to manage servers.
+Takes advantage of [valheim-server docker](https://github.com/lloesche/valheim-server-docker).  This allows for simple deployment without having to manage servers.
 
 ### Why spot Instance?
 It's a game and is not a critical workload, and so far have not found it to be any problem in availability. Also $$$.

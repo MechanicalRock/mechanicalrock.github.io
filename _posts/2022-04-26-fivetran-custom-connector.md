@@ -15,7 +15,7 @@ description:
 
 ## Overview
 
-In simple terms, a FiveTran custom connector a cloud hosted function that can be setup on a cloud platform of your choice, which allows you to load data into FiveTran with a API FiveTran does not natively support. The benefits of this is that these connectors will have the same capabilities of standard connectors
+In simple terms, a FiveTran custom connector a cloud hosted function that can be setup on a cloud platform of your choice, which allows you to load data into FiveTran with a API FiveTran does not natively support. The benefits of this is that these connectors will have the same capabilities of standard connectors:
 
 - Incremental updates
 - Source data type inference
@@ -34,21 +34,33 @@ Use FiveTran's Function connectors if:
 
 *Fivetran* . Fivetran Custom Connector. (n.d.). Retrieved May 26, 2022, from https://fivetran.com/docs/functions 
 
-## How to build a FiveTran connector:
+<br>
 
+***
+<br>
 ## General Principles
 
 **State Management**
 
-State in a JSON object that contains cursors from the previous successful FiveTran executions run.
+State is a JSON object that contains cursors from the previous successful FiveTran executions run.
 
-[https://fivetran.com/docs/functions/faq/use-state-object](https://fivetran.com/docs/functions/faq/use-state-object)
+[https://fivetran.com/docs/functions/faq/use-state-object](https://fivetran.com/docs/functions/faq/use-state-object) 
+
+[https://fivetran.com/docs/functions/faq/use-secrets-object](https://fivetran.com/docs/functions/faq/use-secrets-object)
+
+
+**Guardrails to consider**
+
+- Lambda timeouts and payload limit
+- Ensure calls to the Lambda are **idempotent** for a given FiveTran cursor
+- Be wary or avoid using cursors supplied by the pagination of an upstream API that may not be persistent.
+
 
 **FiveTran Pagination**
 
 FiveTran pagination allows your lambda function to specify if there is more data to be collected, this is achieved using the hasMore boolean return.
 
-If has more is true, the FiveTran return object is returned ,state is updated, however FiveTran immediately calls the lambda with the updated state. This will keep occurring until hasMore = False, which then resets FiveTran to its default state.
+When hasMore = True ,state is updated as normal, however FiveTran immediately calls the lambda with the updated state. This will keep occurring until hasMore = False, which then resets FiveTran to its default state.
 
 [https://fivetran.com/docs/functions/faq/use-hasmore-flag](https://fivetran.com/docs/functions/faq/use-hasmore-flag)
 
@@ -90,11 +102,14 @@ paginationCounter: 1
 ***
 
 <br/>
-## Table of fiveTran calls with response over a paginated query and multiple syncs.
+## Sequence of FiveTran Connector Excecutions
+
+![](/img/five_tran_sequence.png)
+
 
 For the sake of this example and readability, the return JSON from the api call will be summarised as *apiJsonResponse*
 
-### Call 1: Intial Sync
+### Call 1: Initial Sync
 
 
 **FiveTranCall**
@@ -103,7 +118,7 @@ For the sake of this example and readability, the return JSON from the api call 
 state: {}
 ```
 
-**Custom Connector Response**
+**Connector Response**
 
 ```
 {
@@ -143,7 +158,7 @@ paginationCounter: 1
 }
 ```
 
-**Custom Connector Response**
+**Connector Response**
 
 ```
 {
@@ -183,7 +198,7 @@ paginationCounter: 2
 }
 ```
 
-**Custom Connector Response**
+**Connector Response**
 
 ```
 {
@@ -223,7 +238,7 @@ paginationCounter: 0
 }
 ```
 
-**Custom Connector Response**
+**Connector Response**
 
 ```
 {
@@ -263,7 +278,7 @@ paginationCounter: 0
 }
 ```
 
-**Custom Connector Response**
+**Connector Response**
 
 ```
 
@@ -299,14 +314,22 @@ State:
 
 <br/>
 
+### **Examples**
+
+For full working example see FiveTran's documentation
 
 
-### **Guardrails to consider**
+[https://fivetran.com/docs/functions/aws-lambda/sample-functions](https://fivetran.com/docs/functions/aws-lambda/sample-functions)
 
-- Lambda timeouts and payload limit
-- Ensure calls to the Lambda are **idempotent** for a given FiveTran cursor
-- Be wary or avoid using cursors supplied by the pagination of an upstream API that may not be persistent.
+<br/>
+
+***
+
+<br/>
 
 ### **References**
 
 [https://fivetran.com/docs/functions](https://fivetran.com/docs/functions)
+
+<br>
+If you have any questions or need help with setting up your own connector, feel free to [poke us](https://www.mechanicalrock.io/lets-get-started/)

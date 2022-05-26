@@ -127,7 +127,7 @@ lastUpdate: ''
 paginationCounter: 1
 },
 insert: {
-apiJsonResponseTable: *apiJsonResponse*
+apiJsonResponseTable: apiJsonResponse
 },
 schema: {
 apiJsonResponseTable: {
@@ -167,7 +167,7 @@ lastUpdate: '',
 paginationCounter: 2
 },
 insert: {
-apiJsonResponseTable: *apiJsonResponse*
+apiJsonResponseTable: apiJsonResponse
 },
 schema: {
 apiJsonResponseTable: {
@@ -207,7 +207,7 @@ lastUpdate: '2020-01-01',
 paginationCounter: 0
 },
 insert: {
-apiJsonResponseTable: *apiJsonResponse*
+apiJsonResponseTable: apiJsonResponse
 },
 schema: {
 apiJsonResponseTable: {
@@ -247,7 +247,7 @@ lastUpdate: '2020-01-02',
 paginationCounter: 0
 },
 insert: {
-apiJsonResponseTable: *apiJsonResponse*
+apiJsonResponseTable: apiJsonResponse
 },
 schema: {
 apiJsonResponseTable: {
@@ -287,7 +287,7 @@ lastUpdate: '2020-01-03',
 paginationCounter: 0
 },
 insert: {
-apiJsonResponseTable: *apiJsonResponse*
+apiJsonResponseTable: apiJsonResponse
 },
 schema: {
 apiJsonResponseTable: {

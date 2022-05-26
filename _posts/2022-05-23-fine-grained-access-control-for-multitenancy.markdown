@@ -11,7 +11,7 @@ tags: ['multitenant', 'typescript', 'tutorial', 'dynamodb', 'lambda', 'api gatew
 ## Introduction
 
 Architecting multi-tenant cloud native software can be quite challenging due to the broad scope of technical know-how required to execute such an undertaking.
-What's even more challenging is finding cohesive guides/tutorials that take a top down approach to the somewhat elusive topic of multitenancy. This article is an attempt to produce a distilled "how-to" guide for those who may find themselves bogged down while building multi-tenant applications. You clone the repo containing the reference code from here [reference code here](https://github.com/MechanicalRock/Multitenancy-AuthorizationAuthentication).
+What's even more challenging is finding cohesive guides/tutorials that take a top down approach to the somewhat elusive topic of multitenancy. This article is an attempt to produce a distilled "how-to" guide for those who may find themselves bogged down while building multi-tenant applications. You can clone the repo containing the reference code from here [reference code here](https://github.com/MechanicalRock/Multitenancy-AuthorizationAuthentication).
 
 ## Some need to knows (Authorization and Authentication)
 

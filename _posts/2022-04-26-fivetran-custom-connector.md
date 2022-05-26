@@ -6,7 +6,7 @@ tags: fivetran custom connector custom-connector pagination getmore state
 author: Joseph Miocevich
 image: img/fivetran_logo.png
 description:
-  How to set up a custom fivetran connector with pagination
+  Overview of a custom fivetran connector with pagination
 ---
 
 ![Header](/img/fivetran_logo.png)

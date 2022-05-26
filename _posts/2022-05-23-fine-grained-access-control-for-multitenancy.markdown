@@ -4,7 +4,7 @@ title: Fine Grained Access Control for Multi-tenancy
 description: A how to guide for architecting multitenant backend applications
 date: 2022-05-23
 author: Leon Ticharwa
-image: img/blog/multitenancy/multitenancy.png
+image: img/blog/multitenancy/multitenant.png
 tags: ['multitenant', 'typescript', 'tutorial', 'dynamodb', 'lambda', 'api gateway', 'authorization', 'authentication', 'apiGateway', 'jwt', 'json web token', 'cognito']
 ---
 
@@ -33,6 +33,41 @@ Valid JWTs contains three sections that are encoded as base64url strings separat
 
 <Header>.<Payload>.<Signature>
 ```
+
+##### Header
+
+The header consists of two parts, a key id `kid` and the algorithm `alg` used to sign the token.
+
+```
+{
+  "kid": "abcdefghijklmnopqrsexample=",
+ "alg": "RS256"
+ }
+```
+
+##### Payload
+
+The payload contains information about the user as well as other information necessary for token verification/authorization. Collectively, The information contained in the payload is usually referred to as `token claims`. When a token is verified for authorization it is this information that must be checked/validated.
+
+```
+{
+  "sub": "aaaaaaaa-bbbb-cccc-dddd-example",
+  "aud": "xxxxxxxxxxxxexample",
+  "email_verified": true,
+  "token_use": "id",
+  "auth_time": 1500009400,
+  "iss": "https://cognito-idp.ap-southeast-2.amazonaws.com/ap-southeast-2_example",
+  "cognito:username": "anaya",
+  "exp": 1500013000,
+  "given_name": "Anaya",
+  "iat": 1500009400,
+  "email": "anaya@example.com"
+}
+```
+
+##### Signature
+
+The signature section is a security feature that makes it virtually impossible for bad actors to tamper with tokens. This section is the hashed and encrypted combination of both the the header and the payload sections. During token authorization, the hash is decrypted and compared with the hash of the header and payload sections. If the two do not match, the token is considered invalid and thus unauthorized.
 
 ### Cognito JWTs
 
@@ -192,7 +227,7 @@ The JWK will need to be `converted to PEM format` before that can happen.
 
 Consider a scenario where we'd like to build an e-commerce web application. To keep things simple let's contextualize the scenario so that we only have one micro service that uses a multi tenant dynamoDb table to store/retrieve customer shopping carts. The persistence layer will consist of 4 lambdas that perform `DELETE`, `PUT`, `QUERY` and `UPDATE` actions. An architectural diagram for this scenario has been provided below.
 
-![image](architecture.png)
+![image](img/blog/multitenancy/arch.png)
 
 1. Users authenticate with a username and password, the web app passes these to amazon cognito for validation.
 2. If the supplied credentials (username and password) are valid, cognito creates a session and subsequently issues three (3) JWTs (JSON Web Tokens). The aforementioned tokens are id token, access token and a refresh token. The authenticated user can now send requests to api gateway along with with the id token in the headers section.
@@ -219,15 +254,17 @@ Context objects can be modified to include custom parameters that can then be ac
 
 When downstream lambdas are invoked they cam access the context object as a key within the event object. Take for example the following sample lambda event object.
 
+`Remember to remove calls to console.log() if you are logging sensitive information `
+
 ```
-2022-05-20T08:09:58.116Z	1c1c55e3-6ec1-47fb-962f-d94387e10480	INFO	{
-  resourceId: 'hdo0nl',
+{
+  resourceId: '2423fs',
   authorizer: {
     firstName: 'Anakin',
     lastName: 'Skywalker',
     org: 'galactic empire',
     tenantId: 'sith-inc-100',
-    principalId: '24da3e19-0417-4e85-a9ed-078b9dcfb919',
+    principalId: 'xxxx-xxx-xxxx-xx-xxxxx',
     integrationLatency: 0
   },
   resourcePath: '/cart/{itemId}',
@@ -235,18 +272,18 @@ When downstream lambdas are invoked they cam access the context object as a key 
   extendedRequestId: 'SajxWGotSwMFoIw=',
   requestTime: '20/May/2022:08:09:57 +0000',
   path: '/multiTenantStack/cart/1653034194717',
-  accountId: '935741529896',
+  accountId: 'xxxxxxxxx',
   protocol: 'HTTP/1.1',
   stage: 'multiTenantStack',
   domainPrefix: 'htieqffa0l',
   requestTimeEpoch: 1653034197210,
-  requestId: 'f260bfad-f7f3-4641-b492-6bbbff99de74',
+  requestId: 'xxx-f7f3-4641-xxx-xxxxx,
   identity: {
     cognitoIdentityPoolId: null,
     accountId: null,
     cognitoIdentityId: null,
     caller: null,
-    sourceIp: '180.150.83.218',
+    sourceIp: 'xxx.xxx.xx.xxx',
     principalOrgId: null,
     accessKey: null,
     cognitoAuthenticationType: null,
@@ -255,8 +292,8 @@ When downstream lambdas are invoked they cam access the context object as a key 
     userAgent: 'axios/0.21.4',
     user: null
   },
-  domainName: 'htieqffa0l.execute-api.ap-southeast-2.amazonaws.com',
-  apiId: 'htieqffa0l'
+  domainName: 'apiId.execute-api.ap-southeast-2.amazonaws.com',
+  apiId: 'apiId'
 }
 ```
 
@@ -280,7 +317,7 @@ When the Lambda Authorizer is invoked it is expected to return a JSON object tha
 All Allow-Policies generated will allow the authenticated user to only access data that has a partition key which matches their tenant id. This is achieved by making use of DynamoDB's `dynamodb:LeadingKeys` condition key for fine grained access control.
 In essence, the `dynamodb:LeadingKeys` condition key is a mechanism for row level access control within DynamodDB tables. Employing the use of this mechanism guarantees a reliable and secure multitenant environment as well as the added benefit of a simplified data persistence layer.
 
-![image](dynamdbFineGrainedAccess.png)
+![image](img/blog/multitenancy/dynamdbFineGrainedAccess.png)
 
 #### Lambda Authorizer Resource Policies
 
@@ -324,3 +361,7 @@ In essence, the `dynamodb:LeadingKeys` condition key is a mechanism for row leve
     ]
 }
 ```
+
+#### Wrapping up.
+
+Congratulations, you have reached the end of the tutorial. If you have any questions or if you think we can help speed up the development of your multi-tenant application, please don't hesitate to [get in touch](https://www.mechanicalrock.io/lets-get-started/) with us here at Mechanical Rock.

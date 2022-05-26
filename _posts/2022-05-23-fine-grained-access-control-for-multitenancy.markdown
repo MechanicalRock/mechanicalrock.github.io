@@ -8,7 +8,9 @@ image: img/blog/multitenancy/multitenant.png
 tags: ['multitenant', 'typescript', 'tutorial', 'dynamodb', 'lambda', 'api gateway', 'authorization', 'authentication', 'apiGateway', 'jwt', 'json web token', 'cognito']
 ---
 
-## Introduction
+## What is Multi-tenancy
+
+Multi-tenancy is a software architecture that allows multiple users to access resources that reside in a shared computing environment. This architecture grants groups of users or individual users access to resources as defined by access boundaries put in place via the use of resource policies, IAM policies or some other similar mechanism. This concept is analogous to an apartment building where each tenant is given keys that only unlock their apartment door and other rooms within the apartment.
 
 Architecting multi-tenant cloud native software can be quite challenging due to the broad scope of technical know-how required to execute such an undertaking.
 What's even more challenging is finding cohesive guides/tutorials that take a top down approach to the somewhat elusive topic of multitenancy. This article is an attempt to produce a distilled "how-to" guide for those who may find themselves bogged down while building multi-tenant applications. You can clone the repo containing the reference code from here [reference code here](https://github.com/MechanicalRock/Multitenancy-AuthorizationAuthentication).

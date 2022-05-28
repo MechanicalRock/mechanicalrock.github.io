@@ -15,7 +15,9 @@ description:
 
 ## Overview
 
-In simple terms, a FiveTran custom connector a cloud hosted function that can be setup on a cloud platform of your choice, which allows you to load data into FiveTran with a API FiveTran does not natively support. The benefits of this is that these connectors will have the same capabilities of standard connectors:
+In simple terms, a FiveTran custom connector is a cloud hosted function that can be set up on a cloud platform of your choice, which allows you to load data into FiveTran with a API FiveTran does not natively support. 
+
+Like standard connectors, custom connectors have a number of benefits:
 
 - Incremental updates
 - Source data type inference
@@ -140,7 +142,7 @@ hasMore: True
 
 Initial API sync with no state, api call is getting all data with no state and has returned a paginated response
 
-Key response features
+**Key response features**
 State: 
 - No LastUpdate as paginated query has not been completed
 - Pagination Counter incremented + 1
@@ -180,7 +182,7 @@ hasMore: True
 
 Paginating through the api response for initial sync
 
-Key response features
+**Key response features**
 State: 
 - No LastUpdate as paginated query has not been completed
 - Pagination Counter incremented + 1

@@ -144,7 +144,7 @@ Key response features
 State: 
 - No LastUpdate as paginated query has not been completed
 - Pagination Counter incremented + 1
-- hasMore = True
+- `hasMore = True`
 
 <br/>
 ### Call 2: Paginated Query 1
@@ -316,7 +316,7 @@ State:
 
 ### **Examples**
 
-For full working example see FiveTran's documentation
+For a full working example see FiveTran's documentation
 
 
 [https://fivetran.com/docs/functions/aws-lambda/sample-functions](https://fivetran.com/docs/functions/aws-lambda/sample-functions)

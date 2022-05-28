@@ -52,7 +52,7 @@ State is a JSON object that contains cursors from the previous successful FiveTr
 **Guardrails to consider**
 
 - Lambda timeouts and payload limit
-- Ensure calls to the Lambda are **idempotent** for a given FiveTran cursor
+- Ensure calls to the Lambda are [**idempotent**](https://en.wikipedia.org/wiki/Idempotence) for a given FiveTran cursor
 - Be wary or avoid using cursors supplied by the pagination of an upstream API that may not be persistent.
 
 

@@ -60,7 +60,7 @@ State is a JSON object that contains cursors from the previous successful FiveTr
 
 FiveTran pagination allows your lambda function to specify if there is more data to be collected, this is achieved using the hasMore boolean return.
 
-When hasMore = True ,state is updated as normal, however FiveTran immediately calls the lambda with the updated state. This will keep occurring until hasMore = False, which then resets FiveTran to its default state.
+When `hasMore = True` ,state is updated as normal, however FiveTran immediately calls the lambda with the updated state. This will keep occurring until `hasMore = False`, which then resets FiveTran to its default state.
 
 [https://fivetran.com/docs/functions/faq/use-hasmore-flag](https://fivetran.com/docs/functions/faq/use-hasmore-flag)
 

@@ -62,7 +62,7 @@ State is a JSON object that contains cursors from the previous successful FiveTr
 
 FiveTran pagination allows your lambda function to specify if there is more data to be collected, this is achieved using the hasMore boolean return.
 
-When `hasMore = True` ,state is updated as normal, however FiveTran immediately calls the lambda with the updated state. This will keep occurring until `hasMore = False`, which then resets FiveTran to its default state.
+When `hasMore = True`, state is updated as normal, however, FiveTran immediately calls the lambda with the updated state. This will keep occurring until `hasMore = False`, which then resets FiveTran to its default state.
 
 [https://fivetran.com/docs/functions/faq/use-hasmore-flag](https://fivetran.com/docs/functions/faq/use-hasmore-flag)
 
@@ -140,7 +140,7 @@ hasMore: True
 }
 ```
 
-Initial API sync with no state, api call is getting all data with no state and has returned a paginated response
+Initial API sync with no state, API call is getting all data with no state and has returned a paginated response
 
 **Key response features**
 State: 
@@ -180,7 +180,7 @@ hasMore: True
 }
 ```
 
-Paginating through the api response for initial sync
+Paginating through the API response for initial sync
 
 **Key response features**
 State: 
@@ -220,7 +220,7 @@ hasMore: False
 }
 ```
 
-Paginating through the api response for initial sync
+Paginating through the API response for initial sync
 
 Key response features
 State: 

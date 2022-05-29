@@ -9,13 +9,15 @@ description:
   Overview of a custom fivetran connector with pagination
 ---
 
-![Header](/img/fivetran_logo.png)
+![FiveTran Paginated Custom Connectors](/img/fivetran_logo.png)
 
 <br/>
 
+Understanding and debugging your FiveTran custom connector is not straightfoward, with many online tutorials excluding the key component of data API's... pagination. After reading this blog you will have a better understanding of the expected behaviour between FiveTran and your custom connector when pagination is thrown into the mix.
+
 ## Overview
 
-In simple terms, a FiveTran custom connector is a cloud hosted function that can be set up on a cloud platform of your choice, which allows you to load data into FiveTran with a API FiveTran does not natively support. 
+A FiveTran custom connector is a cloud hosted function that can be set up on a cloud platform of your choice, which allows you to load data into FiveTran with a API FiveTran does not natively support. 
 
 Like standard connectors, custom connectors have a number of benefits:
 >

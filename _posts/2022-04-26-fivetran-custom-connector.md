@@ -53,7 +53,7 @@ State is a JSON object that contains cursors from the previous successful FiveTr
 [https://fivetran.com/docs/functions/faq/use-secrets-object](https://fivetran.com/docs/functions/faq/use-secrets-object)
 
 
-**Guardrails to consider**
+**Potential Issues to Consider**
 
 - Lambda timeouts and payload limit
 - Ensure calls to the Lambda are [**idempotent**](https://en.wikipedia.org/wiki/Idempotence) for a given FiveTran cursor

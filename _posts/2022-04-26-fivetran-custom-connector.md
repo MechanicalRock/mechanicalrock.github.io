@@ -18,7 +18,7 @@ description:
 In simple terms, a FiveTran custom connector is a cloud hosted function that can be set up on a cloud platform of your choice, which allows you to load data into FiveTran with a API FiveTran does not natively support. 
 
 Like standard connectors, custom connectors have a number of benefits:
-
+>
 - Incremental updates
 - Source data type inference
 - Automatic schema updates
@@ -27,7 +27,7 @@ Like standard connectors, custom connectors have a number of benefits:
 - Logs and alerts to monitor events and troubleshoot issues
 
 Use FiveTran's Function connectors if:
-
+>
 - Fivetran doesn't have a connector for your source
 - You are using private APIs or custom applications
 - You are using a source or API that Fivetran is unlikely to support in the near future
@@ -68,7 +68,7 @@ When `hasMore = True` ,state is updated as normal, however FiveTran immediately 
 
 Example Expected function payload
 
-```
+```javascript
 {
       state: {
         cursor: '2020-01-01',
@@ -80,7 +80,7 @@ Example Expected function payload
 
 Example Expected Connector response format
 
-```
+```javascript
 state: {
 cursor: cursorPoint,
 paginationCounter: 1
@@ -116,13 +116,13 @@ For the sake of this example and readability, the return JSON from the api call 
 
 **FiveTranCall**
 
-```
+```javascript
 state: {}
 ```
 
 **Connector Response**
 
-```
+```javascript
 {
 state: {
 lastUpdate: ''
@@ -153,7 +153,7 @@ State:
 
 **FiveTranCall**
 
-```
+```javascript
 state: {
 lastUpdate: '',
 paginationCounter: 1
@@ -162,7 +162,7 @@ paginationCounter: 1
 
 **Connector Response**
 
-```
+```javascript
 {
 state: {
 lastUpdate: '',
@@ -193,7 +193,7 @@ State:
 
 **FiveTranCall**
 
-```
+```javascript
 state: {
 lastUpdate: '',
 paginationCounter: 2
@@ -202,7 +202,7 @@ paginationCounter: 2
 
 **Connector Response**
 
-```
+```javascript
 {
 state: {
 lastUpdate: '2020-01-01',
@@ -233,7 +233,7 @@ State:
 
 **FiveTranCall**
 
-```
+```javascript
 state: {
 lastUpdate: '2020-01-01',
 paginationCounter: 0
@@ -242,7 +242,7 @@ paginationCounter: 0
 
 **Connector Response**
 
-```
+```javascript
 {
 state: {
 lastUpdate: '2020-01-02',
@@ -273,7 +273,7 @@ State:
 
 **FiveTranCall**
 
-```
+```javascript
 state: {
 lastUpdate: '2020-01-02',
 paginationCounter: 0
@@ -282,8 +282,7 @@ paginationCounter: 0
 
 **Connector Response**
 
-```
-
+```javascript
 state: {
 lastUpdate: '2020-01-03',
 paginationCounter: 0

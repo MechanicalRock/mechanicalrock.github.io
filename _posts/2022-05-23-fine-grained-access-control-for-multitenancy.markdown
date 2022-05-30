@@ -244,7 +244,7 @@ Consider a scenario where we'd like to build an e-commerce web application. To k
 
 #### Tenant ID
 
-To create a secure `multi-tenant` environment there needs to be some notion of `tenant resource isolation`. In essence, `tenant A` should not be able to access the resources of `tenant B` and vice versa. To solve this problem it was decided that it is necessary to assign a unique identifier called `tenantID` to each user/customer. The aforementioned `tenantID` is a composite string that is generated and then attached to the calling user as a `custom attribute` during the registration stage.
+To create a secure `multi-tenant` environment we require `tenant resource isolation`. In essence, `tenant A` should not be able to access the resources of `tenant B` and vice versa. We can achieve resource isolation assigning a unique identifier, `tenantID`, to each user/customer. The `tenantID` is a composite string that is generated and then attached to the calling user as a `custom attribute` during registration.
 
 After successful authentication the `tenantID` custom attribute becomes available as a parameter within the `ID token` as a parameter with the following key `custom:tenantID`. It is important to note that access tokens do not carry any of the user's custom attributes, only id tokens have this capability. This application only uses id tokens for authentication/authorisation purposes.
 

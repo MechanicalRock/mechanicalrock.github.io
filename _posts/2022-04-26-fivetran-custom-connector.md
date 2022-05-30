@@ -146,7 +146,7 @@ Initial API sync with no state, API call is getting all data with no state and h
 
 **Key response features**
 State: 
-- No LastUpdate as paginated query has not been completed
+- No `lastUpdate` as paginated query has not been completed
 - Pagination Counter incremented + 1
 - `hasMore = True`
 
@@ -224,9 +224,9 @@ hasMore: False
 
 Paginating through the API response for initial sync
 
-Key response features
+**Key response features**
 State: 
-- LastUpdate Set as paginated query has been completed
+- `lastUpdate` Set as paginated query has been completed
 - Pagination Counter set to 0, as paginated query is completed
 - hasMore = false
 
@@ -264,7 +264,7 @@ hasMore: False
 
 FiveTran Sync with LastUpdate State
 
-Key response features
+**Key response features**
 State: 
 - LastUpdate updated, query has been completed
 - Pagination Counter set to 0, as no pagination necessary 
@@ -304,10 +304,10 @@ hasMore: False
 
 FiveTran Sync with LastUpdate State
 
-Key response features
+**Key response features**
 State: 
 
-- LastUpdate updated, query has been completed
+- `lastUpdate` updated, query has been completed
 - Pagination Counter set to 0, as no pagination necessary 
 - hasMore = false
 

@@ -5,7 +5,7 @@ description: A how to guide for architecting multitenant backend applications
 date: 2022-05-23
 author: Leon Ticharwa
 image: img/blog/multitenancy/multitenant.png
-tags: ['multitenant', 'typescript', 'tutorial', 'dynamodb', 'lambda', 'api gateway', 'authorization', 'authentication', 'apiGateway', 'jwt', 'json web token', 'cognito']
+tags: ['multitenant', 'typescript', 'tutorial', 'dynamodb', 'lambda', 'api gateway', 'authorisation', 'authentication', 'apiGateway', 'jwt', 'json web token', 'cognito']
 ---
 
 ## What is Multi-tenancy
@@ -17,9 +17,9 @@ What's even more challenging is finding cohesive guides/tutorials that take a to
 
 ## Some need to knows (Authorization and Authentication)
 
-For new developers, it is not immediately obvious that there is a difference between the terms Authorization and Authentication. Although related, these terms actually refer to two different concepts. Authentication verifies a user's identity whereas authorization verifies what a user is allowed to access once they have been authenticated. In short, authentication is about who is allowed in and authorization is about what they are allowed to access once they are in.
+For new developers, it is not immediately obvious that there is a difference between the terms Authorization and Authentication. Although related, these terms actually refer to two different concepts. Authentication verifies a user's identity whereas authorisation verifies what a user is allowed to access once they have been authenticated. In short, authentication is about who is allowed in and authorisation is about what they are allowed to access once they are in.
 
-In this write up I'll demonstrate how one might go about using Cognito to develop the authentication and authorization layer in a contextualised scenario.
+In this write up I'll demonstrate how one might go about using Cognito to develop the authentication and authorisation layer in a contextualised scenario.
 
 ### JSON Web Tokens
 
@@ -49,7 +49,7 @@ The header consists of two parts, a key id `kid` and the algorithm `alg` used to
 
 ##### Payload
 
-The payload contains information about the user as well as other information necessary for token verification/authorization. Collectively, The information contained in the payload is usually referred to as `token claims`. When a token is verified for authorization it is this information that must be checked/validated.
+The payload contains information about the user as well as other information necessary for token verification/authorisation. Collectively, The information contained in the payload is usually referred to as `token claims`. When a token is verified for authorisation it is this information that must be checked/validated.
 
 ```
 {
@@ -69,7 +69,7 @@ The payload contains information about the user as well as other information nec
 
 ##### Signature
 
-The signature section is a security feature that makes it virtually impossible for bad actors to tamper with tokens. This section is the hashed and encrypted combination of both the the header and the payload sections. During token authorization, the hash is decrypted and compared with the hash of the header and payload sections. If the two do not match, the token is considered invalid and thus unauthorized.
+The signature section is a security feature that makes it virtually impossible for bad actors to tamper with tokens. This section is the hashed and encrypted combination of both the the header and the payload sections. During token authorisation, the hash is decrypted and compared with the hash of the header and payload sections. If the two do not match, the token is considered invalid and thus unauthorized.
 
 ### Cognito JWTs
 
@@ -105,7 +105,7 @@ There are two types of Lambda Authorizers, `REQUEST` based and `TOKEN` based. Th
 
 A token based lambda authorizer receives the caller's identity in the form of a bearer token included in the request's header section while a request based lambda authorizer receives the caller's identity in a combination of headers and query string parameters.
 
-When a request is received by an API gateway instance that is configured to use a `TOKEN` lambda authorizer for authorization purposes, the `bearer token` contained in the request header is forwarded to the lambda authorizer for verification. The forwarded payload is a JSON object that assumes a structure similar to the one shown in the `Input Sample` code block shown below .
+When a request is received by an API gateway instance that is configured to use a `TOKEN` lambda authorizer for authorisation purposes, the `bearer token` contained in the request header is forwarded to the lambda authorizer for verification. The forwarded payload is a JSON object that assumes a structure similar to the one shown in the `Input Sample` code block shown below .
 
 ###### Lambda Authorizer Input Sample
 
@@ -246,7 +246,7 @@ Consider a scenario where we'd like to build an e-commerce web application. To k
 
 To create a secure `multi-tenant` environment there needs to be some notion of `tenant resource isolation`. In essence, `tenant A` should not be able to access the resources of `tenant B` and vice versa. To solve this problem it was decided that it is necessary to assign a unique identifier called `tenantID` to each user/customer. The aforementioned `tenantID` is a composite string that is generated and then attached to the calling user as a `custom attribute` during the registration stage.
 
-After successful authentication the `tenantID` custom attribute becomes available as a parameter within the `ID token` as a parameter with the following key `custom:tenantID`. It is important to note that access tokens do not carry any of the user's custom attributes, only id tokens have this capability. In saying so, the application will exclusively use id tokens for authorization/authentication purposes.
+After successful authentication the `tenantID` custom attribute becomes available as a parameter within the `ID token` as a parameter with the following key `custom:tenantID`. It is important to note that access tokens do not carry any of the user's custom attributes, only id tokens have this capability. In saying so, the application will exclusively use id tokens for authorisation/authentication purposes.
 
 #### Lambda Context Objects
 

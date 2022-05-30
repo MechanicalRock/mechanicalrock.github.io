@@ -55,7 +55,7 @@ State is a JSON object that contains cursors from the previous successful FiveTr
 
 **Potential Issues to Consider**
 
-- Lambda timeouts and payload limit
+- Lambda timeouts and payload limit, see [**documentation**](https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html#configuration-memory-console)
 - Ensure calls to the Lambda are [**idempotent**](https://en.wikipedia.org/wiki/Idempotence) for a given FiveTran cursor
 - Be wary or avoid using cursors supplied by the pagination of an upstream API that may not be persistent.
 

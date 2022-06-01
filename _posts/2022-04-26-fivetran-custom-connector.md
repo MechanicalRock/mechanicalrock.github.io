@@ -1,6 +1,6 @@
 ---
 layout: post
-title: FiveTran Paginated Custom Connector
+title: Fivetran Paginated Custom Connector
 date: 2022-05-26
 tags: fivetran custom connector custom-connector pagination getmore state-management
 author: Joseph Miocevich

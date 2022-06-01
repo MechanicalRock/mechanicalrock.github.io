@@ -9,15 +9,15 @@ description:
   Overview of a custom fivetran connector with pagination
 ---
 
-![FiveTran Paginated Custom Connectors](/img/fivetran_logo.png)
+![Fivetran Paginated Custom Connectors](/img/fivetran_logo.png)
 
 <br/>
 
-Understanding and debugging your FiveTran custom connector is not straightfoward, with many online tutorials excluding the key component of data API's... pagination. After reading this blog you will have a better understanding of the expected behaviour between FiveTran and your custom connector when pagination is thrown into the mix.
+Understanding and debugging your Fivetran custom connector is not straightfoward, with many online tutorials excluding the key component of data API's... pagination. After reading this blog you will have a better understanding of the expected behaviour between Fivetran and your custom connector when pagination is thrown into the mix.
 
 ## Overview
 
-A FiveTran custom connector is a cloud hosted function that can be set up on a cloud platform of your choice, which allows you to load data into FiveTran with a API FiveTran does not natively support. 
+A Fivetran custom connector is a cloud hosted function that can be set up on a cloud platform of your choice, which allows you to load data into Fivetran with a API Fivetran does not natively support. 
 
 Like standard connectors, custom connectors have a number of benefits:
 >
@@ -28,7 +28,7 @@ Like standard connectors, custom connectors have a number of benefits:
 - Destination ingestion optimisations
 - Logs and alerts to monitor events and troubleshoot issues
 
-Use FiveTran's Function connectors if:
+Use Fivetran's Function connectors if:
 >
 - Fivetran doesn't have a connector for your source
 - You are using private APIs or custom applications
@@ -46,7 +46,7 @@ Use FiveTran's Function connectors if:
 
 **State Management**
 
-State is a JSON object that contains cursors from the previous successful FiveTran executions run.
+State is a JSON object that contains cursors from the previous successful Fivetran executions run.
 
 [https://fivetran.com/docs/functions/faq/use-state-object](https://fivetran.com/docs/functions/faq/use-state-object) 
 
@@ -56,15 +56,15 @@ State is a JSON object that contains cursors from the previous successful FiveTr
 **Potential Issues to Consider**
 
 - Lambda timeouts and payload limit, see [**documentation**](https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html#configuration-memory-console)
-- Ensure calls to the Lambda are [**idempotent**](https://en.wikipedia.org/wiki/Idempotence) for a given FiveTran cursor
+- Ensure calls to the Lambda are [**idempotent**](https://en.wikipedia.org/wiki/Idempotence) for a given Fivetran cursor
 - Be wary or avoid using cursors supplied by the pagination of an upstream API that may not be persistent.
 
 
-**FiveTran Pagination**
+**Fivetran Pagination**
 
-FiveTran pagination allows your lambda function to specify if there is more data to be collected, this is achieved using the hasMore boolean return.
+Fivetran pagination allows your lambda function to specify if there is more data to be collected, this is achieved using the hasMore boolean return.
 
-When `hasMore = True`, state is updated as normal, however, FiveTran immediately calls the lambda with the updated state. This will keep occurring until `hasMore = False`, which then resets FiveTran to its default state.
+When `hasMore = True`, state is updated as normal, however, Fivetran immediately calls the lambda with the updated state. This will keep occurring until `hasMore = False`, which then resets Fivetran to its default state.
 
 [https://fivetran.com/docs/functions/faq/use-hasmore-flag](https://fivetran.com/docs/functions/faq/use-hasmore-flag)
 
@@ -106,7 +106,7 @@ paginationCounter: 1
 ***
 
 <br/>
-## Sequence of FiveTran Connector Excecutions
+## Sequence of Fivetran Connector Excecutions
 
 ![](/img/five_tran_sequence.png)
 
@@ -116,7 +116,7 @@ For the sake of this example and readability, the return JSON from the api call 
 ### Call 1: Initial Sync
 
 
-**FiveTranCall**
+**FivetranCall**
 
 ```javascript
 state: {}
@@ -153,7 +153,7 @@ State:
 <br/>
 ### Call 2: Paginated Query 1
 
-**FiveTranCall**
+**FivetranCall**
 
 ```javascript
 state: {
@@ -193,7 +193,7 @@ State:
 <br/>
 ### Call 3: Paginated Query 2
 
-**FiveTranCall**
+**FivetranCall**
 
 ```javascript
 state: {
@@ -231,9 +231,9 @@ State:
 - hasMore = false
 
 <br/>
-### Call 4: Next FiveTran Sync
+### Call 4: Next Fivetran Sync
 
-**FiveTranCall**
+**FivetranCall**
 
 ```javascript
 state: {
@@ -262,7 +262,7 @@ hasMore: False
 }
 ```
 
-FiveTran Sync with LastUpdate State
+Fivetran Sync with LastUpdate State
 
 **Key response features**
 State: 
@@ -271,9 +271,9 @@ State:
 - hasMore = false
 
 <br/>
-### Call 5: Next FiveTran Sync
+### Call 5: Next Fivetran Sync
 
-**FiveTranCall**
+**FivetranCall**
 
 ```javascript
 state: {
@@ -302,7 +302,7 @@ hasMore: False
 }
 ```
 
-FiveTran Sync with LastUpdate State
+Fivetran Sync with LastUpdate State
 
 **Key response features**
 State: 
@@ -319,7 +319,7 @@ State:
 
 ### **Examples**
 
-For a full working example see FiveTran's documentation
+For a full working example see Fivetran's documentation
 
 
 [https://fivetran.com/docs/functions/aws-lambda/sample-functions](https://fivetran.com/docs/functions/aws-lambda/sample-functions)

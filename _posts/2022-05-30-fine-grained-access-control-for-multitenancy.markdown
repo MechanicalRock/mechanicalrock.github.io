@@ -16,7 +16,7 @@ Let's face it, architecting a multi-tenant cloud native backend can be quite cha
 
 This article assumes you have a basic understanding of Lambda Authorisers, Cognito and JWTs. If not, refer to the source code's documentation.
 
-##### Source Code
+#### Source Code
 
 You can clone the repo containing the source code from this [link](https://github.com/MechanicalRock/Multitenancy-AuthorizationAuthentication).
 

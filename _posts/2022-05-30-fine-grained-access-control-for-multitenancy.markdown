@@ -12,9 +12,9 @@ tags: ['multitenant', 'typescript', 'tutorial', 'dynamodb', 'lambda', 'api gatew
 
 ## Introduction
 
-Architecting multi-tenant cloud native software can be quite challenging due to the broad scope of technical know-how required to execute such an undertaking. This article is an attempt to produce a distilled "how-to" guide for those who may find themselves bogged down while building multi-tenant applications. You can clone the repo containing the source code from this [github link](https://github.com/MechanicalRock/Multitenancy-AuthorizationAuthentication).
+Let's face it, architecting a multi-tenant cloud native backend can be quite challenging due to the broad scope of technical know-how required to execute such an undertaking. I wrote this article as an attempt to produce a distilled "how-to" guide for those who may find themselves bogged down whilst trying to figure out how to implement multi-tenancy with AWS. You can clone the repo containing the source code from this [github link](https://github.com/MechanicalRock/Multitenancy-AuthorizationAuthentication).
 
-This article assumes you have a basic understanding of lambda authorisers, cognito and JWTs. If not, refer to the source code's read me by clicking [here](https://github.com/MechanicalRock/Multitenancy-AuthorizationAuthentication).
+This article assumes you have a basic understanding of Lambda Authorisers, Cognito and JWTs. If not, refer to the source code's [`read me`](https://github.com/MechanicalRock/Multitenancy-AuthorizationAuthentication).
 
 ### Multi-Tenancy Example
 

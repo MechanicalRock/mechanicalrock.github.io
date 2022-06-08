@@ -14,7 +14,7 @@ tags: ['multitenant', 'typescript', 'tutorial', 'dynamodb', 'lambda', 'api gatew
 
 Architecting multi-tenant cloud native software can be quite challenging due to the broad scope of technical know-how required to execute such an undertaking.This article is an attempt to produce a distilled "how-to" guide for those who may find themselves bogged down while building multi-tenant applications. You can clone the repo containing the reference code from this [link](https://github.com/MechanicalRock/Multitenancy-AuthorizationAuthentication).
 
-This article begins by introducing lambda authorisers and the use of JWTs for user authorisation. You can skip ahead to an example implementation of multi-tenancy by clicking [this](#Fun-Stuff).
+This article begins by introducing lambda authorisers and the use of JWTs for user authorisation. If you are already familiar with lambda authorisers and JWTs you can skip ahead to a multi-tenancy example implementation of by clicking [here](#Multi-Tenancy-Example).
 
 ## Some Need To Knows
 
@@ -230,7 +230,7 @@ If you are only accepting the access token in your web API operations, its value
 
 If you are only using the ID token, its value must be id.
 
-### Multi-tenancy Example
+### Multi-Tenancy Example
 
 Consider a scenario where we'd like to build an e-commerce web application. To keep things simple let's contextualize the scenario so that we only have one micro service that uses a multi tenant dynamoDb table to store/retrieve customer shopping carts. The persistence layer will consist of 4 lambdas that perform `DELETE`, `PUT`, `QUERY` and `UPDATE` actions. An architectural diagram for this scenario has been provided below.
 
@@ -265,7 +265,7 @@ When downstream lambdas are invoked they cam access the context object as a key 
 
 ```
 {
-  resourceId: '2423fs',
+  resourceId: 'xxxxxxxx',
   authorizer: {
     firstName: 'Anakin',
     lastName: 'Skywalker',
@@ -276,7 +276,7 @@ When downstream lambdas are invoked they cam access the context object as a key 
   },
   resourcePath: '/cart/{itemId}',
   httpMethod: 'PATCH',
-  extendedRequestId: 'SajxWGotSwMFoIw=',
+  extendedRequestId: 'xxxxxxxxxx',
   requestTime: '20/May/2022:08:09:57 +0000',
   path: '/multiTenantStack/cart/1653034194717',
   accountId: 'xxxxxxxxx',
@@ -343,7 +343,7 @@ In essence, the `dynamodb:LeadingKeys` condition key is a mechanism for row leve
 }
 ```
 
-###### Token Verification passed
+###### Token Verification Passed
 
 ```
 {
@@ -369,6 +369,6 @@ In essence, the `dynamodb:LeadingKeys` condition key is a mechanism for row leve
 }
 ```
 
-#### Wrapping up.
+#### Wrapping Up.
 
 Congratulations, you have reached the end of the tutorial. If you have any questions or if you think we can help speed up your development journey, please don't hesitate to get in touch with us here at [Mechanical Rock](<(https://www.mechanicalrock.io/lets-get-started/)>).

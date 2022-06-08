@@ -22,7 +22,7 @@ This article begins by introducing lambda authorisers and the use of JWTs for us
 
 For new developers, it is not immediately obvious that there is a difference between the terms authentication and authorisation. Although related, these terms actually refer to two different concepts. Authentication verifies a user's identity whereas authorisation verifies what a user is allowed to access once they have been authenticated. In short, authentication is about who is allowed in and authorisation is about what they are allowed to access once they are in. This article will focus on how `API Gateway` uses lambda, `Lamdba Authoriser`, for user authorisation.
 
-### Cognito JWTs
+### JWT
 
 JWT is an open standard that is widely used to securely share authentication information (claims) between client and server. The standard is defined in the RFC7519 specification developed by the Internet Engineering Taskforce (IETF).
 
@@ -150,7 +150,7 @@ Once the token is verified, the Lambda Authorizer should return an output that a
   plan's API keys as the `usageIdentifierKey` property value- The principalId is the user id associated with the token sent by the client.
 - If the API uses a usage plan and the apiKeySource is set to AUTHORIZER, the lambda authorizer output must include the usage plan's API keys as the `usageIdentifierKey` property value
 
-### Verifying tokens
+### Verifying Tokens
 
 Token verification is done in 3 steps.
 
@@ -158,7 +158,7 @@ Token verification is done in 3 steps.
 2. Verify signature
 3. Verify the claims
 
-#### Verify structure of token
+#### Verify Structure Of Token
 
 Confirm that the token contains three dot separated base64url strings. If the token does not conform to this structure then it is invalid.
 The first string is a header string followed by a payload string and then finally the signature string as shown below.
@@ -167,13 +167,13 @@ The first string is a header string followed by a payload string and then finall
 <Header>.<Payload>.<Signature>
 ```
 
-#### Verify signature
+#### Verify Signature
 
-##### 1. Decode token
+##### 1. Decode Token
 
     To validate the JWT signature, the token must first be decoded.
 
-##### 2. Compare local key ID (kid) to public key ID
+##### 2. Compare Local Key ID (kid) to Public Key ID
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 i) Download and store your JWT's corresponding `JWK` (JSON Web Key) using the following url
@@ -209,14 +209,14 @@ ii) Search the downloaded `jwks.json` for a `kid` that matches the `kid` of your
         }
 ```
 
-##### 3. Compare signature of the issuer to the signature of the tokens
+##### 3. Compare Signature Of The issuer To The Signature Of The Tokens
 
 The signature of the issuer is derived from the JWK with a kid that matches the kid of the JWT.
 Each `JWK` contains an `n` parameter that contains the `modulus value` of the `RSA public key`.
 This is the value that'll be used to derive the `issuer's signature`.
 The JWK will need to be `converted to PEM format` before that can happen.
 
-#### Verify the claims
+#### Verify The Claims
 
 1. Verify that the token is not expired.
 
@@ -230,7 +230,7 @@ If you are only accepting the access token in your web API operations, its value
 
 If you are only using the ID token, its value must be id.
 
-### Fun Stuff
+### Multi-tenancy Example
 
 Consider a scenario where we'd like to build an e-commerce web application. To keep things simple let's contextualize the scenario so that we only have one micro service that uses a multi tenant dynamoDb table to store/retrieve customer shopping carts. The persistence layer will consist of 4 lambdas that perform `DELETE`, `PUT`, `QUERY` and `UPDATE` actions. An architectural diagram for this scenario has been provided below.
 
@@ -304,7 +304,7 @@ When downstream lambdas are invoked they cam access the context object as a key 
 }
 ```
 
-#### Multi-tenant DynamoDB table
+#### Multi-tenant DynamoDB Table
 
 In the context of dynamoDb, the tenant ID will essentially be the partition key that'll be used to group together/ partition customer data. When a customer needs to write/retrieve data to/from the purchase history database they'll use their unique tenant ID to only access data that belongs to them. In essence the tenant ID can be thought of as being analogous to a key that can only open a single door.
 
@@ -328,7 +328,7 @@ In essence, the `dynamodb:LeadingKeys` condition key is a mechanism for row leve
 
 #### Lambda Authorizer Resource Policies
 
-###### Token Verification failed
+###### Token Verification Failed
 
 ```
 {
@@ -371,4 +371,4 @@ In essence, the `dynamodb:LeadingKeys` condition key is a mechanism for row leve
 
 #### Wrapping up.
 
-Congratulations, you have reached the end of the tutorial. If you have any questions or if you think we can help speed up the development of your SaaS application, please don't hesitate to [get in touch](https://www.mechanicalrock.io/lets-get-started/) with us here at Mechanical Rock.
+Congratulations, you have reached the end of the tutorial. If you have any questions or if you think we can help speed up your development journey, please don't hesitate to get in touch with us here at [Mechanical Rock](<(https://www.mechanicalrock.io/lets-get-started/)>).

@@ -16,7 +16,7 @@ Let's face it, architecting a multi-tenant cloud native backend can be quite cha
 
 ### Multi-Tenancy Example
 
-Consider a scenario where we'd like to build an e-commerce microservice that persists and retrieves abandoned shopping carts for all authenticated users. To reduce operational costs, we've been instructed to make use of a multi-tenant architecture with DynamoDb as the database. In addition, the persistence layer should consist of 4 lambdas that perform `DELETE`, `PUT`, `QUERY` and `UPDATE` actions. An architectural diagram for this scenario has been provided below.
+Consider a scenario where we'd like to build an e-commerce microservice that persists and retrieves abandoned shopping carts for all authenticated users. To reduce operational costs, we've been instructed to make use of a multi-tenant architecture with DynamoDb as the database. In addition, the persistence layer should consist of four lambdas that perform `DELETE`, `PUT`, `QUERY` and `UPDATE` actions. An architectural diagram for this scenario has been provided below.
 
 ![Multi-tenancy Architecture ](/img/blog/multitenancy/architecture.png)
 
@@ -35,7 +35,7 @@ Consider a scenario where we'd like to build an e-commerce microservice that per
 
 To create a secure `multi-tenant` environment we require `tenant resource isolation`. In essence, `tenant A` should not be able to access the resources of `tenant B` and vice versa. We can achieve resource isolation by assigning a unique identifier, `tenantID`, to each user/customer. The `tenantID` is a composite string that is generated and then attached to the calling user as a `custom attribute` during registration.
 
-After successful authentication the `tenantID` custom attribute becomes available as a parameter within the `ID token` as a parameter with the following key `custom:tenantID`. It is important to note that access tokens do not carry any of the user's custom attributes, only id tokens have this capability. This application only uses id tokens for authentication/authorisation purposes.
+After successful authentication the `tenantID` custom attribute becomes available as a parameter within the `ID token` with the following key `custom:tenantID`. It is important to note that access tokens do not carry any of the user's custom attributes, only id tokens have this capability. This application only uses id tokens for authentication/authorisation purposes.
 
 #### Lambda Context Objects
 
@@ -43,7 +43,7 @@ In order to make use of the idea of a `tenantID` it is important to realise that
 
 Context objects can be modified to include custom parameters that can then be accessed during run time. With this in mind, it should be relatively straight forward to use the application's Lambda Authoriser to forward the retrieved `tenantID` as a custom parameter within the JSON output of the Lambda Authoriser.
 
-When downstream lambdas are invoked they cam access the context object as a key within the event object. Take for example the following sample lambda event object.
+When downstream lambdas are invoked they can access the context object as a key within the event object. Take for example the following sample lambda event object.
 
 `Remember to remove calls to console.log() if you are logging sensitive information `
 

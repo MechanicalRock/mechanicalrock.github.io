@@ -18,7 +18,7 @@ Let's face it, architecting a multi-tenant cloud native backend can be quite cha
 
 ### Multi-Tenancy Example
 
-Consider a scenario where we'd like to build an e-commerce web application. To keep things simple let's contextualize the scenario so that we only have one micro service that uses a multi tenant dynamoDb table to store/retrieve customer shopping carts. The persistence layer will consist of 4 lambdas that perform `DELETE`, `PUT`, `QUERY` and `UPDATE` actions. An architectural diagram for this scenario has been provided below.
+Consider a scenario where we'd like to build an e-commerce microservice that persists and retrieves abandoned shopping carts for all authenticated users. To reduce operational costs, we've been instructed to make use of a multi-tenant architecture with DynamoDb as the database. In addition, the persistence layer should consist of 4 lambdas that perform `DELETE`, `PUT`, `QUERY` and `UPDATE` actions. An architectural diagram for this scenario has been provided below.
 
 ![Multi-tenancy Architecture ](/img/blog/multitenancy/architecture.png)
 
@@ -43,7 +43,7 @@ After successful authentication the `tenantID` custom attribute becomes availabl
 
 In order to make use of the idea of a `tenantID` it is important to realise that there needs to be some way of retrieving the correct `tenantID` parameter and propagating it to the running lambda function's execution scope. This is where the idea of Lambda context objects comes into play.
 
-Context objects can be modified to include custom parameters that can then be accessed during run time. With this in mind, it should be relatively straight forward to use the application's Lambda Authoriser to forward the retrieved `tenantID` as a custom parameter within the JSON output of the lambda Authoriser.
+Context objects can be modified to include custom parameters that can then be accessed during run time. With this in mind, it should be relatively straight forward to use the application's Lambda Authoriser to forward the retrieved `tenantID` as a custom parameter within the JSON output of the Lambda Authoriser.
 
 When downstream lambdas are invoked they cam access the context object as a key within the event object. Take for example the following sample lambda event object.
 
@@ -92,9 +92,9 @@ When downstream lambdas are invoked they cam access the context object as a key 
 
 #### Multi-tenant DynamoDB Table
 
-In the context of dynamoDb, the tenant ID will essentially be the partition key that'll be used to group together/ partition customer data. When a customer needs to write/retrieve data to/from the purchase history database they'll use their unique tenant ID to only access data that belongs to them. In essence the tenant ID can be thought of as being analogous to a key that can only open a single door.
+In the context of dynamoDb, the tenant ID will essentially be the partition key that'll be used to group together/ partition customer data. When a customer needs to write/retrieve data to/from the shopping cart database they'll use their unique tenant ID to only access data that belongs to them. In essence the tenant ID can be thought of as being analogous to a key that can only open a single door.
 
-The table provided below is a representation of how the data stored in the purchase history will be partitioned. The parameter `tenantId` is used as the `partition key` while the `itemId` parameter is used as the `sort key`.
+The table provided below is a representation of how the data stored in the shopping cart table will be partitioned. The parameter `tenantId` is used as the `partition key` while the `itemId` parameter is used as the `sort key`.
 
 |     tenantID     | itemID      |  price   | qty | description |
 | :--------------: | :---------- | :------: | :-: | :---------: |

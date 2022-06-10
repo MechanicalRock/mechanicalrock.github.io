@@ -13,11 +13,11 @@ description:
 
 <br/>
 
-Getting timley notifications on whether a Fivetran data connector is broken, or a dbt transformation has failed, is crucial to maintaining confidence in your datapipeline and reducing your time to restore. This blog will cover how to build your own system in AWS utilising Fivetran's newly released [webhooks](https://fivetran.com/docs/rest-api/webhooks) functionality and [slack webhooks](https://slack.com/intl/en-au/help/articles/115005265063-Incoming-webhooks-for-Slack).
+Getting timley notifications on whether a Fivetran data connector is broken, or a [dbt transformation](https://fivetran.com/docs/transformations/dbt) has failed, is crucial to maintaining confidence in your datapipeline and reducing your time to restore. This blog will cover how to build your own system in AWS utilising Fivetran's newly released [webhooks](https://fivetran.com/docs/rest-api/webhooks) functionality and [slack webhooks](https://slack.com/intl/en-au/help/articles/115005265063-Incoming-webhooks-for-Slack).
 <br>
 ## Overview
 
-Fivetran's new webhook functionality allows you to subscribe to fivetran events, and push these to a webhook listener. Currently as this feature is still in beta, there is no way to directly connect this to slack or a incident management system, to resolve this we will be creating our own serverless webhook listener.
+Fivetran's new webhook functionality allows you to subscribe to Fivetran events, and push these to a webhook listener. Currently, as this feature is still in beta, there is no way to directly connect this to slack or an incident management system, to resolve this we will be creating our own serverless webhook listener.
 <br>
 ## Getting Started
 <br>
@@ -51,7 +51,7 @@ In PostMan set URL to
 POST https://api.fivetran.com/v1/webhooks/account
 ```
 
-Set Authorisation to Basic Basic Auth 
+Set Authorisation to Basis Auth 
 API keys from fivetran
 ```javascript
 username = APIKey

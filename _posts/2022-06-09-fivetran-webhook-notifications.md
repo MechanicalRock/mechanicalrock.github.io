@@ -51,7 +51,7 @@ We are only interested in getting notified on failures, so we will only be subsc
 <br>
 ### Creating a SlackApp
 
-Setting up a slackapp for incoming [webhooks](https://api.slack.com/messaging/webhooks)
+Setting up a slackapp for [incoming webhooks](https://api.slack.com/messaging/webhooks)
 
 1. Create New App
 2. Go to Features/IncomingWebhooks
@@ -64,9 +64,9 @@ Setting up a slackapp for incoming [webhooks](https://api.slack.com/messaging/we
 ### Creating a Serverless Webhook Listener
 
 1. Clone the [Fivetran-Slack-Notifications](https://github.com/JMiocevich/Fivetran-Slack-Notifications) repo
-2. Deploy into your aws account using ```./ci/scripts/deploy.sh```, see [ReadMe](https://github.com/JMiocevich/Fivetran-Slack-Notifications#readme)
+2. Deploy into your aws account using ```./ci/scripts/deploy.sh```, see the example repo [readMe](https://github.com/JMiocevich/Fivetran-Slack-Notifications#readme)
 3. Save the slackWebhook URL in ```SlackApiSecret``` in secret manager
-4. Generate a random set of characters for fivetran signing verification and save to ```FiveTranSigningKeySecret``` in secret manager, see Fivetran's [documentation](https://fivetran.com/docs/rest-api/webhooks#signing) on payload signing
+4. Generate a [secret key](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.hmacsha256.-ctor?view=net-6.0) for [HMACSHA256](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.hmacsha256?view=net-6.0) encryption which will be used signing verification and save to ```FiveTranSigningKeySecret``` in secret manager.
 
 #### Discussion 
 
@@ -91,23 +91,21 @@ function fiveTranSigningVerification(generatedKey: string, fiveTranKey: string) 
 
 ### Creating FiveTran Webhook
 
-Currently, webhooks can only be created using the Fivetran API, for moreinfomation on Fivetran webhooks, see [documentation](https://fivetran.com/docs/rest-api/webhooks#createwebhooks)
+Currently, webhooks can only be created using the Fivetran API, for moreinfomation on Fivetran webhooks, see the getting started [documentation](https://fivetran.com/docs/rest-api/getting-started)
 
-
-In PostMan set URL to 
+In [Postman](https://app.getpostman.com/run-collection/ec3ad55bac7f5f22ef91), to apply webhook notifications across your account, set URL to:
 
 ```javascript
 POST https://api.fivetran.com/v1/webhooks/account
 ```
 
-Set Authorisation to Basis Auth 
-API keys from Fivetran
+Set Authorisation to Basis Auth: 
 ```javascript
 username = APIKey
 password = API Key Secret
 ```
 <br>
-Make sure to copy in your ```your_aws_api_gateway_endpoint``` and ```FiveTranSigningKeySecret``` from before.
+Make sure to copy in your ```your_aws_api_gateway_endpoint``` and ```FiveTranSigningKeySecret``` from previous steps.
 
 **Payload body:**
 ```javascript

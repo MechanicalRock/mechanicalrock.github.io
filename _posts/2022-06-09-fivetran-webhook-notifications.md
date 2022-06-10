@@ -20,8 +20,9 @@ Getting timley notifications on whether a Fivetran data connector is broken, or 
 <br>
 ## Overview
 
-Fivetran's new webhook functionality allows you to subscribe to Fivetran events, and push these to a webhook listener. Currently, as this feature is still in beta, there is no way to directly connect this to slack or an incident management system, to resolve this we will be creating our own serverless webhook listener, which will link to a slack channel.
-<br>
+Fivetran's new webhook functionality allows you to subscribe to Fivetran events, and push these to a webhook listener. Currently, as this feature is still in beta, there is no way to directly connect to slack or an incident management system, to resolve this we will be creating our own serverless webhook listener, which will link to a slack channel.
+
+
 Fivetran supports the follwing events for webhooks, see [documentation](https://fivetran.com/docs/logs#events) for more infomation.
 
 >
@@ -35,11 +36,17 @@ Fivetran supports the follwing events for webhooks, see [documentation](https://
 - transformation_run_succeeded
 - transformation_run_failed
 
-We are only interested in getting notified on failures, so we will only be subscribing to ```sync_end``` and ```dbt_run_failed` events.
+*Fivetran* . Fivetran Custom Connector. (n.d.). Retrieved June 10, 2022, from https://fivetran.com/docs/logs#events 
 
-<br>
+We are only interested in getting notified on failures, so we will only be subscribing to ```sync_end``` and ```dbt_run_failed``` events.
+
+
+
 **Architecture Diagram**
 ![Architecture diagram](/img/fivetranwebhook_architecture.png)
+
+***
+<br>
 ## Getting Started
 <br>
 ### Creating a SlackApp
@@ -60,6 +67,25 @@ Setting up a slackapp for incoming [webhooks](https://api.slack.com/messaging/we
 2. Deploy into your aws account using ```./ci/scripts/deploy.sh```, see [ReadMe](https://github.com/JMiocevich/Fivetran-Slack-Notifications#readme)
 3. Save the slackWebhook URL in ```SlackApiSecret``` in secret manager
 4. Generate a random set of characters for fivetran signing verification and save to ```FiveTranSigningKeySecret``` in secret manager, see Fivetran's [documentation](https://fivetran.com/docs/rest-api/webhooks#signing) on payload signing
+
+#### Discussion 
+
+Fivetran uses [SHA-256 HMAC algorithm](https://en.wikipedia.org/wiki/HMAC) to sign the webhook payload using a a specified secret(```FiveTranSigningKeySecret```). This signature is calculated based on the payload body. To verify the signature, we generate our own signature to verify that the payload is from Fivetran and that the payload body is unmodified.
+The signature is located in the payload header as ```event.headers['X-Fivetran-Signature-256']```, we then use the [crypto.timingSafeEqual](https://nodejs.org/api/crypto.html#cryptotimingsafeequala-b) function to prevent [timing attacks](https://en.wikipedia.org/wiki/Timing_attack) and verifiy the signature. 
+
+```javascript
+import * as crypto from 'crypto'
+
+const generated_key = signKey(fiveTranSigningKey, event.body)
+
+fiveTranSigningVerification(generated_key, event.headers['X-Fivetran-Signature-256'])
+
+function fiveTranSigningVerification(generatedKey: string, fiveTranKey: string) {
+  if (crypto.timingSafeEqual(Buffer.from(generatedKey), Buffer.from(fiveTranKey))) {
+    console.log('Valid Signature')
+  } else throw new Error(`Invalid Signature`)
+}
+```
 
 <br>
 
@@ -98,7 +124,7 @@ Make sure to copy in your ```your_aws_api_gateway_endpoint``` and ```FiveTranSig
 ![](/img/fivetran_postman_sc_1.png)
 
 <br>
-**Expected response should be**
+**Expected response:**
 ```javascript
 {
     "id": "connectorId",

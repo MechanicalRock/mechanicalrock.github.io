@@ -15,7 +15,7 @@ image: /img/code.jpg
 
 I was recently working for a client that required us to create data pipelines in Databricks using software engineering good practices including infrastructure as code, testing and observability. How did we achieve this? In this blog post I will bring you along on our journey of how we were able to implement these data pipelines.
 
-Before I get into the hows I will start with some context around what is a Delta Lake, what is Databricks and how Databricks recommend creating data pipelines according to Delta lake practices.
+Before I get into the hows I will start with some context around what is a Delta Lake, what is Databricks and how Databricks recommends creating data pipelines according to Delta Lake practices.
 
 <br />
 

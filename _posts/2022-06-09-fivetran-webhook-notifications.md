@@ -147,9 +147,10 @@ When a Fivetran sync ends in failure, or a dbt trasnformations fails, Fivetran w
 <img src="/img/slack_fivetranmessage.png" alt="drawing" width="400"/>
 <br>
 
+
 ***
 
-**Example Payloads:**
+**Example Payload body's from Fivetran:**
 
 **syncEnd**
 ```javascript
@@ -209,7 +210,14 @@ When a Fivetran sync ends in failure, or a dbt trasnformations fails, Fivetran w
 
 <br>
 
-### **Examples**
+
+## Conclusion
+
+You now have live notifications into your slack channel on when a error occurs in your Fivetran account! Much better than just a email notification. You can additionally tie this into your exisiting incident managment system!
+
+<br>
+
+### Examples
 
 
 
@@ -220,7 +228,7 @@ When a Fivetran sync ends in failure, or a dbt trasnformations fails, Fivetran w
 
 <br/>
 
-### **References**
+## References
 [https://fivetran.com/docs/functions/aws-lambda/sample-functions](https://fivetran.com/docs/functions/aws-lambda/sample-functions)
 
 [https://fivetran.com/docs/rest-api/webhooks](https://fivetran.com/docs/rest-api/webhooks)

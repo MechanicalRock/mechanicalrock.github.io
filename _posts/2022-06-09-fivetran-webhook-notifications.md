@@ -2,11 +2,11 @@
 layout: post
 title: Fivetran Slack Notifications
 date: 2022-06-09
-tags: fivetran slack notifications incident-management webhook 
+tags: Fivetran slack notifications incident-management webhook 
 author: Joseph Miocevich
 image: /img/fivetranslacklambdalogo.png
 description:
-  Creating fivetran event notifications using webhooks
+  Creating Fivetran event notifications using webhooks
 ---
 
 ![Fivetran Slack Notifications](/img/fivetranslacklambdalogo.png)
@@ -101,7 +101,7 @@ POST https://api.fivetran.com/v1/webhooks/account
 ```
 
 Set Authorisation to Basis Auth 
-API keys from fivetran
+API keys from Fivetran
 ```javascript
 username = APIKey
 password = API Key Secret

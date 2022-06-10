@@ -4,7 +4,7 @@ title: Fivetran Slack Notifications
 date: 2022-06-09
 tags: fivetran slack notifications incident-management webhook 
 author: Joseph Miocevich
-image: img/fivetran_logo.png
+image: /img/fivetranslacklambdalogo.png
 description:
   Creating fivetran event notifications using webhooks
 ---
@@ -13,12 +13,33 @@ description:
 
 <br/>
 
+
 Getting timley notifications on whether a Fivetran data connector is broken, or a [dbt transformation](https://fivetran.com/docs/transformations/dbt) has failed, is crucial to maintaining confidence in your datapipeline and reducing your time to restore. This blog will cover how to build your own system in AWS utilising Fivetran's newly released [webhooks](https://fivetran.com/docs/rest-api/webhooks) functionality and [slack webhooks](https://slack.com/intl/en-au/help/articles/115005265063-Incoming-webhooks-for-Slack).
+
+***
 <br>
 ## Overview
 
-Fivetran's new webhook functionality allows you to subscribe to Fivetran events, and push these to a webhook listener. Currently, as this feature is still in beta, there is no way to directly connect this to slack or an incident management system, to resolve this we will be creating our own serverless webhook listener.
+Fivetran's new webhook functionality allows you to subscribe to Fivetran events, and push these to a webhook listener. Currently, as this feature is still in beta, there is no way to directly connect this to slack or an incident management system, to resolve this we will be creating our own serverless webhook listener, which will link to a slack channel.
 <br>
+Fivetran supports the follwing events for webhooks, see [documentation](https://fivetran.com/docs/logs#events) for more infomation.
+
+>
+- sync_start
+- sync_end
+- status (deprecated)
+- dbt_run_start
+- dbt_run_succeeded
+- dbt_run_failed
+- transformation_run_start
+- transformation_run_succeeded
+- transformation_run_failed
+
+We are only interested in getting notified on failures, so we will only be subscribing to ```sync_end``` and ```dbt_run_failed` events.
+
+<br>
+**Architecture Diagram**
+![Architecture diagram](/img/fivetranwebhook_architecture.png)
 ## Getting Started
 <br>
 ### Creating a SlackApp
@@ -39,6 +60,8 @@ Setting up a slackapp for incoming [webhooks](https://api.slack.com/messaging/we
 2. Deploy into your aws account using ```./ci/scripts/deploy.sh```, see [ReadMe](https://github.com/JMiocevich/Fivetran-Slack-Notifications#readme)
 3. Save the slackWebhook URL in ```SlackApiSecret``` in secret manager
 4. Generate a random set of characters for fivetran signing verification and save to ```FiveTranSigningKeySecret``` in secret manager, see Fivetran's [documentation](https://fivetran.com/docs/rest-api/webhooks#signing) on payload signing
+
+<br>
 
 ### Creating FiveTran Webhook
 
@@ -99,6 +122,9 @@ When a Fivetran sync ends in failure, or a dbt trasnformations fails, Fivetran w
 <br>
 <img src="/img/slack_fivetranmessage.png" alt="drawing" width="400"/>
 <br>
+
+***
+
 **Example Payloads:**
 
 **syncEnd**

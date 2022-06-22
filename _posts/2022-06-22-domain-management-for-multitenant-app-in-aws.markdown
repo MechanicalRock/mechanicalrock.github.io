@@ -11,16 +11,16 @@ tags: ['multitenant', 'route53', 'DNS', 'DomainManagement']
 
 ## Introduction
 
-I have recently started building an application and that has to manage multiple clients. By having few client initially doesn't cause much trouble, however when the number of clients grow, it is then becoming challenging to manage multiple application instances.   
+I have recently started building an application and that has to manage multiple clients within the same application. By having few client initially doesn't cause much trouble, however when the number of clients grow, it is then becoming challenging to manage multiple application instances.   
 
 Multitenancy is a hard problem. Each aspect of implementation could be a real challenges when it grows. For aspect like domain management, you don't think it is going to be a problem as most of it only required for initial setup. 
 
-However along the way, for task like SSL certificates renewal, setting up a unique subdomains for new client, segregation of billing cost for each client and , redeployment for disaster recovery. There are some overhead tasks that we need to consider and often most of the instances mentioned above are handled manually. We can actually achieve all these by automation and hence you can focus on other added value development work. 
+However it can be problematic along the way, for task like SSL certificates renewal, setting up a unique subdomains for new client, segregation of billing cost for each client and , redeployment for disaster recovery. There are some overhead tasks that we need to consider and often most of the instances mentioned above are handled manually. We can actually achieve all these by automation and hence you can focus on other added value development work. 
 
 
 ### Solution
 
-This is the architecture diagram on how you can implement on domain management.  
+This is the architecture diagram on how you can manage domains for all your tenants.  
 
 
 ![Domain Management Architecture ](/img/blog/domain-management/architectureDiagram.png)

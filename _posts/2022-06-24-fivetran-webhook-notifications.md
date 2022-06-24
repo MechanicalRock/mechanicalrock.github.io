@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Fivetran Slack Notifications
-date: 2022-06-09
+date: 2022-06-24
 tags: Fivetran slack notifications incident-management webhook 
 author: Joseph Miocevich
 image: /img/fivetranslacklambdalogo.png

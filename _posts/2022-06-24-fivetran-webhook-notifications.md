@@ -49,9 +49,9 @@ We are only interested in getting notified on failures, so we will only be subsc
 <br>
 ## Getting Started
 <br>
-### Creating a SlackApp
+### Creating a Slack App
 
-Setting up a slackapp for [incoming webhooks](https://api.slack.com/messaging/webhooks)
+Setting up a Slack App for [incoming webhooks](https://api.slack.com/messaging/webhooks)
 
 1. Create New App
 2. Go to Features/IncomingWebhooks
@@ -65,7 +65,7 @@ Setting up a slackapp for [incoming webhooks](https://api.slack.com/messaging/we
 
 1. Clone the [Fivetran-Slack-Notifications](https://github.com/JMiocevich/Fivetran-Slack-Notifications) repo
 2. Deploy into your aws account using ```./ci/scripts/deploy.sh```, see the example repo [readMe](https://github.com/JMiocevich/Fivetran-Slack-Notifications#readme)
-3. Save the slackWebhook URL in ```SlackApiSecret``` in secret manager
+3. Save the Slack Webhook URL in ```SlackApiSecret``` in secret manager
 4. Generate a [secret key](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.hmacsha256.-ctor?view=net-6.0) for [HMACSHA256](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.hmacsha256?view=net-6.0) encryption which will be used signing verification and save to ```FiveTranSigningKeySecret``` in secret manager.
 
 #### Discussion 
@@ -91,7 +91,7 @@ function fiveTranSigningVerification(generatedKey: string, fiveTranKey: string) 
 
 ### Creating FiveTran Webhook
 
-Currently, webhooks can only be created using the Fivetran API, for moreinfomation on Fivetran webhooks, see the getting started [documentation](https://fivetran.com/docs/rest-api/getting-started)
+Currently, webhooks can only be created using the Fivetran API, for more infomation on Fivetran webhooks, see the getting started [documentation](https://fivetran.com/docs/rest-api/getting-started)
 
 In [Postman](https://app.getpostman.com/run-collection/ec3ad55bac7f5f22ef91), to apply webhook notifications across your account, set URL to:
 
@@ -141,7 +141,7 @@ Make sure to copy in your ```your_aws_api_gateway_endpoint``` and ```FiveTranSig
 
 <br>
 
-When a Fivetran sync ends in failure, or a dbt trasnformations fails, Fivetran will post to our webhook, which then in turn will send a message to our slack webhook.
+When a Fivetran sync ends in failure, or a dbt transformation fails, Fivetran will post to our webhook, which then in turn will send a message to our slack webhook.
 
 <br>
 <img src="/img/slack_fivetranmessage.png" alt="drawing" width="400"/>
@@ -213,7 +213,7 @@ When a Fivetran sync ends in failure, or a dbt trasnformations fails, Fivetran w
 
 ## Conclusion
 
-You now have live notifications into your slack channel on when a error occurs in your Fivetran account! Much better than just a email notification. You can additionally tie this into your exisiting incident managment system!
+You now have live notifications into your Slack channel on when a error occurs in your Fivetran account! Much better than just a email notification. You can additionally tie this into your exisiting incident managment system!
 
 <br>
 

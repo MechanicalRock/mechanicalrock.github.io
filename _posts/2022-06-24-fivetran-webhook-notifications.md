@@ -150,7 +150,7 @@ When a Fivetran sync ends in failure, or a dbt trasnformations fails, Fivetran w
 
 ***
 
-**Example Payload body's from Fivetran:**
+**Example Payload body from Fivetran:**
 
 **syncEnd**
 ```javascript

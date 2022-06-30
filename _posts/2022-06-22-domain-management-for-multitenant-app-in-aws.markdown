@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Domain Management for Multi-tenant Application in AWS 
+title: Domain Management for Multi-tenant Application in AWS
 description: Architecting multi-tenant applications
 date: 2022-06-22
 author: Shermayne Lee
@@ -11,16 +11,23 @@ tags: ['multitenant', 'route53', 'DNS', 'DomainManagement']
 
 ## Introduction
 
+![Domain Management Multitenant](/img/blog/domain-management/multitenantDNS.png)
 I have recently started building an application and that has to manage multiple clients within the same application. By having few client initially doesn't cause much trouble, however when the number of clients grow, it is then becoming challenging to manage multiple application instances.   
 
 Multitenancy is a hard problem. Each aspect of implementation could be a real challenges when it grows. For aspect like domain management, you don't think it is going to be a problem as most of it only required for initial setup. 
 
-However it can be problematic along the way, for task like SSL certificates renewal, setting up a unique subdomains for new client, segregation of billing cost for each client and , redeployment for disaster recovery. There are some overhead tasks that we need to consider and often most of the instances mentioned above are handled manually. We can actually achieve all these by automation and hence you can focus on other added value development work. 
+However it can be problematic along the way, for task like SSL certificates renewal, setting up a unique subdomains for new client, segregation of billing cost for each client and , redeployment for disaster recovery. There are some overhead tasks that we need to consider and often most of the instances mentioned above are handled manually. We can easily achieve all these by automation and hence you can focus on other added value development works. 
 
 
 ### Solution
 
-This is the architecture diagram on how you can manage domains for all your tenants.  
+This is the solution on how you can normally start building it but will soon become challenging when it grows.
+
+![Domain Management Architecture ](/img/blog/domain-management/architectureSingleAccount.png)
+
+As this approach has no segration between environments and all domain names are hosted within a single location. It increases the risk of impacting all tenants when there are service disruptions. Generally it is a good practice to segregate production environment from development environment and this should apply to domain management too. 
+
+This is the architecture diagram on how you can manage domains for all your tenants in multiple environment.  
 
 
 ![Domain Management Architecture ](/img/blog/domain-management/architectureDiagram.png)
@@ -41,67 +48,6 @@ There are few principles you should follow which listed as below:
 
 Lastly, all the resources are managed under the domain management stack which makes the change management easier. You can then achieve the automation by setting up a CI/CD pipeline for the stack. 
 
-#### Infrastructure as Code
-
-Here are some examples on how you can provision the resources via cloudformation: 
-
-In your central account: 
-
-Pre-requisite: You need to have a registered domain name in route53 and a hosted zone for the top level domain name. 
-
-The script below are to reference other sudbomains that get provision in your workload account.
-
-```
-Description: >
-  example.com hosted zone record sets.
-Parameters:
-  DnsName:
-    Type: String
-  HostedZoneID:
-    Type: String
-
-Resources:
-  WwwRedirectRecordSet:
-    Type: "AWS::Route53::RecordSet"
-    Properties:
-      Name: !Sub "www.${DnsName}"
-      HostedZoneId: !Ref HostedZoneID
-      Type: "CNAME"
-      ResourceRecords:
-        - !Ref DnsName
-```
-
-In your workload account:
-
-You could export the output value from this stack and import it into the top level domain stack
-```
-Description: 
-    test.example.com hosted zone record sets
-
-Parameters:
-  WorkloadDomainName:
-    Type: String
-
-Resources:
-  HostedZoneForClientA:
-    Type: "AWS::Route53::HostedZone"
-    Properties:
-      HostedZoneConfig:
-      Name: !Ref WorkloadDomainName
-    
-  HostedZoneForClientAPI:
-    Type: "AWS::Route53::HostedZone"
-    Properties:
-      HostedZoneConfig:
-      Name: !Sub {API.WorkloadDomainName}
-Outputs:
-  HostedZoneIdClientA:
-    Description: "HostedZoneId"
-    Value: !GetAtt HostedZoneForClientA.Id
-  HostedZoneIdClientAAPI:
-    Description: "HostedZoneId for Api"
-    Value: !GetAtt HostedZoneForClientAPI.Id
-```
 
 #### Wrapping Up.
 

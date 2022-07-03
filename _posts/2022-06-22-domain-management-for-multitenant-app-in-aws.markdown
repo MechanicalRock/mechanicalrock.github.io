@@ -12,47 +12,51 @@ tags: ['multitenant', 'route53', 'DNS', 'DomainManagement']
 ## Introduction
 
 ![Domain Management Multitenant](/img/blog/domain-management/multitenantDNS.png)
-I have recently started building an application and that has to manage multiple clients within the same application. By having few client initially doesn't cause much trouble, however when the number of clients grow, it is then becoming challenging to manage multiple application instances.   
 
-Multitenancy is a hard problem. Each aspect of implementation could be a real challenges when it grows. For aspect like domain management, you don't think it is going to be a problem as most of it only required for initial setup. 
+I have recently started building an application that has to manage multiple clients within the same application. Having few clients doesn't cause any trouble with my implementation initially. Still, when the number of clients grows, it becomes more challenging to keep up with the ongoing tasks of keeping a domain stable and able to support the application. In this post, I would love to share my thoughts on how you can reduce the challenges of managing domains for multiple clients within the same application.
 
-However it can be problematic along the way, for task like SSL certificates renewal, setting up a unique subdomains for new client, segregation of billing cost for each client and , redeployment for disaster recovery. There are some overhead tasks that we need to consider and often most of the instances mentioned above are handled manually. We can easily achieve all these by automation and hence you can focus on other added value development works. 
 
+Multitenant application has a single instance of an application, and its infrastructure and business logic serves multiple clients. The book [Why Multi-Tenancy is Key to Successful and Sustainable Software-as-a-Service](https://books.apple.com/us/book/why-multi-tenancy-is-key-to-successful-and/id419723802) written by Larry Aiken explains the why it is essential to have multitenancy for some applications as compared to a single tenant.
+
+
+Multitenancy is a challenging problem as you have to consider your application's security, optimization, monitoring, and high availability. Each aspect of implementation could be a real challenge when it grows. For a part like domain management, you don't think it will be a problem as you will only require to do most work during the initial setup. 
+
+However, it can be problematic along the way for a task such as SSL certificate renewal. If you have each certificate for each client's subdomain and each has a different expiration date, you need to manage them manually. Furthermore, for a task like setting up unique subdomains for new clients, what are the measures you take to ensure you will not impact your domains for other clients when there are changes to your current resources. When your number of clients grow, how do you have clear segregation of billing cost for each client? Lastly and most importantly, what is the disaster recovery plan for your instances, and how confident can you bring the application back online with minimal downtime? These are some overhead tasks we need to consider, and often most of the instances mentioned above are handled manually. 
+
+It might have more business value for you to focus on maintaining and developing the application, but managing the domain is critical in keeping the application live and accessible.
 
 ### Solution
 
-This is the solution on how you can normally start building it but will soon become challenging when it grows.
+The diagram below is the solution to how you can typically start building it, but it will soon become challenging when it grows.
 
 ![Domain Management Architecture ](/img/blog/domain-management/architectureSingleAccount.png)
 
-As this approach has no segration between environments and all domain names are hosted within a single location. It increases the risk of impacting all tenants when there are service disruptions. Generally it is a good practice to segregate production environment from development environment and this should apply to domain management too. 
+Generally, it is a good practice to segregate the production environment from the development environment, which should also apply to domain management. This approach has no segregation between environments and hosts all domain names within a single location. It increases the risk of impacting all tenants when there are service disruptions. 
 
-This is the architecture diagram on how you can manage domains for all your tenants in multiple environment.  
+The architecture diagram below shows how to manage domains for all your tenants in multiple environments.  
 
 
 ![Domain Management Architecture ](/img/blog/domain-management/architectureDiagram.png)
 
-AWS Route53 domain management provides the ability to segregate the management of domain names between accounts. DNS is a public facing element that you would want to minimize the downtime as it will direct impact your revenue or reputation.  Having the segregation between accounts especially an account for non production and production are key to minimize the risk of damage to production domains. It is also beneficial for segregrating billing cost and hence you will get a better insights. 
+AWS Route53 domain management provides the ability to segregate the management of domain names between accounts. DNS is a public-facing element you would want to minimize downtime as it will directly impact your revenue or reputation. Having segregation between accounts, especially for non-production and production, is key to reducing the risk of damage to production domains. It is also beneficial for segregating billing costs; hence, you will get better insights. 
 
-Besides, you can configure a single cloudfront distribution to serve requests from multiple origins or subdomains and a  SSL certificate to encrypt the information. A single distribution and SSL certificate can reduce the overhead for maintanence such as renewing all certificates for each subdomains. 
+Besides, you can configure a single CloudFront distribution to serve requests from multiple origins or subdomains and an SSL certificate to encrypt the information. A single distribution and SSL certificate can reduce the overhead for maintenance, such as renewing all certificates for each subdomain. 
 
 #### Principle 
 
-There are few principles you should follow which listed as below:
+There are a few principles you should follow, which are listed below:
 
-1. You should not provision any resources under the top level domains.
-2. Manage the registration of top level domain from a central account.
-3. Non-prod and Prod account are responsible for managing all subdomains.
-4. Resources for the subdomains should provision in each workload account. 
-5. All sub-domains should live in the same workload account to reduce complexity. 
+1. You should not provision resources under the top-level domains because your non-production and production account should be responsible for managing its subdomains and resources. 
+2. Manage the registration of top-level domains from a central account. It is to ensure you have the main point to manage all domain names and subdomains should all be in its workload account to keep it consistent. 
+3. All sub-domains for an application should live in the same workload account to reduce complexity. 
 
-Lastly, all the resources are managed under the domain management stack which makes the change management easier. You can then achieve the automation by setting up a CI/CD pipeline for the stack. 
+Lastly, a single domain management stack that manages all the resources makes change management more straightforward. You can then achieve the automation by setting up a CI/CD pipeline for the stack. 
 
 
 #### Wrapping Up.
 
- Setting up a robust pipeline for domain management is the first step of getting your multi-tenant cloud instrastucture right. 
+ Setting up a robust pipeline for domain management is the first step in getting your multi-tenant cloud infrastructure right. 
 
  There is a lot more we can optimize when it comes to multi-tenancy.  
 
- If you have any questions or if you want to know more on how multi-tenant works in the cloud, please don't hesitate to get in touch with us here at [Mechanical Rock](<(https://www.mechanicalrock.io/lets-get-started/)>).
+ If you have any questions or if you want to know more about how multi-tenant works in the cloud, please don't hesitate to get in touch with us here at [Mechanical Rock](<(https://www.mechanicalrock.io/lets-get-started/)>).

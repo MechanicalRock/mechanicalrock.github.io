@@ -2,7 +2,7 @@
 layout: post
 title: Domain Management for Multi-tenant Application in AWS
 description: Architecting multi-tenant applications
-date: 2022-06-22
+date: 2022-07-03
 author: Shermayne Lee
 image: /img/blog/multitenancy/multitenant.png
 tags: ['multitenant', 'route53', 'DNS', 'DomainManagement']

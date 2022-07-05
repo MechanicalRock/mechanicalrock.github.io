@@ -13,20 +13,23 @@ tags: ['multitenant', 'route53', 'DNS', 'DomainManagement']
 
 ![Domain Management Multitenant](/img/blog/domain-management/multitenantDNS.png)
 
-I have recently started building an application that has to manage multiple clients within the same application. Having few clients doesn't cause any trouble with my implementation initially. Still, when the number of clients grows, it becomes harder to keep up with the repetitive tasks of keeping a domain stable and having clear segregation for each client with everything bundled within a single instance. In this post, I would love to share my thoughts on how you can reduce the challenges of managing domains for multiple clients within the same application.
+I have recently started building an application that has to manage multiple clients within the same application. Having few clients doesn't cause any trouble with my implementation initially. When the number of clients grows, keeping track of the tasks needed to keep the domain stable is harder. Having clear segregation for each client is also challenging when a single application serves multiple clients. In this post, I would love to share my thoughts on how you can reduce some repetitive tasks and increase the visibility for each client within the same application instance.
+
+You might think it has more business value for you to focus on maintaining and developing the application, but managing the domain is critical in keeping it live and accessible. 
+
+Before we dive into the solution, what is a multitenant application? Multitenant application has a single instance of an application, and its infrastructure and business logic serves multiple clients. The book [Why Multi-Tenancy is Key to Successful and Sustainable Software-as-a-Service](https://books.apple.com/us/book/why-multi-tenancy-is-key-to-successful-and/id419723802) written by Larry Aiken explains the why it is essential to have multitenancy for some applications as compared to a single tenant.
 
 
-What is a multitenant application? Multitenant application has a single instance of an application, and its infrastructure and business logic serves multiple clients. The book [Why Multi-Tenancy is Key to Successful and Sustainable Software-as-a-Service](https://books.apple.com/us/book/why-multi-tenancy-is-key-to-successful-and/id419723802) written by Larry Aiken explains the why it is essential to have multitenancy for some applications as compared to a single tenant.
+What actually makes multitenancy challenging? Multitenancy is a challenging problem because you must consider your application's security, optimization, monitoring, and high availability. Each aspect of implementation could be a real challenge when it grows. 
 
 
-What makes multitenancy challenging? Multitenancy is a challenging problem because you must consider your application's security, optimization, monitoring, and high availability. Each aspect of implementation could be a real challenge when it grows. You might think it has more business value for you to focus on maintaining and developing the application, but managing the domain is critical in keeping it live and accessible. 
-
-Some repetitive tasks that can be automated in domain management such as SSL certificate renewal for all domains and subdomains. If you have each certificate for each client's subdomain and each has a different expiration date, you need to manage them manually. Furthermore, for a task like setting up unique subdomains for new clients, what are the measures you take to ensure you will not impact your domains for other clients when there are changes to your current resources. When your number of clients grow, how do you have clear segregation of billing cost for each client? Lastly and most importantly, what is the disaster recovery plan for your instances, and how confident can you bring the application back online with minimal downtime? These are some overhead tasks we need to consider, and often most of the instances mentioned above are handled manually. 
 
 
 ### Solution
 
-The diagram below is the solution to how you can typically start building it, but it will soon become challenging when it grows.
+Cloud hosting has greater flexibility and scalability than on-premise hosting. So in this article, I will explain how you can implement your domain management system in AWS. 
+
+The diagram below is the solution to how you can typically start building it, but it will soon become challenging when the number of clients grows.
 
 ![Domain Management Architecture ](/img/blog/domain-management/architectureSingleAccount.png)
 
@@ -37,7 +40,13 @@ The architecture diagram below shows how to manage domains for all your tenants 
 
 ![Domain Management Architecture ](/img/blog/domain-management/architectureDiagram.png)
 
-AWS Route53 domain management provides the ability to segregate the management of domain names between accounts. DNS is a public-facing element you would want to minimize downtime as it will directly impact your revenue or reputation. Having segregation between accounts, especially for non-production and production, is key to reducing the risk of damage to production domains. It is also beneficial for segregating billing costs; hence, you will get better insights. 
+The critical difference between these two diagrams is the latter has a clear separation between environments. The infrastructure for the non-production environment should be identical to the production environment to enable errors to be caught in the non-production environment first without impacting the production domains. DNS is a public-facing element you would want to minimize downtime as it will directly impact your revenue or reputation.
+
+AWS offers a highly scalable Domain Name System (DNS) Web service that called AWS Route53. It provides the ability to segregate the management of domain names between accounts.  Having segregation between accounts, especially for non-production and production, is key to reducing the risk of damage to production domains. It is also beneficial for segregating billing costs; hence, you will get better insights. 
+
+//TODO:Update this based on feed back
+In term of automating some repetitive tasks, task such as SSL certificate renewal for all domains and subdomains. If you have each certificate for each client's subdomain and each has a different expiration date, you need to manage them manually. Furthermore, for a task like setting up unique subdomains for new clients, what are the measures you take to ensure you will not impact your domains for other clients when there are changes to your current resources. When your number of clients grow, how do you have clear segregation of billing cost for each client? Lastly and most importantly, what is the disaster recovery plan for your instances, and how confident can you bring the application back online with minimal downtime? These are some overhead tasks we need to consider, and often most of the instances mentioned above are handled manually. 
+
 
 Besides, you can configure a single CloudFront distribution to serve requests from multiple origins or subdomains and an SSL certificate to encrypt the information. A single distribution and SSL certificate can reduce the overhead for maintenance, such as renewing all certificates for each subdomain. 
 

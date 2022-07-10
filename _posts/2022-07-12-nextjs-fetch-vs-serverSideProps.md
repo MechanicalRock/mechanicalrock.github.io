@@ -53,58 +53,12 @@ Have you ever been to a site on either desktop/mobile phone, got presented some 
 This is why perormance tools like [Lighthouse](https://web.dev/performance-scoring/) are increasing their weight of CLS more and more.
 
 
-## Experiement 3
-
-```Skeleton loading indicators are better for UX than circular loaders```
-
-
 ## Conclusion
 
 Given you can only apply `getServerSideProps()` at a page level it's less ideal to add it to a complex application as you will likely be preloading too much unneccessary data for the first impression.
 
 If your page needs to be indexable by search crawlers it doesn't make sense to use `getServerSideProps()` as that suggests the data, thus content is dynamic. Instead, find the static content for the page which really matters and use CSR for the other dynamic components after page load so at least the crawlers has enough information to cache.
 
-
-
-
-```tsx
-function WholePage() {
-  const [openMenu, setOpenMenu] = React.useState(false);
-
-  return (
-    <>
-      <header>
-        <AppBar>
-          <Toolbar>
-            <IconButton
-              aria-label="menu"
-              onClick={() => setOpenMenu(state => !state)}
-            >
-              <MenuIcon />
-            </IconButton>
-            Component Library
-          </Toolbar>
-        </AppBar>
-        <nav aria-label="main menu navigation">
-          <Drawer
-            anchor="left"
-            disablePortal
-            onClose={() => setOpenMenu(false)}
-            open={openMenu}
-            variant="temporary"
-          >
-            <MenuItems setOpenMenu={setOpenMenu} />
-          </Drawer>
-        </nav>
-      </header>
-      <main>
-        <h1>Component Library</h1>
-        ...lots of components with state changes
-      </main>
-    </>
-  )
-}
-```
 
 ---
 

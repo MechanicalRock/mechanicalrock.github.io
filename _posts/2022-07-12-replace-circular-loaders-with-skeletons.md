@@ -1,7 +1,7 @@
 ---
 layout: post
 font: serif
-title: "Why Skeleton Loaders Are Better Than Circular Loaders"
+title: "Why Skeleton Loaders Are The Better Option"
 description: "Since ajax was introduced we've been familiar with circular loading spinners, dot-dot-dot animations, crazy logo transitions and more, all in place to distract the user while the application requests more data to present back."
 date: 2022-07-12
 highlight: monokai
@@ -23,7 +23,12 @@ Loading indicators are typically displayed when a page/component mounts or when 
 
 <br />
 
----
+## Contents
+
+- [What's the problem?](#whats-the-problem)
+  * [Problematic Examples](#problematic-examples)
+- [How Skeleton Loaders Can Help](#how-skeleton-loaders-can-help)
+- [Conclusion](#conclusion)
 
 <br />
 
@@ -96,8 +101,7 @@ Like most things when developing from a design it's best to develop from the out
   |![A screenshot highlighting in purple the rows which occupy the card](/img/skeleton-loaders/card-breakdown-rows.jpg){:width="421px" height="240px" loading="lazy"}|![A screenshot highlighting in blue the columns which occupy the card](/img/skeleton-loaders/card-breakdown-columns.jpg){:width="384px" height="264px" loading="lazy"}|
 
 
-4 What are the key landmarks for the inner content? _You decide how simple or complex your skeleton should be_<br />
-  __Simple:__<br />
+4. What are the key landmarks for the inner content? _You decide how simple or complex your skeleton should be_<br />
 
   |Simple|Complex|
   |-|-|
@@ -109,7 +113,7 @@ We now have enough information to construct our skeleton and here's what we shou
 
 A few things to note:
 
-* I chose to implement a more complex landmark as I felt it better transitioned when the true content was revealed.
+* I chose to implement more complex landmarkings as it better transitioned when the true content was revealed.
 * A second skeleton in the horizontal list was added to let the user know there _may_ be more than one Card after the loading finishes.
 * Consecutive skeletons have their opacity lowered to emphasise there may/may-not be more than one card after the load has completed.
 

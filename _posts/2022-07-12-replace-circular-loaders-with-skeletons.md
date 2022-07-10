@@ -1,7 +1,7 @@
 ---
 layout: post
 font: serif
-title: "Why Skeleton Loaders are better than Circular Loaders"
+title: "Why Skeletons Are Better Than Circles"
 description: "Since ajax was introduced we've been firmiliar with circular loading spinners, dot-dot-dot animations, crazy logo transitions and more, all in place to distract the user while the application requests more data to present back."
 date: 2022-07-12
 highlight: monokai
@@ -40,7 +40,7 @@ A few problems can arise from this but I'd like to focus on the following:
 
 **Circular Loader with no appropriate dimension**
 
-The following gif animation shows 1 Credit Card box using the circular loading indicator; once the content is ready the loading indicator immediately gets removed and the true Credit Card box's content gets revealed. You'll notice this pushed the below content down quite a lot, hense the affect to our CLS score.
+The following gif animation shows 1 Credit Card box using the circular loading indicator; once the content is ready the loading indicator immediately gets removed and the true Credit Card box's content gets revealed. You'll notice this pushed the below content down, hense the affect to our CLS score.
 
 ![As per the above description](/img/skeleton-loaders/circular-no-height.gif)
 
@@ -53,9 +53,11 @@ Have you ever been to a site on either a desktop or mobile phone, got presented 
 **Circular Loader with an appropriate dimension**
 
 This is the same implementation as the above with the addition of the developer ensuring the circular loading indicator fills out to the default size of a rendered Credit Card box.
-This is starting to feel a bit better but I'm having to cognitively re-read everything in the box to make my next move.
 
 ![As per the above description](/img/skeleton-loaders/circular-with-measured-box.gif)
+
+This is starting to feel a bit better but I'm having to cognitively re-read everything in the box to make my next move.
+
 
 <br />
 

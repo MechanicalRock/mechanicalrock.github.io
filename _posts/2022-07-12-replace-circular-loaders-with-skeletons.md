@@ -10,12 +10,12 @@ author: Quintin Maseyk
 tags: [react, mui, ux]
 ---
 
-![Bye circles, hello skeletons!](/img/skeleton-loaders/banner.jpg)
+![Bye circles, hello skeletons!](/img/skeleton-loaders/banner.jpg){:width="740px" height="415px"}
 
 Since ajax was introduced we've been familiar with circular loading spinners, dot-dot-dot animations, crazy logo transitions and more, all in place to distract the user while the application requests more data to present back.
 
 
-![Screenshot of 4 old-school loading indicators ranging from a linear progress bar, 4 dots animating across, 9 dots in a circle rotating their opacity and a circular indicator](/img/skeleton-loaders/loading-indicators.jpg)
+![Screenshot of 4 old-school loading indicators ranging from a linear progress bar, 4 dots animating across, 9 dots in a circle rotating their opacity and a circular indicator](/img/skeleton-loaders/loading-indicators.jpg){:width="418px" height="300px"}
 
 Loading indicators are typically displayed when a page/component mounts or when a user interacts with the application (ie. submitting a form, searching for something, etc). These are essential to the overall user experience of an application as it visually lets the user know something is happening.
 
@@ -42,7 +42,7 @@ A few problems can arise from this but I'd like to focus on the following:
 
 The following gif animation shows 1 Credit Card box using the circular loading indicator; once the content is ready the loading indicator immediately gets removed and the true Credit Card box's content gets revealed. You'll notice this pushed the below content down, hence the effect on our CLS score.
 
-![As per the above description](/img/skeleton-loaders/circular-no-height.gif)
+![As per the above description](/img/skeleton-loaders/circular-no-height.gif){:width="480px" height="436px"}
 
 
 :bulb: Why CLS matters:
@@ -54,7 +54,7 @@ Have you ever been to a site on either a desktop or mobile phone, got presented 
 
 This is the same implementation as the above with the addition of the developer ensuring the circular loading indicator fills out to the default size of a rendered Credit Card box.
 
-![As per the above description](/img/skeleton-loaders/circular-with-measured-box.gif)
+![As per the above description](/img/skeleton-loaders/circular-with-measured-box.gif){:width="480px" height="436px"}
 
 This is starting to feel a bit better but I'm having to cognitively re-read everything in the box to make my next move.
 
@@ -75,7 +75,7 @@ Skeleton loaders force the developer to think about the content which it is emul
 
 Let's use the following screenshot as our example.
 
-![Screenshot showing a demo NextJS app rendering in order from top to bottom the 'Client Fetch' page title, some random static text, then the Credit Card Summary section which details the final content layout we need to create skeletons from](/img/skeleton-loaders/screenshot-credit-card-summary.png)
+![Screenshot showing a demo NextJS app rendering in order from top to bottom the 'Client Fetch' page title, some random static text, then the Credit Card Summary section which details the final content layout we need to create skeletons from](/img/skeleton-loaders/screenshot-credit-card-summary.png){:width="740px" height="664px"}
 
 Our task is to create a skeleton for the "Credit Card Summary" cards. The goal is to style the skeleton close enough to the design so there are no surprises when the content renders.
 
@@ -85,7 +85,7 @@ Like most things when developing from a design it's best to develop from the out
 
 1. Figure out the root node's layout constraints. _Ask yourself what direction the content flows, does the content wrap, what spacing is between each item?_
   <br />
-  ![A screenshot highlighting the contents direction is a row left to right and there is spacing between the items](/img/skeleton-loaders/card-layout.jpg)
+  ![A screenshot highlighting the contents direction is a row left to right and there is spacing between the items](/img/skeleton-loaders/card-layout.jpg){:width="710px" height="300px"}
 
 2. Figure out the content type. _Is it in a card, body text, table, video?_
 
@@ -93,7 +93,7 @@ Like most things when developing from a design it's best to develop from the out
 
   |Rows|Columns|
   |-|-|
-  |![A screenshot highlighting in purple the rows which occupy the card](/img/skeleton-loaders/card-breakdown-rows.jpg)|![A screenshot highlighting in blue the columns which occupy the card](/img/skeleton-loaders/card-breakdown-columns.jpg)|
+  |![A screenshot highlighting in purple the rows which occupy the card](/img/skeleton-loaders/card-breakdown-rows.jpg){:width="421px" height="240px"}|![A screenshot highlighting in blue the columns which occupy the card](/img/skeleton-loaders/card-breakdown-columns.jpg){:width="384px" height="264px"}|
 
 
 4 What are the key landmarks for the inner content? _You decide how simple or complex your skeleton should be_<br />
@@ -101,11 +101,11 @@ Like most things when developing from a design it's best to develop from the out
 
   |Simple|Complex|
   |-|-|
-  |![A screenshot of what a simple skeleton can look like. It has merged the bottom two rows together suggesting the area has similar text](/img/skeleton-loaders/card-breakdown-landmark-simple.jpg)|![A screenshot of what a more complex skeleton can look like. It has landmarks in both the label and text value.](/img/skeleton-loaders/card-breakdown-landmarks.jpg)|
+  |![A screenshot of what a simple skeleton can look like. It has merged the bottom two rows together suggesting the area has similar text](/img/skeleton-loaders/card-breakdown-landmark-simple.jpg){:width="384px" height="240px"}|![A screenshot of what a more complex skeleton can look like. It has landmarks in both the label and text value.](/img/skeleton-loaders/card-breakdown-landmarks.jpg){:width="384px" height="240px"}|
 
 We now have enough information to construct our skeleton and here's what we should end up with:
 
-![A gif animation showing the final outcome](/img/skeleton-loaders/skeleton.gif)
+![A gif animation showing the final outcome](/img/skeleton-loaders/skeleton.gif){:width="480px" height="436px"}
 
 A few things to note:
 

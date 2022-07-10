@@ -130,6 +130,13 @@ p {
     height: 42px;
 }
 
+@media screen and (max-width: 780px) {
+    img {
+        height: auto;
+        width: auto;
+    }
+}
+
 @media screen and (max-width: 630px) {
     .appBar {
         align-items: baseline;

@@ -2,7 +2,7 @@
 layout: post
 font: serif
 title: "Why Skeletons Are Better Than Circles"
-description: "Since ajax was introduced we've been firmiliar with circular loading spinners, dot-dot-dot animations, crazy logo transitions and more, all in place to distract the user while the application requests more data to present back."
+description: "Since ajax was introduced we've been familiar with circular loading spinners, dot-dot-dot animations, crazy logo transitions and more, all in place to distract the user while the application requests more data to present back."
 date: 2022-07-12
 highlight: monokai
 image: /img/skeleton-loaders/banner.jpg
@@ -12,7 +12,7 @@ tags: [react, mui, ux]
 
 ![Bye circles, hello skeletons!](/img/skeleton-loaders/banner.jpg)
 
-Since ajax was introduced we've been firmiliar with circular loading spinners, dot-dot-dot animations, crazy logo transitions and more, all in place to distract the user while the application requests more data to present back.
+Since ajax was introduced we've been familiar with circular loading spinners, dot-dot-dot animations, crazy logo transitions and more, all in place to distract the user while the application requests more data to present back.
 
 
 ![Screenshot of 4 old-school loading indicators ranging from a linear progress bar, 4 dots animating across, 9 dots in a circle rotating their opacity and a circular indicator](/img/skeleton-loaders/loading-indicators.jpg)
@@ -40,14 +40,14 @@ A few problems can arise from this but I'd like to focus on the following:
 
 **Circular Loader with no appropriate dimension**
 
-The following gif animation shows 1 Credit Card box using the circular loading indicator; once the content is ready the loading indicator immediately gets removed and the true Credit Card box's content gets revealed. You'll notice this pushed the below content down, hense the affect to our CLS score.
+The following gif animation shows 1 Credit Card box using the circular loading indicator; once the content is ready the loading indicator immediately gets removed and the true Credit Card box's content gets revealed. You'll notice this pushed the below content down, hence the effect on our CLS score.
 
 ![As per the above description](/img/skeleton-loaders/circular-no-height.gif)
 
 
 :bulb: Why CLS matters:
 
-Have you ever been to a site on either a desktop or mobile phone, got presented some content, found a link to click on but just as you did the link jumped away from you? Worse yet, you ended up clicking something else completely irrelevant! This is occuring more often than none and the experience is frustrating! This is why perormance tools like [Lighthouse](https://web.dev/performance-scoring/) are increasing their weight (penalty) of CLS more and more.
+Have you ever been to a site on either a desktop or mobile phone, got presented with some content, found a link to click on but just as you did the link jumped away from you? Worse yet, you ended up clicking something else completely irrelevant! This is occuring more often than none and the experience is frustrating! This is why performance tools like [Lighthouse](https://web.dev/performance-scoring/) are increasing their weight (penalty) of CLS more and more.
 
 
 **Circular Loader with an appropriate dimension**
@@ -77,7 +77,7 @@ Let's use the following screenshot as our example.
 
 ![Screenshot showing a demo NextJS app rendering in order from top to bottom the 'Client Fetch' page title, some random static text, then the Credit Card Summary section which details the final content layout we need to create skeletons from](/img/skeleton-loaders/screenshot-credit-card-summary.png)
 
-Our task is to create a skeleton for the "Credit Card Summary" cards. The goal is to style the skeleton close enough to the design so there are no suprises when the content renders.
+Our task is to create a skeleton for the "Credit Card Summary" cards. The goal is to style the skeleton close enough to the design so there are no surprises when the content renders.
 
 > I will be using [MUI's Skeleton component](https://mui.com/material-ui/react-skeleton/) to construct our new `<CreditCardSkeleton> component`. MUI's Skeleton component expose 3 variants: Text, Circular, Rectangle.
 
@@ -111,13 +111,13 @@ A few things to note:
 
 * I chose to implement a more complex landmark as I felt it better transitioned when the true content was revealed.
 * I rendered a second skeleton in the horizontal list to let the user know there _may_ be more than one Card after the loading finishes.
-* I lowered the opacity for the consecutive skeletons to emphaise there may/may-not be more than one card after the load has completed.
+* I lowered the opacity for the consecutive skeletons to emphasise there may/may-not be more than one card after the load has completed.
 
 ---
 
 ## Conclusion
 
-When skeletons are implemented correctly you'll not only make your application look and feel better, but deliver a more intuitive experience to your users as they will now have a better understanding on page layouts and content landmarks before the true content has even loaded.
+When skeletons are implemented correctly you'll not only make your application look and feel better, but deliver a more intuitive experience to your users as they will now have a better understanding of page layouts and content landmarks before the true content has even loaded.
 
 ---
 

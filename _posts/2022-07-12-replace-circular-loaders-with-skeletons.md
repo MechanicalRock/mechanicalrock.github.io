@@ -1,7 +1,7 @@
 ---
 layout: post
 font: serif
-title: "Why Skeletons Are Better Than Circles"
+title: "Why Skeleton Loaders Are Better Than Circular Loaders"
 description: "Since ajax was introduced we've been familiar with circular loading spinners, dot-dot-dot animations, crazy logo transitions and more, all in place to distract the user while the application requests more data to present back."
 date: 2022-07-12
 highlight: monokai

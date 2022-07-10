@@ -45,7 +45,7 @@ A few problems can arise from this but I'd like to focus on the following:
 
 **Circular Loader with no appropriate dimension**
 
-The following gif animation shows 1 Credit Card box using the circular loading indicator; once the content is ready the loading indicator immediately gets removed and the true Credit Card box's content gets revealed. You'll notice this pushed the below content down, hence the effect on our CLS score.
+The following gif animation shows 1 Credit Card box using the circular loading indicator; once the content is ready the loading indicator immediately gets removed and the true Credit Card box's content gets revealed. You'll notice this pushed the below content down, hence the degradation to our CLS score.
 
 ![As per the above description](/img/skeleton-loaders/circular-no-height.gif){:width="480px" height="436px" loading="lazy"}
 
@@ -88,20 +88,19 @@ Our task is to create a skeleton for the "Credit Card Summary" cards. The goal i
 
 Like most things when developing from a design it's best to develop from the outside in. I tend to follow these steps in my head:
 
-1. Figure out the root node's layout constraints. _Ask yourself what direction the content flows, does the content wrap, what spacing is between each item?_
+1: Figure out the root node's layout constraints. _Ask yourself what direction the content flows, does the content wrap, what spacing is between each item?_
   <br />
   ![A screenshot highlighting the contents direction is a row left to right and there is spacing between the items](/img/skeleton-loaders/card-layout.jpg){:width="710px" height="300px" loading="lazy"}
 
-2. Figure out the content type. _Is it in a card, body text, table, video?_
+2: Figure out the content type. _Is it in a card, body text, table, video?_
 
-3. Figure out the inner content layout. _In our case there are 3 rows 2 columns_<br />
+3: Figure out the inner content layout. _In our case there are 3 rows 2 columns_<br />
 
   |Rows|Columns|
   |-|-|
   |![A screenshot highlighting in purple the rows which occupy the card](/img/skeleton-loaders/card-breakdown-rows.jpg){:width="421px" height="240px" loading="lazy"}|![A screenshot highlighting in blue the columns which occupy the card](/img/skeleton-loaders/card-breakdown-columns.jpg){:width="384px" height="264px" loading="lazy"}|
 
-
-4. What are the key landmarks for the inner content? _You decide how simple or complex your skeleton should be_<br />
+4: What are the key landmarks for the inner content? _You decide how simple or complex your skeleton should be_<br />
 
   |Simple|Complex|
   |-|-|

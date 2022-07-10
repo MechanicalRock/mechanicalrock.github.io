@@ -2,7 +2,7 @@
 layout: post
 font: serif
 title: "Why Skeleton Loaders are better than Circular Loaders"
-description: "A benchmark on NextJS data strategies and what their overall UX impacts are."
+description: "Since ajax was introduced we've been firmiliar with circular loading spinners, dot-dot-dot animations, crazy logo transitions and more, all in place to distract the user while the application requests more data to present to the user."
 date: 2022-07-12
 highlight: monokai
 author: Quintin Maseyk
@@ -13,7 +13,7 @@ tags: [react, mui, ux]
 
 Since ajax was introduced we've been firmiliar with circular loading spinners, dot-dot-dot animations, crazy logo transitions and more, all in place to distract the user while the application requests more data to present to the user.
 
-Loaders are typically displayed when a page/component mounts or when a user interacts with the application (ie. submitting a form, searching for something, etc). These are essential to the overall user experience of an application for without them a user could be left in doubt which is a big no-no.
+Loaders are typically displayed when a page/component mounts or when a user interacts with the application (ie. submitting a form, searching for something, etc). These are essential to the overall user experience of an application for without them a user could be left in doubt which is not ideal.
 
 <br />
 

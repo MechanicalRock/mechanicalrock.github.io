@@ -319,7 +319,9 @@ table td {
     color: #FFF;
     transition: border-color 0.2s;
     border-radius: 0.2em;
-    height: 1.7em;
+    height: 2.4em;
+    margin-right: 0.2em;
+    padding: 0;
 }
 .appBar .gsc-search-box .gsc-input-box:focus,
 .appBar .gsc-search-box .gsc-input-box:hover {

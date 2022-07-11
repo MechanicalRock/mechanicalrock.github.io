@@ -1,6 +1,7 @@
 ---
 layout: post
 font: serif
+inject_optimize_tag: true
 title: "Why Skeleton Loaders Are The Better Option"
 description: "Since ajax was introduced we've been familiar with circular loading spinners, dot-dot-dot animations, crazy logo transitions and more, all in place to distract the user while the application requests more data to present back."
 date: 2022-07-11

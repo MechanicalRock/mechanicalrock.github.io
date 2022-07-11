@@ -5,6 +5,9 @@
   <meta name="theme-color" content="#40BFB4">
   <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
   <meta name="description" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
+  {% if page.inject_optimize_tag == true %}
+  <script src="https://www.googleoptimize.com/optimize.js?id=OPT-P9NRR8W"></script>
+  {% endif %}
 
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/assets/style.css">

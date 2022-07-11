@@ -3,46 +3,59 @@ layout: default
 ---
 
 <div class="home">
-    <h1 class="page-heading"><b>Most Recent Blogs</b></h1>
-    <div class="home-page-posts">
+  <h1 class="page-heading"><b>Most Recent Blogs</b></h1>
+  <div class="home-page-posts">
     {{ content }}
-    
+
     {% if site.paginate %}
-      {% assign posts = paginator.posts %}
+    {% assign posts = paginator.posts %}
     {% else %}
-      {% assign posts = site.posts %}
+    {% assign posts = site.posts %}
     {% endif %}
-  
-  
+
     {%- if posts.size > 0 -%}
-      {%- if page.list_title -%}
-        <h2 class="post-list-heading">{{ page.list_title }}</h2>
-      {%- endif -%}
-      <ul class="post-list">
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        {%- for post in posts -%}
-        <li>
-          <span class="post-meta">{{ post.date | date: date_format }}</span>
-          <h3>
-            <a class="post-link" href="{{ post.url | relative_url }}">
-              {{ post.title | escape }}
-            </a>
-          </h3>
-        </li>
+    {%- if page.list_title -%}
+    <h2 class="post-list-heading">{{ page.list_title }}</h2>
+    {%- endif -%}
+    <ul class="post-list">
+      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+      {%- for post in posts -%}
+      {% if post.hidden != true %}
+      <li>
+        <span class="post-meta">{{ post.date | date: date_format }}</span>
+        {%- if post.author -%}
+        <span style="font-size: 0.9em; color: #828282">
+          • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">{{ post.author }}</span>
+          </span>
+        </span>
+        {%- endif -%}
+        <h3>
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
+        </h3>
+        {%- for tag in post.tags limit:5 -%}
+        <span style="margin-right: 3px">
+          <a class="post-tag" href="/tags/#{{ tag }}">{{tag}}</a>
+        </span>
         {%- endfor -%}
+      </li>
+      {% endif %}
+      {%- endfor -%}
+    </ul>
+
+    {% if site.paginate %}
+    <div class="pager">
+      <ul class="pagination">
       </ul>
-  
-      {% if site.paginate %}
-        <div class="pager">
-          <ul class="pagination">
-          </ul>
-        </div>
-      {%- endif %}
-  
+    </div>
+    {%- endif %}
+
     {%- endif -%}
   </div>
-  
-  </div>
+
+</div>
 
 <script>
   var totalPages = {{ paginator.total_pages }}

@@ -1,10 +1,19 @@
 ---
 layout: default
 ---
-<article class="post h-entry" data-layoutversion="1" itemscope itemtype="http://schema.org/BlogPosting">
+<script type="text/javascript">
+  window.addEventListener( "DOMContentLoaded", () => {
+    if ( document.querySelector( "main" ) ) {
+      document.querySelector( "main" ).style.backgroundColor = "#f5f5f5";
+    }
+  } )
+</script>
 
+<article class="post h-entry" data-layoutversion="2" itemscope itemtype="http://schema.org/BlogPosting">
+  {%- if page.image -%}
+  <img class="main-image" alt="{{ page.title }}" src="{{ page.image }}" />
+  {%- endif -%}
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
     <p class="post-meta">
       <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
@@ -15,11 +24,12 @@ layout: default
           itemprop="name">{{ page.author }}</span></span>
       {%- endif -%}
     </p>
+    <h1 class="post-title p-name font-brand" itemprop="name headline">{{ page.title | escape }}</h1>
     {%- if page.tags.size > 0 -%}
-    <strong>Tags: </strong>
+    <strong>#</strong>
     {%- for tag in page.tags -%}
     <span style="margin-right: 3px">
-      <a href="/tags/#{{ tag }}">{{tag}}</a>
+      <a class="post-tag" href="/tags/#{{ tag }}">{{tag}}</a>
     </span>
     {%- endfor -%}
     {%- endif -%}

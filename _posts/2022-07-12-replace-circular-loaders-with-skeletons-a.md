@@ -92,7 +92,7 @@ Like most things when developing from a design it's best to develop from the out
   <br />
   ![A screenshot highlighting the content's direction, in this case the content flows in a row, left to right. There is spacing between the items](/img/skeleton-loaders/card-layout.jpg){:width="710px" height="300px" loading="lazy"}
 
-2: Figure out the content type. _Is it in a card, body text, table, video?_
+2: Figure out the content type. _Is it a card, body text, table, video, image?_
 
 3: Figure out the inner content layout. _In our case there are 3 rows 2 columns_<br />
 

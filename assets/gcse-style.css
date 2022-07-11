@@ -44,6 +44,7 @@ table td {
     font-size: 1em;
     align-content: center;
     justify-content: center;
+    border-radius: 0.3em;
 }
 
 .gsc-search-button.gsc-search-button-v2 svg {
@@ -314,9 +315,14 @@ table td {
 }
 .appBar .gsc-search-box .gsc-input-box {
     background-color: var(--color-grey-dark);
-    border-color: #FFF;
+    border-color: #6d6d6d;
     color: #FFF;
+    transition: border-color 0.2s;
     border-radius: 0.2em;
+}
+.appBar .gsc-search-box .gsc-input-box:focus,
+.appBar .gsc-search-box .gsc-input-box:hover {
+    border-color: #FFF;
 }
 .appBar .gsc-search-box .gsc-input-box input {
     background-color: transparent;

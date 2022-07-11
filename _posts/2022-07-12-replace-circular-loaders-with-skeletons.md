@@ -90,7 +90,7 @@ Like most things when developing from a design it's best to develop from the out
 
 1: Figure out the root node's layout constraints. _Ask yourself what direction the content flows, does the content wrap, what spacing is between each item?_
   <br />
-  ![A screenshot highlighting the contents direction is a row left to right and there is spacing between the items](/img/skeleton-loaders/card-layout.jpg){:width="710px" height="300px" loading="lazy"}
+  ![A screenshot highlighting the content's direction, in this case the content flows in a row, left to right. There is spacing between the items](/img/skeleton-loaders/card-layout.jpg){:width="710px" height="300px" loading="lazy"}
 
 2: Figure out the content type. _Is it in a card, body text, table, video?_
 
@@ -112,7 +112,7 @@ We now have enough information to construct our skeleton and here's what we shou
 
 A few things to note:
 
-* I chose to implement more complex landmarkings as it better transitioned when the true content was revealed.
+* I chose to implement complex landmarkings as it better transitioned when the true content was revealed.
 * A second skeleton in the horizontal list was added to let the user know there _may_ be more than one Card after the loading finishes.
 * Consecutive skeletons have their opacity lowered to emphasise there may/may-not be more than one card after the load has completed.
 

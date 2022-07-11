@@ -1,6 +1,7 @@
 ---
 layout: postv2
 hidden: true
+inject_optimize_tag: true
 canonical_url: https://mechanicalrock.github.io/2022/07/11/replace-circular-loaders-with-skeletons-a.html
 font: serif
 title: "Why Skeleton Loaders Are The Better Option"

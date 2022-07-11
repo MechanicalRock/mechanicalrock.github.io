@@ -49,8 +49,10 @@ p {
 .header-wrapper.page-layout-home {
     margin-bottom: 0;
 }
-.header-wrapper.page-layout-post {
+.header-wrapper.page-layout-post,
+.header-wrapper.page-layout-postv2 {
     height: 0;
+    display: none;
 }
 
 .header-wrapper .content {
@@ -101,7 +103,7 @@ p {
 }
 
 .logo img {
-    height: 3em;
+    height: 2.5em;
     padding: 0px 0.4em;
 }
 
@@ -128,6 +130,13 @@ p {
 
 #searchbox-placeholder {
     height: 42px;
+}
+
+@media screen and (max-width: 780px) {
+    img {
+        height: auto;
+        width: auto;
+    }
 }
 
 @media screen and (max-width: 630px) {
@@ -169,7 +178,7 @@ a,
 .page:visited,
 .change-pages-set:visited
 {
-	color: var(--color-brand);
+	color: var(--color-brand) !important;
 }
 
 .page.active {
@@ -260,6 +269,63 @@ a.btn.chevronLeft::before {
 .page-heading {
     margin-bottom: 1em;
     color: #333;
+}
+
+.post-link {
+    display: inline-block
+}
+
+a.post-tag {
+    border: 1px solid var(--color-brand);
+    border-radius: 0.5em;
+    padding: 0.1em 0.5em;
+    font-size: 0.9em;
+    text-transform: lowercase;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+}
+a.post-tag:hover,
+a.post-tag:focus {
+    opacity: 1;
+}
+
+.post[data-layoutversion="1"] {
+    margin-top: 2em;
+}
+.post[data-layoutversion="2"] {
+    border: 1px solid #e0e0e0;
+    background: #FFF;
+    border-radius: 0.4em;
+    margin-top: 2em;
+    padding-top: 0;
+    overflow: hidden;
+}
+.post[data-layoutversion="2"] .post-title {
+    color: #646464;
+}
+.post[data-layoutversion="2"] .post-meta {
+    color: #4b4b4b;
+}
+.post[data-layoutversion="2"] .post-tag {
+    color: #20746d;
+}
+.post[data-layoutversion="2"] .post-header,
+.post[data-layoutversion="2"] .post-content {
+    padding: 0 2em;
+}
+.post[data-layoutversion="2"] .post-header {
+    background-color: rgb(237 237 237);
+    padding: 3em 2em;
+    margin: 0 0 2em;
+    box-shadow: inset 0px -10px 10px -9px #c7c7c7;
+}
+
+.main-image {
+    background: url(/img/skeleton-loaders/banner.jpg) no-repeat center;
+    display: block;
+    height: 26em;
+    background-size: contain;
+    margin: 0;
 }
 
 .post-content.serif {

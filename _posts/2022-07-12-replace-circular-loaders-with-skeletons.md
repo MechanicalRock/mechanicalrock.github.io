@@ -76,7 +76,7 @@ This is starting to feel a bit better but I'm having to cognitively re-read ever
 Skeleton loaders force the developer to think about the content which it is emulating in a much more heuristic manner as they would have to take some time to think about the content's:
 
 * box model: position, height, width, padding...
-* content layout (ie. the first row is a title with a round action button to the right; the second row has a square image; the last row has two buttons)
+* content layout: rows, columns, flex direction, justify content...
 
 Let's use the following screenshot as our example.
 

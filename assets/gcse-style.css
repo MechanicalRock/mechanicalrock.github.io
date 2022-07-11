@@ -319,6 +319,7 @@ table td {
     color: #FFF;
     transition: border-color 0.2s;
     border-radius: 0.2em;
+    height: 1.7em;
 }
 .appBar .gsc-search-box .gsc-input-box:focus,
 .appBar .gsc-search-box .gsc-input-box:hover {
@@ -365,3 +366,9 @@ table td {
     100% { transform: rotate(360deg); }
   }
 
+
+@media screen and (max-width: 780px) {
+    .appBar .gsc-search-box .gsc-input-box {
+        height: auto;
+    }
+}

@@ -81,6 +81,7 @@ You should hit see a login page. However, we haven't set up authentication as ye
 
 <br>
 ### Creating a Cognito User Pool
+
 BRIEF SUMMARY OF COGNITO
 
 1. From the AWS search for Cognito
@@ -160,7 +161,17 @@ That's cognito done! We'll touch briefly on it again when we're configuring API 
 
 <br>
 ### Create a DynamoDB database
+
 BRIEF SUMMARY OF DYNAMODB
+
+1. Search for DynamoDB using the search bar.
+   ![](/img/react-to-full-stack/dynamodb-1.png)
+
+2. Using the side panel click 'Tables'
+   ![](/img/react-to-full-stack/dynamodb-2.png)
+
+3. On the top right hand corner of the screen, click 'Create table'.
+   ![](/img/react-to-full-stack/dynamodb-3.png)
 
 ## References
 

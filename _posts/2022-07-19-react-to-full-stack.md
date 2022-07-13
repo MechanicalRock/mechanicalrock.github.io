@@ -81,7 +81,7 @@ You should hit see a login page. However, we haven't set up authentication as ye
 
 <br>
 ### Creating a Cognito User Pool
-In the todo-app repo constants.ts (todo-app => src => constants). You will see a COGNITO_CONFIG object, we'll configure the to handle authentication in the next steps.
+BRIEF SUMMARY OF COGNITO
 
 1. From the AWS search for Cognito
    ![](/img/react-to-full-stack/cognito-1.png)
@@ -153,183 +153,16 @@ export const COGNITO_CONFIG = {
 16. Once you've saved your COGNITO_CONFIG with the updated values, you can now launch the application by running the command npm start. Once you hit the login page, login with the username and password you just created.
 
 You'll see this screen, ignore the error saying 'Sorry something went wrong'.
+
 ![](/img/react-to-full-stack/cognito-16.png)
 
 That's cognito done! We'll touch briefly on it again when we're configuring API gateway later down the track. For now move on to configuring our database.
 
-#### Discussion
-
-Fivetran uses [SHA-256 HMAC algorithm](https://en.wikipedia.org/wiki/HMAC) to sign the webhook payload using a a specified secret(`FiveTranSigningKeySecret`). This signature is calculated based on the payload body. To verify the signature, we generate our own signature to verify that the payload is from Fivetran and that the payload body is unmodified.
-The signature is located in the payload header as `event.headers['X-Fivetran-Signature-256']`, we then use the [crypto.timingSafeEqual](https://nodejs.org/api/crypto.html#cryptotimingsafeequala-b) function to prevent [timing attacks](https://en.wikipedia.org/wiki/Timing_attack) and verifiy the signature.
-
-```javascript
-import * as crypto from "crypto";
-
-const generated_key = signKey(fiveTranSigningKey, event.body);
-
-fiveTranSigningVerification(
-  generated_key,
-  event.headers["X-Fivetran-Signature-256"]
-);
-
-function fiveTranSigningVerification(
-  generatedKey: string,
-  fiveTranKey: string
-) {
-  if (
-    crypto.timingSafeEqual(Buffer.from(generatedKey), Buffer.from(fiveTranKey))
-  ) {
-    console.log("Valid Signature");
-  } else throw new Error(`Invalid Signature`);
-}
-```
-
 <br>
-
-### Creating FiveTran Webhook
-
-Currently, webhooks can only be created using the Fivetran API, for more infomation on Fivetran webhooks, see the getting started [documentation](https://fivetran.com/docs/rest-api/getting-started)
-
-In [Postman](https://app.getpostman.com/run-collection/ec3ad55bac7f5f22ef91), to apply webhook notifications across your account, set URL to:
-
-```javascript
-POST https://api.fivetran.com/v1/webhooks/account
-```
-
-Set Authorisation to Basis Auth:
-
-```javascript
-username = APIKey
-password = API Key Secret
-```
-
-<br>
-Make sure to copy in your ```your_aws_api_gateway_endpoint``` and ```FiveTranSigningKeySecret``` from previous steps.
-
-**Payload body:**
-
-```javascript
-{
-  "url": "your_aws_api_gateway_endpoint",
-  "events": [
-    "sync_end",
-    "dbt_run_failed"
-  ],
-  "active": true,
-  "secret": "FiveTranSigningKeySecret"
-}
-```
-
-![](/img/fivetran_postman_sc_1.png)
-
-<br>
-**Expected response:**
-```javascript
-{
-    "id": "connectorId",
-    "type": "account",
-    "url": "your_aws_api_gateway_endpoint",
-    "events": [
-        "sync_end",
-        "dbt_run_failed"
-    ],
-    "active": true,
-    "secret": "******",
-    "created_at": "2022-06-09T08:24:32.537Z",
-    "created_by": "some_value"
-}
-```
-
-<br>
-
-When a Fivetran sync ends in failure, or a dbt transformation fails, Fivetran will post to our webhook, which then in turn will send a message to our slack webhook.
-
-<br>
-<img src="/img/slack_fivetranmessage.png" alt="drawing" width="400"/>
-<br>
-
----
-
-**Example Payload body from Fivetran:**
-
-**syncEnd**
-
-```javascript
-{
-      event: 'sync_end',
-      created: '2021-08-18T11:38:34.386Z',
-      connector_type: 'asana',
-      connector_id: 'some_id',
-      destination_group_id: 'some_id',
-      data: {
-        status: 'FAILURE'
-      }
-}
-```
-
-**dbt_run_failed**
-
-```javascript
-{
-      event: 'dbt_run_failed',
-      created: '2022-06-01T07:41:30.389Z',
-      destination_group_id: 'some_id',
-      data: {
-        result: {
-          description: 'Steps: successful 0, failed 1',
-          stepResults: [
-            {
-              step: {
-                name: 'run dbt',
-                command: 'dbt run'
-              },
-              endTime: '2022-06-01T07:41:26.478Z',
-              success: false,
-              startTime: '2022-06-01T07:41:08.979Z',
-              commandResult: {
-                error: '',
-                output: "dbt Run failed: placeholder text",
-                exitCode: 1
-              },
-              failedModelRuns: 3,
-              successfulModelRuns: 0
-            }
-          ]
-        },
-        endTime: '2022-06-01T07:41:28.949Z',
-        dbtJobId: 'some_id',
-        startTime: '2022-06-01T07:40:38.917Z',
-        dbtJobName: 'at8_30',
-        startupDetails: {
-          type: 'manual',
-          userId: 'some_id'
-        }
-      }
-    }
-```
-
-<br>
-
-## Conclusion
-
-You now have live notifications into your Slack channel on when a error occurs in your Fivetran account! Much better than just a email notification. You can additionally tie this into your exisiting incident managment system!
-
-<br>
-
-### Examples
-
-[https://github.com/JMiocevich/Fivetran-Slack-Notifications](https://github.com/JMiocevich/Fivetran-Slack-Notifications)
-<br/>
-
----
-
-<br/>
+### Create a DynamoDB database
+BRIEF SUMMARY OF DYNAMODB
 
 ## References
-
-[https://fivetran.com/docs/functions/aws-lambda/sample-functions](https://fivetran.com/docs/functions/aws-lambda/sample-functions)
-
-[https://fivetran.com/docs/rest-api/webhooks](https://fivetran.com/docs/rest-api/webhooks)
 
 <br>
 If you have any questions or need assistance setting up your own notification system, feel free to [get in touch](https://www.mechanicalrock.io/lets-get-started/)

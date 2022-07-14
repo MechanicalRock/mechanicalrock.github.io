@@ -459,8 +459,12 @@ BRIEF OVERVIEW OF S3
 That's the s3 part done, our app is now hosted in the cloud, now to configure cloudfront to distribute it.
 
 <br>
-### Upload the React App to S3.
+### Create a cloudfront distribution
 BRIEF OVERVIEW OF S3
+
+1. Search for cloudfront using the search bar.
+   ![](/img/react-to-full-stack/cloudfront-1.png)
+
 ## References
 
 <br>

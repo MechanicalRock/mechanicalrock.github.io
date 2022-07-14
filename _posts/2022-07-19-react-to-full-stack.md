@@ -465,6 +465,44 @@ BRIEF OVERVIEW OF S3
 1. Search for cloudfront using the search bar.
    ![](/img/react-to-full-stack/cloudfront-1.png)
 
+2. On the right right side of your screen click 'Create distribution'.
+   ![](/img/react-to-full-stack/cloudfront-2.png)
+
+3. Under origin domain select the s3 bucket we created in the previous stage, leave the origin path blank.
+   ![](/img/react-to-full-stack/cloudfront-3.png)
+
+4. Under 'S3 bucket access' click 'Yes use OAI (bucket can restrict access to only CloudFront)', then click 'Create new OAI'.
+   ![](/img/react-to-full-stack/cloudfront-4.png)
+
+5. You will then see this pop-up giving you the option to create a custom name for your OAI, leave it as the default and click 'Create'.
+   ![](/img/react-to-full-stack/cloudfront-5.png)
+
+6. Then under 'Bucket policy' select 'Yes, update the bucket policy'.
+   ![](/img/react-to-full-stack/cloudfront-6.png)
+
+7. Scroll down to 'Viewer' and select allowed HTTP methods to be GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE
+   ![](/img/react-to-full-stack/cloudfront-7.png)
+
+8. Scroll right down to the bottom and set the 'Default root object' as index.html, leave everything else as default, then click 'Create distribution'.
+   ![](/img/react-to-full-stack/cloudfront-8.png)
+
+9. It will take a few minutes for the cloudfront distribution to deploy, once it does you will see this screen, copy the distributed domain name.
+   ![](/img/react-to-full-stack/cloudfront-9.png)
+
+10. Open a new browser window. paste the distributed domain name you just copied, and viola your app is live and hosted. Go ahead login and play around with it.
+    ![](/img/react-to-full-stack/cloudfront-10.png)
+
+<br>
+### Conclusion
+There is a lot more that should be done to have the app ready for production. These being including a web application firewall for security and maybe attaching a more user-friendly domain name. I challenge you to try and integrate these, AWS has services tailored for both of these requirements.
+
+Experiment, break stuff, and keep learning that's the only way you will grow. I hope this tutorial was useful and gives you an idea of the infrastructure required to create a full stack cloud native serverless web application.
+
+As you may have noticed, using the console requires a lot of steps, with very specific configuration at times. It can be very easy to forget a step, as I am sure you may have found out if you followed this tutorial. Here at Mechanical Rock, we rarely use the console, all our infrastructrue is provisioned as code. In my tutorial I will show you how to deploy the app using provisioning the exact same infrastructure, however, we won't touch the console at all, it will all be done as code. Stay tuned for the sequel to this post.
+
+Until then if you need a cloud native web app developed, slide in my inbox at dale.murugan@mechanicalrock.io
+
+<br>
 ## References
 
 <br>

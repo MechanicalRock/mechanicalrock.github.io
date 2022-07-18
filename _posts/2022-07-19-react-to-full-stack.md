@@ -52,13 +52,13 @@ All of the AWS services integrate seamlessly providing a smooth development expe
 
 These are the steps we will take:
 
-1. [Clone and launch the todo app locally.](#the-todo-app)
-2. [Create the Cognito user pool - this will handle authentication and authorisation.](#creating-a-cognito-user-pool-for-authentication)
-3. [Create the DynamoDB database.](#create-a-dynamodb-database)
-4. [Create the Lambda function and give it permission to access DynamoDB.](#create-a-lambda-function)
-5. [Configure a REST API using API Gateway and integrate it with the Lambda function.](#create-a-rest-api-with-api-gateway)
+1. [Clone and launch the todo app locally](#the-todo-app)
+2. [Create the Cognito user pool - this will handle authentication and authorisation](#creating-a-cognito-user-pool-for-authentication)
+3. [Create the DynamoDB database](#create-a-dynamodb-database)
+4. [Create the Lambda function and give it permission to access DynamoDB](#create-a-lambda-function)
+5. [Configure a REST API using API Gateway and integrate it with the Lambda function](#create-a-rest-api-with-api-gateway)
 6. [Upload the app to S3.](#upload-the-react-app-to-s3)
-7. [Serve the app using a Cloudfront distribution.](#create-a-cloudfront-distribution)
+7. [Serve the app using a Cloudfront distribution](#create-a-cloudfront-distribution)
 
 ---
 
@@ -366,7 +366,7 @@ That's it for provisioning our database.
 
     ![](/img/react-to-full-stack/lambda-12.png)
 
-13. 'AmazonDynamoDBFullAccess' is the policy gives our Lambda function full CRUD access to our DynamoDB table. Check the box next to the policy then click 'Attach policies'.
+13. 'AmazonDynamoDBFullAccess' is the policy that gives our Lambda function full CRUD access to our DynamoDB table. Check the box next to the policy then click 'Attach policies'.
 
     ![](/img/react-to-full-stack/lambda-13.png)
 
@@ -376,9 +376,9 @@ That's the Lambda done! Now time to configure API gateway.
 
 ### Create a REST API with API Gateway
 
-[AWS API Gateway](https://aws.amazon.com/api-gateway/) is a managed service that makes it easy to create APIs at scale. We are going to use API to create a REST API for our app.
+[AWS API Gateway](https://aws.amazon.com/api-gateway/) is a managed service that makes it easy to create APIs at scale. We are going to use it to create a REST API for our app.
 
-1. Search for API gateway in the search bar, and click it from the drop down.
+1. Search for API gateway in the search bar.
 
    ![](/img/react-to-full-stack/api-1.png)
 
@@ -418,7 +418,7 @@ That's the Lambda done! Now time to configure API gateway.
 
     ![](/img/react-to-full-stack/api-10.png)
 
-11. You should now see this screen. As the illustration shows, a fetch from the frontend hits the method request, the request is forward to the Lambda, the Lambda does it's thing (in this case gets todos from the DynamoDB table) returns the response to API gateway and API then returns the response to the frontend.
+11. You should now see this screen. As the illustration shows, a fetch from the frontend hits the method request, the request is forward to the Lambda, the Lambda does it's thing (in this case gets todos from the DynamoDB table) and returns the response to API gateway, API gateway then returns the response to the frontend.
 
     ![](/img/react-to-full-stack/api-11.png)
 
@@ -430,7 +430,7 @@ That's the Lambda done! Now time to configure API gateway.
 
     ![](/img/react-to-full-stack/api-13.png)
 
-14. Click the newly created '/todo' endpoint then click 'Actions' => 'Create Method'. Like before an empty drop-down list will appear select the 'GET' method then click the check icon. You will then be brought to this screen, the configuration for the method is the exact same: Lambda integration type, check 'Use Proxy Integration', select the same Lambda region and function name then click save.
+14. Click the newly created '/todo' endpoint then click 'Actions' => 'Create Method'. Like before, an empty drop-down list will appear select the 'GET' method then click the check icon. You will then be brought to this screen, the configuration for the method is the exact same: Lambda integration type, check 'Use Proxy Integration', select the same Lambda region and function name then click save.
 
     ![](/img/react-to-full-stack/api-14.png)
 
@@ -462,7 +462,7 @@ That's the Lambda done! Now time to configure API gateway.
 
     ![](/img/react-to-full-stack/api-21.png)
 
-22. Click the box and a drop down list will appear, select the cognito authorizer we previously created, then click the check icon to confirm.
+22. Click the box and a drop down list will appear, select the cognito authorizer we just created, then click the check icon to confirm.
 
     ![](/img/react-to-full-stack/api-22.png)
 
@@ -478,7 +478,7 @@ That's the Lambda done! Now time to configure API gateway.
 
     ![](/img/react-to-full-stack/api-25.png)
 
-    Now open constants.ts (todo-app > src > constants > constants.ts). Paste your invoke URL in both the TODOS_API and TODO_API values. You will also need to add the relevant endpoints to each API constant. So add '/todos' to the end of the invoke URL in TODOS_API and add '/todo' to the end of your invoke URL for TODO_API. At this point your API variables should look like this.
+    Now open constants.ts (todo-app > src > constants > constants.ts). Paste your invoke URL in both the TODOS_API and TODO_API values. You will also need to add the relevant endpoints to each API. So add '/todos' to the end of the invoke URL in TODOS_API and add '/todo' to the end of your invoke URL for TODO_API. At this point your API variables should look like this.
 
     ```javascript
     export const TODOS_API =
@@ -535,13 +535,13 @@ Now time to get the app off localhost and onto an actual domain. Let's upload ou
 
    ![](/img/react-to-full-stack/s3-10.png)
 
-That's the S3 part done, our app is now hosted in the cloud, now to configure Cloudfront to distribute it.
+That's the S3 part done, our app is now securely stored in the cloud, now to configure Cloudfront to distribute it.
 
 <br>
 
 ### Create a cloudfront distribution
 
-[AWS Cloudfront](https://www.amazonaws.cn/en/cloudfront/) a content delivery network (CDN) that will serve your application to your end users.
+[AWS Cloudfront](https://www.amazonaws.cn/en/cloudfront/) is a content delivery network (CDN) that will serve your application to your end users.
 
 1. Search for cloudfront using the search bar.
 

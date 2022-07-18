@@ -26,24 +26,24 @@ As previously stated, our backend will be on the cloud, using AWS's serverless i
 
 Let's start by defining some basic requirements for full stack CRUD (create, read, update, delete) app. Generally, a full stack CRUD application requires the following:
 
-- Ability to serve your application to users.
-- Ability to authenticate users to enter your app.
-- Somewhere to store your application build.
-- Ability to handle authorisation for API calls made from the app.
-- Ability to handle interactions between the app and database.
-- A database to store and retrieve information.
+- Ability to serve your application to users
+- Ability to authenticate users to enter your app
+- Somewhere to store your application build
+- Ability to handle authorisation for API calls made from the app
+- Ability to handle interactions between the app and database
+- A database to store and retrieve information
 
 **Basic Architecture Diagram**
 ![Basic Architecture diagram](/img/react-to-full-stack/react-to-full-stack-basic-architecture.png)
 
 Each of these requirements have an infinite number of solutions, in comes AWS, your one stop shop with a cloud based service for every requirement.
 
-- Ability to serve your application to users: [AWS Cloudfront](https://www.amazonaws.cn/en/cloudfront/).
-- Ability to authenticate users to enter your app: [AWS Cognito](https://aws.amazon.com/cognito/).
-- Somewhere to store your application build: [AWS S3](https://aws.amazon.com/s3/).
-- Ability to handle authorisation for API calls made from the app: [AWS Cognito](https://aws.amazon.com/cognito/).
-- Ability to handle interactions between the app and database: [AWS API Gateway](https://aws.amazon.com/api-gateway/) & [AWS Lambda](https://aws.amazon.com/lambda/).
-- A database to store information and retrieve information: [AWS DynamoDB](https://aws.amazon.com/dynamodb/).
+- Ability to serve your application to users: [AWS Cloudfront](https://www.amazonaws.cn/en/cloudfront/)
+- Ability to authenticate users to enter your app: [AWS Cognito](https://aws.amazon.com/cognito/)
+- Somewhere to store your application build: [AWS S3](https://aws.amazon.com/s3/)
+- Ability to handle authorisation for API calls made from the app: [AWS Cognito](https://aws.amazon.com/cognito/)
+- Ability to handle interactions between the app and database: [AWS API Gateway](https://aws.amazon.com/api-gateway/) & [AWS Lambda](https://aws.amazon.com/lambda/)
+- A database to store information and retrieve information: [AWS DynamoDB](https://aws.amazon.com/dynamodb/)
 
 **Architecture Diagram with AWS**
 ![Architecture diagram](/img/react-to-full-stack/react-to-full-stack-aws-architecture.png)
@@ -70,9 +70,9 @@ These are the steps we will take:
 
 The todo app is a basic CRUD app, you'll be able to create a todo, mark a todo as 'done', edit a todo, or delete a todo. These are the steps to setup the app locally:
 
-1. Clone this [repo](https://github.com/DaleMurugan/todo-app).
-2. Run 'npm i' to install required packages.
-3. Run 'npm start' to launch the application locally.
+1. Clone this [repo](https://github.com/DaleMurugan/todo-app)
+2. Run 'npm i' to install required packages
+3. Run 'npm start' to launch the application locally
 
 You should see a login page, however, we haven't set up authentication as yet - so it won't work. Which takes us to the next stage, configuring Cognito for authentication.
 

@@ -70,7 +70,7 @@ These are the steps we will take:
 
 The todo app is a basic CRUD app, you'll be able to create a todo, mark a todo as 'done', edit a todo, or delete a todo. These are the steps to setup the app locally:
 
-1. Clone this [repo](https://github.com/DaleMurugan/tutorial-react-to-full-stack-todo-app/settings)
+1. Clone this [repo](https://github.com/DaleMurugan/tutorial-react-to-full-stack-todo-app.git)
 2. Run 'npm i' to install required packages
 3. Run 'npm start' to launch the application locally
 

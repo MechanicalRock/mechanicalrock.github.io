@@ -2,7 +2,7 @@
 layout: post
 title: React To Full Stack
 date: 2022-07-19
-tags: [react, mui, typescript, aws]
+tags: [react, node, aws]
 author: Dale Murugan
 image: /img/react-to-full-stack/react-to-full-stack-main.png
 description: "Level-up from a React to a Full Stack developer. A definitive guide for junior developers"

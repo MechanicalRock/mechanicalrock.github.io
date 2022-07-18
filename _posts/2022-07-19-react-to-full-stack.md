@@ -593,7 +593,7 @@ Experiment, break stuff, and keep learning, that's the only way you will grow. I
 
 As you may have noticed, using the console requires a lot of steps, with very specific configuration at times. It can be very easy to forget a step, as I am sure you may have found out if you followed this tutorial. Here at Mechanical Rock, we rarely use the console, as all our infrastructrue is provisioned as code. In my next tutorial I will show you how to provision the same infrastructure and host the app without touching the the console at all, it will all be done as code. Stay tuned for the sequel in this series.
 
-Until then, like always, if you need a cloud native web app developed slide in my dm's at dale.murugan@mechanicalrock.io
+If you have any questions or need a cloud native web application developed, feel free to [get in touch](https://www.mechanicalrock.io/lets-get-started/).
 
 <br>
 
@@ -603,4 +603,3 @@ Until then, like always, if you need a cloud native web app developed slide in m
 
 [https://aws.amazon.com/getting-started/hands-on/build-serverless-web-app-lambda-apigateway-s3-dynamodb-cognito/](https://aws.amazon.com/getting-started/hands-on/build-serverless-web-app-lambda-apigateway-s3-dynamodb-cognito/)
 <br>
-If you have any questions or need assistance setting up your own notification system, feel free to [get in touch](https://www.mechanicalrock.io/lets-get-started/).

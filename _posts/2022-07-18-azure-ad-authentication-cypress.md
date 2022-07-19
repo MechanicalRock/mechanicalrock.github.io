@@ -8,7 +8,7 @@ author: Tim Veletta
 tags: azure ad activedirectory cypress authentication msal react
 ---
 
-Its been a little over 2 years since I wrote about [Azure AD authentication in Cypress tests](2020-05-05-azure-ad-authentication-cypress.md) and as such, it is out of date. In that time, [Cypress](https://cypress.io) has gone from strength-to-strength but the big change in that time has been the [migration from the Azure Active Directory Library (ADAL) to the Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-migration). In this post, I will discuss how to authenticate with MSAL in your Cypress tests making reference to the change in approach from that post 2 years ago as a result of the migration.
+It has been a little over 2 years since I wrote about [Azure AD authentication in Cypress tests](http://mechanicalrock.github.io/2020/05/05/azure-ad-authentication-cypress.html) and as such, it is out of date. In that time, [Cypress](https://cypress.io) has gone from strength-to-strength but the big change in that time has been the [migration from the Azure Active Directory Library (ADAL) to the Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-migration). In this post, I will discuss how to authenticate with MSAL in your Cypress tests making reference to the change in approach from that post 2 years ago as a result of the migration.
 
 > If you'd just like to get the solution I've created a demo repo on [Github](https://github.com/MechanicalRock/cypress-msal-demo) which you can reference.
 
@@ -23,6 +23,7 @@ So, at a high level we will:
 - [1. Acquire a token from Azure AD 🔑](#1-acquire-a-token-from-azure-ad-)
 - [2. Save the token to the session storage 💾](#2-save-the-token-to-the-session-storage-)
 - [3. Run the test ✅](#3-run-the-test-)
+- [E2E testing approach](#e2e-testing-approach)
 
 We will do all this in a [Cypress command](https://docs.cypress.io/api/cypress-api/custom-commands) so that we can run `cy.login()` to authenticate with Azure AD before our tests run. Custom commands are created in the `cypress/support/commands.ts` file by default.
 
@@ -38,7 +39,7 @@ It is important to note that this test user:
 
 Now, we can emulate the request a browser makes to the Azure token endpoint when a user enters their login details on the page.
 
-```javascript
+```typescript
 Cypress.Commands.add('login', () => {
  cy.request({
   method: 'POST',
@@ -89,7 +90,7 @@ We begin by installing the `jsonwebtoken` library so that we can decode the toke
 - `localAccountId` - is used to identify a user within the the Azure tenant
 - `homeAccountId` - is used to uniquely identify a user in across all of Azure Active Directory
 
-```javascript
+```typescript
 const injectTokens = (tokenResponse: ExternalTokenResponse) => {
  const environment = 'login.windows.net';
  const idTokenClaims: JwtPayload = decode(tokenResponse.id_token);
@@ -103,13 +104,13 @@ const injectTokens = (tokenResponse: ExternalTokenResponse) => {
 
 Using these values, we can reconstruct the session storage items that `@azure/msal-browser` expects to see when checking if a user is already logged in. We begin by assembling the session item key as follows.
 
-```javascript
+```typescript
 const tokenId = `${homeAccountId}-${environment}-${realm}`;
 ```
 
 The session item value consists of the deconstructed token, some information about the Azure AD tenant and also the user. We then store that value in session storage.
 
-```javascript
+```typescript
 const token = {
  authorityType: 'MSSTS',
  homeAccountId,
@@ -125,7 +126,7 @@ sessionStorage.setItem(tokenId, JSON.stringify(token));
 
 We follow a similar pattern for the `accesstoken` session item which includes details about the token expiry, session scopes and the token itself.
 
-```javascript
+```typescript
 const accessTokenId = `${homeAccountId}-${environment}-accesstoken-${Cypress.env(
  'AZURE_CLIENT_ID'
 )}-${Cypress.env('AZURE_TENANT_ID')}-${tokenResponse.scope}--`;
@@ -153,7 +154,7 @@ Note that in the screenshot above, we had 4 items in session storage but we have
 
 We can now write a test that demonstrates the login functionality as shown below.
 
-```javascript
+```typescript
 describe('login spec', () => {
  before(() => {
   cy.login();
@@ -178,8 +179,8 @@ One of the big changes from the previous approach was the move from using the `c
 
 But why should you go to all this effort to test your app end-to-end (e2e) and not use other approaches such as disabling the authentication when running your e2e tests?
 
-Its ultimately about having confidence in what you're deploying and being able to catch issues earlier **reducing lead times** and **time to restore** when things do go wrong.
+It's ultimately about having confidence in what you're deploying and being able to catch issues earlier **reducing lead times** and **time to restore** when things do go wrong.
 
-Its something we are highly motivated about at Mechanical Rock so if your users are catching issues before you do or you just don't have confidence in what you're delivering please [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)
+We are highly motivated about these sorts of things at Mechanical Rock so if your users are catching issues before you do or you just don't have confidence in what you're delivering please [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)
 
 ![Mechanical Rock Logo](/img/mr-logo-dark-landscape.jpg){:loading="lazy"}

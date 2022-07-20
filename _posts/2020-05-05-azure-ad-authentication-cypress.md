@@ -7,6 +7,8 @@ author: Tim Veletta
 image: img/blog/azure-ad-cypress/header.png
 ---
 
+> There is a newer version of this article: [Azure AD authentication in Cypress tests with MSAL](http://mechanicalrock.github.io/2022/07/18/azure-ad-authentication-cypress.html)
+
 _Update 4th December 2020: The article has been updated to remove the resource key from the login command body which is POSTed to the AzureAD endpoint for authentication, as it is no longer required._
 
 [Cypress](https://cypress.io) is a browser-based, end-to-end testing framework which makes testing easy and, dare I say it, fun. At Mechanical Rock, we are using Cypress to automate the testing of user flows and interactions with our applications to reduce feedback cycles and prevent issues from affecting users. It has been useful for developers since Cypress tests are relatively easy to write, run and debug. Our clients have also benefited as we are able to automate testing that would have been done manually otherwise.

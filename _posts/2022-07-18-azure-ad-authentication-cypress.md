@@ -5,6 +5,7 @@ title: Azure AD Authentication in Cypress Tests with MSAL
 date: 2022-07-18
 highlight: monokai
 author: Tim Veletta
+image: /img/blog/azure-ad-cypress/banner.jpg
 tags: azure ad activedirectory cypress authentication msal react
 ---
 
@@ -23,7 +24,6 @@ So, at a high level we will:
 - [1. Acquire a token from Azure AD 🔑](#1-acquire-a-token-from-azure-ad-)
 - [2. Save the token to the session storage 💾](#2-save-the-token-to-the-session-storage-)
 - [3. Run the test ✅](#3-run-the-test-)
-- [E2E testing approach](#e2e-testing-approach)
 
 We will do all this in a [Cypress command](https://docs.cypress.io/api/cypress-api/custom-commands) so that we can run `cy.login()` to authenticate with Azure AD before our tests run. Custom commands are created in the `cypress/support/commands.ts` file by default.
 
@@ -82,7 +82,7 @@ Now that we can successfully obtain a token for our test user, we can now move o
 
 Prior to making a login request, `@azure/msal-browser` checks the session storage for a number of values to see if a user is currently logged in and has a valid session token. If so, the user is not redirected to log in again and can simply continue using the app as expected. This step involves populating those session storage values that `@azure/msal-browser` expects so that we can convince it that we have already logged in through the browser.
 
-![MSAL browser session values](/img/blog/azure-ad-cypress/msal-browser-session.jpg){:loading="lazy"}
+![MSAL browser session values](/img/blog/azure-ad-cypress/msal-browser-session.jpg){:width="740px" height="54px" loading="lazy"}
 
 We begin by installing the `jsonwebtoken` library so that we can decode the token response from Azure AD. Next, we extract some values that are used in multiple places in the session storage. These include:
 
@@ -171,7 +171,7 @@ describe('login spec', () => {
 
 Last but not least, lets see it running successfully.
 
-![MSAL browser session values](/img/blog/azure-ad-cypress/cypress-test.jpg){:loading="lazy"}
+![MSAL browser session values](/img/blog/azure-ad-cypress/cypress-test.jpg){:width="740px" height="353px" loading="lazy"}
 
 ## E2E testing approach
 
@@ -183,4 +183,5 @@ It's ultimately about having confidence in what you're deploying and being able 
 
 We are highly motivated about these sorts of things at Mechanical Rock so if your users are catching issues before you do or you just don't have confidence in what you're delivering please [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)
 
-![Mechanical Rock Logo](/img/mr-logo-dark-landscape.jpg){:loading="lazy"}
+Photo by <a href="https://unsplash.com/@sigmund?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sigmund</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  

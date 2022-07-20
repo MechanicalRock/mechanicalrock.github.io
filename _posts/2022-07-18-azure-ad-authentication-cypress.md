@@ -183,5 +183,5 @@ It's ultimately about having confidence in what you're deploying and being able 
 
 We are highly motivated about these sorts of things at Mechanical Rock so if your users are catching issues before you do or you just don't have confidence in what you're delivering please [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)
 
-Photo by <a href="https://unsplash.com/@sigmund?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sigmund</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+> Header image by <a href="https://unsplash.com/@sigmund?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sigmund</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   

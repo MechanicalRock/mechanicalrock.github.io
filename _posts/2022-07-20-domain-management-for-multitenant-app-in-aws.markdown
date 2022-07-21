@@ -17,11 +17,11 @@ I have recently started building an application that has to manage multiple clie
 
 You might think it has more business value for you to focus on maintaining and developing the application, but managing the domain is critical in keeping it live and accessible. 
 
-Before we dive into the solution, what is a multitenant application?  A multitenant application serves multiple distinct clients, or groups, using a single deployment of an application, its infrastructure and business logic. The book [Why Multi-Tenancy is Key to Successful and Sustainable Software-as-a-Service](https://books.apple.com/us/book/why-multi-tenancy-is-key-to-successful-and/id419723802) written by Larry Aiken explains the why it is essential to have multitenancy for some applications as compared to a single tenant.
+Before we dive into the solution, what is a multi-tenant application?  A multi-tenant application serves multiple distinct clients, or groups, using a single deployment of an application, its infrastructure and business logic. The book [Why Multi-Tenancy is Key to Successful and Sustainable Software-as-a-Service](https://books.apple.com/us/book/why-multi-tenancy-is-key-to-successful-and/id419723802) written by Larry Aiken explains the why it is essential to have multi-tenancy for some applications as compared to a single tenant.
 
-Why can multitenancy be challenging? Multitenancy is a challenging problem because you must consider your application's security, optimisation, monitoring, and high availability. As your client base grows, faults may have a higher severity.
+Why can multi-tenancy be challenging? multi-tenancy is a challenging problem because you must consider your application's security, optimisation, monitoring, and high availability. As your client base grows, faults may have a higher severity.
 
-In this post, I would love to share my thoughts on how you can design your application to increase the availability, visibility and reduce some repetitive tasks for each client within the same application instance for domain management.
+Discussion on whether multi-tenancy is right for you is outside the scope of this post. Instead in this post, I would love to share my thoughts on how you can design your application to increase the availability, visibility and reduce some repetitive tasks for each client within the same application instance for domain management.
 
 ### Solution
 

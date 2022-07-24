@@ -17,7 +17,7 @@ I have recently started building an application that has to manage multiple clie
 
 You might think it has more business value for you to focus on maintaining and developing the application, but managing the domain is critical in keeping it live and accessible. 
 
-Before we dive into the solution, what is a multi-tenant application?  A multi-tenant application serves multiple distinct clients, or groups, using a single deployment of an application, its infrastructure and business logic. The book [Why Multi-Tenancy is Key to Successful and Sustainable Software-as-a-Service](https://books.apple.com/us/book/why-multi-tenancy-is-key-to-successful-and/id419723802) written by Larry Aiken explains the why it is essential to have multi-tenancy for some applications as compared to a single tenant.
+Before we dive into the solution, what is a multi-tenant application?  A multi-tenant application serves multiple distinct clients, or groups, using a single deployment of an application, its infrastructure and business logic. The book [Why Multi-Tenancy is Key to Successful and Sustainable Software-as-a-Service](https://books.apple.com/us/book/why-multi-tenancy-is-key-to-successful-and/id419723802) written by Larry Aiken explains the why it is essential to have multi-tenancy for some applications as compared to a single tenant. He asserts multi-tenant application is the architecture for the best Software as a Service efficiency. 
 
 Why can multi-tenancy be challenging? multi-tenancy is a challenging problem because you must consider your application's security, optimisation, monitoring, and high availability. As your client base grows, faults may have a higher severity.
 
@@ -44,7 +44,7 @@ AWS offers a highly scalable Domain Name System (DNS) Web service called [AWS Ro
 
 Amazon CloudFront](https://aws.amazon.com/cloudfront/), a content delivery network, speeds up the distribution of your static and dynamic web content. You can configure a single CloudFront distribution for each environment in AWS to serve requests from multiple origins or subdomains. It is essential to have [SSL certificates](https://en.wikipedia.org/wiki/Public_key_certificate) configured for each subdomains of your web application.  You can have separate CloudFront distributions, and SSL certificates, for each subdomain, but using a single distribution, and SSL certificate, can reduce the overhead for maintenance. For example, use a single SSL certificate across all subdomains.   
 
-#### Principle 
+#### Principles
 
 There are a few principles you should follow, which are listed below:
 

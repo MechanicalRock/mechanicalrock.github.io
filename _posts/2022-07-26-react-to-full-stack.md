@@ -1,7 +1,7 @@
 ---
 layout: post
 title: React To Full Stack
-date: 2022-07-19
+date: 2022-07-26
 tags: [react, node, aws]
 author: Dale Murugan
 image: /img/react-to-full-stack/react-to-full-stack-main.png

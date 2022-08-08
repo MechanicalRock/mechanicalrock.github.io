@@ -25,32 +25,32 @@ In our Cypress code, we add a custom _command_ to authenticate. Commands are use
 
 ```javascript
 Cypress.Commands.add('login', () => {
-	cy.request({
-		method: 'POST',
-		url: `https://login.microsoftonline.com/${Cypress.config(
-			'tenantId'
-		)}/oauth2/token`,
-		form: true,
-		body: {
-			grant_type: 'client_credentials',
-			client_id: Cypress.config('clientId'),
-			client_secret: Cypress.config('clientSecret'),
-		},
-	}).then((response) => {
-		const ADALToken = response.body.access_token;
-		const expiresOn = response.body.expires_on;
+ cy.request({
+  method: 'POST',
+  url: `https://login.microsoftonline.com/${Cypress.config(
+   'tenantId'
+  )}/oauth2/token`,
+  form: true,
+  body: {
+   grant_type: 'client_credentials',
+   client_id: Cypress.config('clientId'),
+   client_secret: Cypress.config('clientSecret'),
+  },
+ }).then((response) => {
+  const ADALToken = response.body.access_token;
+  const expiresOn = response.body.expires_on;
 
-		localStorage.setItem('adal.token.keys', `${Cypress.config('clientId')}|`);
-		localStorage.setItem(
-			`adal.access.token.key${Cypress.config('clientId')}`,
-			ADALToken
-		);
-		localStorage.setItem(
-			`adal.expiration.key${Cypress.config('clientId')}`,
-			expiresOn
-		);
-		localStorage.setItem('adal.idtoken', ADALToken);
-	});
+  localStorage.setItem('adal.token.keys', `${Cypress.config('clientId')}|`);
+  localStorage.setItem(
+   `adal.access.token.key${Cypress.config('clientId')}`,
+   ADALToken
+  );
+  localStorage.setItem(
+   `adal.expiration.key${Cypress.config('clientId')}`,
+   expiresOn
+  );
+  localStorage.setItem('adal.idtoken', ADALToken);
+ });
 });
 ```
 
@@ -78,11 +78,11 @@ import { authContext } from './auth'; // contains authentication config
 const DO_NOT_LOGIN = false;
 
 runWithAdal(
-	authContext,
-	() => {
-		ReactDOM.render(<App />, document.getElementById('root'));
-	},
-	DO_NOT_LOGIN
+ authContext,
+ () => {
+  ReactDOM.render(<App />, document.getElementById('root'));
+ },
+ DO_NOT_LOGIN
 );
 ```
 
@@ -119,7 +119,7 @@ One simple way of ensuring we have a valid token when we run the end-to-end test
 
 ```javascript
 beforeEach(() => {
-	cy.login();
+ cy.login();
 });
 ```
 

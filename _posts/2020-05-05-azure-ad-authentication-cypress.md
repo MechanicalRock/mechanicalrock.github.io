@@ -7,7 +7,7 @@ author: Tim Veletta
 image: img/blog/azure-ad-cypress/header.png
 ---
 
-> There is a newer version of this article: [Azure AD authentication in Cypress tests with MSAL](http://mechanicalrock.github.io/2022/07/18/azure-ad-authentication-cypress.html)
+> There is a newer version of this article: [Azure AD authentication in Cypress tests with MSAL](http://mechanicalrock.github.io/2022/08/08/azure-ad-authentication-cypress.html)
 
 _Update 4th December 2020: The article has been updated to remove the resource key from the login command body which is POSTed to the AzureAD endpoint for authentication, as it is no longer required._
 
@@ -24,25 +24,33 @@ Looking through the Azure documentation, there was a rather [helpful article](ht
 In our Cypress code, we add a custom _command_ to authenticate. Commands are used for adding or overriding functionality within Cypress and are defined in the `cypress/support/commands.js` file by default. In our case, we are adding a custom command called `login` so that we can use it in our tests simply through `cy.login()`.
 
 ```javascript
-Cypress.Commands.add("login", () => {
-  cy.request({
-    method: "POST",
-    url: `https://login.microsoftonline.com/${Cypress.config("tenantId")}/oauth2/token`,
-    form: true,
-    body: {
-      grant_type: "client_credentials",
-      client_id: Cypress.config("clientId"),
-      client_secret: Cypress.config("clientSecret"),
-    },
-  }).then(response => {
-    const ADALToken = response.body.access_token;
-    const expiresOn = response.body.expires_on;
+Cypress.Commands.add('login', () => {
+	cy.request({
+		method: 'POST',
+		url: `https://login.microsoftonline.com/${Cypress.config(
+			'tenantId'
+		)}/oauth2/token`,
+		form: true,
+		body: {
+			grant_type: 'client_credentials',
+			client_id: Cypress.config('clientId'),
+			client_secret: Cypress.config('clientSecret'),
+		},
+	}).then((response) => {
+		const ADALToken = response.body.access_token;
+		const expiresOn = response.body.expires_on;
 
-    localStorage.setItem("adal.token.keys", `${Cypress.config("clientId")}|`);
-    localStorage.setItem(`adal.access.token.key${Cypress.config("clientId")}`, ADALToken);
-    localStorage.setItem(`adal.expiration.key${Cypress.config("clientId")}`, expiresOn);
-    localStorage.setItem("adal.idtoken", ADALToken);
-  });
+		localStorage.setItem('adal.token.keys', `${Cypress.config('clientId')}|`);
+		localStorage.setItem(
+			`adal.access.token.key${Cypress.config('clientId')}`,
+			ADALToken
+		);
+		localStorage.setItem(
+			`adal.expiration.key${Cypress.config('clientId')}`,
+			expiresOn
+		);
+		localStorage.setItem('adal.idtoken', ADALToken);
+	});
 });
 ```
 
@@ -64,17 +72,17 @@ We then extract the token and expiry from the response before setting some varia
 Previously in our `index.tsx`, we would use the `runWithAdal` function provided by `react-adal` to authenticate as follows.
 
 ```javascript
-import { runWithAdal } from "react-adal";
-import { authContext } from "./auth"; // contains authentication config
+import { runWithAdal } from 'react-adal';
+import { authContext } from './auth'; // contains authentication config
 
 const DO_NOT_LOGIN = false;
 
 runWithAdal(
-  authContext,
-  () => {
-    ReactDOM.render(<App />, document.getElementById("root"));
-  },
-  DO_NOT_LOGIN,
+	authContext,
+	() => {
+		ReactDOM.render(<App />, document.getElementById('root'));
+	},
+	DO_NOT_LOGIN
 );
 ```
 
@@ -111,7 +119,7 @@ One simple way of ensuring we have a valid token when we run the end-to-end test
 
 ```javascript
 beforeEach(() => {
-  cy.login();
+	cy.login();
 });
 ```
 

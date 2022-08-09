@@ -19,14 +19,14 @@ There are many approaches to building an API including the REST APIs. A REST API
 
 ##### What is GraphQL?
 
-GraphQL is a query language for your API, a specification, and a set of tools that operates over a single endpoint using HTTP
+GraphQL is a query language for your API, a specification, and a set of tools that operates over a single endpoint using HTTP.
 
 GraphQL gives the client the power to ask for exactly what they need and get back predictable results. Making updates to data is made simple with graphql mutations, allowing developers to describe how the data should change.
 
 ##### The Core Difference Between REST APIs and GraphQL
 
-GraphQL follows the same set of constraints as REST APIs, but it organizes data into a graph using one interface. It shifts control over what data is returned (or mutated) to the client.
-Over the last few years, REST has been used to make new APIs, while the focus of GraphQL has been to optimize for performance and flexibility
+GraphQL follows the same set of constraints as REST APIs, but it shifts control over what data is returned (or mutated) to the client.
+Over the last few years, REST has been used to make new APIs, while the focus of GraphQL has been to optimize for performance and flexibility.
 
 ##### What is AWS AppSync?
 
@@ -38,7 +38,7 @@ A traditional application that is not updated in realtime, requires the user to 
 
 In contrast, a real-time web application updates immediately when new information is available without having to reload or request new data for the page. This is accomplished through a constant two way communication channel that remains open throughout the life of the user session. This constant connection allows the application server to send messages to the client. Applications that use real-time data, needs a mechanism where the server can push an updated response.
 
-In this tutorial, you’ll learn how to bring a realtime functionality into your app by implementing GraphQL subscriptions and AWS Appsync directives. The goal is to implement a graphql subscription simply with "@aws_subscribe" directive.
+In this tutorial, you’ll learn how to bring a realtime functionality into your app by implementing GraphQL subscriptions and AWS directives in your Appsync schema. The goal is to implement a graphql subscription simply with "@aws_subscribe" directive.
 
 Note that, this article doesn't specify a data source because the data source could be anything, a Lambda, Amazon DynamoDB, or Amazon OpenSearch Service. Also, I assume you have already set up your infrastructure if you don't still know how to do that, I would highly recommend to have a read through [This amazing article from Shermayne Lee](https://mechanicalrock.github.io/2020/05/04/putting-the-serverless-in-graphQL-with-AppSync.html).
 

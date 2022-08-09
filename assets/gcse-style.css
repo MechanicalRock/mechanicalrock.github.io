@@ -44,6 +44,7 @@ table td {
     font-size: 1em;
     align-content: center;
     justify-content: center;
+    border-radius: 0.3em;
 }
 
 .gsc-search-button.gsc-search-button-v2 svg {
@@ -314,9 +315,17 @@ table td {
 }
 .appBar .gsc-search-box .gsc-input-box {
     background-color: var(--color-grey-dark);
-    border-color: #FFF;
+    border-color: #6d6d6d;
     color: #FFF;
+    transition: border-color 0.2s;
     border-radius: 0.2em;
+    height: 2.4em;
+    margin-right: 0.2em;
+    padding: 0;
+}
+.appBar .gsc-search-box .gsc-input-box:focus,
+.appBar .gsc-search-box .gsc-input-box:hover {
+    border-color: #FFF;
 }
 .appBar .gsc-search-box .gsc-input-box input {
     background-color: transparent;
@@ -359,3 +368,9 @@ table td {
     100% { transform: rotate(360deg); }
   }
 
+
+@media screen and (max-width: 780px) {
+    .appBar .gsc-search-box .gsc-input-box {
+        height: auto;
+    }
+}

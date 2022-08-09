@@ -15,7 +15,9 @@ Welcome to our Blog!
 
 ```ts
 ---
-layout: post
+layout: post | postv2
+hidden: boolean // [Optional] If true, the blog will not appear in the list
+inject_optimize_tag: boolean // [Optional] If true, Google's Optimize tag will be injected into the <Head> enabling things like AB testing.
 font: serif // [Optional] Will transform your blog with Serif Font
 title: String // (Recommended length 60 characters)
 description: String // (Recommended length 150-160 characters)

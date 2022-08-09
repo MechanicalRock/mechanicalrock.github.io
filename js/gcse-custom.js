@@ -74,7 +74,7 @@ function getDateFromLink() {
             return;
         }
 
-        var dateString = url.substr( location.origin.length + 1, 10 );
+        var dateString = url.substring( location.origin.length + 1, 10 );
         var date = new Date( dateString );
         var dateElement = document.createElement( "div" );
         dateElement.className = "google-result-meta";

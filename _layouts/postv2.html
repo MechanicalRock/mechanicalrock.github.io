@@ -1,0 +1,47 @@
+---
+layout: default
+---
+<script type="text/javascript">
+  window.addEventListener( "DOMContentLoaded", () => {
+    if ( document.querySelector( "main" ) ) {
+      document.querySelector( "main" ).style.backgroundColor = "#f5f5f5";
+    }
+  } )
+</script>
+
+<article class="post h-entry" data-layoutversion="2" itemscope itemtype="http://schema.org/BlogPosting">
+  {%- if page.image -%}
+  <img class="main-image" alt="{{ page.title }}" src="{{ page.image }}" />
+  {%- endif -%}
+  <header class="post-header">
+    <p class="post-meta">
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        {{ page.date | date: date_format }}
+      </time>
+      {%- if page.author -%}
+      • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card"
+          itemprop="name">{{ page.author }}</span></span>
+      {%- endif -%}
+    </p>
+    <h1 class="post-title p-name font-brand" itemprop="name headline">{{ page.title | escape }}</h1>
+    {%- if page.tags.size > 0 -%}
+    <strong>#</strong>
+    {%- for tag in page.tags -%}
+    <span style="margin-right: 3px">
+      <a class="post-tag" href="/tags/#{{ tag }}">{{tag}}</a>
+    </span>
+    {%- endfor -%}
+    {%- endif -%}
+  </header>
+
+  <div class="post-content e-content {{page.font}} highlight-{{page.highlight}}" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  {%- if site.disqus.shortname -%}
+  {%- include disqus_comments.html -%}
+  {%- endif -%}
+
+  <a class=" u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>

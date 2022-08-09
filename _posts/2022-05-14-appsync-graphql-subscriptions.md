@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Realtime GraphQL Subscriptions with "@aws_subscribe" directive
+title: Realtime application with "@aws_subscribe" directive.
 description: Realtime communication between a web app and a GraphQL API
 date: 2022-05-14
 author: Nadia Reyhani

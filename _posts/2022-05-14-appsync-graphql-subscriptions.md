@@ -176,7 +176,7 @@ Yes, as simple as this we could implement a real time communication between our 
 
 ## Troubleshooting
 
-1- The subscription response must be optional. AppSync allowed us to successfully define the schema with a required subscription response, but when we hooked the the subscription to our frontend client, it threw an error that subscription responses must be optional.
+1- The subscription response must be optional. AppSync allows us to successfully define the schema with a required subscription response, but when we hook the the subscription to our frontend client, it throw an error that subscription responses must be optional.
 
 This will result to failure and error in subscription:
 
@@ -186,7 +186,7 @@ type Subscription {
 }
 ```
 
-2- A subscription response contains only the predicted fields which were returned by the mutation, all the other fields will be null. For instance, if we have a mutation which returns the `orderStatus` only and not the entire order object:
+2- A subscription response contains only the predicted fields which are returned by the mutation, all the other fields will be null. For instance, if we have a mutation which returns the `orderStatus` only and not the entire order object:
 
 ```
 type Mutation {
@@ -229,7 +229,7 @@ result:{
 
 3- Subscription arguments are indeed filters that specify when the server should notify the client.
 
-The way we had defined our subscription means that the client is interested in updates on order status when a specific orderId argument is passed through.
+The way we have defined our subscription means that the client is interested in updates on order status when a specific orderId argument is passed through.
 
 However, if you want to enable the client to subscribe to a single order `OR` all orders, you can make this argument optional by removing the exclamation point (!) from the subscription prototype.
 
@@ -248,7 +248,7 @@ type Subscription {
 }
 ```
 
-If you want to know about all orders that are created, you could do the following:
+Simply,if you want to know about all orders that are created, you could do the following:
 
 ```
 type Subscription {

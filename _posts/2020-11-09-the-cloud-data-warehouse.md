@@ -29,8 +29,8 @@ Modern Cloud Data Warehouses can support the existing status quo, including vari
 
 However, modern Cloud Data Warehouses typically go far beyond that. Whilst delivering the core competencies of a Data Warehouse, they extend these capabilities with features not readily seen before. For example:
 
-* [BigQuery ML](https://cloud.google.com/bigquery-ml/docs/introduction) allows users to inference with Machine Learning models against their datasets directly, using SQL. A more generic feature is also available on Snowflake using [External Functions](https://docs.snowflake.com/en/sql-reference/external-functions-introduction.html) 
-* Snowflake's [Zero Copy Data Sharing](https://docs.snowflake.com/en/user-guide-data-share.html) across accounts in the same cloud region, and [Replication Across Cloud Platforms](https://docs.snowflake.com/en/user-guide/database-replication-failover.html) as described in our recent blog post on [Snowflake Organizations](https://mechanicalrock.github.io/2020/09/23/snowflake-org-structures.html), are a powerful enabler for complex organisations, especially those navigating multi cloud strategies
+* [BigQuery ML](https://cloud.google.com/bigquery-ml/docs/introduction) allows users to inference with Machine Learning models against their datasets directly, using SQL. A more generic feature is also available on Snowflake using [External Functions](https://docs.snowflake.com/en/sql-reference/external-functions-introduction.html)
+* Snowflake's [Zero Copy Data Sharing](https://docs.snowflake.com/en/user-guide-data-share.html) across accounts in the same cloud region, and [Replication Across Cloud Platforms](https://docs.snowflake.com/en/user-guide/database-replication-failover.html) as described in our recent blog post on [Snowflake Organizations](https://blog.mechanicalrock.io/2020/09/23/snowflake-org-structures.html), are a powerful enabler for complex organisations, especially those navigating multi cloud strategies
 * Data Time Travel features of both [Snowflake](https://docs.snowflake.com/en/user-guide/data-time-travel.html) and [BigQuery](https://cloud.google.com/bigquery/docs/time-travel), allowing you to see data as it was at a particular point in time
 
 As many organisations evolve to consist of more multi-disciplinary teams, so too has technology adapted to more simply support the kind of collaboration and critical insight work that most organisations require. And so, a *modernised view* of the Data Warehouse is upon us where the technology is no longer simply a keystone of the architecture, but rather a platform for enhancement and enablement of data.
@@ -90,12 +90,12 @@ As an example, [Google BigQuery's slot system](https://cloud.google.com/bigquery
 
 The best part is that you can combine these pricing mechanisms to suit both your baseload and your mega-event loads.
 
-Snowflake takes a different approach with its [Virtual Warehouse](https://docs.snowflake.com/en/user-guide/warehouses-overview.html) concept, where you can 
+Snowflake takes a different approach with its [Virtual Warehouse](https://docs.snowflake.com/en/user-guide/warehouses-overview.html) concept, where you can
 * scale vertically (increase the warehouse size to handle larger / more complex workloads)
 * scale horizontally (scale warehouse clusters in numbers to increase capacity for concurrency)
 * do both at the same time.
 
-Both platforms give you flexibility not only to choose the compute and pricing model that suits your workloads, but also to observe the current and historical workload profiles, helping you to match more closely the pricing model to the utilisation metrics. 
+Both platforms give you flexibility not only to choose the compute and pricing model that suits your workloads, but also to observe the current and historical workload profiles, helping you to match more closely the pricing model to the utilisation metrics.
 
 ## Which Cloud Data Warehouse should we choose?
 
@@ -126,7 +126,7 @@ You may notice that we haven't discussed Amazon Redshift too much in our conside
 * Storage and Compute separation is primitive - whilst this is improving with recent RA3 nodes, the price premium to be paid is a disincentive, for something that still doesn't match what competitors are offering (true on-demand usage)
 * Lack of high availability - Redshift clusters are limited to operating in a single availability zone. Whilst a cluster can generally recover simply from individual data node failures, a power loss to a whole AZ would require customers to create a new cluster from snapshots in a different AZ
 
-At the end of the day, you need to choose a solution your organisation is capable of supporting. Just make sure you compare apples with apples however and consider both the [labour cost and the service costs](https://www.holistics.io/blog/the-two-philosophies-of-cost-in-data-engineering/) involved in your warehouse. 
+At the end of the day, you need to choose a solution your organisation is capable of supporting. Just make sure you compare apples with apples however and consider both the [labour cost and the service costs](https://www.holistics.io/blog/the-two-philosophies-of-cost-in-data-engineering/) involved in your warehouse.
 
 ## Successfully transitioning to a Cloud Data Warehouse
 
@@ -181,15 +181,15 @@ As a [DevOps Consultancy](https://mechanicalrock.io/our-expertise/enterprise-dev
 
 ## Wrapping Up
 
-It's easy to get wrapped up in the promise of sales literature, effervescent customers or case studies, industry hype, and forget that the Data Warehouse is a single part of a longer value chain. A great Cloud Data Warehouse implemented poorly - or strangled by the data acquisition pathways ahead of it - will not turn any ships around. 
+It's easy to get wrapped up in the promise of sales literature, effervescent customers or case studies, industry hype, and forget that the Data Warehouse is a single part of a longer value chain. A great Cloud Data Warehouse implemented poorly - or strangled by the data acquisition pathways ahead of it - will not turn any ships around.
 
 So do your homework - assess your whole data lifecycle, and take the opportunity to make other strategic investments to modernize your data stack, knowing that with a Cloud Data Warehouse you will no longer be on the hook for:
 
 * Software Licensing
-* Managing Infrastructure 
+* Managing Infrastructure
 * Hardware Refreshes
 * Vendor "Cloud Tax"
 
-The biggest cost you face is that of the missed opportunity. 
+The biggest cost you face is that of the missed opportunity.
 
 If you are ready to accelerate your growth, get in touch with us at [Mechanical Rock](https://mechanicalrock.io/our-expertise/)

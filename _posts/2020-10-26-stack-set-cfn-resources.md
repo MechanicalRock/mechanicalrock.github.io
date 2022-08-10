@@ -25,23 +25,23 @@ This addition has the potential to realise the original promise of StackSets. Le
 
 ```yaml
 Type: AWS::CloudFormation::StackSet
-Properties: 
+Properties:
   AdministrationRoleARN: String
-  AutoDeployment: 
+  AutoDeployment:
     AutoDeployment
-  Capabilities: 
+  Capabilities:
     - String
   Description: String
   ExecutionRoleName: String
-  OperationPreferences: 
+  OperationPreferences:
     OperationPreferences
-  Parameters: 
+  Parameters:
     - Parameter
   PermissionModel: String
-  StackInstancesGroup: 
+  StackInstancesGroup:
     - StackInstances
   StackSetName: String
-  Tags: 
+  Tags:
     - Tag
   TemplateBody: String
   TemplateURL: String
@@ -275,7 +275,7 @@ In this article we learned how to create StackSets using CloudFormation for some
 
 After using the StackSet resources for this brief period of time, I can see it will be a great help in an code-driven infrastructure approach to cross-account and cross-region infrastructure. This would be very useful in situations that you want to customise the guard rails for your AWS account landscape, to support a federated AWS workload approach with central governance.
 
-If you combined StackSets with the [Inception Pipeline](https://mechanicalrock.github.io/2018/03/01/inception-pipelines-pt1.html) pattern, you could build a Governance Pipeline, something we could explore in a future article.
+If you combined StackSets with the [Inception Pipeline](https://blog.mechanicalrock.io/2018/03/01/inception-pipelines-pt1.html) pattern, you could build a Governance Pipeline, something we could explore in a future article.
 
 Please feel free to [get in touch with us](https://mechanicalrock.io/lets-get-started) if you need any help with central governance or cross-account infrastructure.
 

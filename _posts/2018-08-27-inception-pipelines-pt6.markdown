@@ -21,7 +21,7 @@ Like all things AWS-ey, there are multiple ways to accomplish this. The three th
 2. Create an IAM user directly in the AWS Account.
 3. Assuming the /roles/OrganizationAccountAccessRole role that was created if your AWS Account was created using AWS Organisations.
 
-The more versatile and secure way is **Option 2**, which I'll discuss in detail below. My (personal) reasoning for this is you only need to keep the credentials around for as long as it takes to seed the pipeline and add more specific accounts as documented in [Part 5](https://mechanicalrock.github.io/2018/07/31/inception-pipelines-pt5.html). Once you've done this, delete the credentials to make the IAM User secure. If/when you need to seed another pipeline, simply regenerate new credentials and run from Step 3 again.
+The more versatile and secure way is **Option 2**, which I'll discuss in detail below. My (personal) reasoning for this is you only need to keep the credentials around for as long as it takes to seed the pipeline and add more specific accounts as documented in [Part 5](https://blog.mechanicalrock.io/2018/07/31/inception-pipelines-pt5.html). Once you've done this, delete the credentials to make the IAM User secure. If/when you need to seed another pipeline, simply regenerate new credentials and run from Step 3 again.
 
 **Warning:** Parts of this post get a bit heavy on the ol' screenshots;. brace yourself and accept my apologies in advance!
 

@@ -2,7 +2,7 @@
 layout: postv2
 hidden: true
 inject_optimize_tag: true
-canonical_url: https://mechanicalrock.github.io/2022/07/11/replace-circular-loaders-with-skeletons-a.html
+canonical_url: https://blog.mechanicalrock.io/2022/07/11/replace-circular-loaders-with-skeletons-a.html
 font: serif
 title: "Why Skeleton Loaders Are The Better Option"
 description: "Since ajax was introduced we've been familiar with circular loading spinners, dot-dot-dot animations, crazy logo transitions and more, all in place to distract the user while the application requests more data to present back."

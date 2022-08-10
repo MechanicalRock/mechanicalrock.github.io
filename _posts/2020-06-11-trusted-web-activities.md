@@ -15,7 +15,7 @@ One of the promises of building apps on the web is the realisation of cross-plat
 With the rise of Progressive Web Apps over the last few years, that promise is being fulfilled. One of the last remaining hurdles for uptake on mobile devices is distribution of web apps in the native mobile app stores. These stores ease discoverability and installation for users, but have been exclusive to apps built natively for each platform.
 
 There has been a few previous attempts to integrate web apps into native app stores. Mozilla's [Firefox OS](https://en.wikipedia.org/wiki/Firefox_OS) comes to mind, as well as [webOS](https://en.wikipedia.org/wiki/WebOS) and Apple's original intention to focus on web apps instead of native apps. But, up until now there hasn't been an offering on either of the two major platforms — iOS and Android.
- 
+
 The time is now ripe for that to change.
 
 In this post we'll learn about a new feature in Android called Trusted Web Activities, which enables publishing of web apps to the Google Play Store. We'll also work through an example of setting one up for an existing web app.
@@ -49,7 +49,7 @@ A [PWA](https://web.dev/progressive-web-apps/) is a normal web app with specific
 
 This makes PWAs well suited for integration with native mobile platforms via features such as TWAs.
 
-For a more information on PWAs, I highly recommend [PWA: Cache me if you can](https://mechanicalrock.github.io/2020/02/25/pwa-cache-me-if-you-can.html) and our [PWA Capability Report](https://www.mechanicalrock.io/docs/case-studies/pwa-capability-report.pdf).
+For a more information on PWAs, I highly recommend [PWA: Cache me if you can](https://blog.mechanicalrock.io/2020/02/25/pwa-cache-me-if-you-can.html) and our [PWA Capability Report](https://www.mechanicalrock.io/docs/case-studies/pwa-capability-report.pdf).
 
 ### If I have a PWA or native app, why do I need a TWA?
 
@@ -101,7 +101,7 @@ The APK file downloaded in the previous section is install-able on any Android d
 
 There are many ways to transfer the file to the device. You could store it in the cloud, or plug your device into a laptop. Feel free to use your preferred method.
 
-Open the APK file on the device to start the install. 
+Open the APK file on the device to start the install.
 
 ![pwa_apk_install](/img/pwa_apk_install.png)
 

@@ -9,7 +9,7 @@ image: /img/blog/azure-ad-cypress/banner.jpg
 tags: azure ad activedirectory cypress authentication msal react
 ---
 
-It has been a little over 2 years since I wrote about [Azure AD authentication in Cypress tests](http://mechanicalrock.github.io/2020/05/05/azure-ad-authentication-cypress.html) and as such, it is out of date. In that time, [Cypress](https://cypress.io) has gone from strength-to-strength but the big change in that time has been the [migration from the Azure Active Directory Library (ADAL) to the Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-migration). In this post, I will discuss how to authenticate with MSAL in your Cypress tests making reference to the change in approach from that post 2 years ago as a result of the migration.
+It has been a little over 2 years since I wrote about [Azure AD authentication in Cypress tests](http://blog.mechanicalrock.io/2020/05/05/azure-ad-authentication-cypress.html) and as such, it is out of date. In that time, [Cypress](https://cypress.io) has gone from strength-to-strength but the big change in that time has been the [migration from the Azure Active Directory Library (ADAL) to the Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-migration). In this post, I will discuss how to authenticate with MSAL in your Cypress tests making reference to the change in approach from that post 2 years ago as a result of the migration.
 
 > If you'd just like to get the solution I've created a demo repo on [Github](https://github.com/MechanicalRock/cypress-msal-demo) which you can reference.
 

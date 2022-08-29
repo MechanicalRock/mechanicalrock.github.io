@@ -148,7 +148,7 @@ Pros:
 
 * Very clean separation of build vs running code.
 * Environments can progressively become more locked-down/restrictive on who can see/do what.
-* Environments no longer become snowflakes. Since every environment is built from the same configuration (see [Part 3](https://mechanicalrock.github.io/aws/continuous/deployment/cdn/spa/cloudfront/cross-account/2018/05/18/inception-pipelines-pt3) in this series), there is no 'it worked in TEST but not UAT because ....'
+* Environments no longer become snowflakes. Since every environment is built from the same configuration (see [Part 3](https://blog.mechanicalrock.io/aws/continuous/deployment/cdn/spa/cloudfront/cross-account/2018/05/18/inception-pipelines-pt3) in this series), there is no 'it worked in TEST but not UAT because ....'
 * If you need a new environment (for example to host a special version) then it’s just another stage in your pipeline.
 
 Cons:
@@ -162,7 +162,7 @@ No new files this month. If you're keen to plant an Inception Pipeline in your a
 
 ## Taking It For A Spin
 
-If you're unsure where to start, and you thought you could skip reading [Part 1](https://mechanicalrock.github.io/aws/continuous/deployment/2018/03/01/inception-pipelines-pt1), I highly recommend starting there.
+If you're unsure where to start, and you thought you could skip reading [Part 1](https://blog.mechanicalrock.io/aws/continuous/deployment/2018/03/01/inception-pipelines-pt1), I highly recommend starting there.
 
 I'm also quite susceptible to bribery by coffee, so if you'd like that chat drop me an email at [contact@mechanicalrock.io](mailto:contact@mechanicalrock.io) and ask for **Pipeline Pete**.
 

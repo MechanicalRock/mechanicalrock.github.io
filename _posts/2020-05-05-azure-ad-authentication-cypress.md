@@ -7,7 +7,7 @@ author: Tim Veletta
 image: img/blog/azure-ad-cypress/header.png
 ---
 
-> There is a newer version of this article: [Azure AD authentication in Cypress tests with MSAL](http://mechanicalrock.github.io/2022/08/08/azure-ad-authentication-cypress.html)
+> There is a newer version of this article: [Azure AD authentication in Cypress tests with MSAL](http://blog.mechanicalrock.io/2022/08/08/azure-ad-authentication-cypress.html)
 
 _Update 4th December 2020: The article has been updated to remove the resource key from the login command body which is POSTed to the AzureAD endpoint for authentication, as it is no longer required._
 

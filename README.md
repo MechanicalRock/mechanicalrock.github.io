@@ -1,8 +1,8 @@
-# mechanicalrock.github.io - Amazing Project
+# blog.mechanicalrock.io - Amazing Project
 
 Welcome to our Blog!
 
-[Published blogs](https://mechanicalrock.github.io/)
+[Published blogs](https://blog.mechanicalrock.io/)
 
 ## How to create a Blog
 

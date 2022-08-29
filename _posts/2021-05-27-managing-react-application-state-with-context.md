@@ -48,7 +48,7 @@ type State = {
 type Dispatch = (action: Action) => void;
 ```
 
-We follow this by setting up our *reducer* function which is exactly the same as it would be if we were using Redux; it is a pure function that takes the state, applies an action to it and returns the new state. I have set up handlers for each of the `Action`s I defined above which will allow us to `increment` and `decrement` the count as well as `setValue` of the count. 
+We follow this by setting up our *reducer* function which is exactly the same as it would be if we were using Redux; it is a pure function that takes the state, applies an action to it and returns the new state. I have set up handlers for each of the `Action`s I defined above which will allow us to `increment` and `decrement` the count as well as `setValue` of the count.
 
 ```javascript
 // countProvider.tsx
@@ -179,8 +179,8 @@ const CountButtons = () => {
 };
 ```
 
-And thats how we are able to manage application state using Context which is built into React. 
+And thats how we are able to manage application state using Context which is built into React.
 
-There is one thing that should be mentioned and that is *performance*. Whenever the value of the Context changes, it triggers a re-render of all the child components of that Context which, in our use case isn't all that bad. However, if you have a large number of child components or those components are computationally expensive to render, you may want to look at the solutions provided in this [Github Issue](https://github.com/facebook/react/issues/15156#issuecomment-474590693). 
+There is one thing that should be mentioned and that is *performance*. Whenever the value of the Context changes, it triggers a re-render of all the child components of that Context which, in our use case isn't all that bad. However, if you have a large number of child components or those components are computationally expensive to render, you may want to look at the solutions provided in this [Github Issue](https://github.com/facebook/react/issues/15156#issuecomment-474590693).
 
-I've included all of the code shown above in a [Github Repository](https://github.com/MechanicalRock/react-provider-example) along with tests and an example of how to increase the performance of your components. If you want to read more about front-end development here at Mechanical Rock I would highly recommend checking out [FED Talk! Episode 1: Getting Started with React & Material UI](https://mechanicalrock.github.io/2021/04/27/fed-talk-s01e01-getting-started.html) or if we can help you build amazing React applications hosted in the cloud, [get in touch!](https://www.mechanicalrock.io/lets-get-started/)
+I've included all of the code shown above in a [Github Repository](https://github.com/MechanicalRock/react-provider-example) along with tests and an example of how to increase the performance of your components. If you want to read more about front-end development here at Mechanical Rock I would highly recommend checking out [FED Talk! Episode 1: Getting Started with React & Material UI](https://blog.mechanicalrock.io/2021/04/27/fed-talk-s01e01-getting-started.html) or if we can help you build amazing React applications hosted in the cloud, [get in touch!](https://www.mechanicalrock.io/lets-get-started/)

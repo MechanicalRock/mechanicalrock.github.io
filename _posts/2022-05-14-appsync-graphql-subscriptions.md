@@ -304,5 +304,4 @@ Hopefully, by reading this article gave your enough knowledge on how subscriptio
 
 If you want to read more about front-end development here at Mechanical Rock I would highly recommend checking out the awesome serries of [FED Talk articles](https://mechanicalrock.github.io/2021/04/27/fed-talk-s01e01-getting-started.html) which can help you build amazing React applications hosted in the cloud.
 
-If you need help to build an awesome product, then we can always help, so get in touch
-https://www.mechanicalrock.io/our-expertise/cloud-native-solutions
+If you need help to build an awesome product, then we can always help, so [get in touch.](https://www.mechanicalrock.io/lets-get-started)

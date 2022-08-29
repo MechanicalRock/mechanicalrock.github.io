@@ -2,7 +2,7 @@
 layout: post
 title: Realtime Applications with AWS Subscribe
 description: Realtime communication between a web app and a GraphQL API
-date: 2022-05-14
+date: 2022-08-29
 author: Nadia Reyhani
 image: img/blog/protobuf-ts/protobuf-ts.jpg
 tags: ["AWS Appsync", "Graphql", "tutorial", "subscription", "Real-time data", "aws directive"]
@@ -10,29 +10,29 @@ tags: ["AWS Appsync", "Graphql", "tutorial", "subscription", "Real-time data", "
 
 ![aws-appsync](/img/blog/appsync-subscription/aws-appsync.png)
 
-### An Introduction
+## An Introduction
 
 In a [Client-Server](https://en.wikipedia.org/wiki/Client%E2%80%93server_model) Architecture, a client is a piece of software that accesses a specific service or a resource made available by a server through the HTTP protocol in the form of a URL and receives a response. A server on the other hand is a type of computer that receives the request, stores or processes it, and sends response information to the client through the HTTP/HTTPS protocol.
 
 API that stands for `Application Programming Interface` and is a software intermediary that allows two applications to talk to each other. APIs provide a standardized way for two applications to send data back and forth.
 There are many approaches to building an API including REST APIs. A REST API is an architectural concept for network-based software. When using a REST API to fetch information, you’ll always get back a complete dataset. For example, if you wanted to request information from two sources, you’d need to perform two REST API requests.
 
-##### What is GraphQL?
+### What is GraphQL?
 
 GraphQL is a query language for your API, a specification, and a set of tools that operates over a single endpoint using HTTP.
 
 GraphQL gives the client the power to ask for exactly what they need and get back predictable results. Making updates to data is made simple with graphql mutations, allowing developers to describe how the data should change.
 
-##### The Core Difference Between REST APIs and GraphQL
+### The Core Difference Between REST APIs and GraphQL
 
 GraphQL follows the same set of constraints as REST APIs, but it shifts control over what data is returned (or mutated) to the client.
 Over the last few years, REST has been used to make new APIs, while the focus of GraphQL has been to optimize for performance and flexibility.
 
-##### What is AWS AppSync?
+### What is AWS AppSync?
 
 AWS AppSync, or as I prefer to describe it as "API Gateway for GraphQL". It provides a scalable GraphQL interface that allows you to connect your GraphQL schema to multiple data sources like Amazon DynamoDB, AWS Lambda, and HTTP APIs etc.
 
-#### What is a real-time web application?
+### What is a real-time web application?
 
 A traditional application that is not updated in realtime, requires the user to request again to get the latest data. In this model, when a user sends the initial request to the server, they have to reload websites/application to see the latest data.
 
@@ -42,7 +42,7 @@ In this tutorial, you’ll learn how to bring realtime functionality into your a
 
 Note that, this article doesn't specify a data source because the data source could be anything, a Lambda, Amazon DynamoDB, or Amazon OpenSearch Service. Also, I assume you have already set up your infrastructure if you don't still know how to do that, I would highly recommend to have a read through [This amazing article from Shermayne Lee](https://mechanicalrock.github.io/2020/05/04/putting-the-serverless-in-graphQL-with-AppSync.html).
 
-#### What is GraphQL Subscription?
+### What is GraphQL Subscription?
 
 GraphQL usually supports a set of operations (queries and mutations) which forms the data interaction between the client and the server. The client sends a query or mutation and gets a response back from the server.
 

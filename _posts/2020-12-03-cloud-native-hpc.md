@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: It's a Bird.. It's a Plane… No! It’s Supercompute in the Cloud!
 date: 2020-12-03
 tags: cloud hpc supercompute lustre aws batch
@@ -10,18 +10,18 @@ author: Marcelo Aravena
 
 
 
-## What is Supercompute aka High Performance Computing (HPC)? 
+## What is Supercompute aka High Performance Computing (HPC)?
 HPC, which is also commonly referred to as Supercompute, is a computing platform that aggregates multiple computers into one “Supercomputer”, just like the Voltron Lions join together to make one big robot to achieve greater power and performance in order get the job done quicker, or in Voltrons case; destroy the enemy in a more efficient and effective manner.  HPC technology will help accelerate the processing of your compute intensive workloads, jobs that would normally take days or weeks to complete on a standard single computer can be completed within minutes or hours on a Supercomputer.
 
 In fact, [Woodside](https://www.woodside.com.au/) have just announced that they have been successful in simultaneously using more than 1 million virtual Central Processing Units (vCPUs) on Amazon
 Web Services (AWS) infrastructure to run a Full-Waveform Inversion Seismic Data Processing job which would normally take 2 weeks, was completed in under 2 hours!  You can read more about it on their [Media Release](https://files.woodside/docs/default-source/media-releases/woodside-uses-large-scale-computing-to-deliver-seismic-results-in-hoursb9a8bf3d-c0ac-446f-9091-f935d0083aec.pdf?sfvrsn=cc43cb3b_3)
 
-With a large number of computers aggregated into the one supercomputer, we can also parallelise the processing so large problems can be divided into smaller ones, which can then be computed and solved at the same time. 
+With a large number of computers aggregated into the one supercomputer, we can also parallelise the processing so large problems can be divided into smaller ones, which can then be computed and solved at the same time.
 
-These supercomputers are generally used to solve complex problems in the research, science and engineering space to: 
-- Process large amounts of data for further intperpretation and analysis 
-- Train AI models 
-- Perform complex molecular simulations 
+These supercomputers are generally used to solve complex problems in the research, science and engineering space to:
+- Process large amounts of data for further intperpretation and analysis
+- Train AI models
+- Perform complex molecular simulations
 - Predict the weather forecast
 - Quantum Physics
 - and much more
@@ -57,7 +57,7 @@ RUN apt-get update
 
 RUN apt-get install -y lammps-stable
 
-USER hpc-runner 
+USER hpc-runner
 CMD lmp_stable
 ```
 
@@ -68,11 +68,11 @@ CMD lmp_stable
 - Interconnect/Networking bound (Eg: Use of Message Passing Interface)
 - Can computing nodes be distributed across availability zones(physical datacentres)
 
-Knowing where your application spends most of its time along its HPC journey will go a long way in helping you run cost efficient and performant HPC jobs.. You get this wrong, and it could empty your wallet and waste a lot of your research time.  
+Knowing where your application spends most of its time along its HPC journey will go a long way in helping you run cost efficient and performant HPC jobs.. You get this wrong, and it could empty your wallet and waste a lot of your research time.
 
 ### Here are some performance and benchmark profiling results from the [HPC-AI Advisory Council](https://www.hpcadvisorycouncil.com/) for our LAMMPS application.
 
-#### CPU Scaling Profile  
+#### CPU Scaling Profile
 <center><img src="/img/blog/hpc/hpc-ai-advisory-lammps-cpu1.png" /></center><br/>
 
 #### LAMMPS Performance comparison between 2.40Ghz and 2.50Ghz CPU
@@ -88,23 +88,23 @@ We then build an AWS HPC environment the DevOps way, using Cloudformation Infras
 ### AWS Architecture
 <center><img src="/img/blog/hpc/aws-native-hpc.png" /></center><br/>
 
-The above architecture will use [AWS Batch](https://aws.amazon.com/batch/) as the core scheduler and workload manager for the HPC jobs submitted by the triggered Lambda.  [AWS Batch](https://aws.amazon.com/batch/) is a cloud-native batch scheduler for HPC, ML, and other asynchronous workloads. AWS Batch will automatically and dynamically size instances to job resource requirements, and use existing [FSx for Lustre](https://aws.amazon.com/fsx/lustre/?nc=sn&loc=1) file systems when launching instances and running jobs.  Lustre is a Parallel Filesystem which excels in most HPC environments, you can find out more about Lustre Parallel Filesystem [Here](https://www.lustre.org) 
+The above architecture will use [AWS Batch](https://aws.amazon.com/batch/) as the core scheduler and workload manager for the HPC jobs submitted by the triggered Lambda.  [AWS Batch](https://aws.amazon.com/batch/) is a cloud-native batch scheduler for HPC, ML, and other asynchronous workloads. AWS Batch will automatically and dynamically size instances to job resource requirements, and use existing [FSx for Lustre](https://aws.amazon.com/fsx/lustre/?nc=sn&loc=1) file systems when launching instances and running jobs.  Lustre is a Parallel Filesystem which excels in most HPC environments, you can find out more about Lustre Parallel Filesystem [Here](https://www.lustre.org)
 
 ### The LAMMPS HPC workflow would run as follows:
 1. Researcher uploads LAMMPS input and Job parameter config files into an s3 input bucket
 2. This s3 upload will trigger a Lambda that will take the Job definition parameters and Submit the job to an AWS Batch Queue.
-3. AWS Batch will pull down the LAMMPS docker image from ECR and deploy it to the EC2 SPOT instances that will run the job in multi-node parallel mode. 
-4. AWS Batch will launch the job on EC2 SPOT Instances which have EFA(Elastic Fabric adaptor) available for high bandwidth interconnect to help keep the MPI_Wait times down. 
+3. AWS Batch will pull down the LAMMPS docker image from ECR and deploy it to the EC2 SPOT instances that will run the job in multi-node parallel mode.
+4. AWS Batch will launch the job on EC2 SPOT Instances which have EFA(Elastic Fabric adaptor) available for high bandwidth interconnect to help keep the MPI_Wait times down.
 5. AWS Batch will also create the compute cluster within 1 Placement group in Cluster strategy mode, meaning that all compute nodes will be within the 1 availability zone/datacentre, keeping latency between nodes low to also help keep MPI_WAIT times low.
-6. AWS Batch will also mount the /scratch filesystem(Fsx Lustre) onto the compute nodes for you. 
+6. AWS Batch will also mount the /scratch filesystem(Fsx Lustre) onto the compute nodes for you.
 
 With [Fsx for Lustre](https://aws.amazon.com/fsx/lustre/?nc=sn&loc=1) we get the option to deploy it as a "scratch" deployment type which is ideal for temporary storage and shorter-term processing of data.  The output file can be written to Fsx for Lustre and then with some AWS Magic, we are also able to read the same file from an S3 bucket that is linked to the Fsx Lustre Filesystem.
-Researcher then retrieves the output from the S3 bucket. 
+Researcher then retrieves the output from the S3 bucket.
 
-So there you have an example on how to run a compute intensive hpc workload in cloud, easy enough right? 
+So there you have an example on how to run a compute intensive hpc workload in cloud, easy enough right?
 
 ### But what if we have huge amounts of data.. Petabytes of Data or more?
-Lets take for example Seismic Data or even what the **SKA** [Square Kilometre Array project](https://www.csiro.au/en/Research/Astronomy/ASKAP-and-the-Square-Kilometre-Array/SKA) will potentially generate.  The challenge comes when you try to move such large volumes of data around.. It can get expensive and complicated very quickly.  If you try to manage this data in an on-premise datacentre, you would ideally need a Hierarchical Storage Management (HSM) solution to help automate the lifecycle of your big data and integration with your application. Your data would live in the **ONLINE Storage Tier**  (high performance storage) when it’s needed for processing.  After processing has completed, the data can then be migrated to a **NEARLINE Storage Tier** (low cost storage) and then if long term Archiving of the data is needed, it would be migrated to the **OFFLINE/TAPE Storage Tier**.  
+Lets take for example Seismic Data or even what the **SKA** [Square Kilometre Array project](https://www.csiro.au/en/Research/Astronomy/ASKAP-and-the-Square-Kilometre-Array/SKA) will potentially generate.  The challenge comes when you try to move such large volumes of data around.. It can get expensive and complicated very quickly.  If you try to manage this data in an on-premise datacentre, you would ideally need a Hierarchical Storage Management (HSM) solution to help automate the lifecycle of your big data and integration with your application. Your data would live in the **ONLINE Storage Tier**  (high performance storage) when it’s needed for processing.  After processing has completed, the data can then be migrated to a **NEARLINE Storage Tier** (low cost storage) and then if long term Archiving of the data is needed, it would be migrated to the **OFFLINE/TAPE Storage Tier**.
 
 <center><img src="/img/blog/hpc/hsm-storage.png" /></center><br/>
 

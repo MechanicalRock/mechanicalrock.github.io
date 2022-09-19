@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 font: serif
 title: "Managing React application state with Context"
 description: "What if I told you the best way to manage state within React apps was actually built into React?!"

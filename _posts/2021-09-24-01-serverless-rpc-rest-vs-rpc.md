@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: "Building a Serverless RPC API on AWS: REST vs RPC"
 date: 2021-09-23
 tags: rest rpc grpc aws api
@@ -10,13 +10,13 @@ image: img/twirp.png
 <center><img src="/img/twirp.png" /></center>
 <br/>
 
-There are many different ways to design an API but do any amount of searching and you will find that in 2021 there are three that dominate the discussion 
+There are many different ways to design an API but do any amount of searching and you will find that in 2021 there are three that dominate the discussion
 
 - REST (REpresentational State Transfer),
-- RPC (Remote Procedure Call), and, 
+- RPC (Remote Procedure Call), and,
 - GraphQL (Graph Query Language).
 
-They have an awful lot in common; 
+They have an awful lot in common;
 - There are many tools and frameworks that implement each,
 - You can find various examples of software companies implementing new APIs in each today, and,
 - JSON-over-HTTP is pretty commonly used for all three.

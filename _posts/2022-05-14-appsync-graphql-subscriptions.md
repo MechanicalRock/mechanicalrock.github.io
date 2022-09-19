@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Realtime Applications with AWS Subscribe
 description: Realtime communication between a web app and a GraphQL API
 date: 2022-08-29

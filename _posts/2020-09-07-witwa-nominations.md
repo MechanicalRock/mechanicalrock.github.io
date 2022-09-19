@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: "WiTWA[+] Nominations 2020"
 date: 2020-09-07
 tags: WiTWA Tech

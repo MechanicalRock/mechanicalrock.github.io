@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "Securing your web applications in AWS using SSO with Azure Active Directory"
 date:   2019-08-05
 tags: aws cognito oidc saml2 sso azure
@@ -15,7 +15,7 @@ It's a fairly common scenario where you want to secure a web application in the 
 - how can others in my organisation leverage this pattern?
 
 At [Mechanical Rock](https://www.mechanicalrock.io/our-expertise), two of our pillars of excellence are
-* [Cloud Native Applications](https://mechanicalrock.io/our-expertise/cloud-native-applications), and 
+* [Cloud Native Applications](https://mechanicalrock.io/our-expertise/cloud-native-applications), and
 * [Enterprise DevOps](https://mechanicalrock.io/our-expertise/enterprise-devops)
 
  We leverage _best of breed_ cloud native and managed services to build high quality, cutting edge solutions. Delivering these solutions using Infrastructure-As-Code (IAC) is not simply part of our commitment to architecting steadfast **continuous integration** workflows; it underpins the way we collaborate and share learnings with the client teams we engage with.
@@ -46,7 +46,7 @@ Whilst AWS Cognito is a powerful security product, it is not without some signif
 
 DevOps practitioners have also been left wanting by Cognito's poor cloudformation support. With virtually no updates since 2017, current Cloudformation support covers perhaps 50% of what CLI and SDK users can do with Cognito, leaving users to write their own custom resources for common Cognito use cases.
 
-This brings us to reason for this post - and [the supporting repository](https://github.com/MechanicalRock/cognito-sso-azure) - to provide an **infrastructure-as-code** solution for setting up and managing an AWS ALB, Cognito and Azure AD single sign on. 
+This brings us to reason for this post - and [the supporting repository](https://github.com/MechanicalRock/cognito-sso-azure) - to provide an **infrastructure-as-code** solution for setting up and managing an AWS ALB, Cognito and Azure AD single sign on.
 
 The repository helps you setup the following:
 - CodePipeline for managing your cloudformation resources
@@ -82,7 +82,7 @@ There can be various stumbling blocks along the way when bringing together a sin
 * If you are not getting AD groups in your token, ensure you have enabled them in the _User Attributes & Claims_ screen of your Azure Enterprise Application
 * If you get Cognito errors about redirect_uri, ensure your Cognito App Client settings _Reply URLs_ are correct (e.g. https://**your-load-balancer-address-or-domain**/oauth2/idpresponse) - note that you can include multiple reply and logout URLs by comma separating the URLs
 
-Once you've made this work once, you'll find it easy to share among your team and customers in the future, and repeat over and again. 
+Once you've made this work once, you'll find it easy to share among your team and customers in the future, and repeat over and again.
 
 
 ### References

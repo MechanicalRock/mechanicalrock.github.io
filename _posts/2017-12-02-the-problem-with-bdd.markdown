@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "The Highs and Lows of BDD"
 date:   2017-12-02
 tags: bdd quality

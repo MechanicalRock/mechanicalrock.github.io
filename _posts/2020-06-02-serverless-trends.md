@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Thoughts on Serverless in 2020
 date: 2020-06-02
 tags: aws serverless cloud
@@ -18,7 +18,7 @@ There is currently an explosion of various observability tools in the serverless
 
 # Frameworks are improving the CI/CD experience
 
-AWS has a lot of depth and breadth to its services, but it doesn't always combine them seamlessly. Configuring API Gateway and Lambda in vanilla CloudFormation can be painful. Frameworks like SAM and Serverless Framework have stepped up to make it easier to deploy these fairly standard configurations of AWS components. Once you are beyond that point and want to start deploying to production you need something more than manual deployments; you want a fully-fledged continous delivery pipeline with all the trimmings (e.g. test environments, blue/green deployments). SAM has integration with CodeDeploy, enabling lambda functions to be deployed via blue/green traffic shifting. Serverless Framework's enterprise edition adds its own method of deploying to multiple environments. Stackery has its own concept of environments as well. I think we'll continue to see improvement in this space, particulary around test/verification of staging environments, and easy ways to implement deployments with zero downtime via traffic shifting. 
+AWS has a lot of depth and breadth to its services, but it doesn't always combine them seamlessly. Configuring API Gateway and Lambda in vanilla CloudFormation can be painful. Frameworks like SAM and Serverless Framework have stepped up to make it easier to deploy these fairly standard configurations of AWS components. Once you are beyond that point and want to start deploying to production you need something more than manual deployments; you want a fully-fledged continous delivery pipeline with all the trimmings (e.g. test environments, blue/green deployments). SAM has integration with CodeDeploy, enabling lambda functions to be deployed via blue/green traffic shifting. Serverless Framework's enterprise edition adds its own method of deploying to multiple environments. Stackery has its own concept of environments as well. I think we'll continue to see improvement in this space, particulary around test/verification of staging environments, and easy ways to implement deployments with zero downtime via traffic shifting.
 
 I think most teams need additional help with moving up the CI/CD maturity curve. I see plenty of teams have who have reasonably good CI processes, a decent pipeline, but with poor integration test suites and manual gates.
 

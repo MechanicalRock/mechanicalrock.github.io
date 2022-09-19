@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Trusted Web Activities
 date: 2020-06-11
 tags: tutorial pwa PWA webapps spa android react

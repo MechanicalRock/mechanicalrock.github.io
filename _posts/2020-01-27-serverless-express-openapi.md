@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Build & Deploy a Serverless Express API with OpenAPI
 date: 2020-01-27
 tags: javascript tutorial serverless aws
@@ -26,7 +26,7 @@ I have generally noticed two approaches when it comes to defining an OpenAPI doc
 
 1. An OpenAPI specification document is created separately from the code.
 
-2. The author uses some middleware for their framework that generates the specification from code, typically using decorators on the route handlers. 
+2. The author uses some middleware for their framework that generates the specification from code, typically using decorators on the route handlers.
 
 Either way works, and it comes down to personal opinion. I generally prefer to write the document out-of-band from the code. The reason I do this is because I feel that API specification should be driving the design of the application, and it can feel like more of afterthought if using adding it back in with decorators. However, it does require the author to make changes in two places when updating something that will affect the API. This is something that doesn't tend to happen as much when using framework middleware. For this example, I'll define the document seperately to the code, but feel free to make decisions that you feel are right for your own context.
 
@@ -62,7 +62,7 @@ components:
     MessageList:
       type: object
       properties:
-        items: 
+        items:
           type: array
           items:
             $ref: "#/components/schemas/Message"
@@ -72,7 +72,7 @@ components:
             - items
 ```
 
-These response objects are nested under the 'components' key, which we can reference from elsewhere in the document. If that doesn't make sense yet, it will later. 
+These response objects are nested under the 'components' key, which we can reference from elsewhere in the document. If that doesn't make sense yet, it will later.
 
 Before we do that, you can similarly define response objects for errors e.g.
 
@@ -252,7 +252,7 @@ components:
     MessageList:
       type: object
       properties:
-        items: 
+        items:
           type: array
           items:
             $ref: "#/components/schemas/Message"
@@ -286,7 +286,7 @@ Transform: AWS::Serverless-2016-10-31
 Description: >
   simple-node-api
   Sample SAM Template for simple-node-api
-  
+
 Globals:
   Function:
     Timeout: 3
@@ -483,7 +483,7 @@ describe("Test My API: Create 3 messages", () => {
         const { data } = await api.listMessages(3);
         // Obviously we expect to get three messages back
         expect(data.items.length).toBe(3);
-        
+
         // This tests that we receive three messages that match the messages
         // we specified earlier
         expect(data.items).toEqual(
@@ -509,7 +509,7 @@ That's a lot easier than rolling our own client, and it's pretty easy to see wha
 
 2. The limits of our implementation have started to bite, and tests are the first casualty.
 
-    As we did not implement a delete endpoint, we cannot write anything to delete comments we have made, and therefore we cannot revert the system back to a clean state without redeploying it. Maybe that's OK, and we are fine with deploying our API again - but then again maybe we aren't because it increases feedback time. This somewhat illustrates an advantage of a test-first approach, because this simple reality would have been caught earlier. There's a lot that is simplified for an API that acts on  resource and fulfils a set of endpoints to Create, Retrieve, Update, Delete, and List objects. 
+    As we did not implement a delete endpoint, we cannot write anything to delete comments we have made, and therefore we cannot revert the system back to a clean state without redeploying it. Maybe that's OK, and we are fine with deploying our API again - but then again maybe we aren't because it increases feedback time. This somewhat illustrates an advantage of a test-first approach, because this simple reality would have been caught earlier. There's a lot that is simplified for an API that acts on  resource and fulfils a set of endpoints to Create, Retrieve, Update, Delete, and List objects.
 
 3. Authentication is still an issue
 

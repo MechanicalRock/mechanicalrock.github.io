@@ -1,14 +1,14 @@
 ---
-layout: post
+layout: postv2
 title: AWS CloudFormation Time Bomb Detector
 date: 2021-03-24
 tags: aws cloudformation botocore
 author: Tim Myerscough
 image: img/blog/botocore-deprecation/comb.png
-description:  Do you use Python Lambda backed CustomResources in CloudFormation?  Act before 01 April 2021.  
+description:  Do you use Python Lambda backed CustomResources in CloudFormation?  Act before 01 April 2021.
 ---
 
-Do you use Python CustomResources in your CloudFormation stacks?  
+Do you use Python CustomResources in your CloudFormation stacks?
 
 **If so, you need to act before 01 April 2021.**
 

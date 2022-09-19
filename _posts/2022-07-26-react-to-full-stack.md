@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: React To Full Stack
 date: 2022-07-26
 tags: [react, node, aws]

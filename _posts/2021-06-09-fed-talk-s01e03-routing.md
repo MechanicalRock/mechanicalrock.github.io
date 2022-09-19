@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 font: serif
 title: "FED Talk! Episode 3: Setting Up Routing in React"
 description: "In today’s episode we will setup routing in our React app, the pro way!"

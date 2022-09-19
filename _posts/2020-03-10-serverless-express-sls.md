@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Serverless Express Without The Express (Or Lambda)
 date: 2020-04-22
 tags: javascript tutorial serverless aws
@@ -157,10 +157,10 @@ Finally, we will need two roles to manage read and writing to the database. Thes
           PolicyDocument:
             Statement:
               - Effect: Allow
-                Action: 
+                Action:
                   - dynamodb:GetItem
                   - dynamodb:Query
-                Resource: 
+                Resource:
                   - !Sub "${Database.Arn}"
                   - !Sub "${Database.Arn}/index/*"
 ```
@@ -242,7 +242,7 @@ Then we need to add some definitions to our 'Create Message' endpoint. In it's e
         requestTemplates:
           "application/json":
             Fn::Sub: |
-              { 
+              {
                 "TableName": "${Database}",
                 "Item": {
                   "pk": {
@@ -262,9 +262,9 @@ Then we need to add some definitions to our 'Create Message' endpoint. In it's e
                   }
                 }
               }
-          "text/plain": 
+          "text/plain":
             Fn::Sub: |
-              { 
+              {
                 "TableName": "${Database}",
                 "Item": {
                   "pk": {
@@ -408,7 +408,7 @@ Once the API is deployed, let's use Postman to send some messages. The first thi
 <center><img src="/img/express-sls/postman-auth.png" /></center>
 <br/>
 
-You can post a message by entering some text in the 'body' section. Just make sure you set the content type correctly by setting it to 'raw', and then selecting 'text' from the dropdown menu. 
+You can post a message by entering some text in the 'body' section. Just make sure you set the content type correctly by setting it to 'raw', and then selecting 'text' from the dropdown menu.
 
 <center><img src="/img/express-sls/postman-post.png" /></center>
 <br/>

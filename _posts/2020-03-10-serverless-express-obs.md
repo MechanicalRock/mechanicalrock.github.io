@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Serverless Express with Logging and Tracing
 date: 2020-03-10
 tags: javascript tutorial serverless aws
@@ -115,7 +115,7 @@ const newLogger = require('pino');
 app.use((req, res, next) => {
     // We attach it to the request object to be used later
     // This creates a new logger per request.
-    req['logger'] = newLogger(); 
+    req['logger'] = newLogger();
     next();
 });
 ```
@@ -156,7 +156,7 @@ This results in logs that look like the following:
 <center><img src="/img/expressobs/logs02.png" /></center>
 <br/>
 
-Most centralized logging systems will have no issues ingesting, parsing and searching over JSON structured logs. 
+Most centralized logging systems will have no issues ingesting, parsing and searching over JSON structured logs.
 
 Keen eyes will notice that the 'sub' field is not particular instructive as to the identity of the caller. Sometimes that can be a handy feature - it's removed a way to personally identify anyone from the log entry alone. Within certain industries, countries, etc, it can be particularly important to keep sensitive or personally identifiable information (PII) out of your logs.
 
@@ -222,7 +222,7 @@ Instrumenting AWS calls is a bit more straight-forward...
 ```javascript
 function newS3Client() {
     return xray.captureAWSClient(
-        new s3({ 
+        new s3({
             params: { Bucket: env.get('BUCKET').required().asString() },
         })
     );

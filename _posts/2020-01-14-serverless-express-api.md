@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Build & Deploy a Serverless Express API to AWS
 date: 2020-01-14
 tags: javascript tutorial serverless sam
@@ -149,7 +149,7 @@ Outputs:
 
 ```
 
-We don't really need to change much. All that needed to be done was 
+We don't really need to change much. All that needed to be done was
 - modifying the event type to `HttpApi`
 - change the path to `/{proxy}+`. This will ensure all get requests are passed to the lambda request, regardless of their path.
 - Change the output to reference `${ServerlessHttpApi}` instead of `${ServerlessRestApi}`
@@ -213,13 +213,13 @@ Configuring SAM deploy
 
         Setting default arguments for 'sam deploy'
         =========================================
-        Stack Name [simple-node-api]: 
-        AWS Region [ap-southeast-2]: 
+        Stack Name [simple-node-api]:
+        AWS Region [ap-southeast-2]:
         #Shows you resources changes to be deployed and require a 'Y' to initiate deploy
-        Confirm changes before deploy [Y/n]: 
+        Confirm changes before deploy [Y/n]:
         #SAM needs permission to be able to create roles to connect to the resources in your template
-        Allow SAM CLI IAM role creation [Y/n]: 
-        Save arguments to samconfig.toml [Y/n]: 
+        Allow SAM CLI IAM role creation [Y/n]:
+        Save arguments to samconfig.toml [Y/n]:
 
         Looking for resources needed for deployment: Found!
 
@@ -229,7 +229,7 @@ Configuring SAM deploy
         Saved arguments to config file
         Running 'sam deploy' for future deployments will use the parameters saved above.
         The above parameters can be changed by modifying samconfig.toml
-        Learn more about samconfig.toml syntax at 
+        Learn more about samconfig.toml syntax at
         https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-config.html
 
         Deploying with following values
@@ -250,15 +250,15 @@ Waiting for changeset to be created..
 
 CloudFormation stack changeset
 ---------------------------------------------------------------------------------------------------------
-Operation                           LogicalResourceId                   ResourceType                      
+Operation                           LogicalResourceId                   ResourceType
 ---------------------------------------------------------------------------------------------------------
-+ Add                               ExpressBackendHelloWorldPermissio   AWS::Lambda::Permission           
-                                    n                                                                     
-+ Add                               ExpressBackendRole                  AWS::IAM::Role                    
-+ Add                               ExpressBackend                      AWS::Lambda::Function             
-+ Add                               ServerlessHttpApiApiGatewayDefaul   AWS::ApiGatewayV2::Stage          
-                                    tStage                                                                
-+ Add                               ServerlessHttpApi                   AWS::ApiGatewayV2::Api            
++ Add                               ExpressBackendHelloWorldPermissio   AWS::Lambda::Permission
+                                    n
++ Add                               ExpressBackendRole                  AWS::IAM::Role
++ Add                               ExpressBackend                      AWS::Lambda::Function
++ Add                               ServerlessHttpApiApiGatewayDefaul   AWS::ApiGatewayV2::Stage
+                                    tStage
++ Add                               ServerlessHttpApi                   AWS::ApiGatewayV2::Api
 ---------------------------------------------------------------------------------------------------------
 
 Changeset created successfully. arn:aws:cloudformation:ap-southeast-2:<ACCOUNT_ID>:changeSet/samcli-deploy1577946076/01b8938e-9205-4489-b1a2-0599a8ebfc41
@@ -272,46 +272,46 @@ Deploy this changeset? [y/N]: y
 
 CloudFormation events from changeset
 ---------------------------------------------------------------------------------------------------------
-ResourceStatus             ResourceType               LogicalResourceId          ResourceStatusReason     
+ResourceStatus             ResourceType               LogicalResourceId          ResourceStatusReason
 ---------------------------------------------------------------------------------------------------------
-CREATE_IN_PROGRESS         AWS::IAM::Role             ExpressBackendRole         -                        
-CREATE_IN_PROGRESS         AWS::IAM::Role             ExpressBackendRole         Resource creation        
-                                                                                 Initiated                
-CREATE_COMPLETE            AWS::IAM::Role             ExpressBackendRole         -                        
-CREATE_IN_PROGRESS         AWS::Lambda::Function      ExpressBackend             -                        
-CREATE_IN_PROGRESS         AWS::Lambda::Function      ExpressBackend             Resource creation        
-                                                                                 Initiated                
-CREATE_COMPLETE            AWS::Lambda::Function      ExpressBackend             -                        
-CREATE_IN_PROGRESS         AWS::ApiGatewayV2::Api     ServerlessHttpApi          -                        
-CREATE_COMPLETE            AWS::ApiGatewayV2::Api     ServerlessHttpApi          -                        
-CREATE_IN_PROGRESS         AWS::ApiGatewayV2::Api     ServerlessHttpApi          Resource creation        
-                                                                                 Initiated                
-CREATE_IN_PROGRESS         AWS::Lambda::Permission    ExpressBackendHelloWorld   Resource creation        
-                                                      Permission                 Initiated                
-CREATE_IN_PROGRESS         AWS::ApiGatewayV2::Stage   ServerlessHttpApiApiGate   -                        
-                                                      wayDefaultStage                                     
-CREATE_IN_PROGRESS         AWS::Lambda::Permission    ExpressBackendHelloWorld   -                        
-                                                      Permission                                          
-CREATE_IN_PROGRESS         AWS::ApiGatewayV2::Stage   ServerlessHttpApiApiGate   Resource creation        
-                                                      wayDefaultStage            Initiated                
-CREATE_COMPLETE            AWS::ApiGatewayV2::Stage   ServerlessHttpApiApiGate   -                        
-                                                      wayDefaultStage                                     
-CREATE_COMPLETE            AWS::Lambda::Permission    ExpressBackendHelloWorld   -                        
-                                                      Permission                                          
-CREATE_COMPLETE            AWS::CloudFormation::Sta   simple-node-api            -                        
-                           ck                                                                             
+CREATE_IN_PROGRESS         AWS::IAM::Role             ExpressBackendRole         -
+CREATE_IN_PROGRESS         AWS::IAM::Role             ExpressBackendRole         Resource creation
+                                                                                 Initiated
+CREATE_COMPLETE            AWS::IAM::Role             ExpressBackendRole         -
+CREATE_IN_PROGRESS         AWS::Lambda::Function      ExpressBackend             -
+CREATE_IN_PROGRESS         AWS::Lambda::Function      ExpressBackend             Resource creation
+                                                                                 Initiated
+CREATE_COMPLETE            AWS::Lambda::Function      ExpressBackend             -
+CREATE_IN_PROGRESS         AWS::ApiGatewayV2::Api     ServerlessHttpApi          -
+CREATE_COMPLETE            AWS::ApiGatewayV2::Api     ServerlessHttpApi          -
+CREATE_IN_PROGRESS         AWS::ApiGatewayV2::Api     ServerlessHttpApi          Resource creation
+                                                                                 Initiated
+CREATE_IN_PROGRESS         AWS::Lambda::Permission    ExpressBackendHelloWorld   Resource creation
+                                                      Permission                 Initiated
+CREATE_IN_PROGRESS         AWS::ApiGatewayV2::Stage   ServerlessHttpApiApiGate   -
+                                                      wayDefaultStage
+CREATE_IN_PROGRESS         AWS::Lambda::Permission    ExpressBackendHelloWorld   -
+                                                      Permission
+CREATE_IN_PROGRESS         AWS::ApiGatewayV2::Stage   ServerlessHttpApiApiGate   Resource creation
+                                                      wayDefaultStage            Initiated
+CREATE_COMPLETE            AWS::ApiGatewayV2::Stage   ServerlessHttpApiApiGate   -
+                                                      wayDefaultStage
+CREATE_COMPLETE            AWS::Lambda::Permission    ExpressBackendHelloWorld   -
+                                                      Permission
+CREATE_COMPLETE            AWS::CloudFormation::Sta   simple-node-api            -
+                           ck
 ---------------------------------------------------------------------------------------------------------
 
 Stack simple-node-api outputs:
 ---------------------------------------------------------------------------------------------------------
-OutputKey-Description                                OutputValue                                        
+OutputKey-Description                                OutputValue
 ---------------------------------------------------------------------------------------------------------
-ExpressBackendFunction - Express Backend Lambda      ExpressBackend.Arn                                 
-Function ARN                                                                                            
-ExpressBackendIamRole - Implicit IAM Role created    ExpressBackendFunctionRole.Arn                     
-for Hello World function                                                                                
-HelloWorldApi - API Gateway endpoint URL for Prod    https://cukqdke1jj.execute-api.ap-                 
-stage for Hello World function                       southeast-2.amazonaws.com/                         
+ExpressBackendFunction - Express Backend Lambda      ExpressBackend.Arn
+Function ARN
+ExpressBackendIamRole - Implicit IAM Role created    ExpressBackendFunctionRole.Arn
+for Hello World function
+HelloWorldApi - API Gateway endpoint URL for Prod    https://cukqdke1jj.execute-api.ap-
+stage for Hello World function                       southeast-2.amazonaws.com/
 ---------------------------------------------------------------------------------------------------------
 
 Successfully created/updated stack - simple-node-api in ap-southeast-2
@@ -337,7 +337,7 @@ Resources:
     Type: AWS::S3::Bucket
 
   ExpressBackend:
-    Type: AWS::Serverless::Function 
+    Type: AWS::Serverless::Function
     Properties:
       CodeUri: hello-world/
       Handler: app.lambdaHandler
@@ -430,7 +430,7 @@ Reading messages out is also relatively simple. This code will list out 'maxItem
 async function getMessages(client, maxItems, token) {
     const { Contents, NextContinuationToken } = await client.listObjectsV2({
         MaxKeys: maxItems,
-        ContinuationToken: token || 
+        ContinuationToken: token ||
             new Buffer(token, 'base64').toString('ascii')
     }).promise();
 
@@ -439,7 +439,7 @@ async function getMessages(client, maxItems, token) {
 
     return {
         Items: res.map(({ Body }) => JSON.parse(Body)),
-        NextToken: NextContinuationToken || 
+        NextToken: NextContinuationToken ||
             new Buffer(NextContinuationToken, 'ascii').toString('base64')
     }
 }

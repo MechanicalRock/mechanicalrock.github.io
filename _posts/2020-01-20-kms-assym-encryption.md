@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: postv2
 title:  How To Encrypt Data With Asymmetric KMS Data Keys
 date: 2020-01-20
-tags: kms aws encryption 
+tags: kms aws encryption
 author: Matt Tyler
 image: img/asym.png
 ---

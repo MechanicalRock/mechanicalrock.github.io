@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Strangler Pattern
 date: 2020-05-04
 tags: architecture patterns
@@ -10,7 +10,7 @@ image: img/strangler-pattern/Strangler_fig_boulder_katandra.jpg
 <center><a href="https://commons.wikimedia.org/wiki/File:Strangler_fig_boulder_katandra.jpg"> <img alt="strangler fig" src="/img/strangler-pattern/Strangler_fig_boulder_katandra.jpg" /></a></center>
 <br/>
 
-Organisations who face replacing legacy applications often face an impossible choice.  Do you pay the high cost of a big-bang rewrite with the inherent disruption of a cutover, or do you keep the legacy application on life support?  
+Organisations who face replacing legacy applications often face an impossible choice.  Do you pay the high cost of a big-bang rewrite with the inherent disruption of a cutover, or do you keep the legacy application on life support?
 
 Is there a better way?  One where you can break apart your legacy monolith.  Whilst moving to the cloud. And adopting Cloud Native practices.  Maybe there is...
 
@@ -21,13 +21,13 @@ In the modern world of agile development, architecture has no end state.  Busine
 
 You can't stop everything, down tools and re-write from scratch.  What's more, if you tried you would likely be caught out by the [Second System Effect](https://en.wikipedia.org/wiki/Second-system_effect): a re-write shall solve the issues of the past but actually results in bloated complexity and over-runs.  "We can solve the issues of the past and re-write the system that took us 6+ years, in 12 months.".  The reality?  Eighteen months down the line: you are still building on the original system; the new system supports ~20% of the functionality of the original; technical debt has accrued in the push to deliver; your beautiful clean new architecture has turned into a big ball of mud and what's more your frustrated customers have left for the nimble upstart that has eaten your lunch.
 
-There are countless examples of how large scale IT rewrite projects fail: both in [government](https://en.wikipedia.org/wiki/Expeditionary_Combat_Support_System) and the [private](https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/) sector. 
+There are countless examples of how large scale IT rewrite projects fail: both in [government](https://en.wikipedia.org/wiki/Expeditionary_Combat_Support_System) and the [private](https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/) sector.
 
 Instead, you need a mechanism to refactor and replace parts of a system whilst maintaining production availability.  You require telemetry to evaluate the changes you make.
 
 # The Solution
 
-The strangler pattern provides an approach to controlled re-architecture.  
+The strangler pattern provides an approach to controlled re-architecture.
 
 It is not intended to persist indefinitely.  Instead it provides a pathway to manage internal change whilst minimising the impact to external dependencies.  Once re-architecture has been completed, a key step is the removal of the strangler from your system to simplify and move forward.
 
@@ -44,7 +44,7 @@ It is not intended to persist indefinitely.  Instead it provides a pathway to ma
 
 * Implement your new service, wiring it in to the strangler facade.
 * Dark launch the new service: tee traffic between the new and legacy implementations.
-    * Return responses from the legacy implementation.  
+    * Return responses from the legacy implementation.
     * Capture, or discard, responses from the new implementation.  This enables you to monitor the behaviour of the new implementation to ensure it is fit for purpose.
 * Continuous deployment is also a good option.  Deploy partial implementations of the new service, whilst development is still in progress, to gain confidence and mitigate risk without compromising system behaviour.
 
@@ -57,8 +57,8 @@ It is not intended to persist indefinitely.  Instead it provides a pathway to ma
 
 **Stage 6**: Migrate clients to the new API and remove the strangler facade
 * This is likely to require breaking changes to clients, and should be managed accordingly.
-* To manage the transition, if you have a large number of clients, expose the new API whilst maintaining the strangler facade.  
-    * Monitor usage of the strangler facade and proactively engage with clients to help them migrate.  
+* To manage the transition, if you have a large number of clients, expose the new API whilst maintaining the strangler facade.
+    * Monitor usage of the strangler facade and proactively engage with clients to help them migrate.
     * Once the strangler facade is no longer being used, it can be safely removed.
 
 # Considerations
@@ -102,7 +102,7 @@ Using the strangler pattern, the team were able to effectively begin a complete 
 
 ## Conclusion
 
-The strangler pattern, particularly when paired with complementing patterns such as wire-tap, provides a low-risk mechanism to enable large scale refactoring.  It can be applied in a variety of situations where re-architecture is required.  
+The strangler pattern, particularly when paired with complementing patterns such as wire-tap, provides a low-risk mechanism to enable large scale refactoring.  It can be applied in a variety of situations where re-architecture is required.
 
 During the application of the strangler pattern some tradeoffs may be required.  This should be accepted: the strangler pattern is a means to an end - to take you from point A to B in a controlled manner.  Removal of the strangler facade, followed by further evolution should be expected.
 

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Rolling Out Amazon Guard​Duty to AWS Organizations
 date: 2020-05-15
 tags: aws guardduty organizations security landing-zone detection guard-rails
@@ -81,7 +81,7 @@ Next we want to create an AWS Organizations client, and in order to do that it's
 
 There are [multiple ways](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-credentials-node.html) to specify the credentials to the AWS SDK. In our case, since we are running the tool from the CLI, we were happy to use the shared INI file credentials in `~/.aws/credentials`, where we have profiles defined.
 
-For example, to retrieve the credentials for the AWS Organizations master account, we can use the following (where `my-organization-master-account-profile` is the profile name): 
+For example, to retrieve the credentials for the AWS Organizations master account, we can use the following (where `my-organization-master-account-profile` is the profile name):
 
 ```typescript
 new AWS.SharedIniFileCredentials({ profile: 'my-organization-master-account-profile' })

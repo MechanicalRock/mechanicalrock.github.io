@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Ensuring Resolvers Aren't Rejected
 date: 2020-04-27
 tags: appsync vtl resolver mapping template testing tdd

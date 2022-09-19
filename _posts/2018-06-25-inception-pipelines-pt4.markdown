@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "Seeds of Inception - Part 4"
 date:   2018-06-25
 tags: aws continuous deployment codepipeline codebuild inception pipeline

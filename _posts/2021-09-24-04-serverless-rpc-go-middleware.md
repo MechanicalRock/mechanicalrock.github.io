@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: "Building a Serverless RPC API on AWS: Go Middleware"
 date: 2021-09-23
 tags: rpc go twirp aws middleware

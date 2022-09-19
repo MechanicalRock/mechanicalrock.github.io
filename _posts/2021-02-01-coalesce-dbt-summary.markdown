@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Highlights from the DBT Community's Coalesce Conference
 date: 2021-01-25
 tags: data dbt elt etl transformation

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Re:Invent Yourself and Your Company With Serverless
 date: 2020-03-25
 tags: serverless aws security reinvent
@@ -12,7 +12,7 @@ image: img/reinvent.png
 
 # Introduction
 
-I became a father for the first time recently. Turns out your hands are pretty much full for a lot of the time, rocking an upset infant back-and-forth in an attempt to get them to settle. Watching all the re:invent content I wasn't able to attend when I was at the conference seemed like a good way to fill in the time. I thought I'd put together an expansive list of my favourite videos from the last couple of re:invents. These sessions run a bit of a gamut; some are what I consider base-line knowledge, some are advanced use-cases, some are just interesting. Generally, they focus around the serverless ecosystem and topics that I think developers needs to know to become expert serverless practictioners. 
+I became a father for the first time recently. Turns out your hands are pretty much full for a lot of the time, rocking an upset infant back-and-forth in an attempt to get them to settle. Watching all the re:invent content I wasn't able to attend when I was at the conference seemed like a good way to fill in the time. I thought I'd put together an expansive list of my favourite videos from the last couple of re:invents. These sessions run a bit of a gamut; some are what I consider base-line knowledge, some are advanced use-cases, some are just interesting. Generally, they focus around the serverless ecosystem and topics that I think developers needs to know to become expert serverless practictioners.
 
 I've broken these up into certain 'focus areas'. 'API & Mobile' is sort of self explanatory, but I've also included videos that are related to specific frameworks. 'Serverless Transformation' includes videos that are primarily targeted at decision makers, and convincing them to give this serverless thing a go. 'Serverless Backend Architecture' focuses more on stitching different services together to create robust services. 'Data Management' focuses on the services used to persist data in your applications. 'CI/CD' focuses on the tooling and techniques used to releases serverless applications to your end-users. Finally, I've included a bunch of videos aimed at upping your security game.
 

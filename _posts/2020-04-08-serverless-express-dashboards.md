@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Serverless Express - Measuring With Metrics
 date: 2020-04-08
 tags: javascript tutorial serverless aws
@@ -42,7 +42,7 @@ In most cases, metrics only help to answer fairly generic questions of performan
 
 The worst outcome with metrics is something known as 'Dashboard Hell'. A team will create a new dashboard and alert for every incident that occurs which wastes significant amounts of engineering effort. Either a team will resolve the underlying causes of the incident (rendering the alerts useless), or the team will eventually be unable to cope with the number of dashboards and incoming alerts, leading to alarm fatigue. Building metrics and alerts at the expense of addressing underlying engineering issues will always result in a dysfunctional team and terrible services.
 
-Unfortunately, most vendors of observability products place too much emphasis on marketing pretty graphs and pictures, and too little on providing engineers with the tools needed to effectively understand their services in production. 
+Unfortunately, most vendors of observability products place too much emphasis on marketing pretty graphs and pictures, and too little on providing engineers with the tools needed to effectively understand their services in production.
 
 Fight me.
 
@@ -91,7 +91,7 @@ The 'grouping' for the following metrics. This will generally be the type or nam
 
 - Dimensions
 
-Dimensions are typically what you would 'slice-and-dice' on. Dimensions is an array of DimensionSets. This is potentially the most confusing part to wrap your head around, so let's try an example. 
+Dimensions are typically what you would 'slice-and-dice' on. Dimensions is an array of DimensionSets. This is potentially the most confusing part to wrap your head around, so let's try an example.
 
 Say you were measuring response times for requests that resulted in various status codes. Status codes would be an appropriate dimension. But you may also want to group successful codes (200) together. Maybe it is also worth grouping codes as 'Success' (for 200's) and 'Failure' for everything else?. We have a dimension set that looks like '[Status, Status_Code]'. Every dimension in the dimension set forms a unique combination. If we had two items in the set for Status (Success, Failure), and eight for status code (200, 201, 404, 403, 401, 501, 502, 503), this would result in sixteen custom metrics created. As you are billed by the custom metric, this can be important to keep in mind.
 
@@ -177,7 +177,7 @@ app.use((req, res, next) => {
         req.logger.putDimensions({ "action": act});
 
         const currentTime = new Date().getTime();
-        
+
         rbac.addRolesToUser(sub, groups).then(() => {
             rbac.enforce(sub, obj, act)
                 .then(pass => {

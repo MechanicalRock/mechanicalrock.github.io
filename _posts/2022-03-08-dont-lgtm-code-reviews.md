@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Doesn't look good to me — a requiem for thorough code reviews
 date: 2022-03-08
 tags: code cloudnative consultants deployment continuous-delivery devops patterns review software test testing

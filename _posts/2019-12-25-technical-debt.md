@@ -1,10 +1,10 @@
 ---
-layout: post
+layout: postv2
 title: "Technical Debt: The First 50 years"
 date: 2020-07-01
-tags: debt devops dora 
+tags: debt devops dora
 author: Matt Tyler
-image: 
+image:
 ---
 
 Technical debt is a term used by engineers to describe the general friction they encounter in working with software. It stands as a signpost for all the bad design decisions or compromises that have been made in order to accomplish what they need to achieve. Technical Debt itself can't be measured but most engineers will agree that it has an impact on the ability to both deliver and operate software; the four-key metrics presented in the DORA report can act as a suitable alternative. It is easier to argue for investment in specific areas if they can be shown to have an impact on a measure that the business understands to be linked to performance and therefore the profitability of the business.
@@ -62,9 +62,9 @@ Furthermore, the DORA report categorises teams into four groups (Elite, High, Me
 <br/>
 This poses an interesting question; if software requires no additional features, and is never in need of repair, is it free of technical debt? Imagine two bodies of work. One has the former traits, along with the reputation for having been terrible to work with by the authors. The other is a more mediocre example of software development, currently in active development and incurring under 5 hours of downtime per year. Which system has more technical debt? If I hold to my previous definition, I would say the first system has less technical debt. But I guarantee that many would argue in favour of the second. The lack of development on the first system may be due to developers avoiding making changes to it. This would seem to imply the technical debt of a system is a measure of potential which is only zero when the next change to make is to turn it off.
 
-Knowing when something may be turned off is at the core of the problem of technical debt. The first pillar of the AWS Well-Architected Framework (Carlson B. et al. 2018) is entitled "Operational Excellence", and stresses the importance of understanding the priorities and goals of a system. This is an absolutely critical function to knowing whether a system is worth maintaining, and unfortunately many enterprises have a poor understanding of this. Don't believe it? This can be exposed with one simple question; What are the set of circumstances that would need to occur to lead you to decide to turn this system off? An ideal answer would start by explaining the core business problem that the system solves, the value it creates, and how it fits within the wider ecosystem of development at the company. A brilliant answer would provide evidence that such a conversation occurred during the conception, but I have yet to find a group of engineers that were planning for death before birth. It would also be easy to understand how discussing the deprecation of not-yet-developed software might be considered political suicide given the significant expense that would be incurred to write it. Which - once again - exposes the presence of a trust deficit between engineering and business. 
+Knowing when something may be turned off is at the core of the problem of technical debt. The first pillar of the AWS Well-Architected Framework (Carlson B. et al. 2018) is entitled "Operational Excellence", and stresses the importance of understanding the priorities and goals of a system. This is an absolutely critical function to knowing whether a system is worth maintaining, and unfortunately many enterprises have a poor understanding of this. Don't believe it? This can be exposed with one simple question; What are the set of circumstances that would need to occur to lead you to decide to turn this system off? An ideal answer would start by explaining the core business problem that the system solves, the value it creates, and how it fits within the wider ecosystem of development at the company. A brilliant answer would provide evidence that such a conversation occurred during the conception, but I have yet to find a group of engineers that were planning for death before birth. It would also be easy to understand how discussing the deprecation of not-yet-developed software might be considered political suicide given the significant expense that would be incurred to write it. Which - once again - exposes the presence of a trust deficit between engineering and business.
 
-Furthermore, this brings to mind how we would utilise these metrics in a system that will continue to be used in the foreseeable future but isn't undergoing rapid change and remains stable. 
+Furthermore, this brings to mind how we would utilise these metrics in a system that will continue to be used in the foreseeable future but isn't undergoing rapid change and remains stable.
 
 - Lead Time For Changes would trend towards zero; no changes means no lead time.
 - Change Failure Rate would trend towards zero; no changes mean that no changes can fail.

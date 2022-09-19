@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "Introducing Infrastructure Mapping!"
 date:   2016-12-21 04:48:58 +0000
 tags: bdd devops

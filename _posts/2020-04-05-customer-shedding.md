@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Customer Shedding
 date: 2020-04-05
 tags: cloud architecture product

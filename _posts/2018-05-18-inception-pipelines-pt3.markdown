@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "Seeds of Inception - Part 3"
 date:   2018-05-18
 tags: aws continuous deployment cdn spa cloudfront cross-account

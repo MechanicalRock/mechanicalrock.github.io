@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: AWS Announces Event Bridge
 date: 2019-07-26
 tags: aws event-bridge

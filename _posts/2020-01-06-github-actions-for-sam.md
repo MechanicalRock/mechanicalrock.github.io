@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: postv2
 title:  "Build & Release Serverless Apps with Github Actions"
 date: 2020-01-06
-tags: serverless github cicd 
+tags: serverless github cicd
 author: Matt Tyler
 image: img/sam-actions.png
 ---
@@ -95,7 +95,7 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       with:
         prefix: ${{ github.repository }}/${{ github.sha }}
-        bucket: ${{ secrets.BUCKET }} 
+        bucket: ${{ secrets.BUCKET }}
         template_file: template.yaml
         output_template_file: ${{ github.sha }}.yaml
         working_directory: ./.aws-sam/build
@@ -174,7 +174,7 @@ Our next step is to create actions that can perform sam package and publish comm
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       with:
         prefix: ${{ github.repository }}/${{ github.sha }}
-        bucket: ${{ secrets.BUCKET }} 
+        bucket: ${{ secrets.BUCKET }}
         template_file: template.yaml
         output_template_file: ${{ github.sha }}.yaml
         working_directory: ./.aws-sam/build
@@ -363,6 +363,6 @@ If this is the first time the application is published to the serverless applica
 
 # Conclusion
 
-I hope this has served as a reasonable introduction to github actions, and publishing to the serverless application repository. We saw how to split a pipeline into build and release stages, and when/why you may want to do so. Finally, we saw how to define a workflow, how to use actions provided by github and the community, and how to define our own custom actions in the repository. 
+I hope this has served as a reasonable introduction to github actions, and publishing to the serverless application repository. We saw how to split a pipeline into build and release stages, and when/why you may want to do so. Finally, we saw how to define a workflow, how to use actions provided by github and the community, and how to define our own custom actions in the repository.
 
 Need help managing CI/CD and release processes at your company? [Contact Mechanical Rock to Get Started!](https://www.mechanicalrock.io/lets-get-started)

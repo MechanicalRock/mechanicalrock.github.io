@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: postv2
 title:  "Using Typescript with SAM & Serverless Framework"
 date: 2019-10-22
-tags: aws lambda typescript sam serverless 
+tags: aws lambda typescript sam serverless
 author: Matt Tyler
 image: img/lambda.png
 ---
@@ -69,7 +69,7 @@ functions:
   MyFunction:
     handler: src/MyFunction.handler
 
-        
+
 plugins:
   - serverless-webpack
 ```
@@ -109,9 +109,9 @@ module.exports = {
   },
   module: {
     rules: [
-      { 
-        test: /\.tsx?$/, 
-        exclude: /node_modules/, 
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
           plugins: [
@@ -147,9 +147,9 @@ I'll focus on the most important parts. I include `serverless-webpack` because i
 
 I use to exclusively use `ts-loader` but ran into memory issues with projects that had more than five functions. My work-around for this issue is to turn type-checking off and instead use `ForkTsCheckerWebpackPlugin` to perform type-checking at build time. I had jest configured in a similar manner using the jest typescript loader, and once again had memory issues there as the project got larger. Jest 24 was released around the same time and had in-built support for babel. After learning that babel had support for compiling typescript, I decided to take the opportunity to get rid of my dependencies on the typescript loaders.
 
-Replacing the ts-loaders with babel got rid of all my memory issues, and gave a fairly significant performance boost. The reason for this is simple; babel doesn't actually compile typescript, it only strips out type annotations at build time. This does mean that there are certain typescript-only features (like namespaces) that you cannot use; but I haven't been affected by these limitations, so it is the right trade-off for me. 
+Replacing the ts-loaders with babel got rid of all my memory issues, and gave a fairly significant performance boost. The reason for this is simple; babel doesn't actually compile typescript, it only strips out type annotations at build time. This does mean that there are certain typescript-only features (like namespaces) that you cannot use; but I haven't been affected by these limitations, so it is the right trade-off for me.
 
-Even though I technically do not use the typescript compiler to build code, I still install the typescript compiler to perform type-checking through my IDE. The only issue I have found here is that it does not catch issues with features that the typescript compiler supports, that I have not enabled the appropriate babel plugin for. This can occasionally get a little confusing in the IDE; as my IDE will sometimes indicate potential compilation errors that don't exist. 
+Even though I technically do not use the typescript compiler to build code, I still install the typescript compiler to perform type-checking through my IDE. The only issue I have found here is that it does not catch issues with features that the typescript compiler supports, that I have not enabled the appropriate babel plugin for. This can occasionally get a little confusing in the IDE; as my IDE will sometimes indicate potential compilation errors that don't exist.
 
 Because of that my tsconfig.json file is usually small and uninteresting.
 
@@ -221,7 +221,7 @@ module.exports = Object.entries(awsSamPlugin.entry()).map(([name, entry]) => {
 })
 ```
 
-I use the `aws-sam-webpack-plugin` that is provided by Rich Buggy. Where I differ from Rich's configuration is the use of webpack's multi-compiler support and the use of babel. 
+I use the `aws-sam-webpack-plugin` that is provided by Rich Buggy. Where I differ from Rich's configuration is the use of webpack's multi-compiler support and the use of babel.
 
 I do this because I have been experimenting with code splitting features in a webpack, and it is impossible to do this in the standard configuration. I'll cover this in a future post.
 

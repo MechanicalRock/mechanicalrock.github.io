@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: "\"It's A Lot More Snappy\""
 date: 2018-07-29
 tags: pwa spa javascript

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Rotation of Secrets with AWS Secrets Manager
 date: 2020-02-03
 tags: javascript tutorial aws secrets
@@ -64,7 +64,7 @@ AWS Secrets Manager is a secrets management service (obviously) that is primaril
 
 # A Motivating Example
 
-I wasn't all too long ago we were building out a CloudFormation template that would act as an 'enterprise' ready, one-click method to deploy single-page-applications built with frameworks like react and angular. This involved ensuring that a lot of authentications flows were handled server-side, and that web content would be protected as well. No login - no content. This involved a fair amount of thought, and involved a collection of Lambda @ Edge functions with CloudFront to provide the neccesary redirect functionality. 
+I wasn't all too long ago we were building out a CloudFormation template that would act as an 'enterprise' ready, one-click method to deploy single-page-applications built with frameworks like react and angular. This involved ensuring that a lot of authentications flows were handled server-side, and that web content would be protected as well. No login - no content. This involved a fair amount of thought, and involved a collection of Lambda @ Edge functions with CloudFront to provide the neccesary redirect functionality.
 
 We also wanted to exchange a JWT from a third party identity provider for a signed cookie, in order to protect access to the content behind CloudFront. [This is actually standard functionality in CloudFormation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-cookies.html) but we had a few issues with how it all works;
 
@@ -80,7 +80,7 @@ My solution to get around this is to generate my own keys using AWS Secrets Mana
 
 <center><img src="/img/rotation/cf-flow.png" /></center>
 
-The critical piece of the puzzle is having a secret and rotating it, and then retrieving it, so this is what I'll cover now. 
+The critical piece of the puzzle is having a secret and rotating it, and then retrieving it, so this is what I'll cover now.
 
 # Building a CloudFormation Template
 
@@ -373,7 +373,7 @@ We can see here, that the latest secret is marked with 'AWSCURRENT' and 'AWSPEND
 
 Fetching secrets is pretty easy; issuing a get-secret-value call from any SDK will fetch the most current secret. The problem comes when the secret rotates.
 
-In my example, eventually the signing key will change, and the signed-cookie will become invalid, throwing a 403. Now - all this will do is redirect the user to sign-in again, which will issue a new cookie signed with the new signature. 
+In my example, eventually the signing key will change, and the signed-cookie will become invalid, throwing a 403. Now - all this will do is redirect the user to sign-in again, which will issue a new cookie signed with the new signature.
 
 If we decide we don't want to do that - we could include additional data in the cookie indicating what version of the secret is in use. If this doesn't match the current secret, we can pull back the previous version, check the IDs, validate with the old secret if appropriate, and return an appropriate response. If the versions clash, the user can be redirected to authenticate.
 
@@ -381,7 +381,7 @@ In my examples, I'm referring to using Lambda functions. These will be recycled 
 
 # Conclusion
 
-By now you should have a rough idea how secrets rotation works, and how to implement a simple rotation function using AWS Secrets Manager. I really do hope you have realised how useful the practice is over the alternatives, and going forward, it will become 'the way' to do things. 
+By now you should have a rough idea how secrets rotation works, and how to implement a simple rotation function using AWS Secrets Manager. I really do hope you have realised how useful the practice is over the alternatives, and going forward, it will become 'the way' to do things.
 
 Because seriously... every time I see an application secret on a post-it note or stored in plain-text somewhere I die a little inside.
 

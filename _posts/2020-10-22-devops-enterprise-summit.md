@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Ten Tips from the DevOps Enterprise Summit
 date: 2020-10-22
 tags: devops

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Putting the Serverless in GraphQL with AppSync
 date: 2020-05-04
 tags: AWS AppSync Cloudformation

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "Seeds of Inception - Part 1"
 date:   2018-03-01
 tags: aws continuous deployment

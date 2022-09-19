@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "Networking Between Sibling Docker Containers"
 date:   2017-12-01
 tags: devops docker

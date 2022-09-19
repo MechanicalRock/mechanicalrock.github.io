@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: "These Are Not The Consultants You Are Looking For"
 date: 2020-09-23
 tags: consultants contractors consulting contracting rant

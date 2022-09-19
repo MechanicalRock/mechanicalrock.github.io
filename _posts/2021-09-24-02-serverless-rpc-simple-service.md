@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: "Building a Serverless RPC API on AWS: A simple RPC service with help from Twitch"
 date: 2021-09-23
 tags: rpc grpc twirp aws api protobuf
@@ -73,7 +73,7 @@ import (
 ```
 You will need `go get` each dependency in order to install and add it to the `go.mod` file.
 
-Go ahead and create a Makefile with the following entries. This will allow you to download dependencies and tools you require. 
+Go ahead and create a Makefile with the following entries. This will allow you to download dependencies and tools you require.
 
 ```Makefile
 download:
@@ -85,7 +85,7 @@ install-tools: download
 	@cat tools.go | grep _ | awk -F'"' '{print $$2}' | xargs -tI % go install %
 ```
 
-We can start constructing our service now. 
+We can start constructing our service now.
 
 ```
 $ mkdir -p rpc/ledger
@@ -113,7 +113,7 @@ service Ledger {
 
 message ClaimDomainInput {
     string ClientRequestToken = 1; // we will use this to enforce idempotency - I'll explain this further in another post
-    string Subdomain = 2; // 
+    string Subdomain = 2; //
     string Root = 3; // We will assume we are claiming subdomains on a set of domains we happen to own
 }
 
@@ -341,7 +341,7 @@ Resources:
     Type: AWS::DynamoDB::Table
     Properties:
       BillingMode: PAY_PER_REQUEST
-      KeySchema: 
+      KeySchema:
         - AttributeName: pk
           KeyType: HASH
         - AttributeName: sk
@@ -447,7 +447,7 @@ And you can test it by invoking it in the console!
 
 # Conclusion
 
-We covered a lot of ground here in order to deploy our service. This included scaffolding our repository to work with Go, SAM, and Protobuf for a seamless deployment, as well as integrating the Go Lamda Runtime with Twirp. 
+We covered a lot of ground here in order to deploy our service. This included scaffolding our repository to work with Go, SAM, and Protobuf for a seamless deployment, as well as integrating the Go Lamda Runtime with Twirp.
 
 In future installments I will;
 
@@ -455,7 +455,7 @@ In future installments I will;
 - Demonstrate an easy way to validate API input
 - How to instrument our service
 
-And more! 
+And more!
 
 ---
 

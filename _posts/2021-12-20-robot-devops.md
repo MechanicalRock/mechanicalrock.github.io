@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Applying DevOps Principles to Robotics
 date: 2021-12-20
 tags: devops ci cd robotics aws greengrass
@@ -59,7 +59,7 @@ As a metaphor to traditional software testing, simulation is best characterised 
 
 Whilst simulation is faster than real world testing, it's still slower than unit testing and can be computationally expensive.
 
-Given this, if you're planning to run it automatically as part of a CI/CD toolchain, then it's best suited to run after or parallel to unit testing, but before deployment to your non-production environment. 
+Given this, if you're planning to run it automatically as part of a CI/CD toolchain, then it's best suited to run after or parallel to unit testing, but before deployment to your non-production environment.
 
 
 

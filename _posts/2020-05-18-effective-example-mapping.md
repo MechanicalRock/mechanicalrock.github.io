@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Effective Example Mapping
 date: 2020-05-18
 tags: bdd requirements
@@ -36,7 +36,7 @@ Which led to the following structure:
 Looking at each point in more detail.
 
 ## Diverge
-By focusing on examples, individually, this encourages brainstorming of ideas in order to explore the problem and perform deliberate discovery.  Duplicates are OK at this stage, and indicate a shared understanding.  Clarifying questions are also common, particularly at the start, helping the team to probe the scope boundaries of the story.  Questions can usually be highlighted using an example. 
+By focusing on examples, individually, this encourages brainstorming of ideas in order to explore the problem and perform deliberate discovery.  Duplicates are OK at this stage, and indicate a shared understanding.  Clarifying questions are also common, particularly at the start, helping the team to probe the scope boundaries of the story.  Questions can usually be highlighted using an example.
 
 ## Consolidate
 Following a period of divergent thinking, it is important to refocus and remove duplication.  Questions raised that can be answered quickly and will clarify scope of the problem.
@@ -50,7 +50,7 @@ The review phase offers another opportunity of deliberate discovery, to clarify 
 ## Reflect
 This section offers an opportunity to reflect both on the output, and the process itself.  This provides a checkpoint on the shared understanding of the team.  The quickest method is a simple thumb vote - it is not necessary to wait for everyone to reflect - if anyone is unhappy then the session is not complete.
 
-# Why? 
+# Why?
 
 ## Timing
 Timings are intentionally aggressive.  It is intended to ensure flow in the discussion - after 10 minutes every objective of the Example Mapping session has been covered to some degree.  Each part of the process is short enough to ensure that time isn’t considered wasted: creating and de-duping a lot of examples in at the beginning - big deal!  You ‘wasted’ 4 minutes and have a shared understanding.  How much time is usually wasted in meetings?
@@ -64,7 +64,7 @@ Quiet time also forces the group to write things down - a key objective of an Ex
 One of the major concerns I have seen from people is that the pressure of short timeboxes meant they struggled to think.  **Before changing timings, I urge you to try it as is for a few sessions before you start to experiment.**  The goal of the process is to ensure the session as a whole is effective and everyone has a shared understanding.  It is intended to be most effective, for most of the people, most of the time.  If you are more introspective, be less mindful of the timer and let others in the group lead the discussion: focus on adding value by listening and writing down examples others have not thought of - if you aren’t comfortable you shall have the opportunity to raise your concerns.
 
 # Conclusion
-The process outlined here means you actually have a review point at 10 minutes, meaning you might actually finish early! 
+The process outlined here means you actually have a review point at 10 minutes, meaning you might actually finish early!
 
 The experiment was an overwhelming success: on their first Example Mapping session we were able to successfully map out a new story in **22 minutes**: we identified a number of questions to park; split the story to reduce complexity/effort; recorded a set of examples to illustrate the specified rules and had a good shared understanding of the problem.  Such an effective session could often take weeks to come together.
 

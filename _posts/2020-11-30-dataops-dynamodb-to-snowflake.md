@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Batch ELT from AWS DynamoDB to Snowflake
 date: 2020-11-30
 tags: snowflake dynamodb aws data elt s3

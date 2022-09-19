@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "Docker for Windows Internal"
 date:   2016-12-07 04:48:58 +0000
 tags: docker devops windows

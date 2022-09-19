@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 font: serif
 title: Publishing TypeScript Node Modules
 date: 2022-01-24

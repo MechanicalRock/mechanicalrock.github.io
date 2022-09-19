@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: postv2
 title:  "Applying Code-Splitting to AWS Lambda"
 date:   2019-09-13
-tags: typescript lambda webpack 
+tags: typescript lambda webpack
 author: Matt Tyler
 image: img/lambda.png
 ---
@@ -113,7 +113,7 @@ const re = new RegExp(/^product\/(?<ProductId>.+)/);
 export default async function DeleteServiceCatalogCloudFormationProduct(arn: string) {
     const { resource } = SplitArn(arn);
     const [ _, Id ] = re.exec(resource);
-    // Here I have wrapped the API call to ignore deletion errors from 
+    // Here I have wrapped the API call to ignore deletion errors from
     // resources that do not exist
     await Call(() => new catalog().deleteProduct({ Id }));
 }
@@ -141,7 +141,7 @@ module.exports = Object.entries(awsSamPlugin.entry()).map(([name, entry]) => {
     },
     target: "node",
     externals: [
-      "aws-sdk", 
+      "aws-sdk",
       /aws-sdk\/clients\/.*/
     ],
     mode: process.env.NODE_ENV || "production",

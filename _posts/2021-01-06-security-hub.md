@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Monitoring resource compliance with AWS Security Hub
 date: 2021-01-06
 tags: devops ci cd cloudformation infrastructure-as-code aws cross-account security
@@ -289,7 +289,7 @@ My favourite test case for generating findings is to create an S3 bucket without
 ```yaml
 MyDodgeyBucket:
   Type: AWS::S3::Bucket
-  Properties: 
+  Properties:
     AccessControl: Private
     BucketName: my-dodgey-bucket
     # Oops, no encryption...

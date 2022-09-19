@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Manual Gates, or 'GitFlow in a Wig'
 date: 2020-10-06
 tags: devops ci cd gitflow trunk

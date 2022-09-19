@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "AWS CodeBuild Reports"
 date: 2020-01-02
 tags: aws codebuild reports testing devops

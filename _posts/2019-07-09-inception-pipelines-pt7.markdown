@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "Seeds of Inception - Part 7"
 date:   2019-07-09
 tags: AWS Organizations CloudTrail S3 KMS IAM

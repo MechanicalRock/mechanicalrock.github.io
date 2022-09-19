@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "The New Donut"
 date:   2017-10-15 04:48:58 +0000
 tags: donut automated test reports

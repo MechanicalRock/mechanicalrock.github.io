@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: "Data pipelines in Databricks"
 date: 2022-06-10
 tags: Databricks data testing

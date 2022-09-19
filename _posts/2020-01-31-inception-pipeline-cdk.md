@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Cross-Account Inception Pipeline with AWS CDK
 date: 2020-01-31
 tags: codepipeline cloud-development-kit infrastructure-as-code aws cdk cross-account

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Where do I Stick it?
 date: 2020-08-03
 tags: aws ssm secrets cloudformation

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "Seeds of Inception - Part 6"
 date:   2018-08-27
 tags: aws codepipeline inception pipeline iam roles

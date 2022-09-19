@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: "Building a Serverless RPC API on AWS: When is the mono lambda OK?"
 date: 2021-09-23
 tags: rpc grpc twirp aws api protobuf
@@ -25,7 +25,7 @@ The most productive software teams are those that can leverage their hard-won ex
 
 # When you want to trade on framework familiarity
 
-If your team is extremely familiar with a particular framework, you might find you are more productive within the confines of it. If this enables your team to be more productive, it might be the right trade off for you to make. This doesn't exclude you from needing to learn the AWS Platform, but it may buy your team time to learn whilst still delivering. 
+If your team is extremely familiar with a particular framework, you might find you are more productive within the confines of it. If this enables your team to be more productive, it might be the right trade off for you to make. This doesn't exclude you from needing to learn the AWS Platform, but it may buy your team time to learn whilst still delivering.
 
 # When the IAM policies would be the same for a set of lambda functions
 

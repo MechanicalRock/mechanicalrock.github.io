@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Which Snowflake Organization and Account Pattern is right for you?
 date: 2020-09-23
 tags: cloud data snowflake organizations accounts
@@ -15,9 +15,9 @@ If you are working in the Information Technology space and you have not heard of
 
 Fistfuls of dollars aside, Snowflake is getting the attention of companies around the world that - to date - may not have embarked convincingly on their cloud journey. For this audience in particular, it offers a TCO that is **simple to understand**, and a technical platform that is both novel and fundamentally sustainable. That's a lifeline to many a CTO out there whose data and analytics capabilities are struggling to stay in the race, and them with it.
 
-Snowflake are obviously not alone in this field; competitors such as Google Cloud Platform's BigQuery, AWS Redshift, but also Hadoop players such as Cloudera crowd the field, baited by yet  newer cloud native competitors such as [FireBolt](https://www.firebolt.io/) and [RockSet](https://rockset.com/). However, few match the broad appeal and favour currently experienced by Snowflake that appears to strike a compelling equilibrium between [engineering talent and data services cost](https://www.holistics.io/blog/the-two-philosophies-of-cost-in-data-engineering/). 
+Snowflake are obviously not alone in this field; competitors such as Google Cloud Platform's BigQuery, AWS Redshift, but also Hadoop players such as Cloudera crowd the field, baited by yet  newer cloud native competitors such as [FireBolt](https://www.firebolt.io/) and [RockSet](https://rockset.com/). However, few match the broad appeal and favour currently experienced by Snowflake that appears to strike a compelling equilibrium between [engineering talent and data services cost](https://www.holistics.io/blog/the-two-philosophies-of-cost-in-data-engineering/).
 
-Today we talk about upcoming Snowflake Organization support, what it is, and what it might mean for the way you use Snowflake. 
+Today we talk about upcoming Snowflake Organization support, what it is, and what it might mean for the way you use Snowflake.
 
 
 ### Emergence of Snowflake Organization Support
@@ -47,7 +47,7 @@ I won't cover the specifics of the account vending, because as a private preview
 Maintaining multiple Snowflake Organizations can be used to enable:
 
 * Separate / Split Billing across an organisation
-* Independent ownership / accountability with shared management 
+* Independent ownership / accountability with shared management
 
 Yet it also comes with complications that we will elaborate on later.
 
@@ -78,7 +78,7 @@ Remaining in a single Snowflake Organization carries a number of key benefits
 
 #### Multi National Corporations with Subsidiaries
 
-Many large multi-nationals are dispersed not only geographically, but in function or capability. Others operate globally, but with regional locality (or subsidiaries).  
+Many large multi-nationals are dispersed not only geographically, but in function or capability. Others operate globally, but with regional locality (or subsidiaries).
 
 In a recent AWS Big Data Blog, [Toyota describe how they rolled out a serverless data lake and analytics capability](https://aws.amazon.com/blogs/big-data/enhancing-customer-safety-by-leveraging-the-scalable-secure-and-cost-optimized-toyota-connected-data-lake/), to service their burgeoning in-car telemetry data.
 
@@ -87,15 +87,15 @@ Reasons such as sovereignty, cost or latency may dictate that the journeys your 
 
 #### Loosely Coupled Organisations with broad purpose
 
-A different scenario is where you have a number of organisations that are similar in function, united by purpose, yet operated and governed independently of each other (and possibly even subject to separate jurisdictions or legislation. 
+A different scenario is where you have a number of organisations that are similar in function, united by purpose, yet operated and governed independently of each other (and possibly even subject to separate jurisdictions or legislation.
 
-In Australia, an example of this could be the [31 Primary Health Networks](https://www1.health.gov.au/internet/main/publishing.nsf/Content/PHN-Profiles) (PHNs) that locally co-ordinate the appropriate network of health providers for all Australians. Each PHN is responsible for acquisition of patient data from relevants providers, and as such collectively manage a vast potential data portfolio that is of powerful consequence to government agencies that focus on national health outcomes and policy, such as the [Australian Institute of Health and Welfare](https://www.aihw.gov.au/). 
+In Australia, an example of this could be the [31 Primary Health Networks](https://www1.health.gov.au/internet/main/publishing.nsf/Content/PHN-Profiles) (PHNs) that locally co-ordinate the appropriate network of health providers for all Australians. Each PHN is responsible for acquisition of patient data from relevants providers, and as such collectively manage a vast potential data portfolio that is of powerful consequence to government agencies that focus on national health outcomes and policy, such as the [Australian Institute of Health and Welfare](https://www.aihw.gov.au/).
 
 As Australia is a federation of States and Territories, it follows that each jurisdiction can and generally does have [some of its own laws relating to privacy](https://www.oaic.gov.au/privacy/privacy-in-your-state/), especially in relation to public agencies. In these scenarios, it may be prudent for each jurisdiction to have their own Snowflake Organization that can be administered independently of those in other states, whilst retaining the capability to share data within the same region.
 
 ### Patterns
 
-It's important to note that one of Snowflake's key features - **simple cross account sharing of data** - is independent of the Snowflake Organization feature. Accounts **do not** have to belong to the same Snowflake Organization to share data. 
+It's important to note that one of Snowflake's key features - **simple cross account sharing of data** - is independent of the Snowflake Organization feature. Accounts **do not** have to belong to the same Snowflake Organization to share data.
 
 However, sharing can only happen within the same cloud region. This is important to understand, as it effectively means you must replicate your data (**and hence pay storage again**) in order to share across the cloud / region boundaries.
 

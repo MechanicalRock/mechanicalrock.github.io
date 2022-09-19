@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Having A DevOps Dream
 date: 2020-09-22
 tags: devops cloudnative product-development product

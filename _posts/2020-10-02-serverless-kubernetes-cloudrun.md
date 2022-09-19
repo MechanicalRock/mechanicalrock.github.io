@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Serverless Kubernetes with Cloudrun
 date: 2020-09-28
 tags: containers serverless docker kubernetes

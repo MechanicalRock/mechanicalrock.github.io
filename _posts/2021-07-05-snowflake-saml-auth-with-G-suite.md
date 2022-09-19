@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Snowflake SSO setup with G-Suite
 date: 2021-07-5
 tags: [snowflake saml sso gsuite google authentication]

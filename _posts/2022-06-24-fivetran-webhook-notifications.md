@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: postv2
 title: Fivetran Slack Notifications
 date: 2022-06-24
-tags: Fivetran slack notifications incident-management webhook 
+tags: Fivetran slack notifications incident-management webhook
 author: Joseph Miocevich
 image: /img/fivetranslacklambdalogo.png
 description:
@@ -36,7 +36,7 @@ Fivetran supports the follwing events for webhooks, see [documentation](https://
 - transformation_run_succeeded
 - transformation_run_failed
 
-*Fivetran* . Fivetran Custom Connector. (n.d.). Retrieved June 10, 2022, from https://fivetran.com/docs/logs#events 
+*Fivetran* . Fivetran Custom Connector. (n.d.). Retrieved June 10, 2022, from https://fivetran.com/docs/logs#events
 
 We are only interested in getting notified on failures, so we will only be subscribing to ```sync_end``` and ```dbt_run_failed``` events.
 
@@ -56,7 +56,7 @@ Setting up a Slack App for [incoming webhooks](https://api.slack.com/messaging/w
 1. Create New App
 2. Go to Features/IncomingWebhooks
 3. Add New WebHook to workspace, select with channel
-4. Keep your webhook URL for later to save into secrets manager 
+4. Keep your webhook URL for later to save into secrets manager
 
 ![](/img/slack_webhook_sc1.png)
 
@@ -68,10 +68,10 @@ Setting up a Slack App for [incoming webhooks](https://api.slack.com/messaging/w
 3. Save the Slack Webhook URL in ```SlackApiSecret``` in secret manager
 4. Generate a [secret key](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.hmacsha256.-ctor?view=net-6.0) for [HMACSHA256](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.hmacsha256?view=net-6.0) encryption which will be used signing verification and save to ```FiveTranSigningKeySecret``` in secret manager.
 
-#### Discussion 
+#### Discussion
 
 Fivetran uses [SHA-256 HMAC algorithm](https://en.wikipedia.org/wiki/HMAC) to sign the webhook payload using a a specified secret(```FiveTranSigningKeySecret```). This signature is calculated based on the payload body. To verify the signature, we generate our own signature to verify that the payload is from Fivetran and that the payload body is unmodified.
-The signature is located in the payload header as ```event.headers['X-Fivetran-Signature-256']```, we then use the [crypto.timingSafeEqual](https://nodejs.org/api/crypto.html#cryptotimingsafeequala-b) function to prevent [timing attacks](https://en.wikipedia.org/wiki/Timing_attack) and verifiy the signature. 
+The signature is located in the payload header as ```event.headers['X-Fivetran-Signature-256']```, we then use the [crypto.timingSafeEqual](https://nodejs.org/api/crypto.html#cryptotimingsafeequala-b) function to prevent [timing attacks](https://en.wikipedia.org/wiki/Timing_attack) and verifiy the signature.
 
 ```javascript
 import * as crypto from 'crypto'
@@ -99,7 +99,7 @@ In [Postman](https://app.getpostman.com/run-collection/ec3ad55bac7f5f22ef91), to
 POST https://api.fivetran.com/v1/webhooks/account
 ```
 
-Set Authorisation to Basis Auth: 
+Set Authorisation to Basis Auth:
 ```javascript
 username = APIKey
 password = API Key Secret

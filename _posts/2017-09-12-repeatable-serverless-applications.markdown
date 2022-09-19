@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: "Repeatable Serverless Applications"
 date: 2017-09-11
 tags: serverless architecture docker aws

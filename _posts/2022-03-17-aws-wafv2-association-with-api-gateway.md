@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: "AWS WAFV2 association with API Gateway"
 date: 2022-03-17
 tags: AWS API WAFV2

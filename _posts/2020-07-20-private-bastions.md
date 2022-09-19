@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Private Bastion - I'll do what you want me to do
 date: 2020-07-20
 tags: aws ssm vpc ssh ec2
@@ -62,12 +62,12 @@ Ok so I'm in my typescript file - I'm going to create my VPC and its subnets and
       maxAzs: 1,
       enableDnsHostnames: true,
       enableDnsSupport: true,
-      cidr: '10.16.0.0/23',        
+      cidr: '10.16.0.0/23',
       subnetConfiguration: [
         {
           cidrMask: 26,
           name: 'isolated',
-          subnetType: ec2.SubnetType.ISOLATED            
+          subnetType: ec2.SubnetType.ISOLATED
         }
       ]
     });
@@ -162,8 +162,8 @@ No more slinging around AMI identifiers for me - CDK can look that up for me. I 
 
 ![cdk deploy](/img/blog/ssm-private-terminal/cdk-deploy.jpg)
 
-After a few minutes, we are ready to try connecting to our instance. 
-Navigating to the console, we can now see our EC2: 
+After a few minutes, we are ready to try connecting to our instance.
+Navigating to the console, we can now see our EC2:
 
 ![EC2 Instance](/img/blog/ssm-private-terminal/ec2-instance.png)
 
@@ -181,5 +181,5 @@ And that's a wrap - hopefully this inspires you to try CDK or *Session Manager*,
 * [https://cdkworkshop.com/](https://cdkworkshop.com) (Use this for getting started with CDK)
 * [https://docs.aws.amazon.com/cdk/api/latest/versions.html](https://docs.aws.amazon.com/cdk/api/latest/versions.html) (API Guide)
 * [https://au.linkedin.com/company/mechanical-rock](https://au.linkedin.com/company/mechanical-rock) (Mechanical Rock on LinkedIn)
-* [https://aws.amazon.com/premiumsupport/knowledge-center/ec2-systems-manager-vpc-endpoints/](https://aws.amazon.com/premiumsupport/knowledge-center/ec2-systems-manager-vpc-endpoints/) (ClickOps Guide) 
+* [https://aws.amazon.com/premiumsupport/knowledge-center/ec2-systems-manager-vpc-endpoints/](https://aws.amazon.com/premiumsupport/knowledge-center/ec2-systems-manager-vpc-endpoints/) (ClickOps Guide)
 * [Tina Turner Live at Wembley Stadium, London](https://www.youtube.com/watch?v=LLqJ_dczP0g)

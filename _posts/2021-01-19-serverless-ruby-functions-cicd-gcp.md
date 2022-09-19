@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Ruby functions on Google Cloud. A guide for automated testing and deployment
 date: 2021-01-19T23:22:39+08:00
 tags: [google-cloud, functions, serverless, gcp, continuous integration, continuous deployment, ci, cd]

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Living The DevOps Dream
 date: 2020-10-14
 tags: devops cloudnative product-development product
@@ -17,7 +17,7 @@ Once the dust settled after our offsite team day, we took time to reflect and de
 * **Engagement**: 10% of players replay at least once.
 * **Positive sentiment**: 10% of players talk positively about the game publicly.
 
-Starting with the end in mind, our BHAG was to receive 100K users by the end of 2020.  To date, we have recorded about 1500 users, so unless _magic happens_ we are unlikely to hit that target.  We achieved a more realistic sub-goal though: 1000 users within the four weeks.  Analysing the disparity, achieving our major goal was only realistic either through expensive marketing or if the game went _viral_.  Whilst we would love DevOps Dream to break the internet, it isn't a likely outcome with our chosen marketing spend.  
+Starting with the end in mind, our BHAG was to receive 100K users by the end of 2020.  To date, we have recorded about 1500 users, so unless _magic happens_ we are unlikely to hit that target.  We achieved a more realistic sub-goal though: 1000 users within the four weeks.  Analysing the disparity, achieving our major goal was only realistic either through expensive marketing or if the game went _viral_.  Whilst we would love DevOps Dream to break the internet, it isn't a likely outcome with our chosen marketing spend.
 
 Our more modest goals for engagement and positive sentiment were achieved with flying colours: nearly 20% of users replayed at least once with an average session duration of 9 minutes.  And a social media sentiment analysis recorded 90% positive feedback.
 
@@ -37,7 +37,7 @@ An unwritten goal was to lead by example: demonstrate how effective DevOps pract
 
 <sup>_* We only had one issue where we chose to invoke our incident response process.  The issue was identified out of hours and did not affect user function so investigation/resolution was deferred to the next business day.  Therefore we chose to include it in our change failure rate, but excluded from Time to Restore.  I shall cover the incident in greater detail in a future post._</sup>
 
-But how did we achieve such impressive metrics?  
+But how did we achieve such impressive metrics?
 
 By living the DevOps Dream of course!
 
@@ -59,7 +59,7 @@ We reviewed our progress during regular retrospectives in order to maintain [Eli
 
 [![Goodharts Law - When a measure becomes a target, it ceases to be a good measure](/img/devops-dream/goodharts-law.webp)](https://sketchplanations.com/goodharts-law)
 
-A benefit of the SDO metrics is that they are difficult to game.  Game your lead time and you will impact your change failure rate.  
+A benefit of the SDO metrics is that they are difficult to game.  Game your lead time and you will impact your change failure rate.
 
 We prefer to use metrics to understand the health of our delivery process.  To gain a deeper understanding, we also monitor other detailed measures to give us the story behind the headlines.  These include:
 * [Code Coverage](/2018/01/08/high-code-coverage-is-not-yak-shaving.html)
@@ -71,7 +71,7 @@ Using these measures, we eliminate waste within our delivery process, amplify ou
 
 ## Value Stream
 
-The goal for any software value stream is to deliver value.  Delivery of value is hard to measure due to the variability of the requirements.  
+The goal for any software value stream is to deliver value.  Delivery of value is hard to measure due to the variability of the requirements.
 
 For DevOps Dream, we measured our value stream based on the delivery of Stories.  Over the course of development, the lead time to completion averaged **4 days 20 hours**.
 
@@ -82,13 +82,13 @@ But we cannot go further without discussing our **Definition of Done**:
 * Is the build/CI pipeline green?
 * Are any new tests added with this change reporting in whatever dashboard you are using?
 * Are all the assets required (including BDD/BDI scenarios etc) checked into source control?
-* Have you updated any tickets, stories or requests with appropriate comments? 
+* Have you updated any tickets, stories or requests with appropriate comments?
 * Have you updated any (external) documentation? (e.g. release notes on the wiki, design docs)
 * Have observability requirements been satisfied?
-* Has someone eyeballed it in production? 
+* Has someone eyeballed it in production?
 * Has the Product Owner reviewed it?
 
-This is not the same as what is required for developers to merge their code branches with the trunk (pull request process). 
+This is not the same as what is required for developers to merge their code branches with the trunk (pull request process).
 >    You should be able to merge a PR without meeting the DoD. PR is about code quality and review process, not feature completeness. If you combine the two, you end up with long lived branches which, may, lead to integration issues further down the line. Feature toggles, etc allow you to merge work that is not complete. But you don’t want to merge crappy code.
 >  – Tim Myerscough, July 2017
 
@@ -96,7 +96,7 @@ This is not the same as what is required for developers to merge their code bran
 
 **To production.**
 
-**In under 1 week.** 
+**In under 1 week.**
 
 And that includes discovery time.
 
@@ -144,13 +144,13 @@ We split planning into the following focus areas:
 * **Sprint planning** - Planning for the following week was performed on a Friday, directly after showcase. The team reviewed current progress and considered items suggested for the following sprint.  Since items had already been prioritised, this was simply a matter of moving the commitment up/down based on the teams estimation of how much they felt they could achieve.  **Items were never allocated to individuals and sprint planning rarely took longer than 10 minutes.**
 * **Task Breakdown** - Sprint planning was performed at a story level only - each one a promise of a conversation.  During each sprint, when an individual took ownership for a ticket, they would be responsible for breaking down the story into appropriate sub-tasks that made sense for them - the subtasks were what we mainly discussed during standups.
 
-At the risk of labouring a point: **all planning activities generally took less than 30 minutes per week**.  
+At the risk of labouring a point: **all planning activities generally took less than 30 minutes per week**.
 
-One thing I see that regularly results in protracted planning is estimation.  Teams spend hours of their lives that they can't get back estimating work.  The reasons are often relate to control - either motivated by command and control structures looking to hold people to a delivery schedule based on guesswork, or constrained by a budgetry process that requires detailed tracability, allocation and approval.  
+One thing I see that regularly results in protracted planning is estimation.  Teams spend hours of their lives that they can't get back estimating work.  The reasons are often relate to control - either motivated by command and control structures looking to hold people to a delivery schedule based on guesswork, or constrained by a budgetry process that requires detailed tracability, allocation and approval.
 
-For DevOps Dream, we essentially followed [#NoEstimates](http://zuill.us/WoodyZuill/2012/12/10/no-estimate-programming-series-intro-post/).  Whilst having had a general appreciation for what "No Estimates" was about for years, I must confess that I had never actually read the original post until I started writing this piece.  Whilst I would not try to suggest a case for [synchronicity](https://www.merriam-webster.com/dictionary/synchronicity),  we followed the approach of Woody's original post very closely.  It's not that we never do any estimation, but rather that we never wrote them down or spend much time over them.  
+For DevOps Dream, we essentially followed [#NoEstimates](http://zuill.us/WoodyZuill/2012/12/10/no-estimate-programming-series-intro-post/).  Whilst having had a general appreciation for what "No Estimates" was about for years, I must confess that I had never actually read the original post until I started writing this piece.  Whilst I would not try to suggest a case for [synchronicity](https://www.merriam-webster.com/dictionary/synchronicity),  we followed the approach of Woody's original post very closely.  It's not that we never do any estimation, but rather that we never wrote them down or spend much time over them.
 
-As Product Owner I already had a relatively clear picture of the order of importance of stories.  The effort involved in a particular story was, usually, unlikely to effect it's priority that much meaning any discussion was waste.  As we discovered new stories, I would ask questions like "How long do you reckon X will take?  Days or weeks?" or "Is story X bigger, smaller or about the same to story Y?".  The answer to these two simple questions provided enough data to affect priorities.  Sometimes, something that was deemed simple would bubble up the priority list.  Less frequently, a story was de-prioritised after the team felt it would be a lot of work.  
+As Product Owner I already had a relatively clear picture of the order of importance of stories.  The effort involved in a particular story was, usually, unlikely to effect it's priority that much meaning any discussion was waste.  As we discovered new stories, I would ask questions like "How long do you reckon X will take?  Days or weeks?" or "Is story X bigger, smaller or about the same to story Y?".  The answer to these two simple questions provided enough data to affect priorities.  Sometimes, something that was deemed simple would bubble up the priority list.  Less frequently, a story was de-prioritised after the team felt it would be a lot of work.
 
 Trust is essential: as Product Owner, I had trust in the team to develop features as quickly and sustainably as possible.  The team trusted me not to hold them to account for an estimate based on a 30 second conversation.  The result: I was able to quickly and effectively plan upcoming work, the team was able to do _"less talky talky, and more worky worky"_.  Early discussions were much more focussed on _"the what"_, rather than _"the how"_ or _"how long"_ which enabled the team to strive for simplicity and push back for an alternative simpler version.
 
@@ -158,15 +158,15 @@ I would also like to linger to talk about our daily stand-ups.  I have experienc
 
 ## Discovery
 
-> **Percent Complete and Accurate (%C&A).** A quality metric used to measure the degree to which work from an upstream supplier is determined by the downstream customer to be complete and accurate (or error free).  In other words, to what degree does the downstream customer need to:  1) correct information that is incorrect; 2) add missing information that should have been supplied by an upstream supplier; and/or 3) clarify information provided.  Out of 100 “things” passing to the downstream customer, what percentage of them are complete and accurate and do not require one of the three above actions before completing the task?  The number is obtained by asking the immediate, or successive, downstream customer(s) what percentage of the time they receive work that is 100% complete and accurate. 
+> **Percent Complete and Accurate (%C&A).** A quality metric used to measure the degree to which work from an upstream supplier is determined by the downstream customer to be complete and accurate (or error free).  In other words, to what degree does the downstream customer need to:  1) correct information that is incorrect; 2) add missing information that should have been supplied by an upstream supplier; and/or 3) clarify information provided.  Out of 100 “things” passing to the downstream customer, what percentage of them are complete and accurate and do not require one of the three above actions before completing the task?  The number is obtained by asking the immediate, or successive, downstream customer(s) what percentage of the time they receive work that is 100% complete and accurate.
 >
 > -- https://tkmg.com/lean-terminology/
 
-In the value stream above, I showed how our %C&A for discovery is 100%.  
+In the value stream above, I showed how our %C&A for discovery is 100%.
 
-We never had to revisit requirements during the delivery process, despite only spending about one hour on discovery.  
+We never had to revisit requirements during the delivery process, despite only spending about one hour on discovery.
 
-How?  
+How?
 
 Simple:
 * Breaking work down into small increments.
@@ -181,15 +181,15 @@ Ordinarily we prefer to run our [Example Mapping](/2020/05/18/effective-example-
 
 ![Example map for allocate budget story](/img/devops-dream/dds-example-map.png)
 
-As Product Owner I tried to focus primarily on the rules.  Often I started a session with very little pre-preparation, intentionally.  Having the flexibility on the requirement, I wanted to truly discover the rules with the team.  We would often explore different options under a story.  I would create contradictory rules and challenge the team to come up with different examples.  I'd like to thank the team again for indulging me on this and bearing with me as we explored the problem, only for us to throw away much of what we discussed.  But I'd much prefer to fail fast after a few minutes prototyping with concrete examples, rather than _build the wrong thing_.  
+As Product Owner I tried to focus primarily on the rules.  Often I started a session with very little pre-preparation, intentionally.  Having the flexibility on the requirement, I wanted to truly discover the rules with the team.  We would often explore different options under a story.  I would create contradictory rules and challenge the team to come up with different examples.  I'd like to thank the team again for indulging me on this and bearing with me as we explored the problem, only for us to throw away much of what we discussed.  But I'd much prefer to fail fast after a few minutes prototyping with concrete examples, rather than _build the wrong thing_.
 
-I also used our example mapping sessions as an effective scoping tool.  
+I also used our example mapping sessions as an effective scoping tool.
 
-When exploring game initiatives, we had a lot of ideas for adding depth and difficulty.  We explored ideas around changing funding levels of previous year initiatives, extending the effects of initiative funding.  This is where estimation was useful - and obvious.  We've had some great feedback requesting the feature to change funding levels in subsequent years.  We considered this for the original release, but realised it opened a bit of a can of works on complexity.  I won't share it here, since it's still in our backlog, so watch this space.  Being able to explore the problem see the extent of the complexity, I was able to make an informed judgement to defer the extra complexity until we had a greater understanding of the game - defer the decision to include the feature until the last responsible moment.  When we do get round to the feature again, we shall likely have to start the discovery again.  
+When exploring game initiatives, we had a lot of ideas for adding depth and difficulty.  We explored ideas around changing funding levels of previous year initiatives, extending the effects of initiative funding.  This is where estimation was useful - and obvious.  We've had some great feedback requesting the feature to change funding levels in subsequent years.  We considered this for the original release, but realised it opened a bit of a can of works on complexity.  I won't share it here, since it's still in our backlog, so watch this space.  Being able to explore the problem see the extent of the complexity, I was able to make an informed judgement to defer the extra complexity until we had a greater understanding of the game - defer the decision to include the feature until the last responsible moment.  When we do get round to the feature again, we shall likely have to start the discovery again.
 
 Something that is often misunderstood in traditional requirements capture processes.  The value of the discovery process **is not a requirements document**: it is the **understanding** gleaned by the **development team**.  If the people involved in discovery are different from those building the software - the value is limited.  Either the development team have to do their own discovery again to gain their own understanding, or they need to process the information from a third party, increasing the risk of gaps or misunderstandings.
 
-In our value stream above, our %C&A for discovery is 100%.  That does not mean we never iterated on an idea, nor changed our minds.  Far from it.  But when we committed to a story, we always followed through to delivery.  
+In our value stream above, our %C&A for discovery is 100%.  That does not mean we never iterated on an idea, nor changed our minds.  Far from it.  But when we committed to a story, we always followed through to delivery.
 
 There were many times where example mapping was insufficient - we can't explore when we don't know which option to choose.  In these instances a different approach was required: hypothesis driven development.
 
@@ -220,21 +220,21 @@ Some were a clear success:
 >
 > We know we have been successful when 500 runs reduce the Elite win rate to <10%
 
-We've received a lot of feedback on this.  Some people have found having their budget fixed for three years confusing.  Originally, it wasn't the case, but experiments showed that this provided the single biggest jump in both difficulty and engaging gameplay.  
+We've received a lot of feedback on this.  Some people have found having their budget fixed for three years confusing.  Originally, it wasn't the case, but experiments showed that this provided the single biggest jump in both difficulty and engaging gameplay.
 
 Initiatives are your strategy levers to pull.  When the budget reset, you just had too many options to play with, making it easy to win.  On the surface, it may seem similar to "limiting the number of initiatives a player can choose" above, but actually provides a far greater depth of gameplay.  When your options are limited, but each option is available to you - then the strategy is clear: pick the top three initiatives.  With the budget limit you are now faced with real tradeoffs.  Want an aggressive cloud migration strategy?  Sure, but it means you won't be able to fund product teams as part of your DevOps transformation.
 
-Thanks again to everyone that has given us feedback, but this is one aspect of the game we don't plan on changing any time soon.  
+Thanks again to everyone that has given us feedback, but this is one aspect of the game we don't plan on changing any time soon.
 
 As an additional benefit, the budget limit also directly contributes to our engagement goal: in order to succeed at the highest levels you have to learn the game and optimise your strategy.
 
 ## Delivery
 
-The culmination of the above, along with our rigorous technical practices, enabled us to deliver a consistent flow of work into production.  
+The culmination of the above, along with our rigorous technical practices, enabled us to deliver a consistent flow of work into production.
 
 ![Cumulative flow diagram for DevOps Dream](/img/devops-dream/dds-cumulative-flow.png)
 
-Through continuous deployment, separating deployment from release, the **lead time for change to production averaged < 1 hour** from commit to trunk.  
+Through continuous deployment, separating deployment from release, the **lead time for change to production averaged < 1 hour** from commit to trunk.
 
 The team averaged **2.5 deployments to production per day**.  The peak was 9 deployments to production in one day.
 
@@ -246,7 +246,7 @@ But that headline is a story for another day...
 
 ## Launch
 
-We originally planned to launch in November 2020.  Instead, we launched on 19th August 2020 **over two months ahead of our original schedule**.  
+We originally planned to launch in November 2020.  Instead, we launched on 19th August 2020 **over two months ahead of our original schedule**.
 
 Technically, we actually released towards the end of June.  We just didn't tell anyone. By dark launching early we brought forward the, limited, pain of operational support.  We had to ensure that updates were delivered properly and didn't cause any issues for existing users.
 

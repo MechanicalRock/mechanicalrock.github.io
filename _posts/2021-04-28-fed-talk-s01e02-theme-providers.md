@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 font: serif
 title: "FED Talk! Episode 2: Material UI Theme"
 description: "In today’s episode we will style all of the base UI elements by creating a MUI Theme, taking you from novice to pro!"
@@ -648,7 +648,7 @@ export default responsiveFontSizes(createMuiTheme({
   palette
 }))
 ```
- 
+
 As the comments in the above code snippet suggest, you can let MUI calculate the Light/Dark values for you for free, otherwise manually add them for each Primary and Secondary objects.
 
 Even if your chosen colours have been reported eligible in the "Color Tool" there is still a chance your foreground text does not contrast well against background shades on your surfaces. The `contrastThreshold` property allows you to amplify or soften the contrast of your text against the background colour.

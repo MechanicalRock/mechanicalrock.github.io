@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "Using AWS With Cross Account Role"
 date:   2017-08-14
 tags: javascript aws-sdk

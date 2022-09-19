@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: The Cloud Data Warehouse - How Do You Like Yours?
 date: 2020-11-09
 tags: cloud data warehouse snowflake bigquery redshift

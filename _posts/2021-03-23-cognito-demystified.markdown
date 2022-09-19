@@ -1,16 +1,16 @@
 ---
-layout: post
+layout: postv2
 title: Cognito Demystified
 date: 2021-03-23
 tags: rbac serverless security aws cognito
 author: Nate Jombwe
 image: img/blog/cognito-demystified/confused.jpg
-description:  At first, understanding how AWS Cognito operates can feel like solving a mystery. If you have been looking for a simple and concise explanation, here it is.  
+description:  At first, understanding how AWS Cognito operates can feel like solving a mystery. If you have been looking for a simple and concise explanation, here it is.
 ---
 
 Day-to-day, I'm obsessed with helping my clients solve their business problems using the latest and greatest the internet has to offer. This means I spend a lot of time translating vendor techno-babble into usable information. One thing that comes up time and time again is how to securely provide Sign-up/in and user profile services for an app built in AWS, in a user-friendly fashion. If you're lucky, by now, you have probably heard of [AWS Cognito](https://aws.amazon.com/cognito/), with possibly a little bit of knowledge of how it works and what it can do for you. If you're luckier, you may even know more!
 
-Cognito, in my opinion, is one of the most valuable services that is currently on offer from AWS. Without a lot of detailed configuration, Cognito enables Role Based Access Control (RBAC) and secure user access for your apps in AWS. At first, understanding how AWS Cognito operates can feel like solving a mystery (WTF is the difference between a User Pool and an Identity Pool!?). If you have been looking for a simple and *somewhat* concise explanation, here it is. I would love to show you. 
+Cognito, in my opinion, is one of the most valuable services that is currently on offer from AWS. Without a lot of detailed configuration, Cognito enables Role Based Access Control (RBAC) and secure user access for your apps in AWS. At first, understanding how AWS Cognito operates can feel like solving a mystery (WTF is the difference between a User Pool and an Identity Pool!?). If you have been looking for a simple and *somewhat* concise explanation, here it is. I would love to show you.
 <br /><br />
 ## Modern Problem, Modern Solution. 🚀
 
@@ -21,11 +21,11 @@ Well hear this, Amazon Cognito lets you add user sign-up, sign-in, and access co
 <br />
 ## Building Blocks: User Pools and Identity Pools 👨‍👩‍👧‍👦
 
-Cognito has two main building blocks: Identity Pools and User Pools. If you are new or have limited exposure to cognito, the difference between the two can be very confusing. Your knowledge of cognito should begin with the understanding the difference between **Authentication** and **Authorisation**, as User Pools and Identity Pools seek to address these requirements respectively. 
+Cognito has two main building blocks: Identity Pools and User Pools. If you are new or have limited exposure to cognito, the difference between the two can be very confusing. Your knowledge of cognito should begin with the understanding the difference between **Authentication** and **Authorisation**, as User Pools and Identity Pools seek to address these requirements respectively.
 
 **Authentication is the process of asserting a user is who they claim to be**. For example, when one of your paid users decides to log into your service, they would have to provide something that only they would know, to prove they are who they *really* are before accessing restricted content. This usually comes in the form of a password, pin, one-time passcode, or biometrics. As the [security demands of modern applications become less avoidable](https://www.upguard.com/blog/biggest-data-breaches),  Multi Factor Authentication (MFA), where multiple forms of authentication must be provided, is rightly growing as a base requirement for authentication on the web. Cognito User Pools provide a managed service which address your user authentication needs for applications in AWS.
 
-**Authorisation is the process of giving an authenticated user access to particular resources or actions**. For example, given one of your paid users has been authenticated, the user would be associated a set of permissions which denote what they are authorised to access. In this case, your paid user would access a set of permissions which authorises them to access your sweet, sweet, restricted content. Cognito Identity Pools provide a managed service which address your user authorisation needs in AWS. 
+**Authorisation is the process of giving an authenticated user access to particular resources or actions**. For example, given one of your paid users has been authenticated, the user would be associated a set of permissions which denote what they are authorised to access. In this case, your paid user would access a set of permissions which authorises them to access your sweet, sweet, restricted content. Cognito Identity Pools provide a managed service which address your user authorisation needs in AWS.
 
 <br />
 ### User Pools
@@ -37,25 +37,25 @@ Cognito has two main building blocks: Identity Pools and User Pools. If you are 
  - [Email or Phone Verification Configuration](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-email-phone-verification.html) - Amazon Cognito can automatically verify email addresses or mobile phone numbers by sending a verification code—or, for email, a verification link.
 
 
-So in terms of developing a solution to manage user accounts, metadata, and subscription information, User Pools are a pretty good fit. 
+So in terms of developing a solution to manage user accounts, metadata, and subscription information, User Pools are a pretty good fit.
 
 Common scenarios such as Accessing Server-side Resources after Sign-in, and Accessing Resources with API Gateway and Lambda After Sign-in, are laid out in detail [here](https://docs.aws.amazon.com/cognito/latest/developerguide/accessing-resources.html).
 
 <br />
-#### Tokens 
+#### Tokens
 ![Basic User Pool Usage](/img/blog/cognito-demystified/scenario-authentication-cup.png)  <br />
-**Cognito User Pools provides token handling and management for authenticated users from all identity providers**, so your backend systems can standardize on one set of user pool tokens. 
+**Cognito User Pools provides token handling and management for authenticated users from all identity providers**, so your backend systems can standardize on one set of user pool tokens.
 
 After a successful authentication via a User Pool, the [user pool tokens](https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-with-identity-providers.html) are returned to your app. You can use these tokens to grant your users access to your own server-side resources or to AWS resources such as API Gateway and AppSync. Amazon Cognito user pools implements ID, access, and refresh tokens as defined by the OpenID Connect (OIDC) open standard:
 - The ID token contains claims about the identity of the authenticated user such as name, email, and phone_number.
 - The access token contains scopes and groups and is used to grant access to authorized resources.
-- The refresh token contains the information necessary to obtain a new ID or access token. 
+- The refresh token contains the information necessary to obtain a new ID or access token.
 
 Information regarding Using the ID Token, Using the Access Token, Using the Refresh Token, Revoking All Tokens for a User, and Verifying a JSON Web Token can be found [here](https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-with-identity-providers.html).
 
 <br />
 #### User Pool App Clients and Domains
-After you create a user pool, you can **create an App Client for use in built-in webpages for signing up and signing in your users**. 
+After you create a user pool, you can **create an App Client for use in built-in webpages for signing up and signing in your users**.
 If custom building all of your UI components is not your thing, you can provision a hosted authentication UI that you can add to your app to handle sign-up and sign-in workflows provided by a User Pool. You can use the AWS Management Console, or the AWS CLI or API, to [specify customisation settings](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-app-ui-customization.html) for the built-in app UI experience. You can even upload a custom logo image to be displayed in the app and choose many CSS customizations. Fancy.
 
 If you configure your user pool to require email verification, Amazon Cognito has the ability to send an email when a user signs up for a new account in your app or resets their password. Depending on the action that initiates the email, the email contains a verification code or a temporary password.
@@ -74,7 +74,7 @@ After setting up an app client, you can configure the address of your sign-up an
 <br />
 ### Identity Pools
 By now it should be evident that Identity Pools are useful for managing users' authorisation, in order to give them access to AWS services. But what does that actually mean?
-If you have ever used AWS cli or sdk, you would know that in order to access AWS services you will need a set of credentials associated with a role that defines which services you are permitted to access. Knowing that User Pools generate OIDC tokens for users which can be used and verified in the client app. However, if your app requires access to other resources in AWS, how will you exchange the aforementioned OIDC tokens for AWS credentials?  How will you attach an aws IAM role with it? 
+If you have ever used AWS cli or sdk, you would know that in order to access AWS services you will need a set of credentials associated with a role that defines which services you are permitted to access. Knowing that User Pools generate OIDC tokens for users which can be used and verified in the client app. However, if your app requires access to other resources in AWS, how will you exchange the aforementioned OIDC tokens for AWS credentials?  How will you attach an aws IAM role with it?
 
 Amazon Cognito identity pools enable you to create unique identities and assign permissions for users. **Identity pools allow users to obtain temporary AWS credentials with permissions you define to *directly access other AWS services***.  Using Identity Pools, you can segregate user's access to content/services. Your identity pool can include:
 
@@ -94,7 +94,7 @@ Wait a second? I thought external identity providers were used to authenticate a
 
 For each identity type, there is an assigned IAM role. This role has a policy attached to it which dictates which AWS services that role can access. When Amazon Cognito receives a request, the service will determine the identity type, determine the role assigned to that identity type, and use the policy attached to that role to respond. By modifying a policy or assigning a different role to an identity type, you can control which AWS services an identity type can access.
 
-This is how you are going to protect your money making content. When a user logs in to your app, authenticating via a User Pool, or directly via an Identity Pool, or as a guest, Amazon Cognito generates temporary AWS credentials for the user. These temporary credentials are associated with a specific IAM role associated the with the related authenticated or unauthenticated context. The associated IAM role lets you define a set of permissions to access your AWS resources. 
+This is how you are going to protect your money making content. When a user logs in to your app, authenticating via a User Pool, or directly via an Identity Pool, or as a guest, Amazon Cognito generates temporary AWS credentials for the user. These temporary credentials are associated with a specific IAM role associated the with the related authenticated or unauthenticated context. The associated IAM role lets you define a set of permissions to access your AWS resources.
 
 By default, the Amazon Cognito Console creates IAM roles that provide access to Amazon Mobile Analytics and to Amazon Cognito Sync. Alternatively, you can choose to use existing IAM roles. For example, you may desire to extend these roles to protect API level content in AppSync (precious pump-and-dump predictions), or static files in S3 (inspirational images of Elon Musk).
 

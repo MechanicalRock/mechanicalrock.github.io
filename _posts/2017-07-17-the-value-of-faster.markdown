@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "The Value of Faster"
 date:   2017-07-17
 tags: bdd devops

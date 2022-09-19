@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Measures of Software Success
 date: 2020-11-3
 tags: [devops, software, development, digital transformation]

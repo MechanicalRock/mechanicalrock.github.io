@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Sharing data effectively in a cloud native data lake
 date: 2020-09-15
 tags: aws cloudformation lakeformation glue data
@@ -65,8 +65,8 @@ Description: My data lake source
 Resources:
   LakeformationSettings:
     Type: AWS::LakeFormation::DataLakeSettings
-    Properties: 
-      Admins: 
+    Properties:
+      Admins:
         - DataLakePrincipalIdentifier: arn:aws:iam::100000123000:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_56cabj890003333
 ```
 
@@ -147,7 +147,7 @@ Now, let’s add the crawler and give it permission to read the bucket and write
             Version: '2012-10-17'
             Statement:
               - Effect: Allow
-                Action: 
+                Action:
                   - 'glue:*'
                 Resource: '*'
               - Effect: Allow
@@ -194,7 +194,7 @@ Now, let’s add the crawler and give it permission to read the bucket and write
 
   DatalakeLocation:
     Type: AWS::LakeFormation::Resource
-    Properties: 
+    Properties:
       ResourceArn: !GetAtt  MySourceDataStore.Arn
       RoleArn: !Sub arn:aws:iam::${AWS::AccountId}:role/aws-service-role/lakeformation.amazonaws.com/AWSServiceRoleForLakeFormationDataAccess
       UseServiceLinkedRole: true
@@ -206,7 +206,7 @@ Add the above resources to your datalake.yml file and run an update stack comman
 aws cloudformation update-stack --stack-name my-source-glue-stack --template-body file://datalake.yml --capabilities "CAPABILITY_NAMED_IAM"
 ```
 
-When you have deployed the crawler, you should be able to see and run it in the Glue Console. 
+When you have deployed the crawler, you should be able to see and run it in the Glue Console.
 
 <center><img src="/img/lake-formation/04.png" /></center><br/>
 
@@ -218,7 +218,7 @@ Once your crawler runs successfully, you can go to tables menu item and see your
 
 ## Cross-account grant
 
-Once you have your Glue database and tables created, you will be able to manage the database access via Lake Formation. 
+Once you have your Glue database and tables created, you will be able to manage the database access via Lake Formation.
 
 To enable cross-account access, you will need to add a Lake Formation grant and specify the consumer account number.
 
@@ -236,7 +236,7 @@ To enable cross-account access, you will need to add a Lake Formation grant and 
         TableResource:
           DatabaseName: !Ref MySourceGlueDatabase
           Name: !Sub 'my_source_data_store_ap_southeast_2_${AWS::AccountId}'
-          # TableWildcard: [] # WildCard is not available via cloudformation yet 
+          # TableWildcard: [] # WildCard is not available via cloudformation yet
 ```
 
 This will automatically create a resource share with AWS Resource Access Manager (RAM), and the administrator will see the shared database in their Glue Catalog.
@@ -256,8 +256,8 @@ Description: My consumer data lake setup
 Resources:
   LakeformationSettings:
     Type: AWS::LakeFormation::DataLakeSettings
-    Properties: 
-      Admins: 
+    Properties:
+      Admins:
         - DataLakePrincipalIdentifier: arn:aws:iam::300000000015:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_56cabj890003333
 ```
 
@@ -266,7 +266,7 @@ Resources:
 <center><img src="/img/lake-formation/06.png" /></center><br/>
 
 Now you need to create a resource link to the database in the data lake account. Unfortunately, this is not available via CloudFormation yet.
-In Lake Formation console, click on databases -> create database button 
+In Lake Formation console, click on databases -> create database button
 
 Choose a name for your link database and select the shared database from the list. If you have shared a single table instead of all tables, database name does not appear here. In that case, you will need to create a resource link table.
 
@@ -282,11 +282,11 @@ This is quite a powerful feature because it enables the administrator of each ac
 
 ## Testing the access in the consumer account
 
-Open Athena from the console. 
+Open Athena from the console.
 
 Note: If you have never used Athena in your account, you will need to create a s3 bucket and set it as your query result location in settings for Athena.
 
-Once you open Athena console, you should be able to see your like database and table schema. Now all there is to do is to query the table and make sure it returns the result. 
+Once you open Athena console, you should be able to see your like database and table schema. Now all there is to do is to query the table and make sure it returns the result.
 
 <center><img src="/img/lake-formation/09.png" /></center><br/>
 

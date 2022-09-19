@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: DataOps with AWS and Snowflake
 date: 2020-11-3
 tags: devops dataops aws snowflake cicd flyway
@@ -49,7 +49,7 @@ create user pipeline_sys_user;
 alter user pipeline_sys_user set rsa_public_key_2='MIIBIjANBgkqh...';
 ```
 
-Next, in order for your pipeline to use the private key, you must store it in AWS secrets manager. 
+Next, in order for your pipeline to use the private key, you must store it in AWS secrets manager.
 
 Store the private key in aws secrets manager as plain text and remove/exclude the header and footer of the private key
 <center><img src="/img/blog/dataops/secretsmanager-1.png" /></center><br/>
@@ -81,7 +81,7 @@ grant role SYSADMIN to role pipeline_role;
 ```
 
 Optional:
-In my sql scripts, I am creating tables in my_db database and my_schema schema. So if you want my template scripts run successfully on your snowflake account, you will need to run below statements too 
+In my sql scripts, I am creating tables in my_db database and my_schema schema. So if you want my template scripts run successfully on your snowflake account, you will need to run below statements too
 ```sql
 create database my_db;
 grant all on database my_db to role pipeline_role;
@@ -90,7 +90,7 @@ create schema my_schema;
 grant all on schema my_schema to role pipeline_role;
 ```
 
-# Step 4: Update pipeline parameters 
+# Step 4: Update pipeline parameters
 Last step before creating your pipeline is to update parameters with the naming conventions you used to create your snowflake resources. If you have followed my naming convention you probably will not need to change anything except SnowflakeAccount and SnowflakeSecretsManagerARN.
 Update both parameter files pipeline/aws_seed-cli-parameters.json and aws_seed.json to match resources you created in snowflake
 

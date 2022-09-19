@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: How to Protect a Serverless Express API with OpenID Connect
 date: 2020-02-11
 tags: javascript tutorial serverless sam
@@ -64,7 +64,7 @@ Resources:
 
   CommentWriterGroup:
     Type: AWS::Cognito::UserPoolGroup
-    Properties: 
+    Properties:
       Description: Comment Writer
       GroupName: Writer
       Precedence: 0
@@ -83,7 +83,7 @@ Resources:
 
   AttachUserToGroup:
     Type: AWS::Cognito::UserPoolUserToGroupAttachment
-    Properties: 
+    Properties:
       GroupName: !Ref CommentWriterGroup
       Username: !Ref User
       UserPoolId: !Ref UserPool
@@ -113,7 +113,7 @@ If you are protecting an API with a token, it is normal to check that these fiel
 
 I also created a user and a group for that user to belong to. This won't be particularly relevant in this tutorial but will be important in a later installment.
 
-You can use the stack output 'LoginURL' to browse to in order to complete a login flow. After login, the browser will redirect to a localhost address with the token in the URL. You will need to extract this token to use in subsequent steps when issuing API calls via the command line. We will come back to this after a short detour. 
+You can use the stack output 'LoginURL' to browse to in order to complete a login flow. After login, the browser will redirect to a localhost address with the token in the URL. You will need to extract this token to use in subsequent steps when issuing API calls via the command line. We will come back to this after a short detour.
 
 As this is a pretty simple template, you can deploy it without a build step; eg, `sam deploy -t template-cognito.yaml --guided`. You will be prompted to fill in the relevant parameters.
 
@@ -215,7 +215,7 @@ The long string in the 'id_token' is what should be provided to the API endpoint
 
 # Fixing the Auto-generated Client
 
-Usually, one would add a set of 'securitySchemes' to the swagger document which would reference the correct authentication method (OpenID in our case). However, this only works when the server address is know; we don't know in our case because I'm not issuing my own domain name and certificate. And at any rate, putting this information in the OpenAPI document probably wouldn't help because tokens aren't using the correct 'Bearer' prefix anyway. If we aren't following the spec, we can't expect the third-party tools to work. 
+Usually, one would add a set of 'securitySchemes' to the swagger document which would reference the correct authentication method (OpenID in our case). However, this only works when the server address is know; we don't know in our case because I'm not issuing my own domain name and certificate. And at any rate, putting this information in the OpenAPI document probably wouldn't help because tokens aren't using the correct 'Bearer' prefix anyway. If we aren't following the spec, we can't expect the third-party tools to work.
 
 This doesn't mean we can't work around it though. In this case, we just need to override Axios to include our Authorization header.
 
@@ -250,7 +250,7 @@ Note that you would not do this for tests normally, because you would need a way
 
 # A Note on Role-Based-Access-Control
 
-There are many ways to provide differing levels of access to different users. The two most common are Attribute-Based-Access-Control and Role-Based-Access-Control. In practice they are reasonably similar, so I'll stick to describing role-based-access-control. Applications often find themselves requiring different role and these typically might include; 
+There are many ways to provide differing levels of access to different users. The two most common are Attribute-Based-Access-Control and Role-Based-Access-Control. In practice they are reasonably similar, so I'll stick to describing role-based-access-control. Applications often find themselves requiring different role and these typically might include;
 
 - a read-only role; users might use this who need data from the application for purely informative or audit reasons,
 - an editor role; for users who interact regularly with the system and need to input data, and
@@ -274,7 +274,7 @@ This means, that for a flow that is using OpenID/OAuth2, I would typically run t
 4. The API will see that I have the 'roles' scope, therefore indicating that I have allowed the API permissions to request my roles/group entitlements. It will therefore get a list of all my roles/groups.
 5. A policy engine, like Casbin, or Open-Policy-Agent, will use my list of roles, as well as knowledge of other attributes of the request (eg, specific resource, and action) to evaluate whether I'm actually allowed to do what I'm intending to do.
 
-This type of workflow is quite common, and you can see it somewhat implemented in more complicated Cognito flows than what I have presented here. In the next installment, we will look at practical example of implementing this kind of policy authorization in a manageable way. 
+This type of workflow is quite common, and you can see it somewhat implemented in more complicated Cognito flows than what I have presented here. In the next installment, we will look at practical example of implementing this kind of policy authorization in a manageable way.
 
 # Conclusion
 

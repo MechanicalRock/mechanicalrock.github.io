@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Speed up your pipeline using the cache
 date: 2019-03-29
 tags: codebuild aws docker cache continuous-integration

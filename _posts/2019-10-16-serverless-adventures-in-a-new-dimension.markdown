@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "Serverless: Adventures in a New Dimension"
 date:   2019-10-16
 tags: Serverless Cloud Native

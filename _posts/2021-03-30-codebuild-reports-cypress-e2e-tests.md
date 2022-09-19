@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: "Adding CodeBuild reports to Cypress e2e tests using CDK"
 date: 2021-03-30
 tags: aws codebuild reports testing devops

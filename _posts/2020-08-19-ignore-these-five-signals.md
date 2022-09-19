@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Ignore these 5 signals at your peril
 date: 2020-08-19
 tags: leadership transformation devops cloud
@@ -11,13 +11,13 @@ author: Tania Broome Miller-Jones
 
 > “It is not necessary to change. Survival is not mandatory” - Edwards Deming
 
-It has become clear that we are in this crisis for the long haul - and that the individual heroics, and oftentimes luck, that have gotten us through this far are not going to be enough to sustain us.  
+It has become clear that we are in this crisis for the long haul - and that the individual heroics, and oftentimes luck, that have gotten us through this far are not going to be enough to sustain us.
 
 Leaders need to accept that uncertainty and unrest are the norm and that those of us that survive this particular crisis need to be ready for the next. The “gift” that has emerged from the COVID-19 pandemic is the data that reveals our particular strengths and vulnerabilities in times of uncertainty. This article explores five key signals in all the noise that we should use right now to learn about our performance under pressure and enable us to focus our energy and attention on what really matters.
 
 ## Your people
 
-The richest source of information about how your organisation is responding to COVID-19 is your people.  Leaders should be redoubling their efforts to stay connected to their teams and taking every opportunity to collect vital “anecdata" about what is and isn’t working.  Here are some conversation starters to uncover valuable information: 
+The richest source of information about how your organisation is responding to COVID-19 is your people.  Leaders should be redoubling their efforts to stay connected to their teams and taking every opportunity to collect vital “anecdata" about what is and isn’t working.  Here are some conversation starters to uncover valuable information:
 
 * What do you feel like you waste your time on?
 * How has your ability to be creative been impacted?
@@ -55,12 +55,12 @@ When it comes to measuring an organisation’s ability to develop and operate so
 * Time to restore service - how long it takes to restore service when a service incident occurs
 * Change fail rate - percentage of changes resulting in degraded service and subsequently requiring remediation
 
-The study has shown that the highest performing companies do consistently better across these measures, and low performers do consistently worse. The study also identifies a strong correlation between availability measures and software delivery performance profiles, with availability reflecting how well teams define availability targets and their ability to track, and learn, from them.  Monitoring these metrics over time gives you valuable insights into how you are performing relative to industry benchmarks. If you do not have these measures in place then putting them in should be high on your recovery backlog. Studying fluctuations over the past 6 months will help you to identify issues and impacts during the crisis, and will help you to track and improve into recovery.  
+The study has shown that the highest performing companies do consistently better across these measures, and low performers do consistently worse. The study also identifies a strong correlation between availability measures and software delivery performance profiles, with availability reflecting how well teams define availability targets and their ability to track, and learn, from them.  Monitoring these metrics over time gives you valuable insights into how you are performing relative to industry benchmarks. If you do not have these measures in place then putting them in should be high on your recovery backlog. Studying fluctuations over the past 6 months will help you to identify issues and impacts during the crisis, and will help you to track and improve into recovery.
 
 ![Accelerate state of DevOps 2019 metrics pg16]({{site.url}}/img/ignore-these-five-signals/dora-metrics.png)
 *Accelerate: State of DevOps 2019 (p16)*
 
-The increased focus on technology necessitated by this pandemic will remain critical as we build our resilience in anticipation of the next crisis.  Organisations have realised that the need to continually evolve is no longer optional and that in order to stay relevant (and in some cases solvent) they need to rethink transformation efforts that until recently have only been performative.  
+The increased focus on technology necessitated by this pandemic will remain critical as we build our resilience in anticipation of the next crisis.  Organisations have realised that the need to continually evolve is no longer optional and that in order to stay relevant (and in some cases solvent) they need to rethink transformation efforts that until recently have only been performative.
 
 We believe that the key to a successful transformation is to build the organisation-wide capability to make **data-driven decisions based on experiential learning**.  This does not need to be a big production - an enterprise-wide transformation extravaganza - but should rather be based on building a deliberate practice of responding to what you learn.  Take the lessons from the data and break it down into a backlog of discrete tasks, prioritise and work through them at a sustainable pace - reviewing regularly. Overtime these small incremental shifts will have a huge impact.
 

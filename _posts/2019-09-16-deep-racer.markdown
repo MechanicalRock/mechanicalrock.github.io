@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "AWS Deep Racer"
 date:   2019-09-16
 tags: aws ai machine-learning
@@ -22,7 +22,7 @@ The cars haven't been officially released yet, but you can still get started tra
 
 Artifical Intelligence is a large and complex field, but I'll try to give a brief introduction into machine learning for the uninitiated.
 
-There are three main categories of machine learning: **supervised learning**; **unsupervised learning** and **reinforcement learning**.  
+There are three main categories of machine learning: **supervised learning**; **unsupervised learning** and **reinforcement learning**.
 
 In supervised learning, the relationship between the input and desired output is known.  Supervised learning is useful for classification problems when modelling [complicated][cynefin] systems: the relationship between input and output is known, but the process for generating the output is hard. A popular example is image classification - the [Not HotDog](https://medium.com/@timanglade/how-hbos-silicon-valley-built-not-hotdog-with-mobile-tensorflow-keras-react-native-ef03260747f3) problem. For supervised learning, you need to provide sample data with the appropriate tags applied.
 
@@ -30,7 +30,7 @@ In supervised learning, the relationship between the input and desired output is
 
 Unsupervised learning covers a range of techniques also used for classification problems in complex systems: where the relationship between input and output is unknown.  The model looks for patterns in the data, using techniques such as clustering.
 
-* **Clustering** algorithms look for patterns within the data, e.g. consistent colour or form. 
+* **Clustering** algorithms look for patterns within the data, e.g. consistent colour or form.
 * **Anomaly detection** looks for outliers, using training data to establish a 'normal' baseline.  A common application is fraud detection
 * **Association** algorithms look for correlations in the data to make predictions, for example recommendation engines.
 * **Autoencoders** take input data, compress it into a coded form and then attempt to re-create the original from the compressed data.  Autoencoders have been used to design new molecules for [pharmaceuticals](https://www.wired.com/story/molecule-designed-ai-exhibits-druglike-qualities/).
@@ -57,7 +57,7 @@ Training your deep racer model uses AWS RoboMaker to run a simulated track envir
 
 # Taking the Red Pill
 
-The simulation environment you train your Deep Racer model in is exactly that: a simulation.  A model that is an approximation of the real world.  Training your Deep Racer model in a simulation is necessary, but there are [inconsistencies between the simulation and the real world](https://en.wikipedia.org/wiki/Spherical_cow) that may lead to unexpected results.  Friction on the wheels; battery levels; shadows and lighting on the track; the surface material the track is made from.  All these are examples of real world environmental differences that will differ from the simulation environment that could lead to the model behaving differently when deployed to a real Deep Racer. 
+The simulation environment you train your Deep Racer model in is exactly that: a simulation.  A model that is an approximation of the real world.  Training your Deep Racer model in a simulation is necessary, but there are [inconsistencies between the simulation and the real world](https://en.wikipedia.org/wiki/Spherical_cow) that may lead to unexpected results.  Friction on the wheels; battery levels; shadows and lighting on the track; the surface material the track is made from.  All these are examples of real world environmental differences that will differ from the simulation environment that could lead to the model behaving differently when deployed to a real Deep Racer.
 
 There are a few strategies to help reduce the disconnect between the simulated and real environments:
 
@@ -67,9 +67,9 @@ There are a few strategies to help reduce the disconnect between the simulated a
 
 # Conclusion
 
-In this post, I've given a brief introduction into AWS Deep Racer and Reinforcement learning.  In a future post, I shall cover creating your first model.  
+In this post, I've given a brief introduction into AWS Deep Racer and Reinforcement learning.  In a future post, I shall cover creating your first model.
 
-There are a [few Latency workshop tickets](https://ti.to/latency/latency-2019/en) remaining, including DeepRacer workshop - register today.  
+There are a [few Latency workshop tickets](https://ti.to/latency/latency-2019/en) remaining, including DeepRacer workshop - register today.
 
 See you at Latency!
 

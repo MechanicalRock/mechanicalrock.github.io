@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: "PWA: Cache me if you can"
 date: 2020-02-25
 tags: PWA react
@@ -15,19 +15,19 @@ image: img/code.jpg
 
 ![in the feels](/img/blog/pwa/feels.jpeg)
 
-PWA stands for Progressive Web App. The term PWA was coined in 2015, by designer Frances Berriman and Google Chrome engineer Alex Russell. 
+PWA stands for Progressive Web App. The term PWA was coined in 2015, by designer Frances Berriman and Google Chrome engineer Alex Russell.
 
-A progressive web app takes advantage of features from native apps such as using native hardware such as the camera, push notifications and the ability to install to provide the look and feel of a native application. This is achieved using a service worker. A service worker is a script that is run in the background and acts as a network proxy between your app and the server to deliver that efficient caching strategy and offline capability PWA's are known for. 
+A progressive web app takes advantage of features from native apps such as using native hardware such as the camera, push notifications and the ability to install to provide the look and feel of a native application. This is achieved using a service worker. A service worker is a script that is run in the background and acts as a network proxy between your app and the server to deliver that efficient caching strategy and offline capability PWA's are known for.
 Your request will go to your service worker; the service worker will check if what you are requesting is available in the cache. If it can extract the request data from the cache it will use that data, otherwise, it will send the request to the server.
 A PWA will require a manifest file that details how the app should behave when installed such as what name and icon will be displayed to the user.
 
 ![service worker](/img/blog/pwa/service-worker.png)
 
-### But why do I need one? 
+### But why do I need one?
 
 Handy checklist:
 
-* **Do you require offline access?** 
+* **Do you require offline access?**
 * You can cache important assets and serve them to the user to view when they are offline or have inadequate internet connection.
 * If your app requires users to upload files or images, but they lose connection, your PWA can save those files locally and send them to the server once you reconnect to the internet.
 
@@ -44,16 +44,16 @@ Handy checklist:
 **What are the pros and cons**
 
 
-| Pros | Cons | 
+| Pros | Cons |
 | --------------------------------------------|:-------------:|
 | Faster lead times, your time to production can be measured in minutes in comparison to a native app which required app store reviews | IOS support is limited |
 | Deploy Multiple times per day |
 | Time to recovery can be measured in hours apposed to days | |
 |Development is much faster with the ability to produce MVP in 4 - 12 weeks | |
-|Fast feedback loops| | 
-|Integration with your device hardware| | 
-|Offline capability| | 
-|install your app to your home screen as apposed to finding and downloading it from an app store | | 
+|Fast feedback loops| |
+|Integration with your device hardware| |
+|Offline capability| |
+|install your app to your home screen as apposed to finding and downloading it from an app store | |
 
 ### Getting started
 
@@ -144,7 +144,7 @@ Now you have the base that you will need to get started,  you can build from her
 ### Cache me if you can.
 
 Now you are ready to start caching the assets that matter to your use case.
-By using an effective caching strategy, you can reduce subsequent load times. So instead of your request going over the network, the request can be retrieved from your local cache. 
+By using an effective caching strategy, you can reduce subsequent load times. So instead of your request going over the network, the request can be retrieved from your local cache.
 It is worth noting that you can implement server-side or client-side caching. I will be focusing on client-side caching on the browser.
 
 Server-side caching would be useful in the following use case:
@@ -174,7 +174,7 @@ workbox.routing.registerRoute(
 Whilst you are testing your caching strategy, you can omit the following line of code. I highly recommend that you add this in once you know your cache setup is working.
 
 ```js
-workbox.setConfig({ debug: false }); 
+workbox.setConfig({ debug: false });
 ```
 
 ### A2HS [Add 2 Home Screen]
@@ -217,7 +217,7 @@ if (addBtn) {
 
 ## Going Offline
 
-You can detect when your user is offline and display push notifications so the user is aware that they are no longer connected to the internet. 
+You can detect when your user is offline and display push notifications so the user is aware that they are no longer connected to the internet.
 In my example below I was trying to take a photo when I lost internet connectivity, as my page was cached I was not navigated away from my page but notified that the image I had taken would be saved locally until I reconnected to the internet. Yes, I did put my thumb over the camera because you don't want to see my face.
 
 ![offline](/img/blog/pwa/offline.png)

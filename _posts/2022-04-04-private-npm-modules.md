@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 font: serif
 title: Private NPM modules with GitHub packages
 date: 2022-04-04

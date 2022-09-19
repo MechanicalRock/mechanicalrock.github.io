@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Passwordless authentication with Express and PostgreSQL
 description: Tutorial to create a passwordless registration and login system using one-time passwords with ExpressJS and PostgreSQL.
 date: 2022-02-16
@@ -56,7 +56,7 @@ As a high-level overview the implementation will be as follows:
 - The OTP is stored securely in the database, and sent via plain text to the user
 - The user will then retrieve the code and enter it into the login field provided
 - The OTP is verified against the database
-- If successful, the user is logged into the application 
+- If successful, the user is logged into the application
 - The OTP is then deleted from the database to prevent re-use
 
 This flow is flexible and can be implemented using any technology you are familiar with, but as mentioned we'll be using PostgreSQL and ExpressJS for this example.
@@ -128,7 +128,7 @@ Now we need to create some queries to handle the interfacing with the database. 
 	+ Create
 	+ GetByUserId
 	+ DeleteByUserId
-	
+
 This will enable us to create users, and generate then delete one-time passwords.
 
 Firstly I like to create a function that will run our query, log the attempt and results, and then return the results.
@@ -358,7 +358,7 @@ Next we need to generate the one-time password. For this we'll be generating a s
 ```js
 router.post("/login", async (req, res) => {
   ...
-  
+
   // Generate OTP
   const code = crypto
     .randomBytes(256)
@@ -374,7 +374,7 @@ Now that we have our code we first need to delete any preexisting OTPs to avoid 
 ```js
 router.post("/login", async (req, res) => {
   ...
-  
+
   // Delete any existing OTPs and insert this new one
   await Queries.Otp.Delete.ById(user.id);
   await Queries.Otp.Create(user.id, encrypted_code);
@@ -388,7 +388,7 @@ Our encrypted code now exists in the database, so we can email the plaintext cod
 ```js
 router.post("/login", async (req, res) => {
   ...
-  
+
   // Send Email
   await sendEmail(email, "Login Code", `Your login code is ${code}`);
 });
@@ -399,7 +399,7 @@ Now that all this is complete we want to render our token form so the user can i
 ```js
 router.post("/login", async (req, res) => {
   ...
-  
+
   return res.render("token", {
     email,
   });
@@ -444,7 +444,7 @@ Now we must get the one-time password and verify that it isn't too old. In this 
 ```js
 router.post("/token", async (req, res) => {
   ...
-  
+
   const otps = await Queries.Otp.Get.ByUserId(user.id);
 
   if (otps.length === 0) {
@@ -465,12 +465,12 @@ Now that we're sure the OTP in the database is valid we can compare it to the on
 ```js
 router.post("/token", async (req, res) => {
   ...
-  
+
   // Verify the code matches
   const match = bcrypt.compareSync(code, otp.code);
 
   if (!match) throw { message: "Error with code" };
-  
+
   // Delete code
   await Queries.Otp.Delete.ByUserId(user.id);
 });
@@ -481,7 +481,7 @@ If we've made it this far the code provided matches the one in the database, and
 ```js
 router.post("/token", async (req, res) => {
   ...
-  
+
   const token = makeToken({
     ...user,
   });
@@ -493,7 +493,7 @@ We have our secure token! Now we just need to store it in the user's cookies und
 ```js
 router.post("/token", async (req, res) => {
   ...
-  
+
   return res
     .cookie("access_token", token, {
       httpOnly: true,

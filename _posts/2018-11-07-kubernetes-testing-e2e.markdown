@@ -1,10 +1,10 @@
 ---
-layout: post
+layout: postv2
 title:  "Testing and Kubernetes"
 date:   2018-11-07
 tags: Kubernetes Go Conformance BDD
 author: Matt Tyler
-image: img/kubernetes/k8s.png 
+image: img/kubernetes/k8s.png
 ---
 ### Public Service Announcement
 #### Mechanical Rock will be running a two day 'Intro to Kubernetes' course on January 9th & 10th at Cliftons Perth. Participants will learn to deploy and manage scalable applications in Kubernetes, from local development through to production. Participants will also learn how Kubernetes provides high availability, scalability, and how Kubernetes can integrate into existing on-premise and public cloud environments. [More information may be found at the event site.](https://ti.to/intro-to-kubernetes/intro-to-kubernetes)
@@ -27,7 +27,7 @@ The first case (advanced feature usage) is likely to occur when companies have o
 
 The latter case (use of multiple resource types, and the one I am personally more familiar with) commonly occurs when a team wants to provide multiple instances of a particular service - usually a third party service that is not provided by a public cloud vendor (if using a managed kubernetes provider, or because they are operating an on-premise cluster). Alternatively they could be packaging a system to run on other clusters (either their own or someone elses, potentially needing to test upon many different Kubernetes-based environments (AWS EKS, GCP GKE, OpenShift etc)). For those packaging a complex service for Kubernetes, testing is particularly important - how else would we guarantee that our service is going to work across many distributions? Plenty of potential customers may only run workloads in one cloud vendor, and therefore only one Kubernetes distribution.
 
-In either case, what we want is clear - we want to be able to verify that what we run on our clusters (or someone else's for that matter) is working, no matter how complex it is. 
+In either case, what we want is clear - we want to be able to verify that what we run on our clusters (or someone else's for that matter) is working, no matter how complex it is.
 
 Performing long polling operations in an unstructered manner, built on bash scripts and hope, is both a recipe for an unmaintainable mess, and an *extremely* inefficient way to interrogate the cluster. To make matter worse, not using a proper testing framework means you will end up building swathes of non-differentiating functionality including test reporters, parallel test executors and test filters. The Kubernetes project's core controllers have less intensive ways of querying and caching responses from the Kubernetes API, and there are plenty of mature testing frameworks out there, so why not reuse them, rather than trying to build a better (read: worse) mouse-trap?
 
@@ -82,7 +82,7 @@ import (
   // This import registers a test suite
   // The underscore indicates we are importing
   // it for the side-effects.
-    _ ".../suite.go" 
+    _ ".../suite.go"
 )
 
 var Test bool
@@ -90,7 +90,7 @@ var Test bool
 // init is a special keyword in Go. Functions defined
 // here are executed when the package is imported.
 func init() {
-    // This is where I normally define command line flags to 
+    // This is where I normally define command line flags to
     // pass to my tests. This is a dumb flag to determine
     // whether to run the tests or not.
     flag.BoolVar(&Test, "test", false, "")
@@ -256,7 +256,7 @@ We need to both start the informer, and provide a means to stop it upon receivin
 }
 ```
 
-This is printing off the services as we receive events indicating that something changed (added, updated, or deleted) in the service space. 
+This is printing off the services as we receive events indicating that something changed (added, updated, or deleted) in the service space.
 
 Try running this against a cluster while creating service objects. From this example it should be reasonably clear how to extend this to watch other resources.
 
@@ -282,7 +282,7 @@ spec:
         app: nginx
     spec: // The spec is more or less the pod object
       containers: // As you may guess, this is a list of container definitions
-      - name: nginx 
+      - name: nginx
         image: nginx:1.15.4
         ports:
         - containerPort: 80
@@ -292,7 +292,7 @@ A natural consequence of this is the expectation that creating a higher level ob
 
 I've applied the same strategy when building tests for my (admittedly, work-in-progress) [elasticsearch operator](https://github.com/matt-tyler/elasticsearch-operator/blob/master/e2e/suite/create.go). In it, I register a Custom Resource Definition. I can then create "clusters" which are objects representing a complete elasticsearch cluster. Underneath that definition though, are various lower level resources (services, deployments, roles) that enable the Elasticsearch cluster. By watching for those resources that I expect the controller to create upon submitting a cluster definition to the controller, I can ensure the controller behaves as expected. This tends to map very well with Behavior Driven Development. I would typically start with statements like;
 
-``` 
+```
 Given I have registered my Custom Resource Definition with the cluster,
 
   When I apply a Custom Resource Specification
@@ -312,7 +312,7 @@ This is helping me to focus my development on the most important functionality r
 
 ### Conclusion
 
-As alluded to earlier, I've been using this approach to testing to build an elasticsearch controller. I've found this a useful way to write and execute tests that are expressive enough to both serve as a useful for specification for further development, and as a comprehensive verification suite. Building a functioning elasticsearch cluster is an arduous process, requiring different components (master nodes, data nodes, client nodes, frontend nodes) as well different discovery methods for both client and master node election resolution. 
+As alluded to earlier, I've been using this approach to testing to build an elasticsearch controller. I've found this a useful way to write and execute tests that are expressive enough to both serve as a useful for specification for further development, and as a comprehensive verification suite. Building a functioning elasticsearch cluster is an arduous process, requiring different components (master nodes, data nodes, client nodes, frontend nodes) as well different discovery methods for both client and master node election resolution.
 
 Quite frankly, due to the complexity involved, if I did not have a comprehensive test suite, I would not feel confident asserting that it would work across the most popular Kubernetes distributions. As a big plus, if another distribution came along, I could target my existing test framework at this cluster with no extra work involved (aside from potentially needing to fix broken functionality uncovered by the tests). I could also package my verification tests; so if a third party wanted to check that my controller worked on their cluster, they could so independently of me by deploying the verification tests to their cluster. I can't think of too many vendors that provide automated test suites that verify their software design is working in the field.
 

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Fivetran Paginated Custom Connector
 date: 2022-05-26
 tags: fivetran custom connector custom-connector pagination getmore state-management
@@ -17,7 +17,7 @@ Understanding and debugging your Fivetran custom connector is not straightfoward
 
 ## Overview
 
-A Fivetran custom connector is a cloud hosted function that can be set up on a cloud platform of your choice, which allows you to load data into Fivetran with a API Fivetran does not natively support. 
+A Fivetran custom connector is a cloud hosted function that can be set up on a cloud platform of your choice, which allows you to load data into Fivetran with a API Fivetran does not natively support.
 
 Like standard connectors, custom connectors have a number of benefits:
 >
@@ -36,7 +36,7 @@ Use Fivetran's Function connectors if:
 - You want to sync unsupported file formats that require pre-processing
 - You have sensitive data that needs filtering or anonymizing before entering the destination
 
-*Fivetran* . Fivetran Custom Connector. (n.d.). Retrieved May 26, 2022, from https://fivetran.com/docs/functions 
+*Fivetran* . Fivetran Custom Connector. (n.d.). Retrieved May 26, 2022, from https://fivetran.com/docs/functions
 
 <br>
 
@@ -48,7 +48,7 @@ Use Fivetran's Function connectors if:
 
 State is a JSON object that contains cursors from the previous successful Fivetran executions run.
 
-[https://fivetran.com/docs/functions/faq/use-state-object](https://fivetran.com/docs/functions/faq/use-state-object) 
+[https://fivetran.com/docs/functions/faq/use-state-object](https://fivetran.com/docs/functions/faq/use-state-object)
 
 [https://fivetran.com/docs/functions/faq/use-secrets-object](https://fivetran.com/docs/functions/faq/use-secrets-object)
 
@@ -145,7 +145,7 @@ hasMore: True
 Initial API sync with no state, API call is getting all data with no state and has returned a paginated response
 
 **Key response features**
-State: 
+State:
 - No `lastUpdate` as paginated query has not been completed
 - Pagination Counter incremented + 1
 - `hasMore = True`
@@ -185,7 +185,7 @@ hasMore: True
 Paginating through the API response for initial sync
 
 **Key response features**
-State: 
+State:
 - No LastUpdate as paginated query has not been completed
 - Pagination Counter incremented + 1
 - hasMore = True
@@ -225,7 +225,7 @@ hasMore: False
 Paginating through the API response for initial sync
 
 **Key response features**
-State: 
+State:
 - `lastUpdate` Set as paginated query has been completed
 - Pagination Counter set to 0, as paginated query is completed
 - hasMore = false
@@ -265,9 +265,9 @@ hasMore: False
 Fivetran Sync with LastUpdate State
 
 **Key response features**
-State: 
+State:
 - LastUpdate updated, query has been completed
-- Pagination Counter set to 0, as no pagination necessary 
+- Pagination Counter set to 0, as no pagination necessary
 - hasMore = false
 
 <br/>
@@ -305,10 +305,10 @@ hasMore: False
 Fivetran Sync with LastUpdate State
 
 **Key response features**
-State: 
+State:
 
 - `lastUpdate` updated, query has been completed
-- Pagination Counter set to 0, as no pagination necessary 
+- Pagination Counter set to 0, as no pagination necessary
 - hasMore = false
 
 <br/>

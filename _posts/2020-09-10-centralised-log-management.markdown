@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Centralised Log Management with a Data Lake hustle on the side
 date: 2020-09-10
 tags: aws kinesis firehose elasticsearch kibana logs hybrid
@@ -42,9 +42,9 @@ The best part of this solution is that we can leverage Firehose Delivery Stream 
 
 It's worth calling out some limitations and restrictions.
 
-Kinesis Firehose is **not** realtime, it is *near realtime*. Therefore you must be willing to accept the (configurable) latency. Kinesis Firehose allows you to set "hints" (e.g. write after 1Mb received or after no writes received for 1 min) but the service does not guarantee to honour them<sup>[1]</sup>. 
+Kinesis Firehose is **not** realtime, it is *near realtime*. Therefore you must be willing to accept the (configurable) latency. Kinesis Firehose allows you to set "hints" (e.g. write after 1Mb received or after no writes received for 1 min) but the service does not guarantee to honour them<sup>[1]</sup>.
 
-Another current limitation of Kinesis Firehose is that you are limited to having 50 Firehose Delivery Streams in a single region per account. Think of that as 50 types of data - you can have multiple clients send data of the similar "shape" to a single firehose. Now, there is nothing to stop you from setting up your Kinesis Firehose Delivery Streams in different accounts, targeting a single S3 bucket in a "data lake" account - you will just need to grant access in the S3 Bucket Policy to each of the cross account Firehose roles. 
+Another current limitation of Kinesis Firehose is that you are limited to having 50 Firehose Delivery Streams in a single region per account. Think of that as 50 types of data - you can have multiple clients send data of the similar "shape" to a single firehose. Now, there is nothing to stop you from setting up your Kinesis Firehose Delivery Streams in different accounts, targeting a single S3 bucket in a "data lake" account - you will just need to grant access in the S3 Bucket Policy to each of the cross account Firehose roles.
 
 **It would be great to see Kinesis Firehose evolve to support writing to S3 Access Points instead of only bucket destinations; this would reduce the operational burden and risk of managing cross account S3 access.**
 
@@ -61,7 +61,7 @@ In combination with a review of your existing service quotas, you will need to t
 
 # Data
 
-When many people think of ELK they might think of application logs that they may use for auditing or debugging, tracing or dashboarding. But the reality is that Elasticsearch doesn't care what you store in your indices. This can be really useful when you have data sources that are similar but have slight nuances. 
+When many people think of ELK they might think of application logs that they may use for auditing or debugging, tracing or dashboarding. But the reality is that Elasticsearch doesn't care what you store in your indices. This can be really useful when you have data sources that are similar but have slight nuances.
 
 For example, imagine you have firewall devices that log connection state events. Generally these may follow (e.g. syslog) a pattern, but some devices may have variations or additional data. Elasticsearch will happily accept that extra data in its documents as and when it is present <sup>[2]</sup>, yet it is typical to find a general alignment of data shape between a given Kinesis Firehose and a matching Elasticsearch index.
 
@@ -76,7 +76,7 @@ It should be noted that in this architecture you have a few different options to
 
 * In the warm storage layer (S3) using ETL tools such as [AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html) or [AWS EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-what-is-emr.html) to run Spark jobs or equivalent. Transforming your data at this layer is likely to be more cost effective as you work in bulk / batch. It may also be more resilient because you always capture raw data untransformed and can re-process data as schemas adapt
 
-* Within the Firehose Delivery Stream - Lambda can be used to transform your data on the fly, but attracts an [additional cost per Gb processed](https://aws.amazon.com/kinesis/data-firehose/pricing/). This is a great option if you have a need to conform your data before ingesting it to your ***hot storage*** layer. However, as your schema evolves, the onus is on you to adapt your transformations at the appropriate time to ensure no loss of data. 
+* Within the Firehose Delivery Stream - Lambda can be used to transform your data on the fly, but attracts an [additional cost per Gb processed](https://aws.amazon.com/kinesis/data-firehose/pricing/). This is a great option if you have a need to conform your data before ingesting it to your ***hot storage*** layer. However, as your schema evolves, the onus is on you to adapt your transformations at the appropriate time to ensure no loss of data.
 
 # Life-cycling
 
@@ -86,13 +86,13 @@ For this reason, it is essential for data architects and engineers to understand
 
 Looking at our example sources, we may have the following requirements:
 
-| Event Source   |  Hot Storage Retention | Warm Storage Retention | Cold Storage Retention | 
+| Event Source   |  Hot Storage Retention | Warm Storage Retention | Cold Storage Retention |
 |-|-|-|-|-|
 | AD Domain Controllers | 14 days | 30 days  | 365 days |
 | Linux syslogs | 7 days | 60 days | 120 days|
 | Application Logs | 28 days | 180 days | 730 days |
 
-In the table above we show the retention period - but how does data actually transition between the layers? There are many ways it can be achieved, but we will focus on the simplest: 
+In the table above we show the retention period - but how does data actually transition between the layers? There are many ways it can be achieved, but we will focus on the simplest:
 
 * Making use of Kinesis Firehose's backup mode to write raw data to S3 as well as Elasticsearch
 * Utilising S3 Lifecycle rules to transition data to other tiers or deletion after a given period
@@ -109,7 +109,7 @@ This makes for a sustainable growth trajectory for our log management system. As
 
 # Curation and Maintenance
 
-Now, you can point any of your scalable compute services mentioned above to the raw data on your ***warm storage*** bucket and search your data, but with any significant volume of data you will likely find that the performance is not what you would expect, and that's because the raw data that Firehose is writing to S3 is being written in micro batches (every 2 minutes or every 20Mb, as examples). 
+Now, you can point any of your scalable compute services mentioned above to the raw data on your ***warm storage*** bucket and search your data, but with any significant volume of data you will likely find that the performance is not what you would expect, and that's because the raw data that Firehose is writing to S3 is being written in micro batches (every 2 minutes or every 20Mb, as examples).
 
 This is commonly referred to as the **small file problem** and though it's described as a problem it's more accurately a *Diseconomy of Scale* - as the number of files increases, the more *non value add* activities have to be run:
 

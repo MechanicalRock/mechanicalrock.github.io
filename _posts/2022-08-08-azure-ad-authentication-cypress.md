@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 font: serif
 title: Azure AD Authentication in Cypress Tests with MSAL
 date: 2022-08-08

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Improve Your CloudFormation Game with these 9 Tips
 date: 2020-03-17
 tags: javascript tutorial aws
@@ -168,7 +168,7 @@ We can do this with one weird trick. Imagine we needed to give a set of accounts
                   - inner: !Join
                     - ':root,arn:aws:iam::'
                     - !Ref AccountIds
-            Action: 
+            Action:
               - kms:Decrypt
               - kms:DescribeKey
             Resource: '*'
@@ -259,7 +259,7 @@ Parameters:
   Name:
     Type: String
     Description: >-
-      The name of the application. 
+      The name of the application.
       This should include a stage qualifier if this is a nonproduction instance.
       Stage qualifiers should only include 3-5 characters
     AllowedPattern: ^[a-z]{3,}(-[a-z]{3,5})?$
@@ -295,12 +295,12 @@ Parameters:
 Metadata:
   'AWS::CloudFormation::Interface':
     ParameterGroups:
-      - Label: 
+      - Label:
           default: Authentication
-        Parameters: 
+        Parameters:
           - ClientId
           - SigningKeyParameter
-      - Label: 
+      - Label:
           default: Application Domain
         Parameters:
           - Name
@@ -318,7 +318,7 @@ Metadata:
         default: CloudFront Hosted Zone ID
 ```
 
-A set of parameters is defined, and then we use the 'Metadata' section to group-like parameters, and order them. In this case, we create a few groups; an authentication group, an application domain group, and system parameters groups. This gives users hints as to the purpose of each parameter. 
+A set of parameters is defined, and then we use the 'Metadata' section to group-like parameters, and order them. In this case, we create a few groups; an authentication group, an application domain group, and system parameters groups. This gives users hints as to the purpose of each parameter.
 
 # 6. Nested Stacks
 

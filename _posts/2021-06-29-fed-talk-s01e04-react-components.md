@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 font: serif
 title: "FED Talk! Episode 4: React Components"
 description: "In today’s episode we talk all things React Components, taking you from novice to pro!"

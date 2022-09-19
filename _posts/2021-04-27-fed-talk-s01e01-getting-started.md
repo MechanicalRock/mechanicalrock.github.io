@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 font: serif
 title: "FED Talk! Episode 1: Getting Started with React & Material UI"
 description: "In today’s episode we will bootstrap a React app with Material UI and loads more front-end concepts which will take you from novice to pro!"

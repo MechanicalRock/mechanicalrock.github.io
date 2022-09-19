@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "Latency 2017"
 date:   2017-11-23 04:48:58 +0000
 tags: conferences cloud

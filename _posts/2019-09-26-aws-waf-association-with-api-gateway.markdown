@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "AWS WAF association with API Gateway"
 date:   2019-09-26
 tags: AWS API WAF
@@ -16,68 +16,68 @@ I tried to hardcode the [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-
 
 Amazons Web Applications Firewall allows you to attach your WAF ACL to your API Gateway. Your API Gateway will be region-specific so where you would use AWS::WAF::WebACL to attach to CloudFront traditionally you will need to use the regional WAF resource type AWS::WAFRegional::WebACL.
 ```js
-if(CloudFront) { 
-    return AWS WAF 
-} else { 
+if(CloudFront) {
+    return AWS WAF
+} else {
     return AWS WAF Regional
 }
 ```
 
 ### Common gotchas
 The errors I encountered when deploying the stack were inadequate, I would get a lot of null error responses.
-* YAML indentation 
-* Formatting your API Gateway ARN. This should look like: 
-```yml 
+* YAML indentation
+* Formatting your API Gateway ARN. This should look like:
+```yml
 arn:aws:apigateway:{region}::/restapis/{rest_api_id}/stages/{stage_name}
 ```
 * Find out where the API Gateway was created, was it in your CloudFormation or a Serverless Framework deployment.
 *  ```Status Code: 400; Error Code: WAFInvalidParameterException```  This could be a whole list of reasons according to the aws documentation so have fun figuring out which one it is.
 
 ### Solution
-So how did I resolve the issues I was having? 
+So how did I resolve the issues I was having?
 Ensure you have all the resources needed to set up your ACL, these include but are not limited to:
 * AWS::WAFRegional::WebACL
 * AWS::WAFRegional::Rule
 * AWS::WAFRegional::WebACLAssociation
 
 ```yml
-YourRegionalSqlInjDetection: 
+YourRegionalSqlInjDetection:
     Type: AWS::WAFRegional::SqlInjectionMatchSet
-    Properties: 
+    Properties:
       Name: Find SQL injections
       SqlInjectionMatchTuples:
-      - 
+      -
         FieldToMatch:
           Type: QUERY_STRING
         TextTransformation: URL_DECODE
-      - 
+      -
         FieldToMatch: ** ADD AS NEEDED **
-          Type: 
-        TextTransformation: 
+          Type:
+        TextTransformation:
 
-YourRegionalWafWebAcl: 
+YourRegionalWafWebAcl:
     Type: AWS::WAFRegional::WebACL
-    Properties: 
-    DefaultAction: 
+    Properties:
+    DefaultAction:
         Type: ALLOW
     MetricName: SqlInjWebACL
     Name: Web ACL to block SQL injection in the query string
-    Rules: 
-        - 
-        Action: 
+    Rules:
+        -
+        Action:
             Type: BLOCK
         Priority: 1
-        RuleId: 
+        RuleId:
             Ref: YourRegionalSqlInjRule
 
-YourRegionalSqlInjRule: 
+YourRegionalSqlInjRule:
     Type: AWS::WAFRegional::Rule
-    Properties: 
+    Properties:
         Name: YourRegionalSqlInjRule
         MetricName : YourRegionalSqlInjRule
-        Predicates: 
+        Predicates:
         -
-            DataId :  
+            DataId :
                 Ref : YourRegionalSqlInjDetection
             Negated : false
             Type : YourSqlInjectionMatch
@@ -86,11 +86,11 @@ YourWebACLAssociation:
     Type: AWS::WAFRegional::WebACLAssociation
     Properties:
         ResourceArn: !Ref YourApiARN
-        WebACLId: 
+        WebACLId:
         Ref: YourRegionalWafWebAcl
 ```
 
-So remember that serverless file I mentioned? 
+So remember that serverless file I mentioned?
 If your API was created using the Serverless Framework you will need to run ```npm i serverless-associate-waf```
 in your serverless yml you will need to utilize this plugin:
 ```
@@ -107,8 +107,8 @@ custom:
 The name must be the name you specified in your web ACL.
 ```yml
     Type: AWS::WAFRegional::WebACL
-    Properties: 
-      DefaultAction: 
+    Properties:
+      DefaultAction:
         Type: ALLOW
       MetricName: SqlInjWebACL
       Name: Web ACL to block SQL injection in the query string ** HERE **

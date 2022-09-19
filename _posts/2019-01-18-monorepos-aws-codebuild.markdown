@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "Monorepos and AWS Codebuild"
 date: 2019-02-03
 tags: aws codepipeline codebuild npm node monorepo
@@ -9,7 +9,7 @@ image: img/hydra.gif
 
 A Monorepo generally requires specialised tooling to manage efficiently once they reach an appreciable size. We recently have been working with a client that has a large node-based monorepo that was encountering increasingly larger build times. By introducing optimisations which included the use of lerna, newer npm features (ci installation, package caching) and de-duplicating development dependencies, we were able to achieve a 1000% speed improvement.
 
-This story began with a simple conundrum. A particular repository was taking a long time to build. The process at present was to trigger a build every time a PR was raised, so tests could be run against the PR and confirm that the code was safe to merge. The repository however, kept becoming larger and additional checks were being added during CI to perform extra static analysis of the code. Whilst this was all well and good, nothing in life is free, and the entire development team was paying for this in the form of increased build-time. 
+This story began with a simple conundrum. A particular repository was taking a long time to build. The process at present was to trigger a build every time a PR was raised, so tests could be run against the PR and confirm that the code was safe to merge. The repository however, kept becoming larger and additional checks were being added during CI to perform extra static analysis of the code. Whilst this was all well and good, nothing in life is free, and the entire development team was paying for this in the form of increased build-time.
 
 This has the consequence of increasing the amount of time a developer has to wait to receive feedback. This generally encourages a number of negative behaviours that we would like to avoid; e.g. Avoiding writing tests, performing in work in increasingly larger batches - which increases the risk of failure, pushing directly to master to avoid checks, disabling checks etc. This creates an increasingly poor feedback loop, which decreases the quality of the code being released to end-users.
 
@@ -109,11 +109,11 @@ cache:
 
 With this configured, I expected that this would give a fair improvement in the time it would take to install my dependencies. Unfortunately this is not what occurred and I got a barely noticeable improvement. This left me scratching my head for awhile. I had a look through the package cache on my local machine and noticed that the packages are stored as compressed archives (tar.gz) in the npm cache folder - If you attempt to install a package you have previously installed, it is installed from the cache by uncompressing the matching archive to the appropriate node_modules folder. At this point, I decided to look at how many dependencies a common (albeit complex) package had. I used the following [website](https://npm.anvaka.com/) to get an idea of how many dependencies Jest had, which practically all our packages relied on. I was then treated to the illuminating fact that jest had a complete dependency tree of around 900 packages. Eep. It was then I realised that our 'installation' time was not bound by the network time to fetch the packages remotely - it was the time to uncompress these dependencies to each directory.
 
-There are two ways to improve this - better hardware, and a reduction in the number of times these dependencies would installed. The former was achieved by bumping the size of the build environment. The latter was slightly more complex. We emulated the hoisting feature by moving development dependencies to top level package.json, and called out these dependencies as peer dependencies to serve as a reminder that they were required in the child packages. 
+There are two ways to improve this - better hardware, and a reduction in the number of times these dependencies would installed. The former was achieved by bumping the size of the build environment. The latter was slightly more complex. We emulated the hoisting feature by moving development dependencies to top level package.json, and called out these dependencies as peer dependencies to serve as a reminder that they were required in the child packages.
 
 Some additional changes were needed to make Jest perform slightly better in this arrangement. Previously, we called jest separately on each project, with each project having its own separate jest configuration. We instead provided a global jest configuration at the base of the monorepo that was capable of locating and executing all tests across the entire repository. This does require that you name and locate tests based upon a convention, which fortunately we were doing.
 
-> At this point, we had solved the worst of our build time issues, resulting in a reduction from approximately 20 minutes down to 3 minutes for a complete build of the repository. 
+> At this point, we had solved the worst of our build time issues, resulting in a reduction from approximately 20 minutes down to 3 minutes for a complete build of the repository.
 
 There is an additional optimisation that can be made. We added a configuration to use Jest in multi-project mode, which when combined with lerna's 'changed' command, can be used to ensure we that only build and test packages in the repository that have changed. This makes our CI check run much faster for changes that only touch a few packages (which has the added effect of encouraging our developers to make many smaller changes as opposed to fewer larger ones). We also removed ts-jest in favour of Jest 24's in-built support with babel 7.
 
@@ -158,7 +158,7 @@ If we combine this with lerna changed, we can now determine which packages have 
 ./node_modules/.bin/jest --ci "/tests/.*\\.(test|spec|integration)?\\.(ts|tsx)$" --projects $(./node_modules/.bin/lerna list --all -p --since master | grep -Eo -e packages/.+)
 ```
 
-This allows us to target execute tests against only packages which have changed. This does require you to perform a full checkout of the repository in AWS Codebuild, as opposed to the default behaviour which is to perform a shallow clone. 
+This allows us to target execute tests against only packages which have changed. This does require you to perform a full checkout of the repository in AWS Codebuild, as opposed to the default behaviour which is to perform a shallow clone.
 
 > At this point, our build and test cycle typically executes in under 2 minutes for typical changes - or a 1000% improvement in execution speed.
 
@@ -169,6 +169,6 @@ I hope this gives everyone a good look at the steps that need to be taken to kee
 - Utilising npm ci to resolve and install dependencies.
 - Running jest in multi-project mode together with lerna changed.
 
-Hopefully this has been helpful for anyone who is looking at taking the Monorepo approach. 
+Hopefully this has been helpful for anyone who is looking at taking the Monorepo approach.
 
 Need help wrangling repositories, placating pipelines or boosting your builds? Get in touch at <contact@mechanicalrock.io>.

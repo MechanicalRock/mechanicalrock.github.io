@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: "Building a Serverless RPC API on AWS: Emulating & Testing Locally"
 date: 2021-09-23
 tags: rpc go twirp aws middleware
@@ -122,7 +122,7 @@ Once it starts, you will be able to send requests to it.
 
 ```
 > curl -H "Content-Type: application/json" -d @./local/event.json http://localhost:8080/twirp/ledger.Ledger/ClaimDomain
-> {"Domain":{"Root":"example.com","Subdomain":"myapp"}}% 
+> {"Domain":{"Root":"example.com","Subdomain":"myapp"}}%
 ```
 
 The table should have the result in it...
@@ -203,7 +203,7 @@ I've deliberately made the test fail - in which case I receive the following out
         +       "Root":      string("example.cm"),
                 "Subdomain": string("myapp"),
           }))
-        
+
 FAIL
 FAIL    github.com/matt-tyler/ledger-one/test/e2e       0.352s
 FAIL

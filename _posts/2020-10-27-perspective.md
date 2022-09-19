@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Perspective
 date: 2020-10-27
 tags: devops

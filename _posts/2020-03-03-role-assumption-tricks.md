@@ -1,10 +1,10 @@
 ---
-layout: post
+layout: postv2
 title: AWS STS Role Chaining
 date: 2020-03-03
 tags: javascript tutorial serverless sam
 author: Matthew Tyler
-image: 
+image:
 ---
 
 <center><img src="/img/serverless-express.png" /></center>
@@ -14,7 +14,7 @@ image:
 
 At some point in your career using AWS, you'll find it nessecary to learn a little about how assuming roles in other accounts works. If your working on a personal account, chances are you used to logging in with an IAM user that you have created for yourself. When you join a company using AWS, it's more likely that they have a multi-account set-up using AWS Organizations with AWS SSO - in which case you will log into a specific account using a role via federated access. Likewise, you are probably used to needing to create roles for various services (like Lambda), and provide a service trust so that the service can use a role.
 
-I've done a lot of control-plane work in my time, and this has nessecitated understanding a fair amount about how assuming roles works. A more complicated trick I've had to pull off is building automation that required role chaining - assuming a role into an account and from there, assuming a role into another account. You can think of this as using an account similar to how one would use a jump-box (or bastion host for non-Australians). Most of the time this has been to meet a security policy, delegating permissions management to an account managed by some central authority. This allows that party responsibility for access control, and the ability to closely monitor what is happening. 
+I've done a lot of control-plane work in my time, and this has nessecitated understanding a fair amount about how assuming roles works. A more complicated trick I've had to pull off is building automation that required role chaining - assuming a role into an account and from there, assuming a role into another account. You can think of this as using an account similar to how one would use a jump-box (or bastion host for non-Australians). Most of the time this has been to meet a security policy, delegating permissions management to an account managed by some central authority. This allows that party responsibility for access control, and the ability to closely monitor what is happening.
 
 <center><img src="/img/role-chaining/iam-double-jump.png" /></center>
 <br/>
@@ -29,7 +29,7 @@ Setting up cross account role assumption can be a little confusing if you have n
 
 1. Create a role in the target account, that will ultimately be assumed by another account. Give it the necessary permissions to do what will be required of it.
 
-2. Adjust the 'AssumeRolePolicy' or 'trust', of the target role. 
+2. Adjust the 'AssumeRolePolicy' or 'trust', of the target role.
 
    The role will need to have a trust policy like the following;
 
@@ -69,12 +69,12 @@ Imagine we were to assume a role in another account to access S3 from within tha
 ```javascript
 import { S3, STS, Credentials } from "aws-sdk";
 
-const { 
-  Credentials: { 
-    AccessKeyId: accessKeyId, 
+const {
+  Credentials: {
+    AccessKeyId: accessKeyId,
     SecretAccessKey: secretAccessKey,
-    SessionToken: sessionToken 
-  } 
+    SessionToken: sessionToken
+  }
 } = await new STS().assumeRole({
   RoleArn: "arn:aws:iam::0987654321:role/role-to-assume"
 }).promise();
@@ -116,7 +116,7 @@ const credentials = new ChainableTemporaryCredentials({
     RoleArn: "arn:aws:iam::0101010101:role/next-role-to-assume"
   },
   masterCredentials: new AWS.ChainableTemporaryCredentials({
-    params: { 
+    params: {
       RoleArn: "arn:aws:iam::0987654321:role/role-to-assume"
     }
   })

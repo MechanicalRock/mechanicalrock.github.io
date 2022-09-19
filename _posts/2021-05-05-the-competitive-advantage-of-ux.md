@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: The Competitive Advantage of UX
 date: 2021-05-05
 tags: ux devops design competitive advantage optimisation

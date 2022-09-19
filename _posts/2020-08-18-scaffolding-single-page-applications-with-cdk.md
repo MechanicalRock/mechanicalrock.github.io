@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Scaffolding your AWS single page application infrastructure with CDK
 date: 2020-08-24
 tags: aws cdk static-site react angular vue cloud-development-kit infrastructure-as-code spa single-page-application

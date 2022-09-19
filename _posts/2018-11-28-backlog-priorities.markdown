@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "Agile Priorities"
 date:   2018-12-31
 tags: Agile Estimating Planning Scrum
@@ -40,11 +40,11 @@ So how to prioritise? When it comes to prioritising I usually think about three 
  - What features deliver core value
  - What additional features do you need in order to enable those features
  - Which features have are the highest risks or carry some auxilliary benefits?
- 
+
 Firstly, as we have already discussed, customer value is very important. If you don't provide customers with value then someone else will. Identifying values should be at the top of your list.
- 
+
 Secondly, those features will often have other dependent tasks or features: systems will need accounts and logins, notifications will need account profiles or settings, data reporting needs to have data collection. These tasks will need to be done first, but can sometimes be wrapped up in another feature that provides value. For example if you are building a cat-cuteness ranking application, there may be value in building a ranking per-user before a more complex site-wide system.
- 
+
 Lastly, don't discount any measurable risk or collateral benefit. If two features are of equal value (however you measure that), I would usually tackle the one with the highest additional benefit first, as futher valuable features may be able to be delivered faster. Beyond that, I also generally try to address the highest-risk items earlier than lowest risk, mainly because as a project marches on those high-risk or high-uncertainty items tend to have a bigger schedule impact the longer they are left.
 
 ## Stop (mostly)

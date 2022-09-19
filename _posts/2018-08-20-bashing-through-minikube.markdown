@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "Bashing through Minikube - 0 to 60 for Local Kubernetes Development"
 date:   2018-08-20
 tags: kubernetes minikube containers bash local development

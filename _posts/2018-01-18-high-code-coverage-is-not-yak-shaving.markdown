@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "High Code Coverage is not Wasted Effort"
 date:   2018-01-08
 tags: quality bdd

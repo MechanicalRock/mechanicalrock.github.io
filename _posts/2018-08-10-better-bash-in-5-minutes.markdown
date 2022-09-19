@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "Better Bash Scripting in 5 Minutes or Less"
 date:   2018-08-10
 tags: bash linux unix mac osx script shell

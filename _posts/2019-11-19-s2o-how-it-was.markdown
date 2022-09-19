@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "Serverless to Observerless: How it was"
 date: 2019-11-19
 tags: latencyconf aws codepipeline lambda apigateway xray serverless

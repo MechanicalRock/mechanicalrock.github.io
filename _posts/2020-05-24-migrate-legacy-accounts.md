@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Get your accounts together!
 date: 2020-05-24
 tags: account control tower sso organizations

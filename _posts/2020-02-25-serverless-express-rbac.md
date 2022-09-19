@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Role Based Access Control By Example
 date: 2020-02-25
 tags: javascript tutorial serverless aws
@@ -22,7 +22,7 @@ A better way to describe these is to consider a practical example. Scopes were o
 
 Imagine a company (completely independent of the bank) launches a new web service. This service aims to analyze your spending history of your savings account and produce detailed reports and suggestions to help you save money. To do this they require you to give over your username and password for your banking account, as this will need login in to your account to scrape the information.
 
-This is bad because they have access to credentials which are not limited to the job that they are intending to perform, and also because there is no way for the user to consent to the specific activities they want to perform. 
+This is bad because they have access to credentials which are not limited to the job that they are intending to perform, and also because there is no way for the user to consent to the specific activities they want to perform.
 
 OAuth2 solves these both these problems. With OAuth2, registering with the service would result in a redirect to the bank's authorization page. The bank would list the permissions that the service is requesting (e.g.; read statements), allowing the user to explicitly consent to the delegation of permissions. If they accept, credentials would be issued that would allow the service to request information about the users bank statements.
 
@@ -83,7 +83,7 @@ In a perfect world this would all be handled by some native mechanism that is pr
 
 Cognito does a good job of handling user registration and various token related tasks, but it does not currently propagate the information necessary to perform these kinds of policy decisions. This is a future that is probably coming, as illustrated by new ABAC mechanisms introduced via tags, and exemplified by propagating session tags in AWS SSO.
 
-We could see a world where a user would log in via Cognito and receive access to an IAM role via a pair of credentials. These credentials would be bound to session-tags that were created by the platform, that would include information about the users precise identity, which could then be used to scale-back their permissions e.g. prevent them from reading certain rows from DynamoDB via the leadingkey condition, or restrict reading of S3 files to specific prefix. Likewise, requested scopes or group membership within user pools (or other third party directories) could propagate other information to session tags to enable further flexibility within access policies. 
+We could see a world where a user would log in via Cognito and receive access to an IAM role via a pair of credentials. These credentials would be bound to session-tags that were created by the platform, that would include information about the users precise identity, which could then be used to scale-back their permissions e.g. prevent them from reading certain rows from DynamoDB via the leadingkey condition, or restrict reading of S3 files to specific prefix. Likewise, requested scopes or group membership within user pools (or other third party directories) could propagate other information to session tags to enable further flexibility within access policies.
 
 This would keep the policy definition and evaluation mechanism inside the platform/infrastructure level, and outside of the application domain.
 
@@ -160,7 +160,7 @@ This is the most confusing aspect of the model, but essentially says that there 
 
 - matchers
 
-  The section defines how the matching logic works, and is specific to casbin. It states that 
+  The section defines how the matching logic works, and is specific to casbin. It states that
   - the subject in the request must belong to a group/role, and,
   - the object in the request match via a glob,
   - and the actions defined in the request,
@@ -274,7 +274,7 @@ Cognito requires a little bit of additional configuration. The template is avail
 
   CommentReaderGroup:
     Type: AWS::Cognito::UserPoolGroup
-    Properties: 
+    Properties:
       Description: Comment Reader
       GroupName: reader
       Precedence: 0
@@ -282,7 +282,7 @@ Cognito requires a little bit of additional configuration. The template is avail
 
   CommentDeleterGroup:
     Type: AWS::Cognito::UserPoolGroup
-    Properties: 
+    Properties:
       Description: Comment Deleter
       GroupName: deleter
       Precedence: 0
@@ -290,21 +290,21 @@ Cognito requires a little bit of additional configuration. The template is avail
 
   AttachUserToWriterGroup:
     Type: AWS::Cognito::UserPoolUserToGroupAttachment
-    Properties: 
+    Properties:
       GroupName: !Ref CommentWriterGroup
       Username: !Ref User
       UserPoolId: !Ref UserPool
 
   AttachUserToReaderGroup:
     Type: AWS::Cognito::UserPoolUserToGroupAttachment
-    Properties: 
+    Properties:
       GroupName: !Ref CommentReaderGroup
       Username: !Ref User
       UserPoolId: !Ref UserPool
 
   AttachUserToDeleterGroup:
     Type: AWS::Cognito::UserPoolUserToGroupAttachment
-    Properties: 
+    Properties:
       GroupName: !Ref CommentDeleterGroup
       Username: !Ref User
       UserPoolId: !Ref UserPool

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Fine Grained Access Control for Multi-tenancy
 description: Architecting multi-tenant backend applications
 date: 2022-05-30

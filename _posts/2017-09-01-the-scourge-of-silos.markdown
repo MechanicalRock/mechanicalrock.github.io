@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title:  "The Scourge of Silos"
 date:   2017-09-01 04:48:58 +0000
 tags: bdd tdd devops pairing mobbing

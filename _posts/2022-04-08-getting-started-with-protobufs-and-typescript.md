@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Getting Started with Protobufs and Typescript
 description: Tutorial for how to start using Protobufs with Typescript
 date: 2022-04-08
@@ -207,7 +207,7 @@ protoc \
       - `const person1Phone1 = person1.addPhones()`
       - `person1Phone1.setNumber('0123456789')`
       - `person1Phone1.setType(0)`
-        - Note that you have to use the index value of the enum for the `PhoneType`. 
+        - Note that you have to use the index value of the enum for the `PhoneType`.
     - Now you get the idea, you can add a second person in the same way.
 4. Serialize to Protobuf:
     - `const serializedMessage = myAddressBook.serializeBinary()`

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Serverless Express Without The Express (Or Lambda) - Client Edition
 date: 2020-05-05
 tags: javascript tutorial serverless aws
@@ -29,7 +29,7 @@ Authorization: AWS4-HMAC-SHA256 Credential=AKIA****************/20200320/ap-sout
 This consists of several parts.
 
 1. AWS4-HMAC-SHA256
-  
+
    This indicates the particular signature type and signing algorithm used.
 
 2. Credential=
@@ -95,7 +95,7 @@ function hash(string: string) {
     const instance = axios.create()
 
     // the interceptor
-    instance.interceptors.request.use(async (config) => { 
+    instance.interceptors.request.use(async (config) => {
         // load AWS credentials
         const { credentials: {
             accessKeyId, secretAccessKey
@@ -111,7 +111,7 @@ function hash(string: string) {
         if (!new Set(['OPTIONS', 'GET']).has(config.method.toUpperCase())) {
             headers.push({ 'Content-Type': config.headers['Content-Type'] })
         }
-    
+
         const req = aws4.sign({
             service: 'execute-api',
             region: 'ap-southeast-2',
@@ -139,7 +139,7 @@ It makes sense to talk about the difference between this method and JWT's, given
 - The secret is not exposed in the request, thereby limiting the opportunities to expose the secret, either via a man-in-the-middle attack or similar vector.
 - Because the request is tied to an IAM entity, all the powers of IAM are available to determine whether the caller is allowed to perform a specific action.
 
-The downside is that this method is limited to AWS. If you were to port the API to another provider you would need to implement another authorization method. You also need to aquire the credentials in the first place. Embedding credentials in an application is usually not a good idea - so most applications will use cognito federation, to enable clients to exchange a JWT from an Identity Provider for AWS Access Tokens. So even if you do decide to use IAM Authorization for your API, for a public API you will likely still end up with a JWT somewhere. I personally believe that it is worth it, given how powerful and flexible IAM policies can be (that being said, new HTTP APIs do not have support for IAM authorization). The addition of session tags and scope propogation to Cognito would also offer flexible ways to control access to protected resources, but we might be waiting awhile. 
+The downside is that this method is limited to AWS. If you were to port the API to another provider you would need to implement another authorization method. You also need to aquire the credentials in the first place. Embedding credentials in an application is usually not a good idea - so most applications will use cognito federation, to enable clients to exchange a JWT from an Identity Provider for AWS Access Tokens. So even if you do decide to use IAM Authorization for your API, for a public API you will likely still end up with a JWT somewhere. I personally believe that it is worth it, given how powerful and flexible IAM policies can be (that being said, new HTTP APIs do not have support for IAM authorization). The addition of session tags and scope propogation to Cognito would also offer flexible ways to control access to protected resources, but we might be waiting awhile.
 
 # Conclusion
 

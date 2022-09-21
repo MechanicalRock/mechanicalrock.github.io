@@ -32,11 +32,22 @@ These features allow replication to take place between multiple highly distribut
 There are multiple replication topologies that are supported for use with HVR. The replication topologies include the following:
 
 - Uni-directional (one-to-one)
+  This topology in scenarios where one would like to offload reporting, feed data into a data lake or to populate data warehouses
+
 - Broadcast (one-to-many)
+  This topology involves one source location and multiple target locations, this topology may be used for cloud solutions targeting both a file based data lake such as S3 as well as a relational database such as Snowflake.
+
 - Consolidation (many-to-one)
+  This Topology involves multiple source locations consolidating data into a single target location.
+
 - Cascading (one-to-one-to-many)
+  This involves a source location pushing data to a target location that acts as a source location distributing data to multiple targets.
+
 - Bi-directional (active-active)
+  In this topology data is replicated in both directions and modified on both sides. It is referred to as an active/active scenario because the two sides are kept in sync. HVR employs the use of collision detection and loop-back detection to protect the integrity of the data
+
 - Multi-directional
+  Multi-directional replication involves more than two locations that are in an active-active replication setup.
 
 ### Agents, Source Machines and Target Machines
 
@@ -47,7 +58,13 @@ The option to go agentless also exists, in which the HVR Hub Machine accesses a 
 - Compression of data before prior to sending to the hub, resulting in significant bandwidth savings (in ratios of up to 10x)
 - Secure and consistent connections that utilise encryption and authentication
 
-### User Interface
+### User Interface and Rest API
+
+The two main methods in which a user can interact with the HVR Hub Server are Web UI and Remote CLI.
+The Web UI provides the means to visualise and control the replication process via a dashboard.
+
+The CLI can be accessed on the hub machine or from a remote machine provided there exists an HVR installation on the remote machine.
+In addition to the Web UI and CLI there exists a Rest API that can be used to build custom interactions in any programming language.
 
 ## HVA
 

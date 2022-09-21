@@ -32,7 +32,7 @@ These features allow replication to take place between multiple highly distribut
 There are multiple replication topologies that are supported for use with HVR. The replication topologies include the following:
 
 - Uni-directional (one-to-one)
-  This topology in scenarios where one would like to offload reporting, feed data into a data lake or to populate data warehouses
+  This topology is used in scenarios where one would like to offload reporting, feed data into a data lake or to populate data warehouses
 
 - Broadcast (one-to-many)
   This topology involves one source location and multiple target locations, this topology may be used for cloud solutions targeting both a file based data lake such as S3 as well as a relational database such as Snowflake.

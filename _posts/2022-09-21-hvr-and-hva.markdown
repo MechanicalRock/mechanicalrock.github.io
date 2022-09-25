@@ -76,9 +76,9 @@ High Volume Agent (HVA) is the marriage of HVR’s replication capabilities with
 
 - Faster and higher volume replication
 - Major compute impacts of replication
-- Complicated process of replication
+- Using Oracle
 
-HVA seeks to tackle both of these issues in the data space. Data collection is ever increasing and enterprises today are racing to leverage their own data. Thus, speed and volume of replication are two metrics paramount to success in this race. Both of which are provided by HVA. With more than 10 mB/s being replicated a second, HVA is a leader in both speed and volume. In addition, the utilisation of change data capture, reading only the changes made to a database, means that the database isn’t directly queried. Similar to HVR, HVA leverages the database’s change data capture transaction logs to do this. This avoids querying the database for incremental loads, and the compute load on the database itself is minimised. Finally, HVA is a simple tool to use. In both setup and use, Fivetran relative to other products minimises the typically verbose and drawn out process of setting up a replication service. Once HVA’s agent is set up, it can easily be plugged into your Fivetran account and thus its numerous destination options.
+HVA seeks to tackle these issues in the data space. Data collection is ever increasing and enterprises today are racing to leverage their own data. Both speed and volume are provided by HVA, with more than 10 mB/s being replicated a second. In addition, the utilisation of change data capture, reading only the changes made to a database, means that the database isn’t directly queried for continuous replication. Similar to HVR, HVA leverages the database’s change data capture transaction logs to do this. This avoids querying the database for incremental loads, and the compute load on the database itself is minimised. However, as mentioned this benefit is only during continuous syncing of data, during the initial load HVA directly SELECTs all schemas and associated tables from the database. Finally, you can use this tool help move away from Orcale to a better cloud-based storage solution. Oracle, though widespread, could be considered overly complex, verbose and cumbersome in its setup, maintenance and use. Cloud-storage solutions such as Snowflake, when leveraged correctly can mean a cheaper and easier to use data solution for many currently using Oracle. HVA can be used to reap these benefits of Snowflake and others, by aiding in replicating you data in the cloud. Thought if Oracle is serving you and your analytical needs well, then this tool is not for you.
 
 ### Setup
 
@@ -86,7 +86,7 @@ HVA seeks to tackle both of these issues in the data space. Data collection is e
 
 HVA uses an agent-based approach in which an ‘agent’ is installed on the database server. This is due to HVA’s need to read the change data capture transaction logs.
 
-The setup for an Oracle Database is relatively simple. HVA currently supports Generic Oracle and Oracle RAC services. The setup follows these high level steps:
+HVA currently supports Generic Oracle and Oracle RAC services. The setup follows these high level steps:
 
 - Choose and configure the type of connection to the source database. These options include:
   - Direct
@@ -96,14 +96,45 @@ The setup for an Oracle Database is relatively simple. HVA currently supports Ge
 - Configure Archivelog Mode, Supplemental logging and Configure Direct - Capture to be enabled.
 - Install and configure the HVA Agent
 - Start the HVA Agent
+- Add a new connector in the Fivetran Dashboard
+- Specify a destination e.g. Snowflake
 
 A complete setup guide can be found here: https://fivetran.com/docs/databases/oracle/oracle_hva/setup-guide
 
-Once this is complete, a connector can be added to your Fivetran account via the dashboard or dashboard.
+Though seemingly straight forward, any errors you make will require you to look inward... to search your soul... because the error messages won't tell you what went wrong.  
+More often than not, error's from the agent are a core file dump rather than human readable and actionable messages. In addition, though looking fine and dandy from 1000 feet, being in the trenches completing this setup requires breadth of networking, sysadmin and database knowledge. During this setup, why you and your data are special will come apparent as some nuances are not obvious. For example, during our setup, the assumption of HVA supporting tables with non-primary keys (the case for our test tables) was challenged. In actuality this support does exist but for only for tables with "non-clob" (non text) columns.
 
-## Use Cases (based on Oracle databases)
+Once the setup is complete, a connector can be added to your Fivetran account via the dashboard.
 
-It is recommended that HVR and HVA should only be utilised where databases store more than 1TB of data, process more than 400GB of change data volume per day and throughput greater than 10mB/s is required. Additionally, an agent must be installed on the source location if HVA is preferred whereas it is an optional install when using HVR. HVR also provides real-time replication and the ability to compare/repair between source and target locations.
+### HVA Limitations and Drawbacks
+
+- Latency of 15 mins
+  From the moment you make a change in Ocarle or MySQL database, it will take 15 minutes for this to be available in your desitation database.
+- Red-Haring Error Messages
+  As mention, some of the errors produced by HVA and even HVR's agent and Hub are not easily decipherable. Core file messages are often the output which will require you to search the internet for a solution. 
+- Involved setup Not-for-Dummies
+  The above error messages also exacerbate the complex setup of HVA. The process is difficult for first-timers that lack networking, sysadmin and database knowledge.
+- Not configurable with API
+  Unlike some of the more popular Fivetran connectors, HVA is not configurable with Fivetran's API as the agent-based approach to data replication demands a very manual setup. As Mechanical Rock proirities infrastructure as code for its many benefits this, for us at least, is a drawback of the product.
+
+
+## Fivtran Oracle vs HVA Oracle vs HVR Oracle
+
+Every business has its nuances and why they want there data in cloud. For this reason, Fivetran has three options, specifically for Oracle. They are as follows:
+
+| Feature                       	| Fivetran Oracle    	| HVA Oracle 	| HVR Oracle 	|
+|-------------------------------	|--------------------	|------------	|------------	|
+| Throughput (database GB/hour) 	| <10 mB/s           	| >10 mB/s   	| >10mB/s    	|
+| CLOB/LOB data types           	| No                 	| Yes        	| Yes        	|
+| Interval/Long data Types      	| No                 	| Not yet    	| Yes        	|
+| Agent Install Required        	| no                 	| Yes        	| Yes        	|
+| Log-Based Replication         	| No                 	| Yes        	| Yes        	|
+| Log Free Replication          	| Yes, with teleport 	| No         	| No         	|
+| Hosted Hub                    	| No                 	| No         	| Yes        	|
+| Captures DDL and DML          	| Yes                	| Yes        	| Yes        	|
+| TDE                           	| No                 	| Not yet    	| Yes        	|
+| Real Time Replication         	| No                 	| No         	| Yes        	|
+| Compare and Repair            	| No                 	| No         	| Yes        	|
 
 ## Resources
 

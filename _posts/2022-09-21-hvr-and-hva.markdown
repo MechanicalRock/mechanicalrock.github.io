@@ -115,7 +115,7 @@ Once the setup is complete, a connector can be added to your Fivetran account vi
 - Involved setup Not-for-Dummies
   The above error messages also exacerbate the complex setup of HVA. The process is difficult for first-timers that lack networking, sysadmin and database knowledge.
 - Not configurable with API
-  Unlike some of the more popular Fivetran connectors, HVA is not configurable with Fivetran's API as the agent-based approach to data replication demands a very manual setup. As Mechanical Rock prioritises infrastructure as code for its many benefits this, for us at least, is a drawback of the product.
+  Unlike some of the more popular Fivetran connectors, HVA is not configurable with Fivetran's API as the agent-based approach to data replication demands a very manual setup. As Mechanical Rock prioritises infrastructure as code for its many benefits. As such the manual process involved with HVA, for us at least, is a drawback of the product.
 
 
 ## Fivtran Oracle vs HVA Oracle vs HVR Oracle

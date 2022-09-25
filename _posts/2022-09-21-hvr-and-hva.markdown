@@ -102,7 +102,7 @@ HVA currently supports Generic Oracle and Oracle RAC services. The setup follows
 A complete setup guide can be found here: https://fivetran.com/docs/databases/oracle/oracle_hva/setup-guide
 
 Though seemingly straight forward, any errors you make will require you to look inward... to search your soul... because the error messages won't tell you what went wrong.  
-More often than not, error's from the agent are a core file dump rather than human readable and actionable messages. In addition, though looking fine and dandy from 1000 feet, being in the trenches completing this setup requires breadth of networking, sysadmin and database knowledge. During this setup, why you and your data are special will come apparent as some nuances are not obvious. For example, during our setup, the assumption of HVA supporting tables with non-primary keys (the case for our test tables) was challenged. In actuality this support does exist but for only for tables with "non-clob" (non text) columns.
+More often than not, error's from the agent are a core file dump rather than human readable and actionable messages. In addition, though looking fine and dandy from 1000 feet, being in the trenches completing this setup requires a breadth of networking, sysadmin and database knowledge. During this setup, why you and your data are special will come apparent as some nuances are not obvious. For example, during our setup, the assumption of HVA supporting tables with non-primary keys (the case for our test tables) was challenged. In actuality this support does exist but for only for tables with "non-clob" (non text) columns.
 
 Once the setup is complete, a connector can be added to your Fivetran account via the dashboard.
 

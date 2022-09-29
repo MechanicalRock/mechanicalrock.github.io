@@ -87,7 +87,7 @@ High Volume Agent (HVA) is the marriage of HVR’s replication capabilities with
 - Schema Drift Handling
 - Allows Rapid integration through the use of a managed service (Connectors)
 
-As technology capabilities advance so does the need to move faster and work more efficiently. In saying so, we can reduce the core requirements of any large enterprising companies to two metrics, time savings and monetary cost savings. When it comes to data, this rule could not be more true than it is today. The fact that companies are producing larger volumes of data at a much faster rate means there is a real demand for tools that can handle large volumes of data and also keep up with the rate which new data is generated.
+As technology capabilities advance so does the need to move faster and work more efficiently. In saying so, we can reduce the data management requirements of any large enterprising company to two metrics, time savings and monetary cost savings. When it comes to data, this rule could not be more true than it is today. The fact that companies are producing larger volumes of data at a much faster rate means there is a real demand for tools that can handle large volumes of data and also keep up with the rate which new data is generated.
 
 Fortunately HVA can handle large volumes of data at a rate of >10 mB/s. In addition, the utilisation of CDC means that the need to query the database for data changes is totally eliminated thereby reducing the data integration latency also known as the load time. HVA implements CDC by making use of the database's transaction logs.
 

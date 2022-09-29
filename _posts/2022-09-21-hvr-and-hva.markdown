@@ -1,7 +1,7 @@
 ---
 layout: post
 font: serif
-title: HVR and HVA
+title: Why you should be using HVR for high volume data replication
 date: 2022-08-08
 highlight: monokai
 author: Matt Carter, Jack Menzie, Leon Ticharwa
@@ -10,6 +10,8 @@ tags: hvr hva data replication
 ---
 
 # HVR and HVA
+
+HVR is a high-volume real-time data replication platform that is suitable for a range of data integration scenarios including consolidation of multi-cloud file storage and multi-cloud databases, feeding data lakes, database migration ,file storage replication and database replication.
 
 ## HVR
 

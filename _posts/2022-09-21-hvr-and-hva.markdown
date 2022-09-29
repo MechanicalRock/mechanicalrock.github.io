@@ -9,13 +9,13 @@ image: /img/blog/hvr-and-hva/banner.jpg
 tags: hvr hva data replication
 ---
 
-# Why HVA/HVR ?
+## Why HVA/HVR ?
 
 There is currently a need for faster, high-volume database replication tools. Fivetrain is addressing this need with its recently acquired data replication platform called HVR.
 
 HVR is a high-volume real-time data replication platform that is suitable for a range of data integration scenarios including consolidation of multi-cloud file storage and multi-cloud databases, feeding data lakes, database migration ,file storage replication and database replication.
 
-For those who want to rapidly implement replication via HVR, HVR offers a managed service (HVA connectors) that reduces setup overhead and ongoing management costs. HVA connectors are a series of connectors that are setup and managed through the Fivetran web console. Currently, there are two commissioned HVA connectors that are ready for use, one uses Oracle as a data source and the other uses SQL server as a data source.
+For those who want to rapidly implement replication via HVR, HVR offers a managed service (HVA connectors) that reduces setup overhead and ongoing management costs. HVA connectors are a series of connectors that are setup and managed through the Fivetran web dashboard. Currently, there are two commissioned HVA connectors that are ready for use, one uses Oracle as a data source and the other uses SQL server as a data source.
 
 ## HVR
 
@@ -80,11 +80,18 @@ High Volume Agent (HVA) is the marriage of HVR’s replication capabilities with
 
 ### Issues solved by HVA
 
-- Faster and higher volume replication
-- Major compute impacts of replication
-- Using Oracle
+- High throughput promotes efficient load time into the destination (>10MBps)
+- Handles large volumes of data
+- Data Compression
+- Use of CDC eliminates the need for queries to the source database thereby minimising replication latency
+- Schema Drift Handling
+- Allows Rapid integration through the use of a managed service (Connectors)
 
-HVA seeks to tackle these issues in the data space. Data collection is ever increasing and enterprises today are racing to leverage their own data. Both speed and volume are provided by HVA, with more than 10 mB/s being replicated a second. In addition, the utilisation of change data capture, reading only the changes made to a database, means that the database isn’t directly queried for continuous replication. Similar to HVR, HVA leverages the database’s change data capture transaction logs to do this. This avoids querying the database for incremental loads, and the compute load on the database itself is minimised. However, as mentioned this benefit is only during continuous syncing of data, during the initial load HVA directly SELECTs all schemas and associated tables from the database. Finally, you can use this tool help move away from Orcale to a better cloud-based storage solution. Oracle, though widespread, could be considered overly complex, verbose and cumbersome in its setup, maintenance and use. Cloud-storage solutions such as Snowflake, when leveraged correctly can mean a cheaper and easier to use data solution for many currently using Oracle. HVA can be used to reap these benefits of Snowflake and others by aiding in replicating your data in the cloud. Though if Oracle is serving you and your analytical needs well, then this tool is not for you.
+As technology capabilities advance so does the need to move faster and work more efficiently. In saying so, we can reduce the core requirements of any large enterprising companies to two metrics, time savings and monetary cost savings. When it comes to data, this rule could not be more true than it is today. The fact that companies are producing larger volumes of data at a much faster rate means there is a real demand for tools that can handle large volumes of data and also keep up with the rate which new data is generated.
+
+Fortunately HVA can handle large volumes of data at a rate of >10 mB/s. In addition, the utilisation of CDC means that the need to query the database for data changes is totally eliminated thereby reducing the data integration latency also known as the load time. HVA implements CDC by making use of the database's transaction logs.
+
+It is important to note that CDC is not used during initial load. During initial load HVA performs a query that employs the use of the SELECT command to grab all schemas and associated tables from the database and this exerts a substantial compute load on the resource system. There are ways to alleviate the processing burden placed on the system during initial load. The main method that can be used to achieve this is multi-core parallel processing of a pre-segmented table, with each core being allocated a workload.
 
 ### Setup
 
@@ -108,7 +115,9 @@ HVA currently supports Generic Oracle and Oracle RAC services. The setup follows
 A complete setup guide can be found here: https://fivetran.com/docs/databases/oracle/oracle_hva/setup-guide
 
 Though seemingly straight forward, any errors you make will require you to look inward... to search your soul... because the error messages won't tell you what went wrong.  
-More often than not, error's from the agent are a core file dump rather than human readable and actionable messages. In addition, though looking fine and dandy from 1000 feet, being in the trenches completing this setup requires a breadth of networking, sysadmin and database knowledge. During this setup, why you and your data are special will come apparent as some nuances are not obvious. For example, during our setup, the assumption of HVA supporting tables with non-primary keys (the case for our test tables) was challenged. In actuality this support does exist but for only for tables with "non-clob" (non text) columns.
+More often than not, errors from the agent are highly verbose core dumps that are difficult to read rather than actionable debug messages. In addition, though looking fine and dandy from 1000 feet, being in the trenches completing this setup assumes proficiency with SQL databases as well as a general aptitude for network configuration.
+
+During this setup, why you and your data are special will come apparent as some nuances are not obvious. For example, during our setup, the assumption of HVA supporting tables with non-primary keys (the case for our test tables) was challenged. In actuality this support does exist but for only for tables with "non-clob" (non text) columns.
 
 Once the setup is complete, a connector can be added to your Fivetran account via the dashboard.
 

@@ -106,7 +106,7 @@ HVA currently supports Generic Oracle and Oracle RAC services. The setup follows
   - SSH tunnel
   - AWS PrivateLink
 - Setup a read-only access User for Fivetran’s agent
-- Configure Archivelog Mode, Supplemental logging and Configure Direct - Capture to be enabled.
+- Configure Archive log Mode, Supplemental logging and Configure Direct - Capture to be enabled.
 - Install and configure the HVA Agent
 - Start the HVA Agent
 - Add a new connector in the Fivetran Dashboard
@@ -124,7 +124,7 @@ Once the setup is complete, a connector can be added to your Fivetran account vi
 ### HVA Limitations and Drawbacks
 
 - Latency of 15 mins
-  From the moment you make a change in Ocarle or MySQL database, it will take 15 minutes for this to be available in your desitation database.
+  From the moment you make a change in Oracle or MySQL database, it will take 15 minutes for this to be available in your destination database.
 - Red-Haring Error Messages
   As mention, some of the errors produced by HVA and even HVR's agent and Hub are not easily decipherable. Core file messages are often the output which will require you to search the internet for a solution.
 - Involved setup Not-for-Dummies

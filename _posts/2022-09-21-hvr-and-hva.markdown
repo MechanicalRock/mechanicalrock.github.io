@@ -15,7 +15,7 @@ There is currently a need for faster, high-volume database replication tools. Fi
 
 HVR is a high-volume real-time data replication platform that is suitable for a range of data integration scenarios including consolidation of multi-cloud file storage and multi-cloud databases, feeding data lakes, database migration ,file storage replication and database replication.
 
-For those who want to rapidly implement replication via HVR, HVR offers a managed service (HVA connectors) that reduces setup overhead and ongoing management costs. HVA connectors are a series of connectors that are setup and managed through the Fivetran web dashboard. Currently, there are two commissioned HVA connectors that are ready for use, one uses Oracle as a data source and the other uses SQL server as a data source.
+For those who want to rapidly implement replication via HVR, Fivetran offers a managed service (HVA connectors) that reduces setup overhead and ongoing management costs. HVA connectors are a series of connectors that are setup and managed through the Fivetran web dashboard. Currently, there are two commissioned HVA connectors that are ready for use, one uses Oracle as a data source and the other uses SQL server as a data source.
 
 ## HVR
 

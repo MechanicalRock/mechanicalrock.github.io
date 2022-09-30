@@ -11,7 +11,7 @@ tags: hvr hva data replication
 
 ## Why HVA/HVR ?
 
-There is currently a need for faster, high-volume database replication tools. Fivetrain is addressing this need with its recently acquired data replication platform called HVR.
+There is currently a need for faster, high-volume database replication tools. Fivetran is addressing this need with its recently acquired data replication platform called HVR.
 
 HVR is a high-volume real-time data replication platform that is suitable for a range of data integration scenarios including consolidation of multi-cloud file storage and multi-cloud databases, feeding data lakes, database migration ,file storage replication and database replication.
 

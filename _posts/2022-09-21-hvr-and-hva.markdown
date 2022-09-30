@@ -80,18 +80,17 @@ High Volume Agent (HVA) is the marriage of HVR’s replication capabilities with
 
 ### Issues solved by HVA
 
-- High throughput promotes efficient load time into the destination (>10MBps)
-- Handles large volumes of data
-- Data Compression
-- Use of CDC eliminates the need for queries to the source database thereby minimising replication latency
-- Schema Drift Handling
-- Allows Rapid integration through the use of a managed service (Connectors)
+- Massive amounts of data 
+- Untimely data access
+- High computation cost of replication 
+- Using Oracle
 
-As technology capabilities advance so does the need to move faster and work more efficiently. In saying so, we can reduce the data management requirements of any large enterprising company to two metrics, time savings and monetary cost savings. When it comes to data, this rule could not be more true than it is today. The fact that companies are producing larger volumes of data at a much faster rate means there is a real demand for tools that can handle large volumes of data and also keep up with the rate which new data is generated.
 
-Fortunately HVA can handle large volumes of data at a rate of >10 mB/s. In addition, the utilisation of CDC means that the need to query the database for data changes is totally eliminated thereby reducing the data integration latency also known as the load time. HVA implements CDC by making use of the database's transaction logs.
+Data collection is ever increasing and enterprises today are racing to leverage it. Replicating operational data in a cloud-based analytical storage solution is one way to do this. HVA is a wicked tool that can do just that... with the right amount of elbow grease.
 
-It is important to note that CDC is not used during initial load. During initial load HVA performs a query that employs the use of the SELECT command to grab all schemas and associated tables from the database and this exerts a substantial compute load on the resource system. There are ways to alleviate the processing burden placed on the system during initial load. The main method that can be used to achieve this is multi-core parallel processing of a pre-segmented table, with each core being allocated a workload.
+Fortunately HVA can handle large volumes of data at a rate of >10 mB/s. Though the initial loading uses a direct SELECT statement to grab the data, continuous replication uses Change Data Capture (CDC). This reduces the data integration latency also known as the load time. HVA implements CDC by making use of the database's transaction logs. There are ways to alleviate the processing burden placed on the system during initial load. The main method to achieve this is multi-core parallel processing of a pre-segmented table, with each core being allocated a workload.
+
+Finally, you can use this tool to help move away from Oracle to a cloud-based analytical data storage solution. Oracle, though widespread, could be considered overly complex, verbose and cumbersome in its setup, maintenance and use. Cloud-storage solutions such as Snowflake, when leveraged correctly can mean a cheaper and easier to use data solution for many currently using Oracle. HVA can be used to reap these benefits of Snowflake and others by aiding in replicating your data in the cloud. Though if Oracle is serving you and your analytical needs well, then this tool is not for you.
 
 ### Setup
 

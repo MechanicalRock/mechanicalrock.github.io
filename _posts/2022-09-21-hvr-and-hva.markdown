@@ -81,14 +81,14 @@ High Volume Agent (HVA) is the marriage of HVR’s replication capabilities with
 ### Issues solved by HVA
 
 - Massive amounts of data 
-- Untimely data access
 - High computation cost of replication 
+- Untimely data access
 - Using Oracle
 
 
 Data collection is ever increasing and enterprises today are racing to leverage it. Replicating operational data in a cloud-based analytical storage solution is one way to do this. HVA is a wicked tool that can do just that... with the right amount of elbow grease.
 
-Fortunately HVA can handle large volumes of data at a rate of >10 mB/s. Though the initial loading uses a direct SELECT statement to grab the data, continuous replication uses Change Data Capture (CDC). This reduces the data integration latency also known as the load time. HVA implements CDC by making use of the database's transaction logs. There are ways to alleviate the processing burden placed on the system during initial load. The main method to achieve this is multi-core parallel processing of a pre-segmented table, with each core being allocated a workload.
+HVA can handle large volumes of data at a rate of >10 mB/s. Though the initial loading uses a direct SELECT statement to grab the data, continuous replication uses Change Data Capture (CDC). This reduces the data integration latency also known as the load time. HVA implements CDC by making use of the database's transaction logs. There are ways to alleviate the processing burden placed on the system during initial load. The main method to achieve this is multi-core parallel processing of a pre-segmented table, with each core being allocated a workload.
 
 Finally, you can use this tool to help move away from Oracle to a cloud-based analytical data storage solution. Oracle, though widespread, could be considered overly complex, verbose and cumbersome in its setup, maintenance and use. Cloud-storage solutions such as Snowflake, when leveraged correctly can mean a cheaper and easier to use data solution for many currently using Oracle. HVA can be used to reap these benefits of Snowflake and others by aiding in replicating your data in the cloud. Though if Oracle is serving you and your analytical needs well, then this tool is not for you.
 
@@ -124,11 +124,12 @@ Once the setup is complete, a connector can be added to your Fivetran account vi
 
 - Latency of 15 mins
   From the moment you make a change in Oracle or MySQL database, it will take 15 minutes for this to be available in your destination database.
-- Red-Haring Error Messages
+- Red-Herring Error Messages
   As mention, some of the errors produced by HVA and even HVR's agent and Hub are not easily decipherable. Core file messages are often the output which will require you to search the internet for a solution.
+  ***EXAMPLES TO COME***
 - Involved setup Not-for-Dummies
   The above error messages also exacerbate the complex setup of HVA. The process is difficult for first-timers that lack networking, sysadmin and database knowledge.
-- Not configurable with API
+- Not configurable with an API
   Unlike some of the more popular Fivetran connectors, HVA is not configurable with Fivetran's API as the agent-based approach to data replication demands a very manual setup. Mechanical Rock prioritises infrastructure as code for its many benefits and as such, the manual process involved with HVA, for us at least, is a drawback of the product.
 
 ## Fivtran Oracle vs HVA Oracle vs HVR Oracle

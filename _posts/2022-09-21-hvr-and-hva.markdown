@@ -11,27 +11,25 @@ tags: hvr hva data replication
 
 ## Why HVA/HVR ?
 
-There is currently a need for faster, high-volume database replication tools. Fivetrain is addressing this need with its recently acquired data replication platform called HVR.
+There is currently a need for faster, high-volume database replication tools. Fivetran is addressing this need with its recently acquired data replication platform called HVR.
 
-HVR is a high-volume real-time data replication platform that is suitable for a range of data integration scenarios including consolidation of multi-cloud file storage and multi-cloud databases, feeding data lakes, database migration ,file storage replication and database replication.
+HVR is a high-volume real-time data replication platform that is suitable for a range of data integration scenarios including consolidation of multi-cloud file storage and multi-cloud databases, feeding data lakes, database migration, file storage replication and database replication.
 
-For those who want to rapidly implement replication via HVR, HVR offers a managed service (HVA connectors) that reduces setup overhead and ongoing management costs. HVA connectors are a series of connectors that are setup and managed through the Fivetran web dashboard. Currently, there are two commissioned HVA connectors that are ready for use, one uses Oracle as a data source and the other uses SQL server as a data source.
+For those who want to rapidly implement replication via HVR, Fivetran offers a managed service (HVA connectors) that reduces setup overhead and ongoing management costs. HVA connectors are a series of connectors that are setup and managed through the Fivetran web dashboard. Currently, there are two commissioned HVA connectors that are ready for use, one uses Oracle as a data source and the other uses SQL server as a data source.
 
 ## HVR
 
 ![Architecture](/img/blog/hvr-and-hva/hvr-architecture.png)
 
-### HVR Hub Machine
-
 ### Change Data Capture
 
-HVR and HVA utilise a log-based Change Data Capture (**CDC**) method to replicate data between both heterogeneous and homogeneous databases. A log-based capturing method involves maintaining a transaction log that records the content and metadata of a database, in which only incremental changes are replicated from source to target after the initial synchronisation of data. Through utilisation of a log-based CDC method, the following benefits are achieved:
+HVR and HVA utilise a log-based Change Data Capture (**CDC**) method to replicate data between both heterogeneous and homogeneous databases. A log-based capturing method involves maintaining a transaction log that records the content and metadata of a database, in which only incremental changes are replicated from source to target after the initial synchronisation of data. It is worth noting that during the inital load, traditional querying is used. To reduce the initial loads impact on the server, it is recommended to use segmentation and parallel processing if possible. Through utilisation of a log-based CDC method, the following benefits are achieved:
 
 - Low latency
 - No requirements required for changes to made either programmatically or to the schema of databases
 - Minimal impact to the database itself
 
-These features allow replication to take place between multiple highly distributed systems with impressive speeds, via multiple different replication topologies options.
+These features allow replication to take place between multiple highly distributed systems with impressive speeds (up to 200+ GB per hour), via multiple different replication topologies options.
 
 ### Topologies
 
@@ -61,7 +59,7 @@ On each source/target machine (database, data warehouse or file) an agent can be
 The option to go agentless also exists, in which the HVR Hub Machine accesses a remote database/data warehouse via a DBMS protocol. This is generally not recommended due to the following key benefits provided by utilising the agent:
 
 - Reduction in network costs, distribution of CPU load and capturing of changes direct from DBMS logs
-- Compression of data before prior to sending to the hub, resulting in significant bandwidth savings (in ratios of up to 10x)
+- Compression of data before prior to sending to the hub, resulting in significant bandwidth savings (compression ratio is usually higher than 90%)
 - Secure and consistent connections that utilise encryption and authentication
 
 ### User Interface and Rest API

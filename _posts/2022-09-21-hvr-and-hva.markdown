@@ -2,16 +2,20 @@
 layout: post
 font: serif
 title: Why you should be using HVR for high volume data replication
-date: 2022-08-08
+date: 2022-10-03
 highlight: monokai
 author: Matt Carter, Jack Menzie, Leon Ticharwa
 image: /img/blog/hvr-and-hva/banner.jpg
 tags: hvr hva data replication
 ---
 
-## Why HVA/HVR ?
+## Introduction
 
-There is currently a need for faster, high-volume database replication tools. Fivetran is addressing this need with its recently acquired data replication platform called HVR.
+Recently, several members of the Mechanical Rock team attended a HVR training course in Sydney, hosted by Fivetran. Fivetran is a company that provides connectors to allow synchronisation between source applications and target destinations. In September 2021, Fivetran acquired HVR to make a play on the high-volume database replication space. This blog will provide an overview into HVR, and where these tools could potentially be leveraged within your business.
+
+## Why HVR/HVA ?
+
+Throughout industry, there is currently a need for faster and high-volume database replication tools, due to the sheer amounts of data being processed/consumed throughout businesses. Fivetran is addressing this need with its recently acquired data replication platform called HVR.
 
 HVR is a high-volume real-time data replication platform that is suitable for a range of data integration scenarios including consolidation of multi-cloud file storage and multi-cloud databases, feeding data lakes, database migration, file storage replication and database replication.
 
@@ -19,7 +23,7 @@ For those who want to rapidly implement replication via HVR, Fivetran offers a m
 
 ## HVR
 
-![Architecture](/img/blog/hvr-and-hva/hvr-architecture.png)
+![HVR Architecture](/img/blog/hvr-and-hva/hvr-architecture.png)
 
 ### Change Data Capture
 
@@ -35,23 +39,29 @@ These features allow replication to take place between multiple highly distribut
 
 There are multiple replication topologies that are supported for use with HVR. The replication topologies include the following:
 
-- Uni-directional (one-to-one)
-  This topology is used in scenarios where one would like to offload reporting, feed data into a data lake or to populate data warehouses
+- Uni-directional (one-to-one) - Used in scenarios where one would like to offload reporting, feed data into a data lake or to populate data warehouses
 
-- Broadcast (one-to-many)
-  This topology involves one source location and multiple target locations, this topology may be used for cloud solutions targeting both a file based data lake such as S3 as well as a relational database such as Snowflake.
+  ![Uni-directional](/img/blog/hvr-and-hva/one-to-one.png)
 
-- Consolidation (many-to-one)
-  This Topology involves multiple source locations consolidating data into a single target location.
+- Broadcast (one-to-many) - Involves one source location and multiple target locations, this topology may be used for cloud solutions targeting both a file based data lake such as S3 as well as a relational database such as Snowflake.
 
-- Cascading (one-to-one-to-many)
-  This involves a source location pushing data to a target location that acts as a source location distributing data to multiple targets.
+  ![One-to-many](/img/blog/hvr-and-hva/one-to-many.png)
 
-- Bi-directional (active-active)
-  In this topology data is replicated in both directions and modified on both sides. It is referred to as an active/active scenario because the two sides are kept in sync. HVR employs the use of collision detection and loop-back detection to protect the integrity of the data
+- Consolidation (many-to-one) - Involves multiple source locations consolidating data into a single target location.
 
-- Multi-directional
-  Multi-directional replication involves more than two locations that are in an active-active replication setup.
+  ![Many-to-one](/img/blog/hvr-and-hva/many-to-one.png)
+
+- Cascading (one-to-one-to-many) - Source location pushing data to a target location that acts as a source location distributing data to multiple targets.
+
+  ![Cascading](/img/blog/hvr-and-hva/cascading.png)
+
+- Bi-directional (active-active) - Data is replicated in both directions and modified on both sides. It is referred to as an active/active scenario because the two sides are kept in sync. HVR employs the use of collision detection and loop-back detection to protect the integrity of the data.
+
+  ![Bi-directional](/img/blog/hvr-and-hva/bi-directional.png)
+
+- Multi-directional - Multi-directional replication involves more than two locations that are in an active-active replication setup.
+
+  ![Multi-directional](/img/blog/hvr-and-hva/multi-directional.png)
 
 ### Agents, Source Machines and Target Machines
 
@@ -78,11 +88,10 @@ High Volume Agent (HVA) is the marriage of HVR’s replication capabilities with
 
 ### Issues solved by HVA
 
-- Massive amounts of data 
-- High computation cost of replication 
+- Massive amounts of data
+- High computation cost of replication
 - Untimely data access
 - Using Oracle
-
 
 Data collection is ever increasing and enterprises today are racing to leverage it. Replicating operational data in a cloud-based analytical storage solution is one way to do this. HVA is a wicked tool that can do just that... with the right amount of elbow grease.
 
@@ -124,9 +133,9 @@ Once the setup is complete, a connector can be added to your Fivetran account vi
   From the moment you make a change in Oracle or MySQL database, it will take 15 minutes for this to be available in your destination database.
 - Red-Herring Error Messages
   As mention, some of the errors produced by HVA and even HVR's agent and Hub are not easily decipherable. Core file messages are often the output which will require you to search the internet for a solution.
-  ***EXAMPLES TO COME NEXT WEEK***
+  **_EXAMPLES TO COME NEXT WEEK_**
 - Involved setup Not-for-Dummies
-  The above error messages also exacerbate the complex setup of HVA. The process is difficult for first-timers that lack networking, sysadmin and database knowledge. If you do find yourself running into issues not outlined here (***EXAMPLES TO COME NEXT WEEK***) do not hesitate to contact us!
+  The above error messages also exacerbate the complex setup of HVA. The process is difficult for first-timers that lack networking, sysadmin and database knowledge. If you do find yourself running into issues not outlined here (**_EXAMPLES TO COME NEXT WEEK_**) do not hesitate to contact us!
 - Not configurable with an API
   Unlike some of the more popular Fivetran connectors, HVA is not configurable with Fivetran's API as the agent-based approach to data replication demands a very manual setup. Mechanical Rock prioritises infrastructure as code for its many benefits and as such, the manual process involved with HVA, for us at least, is a drawback of the product.
 

@@ -124,7 +124,7 @@ Once the setup is complete, a connector can be added to your Fivetran account vi
 ### HVA Limitations and Drawbacks
 
 - Latency of 15 mins
-  From the moment you make a change in Oracle or MySQL database, it will take 15 minutes for this to be available in your destination database.
+  From the moment you make a change in your database, it will take 15 minutes for this to be available in your destination database.
 - Red-Haring Error Messages
   As mention, some of the errors produced by HVA and even HVR's agent and Hub are not easily decipherable. Core file messages are often the output which will require you to search the internet for a solution.
 - Involved setup Not-for-Dummies

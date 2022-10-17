@@ -129,13 +129,10 @@ Once the setup is complete, a connector can be added to your Fivetran account vi
 
 ### HVA Limitations and Drawbacks
 
-- Latency of 15 mins
-  From the moment you make a change in your database, it will take 15 minutes for this to be available in your destination database.
 - Red-Haring Error Messages
   As mention, some of the errors produced by HVA and even HVR's agent and Hub are not easily decipherable. Core file messages are often the output which will require you to search the internet for a solution.
-  **_EXAMPLES TO COME NEXT WEEK_**
-- Involved setup Not-for-Dummies
-  The above error messages also exacerbate the complex setup of HVA. The process is difficult for first-timers that lack networking, sysadmin and database knowledge. If you do find yourself running into issues not outlined here (**_EXAMPLES TO COME NEXT WEEK_**) do not hesitate to contact us!
+- Setup Not-for-Dummies
+  The above error messages also exacerbate the complex setup of HVA. The process is difficult for first-timers that lack networking, sysadmin and database knowledge. If you do find yourself running into issues do not hesitate to contact us!
 - Not configurable with an API
   Unlike some of the more popular Fivetran connectors, HVA is not configurable with Fivetran's API as the agent-based approach to data replication demands a very manual setup. Mechanical Rock prioritises infrastructure as code for its many benefits and as such, the manual process involved with HVA, for us at least, is a drawback of the product.
 

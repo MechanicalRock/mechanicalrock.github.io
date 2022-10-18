@@ -1,8 +1,8 @@
 ---
 layout: post
 font: serif
-title: Why you should be using HVR for high volume data replication
-date: 2022-10-03
+title: HVR and HVA for Data Replication
+date: 2022-10-18
 highlight: monokai
 author: Matt Carter, Jack Menzie, Leon Ticharwa
 image: /img/blog/hvr-and-hva/banner.jpg
@@ -11,11 +11,11 @@ tags: hvr hva data replication
 
 ## Introduction
 
-Recently, several members of the Mechanical Rock team attended a HVR training course in Sydney, hosted by Fivetran. Fivetran is a company that provides connectors to allow synchronisation between source applications and target destinations. In September 2021, Fivetran acquired HVR to make a play on the high-volume database replication space. This blog will provide an overview into HVR, and where these tools could potentially be leveraged within your business.
+Recently, several members of the Mechanical Rock team attended a HVR training course in Sydney, hosted by Fivetran. Fivetran is a company that provides connectors to allow synchronisation between source applications and target destinations. In September 2021, Fivetran acquired HVR to make a play on the high-volume database replication space. This blog provides an overview into HVR, and where these tools could potentially be leveraged within your business.
 
 ## Why HVR/HVA ?
 
-Throughout industry, there is currently a need for faster and high-volume database replication tools, due to the sheer amounts of data being processed/consumed throughout businesses. Fivetran is addressing this need with its recently acquired data replication platform called HVR.
+Throughout industry, there is currently a need for faster and high-volume database replication tools, due to the sheer amounts of data being processed/consumed throughout businesses. Fivetran is addressing this need with its recently acquisition of the data replication platform called HVR.
 
 HVR is a high-volume real-time data replication platform that is suitable for a range of data integration scenarios including consolidation of multi-cloud file storage and multi-cloud databases, feeding data lakes, database migration, file storage replication and database replication.
 
@@ -127,18 +127,9 @@ During this setup, why you and your data are special will come apparent as some 
 
 Once the setup is complete, a connector can be added to your Fivetran account via the dashboard.
 
-### HVA Limitations and Drawbacks
+## Fivtran Oracle vs HVA Oracle vs HVR Oracle Example
 
-- Red-Haring Error Messages
-  As mention, some of the errors produced by HVA and even HVR's agent and Hub are not easily decipherable. Core file messages are often the output which will require you to search the internet for a solution.
-- Setup Not-for-Dummies
-  The above error messages also exacerbate the complex setup of HVA. The process is difficult for first-timers that lack networking, sysadmin and database knowledge. If you do find yourself running into issues do not hesitate to contact us!
-- Not configurable with an API
-  Unlike some of the more popular Fivetran connectors, HVA is not configurable with Fivetran's API as the agent-based approach to data replication demands a very manual setup. Mechanical Rock prioritises infrastructure as code for its many benefits and as such, the manual process involved with HVA, for us at least, is a drawback of the product.
-
-## Fivtran Oracle vs HVA Oracle vs HVR Oracle
-
-Every business has its nuances and why they want there data in cloud. For this reason, Fivetran has three options, specifically for Oracle. They are as follows:
+Every business has its nuances and why they want their data in cloud. For this reason, Fivetran has three options, specifically for Oracle. They are as follows:
 
 | Feature                       | Fivetran Oracle    | HVA Oracle | HVR Oracle |
 | ----------------------------- | ------------------ | ---------- | ---------- |
@@ -154,6 +145,20 @@ Every business has its nuances and why they want there data in cloud. For this r
 | Real Time Replication         | No                 | No         | Yes        |
 | Compare and Repair            | No                 | No         | Yes        |
 
-## Resources
+## HVR/HVA Limitations and Drawbacks
+
+- Initial Setup - Initial setup with both HVR and HVA can be difficult and frustrating at times. The error messages output are often vague and searching the internet rigorously to find a solution will be required, especially if it is the users first time setting up HVR/HVA and they lack database, networking and sysadmin knowledge.
+- Security Issues - As much as HVR/HVA are great technologies to plug in and forget, the main issue will be dealing with security teams whom manage the database servers. Having to approach those gatekeepers will likely prove difficult as often they will be adverse to change. Asking them to install an agent on the database server and open various access points will be definitely prove a tough conversation to have.
+- Configuration - We here at Mechanical Rock love deploying Infrastructure as Code but unforunately HVA is not configure with Fivetran's API at this current time. This results in the setup of HVA being a very manual process each time and not easily repeatable.
+
+## Conclusion
+Within this blog, we have provided a brief overview of HVA/HVR, but the best method of learning new tech is getting down and dirty with it. Provided below are some useful links for getting set up and using HVR and HVA:
 
 https://fivetran.com/docs/hvr6
+<br>
+https://fivetran.com/docs/databases/oracle/hva_oracle
+<br>
+https://fivetran.com/docs/databases/sql-server/hva-sql-server
+
+If you are looking to setup HVA/HVR, do not hestitate to contact Mechanical Rock!
+

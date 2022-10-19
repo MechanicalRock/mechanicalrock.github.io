@@ -5,7 +5,7 @@ title: HVR and HVA for Data Replication
 date: 2022-10-18
 highlight: monokai
 author: Matt Carter, Jack Menzie, Leon Ticharwa
-image: /img/blog/hvr-and-hva/banner.jpg
+image: img/blog/hvr-and-hva/banner.png
 tags: hvr hva data replication
 ---
 

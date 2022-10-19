@@ -118,7 +118,7 @@ HVA currently supports Generic Oracle and Oracle RAC services. The setup follows
 - Add a new connector in the Fivetran Dashboard
 - Specify a destination e.g. Snowflake
 
-A complete setup guide can be found here: https://fivetran.com/docs/databases/oracle/oracle_hva/setup-guide
+A complete setup guide can be found here: <a href="https://fivetran.com/docs/databases/oracle/oracle_hva/setup-guide" target="_blank">https://fivetran.com/docs/databases/oracle/oracle_hva/setup-guide</a>
 
 Though seemingly straight forward, any errors you make will require you to look inward... to search your soul... because the error messages won't tell you what went wrong.  
 More often than not, errors from the agent are highly verbose core dumps that are difficult to read rather than actionable debug messages. In addition, though looking fine and dandy from 1000 feet, being in the trenches completing this setup assumes proficiency with SQL databases as well as a general aptitude for network configuration.
@@ -154,11 +154,11 @@ Every business has its nuances and why they want their data in cloud. For this r
 ## Conclusion
 Within this blog, we have provided a brief overview of HVA/HVR, but the best method of learning new tech is getting down and dirty with it. Provided below are some useful links for getting set up and using HVR and HVA:
 
-https://fivetran.com/docs/hvr6
+<a href="http/://fivetran.com/docs/hvr6" target="_blank">HVR</a>
 <br>
-https://fivetran.com/docs/databases/oracle/hva_oracle
+<a href="https://fivetran.com/docs/databases/oracle/hva_oracle" target="_blank">HVA Oracle</a>
 <br>
-https://fivetran.com/docs/databases/sql-server/hva-sql-server
+<a href="https://fivetran.com/docs/databases/sql-server/hva-sql-server" target="_blank">HVA SQL Server</a>
 
-If you are looking to setup HVA/HVR, do not hestitate to contact Mechanical Rock!
+If you are looking to setup HVA/HVR in your company, do not hestitate to contact Mechanical Rock!
 

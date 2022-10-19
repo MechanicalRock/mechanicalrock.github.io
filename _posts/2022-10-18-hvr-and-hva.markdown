@@ -154,7 +154,7 @@ Every business has its nuances and why they want their data in cloud. For this r
 ## Conclusion
 Within this blog, we have provided a brief overview of HVA/HVR, but the best method of learning new tech is getting down and dirty with it. Provided below are some useful links for getting set up and using HVR and HVA:
 
-<a href="http/://fivetran.com/docs/hvr6" target="_blank">HVR</a>
+<a href="https://fivetran.com/docs/hvr6" target="_blank">HVR</a>
 <br>
 <a href="https://fivetran.com/docs/databases/oracle/hva_oracle" target="_blank">HVA Oracle</a>
 <br>

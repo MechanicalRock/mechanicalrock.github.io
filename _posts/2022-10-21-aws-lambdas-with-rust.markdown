@@ -25,7 +25,7 @@ As a programming language Rust has all the hallmarks of a mature programming lan
 ## Let's get Rusty
 1.  Install Rust  by following the instructions provided here `https://www.rust-lang.org/tools/install`
 
-2. Install zigbuild by running ``` cargo install cargo-zigbuild ``` in your command line. Zigbuild is a linker CLI tool that simplifies cross compilation of Rust programmes. 
+2. Install zigbuild by running ``` cargo install cargo-zigbuild ``` in your command line. Zigbuild is a linker CLI tool that simplifies cross compilation of Rust code. 
 
 ## The fun stuff
 1. Create new Rust Project

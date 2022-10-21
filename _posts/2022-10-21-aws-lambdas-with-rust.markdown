@@ -5,7 +5,7 @@ title: Running Rust in the cloud with AWS Lambda Custom Runtime
 date: 2022-10-18
 highlight: monokai
 author:  Leon Ticharwa
-image: img/blog/aws-lambdas-with-rust/rust-cover.png
+image: /img/blog/aws-lambdas-with-rust/rust-cover.png
 tags: rust custom-runtime lambda aws sam deployment
 ---
 

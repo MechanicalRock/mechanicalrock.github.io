@@ -173,7 +173,7 @@ expected output
    }
 ~~~
 
-All the code used in this tutorial can be found in this [repository](https://github.com/MechanicalRock/RustLambda-AWS/tree/main). Feel free to clone it and modify the code.
+All the code used in this tutorial can be found in this [repository](https://github.com/MechanicalRock/RustLambda-AWS). Feel free to clone it and modify the code.
 ### Conclusion 
 Congratulations on deploying your first Rust custom runtime and program to AWS Lambda. If you have any questions related to running Rust in the cloud please feel free to get in touch with the [Mechanical Rock team](https://mechanicalrock.io/services/).  
 ### References

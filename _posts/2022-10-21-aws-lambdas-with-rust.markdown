@@ -9,35 +9,61 @@ image: /img/blog/aws-lambdas-with-rust/rust-cover.png
 tags: rust custom-runtime lambda aws sam deployment
 ---
 
-## Why Rust
-Whether Rust is the C++ killer we've all been waiting for remains to be seen. With companies like Tesla and Microsoft still heavily reliant on C++ it would appear there is a strong case for C++'s continued existence. Nonetheless, Rust's growing popularity among developers is definitely something to take notice of. [[1]](#references) In 2019 AWS officially became a sponsor of the Rust project before partnering with Microsoft, Google, Mozilla and Huawei in 2020 to create the Rust Foundation, an organistion whose sole purpose is to support Rust and fuel its adoption as a general purpose language. 
+[General comments]
 
-The rapid uptake of Rust by the three largest cloud tech companies has seen the Rust community grow considerably since Rust was first released in 2010. In saying so, it is becoming increasingly obvious that Rust skills will incrementally be in high demand well into the future. 
+I quite like this. But for me it is lacking a couple of key things, mainly to do with the key question of "why should I care about this and what's in it for me?"
 
-As a programming language Rust has all the hallmarks of a mature programming language that has the capacity to handle projects of any level of complexity. My personal favourite Rust feature is the provision of an inbuilt package manager called `cargo`, (something I wish C++ came with). Rust also has other notable features, I have provided a list of some of them below: 
+A possible suggestion might be to introduce a hook - along the lines of this:
+
+We all knows AWS lambda provides Node, Python, Java, .NET Core, Go, and Ruby runtimes. But what if you want to use something a bit more exotic? In this blog post, Leon Ticharwa explaines how to create a custom runtime - and has a bit of fun with Rust along the way.
+
+I think it would be good to list some of the disadvantages of C++ and how Rust overcomes them, as a way of explaining why Rust is gaining popularity.
+
+Then I think you need to explain what your mini tutorial is going to do, and why this is a thing that anybody would care about.
+
+Other thoughts
+
+- How is Rust trying to position itself against C++ like its memory safety or whatever else you think is relevant
+- Why does that matter (ie what disadvantages of C++ is it trying to help overcome?)
+- Then go on to say that for these reasons it's being considered more and more as a great language for systems development / embedded systems, whatever
+- I think this is a cool and interesting thing to do as a learning project, but what are the benefits to a reader beyond that?
+
+## Why Rust?
+
+Whether Rust is the C++ killer we've all been waiting for still remains to be seen. With companies like Tesla and Microsoft still heavily reliant on C++, it's a pretty safe bet that C++ will be around for a long time to come.
+
+Nonetheless, Rust's growing popularity among developers is definitely something to take notice of. [[1]](#references) 
+
+In 2019, AWS officially became a sponsor of the Rust project before partnering with Microsoft, Google, Mozilla and Huawei in 2020 to create the Rust Foundation, an organistion whose sole purpose is to support Rust and fuel its adoption as a general purpose language. 
+
+The rapid uptake of Rust by the three largest cloud providers has contributed significantly to the growth of the Rust community since its initial release in 2010. So, although C++ isn't going away any time soon, it's increasingly obvious that the demand for Rust skills is going to grow and grow.
+
+### So what is Rust good for? [this would need fleshing out a bit with the points from above]
+
+Rust is a mature programming language with all the features necessary to handle projects of any level of complexity. My personal favourite Rust feature is the provision of an inbuilt package manager called `cargo`, (something I wish C++ came with).
+
+Other notable features include: 
 
 - No run time garbage collection (grants control of memory management)
 - Can target embedded systems
-- Rich type system and ownership model that helps you weed out memory related bugs thereby ensuring memory and thread safety.
+- Rich type system and ownership model that helps you weed out memory related bugs thereby ensuring memory and thread safety
 - Tiny footprint
 - A package manager called Cargo (Mentioned it twice because it is that good)
 
 ## Let's get Rusty
+
 1.  Install Rust  by following the instructions provided here `https://www.rust-lang.org/tools/install`
 
-2. Install zigbuild by running ``` cargo install cargo-zigbuild ``` in your command line. Zigbuild is a linker CLI tool that simplifies cross compilation of Rust code. 
+2. Install zigbuild by running `cargo install cargo-zigbuild ` in your command line. Zigbuild is a linker CLI tool that simplifies cross compilation of Rust code. 
 
 ## The fun stuff
-1. Create new Rust Project
-``` cargo new <rust_project_name> ```
 
-2.  Open the project folder and install dependencies 
+1. Create a new Rust Project with `cargo new <rust_project_name>`
 
-``` 
-        cargo add lambda_runtime tokio serde_json serde 
-```
+2.  Open the project folder and install dependencies with 
+`cargo add lambda_runtime tokio serde_json serde`
 
-3. Replace the contents of `src/main.rs` with the following code 
+3. Replace the contents of `src/main.rs` with the following code: 
 
 ~~~ rust
 use lambda_runtime::{Context, Error, service_fn, run, LambdaEvent};
@@ -71,17 +97,18 @@ async fn handler (event: LambdaEvent<Event>) -> Result<Output, Error> {
 
 ##### What's happening in the code 
 
-The block of code shown below imports dependencies into our code. At the very top we import `lambda_runtime`  the library that provides a Lambda runtime for our Rust code.
-Next we import `serde` a framework for serialising/deserialising Rust data structures in an efficient and generic manner. 
+The block of code shown above imports dependencies into our code. At the very top we import `lambda_runtime` - the library that provides a Lambda runtime for our Rust code.
+
+Next we import `serde` - a framework for serialising/deserialising Rust data structures in an efficient and standardised manner.
+
 ~~~ rust
 use lambda_runtime::{Context, Error, service_fn, run, LambdaEvent};
 use serde::{Deserialize, Serialize};
 ~~~
 
+The next Block of code starts with the  `#[tokio::main]` macro. This macro is responsible for transforming the `async fn main()`, execution entry point, function into a synchronous function that initialises a runtime instance and then subsequently executes the async main function. 
 
-The next Block of code starts with the  `#[tokio::main]` macro. This macro is responsible for transforming the `async fn main ()`, execution entry point, function into a synchronous function that initialises a runtime instance and then subsequently executes the async main function. 
 ~~~ rust
-
 #[tokio::main]
 async fn main () ->Result<(), Error>{
     let handler = service_fn(handler); // This lets you build a Service from an async function that returns a Result.
@@ -95,7 +122,6 @@ async fn main () ->Result<(), Error>{
 struct Event {
     first_name: String,
     last_name: String
-
 }
 
 #[derive(Serialize)] // Allows the struct to be Serialised 
@@ -105,7 +131,8 @@ struct Output {
 }
 ~~~
 
-The block of code provided below is the handler function that  processes events. It is passed to the `service_fn()` function so it can be converted to a service that can then be passed to the `run()` function which has the responsibility of starting the Lambda Rust runtime
+The block of code provided below is the handler function that  processes events. This is passed to the `service_fn()` function so it can be converted to a service that can in turn be passed to the `run()` function - which has the responsibility of starting the Lambda Rust runtime.
+
 ~~~ rust 
 async fn handler (event: LambdaEvent<Event>) -> Result<Output, Error> {
     let message:String = format!("Hi {} {} , welcome to rust in the cloud!", event.payload.first_name, event.payload.last_name);
@@ -117,6 +144,8 @@ async fn handler (event: LambdaEvent<Event>) -> Result<Output, Error> {
 
 ### Compile Rust Project to an executable binary file
 
+[I suggest double checking the references below - is there a typo in `aarch64-unknown-linux-gnu`?]
+
 1. Install the arm64 Rust target via rustup by running `rustup target add aarch64-unknown-linux-gnu`. Doing this will allows us to target the `arm64` architecture when we build our executable binary file. 
 
 2. Build an `arm64` executable binary file using Zigbuild by running `cargo zigbuild --target aarch64-unknown-linux-gnu --release' from the root of the Rust project
@@ -124,9 +153,11 @@ async fn handler (event: LambdaEvent<Event>) -> Result<Output, Error> {
 3. Copy the generated executable binary file to the root and rename it to bootstrap by running the following command from the root of the project `cp target/aarch64-unknown-linux-gnu/release/<project_name> bootstrap`
 
 ### Deploy to AWS using SAM
+
 1. Create a `template.yaml` file and and place it on the same level as the Rust project directory. 
 
 2. Add the the following to the `template.yaml` file you created in step 1
+   
 ~~~ yaml
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
@@ -149,10 +180,12 @@ Outputs:
     Description: This is a simple Lambda Function Written in Rust
 ~~~
 
-3. From the same level as the `template.yaml` file, run the command `sam deploy --guided`
-4. Once The deployment succeeds, take note of the created Lambda Function's name in the outputs
+1. From the same level as the `template.yaml` file, run the command `sam deploy --guided`
+   
+2. Once The deployment succeeds, take note of the created Lambda Function's name in the outputs
 
-### Test Lambda Function 
+### Test your Lambda Function
+
 Invoke the newly deployed lambda using aws-cli in your terminal, the output will be placed in a file called `output.json`
 
 ~~~
@@ -173,8 +206,13 @@ expected output
    }
 ~~~
 
-All the code used in this tutorial can be found in this [repository](https://github.com/MechanicalRock/RustLambda-AWS). Feel free to clone it and modify the code.
-### Conclusion 
-Congratulations on deploying your first Rust custom runtime and program to AWS Lambda. If you have any questions related to running Rust in the cloud please feel free to get in touch with the [Mechanical Rock team](https://mechanicalrock.io/services/).  
+All the code used in this tutorial can be found in this [repository](https://github.com/MechanicalRock/RustLambda-AWS). Please feel free to clone it and modify the code.
+
+### Conclusion
+
+Congratulations on deploying your first Rust custom runtime and program to AWS Lambda.
+
+If you have any questions related to running Rust in the cloud please feel free to get in touch with the [Mechanical Rock team](https://mechanicalrock.io/services/).  
+
 ### References
 [1]  [Sustainability with Rust](https://aws.amazon.com/blogs/opensource/sustainability-with-rust/#:~:text=We%20use%20Rust%20to%20deliver,%2C%20Amazon%20CloudFront%2C%20and%20more)

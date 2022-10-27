@@ -65,75 +65,89 @@ With this in mind, we are going to look at an example which makes use of **neste
 When you create a new Next.js project with the `/app` folder; it will automatically create a `RootLayout` for you. Within this we are simply going to add a header and navbar with a couple of links to other pages.
 
 ```jsx
+// /app/layout.tsx
 import Link from 'next/link';
 
 export default function RootLayout({
-	children,
+ children,
 }: {
-	children: React.ReactNode,
+ children: React.ReactNode,
 }) {
-	return (
-		<html lang="en">
-			<head>
-				<title>Next Layout Example</title>
-			</head>
-			<body>
-				<header>
-					<nav>
-						<Link href="/">Home</Link>
-						<Link href="/games">Games</Link>
-					</nav>
-				</header>
-				<div>{children}</div>
-			</body>
-		</html>
-	);
+ return (
+  <html lang="en">
+   <head>
+    <title>Next Layout Example</title>
+   </head>
+   <body>
+    <header>
+     <nav>
+      <Link href="/">Home</Link>
+      <Link href="/games">Games</Link>
+     </nav>
+    </header>
+    <div>{children}</div>
+   </body>
+  </html>
+ );
 }
 ```
 
-## The Games Layout
+## Adding a Nested Layout
 
 So far, we haven’t done much different from Next.js 12 and earlier but now the really cool new stuff starts with creating our `/app/games/layout.tsx` component. As mentioned earlier, any components within the `/app` folder are React Server Components by default which allows us to define our component as `async` such that it will fetch the data for the component on the server before sending static HTML to the user.
 
 This allows us to create relatively clean components without having to use `useEffect` to manage the asynchronous communication with the server as we would currently resulting in the component below.
 
 ```jsx
+// /app/games/layout.tsx
 async function getGames() {
-	let res = await fetch('http://localhost:3000/api/games');
-	return res.json();
+ let res = await fetch('http://localhost:3000/api/games');
+ return res.json();
 }
 
-export default async function Page({
-	children,
+export default async function Layout({
+ children,
 }: {
-	children: React.ReactNode,
+ children: React.ReactNode,
 }) {
-	const games = await getGames();
+ const games = await getGames();
 
-	return (
-		<div>
-			<ul>
-				{games.map((game: Game) => (
-					<li key={game.id}>
-						<Link href={`/games/${game.id}`}>{game.name}</Link>
-					</li>
-				))}
-			</ul>
-			{children}
-		</div>
-	);
+ return (
+  <div>
+   <ul>
+    {games.map((game: Game) => (
+     <li key={game.id}>
+      <Link href={`/games/${game.id}`}>{game.name}</Link>
+     </li>
+    ))}
+   </ul>
+   {children}
+  </div>
+ );
 }
 ```
 
-// TODO talk more about the pages that go in here
+From here we can define our page files in both `/app/games/page.tsx` and also `/app/games/[id]/page.tsx` which will be rendered next to the list of games that we fetched in the component above. Also, thanks to `Suspense` being added in React 18, this component will not render until it has received the data it needs to render. This will currently block the transition to the games page until the content has been rendered on the server so it makes sense for us to define a fallback component while the content is loading which can be done with a `loading.tsx` file.
+
+### Loading States
+
+You can define a loading state at any level of your app and it will apply to any components further down the file tree. In this case we include a very simple loading component at the root of the app which will apply to all the other components that get created.
+
+```jsx
+// /app/loading.tsx
+export default function Loading() {
+ return <p>Loading...</p>;
+}
+```
 
 ## Mixing in Client Components
 
-Even though components in the `/app` folder are by default React Server Components we’ll often need to change them to Client Components. We can do this by putting the statement `'use client';` at the top of our file.
+While we are focusing on user experience, it makes sense to highlight to the user which page they are on in our navigation bar which requires the app to have some information about what is going on in the client. Components within the `/app` folder are by default React Server Components but we can easily change them to client components by adding a `'use client';` statement at the top of our file.
 
-// TODO talk more about the component
+We could make the entire root layout component a client component to do this but that would mean the rest of our component tree would have to be client components since a server component can only import other server components. Thus, it makes sense to create a wrapper around the `Link` component and import that into our root layout. In this component we will use a new hook from `next/navigation` called `useSelectedLayoutSegment` that tells us which URL segment we are currently on.
 
 ```jsx
+// /app/NavLink.tsx
 'use client';
 
 import React from 'react';
@@ -141,22 +155,26 @@ import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
 
 export default function NavLink({
-	href,
-	children,
+ href,
+ children,
 }: {
-	href: string,
-	children: React.ReactNode,
+ href: string,
+ children: React.ReactNode,
 }) {
-	const segment = useSelectedLayoutSegment();
+ const segment = useSelectedLayoutSegment();
 
-	const active = `/${segment}` === href;
+ const active = `/${segment}` === href;
 
-	return (
-		<Link className={active ? 'underline' : ''} href={href}>
-			{children}
-		</Link>
-	);
+ return (
+  <Link className={active ? 'underline' : ''} href={href}>
+   {children}
+  </Link>
+ );
 }
 ```
 
-If you’d like to find out more about the new Next.js Layouts check out this [documentation page](https://beta.nextjs.org/docs/routing/pages-and-layouts) or check out the talk by [Sam Selikoff at NextConf](https://youtu.be/pC2dl8hNVGg?t=1222).
+We can then replace any instances of `Link` in our root layout with our newly created `NavLink` and still get the benefits of server components throughout our application.
+
+If you’d like to find out more about the new Next.js Layouts check out this [documentation page](https://beta.nextjs.org/docs/routing/pages-and-layouts) or check out the talk by [Sam Selikoff at NextConf](https://youtu.be/pC2dl8hNVGg?t=1222) which a majority of this example is based on.
+
+Mechanical Rock can help you write performant, secure and beautiful web applications at the bleeding edge. If this is something that interests you, please [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)

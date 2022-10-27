@@ -5,8 +5,9 @@ title: Next.js 13 Layouts by Example
 date: 2022-10-27
 highlight: monokai
 author: Tim Veletta
-# image: /img/blog/azure-ad-cypress/banner.jpg // TODO
+image: /img/blog/next-js-layouts-by-example/banner.jpg
 tags: nextjs react
+description: Lets look at how the new Layouts announced at NextConf improve the developer experience of working with Next.js
 ---
 
 Next.js has been a tool of choice here at Mechanical Rock for some time and so we were excited to see what Vercel, the makers of Next.js, would reveal at the second NextConf just a day ago. One of my great frustrations with using Next.js in the past has been the implementation of **Layouts** particularly when it comes to nested routing.
@@ -178,3 +179,6 @@ We can then replace any instances of `Link` in our root layout with our newly cr
 If you’d like to find out more about the new Next.js Layouts check out this [documentation page](https://beta.nextjs.org/docs/routing/pages-and-layouts) or check out the talk by [Sam Selikoff at NextConf](https://youtu.be/pC2dl8hNVGg?t=1222) which a majority of this example is based on.
 
 Mechanical Rock can help you write performant, secure and beautiful web applications at the bleeding edge. If this is something that interests you, please [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)
+
+> Header image by <a href="https://unsplash.com/@sigmund?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sigmund</a> on <a href="https://unsplash.com/s/photos/layout?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  

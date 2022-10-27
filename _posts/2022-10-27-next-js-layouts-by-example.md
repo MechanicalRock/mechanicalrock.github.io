@@ -18,7 +18,7 @@ Thankfully, at Next.js Conf, Vercel revealed a new file-based router build on to
 
 One of the big changes that you will notice coming from Next.js 12 and earlier is the addition of the `/app` folder which is similar to the `/pages` folder however components within `/app` are React Server Components by default.
 
-![route segments.png](img/blog/next-js-layouts-by-example/route_segments.png)
+![Mapping route segments to folder structure](/img/blog/next-js-layouts-by-example/route_segments.png){:width="519px" height="308px" loading="lazy"}
 
 Within the `/app` folder we are going to create several **route segments** with each segment mapped to a URL path. Within those folders, Next.js provides a set of special files which include:
 
@@ -30,7 +30,7 @@ With this in mind, we are going to look at an example which makes use of **neste
 
 > Check out the [example repository on Github here](https://github.com/MechanicalRock/next-layout-example)
 
-![layout.png](img/blog/next-js-layouts-by-example/layout.png)
+![Nested layouts in the example](/img/blog/next-js-layouts-by-example/layout.png){:width="595px" height="564px" loading="lazy"}
 
 ## The Root Layout
 

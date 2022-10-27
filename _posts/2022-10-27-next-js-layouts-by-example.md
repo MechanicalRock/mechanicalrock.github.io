@@ -186,7 +186,7 @@ export default function NavLink({
 
 We can then replace any instances of `Link` in our root layout with our newly created `NavLink` and still get the benefits of server components throughout our application.
 
-If you’d like to find out more about the new Next.js Layouts check out this [documentation page](https://beta.nextjs.org/docs/routing/pages-and-layouts) or check out the talk by [Sam Selikoff at Next.js Conf](https://youtu.be/pC2dl8hNVGg?t=1222) which a majority of this example is based on.
+If you’d like to find out more about the new Next.js Layouts check out this [documentation page](https://beta.nextjs.org/docs/routing/pages-and-layouts) or check out the talk by [Sam Selikoff at Next.js Conf](https://youtu.be/6mQ3M1CUGnk) which a majority of this example is based on.
 
 [Mechanical Rock](https://www.mechanicalrock.io) can help you write performant, secure and beautiful web applications at the bleeding edge. If this is something that interests you, please [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)
 

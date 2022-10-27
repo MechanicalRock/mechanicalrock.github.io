@@ -7,10 +7,10 @@ highlight: monokai
 author: Tim Veletta
 image: /img/blog/next-js-layouts-by-example/banner.jpg
 tags: nextjs react
-description: Lets look at how the new Layouts announced at NextConf improve the developer experience of working with Next.js
+description: Let's look at how the new Layouts announced at Next.js Conf 2022 improve the developer experience of working with Next.js
 ---
 
-Next.js has been a tool of choice here at Mechanical Rock for some time and so we were excited to see what Vercel, the makers of Next.js, would reveal at the second NextConf just a day ago. One of my great frustrations with using Next.js in the past has been the implementation of **Layouts** particularly when it comes to nested routing.
+Next.js has been a tool of choice here at Mechanical Rock for some time and so we were excited to see what [Vercel](https://vercel.com/), the makers of Next.js, would reveal at the second Next.js Conf just a day ago. One of my great frustrations with using Next.js in the past has been the implementation of **Layouts** particularly when it comes to nested routing.
 
 Until now, our solution for nested routing and layouts has been to inspect the `router.pathname` to figure out which components to render which then couples our layout to our URLs which makes it difficult to make changes down the track if we decide to change those URLs.
 
@@ -43,7 +43,7 @@ export default MyApp
 
 > If you want to read more about (previous) issues and how to solve them with Next.js layouts check out [this post by Adam Wathan](https://adamwathan.me/2019/10/17/persistent-layout-patterns-in-nextjs/)
 
-Thankfully, at NextConf, Vercel revealed a new file-based router build on top of [React Server Components](https://beta.nextjs.org/docs/rendering/server-and-client-components#) to enable first class support for **layouts**, **nested routing**, **loading states** and more which I’d like to dive into a bit more detail below.
+Thankfully, at Next.js Conf, Vercel revealed a new file-based router build on top of [React Server Components](https://beta.nextjs.org/docs/rendering/server-and-client-components#) to enable first class support for **layouts**, **nested routing**, **loading states** and more which I’d like to dive into a bit more detail below.
 
 One of the big changes that you will notice coming from Next.js 12 and earlier is the addition of the `/app` folder which is similar to the `/pages` folder however components within `/app` are React Server Components by default.
 
@@ -97,12 +97,12 @@ export default function RootLayout({
 
 So far, we haven’t done much different from Next.js 12 and earlier but now the really cool new stuff starts with creating our `/app/games/layout.tsx` component. As mentioned earlier, any components within the `/app` folder are React Server Components by default which allows us to define our component as `async` such that it will fetch the data for the component on the server before sending static HTML to the user.
 
-This allows us to create relatively clean components without having to use `useEffect` to manage the asynchronous communication with the server as we would currently resulting in the component below.
+This allows us to create relatively clean components without having to use `useEffect` to manage the asynchronous communication with the server as we would currently, resulting in the component below.
 
 ```jsx
 // /app/games/layout.tsx
 async function getGames() {
- let res = await fetch('http://localhost:3000/api/games');
+ const res = await fetch('http://localhost:3000/api/games');
  return res.json();
 }
 
@@ -141,11 +141,22 @@ export default function Loading() {
 }
 ```
 
+To further exercise how loading states are selected, here's another example of a loading state that is defined at the `/app/games/` level which will only be selected in or below this route.
+
+```jsx
+// /app/games/loading.tsx
+export default function LoadingGames() {
+ return <p>Loading Games...</p>;
+}
+```
+
+___Pretty cool right?___
+
 ## Mixing in Client Components
 
 While we are focusing on user experience, it makes sense to highlight to the user which page they are on in our navigation bar which requires the app to have some information about what is going on in the client. Components within the `/app` folder are by default React Server Components but we can easily change them to client components by adding a `'use client';` statement at the top of our file.
 
-We could make the entire root layout component a client component to do this but that would mean the rest of our component tree would have to be client components since a server component can only import other server components. Thus, it makes sense to create a wrapper around the `Link` component and import that into our root layout. In this component we will use a new hook from `next/navigation` called `useSelectedLayoutSegment` that tells us which URL segment we are currently on.
+We could make the entire root layout component a client component but that would mean the rest of our component tree would have to be client components since a server component can only import other server components. Thus, it makes sense to create a wrapper around the `Link` component and import that into our root layout. In this component we will use a new hook from `next/navigation` called `useSelectedLayoutSegment` that tells us which URL segment we are currently on.
 
 ```jsx
 // /app/NavLink.tsx
@@ -163,7 +174,6 @@ export default function NavLink({
  children: React.ReactNode,
 }) {
  const segment = useSelectedLayoutSegment();
-
  const active = `/${segment}` === href;
 
  return (
@@ -176,9 +186,8 @@ export default function NavLink({
 
 We can then replace any instances of `Link` in our root layout with our newly created `NavLink` and still get the benefits of server components throughout our application.
 
-If you’d like to find out more about the new Next.js Layouts check out this [documentation page](https://beta.nextjs.org/docs/routing/pages-and-layouts) or check out the talk by [Sam Selikoff at NextConf](https://youtu.be/pC2dl8hNVGg?t=1222) which a majority of this example is based on.
+If you’d like to find out more about the new Next.js Layouts check out this [documentation page](https://beta.nextjs.org/docs/routing/pages-and-layouts) or check out the talk by [Sam Selikoff at Next.js Conf](https://youtu.be/pC2dl8hNVGg?t=1222) which a majority of this example is based on.
 
-Mechanical Rock can help you write performant, secure and beautiful web applications at the bleeding edge. If this is something that interests you, please [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)
+[Mechanical Rock](https://www.mechanicalrock.io) can help you write performant, secure and beautiful web applications at the bleeding edge. If this is something that interests you, please [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)
 
 > Header image by <a href="https://unsplash.com/@sigmund?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sigmund</a> on <a href="https://unsplash.com/s/photos/layout?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-  

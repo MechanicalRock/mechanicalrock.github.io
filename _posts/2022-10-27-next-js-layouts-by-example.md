@@ -12,36 +12,7 @@ description: Let's look at how the new Layouts announced at Next.js Conf 2022 im
 
 Next.js has been a tool of choice here at Mechanical Rock for some time and so we were excited to see what [Vercel](https://vercel.com/), the makers of Next.js, would reveal at the second Next.js Conf just a day ago. One of my great frustrations with using Next.js in the past has been the implementation of **Layouts** particularly when it comes to nested routing.
 
-Until now, our solution for nested routing and layouts has been to inspect the `router.pathname` to figure out which components to render which then couples our layout to our URLs which makes it difficult to make changes down the track if we decide to change those URLs.
-
-```jsx
-// /pages/_app_.js
-import React from 'react'
-import App from 'next/app'****
-import DashboardLayout from '../components/DashboardLayout'
-
-class MyApp extends App {
-  render() {
-    const { Component, pageProps, router } = this.props
-
-    if (router.pathname.startsWith('/dashboard/')) {
-      return (
-          <DashboardLayout>
-            <Component {...pageProps}></Component>
-          </DashboardLayout>
-      )
-    }
-
-    return (
-        <Component {...pageProps}></Component>
-    )
-  }
-}
-
-export default MyApp
-```
-
-> If you want to read more about (previous) issues and how to solve them with Next.js layouts check out [this post by Adam Wathan](https://adamwathan.me/2019/10/17/persistent-layout-patterns-in-nextjs/)
+Until now, we had several ways for managing layouts such as inspecting the `router.pathname` to figure out which components to render or allowing the page to delegate what layout it uses through a static function like `getLayout` but neither of these options made it easy to nest our layouts. If you'd like to read more about these options, there is a great article written by Adam Wathan that talks about managing [Persistent Layout Patterns in Next.js](https://adamwathan.me/2019/10/17/persistent-layout-patterns-in-nextjs/) and the poor developer experience they provide.
 
 Thankfully, at Next.js Conf, Vercel revealed a new file-based router build on top of [React Server Components](https://beta.nextjs.org/docs/rendering/server-and-client-components#) to enable first class support for **layouts**, **nested routing**, **loading states** and more which I’d like to dive into a bit more detail below.
 

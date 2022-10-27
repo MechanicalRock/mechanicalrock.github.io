@@ -9,25 +9,6 @@ image: /img/blog/aws-lambdas-with-rust/rust-cover.png
 tags: rust custom-runtime lambda aws sam deployment
 ---
 
-[General comments]
-
-I quite like this. But for me it is lacking a couple of key things, mainly to do with the key question of "why should I care about this and what's in it for me?"
-
-A possible suggestion might be to introduce a hook - along the lines of this:
-
-We all knows AWS lambda provides Node, Python, Java, .NET Core, Go, and Ruby runtimes. But what if you want to use something a bit more exotic? In this blog post, Leon Ticharwa explaines how to create a custom runtime - and has a bit of fun with Rust along the way.
-
-I think it would be good to list some of the disadvantages of C++ and how Rust overcomes them, as a way of explaining why Rust is gaining popularity.
-
-Then I think you need to explain what your mini tutorial is going to do, and why this is a thing that anybody would care about.
-
-Other thoughts
-
-- How is Rust trying to position itself against C++ like its memory safety or whatever else you think is relevant
-- Why does that matter (ie what disadvantages of C++ is it trying to help overcome?)
-- Then go on to say that for these reasons it's being considered more and more as a great language for systems development / embedded systems, whatever
-- I think this is a cool and interesting thing to do as a learning project, but what are the benefits to a reader beyond that?
-
 ## Why Rust?
 
 Whether Rust is the C++ killer we've all been waiting for still remains to be seen. With companies like Tesla and Microsoft still heavily reliant on C++, it's a pretty safe bet that C++ will be around for a long time to come.
@@ -179,7 +160,6 @@ Outputs:
     Value: !Ref HelloFriendFunction
     Description: This is a simple Lambda Function Written in Rust
 ~~~
-
 1. From the same level as the `template.yaml` file, run the command `sam deploy --guided`
    
 2. Once The deployment succeeds, take note of the created Lambda Function's name in the outputs

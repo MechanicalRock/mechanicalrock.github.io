@@ -78,7 +78,7 @@ async fn handler (event: LambdaEvent<Event>) -> Result<Output, Error> {
 
 ##### What's happening in the code 
 
-The block of code shown above imports dependencies into our code. At the very top we import `lambda_runtime` - the library that provides a Lambda runtime for our Rust code.
+The block of code shown below imports dependencies into our code. At the very top we import `lambda_runtime` - the library that provides a Lambda runtime for our Rust code.
 
 Next we import `serde` - a framework for serialising/deserialising Rust data structures in an efficient and standardised manner.
 

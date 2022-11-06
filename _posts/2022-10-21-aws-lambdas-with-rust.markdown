@@ -11,7 +11,7 @@ tags: rust custom-runtime lambda aws sam deployment
 
 ## Why Rust?
 
-Whether Rust is the C++ killer we've all been waiting for still remains to be seen. With companies like Tesla and Microsoft still heavily reliant on C++, it's a pretty safe bet that C++ will be around for a long time to come.Nonetheless, Rust's growing popularity among developers is definitely something to take notice of. [[1]](#references) 
+Whether Rust is the C++ killer we've all been waiting for still remains to be seen. With companies like Tesla and Microsoft still heavily reliant on C++, it's a pretty safe bet that C++ will be around for a long time to come. Nonetheless, Rust's growing popularity among developers is definitely something to take notice of. [[1]](#references) 
 
 In 2019, AWS officially became a sponsor of the Rust project before partnering with Microsoft, Google, Mozilla and Huawei in 2020 to create the Rust Foundation, an organisation whose sole purpose is to support Rust and fuel its adoption as a general purpose language. 
 

@@ -21,11 +21,11 @@ The rapid uptake of Rust by the three largest cloud providers has contributed si
 
 ### So what is Rust good for?
 
-Rust is a mature programming language with all the features necessary to handle projects of any level of complexity. My personal favourite Rust feature is the provision of an inbuilt package manager called `cargo`, (something I wish C++ came with).
+Rust is a mature programming language with all the features necessary to handle projects of any level of complexity. My personal favourite Rust feature is the provision of an inbuilt package manager called `cargo`, (something I wish C++ came with). I want to avoid giving you a whole Rust sales pitch because I am not trying to convince you to use Rust. If you are here then you are probably just looking for help with getting Rust in the cloud. However, if you are interested in diving deeper into how Rust compares against other systems programming languages then I recommend reading the following [article]("https://betterprogramming.pub/in-depth-comparison-of-rust-and-cpp-579b1f93a5e9").
 
 Other notable features include: 
 
-- No run time garbage collection (grants control of memory management)
+- Memory saftey (due to absence of garbage collection)
 - Can target embedded systems
 - Rich type system and ownership model that helps you weed out memory related bugs thereby ensuring memory and thread safety
 - Tiny footprint

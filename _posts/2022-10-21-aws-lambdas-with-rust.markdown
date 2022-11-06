@@ -19,7 +19,7 @@ In 2019, AWS officially became a sponsor of the Rust project before partnering w
 
 The rapid uptake of Rust by the three largest cloud providers has contributed significantly to the growth of the Rust community since its initial release in 2010. So, although C++ isn't going away any time soon, it's increasingly obvious that the demand for Rust skills is going to grow and grow.
 
-### So what is Rust good for? [this would need fleshing out a bit with the points from above]
+### So what is Rust good for?
 
 Rust is a mature programming language with all the features necessary to handle projects of any level of complexity. My personal favourite Rust feature is the provision of an inbuilt package manager called `cargo`, (something I wish C++ came with).
 
@@ -124,8 +124,6 @@ async fn handler (event: LambdaEvent<Event>) -> Result<Output, Error> {
 ## Let's ~~blow things up~~, build and deploy
 
 ### Compile Rust Project to an executable binary file
-
-[I suggest double checking the references below - is there a typo in `aarch64-unknown-linux-gnu`?]
 
 1. Install the arm64 Rust target via rustup by running `rustup target add aarch64-unknown-linux-gnu`. Doing this will allows us to target the `arm64` architecture when we build our executable binary file. 
 

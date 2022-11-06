@@ -11,19 +11,17 @@ tags: rust custom-runtime lambda aws sam deployment
 
 ## Why Rust?
 
-Whether Rust is the C++ killer we've all been waiting for still remains to be seen. With companies like Tesla and Microsoft still heavily reliant on C++, it's a pretty safe bet that C++ will be around for a long time to come.
+Whether Rust is the C++ killer we've all been waiting for still remains to be seen. With companies like Tesla and Microsoft still heavily reliant on C++, it's a pretty safe bet that C++ will be around for a long time to come.Nonetheless, Rust's growing popularity among developers is definitely something to take notice of. [[1]](#references) 
 
-Nonetheless, Rust's growing popularity among developers is definitely something to take notice of. [[1]](#references) 
+In 2019, AWS officially became a sponsor of the Rust project before partnering with Microsoft, Google, Mozilla and Huawei in 2020 to create the Rust Foundation, an organisation whose sole purpose is to support Rust and fuel its adoption as a general purpose language. 
 
-In 2019, AWS officially became a sponsor of the Rust project before partnering with Microsoft, Google, Mozilla and Huawei in 2020 to create the Rust Foundation, an organistion whose sole purpose is to support Rust and fuel its adoption as a general purpose language. 
-
-The rapid uptake of Rust by the three largest cloud providers has contributed significantly to the growth of the Rust community since its initial release in 2010. So, although C++ isn't going away any time soon, it's increasingly obvious that the demand for Rust skills is going to grow and grow.
+The rapid uptake of Rust by the three largest cloud providers has contributed significantly to the growth of the Rust community since its initial release in 2010. So, although C++ isn't going away any time soon, it's increasingly obvious that the demand for Rust skills is going to grow over time as more companies adopt Rust as a general purpose language.
 
 ### So what is Rust good for?
 
-Rust is a mature programming language with all the features necessary to handle projects of any level of complexity. My personal favourite Rust feature is the provision of an inbuilt package manager called `cargo`, (something I wish C++ came with). I want to avoid giving you a whole Rust sales pitch because I am not trying to convince you to use Rust. If you are here then you are probably just looking for help with getting Rust in the cloud. However, if you are interested in diving deeper into how Rust compares against other systems programming languages then I recommend reading the following [article]("https://betterprogramming.pub/in-depth-comparison-of-rust-and-cpp-579b1f93a5e9").
+Rust is a mature programming language with all the features necessary to handle projects of any level of complexity. My personal favourite Rust feature is the provision of an inbuilt package manager called `cargo` - something I wish C++ came with. I want to avoid giving you a whole Rust sales pitch because I am not trying to convince you to use Rust. If you are here, then you are probably just looking for help with getting Rust in the cloud not a sales pitch. However, if you are interested in diving deeper into how Rust compares against other systems programming languages then I recommend reading the following [article]("https://betterprogramming.pub/in-depth-comparison-of-rust-and-cpp-579b1f93a5e9").
 
-Other notable features include: 
+Here is a none "salesy" list of some of my favorite Rust features. 
 
 - Memory saftey (due to absence of garbage collection)
 - Can target embedded systems

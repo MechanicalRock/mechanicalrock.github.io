@@ -123,15 +123,15 @@ async fn handler (event: LambdaEvent<Event>) -> Result<Output, Error> {
 
 ### Compile Rust Project to an executable binary file
 
-1. Install the arm64 Rust target via rustup by running `rustup target add aarch64-unknown-linux-gnu`. Doing this will allows us to target the `arm64` architecture when we build our executable binary file. 
+1. Install the arm64 Rust target via rustup by running `rustup target add aarch64-unknown-linux-gnu`. Doing this allows us to target the `arm64` architecture when we build our executable binary file. 
 
-2. Build an `arm64` executable binary file using Zigbuild by running `cargo zigbuild --target aarch64-unknown-linux-gnu --release' from the root of the Rust project
+2. Build an `arm64` executable binary file using Zigbuild by running `cargo zigbuild --target aarch64-unknown-linux-gnu --release` from the root of the Rust project
 
 3. Copy the generated executable binary file to the root and rename it to bootstrap by running the following command from the root of the project `cp target/aarch64-unknown-linux-gnu/release/<project_name> bootstrap`
 
 ### Deploy to AWS using SAM
 
-1. Create a `template.yaml` file and and place it on the same level as the Rust project directory. 
+1. Create a `template.yaml` file and place it on the same level as the Rust project directory. 
 
 2. Add the the following to the `template.yaml` file you created in step 1
    

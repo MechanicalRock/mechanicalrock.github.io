@@ -19,7 +19,7 @@ It may be due to the difficulty in creating authentication systems and implement
 ## Contents
 
 - [Why Auth0?](#why-auth0)
-    * [OAuth](#what-is-oauth)
+    * [What is OAuth?](#what-is-oauth)
 - [Create Auth0 Application](#create-auth0-application)
 - [Integration into React](#integrate-with-react)
     * [Login](#but-wait-how-do-users-login)

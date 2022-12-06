@@ -19,6 +19,7 @@ It may be due to the difficulty in creating authentication systems and implement
 ## Contents
 
 - [Why Auth0?](#why-auth0)
+    * [OAuth](#what-is-oauth)
 - [Create Auth0 Application](#create-auth0-application)
 - [Integration into React](#integrate-with-react)
     * [Login](#but-wait-how-do-users-login)
@@ -30,6 +31,12 @@ It may be due to the difficulty in creating authentication systems and implement
 Auth0 is one of the most highly reputed companies working in this space. Why build your own service when you can get the years of experience and knowledge dedicated to making sure your users login data is safe?
 
 Auth0 provides Authentication, Authorization, Social Logins, MFA, Analytics and lots more, And to make it all the sweeter, has amazing developer documentation. All of this is completely free if you have under 7000 users!
+
+### But what is OAuth?
+
+To keep it brief, OAuth is a set of open standards for authorization which anyone can use, The standards describe how apps can provide clients with "Secure delegated access" using access tokens instead of credentials.
+
+You can read more about OAuth [here](https://developer.okta.com/blog/2017/06/21/what-the-heck-is-oauth)
 
 ## Create Auth0 Application
 

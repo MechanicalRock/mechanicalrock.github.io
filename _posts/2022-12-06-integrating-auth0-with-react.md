@@ -113,7 +113,7 @@ Congratulations! You've now integrated your Auth0 Application with your React Ap
 
 ### But wait, How do users login?
 
-I knew we forgot something. OK, Let's give our users a login button.
+I knew we forgot something. OK, let's give our users a login button.
 
 
 ```tsx
@@ -239,7 +239,7 @@ Awesome, we now have User Signup, Login, and Logout!
 
 Now that our users can login, How do we go about getting their information such as Name, Email address, Profile Picture etc?
 
-Alright, Let's create a new component that will retrieve that for us.
+Alright, let's create a new component that will retrieve that for us.
 
 ```tsx
 // /src/components/Profile.tsx
@@ -272,7 +272,7 @@ export default Profile;
 
 Once again, the `useAuth0` hook showing its strengths! We can get the user object, check if they are authenticated, and that everything has been fully loaded before displaying the user profile.
 
-Let's add that to our homepage
+Now we can add that to our homepage
 
 ```tsx
 // /src/App.tsx

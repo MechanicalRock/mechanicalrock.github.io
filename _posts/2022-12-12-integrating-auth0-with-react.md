@@ -2,7 +2,7 @@
 layout: post
 font: serif
 title: Integrating Auth0 Authentication into React
-date: 2022-12-06
+date: 2022-12-12
 highlight: monokai
 author: Chris Howard
 image: img/blog/integrating-auth0-with-react/banner.jpg

@@ -7,7 +7,7 @@ highlight: monokai
 author: Bryan Yu
 image: /img/blog/databricks/databricks.png
 tags: databricks deltatable dataframes spark workflows integration unit testing
-description: Lets look at testing our code using deltatable and spark
+description: Lets look at testing our code using delta lake and spark
 ---
 
 Before we commence, please note that any examples and discussions below regarding unit testing will be focused on users who are currently writing their code in `python 3` and running orchestrations via `Databricks Workflows` as `Delta Live Tables` are a separate topic altogether. 
@@ -102,11 +102,11 @@ If you are wondering why theres no Apache setup steps above, then remember that 
 
 Most of the other config is stock standard, with the exception of the `PYSPARK_SUBMIT_ARGS`. Its one of those things you need to set to run these tests as a workaround certain known issues with running locally. At the end of the day, these are just arguments that end up being supplied to `spark submit` which is a script that Spark uses to launch apps on a cluster.
 
-In brief, the purpose behind each arg is as follows:
+Why you might still ask? well, the purpose behind each argument is as follows:
 
-1. io.delta:delta-core_2.12:2.1.0 - defines maven artifact dependency of delta-core_2.21 for the version 2.1.0. Match the version with precisely what you defined as the `delta-spark` pip dependency. If you are not sure about the artifact name, reference here: https://mvnrepository.com/artifact/io.delta/delta-core.
+1. io.delta:delta-core_2.12:2.1.0 - defines the maven artifact dependency of delta-core_2.21 for the version 2.1.0. You must match the version with precisely what you defined as the `delta-spark` pip dependency. If you are not sure about the artifact name, here is a reference: https://mvnrepository.com/artifact/io.delta/delta-core. The artifact name will be different but the version is whats important.
 
-2. pyspark-shell specifies to use the pyspark java class when running spark jobs locally
+2. pyspark-shell specifies to use the pyspark java class when running spark jobs locally. 
 
 
 *docker-compose.yml*

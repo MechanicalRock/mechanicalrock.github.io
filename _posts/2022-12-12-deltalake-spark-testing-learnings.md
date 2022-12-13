@@ -10,7 +10,7 @@ tags: databricks deltatable dataframes spark workflows integration unit testing
 description: Lets look at testing our code using delta lake and spark
 ---
 
-In the world of software development, unit testing is a concept already well known and quite widely adopted as good practice throughout various teams and industries. You write a failing test, then write the code to make it pass and rinse repeat if you closely follow Test Driven Development. 
+In the world of software development, unit testing is a concept already understood and quite widely adopted as good practice throughout various teams and industries. You write a failing test, then write the code to make it pass and rinse repeat if you closely follow Test Driven Development. 
 
 On the other hand, in the data land however this is not usually an area explored much at all as engineers would code up some complex SQL statements and transformation tasks in the data software of their choice but not store it in version control nor having automated tests to verify it still works as intended as it goes through iterative changes.
 

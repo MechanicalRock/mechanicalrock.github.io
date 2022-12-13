@@ -12,7 +12,7 @@ description: Lets look at testing our code using delta lake and spark
 
 In the world of software development, unit testing is a concept already understood and quite widely adopted as good practice throughout various teams and industries. You write a failing test, then write the code to make it pass and rinse repeat if you closely follow Test Driven Development. 
 
-On the other hand, in the data land however this is not usually an area explored much at all as engineers would code up some complex SQL statements and transformation tasks in the data software of their choice but not store it in version control nor having automated tests to verify it still works as intended as it goes through iterative changes.
+In the data land however, this is not usually an area explored much at all as engineers would code up some complex SQL statements and transformation tasks in the data software of their choice but not store it in version control nor having automated tests to verify it still works as intended as it goes through iterative changes.
 
 If you are using a tool like Snowflake, you can easily write integration tests for things like your procedures or UDFs if you use them to run your data transformation tasks. With Databricks however, the landscape is a bit different in some aspects in that we can also dip our hands into unit testing, so lets find out why!
 
@@ -20,10 +20,10 @@ Before we commence, please note that any examples and discussions below regardin
 
 The following topics will be covered here as we make our way to unit testing. If you are already familiar with points 1-3, them skip to the last section at the bottom `Unit Testing`: 
 
-1. Delta Lake
-2. Apache Spark & PySpark
-3. Integration Testing 
-4. Unit Testing
+1. [Delta Lake](#delta-lake)
+2. [Apache Spark & PySpark](#pyspark)
+3. [Integration Testing](#integration-testing) 
+4. [Unit Testing](#unit-testing)
 
 
 ### Delta Lake
@@ -46,17 +46,19 @@ Apache Spark is an analytics query engine which is good for large scale and batc
 
 Apache Spark also supports APIs for developing in R, Java, Scala and Python. This translates to Databricks as well as you find that our notebooks can be written purely as a bunch of SQL commands or in one of those languages as listed above but alas, we will be focusing on Python and PySpark (its just the python library that interfaces Apache Spark).
 
+You can read more on this in the [`official docs`] (https://spark.apache.org/docs/latest/)
+
 
 ### Integration Testing
 
-While integration testing on Databricks is not covered in this blog, is essential in my opnion that time and effort are still dedicated into comprehensively writing these out as well using a library like `Great Expectations`, running in a notebook and serving as an additional step at the gold layer of your workflow. This serves its purpose to verify that data quality standards are constantly met and if anything unexpected comes up, we fail the workflow and generate a detailed visual report for users to view and understand what the unexpected data is before it gets to the consumers. 
+While integration testing on Databricks is not covered in this blog, is essential in my opnion that time and effort are still dedicated into comprehensively writing these out as well using a library like [`Great Expectations`](https://docs.greatexpectations.io/docs/), running in a notebook and serving as an additional step at the gold layer of your workflow. This serves its purpose to verify that data quality standards are constantly met and if anything unexpected comes up, we fail the workflow and generate a detailed visual report for users to view and understand what the unexpected data is before it gets to the consumers. 
 
 With that said, defects in data quality may appear as a consequence of the following scenarios such as regression in our data transformation logic or changes in upstream system which resulted in changes to data layout, representation, schema and so forth.
 
 
 ### Unit Testing
 
-So it seems that integration tests for our data pipeline is plenty beneficial but why not stop there? well, one of the few benefits of unit testing is that we get to rapidly ensure our `code` meets quality standards and whilst detecting certain regressions earlier in the dev lifecycle which gives us more confidence to move faster as code can get committed and deployed more frequently. Lets now dive into the details of unit testing our code.
+So it seems that integration tests for our data pipeline is plenty beneficial but why stop there? One of the benefits of unit testing is that we get to rapidly ensure our `code` meets quality standards and detect certain regressions earlier in the development lifecycle. This gives us more confidence to move faster, as code can get committed and deployed more frequently. Lets now dive into the details of unit testing our code.
 
 Admittedly, this will not be without it's own interesting challenges, as most of your notebooks will also be making calls to Databricks libraries such as the auto loader, dbutils, contexts objects and apis etc. This also includes any global calls to the spark session object. We can't really include those calls in our test suite as they would require the Databricks runtime and that is something we wont be able to spin up our local machine or CI pipeline for that matter. Conversely, what we can setup to run locally is both `Delta Live` and `PySpark/Spark`.
 
@@ -106,9 +108,9 @@ Most of the other config is stock standard, with the exception of the `PYSPARK_S
 
 Why you might still ask? well, the purpose behind each argument is as follows:
 
-1. io.delta:delta-core_2.12:2.1.0 - defines the maven artifact dependency of delta-core_2.21 for the version 2.1.0. You must match the version with precisely what you defined as the `delta-spark` pip dependency. If you are not sure about the artifact name, here is a reference: https://mvnrepository.com/artifact/io.delta/delta-core. The artifact name will be different but the version is whats important.
+1. `io.delta:delta-core_2.12:2.1.0` - defines the maven artifact dependency of delta-core_2.21 for the version 2.1.0. You must match the version with precisely what you defined as the `delta-spark` pip dependency. If you are not sure about the artifact name, here is a reference: https://mvnrepository.com/artifact/io.delta/delta-core. The artifact name will be different but the version is whats important.
 
-2. pyspark-shell specifies to use the pyspark java class when running spark jobs locally. 
+2. `pyspark-shell` specifies to use the pyspark java class when running spark jobs locally. 
 
 
 *docker-compose.yml*
@@ -125,7 +127,7 @@ services:
       - .:/src
 ```
 
-Then we just need to run docker-compose up to re-run the tests whenever we make changes or create new ones locally. Of course, the volume mount in the compose file will depend on your project structure.
+Then we can run `docker-compose up` to re-run the tests whenever we make changes or create new ones locally. Of course, the volume mount in the compose file will depend on your project structure.
 
 
 ### Create Configure Spark Session In Test Hook
@@ -148,7 +150,7 @@ def spark():
 
 See the docs local [delta lake setup](https://docs.delta.io/latest/quick-start.html#python) if you wish to learn more.
 
-### Writing Test
+### Writing Our First Test
 
 If you have come this far, we have one last task at hand which is adapting our notebook code to be testable. If you recall, I made mention about the code always having a main loop that runs when a Databrick's job is started. If that runs in our local environment it will fail for obvious reasons of not having access to the Databricks runtime.
 

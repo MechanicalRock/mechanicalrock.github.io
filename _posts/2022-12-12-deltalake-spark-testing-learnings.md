@@ -10,9 +10,15 @@ tags: databricks deltatable dataframes spark workflows integration unit testing
 description: Lets look at testing our code using delta lake and spark
 ---
 
+In the world of software development, unit testing is a concept already well known and quite widely adopted as good practice throughout various teams and industries. You write a failing test, then write the code to make it pass and rinse repeat if you closely follow Test Driven Development. 
+
+On the other hand, in the data land however this is not usually an area explored much at all as engineers would code up some complex SQL statements and transformation tasks in the data software of their choice but not store it in version control nor having automated tests to verify it still works as intended as it goes through iterative changes.
+
+If you are using a tool like Snowflake, you can easily write integration tests for things like your procedures or UDFs if you use them to run your data transformation tasks. With Databricks however, the landscape is a bit different in some aspects in that we can also dip our hands into unit testing, so lets find out why!
+
 Before we commence, please note that any examples and discussions below regarding unit testing will be focused on users who are currently writing their code in `python 3` and running orchestrations via `Databricks Workflows` as `Delta Live Tables` are a separate topic altogether. 
 
-The following topics will be covered here as we make our way to unit testing. If you are already familiar points 1-3, them skip to the last section at the bottom `Unit Testing`: 
+The following topics will be covered here as we make our way to unit testing. If you are already familiar with points 1-3, them skip to the last section at the bottom `Unit Testing`: 
 
 1. Delta Lake
 2. Apache Spark & PySpark
@@ -26,7 +32,7 @@ The following topics will be covered here as we make our way to unit testing. If
 <img height="100px" src="/img/blog/databricks/delta-lake.png" />
 <br/><br/>
 
-Delta Lake is the open source storage framework providing key features such as ACID transactions and time travel features. Delta Lake is not only compatible with Spark but is also what Databricks utilises for data storage and table management. As a result the types of tables we will be dealing with for the most part are delta tables. The sotrage format of these delta tables are basically parquet files. 
+Delta Lake is the open source storage framework providing key features such as ACID transactions and time travel features. Delta Lake is not only compatible with Spark but is also what Databricks utilises for data storage and table management. As a result the types of tables we will be dealing with for the most part are delta tables. The storage format of these delta tables are basically parquet files. 
 
 You can see more details in the official docs [delta.io](https://delta.io/) if you wish to learn more. Interesting stuff!
 
@@ -50,7 +56,7 @@ With that said, defects in data quality may appear as a consequence of the follo
 
 ### Unit Testing
 
-So it seems that integration tests for our data pipeline is plentiful beneficial but why not stop there? well, one of the few benefits of unit testing is that we get to rapidly ensure our `code` meets quality standards and whilst detection certain regressions earlier in the dev lifecycle which thusly give us more confidence to move faster as code can get committed and deployed more frequently. Lets now dive into the details of unit testing our code.
+So it seems that integration tests for our data pipeline is plenty beneficial but why not stop there? well, one of the few benefits of unit testing is that we get to rapidly ensure our `code` meets quality standards and whilst detecting certain regressions earlier in the dev lifecycle which gives us more confidence to move faster as code can get committed and deployed more frequently. Lets now dive into the details of unit testing our code.
 
 Admittedly, this will not be without it's own interesting challenges, as most of your notebooks will also be making calls to Databricks libraries such as the auto loader, dbutils, contexts objects and apis etc. This also includes any global calls to the spark session object. We can't really include those calls in our test suite as they would require the Databricks runtime and that is something we wont be able to spin up our local machine or CI pipeline for that matter. Conversely, what we can setup to run locally is both `Delta Live` and `PySpark/Spark`.
 
@@ -222,3 +228,5 @@ A: Check the Py readiness docs https://pyreadiness.org/3.11/ to see that PySpark
 Well thats about it!, hope this was helpful by some measure. 
 
 As a final note, you can expand the scope of your test if you wish by importing the code that creates your destination table for the initial setup, then running the function that transforms and merges the data in there. 
+
+Struggling with unit testing? We can help! Contact us to [get started!](https://www.mechanicalrock.io/lets-get-started)

@@ -46,7 +46,7 @@ Apache Spark is an analytics query engine which is good for large scale and batc
 
 Apache Spark also supports APIs for developing in R, Java, Scala and Python. This translates to Databricks as well as you find that our notebooks can be written purely as a bunch of SQL commands or in one of those languages as listed above but alas, we will be focusing on Python and PySpark (the python library that interfaces Apache Spark).
 
-You can read more on this in the following link: https://spark.apache.org/docs/latest/.
+You can read more on this in the official docs for [`Apache Spark`](https://spark.apache.org/docs/latest/.).
 
 
 ### Integration Testing
@@ -75,7 +75,7 @@ Now that we have the overall landscape of what to expect, lets dive step by step
 
 For starters, assuming you already have python on ci/cd and your local machine, you will need the following bare minimum PyPI dependencies installed as well.
 
-1. pyspark - we can just install this without requiring to install Apache Spark separately
+1. pyspark - we can install this without requiring to install Apache Spark separately
 2. delta-spark
 3. pytest - alternatively, use unittest which is an in-built standard Python library
 
@@ -104,7 +104,7 @@ CMD export PYSPARK_SUBMIT_ARGS='--packages io.delta:delta-core_2.12:2.2.0 pyspar
 
 If you are wondering why theres no Apache setup steps above, then remember that we are will be installing pyspark via pip instead which will suffice for local development activities. 
 
-Most of the other config is stock standard, with the exception of the `PYSPARK_SUBMIT_ARGS`. Its one of those things you need to set to run these tests as a workaround certain known issues with running locally. At the end of the day, these are just arguments that end up being supplied to `spark submit` which is a script that Spark uses to launch apps on a cluster. 
+Most of the other config is stock standard, with the exception of the `PYSPARK_SUBMIT_ARGS`. Its one of those things you need to set to run these tests as a workaround certain known issues with running locally. At the end of the day, these are arguments that end up being supplied to `spark submit` which is a script that Spark uses to launch apps on a cluster. 
 
 Why you might still ask? well, the purpose behind each argument is as follows:
 

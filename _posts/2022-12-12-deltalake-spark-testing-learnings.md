@@ -94,13 +94,13 @@ FROM python:3.9.5
 RUN apt-get update && apt-get install openjdk-11-jdk -y
 RUN pip3 install -r requirements.txt
 
-CMD export PYSPARK_SUBMIT_ARGS='--packages io.delta:delta-core_2.12:2.1.0 pyspark-shell' \
+CMD export PYSPARK_SUBMIT_ARGS='--packages io.delta:delta-core_2.12:2.2.0 pyspark-shell' \
     pytest path/to/tests/**/*
 ```
 
 If you are wondering why theres no Apache setup steps above, then remember that we are will be installing pyspark via pip instead which will suffice for local development activities. 
 
-Most of the other config is stock standard, with the exception of the `PYSPARK_SUBMIT_ARGS`. Its one of those things you need to set to run these tests as a workaround certain known issues with running locally. At the end of the day, these are just arguments that end up being supplied to `spark submit` which is a script that Spark uses to launch apps on a cluster.
+Most of the other config is stock standard, with the exception of the `PYSPARK_SUBMIT_ARGS`. Its one of those things you need to set to run these tests as a workaround certain known issues with running locally. At the end of the day, these are just arguments that end up being supplied to `spark submit` which is a script that Spark uses to launch apps on a cluster. 
 
 Why you might still ask? well, the purpose behind each argument is as follows:
 
@@ -150,36 +150,85 @@ See the docs local [delta lake setup](https://docs.delta.io/latest/quick-start.h
 
 If you have come this far, we have one last task at hand. That is adapting our notebook code to be testable. The easiest way to show this is via before and after comparison of what a typical structure would be vs post refactoring
 
-So lets say we have a hypothetical scenario where we want to test if our transformation logic will append a prefix to a name column and multiply the age column by two...
+So lets say we have a hypothetical scenario where we want to test a transformation function we have written that takes a dataframe containing a list of people and we want to filter out where their date of birth is equal to or greater than 01 Jan 1991, we can structure our code as below.
 
-*****HEEEELLLP
+
+*databricks_notebook.py*
+```
+import pyspark.sql.functions as F
+from os import env
+
+def transform_dataset(df):
+    return df.select("name", "dob").where(F.col("dob") >= F.lit("1999-01-01") )
+
+def run_main_loop():
+    # run main job here
+
+try:
+    is_live = dbutils.widgets.get("is_live").lower() == "true"
+
+except Exception as e:
+    print(f'There was an issue initialising parameters. {e}')
+    is_live = False
+
+if is_live == True:
+    run_main_loop()
 ```
 
-def transform_data(spark):
+It firstly attempts to use Databrick's global dbutils to get configuration parameters. If that succeeds then we run the main loop, else it would throw an exception of undefined variable access and we just treat this notebook as offline mode so to speak.
+
+So when we get to a stage of writing our unit test, we can import this file as such:
+
+*databricks_notebook_test.py*
+```
+import pyspark.sql.types as T
+from databricks_notebook import transform_dataset
+import pyspark.sql.functions as F
+from datetime import date
+
+def transform_dataset(df):
+    return df.select("name", "dob").where(F.col("dob") >= F.lit("1999-01-01") )
+
+def test_date_filter(spark):
     schema = T.StructType([
-        T.StructField('name', T.StringType(), nullable=False),
-        T.StructField('age', T.IntegerType(), nullable=False)
+        T.StructField("name", T.StringType(), True),
+        T.StructField("dob", T.DateType(), True),
     ])
- 
-    delta_table = (DeltaTable.createOrReplace(spark)
-        .tableName(f'MY_DB.GOLD.USERS')
-        .addColumns(schema)
-        .partitionedBy("vertical")
-    )
 
-    delta_table.execute()
+    data = [
+    (
+        "John",
+        date(1978, 5, 8)
+    ),
+    (
+        "Tim",
+        date(1999, 2, 8)
+    ),
+    (
+        "James",
+       date(1996, 6, 9)
+    )]
+    
+    df = spark.createDataFrame(data=data, schema=schema)
+    transformed_df = transform_dataset(df)
 
-    transformations = dataframe.withColumn('cdd_verification_status', \
-        .withColumn('name', F.concat(F.lit("SOME_PREFIX"), F.col("name")) \
-        .withColumn('age') 
+    results = transformed_df.collect()
+    
+    assert len(results) == 1
+    assert results[0]["name"] == "Tim"
+   
 
 ```
+
+### Troubleshooting
+
+Q: I've got the latest version of Python but I am receiving error such as `_pickle.PicklingError: Could not serialize object: IndexError: tuple index out of range` when I run my tests... halp!
+
+A: Check the Py readiness docs https://pyreadiness.org/3.11/ to see that PySpark is supported for the desired python version (i.e. 3.11).
+
 
 ### Conclusion
 
 Well thats about it!, hope this was helpful by some measure. 
 
 As a final note, you can expand the scope of your test if you wish by importing the code that creates your destination table for the initial setup, then running the function that transforms and merges the data in there. 
-
-
-

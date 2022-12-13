@@ -58,11 +58,7 @@ First call to action is to think carefully about what you want the scope of the 
 
 One other thing we will definitely need to do is to make have Spark session object passed in a function argument where you run those data frame operations. This is because Databrick's global spark object will not be available outside the runtime.
 
-The next thing to take into account is that you will always have a main loop in your notebook that immideately runs the full ingestion code when a Databricks job is kicked off and this will certainly result in invoking Databricks libs. We need to ensure this is not executed via some measures such as introducing an environment variable boolean toggle so that its
-1. Set to true when it runs runs when part of the workflow 
-2. Set to false when running outside the workflow 
-
-That way we can effectively import and test just the data transformation function. We will look at more examples later.
+The next thing to take into account is that you will always have a main loop in your notebook that immediately executes the full ingestion code when a Databricks job is kicked off. If we want to effectively import just the notebook and test just the data transformation function we will need a way to prevent that. More examples on this later.
 
 Now that we have the overall landscape of what to expect, lets dive step by step into how we can setup and write unit tests which will run on our local machine and also in the ci/cd pipeline.
 
@@ -148,9 +144,9 @@ See the docs local [delta lake setup](https://docs.delta.io/latest/quick-start.h
 
 ### Writing Test
 
-If you have come this far, we have one last task at hand. That is adapting our notebook code to be testable. The easiest way to show this is via before and after comparison of what a typical structure would be vs post refactoring
+If you have come this far, we have one last task at hand which is adapting our notebook code to be testable. If you recall, I made mention about the code always having a main loop that runs when a Databrick's job is started. If that runs in our local environment it will fail for obvious reasons of not having access to the Databricks runtime.
 
-So lets say we have a hypothetical scenario where we want to test a transformation function we have written that takes a dataframe containing a list of people and we want to filter out where their date of birth is equal to or greater than 01 Jan 1991, we can structure our code as below.
+So lets say we have a hypothetical scenario where we want to verify that a transformation function we have written works by taking a dataframe containing a list of people and filtering out where their date of birth is equal to or greater than 01 Jan 1991, one suggestion is that we can structure our code as below.
 
 
 *databricks_notebook.py*
@@ -164,18 +160,12 @@ def transform_dataset(df):
 def run_main_loop():
     # run main job here
 
-try:
-    is_live = dbutils.widgets.get("is_live").lower() == "true"
-
-except Exception as e:
-    print(f'There was an issue initialising parameters. {e}')
-    is_live = False
-
-if is_live == True:
+if dbutils is not None:
     run_main_loop()
+
 ```
 
-It firstly attempts to use Databrick's global dbutils to get configuration parameters. If that succeeds then we run the main loop, else it would throw an exception of undefined variable access and we just treat this notebook as offline mode so to speak.
+The simplest way is checking if Databrick's global variable dbutils is available to determine if the notebook should run in offline mode so to speak (of course there are probably more elegant ways to do this).
 
 So when we get to a stage of writing our unit test, we can import this file as such:
 

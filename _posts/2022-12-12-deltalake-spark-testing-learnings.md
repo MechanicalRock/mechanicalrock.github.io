@@ -132,7 +132,7 @@ Then we can run `docker-compose up` to re-run the tests whenever we make changes
 
 ### Create Configure Spark Session In Test Hook
 
-At this point, we can focus on what the code requires. We will need a before hook that configures our local spark session so our tests can use it. This implication here is that any delta tables that created will be placed our local file system, but thats the advantage of it I guess when it comes to testability.
+At this point, we can focus on what the code requires. We will need a before hook that configures our local spark session so our tests can use it. This implication here is that any delta tables that are created will be placed on our local file system, but thats the advantage of it in my opinion when it comes to testability.
 
 In your before hook for all tests, you will need to create a local spark session object (see code below). What's important is that we use `configure_spark_with_delta_pip` to ensure that the Delta Lake Maven JARs are installed and is hence one of the few reasons why we specified the `delta-spark` dependency to begin with. 
 

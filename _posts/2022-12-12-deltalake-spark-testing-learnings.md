@@ -62,7 +62,7 @@ Admittedly, this will not be without it's own interesting challenges, as most of
 
 First call to action is to think carefully about what you want the scope of the unit tests to be. In most cases from experience it would boil down to the data transformation logic. We will have to do a bit of refactoring if necessary to isolate all logic related to Spark data frames in a single testable function while keeping the Databricks runtime libs out. We may choose to do this by having variables as fakes for those libraries passed in as arguments in the test or relocate the calls outside the function instead. 
 
-One other thing we will definitely need to do is to make have Spark session object passed in a function argument where you run those data frame operations. This is because Databrick's global spark object will not be available outside the runtime.
+One other thing we will definitely need to do is to construct a Spark session object which will be passed in a as function argument where you run those data frame operations. This is because Databrick's global spark object will not be available outside the runtime.
 
 The next thing to take into account is that you will always have a main loop in your notebook that immediately executes the full ingestion code when a Databricks job is kicked off. If we want to effectively import just the notebook and test just the data transformation function we will need a way to prevent that. More examples on this later.
 

@@ -66,7 +66,7 @@ First call to action is to think carefully about what you want the scope of the 
 
 One other thing we will definitely need to do is to construct a Spark session object which will be passed in a as function argument where you run those data frame operations. This is because Databrick's global spark object will not be available outside the runtime.
 
-The next thing to take into account is that you will always have a main loop in your notebook that immediately executes the full ingestion code when a Databricks job is kicked off. If we want to effectively import just the notebook and test just the data transformation function we will need a way to prevent that. More examples on this later.
+The next thing to take into account is that you will always have a main loop in your notebook that immediately executes the full ingestion code when a Databricks job is kicked off. If we want to effectively import the notebook and test the data transformation function we will need a way to prevent that. More examples on this later.
 
 Now that we have the overall landscape of what to expect, lets dive step by step into how we can setup and write unit tests which will run on our local machine and also in the ci/cd pipeline.
 

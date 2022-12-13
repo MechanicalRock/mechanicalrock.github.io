@@ -81,7 +81,7 @@ For starters, assuming you already have python on ci/cd and your local machine, 
 
 Key consideration here is to closely align the version of delta-spark and pyspark to Databricks as much as possible to try and prevent as much as possible scenarios where code may run in Databricks but fail in tests or vice versa. Few things you can do here are:
 
-1. Check out [databricks runtime release notes](https://docs.databricks.com/release-notes/runtime/releases.html) to ensure that the version you install is closely aligned with the version of Databricks you have running
+1. Check out [databricks runtime release notes](https://docs.databricks.com/release-notes/runtime/releases.html) to ensure that the Apache spark version you install is closely aligned with the version of Databricks you have running
 
 2. Check out [delta release notes](https://docs.delta.io/latest/releases.html) to ensure that delta-spark version you install is compatible with the Apache Spark version in step 1.
 

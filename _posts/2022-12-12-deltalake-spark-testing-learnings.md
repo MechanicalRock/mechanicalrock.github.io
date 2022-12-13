@@ -127,7 +127,7 @@ services:
       - .:/src
 ```
 
-Then we can run `docker-compose up` to re-run the tests whenever we make changes or create new ones locally. Of course, the volume mount in the compose file will depend on your project structure.
+Then we can run `docker-compose up` to re-run the tests whenever we make changes or create new ones locally. The volume mount directory in the compose file will depend on your project structure, so always double check this value.
 
 
 ### Create Configure Spark Session In Test Hook

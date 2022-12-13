@@ -44,9 +44,9 @@ You can see more details in the official docs [delta.io](https://delta.io/) if y
 
 Apache Spark is an analytics query engine which is good for large scale and batched data workloads, machine learning and real time analytics. Long story short, Databricks is built on Spark and PySpark and hence knowledge in those areas could help quite significantly. 
 
-Apache Spark also supports APIs for developing in R, Java, Scala and Python. This translates to Databricks as well as you find that our notebooks can be written purely as a bunch of SQL commands or in one of those languages as listed above but alas, we will be focusing on Python and PySpark (its just the python library that interfaces Apache Spark).
+Apache Spark also supports APIs for developing in R, Java, Scala and Python. This translates to Databricks as well as you find that our notebooks can be written purely as a bunch of SQL commands or in one of those languages as listed above but alas, we will be focusing on Python and PySpark (the python library that interfaces Apache Spark).
 
-You can read more on this in the following link: https://spark.apache.org/docs/latest/)
+You can read more on this in the following link: https://spark.apache.org/docs/latest/.
 
 
 ### Integration Testing

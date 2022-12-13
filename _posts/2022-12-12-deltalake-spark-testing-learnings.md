@@ -88,7 +88,7 @@ Key consideration here is to closely align the version of delta-spark and pyspar
 
 ### Configuring Docker For Local Test Execution
 
-Once we have the dependencies specificed in a requirements txt file or poetry toml file (if you use Poetry), the next step would be to create a docker compose solution for local development, so that it always installs a preset Python and OpenJDK versions and including pip dependencies, leaving less avenue for 'works on my machine' type of issues. This is relatively simple as you can see below:
+Once we have the dependencies specificed in a requirements txt file or poetry toml file (if you use Poetry), the next step would be to create a docker compose solution for local development, so that it always installs a preset Python and OpenJDK versions and including pip dependencies, leaving less avenue for 'works on my machine' type of issues. This can be achieved similar to the block of code below:
 
 
 *Dockerfile*
@@ -102,7 +102,7 @@ CMD export PYSPARK_SUBMIT_ARGS='--packages io.delta:delta-core_2.12:2.2.0 pyspar
     pytest path/to/tests/**/*
 ```
 
-If you are wondering why theres no Apache setup steps above, then remember that we are will be installing pyspark via pip instead which will suffice for local development activities. 
+If you are curious as to why theres no Apache installation steps above, remember that we are will be installing pyspark instead which will suffice for local development activities. 
 
 Most of the other config is stock standard, with the exception of the `PYSPARK_SUBMIT_ARGS`. Its one of those things you need to set to run these tests as a workaround certain known issues with running locally. At the end of the day, these are arguments that end up being supplied to `spark submit` which is a script that Spark uses to launch apps on a cluster. 
 

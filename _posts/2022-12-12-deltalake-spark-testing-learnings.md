@@ -108,7 +108,7 @@ Most of the other config is stock standard, with the exception of the `PYSPARK_S
 
 Why you might still ask? well, the purpose behind each argument is as follows:
 
-1. `io.delta:delta-core_2.12:2.1.0` - defines the maven artifact dependency of delta-core_2.21 for the version 2.1.0. You must match the version with precisely what you defined as the `delta-spark` pip dependency. If you are not sure about the artifact name, here is a reference: https://mvnrepository.com/artifact/io.delta/delta-core. The artifact name will be different but the version is whats important.
+1. `io.delta:delta-core_2.12:2.1.0` - defines the maven artifact dependency of delta-core_2.12 for the version 2.1.0. You must match the version with precisely what you defined as the `delta-spark` pip dependency. If you are not sure what artifact name and versions are available currently, see the [maven repository](https://mvnrepository.com/artifact/io.delta/delta-core).
 
 2. `pyspark-shell` specifies to use the pyspark java class when running spark jobs locally. 
 

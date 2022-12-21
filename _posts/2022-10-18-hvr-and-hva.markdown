@@ -135,13 +135,13 @@ Every business has its nuances and why they want their data in cloud. For this r
 | ----------------------------- | ------------------ | ---------- | ---------- |
 | Throughput (database GB/hour) | <10 mB/s           | >10 mB/s   | >10mB/s    |
 | CLOB/LOB data types           | No                 | Yes        | Yes        |
-| Interval/Long data Types      | No                 | Not yet    | Yes        |
+| Interval/Long data Types      | No                 | Yes        | Yes        |
 | Agent Install Required        | no                 | Yes        | Yes        |
 | Log-Based Replication         | No                 | Yes        | Yes        |
 | Log Free Replication          | Yes, with teleport | No         | No         |
 | Hosted Hub                    | No                 | No         | Yes        |
 | Captures DDL and DML          | Yes                | Yes        | Yes        |
-| TDE                           | No                 | Not yet    | Yes        |
+| TDE                           | Yes                | Yes        | Yes        |
 | Real Time Replication         | No                 | No         | Yes        |
 | Compare and Repair            | No                 | No         | Yes        |
 
@@ -152,6 +152,7 @@ Every business has its nuances and why they want their data in cloud. For this r
 - Configuration - We here at Mechanical Rock love deploying Infrastructure as Code but unforunately HVA is not configure with Fivetran's API at this current time. This results in the setup of HVA being a very manual process each time and not easily repeatable.
 
 ## Conclusion
+
 Within this blog, we have provided a brief overview of HVA/HVR, but the best method of learning new tech is getting down and dirty with it. Provided below are some useful links for getting set up and using HVR and HVA:
 
 <a href="https://fivetran.com/docs/hvr6" target="_blank">HVR</a>
@@ -161,4 +162,3 @@ Within this blog, we have provided a brief overview of HVA/HVR, but the best met
 <a href="https://fivetran.com/docs/databases/sql-server/hva-sql-server" target="_blank">HVA SQL Server</a>
 
 If you are looking to setup HVA/HVR in your company, do not hestitate to contact Mechanical Rock!
-

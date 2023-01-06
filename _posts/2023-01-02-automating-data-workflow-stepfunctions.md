@@ -42,9 +42,9 @@ Three AWS Lambda functions:
 
 # AWS Step Functions in Action
 
-AWS Step Functions can be used to build a workflow that automates tasks in your system. In this particular solution, a state machine is defined in the statemachine.yml file and outlines the steps in the workflow. The state machine starts by calling a Lambda function called getConnectorList, which retrieves a list of connectors from  Fivetran using the [List Connectors in Group](https://developers.fivetran.com/openapi/reference/v1/operation/list_all_connectors_in_group/) api call.
+AWS Step Functions can be used to build a workflow that automates tasks in your system. In this particular solution, a state machine is defined in the statemachine.yml file and outlines the steps in the workflow. The state machine starts by calling a Lambda function called getConnectorList, which retrieves a list of connectors from  Fivetran using the [list connectors in group](https://developers.fivetran.com/openapi/reference/v1/operation/list_all_connectors_in_group/) Fivetran api call.
 
-~~~
+```python
 url = "https://api.fivetran.com/v1/groups/" + group_id + "/connectors"
 
 headers = {"Accept": "application/json"}
@@ -63,26 +63,86 @@ json_return= {
     'group_id': group_id,
     'connectors_list': connectors_list
 }
-~~~
-
+```
 
 The output of getConnectorList to the StepFunction output is as follows:
 
-~~~
+```python
     {
         'group_id': 'iii_outgrow', 
         'connectors_list': ['purr_rich', 'replica_rarest']
     }
-~~~
+```
 
 
 Next, the state machine enters a "Sync All Connectors in group" state, which is a Map state that processes each connector in the above `connectors_list`. This state machine then iterates the connector name by calling a Lambda function called syncFivetranConnectors, which synchronizes a single connector and addtionally sends a task token. The task token is stored in a DynamoDB table and the Sync Connectors state waits for the task token to be returned before proceeding to the next stage. 
 
+```python
+def lambda_handler(event, context):
+    
+    connector_id = event['connectors_id']
+    token= event['MyTaskToken']
+
+    syncFivetranConnector(connector_id)
+    storeToken(connector_id,token)
+
+
+def syncFivetranConnector(connector_id):
+    FivetranKey=get_secret('FivetranKey')
+    FivetranSecret=get_secret('FivetranSecret')
+
+    url = "https://api.fivetran.com/v1/connectors/" + connector_id + "/sync"
+
+    headers = {"Accept": "application/json"}
+
+    response = requests.post(url, headers=headers, auth=(FivetranKey,FivetranSecret))
+
+    data = response.json()
+    print(data)
+
+def storeToken(connector_id,token):
+    client = boto3.resource('dynamodb')
+    table = client.Table("stateTokenTable")
+    print(table.table_status)
+
+    table.put_item(Item= {'id': connector_id,'MyTaskToken': token})
+```
+<br/>
 > Each lambda in the interation must receive a token response before proceeding. The step function state will remain in progress until the wait token is returned.
 
-This allows the Sync All Connectors in group state to process each connector in parallel while still maintaining the correct order of execution. This token will be returned once fivetran succesfully finishes and sends a response to our webhook. When the webhook is triggered, it retrieves the corresponding token from dynamodb, and the returns this token to our stepfunction, allowing that step to complete.
+<br/>
+We can see this logical step progression using the StepFunctions visual editor:
+![step_function_visual_editor diagram](/img/step_function_visual_editor.png)
 
-After all connectors have been processed, state transitions to a "run DBT project" state, which invokes an ECS task that runs a dbt project to transform the data from the connectors. 
+<br/>
+
+The `Sync All Connectors in group` state processes each connector in parallel while still maintaining the correct order of execution. This token will be returned once fivetran succesfully finishes and sends a response to our webhook. When the webhook is triggered, it retrieves the corresponding token from dynamodb, and the returns this token to our stepfunction, allowing that step to complete. This can be seen in the following code from `fivetranWebook` function:
+
+```python
+connector_id = body['connector_id']
+status=body['data']['status']
+
+# Get the wait token from the dynamoDB table using connection_id
+token = getWaitToken(connector_id)
+
+# Condtional Logic to send success or failure to step function
+client_stepfunction = boto3.client('stepfunctions')
+
+if status == 'SUCCESSFUL':
+    client_stepfunction.send_task_success(taskToken=token,output='{}')
+    print('success')
+
+else:
+    print('failure')
+    client_stepfunction.send_task_failure(taskToken=token)
+```
+
+After all connectors have been processed with a successful state, state transitions to a `run DBT project` state, which invokes an ECS Fargate task that runs a dbt project in our specified database.
+
+Below is the stepfunction output which we can use to monitor and diagnose any issues that may arise.
+
+![table diagram](/img/step_function_table.png)
+<!-- ![graph diagram](/img/step_function_graph.png) -->
 
 # Wrapping Up
 

@@ -12,6 +12,9 @@ tags: stepfunction aws fivetran lambda dbt
 
 Automating and orchestrating data workflows can be a daunting task, but with the power of AWS Step Functions, it's easier than you might think! In this post, we'll show you how to use Step Functions to coordinate the execution of multiple AWS services and streamline your workflows with Fivetran connectors and dbt into Snowflake. 
 
+
+> If you'd just like to get the solution I've created a repo on [Github](https://github.com/JMiocevich/demo-fivetran-stepfunction-orchestration) which you can reference and deploy yourself.
+
 # Setting the Stage
 
 Before we dive in, make sure you have the following:

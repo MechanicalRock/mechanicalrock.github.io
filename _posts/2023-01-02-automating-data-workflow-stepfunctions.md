@@ -45,8 +45,10 @@ Three AWS Lambda functions:
 AWS Step Functions can be used to build a workflow that automates tasks in your system. In this particular solution, a state machine is defined in the statemachine.yml file and outlines the steps in the workflow. The state machine starts by calling a Lambda function called getConnectorList, which retrieves a list of connectors from  Fivetran and stores the result in the state machine's output. The output of getConnectorList is as follows:
 
 ~~~
-{'group_id': 'iii_outgrow', 
-'connectors_list': ['purr_rich', 'replica_rarest']}
+{
+    'group_id': 'iii_outgrow', 
+    'connectors_list': ['purr_rich', 'replica_rarest']
+}
 ~~~
 
 

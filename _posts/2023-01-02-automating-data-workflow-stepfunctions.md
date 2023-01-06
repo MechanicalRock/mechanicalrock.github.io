@@ -5,7 +5,6 @@ title: "Automating Data Workflows with AWS Step Functions: An Example Using Five
 date: 2023-01-06
 highlight: monokai
 author: Joseph Miocevich
-image: 
 tags: stepfunction aws fivetran lambda dbt
 ---
 
@@ -43,9 +42,15 @@ Three AWS Lambda functions:
 
 # AWS Step Functions in Action
 
-AWS Step Functions can be used to build a workflow that automates tasks in your system. In this particular solution, a state machine is defined in the statemachine.yml file and outlines the steps in the workflow. The state machine starts by calling a Lambda function called getConnectorList, which retrieves a list of connectors from  Fivetran and stores the result in the state machine's output.
+AWS Step Functions can be used to build a workflow that automates tasks in your system. In this particular solution, a state machine is defined in the statemachine.yml file and outlines the steps in the workflow. The state machine starts by calling a Lambda function called getConnectorList, which retrieves a list of connectors from  Fivetran and stores the result in the state machine's output. The output of getConnectorList is as follows:
 
-Next, the state machine enters a "Sync All Connectors in group" state, which is a Map state that processes each connector in the list using an ItemProcessor state machine. This state machine starts by calling a Lambda function called syncFivetranConnectors, which synchronizes a single connector and sends a task token. The task token is stored in a DynamoDB table and the Sync Connectors state waits for the task token to be returned before proceeding. 
+~~~
+{'group_id': 'iii_outgrow', 
+'connectors_list': ['purr_rich', 'replica_rarest']}
+~~~
+
+
+Next, the state machine enters a "Sync All Connectors in group" state, which is a Map state that processes each connector in the above `connectors_list`. This state machine then maps the connector name by calling a Lambda function called syncFivetranConnectors, which synchronizes a single connector and addtionally sends a task token. The task token is stored in a DynamoDB table and the Sync Connectors state waits for the task token to be returned before proceeding. 
 
 This allows the Sync All Connectors in group state to process each connector in parallel while still maintaining the correct order of execution. This token will be returned once fivetran succesfully finishes and sends a response to our webhook. When the webhook is triggered, it retrieves the corresponding token from dynamodb, and the returns this token to our stepfunction, allowing that step to complete.
 

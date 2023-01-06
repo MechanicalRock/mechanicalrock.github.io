@@ -22,7 +22,7 @@ Before we dive in, make sure you have the following:
 - Familiarity with Fivetran and dbt
 - Snowflake Account
 
-Solution Overview
+# Solution Overview
 
 To give you an idea of how everything fits together, here's a diagram of the solution architecture:
 

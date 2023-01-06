@@ -97,8 +97,6 @@ def syncFivetranConnector(connector_id):
 
     response = requests.post(url, headers=headers, auth=(FivetranKey,FivetranSecret))
 
-    data = response.json()
-    print(data)
 
 def storeToken(connector_id,token):
     client = boto3.resource('dynamodb')

@@ -2,7 +2,7 @@
 layout: post
 font: serif
 title: "Automating Data Workflows with AWS Step Functions: An Example Using Fivetran and dbt"
-date: 2023-01-03
+date: 2023-01-06
 highlight: monokai
 author: Joseph Miocevich
 image: 

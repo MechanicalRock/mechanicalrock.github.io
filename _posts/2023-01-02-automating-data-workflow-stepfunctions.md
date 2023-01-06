@@ -42,17 +42,43 @@ Three AWS Lambda functions:
 
 # AWS Step Functions in Action
 
-AWS Step Functions can be used to build a workflow that automates tasks in your system. In this particular solution, a state machine is defined in the statemachine.yml file and outlines the steps in the workflow. The state machine starts by calling a Lambda function called getConnectorList, which retrieves a list of connectors from  Fivetran and stores the result in the state machine's output. The output of getConnectorList is as follows:
+AWS Step Functions can be used to build a workflow that automates tasks in your system. In this particular solution, a state machine is defined in the statemachine.yml file and outlines the steps in the workflow. The state machine starts by calling a Lambda function called getConnectorList, which retrieves a list of connectors from  Fivetran using the [List Connectors in Group](https://developers.fivetran.com/openapi/reference/v1/operation/list_all_connectors_in_group/) api call.
 
 ~~~
-{
-    'group_id': 'iii_outgrow', 
-    'connectors_list': ['purr_rich', 'replica_rarest']
+url = "https://api.fivetran.com/v1/groups/" + group_id + "/connectors"
+
+headers = {"Accept": "application/json"}
+
+response = requests.get(url, headers=headers, auth=(FivetranKey,FivetranSecret))
+
+data = response.json()
+print(data)
+print(data['data']['items'])
+
+connectors_list=[]
+for x in data['data']['items']:
+    connectors_list.append(x['id'])
+
+json_return= {
+    'group_id': group_id,
+    'connectors_list': connectors_list
 }
 ~~~
 
 
-Next, the state machine enters a "Sync All Connectors in group" state, which is a Map state that processes each connector in the above `connectors_list`. This state machine then maps the connector name by calling a Lambda function called syncFivetranConnectors, which synchronizes a single connector and addtionally sends a task token. The task token is stored in a DynamoDB table and the Sync Connectors state waits for the task token to be returned before proceeding. 
+The output of getConnectorList to the StepFunction output is as follows:
+
+~~~
+    {
+        'group_id': 'iii_outgrow', 
+        'connectors_list': ['purr_rich', 'replica_rarest']
+    }
+~~~
+
+
+Next, the state machine enters a "Sync All Connectors in group" state, which is a Map state that processes each connector in the above `connectors_list`. This state machine then iterates the connector name by calling a Lambda function called syncFivetranConnectors, which synchronizes a single connector and addtionally sends a task token. The task token is stored in a DynamoDB table and the Sync Connectors state waits for the task token to be returned before proceeding to the next stage. 
+
+> Each lambda in the interation must receive a token response before proceeding. The step function state will remain in progress until it is returned.
 
 This allows the Sync All Connectors in group state to process each connector in parallel while still maintaining the correct order of execution. This token will be returned once fivetran succesfully finishes and sends a response to our webhook. When the webhook is triggered, it retrieves the corresponding token from dynamodb, and the returns this token to our stepfunction, allowing that step to complete.
 

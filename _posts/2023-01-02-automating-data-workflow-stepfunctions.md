@@ -152,4 +152,3 @@ Don't be shy, [get in touch with us!](https://www.mechanicalrock.io/lets-get-sta
 
 ![Mechanical Rock Logo](/img/mr-logo-dark-landscape.jpg){:loading="lazy"}
 
-> Header image by <a href="https://unsplash.com/@markusspiske?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Markus Spiske</a> on <a href="https://unsplash.com/s/photos/authentication?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>

@@ -5,6 +5,7 @@ title: "Automating Data Workflows with AWS Step Functions: An Example Using Five
 date: 2023-01-06
 highlight: monokai
 author: Joseph Miocevich
+image: /img/step_functions_fivetran.png
 tags: stepfunction aws fivetran lambda dbt
 ---
 

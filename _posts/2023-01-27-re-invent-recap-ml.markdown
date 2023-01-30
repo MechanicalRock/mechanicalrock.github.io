@@ -70,7 +70,7 @@ As you know, The end to end workflow of a Machine Learning solution usually cons
 - Data Transformation: Enrich data and convert data format compatible with the input type of your ML training Algorithm.
 - Visualization: Visualize the training data for comparison, relationship, distribution and composition analysis on your data.  
 - Model Training: Train your model with transformed dataset. You can always set Testing metrics to monitor your model during training.
-- Evaluate your model with test dataset. AWS SageMaker provides you with evaluating metrics. 
+- Evaluation: Evaluate your model with test dataset. AWS SageMaker provides you with evaluating metrics. 
 - Hyperparameter Tuning: Tune the model hyperparameters to get a better performance and accuracy.
 - Production Ready: Deploy your model to inference instances for production use.
 

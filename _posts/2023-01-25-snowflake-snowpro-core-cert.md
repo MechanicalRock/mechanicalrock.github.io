@@ -12,7 +12,7 @@ tags: [snowflake, snowpro, core, certification, cheatsheet, exam, notes]
 ---
 
 <center>
-  <img src="/img/snowflake-snowpro-core-cert/snowflake.jpg" />
+  <img src="/img/snowflake-snowpro-core-cert/snowflake.jpg" alt="https://unsplash.com/photos/5fedGbqYwvM"/>
 </center><br/>
 
 # Snowflake SnowPro Core Certification cheat sheet
@@ -25,7 +25,7 @@ If you are fresh and planning to start your study, skimming through the Snowflak
 
 - [Secure Data Sharing](https://docs.snowflake.com/en/user-guide/data-sharing-intro.html)
   - sharing secure elements
-  - the types of objects that can and cannot be shared 
+  - the types of objects that can and cannot be shared
 - File uploads, downloads and unload data from Snowflake
   - [put and list commands](https://docs.snowflake.com/en/user-guide/data-load-local-file-system-stage.html)
   - [download files from stage](https://docs.snowflake.com/en/sql-reference/sql/get.html)

@@ -15,15 +15,15 @@ tags: [snowflake, snowpro, core, certification, cheatsheet, exam, notes]
 
 # Snowflake SnowPro Core Certification cheat sheet
 
-After working with Snowflake for almost four years I have finally bowed down to studying for the Snowflake certification and passed my exam this morning. Before I started going through the practice tests I was thinking with four years of experience passing the exam should be fairly easy. However soon after going through my first online practice test, I realized the practical experience of using Snowflake plus intuition and some luck would probably only get you less than 50% of the score and you will need a lot of studying for things that you don't normally use or you would google whenever you come across those requirements. Unfortunately googling is not an option during the test, hence this cheat sheet might come handy if you are studying for this cert.
+After working with Snowflake for almost four years I have finally bowed down to studying for the Snowflake certification and passed my exam this morning. Before I started going through a set of practice tests, I thought the exam would be fairly easy given I have four years experience working with Snowflake. However, a little into my first online practice test, I realized the practical experience of using Snowflake, plus intuition and luck would probably only get me less than 50%. You will need to study a lot, especially for things that you don't normally use or would Google! Unfortunately Googling is not an option during the test, and therefore, this cheat sheet might come in handy if you are studying for the Snowflake Certification.
 
 ## General exam covered areas
 
-If you are fresh and planning to start your study, I would suggest starting with skimming through Snowflake documentation for some of the generic topics that are mostly covered in the exam. From what I remember below are some of the main headlines that was covered in my exam this morning:
+If you are fresh and planning to start your study, skimming through the Snowflake documentation is a great start. This documentation gives you a good understanding of the generic topics covered in the exam. From memory, the following headings came up in my exam this morning:
 
 - [Secure Data Sharing](https://docs.snowflake.com/en/user-guide/data-sharing-intro.html)
   - sharing secure elements
-  - what types of objects can be shared and which ones can't
+  - the types of objects that can and cannot be shared 
 - File uploads, downloads and unload data from Snowflake
   - [put and list commands](https://docs.snowflake.com/en/user-guide/data-load-local-file-system-stage.html)
   - [download files from stage](https://docs.snowflake.com/en/sql-reference/sql/get.html)
@@ -42,8 +42,8 @@ If you are fresh and planning to start your study, I would suggest starting with
   - syntax of adding and dropping a clustering key
   - How does micro partitioning ranges effect clustering depth
 - [Query profile](https://docs.snowflake.com/en/user-guide/ui-query-profile.html)
-  - what information does it give us
-  - storage information on the query profile
+  - what information it gives us
+  - storage information on query profile
   - debugging an issue using query profile
 - [Directory tables](https://docs.snowflake.com/en/user-guide/data-load-dirtables.html)
 - [Network policy](https://docs.snowflake.com/en/user-guide/network-policies.html)
@@ -58,7 +58,7 @@ If you are fresh and planning to start your study, I would suggest starting with
 
 ## Practice exam materials
 
-Once you have skimmed through through the above documentations, I would suggest going through practice tests as fast as you can. These practice tests are the best help to get you ready for the exam. I highly recommend starting with Udemy practice tests and taking notes as you go until you are able to get 90+% in all of the Udemy practice tests. If you have more time then go through at least a couple of the testprep practice runs. It helps to fill some of the gaps that Udemy does not cover. Going through a couple of testprep practice runs should be more than enough:
+Once you have skimmed through the above documentation discussed before, I would suggest going through the practice tests as fast as you can. These practice tests are great and will help you prepare for the exam. I highly recommend starting with Udemy practice tests and taking notes as you go until you are able to get 90%+ in each. If you have additional time, go through a couple of the testprep practice runs to supplement your understanding and help cover gaps in the Udemy practice test. This should be plenty of practice to help you pass the exam.
 
 **Udemy** -> (<https://www.udemy.com/course/snowflake-snowpro-core-certification-exam-practice-sets/>)
 There was a lot of questions in the exam that was similar to Udemy practice questions.
@@ -68,7 +68,7 @@ TestPrep generally has very complex practice tests but I definitely saw some que
 
 ## Practice exam notes
 
-When I started going through the practice exams, below headlines were the ones that I often got wrong and decided to take notes on them. Hope these notes would come handy to you too:
+When I started going through the practice exams, I struggled with the following headings the most and took notes. I hope these notes come in handy for you too:
 
 ### Snowflake built-in functions for handling staged files
 
@@ -108,48 +108,48 @@ Many of these system functions have the prefix SYSTEM$ (e.g. SYSTEM\$TYPEOF).
 **AUTOMATIC_CLUSTERING_HISTORY** table -> Snowflake Information Schema:
 view the billing for Automatic Clustering
 
-**AUTOMATIC_CLUSTERING_HISTORY** View -> Account Usage:
+**AUTOMATIC_CLUSTERING_HISTORY** view -> Account Usage:
 view the billing for Automatic Clustering
 
-**REPLICATION_USAGE_HISTORY** table -> Snowflake Information Schema:
+**REPLICATION_USAGE_HISTORY** table -> INFORMATION_SCHEMA:
 The table function REPLICATION_USAGE_HISTORY in Snowflake Information Schema can be used to query the replication history for a specified database within a specified date range. The information returned by the function includes the database name, credits consumed and bytes transferred for replication.
 
-**REPLICATION_USAGE_HISTORY** view -> Account Usage Schema
+**REPLICATION_USAGE_HISTORY** view -> Account Usage:
 can be used to query the replication history for a specified database. The returned results include the database name, credits consumed, and bytes transferred for replication. Usage data is retained for 365 days (1 year).
 
-**QUERY_HISTORY** view -> Account Usage :
+**QUERY_HISTORY** view -> Account Usage:
 Can be used to query Snowflake query history by various dimensions (time range, session, user, warehouse, etc.) within the last 365 days (1 year).
 The warehouse performance can also be evaluated by querying the Account Usage QUERY_HISTORY view.
 
-**ACCESS_HISTORY** view ->  Account Usage :
+**ACCESS_HISTORY** view -> Account Usage:
 Access History in Snowflake refers to when the user query reads column data and when the SQL statement performs a data write operation, such as INSERT, UPDATE, and DELETE, along with variations of the COPY command, from the source data object to the target data object
 
-**COPY_HISTORY** View -> Account Usage :
-This Account Usage view can be used to query Snowflake data loading history for the last 365 days (1 year). The view displays load activity for both COPY INTO [table] statements and continuous data loading using Snowpipe. The view avoids the 10,000 row limitation of the LOAD_HISTORY View.
+**COPY_HISTORY** view -> Account Usage:
+This Account Usage view can be used to query Snowflake data loading history for the last 365 days. The view displays load activity for both COPY INTO [table] statements and continuous data loading using Snowpipe. The view avoids the 10,000 row limitation of the LOAD_HISTORY View.
 
 **LOAD_HISTORY** view -> INFORMATION_SCHEMA:
 The status of COPY INTO command can be checked from querying the INFORMATION_SCHEMA.LOAD_HISTORY view
 
-**MASKING_POLICIES**  view ->  Account Usage :
+**MASKING_POLICIES** view -> Account Usage:
 This Account Usage view provides the Column-level Security masking policies in your account.
 Each row in this view corresponds to a different masking policy.
 
-**TABLE_STORAGE_METRICS**  ->  INFORMATION_SCHEMA :
+**TABLE_STORAGE_METRICS** view -> INFORMATION_SCHEMA:
 This view displays table-level storage utilization information, which is used to calculate the storage billing for each table in the account, including tables that have been dropped, but are still incurring storage costs.
 
-**TABLE_STORAGE_METRICS**  ->  Account Usage :
+**TABLE_STORAGE_METRICS** view -> Account Usage:
 This view displays table-level storage utilization information, which is used to calculate the storage billing for each table in the account, including tables that have been dropped, but are still incurring storage costs.
 
-**POLICIES_REFERENCES** view  ->  Account Usage :
+**POLICIES_REFERENCES** view -> Account Usage:
 Returns a row for each object that has the specified policy assigned to the object or returns a row for each policy assigned to the specified object.
 
-**POLICIES_REFERENCES** table  ->  INFORMATION_SCHEMA :
+**POLICIES_REFERENCES** table -> INFORMATION_SCHEMA:
 Returns a row for each object that has the specified policy assigned to the object or returns a row for each policy assigned to the specified object.
 
-**AUTO_REFRESH_REGISTRATION_HISTORY** table function
+**AUTO_REFRESH_REGISTRATION_HISTORY** -> table function:
 can be used to query the history of data files registered in the metadata of specified objects and the credits billed for these operations. The table function returns the billing history within a specified date range for your entire Snowflake account. This function returns billing activity within the last 14 days.
 
-**STAGE_DIRECTORY_FILE_REGISTRATION_HISTORY** table function
+**STAGE_DIRECTORY_FILE_REGISTRATION_HISTORY** -> table function:
 can be used to query information about the metadata history for a directory table, including: - Files added or removed automatically as part of a metadata refresh. - Any errors found when refreshing the metadata.
 
 ### Size specific notes
@@ -207,17 +207,17 @@ Snowflake's unique architecture consists of three key layers:
 ## Some sample questions
 
 - **What are javascript stored procedure delimiters?**
-single quotes ' or double dollar signs \$\$.
+Single quotes ' or double dollar signs \$\$.
 - **What are the output fields of directory table result?**
-Relative_path and Modified_date
+relative_path, size, last_modified, md5, file_url and etag
 - **How do you reference a sql variable?**
-using a $ sign
+Using a $ sign
 - **How do you get the current version of the driver in SQL command?**
 SELECT CURRENT_CLIENT() SQL function
 - **What SQL ANSI constrains does Snowflake Enforce?**
 Snowflake supports defining and maintaining constraints like Primary, Foreign Key, Unique and NOT NULL, BUT does not enforce them except for NOT NULL constraints, which are always enforced.
 - **How many days does Snowflake keeps transiant tables in fail safe?**
-zero
+Zero
 - **What's the retention period of transient tables in time travel?**
 1 day
 - **Which role can set MINS_TO_BYPASS_NETWORK_POLICY property?**

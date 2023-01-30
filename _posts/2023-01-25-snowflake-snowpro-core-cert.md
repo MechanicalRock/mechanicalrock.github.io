@@ -19,7 +19,7 @@ After working with Snowflake for almost four years I have finally bowed down to 
 
 ## General exam covered areas
 
-If you are fresh and planning to start your study, I would suggest starting with scheming through Snowflake documentation for some of the generic topics that are mostly covered in the exam. From what I remember below are some of the main ones that was covered in my exam this morning:
+If you are fresh and planning to start your study, I would suggest starting with skimming through Snowflake documentation for some of the generic topics that are mostly covered in the exam. From what I remember below are some of the main headlines that was covered in my exam this morning:
 
 - [Secure Data Sharing](https://docs.snowflake.com/en/user-guide/data-sharing-intro.html)
   - sharing secure elements
@@ -56,13 +56,21 @@ If you are fresh and planning to start your study, I would suggest starting with
   - [TABLE_STORAGE_HISTORY](https://docs.snowflake.com/en/sql-reference/info-schema/table_storage_metrics.html)
 - [Differences between account usage views vs information schema views](https://docs.snowflake.com/en/sql-reference/account-usage.html#differences-between-account-usage-and-information-schema)
 
+## Practice exam materials
+
+Once you have skimmed through through the above documentations, I would suggest going through practice tests as fast as you can. These practice tests are the best help to get you ready for the exam. I highly recommend starting with Udemy practice tests and taking notes as you go until you are able to get 90+% in all of the Udemy practice tests. If you have more time then go through at least a couple of the testprep practice runs. It helps to fill some of the gaps that Udemy does not cover. Going through a couple of testprep practice runs should be more than enough:
+
+**Udemy** -> (<https://www.udemy.com/course/snowflake-snowpro-core-certification-exam-practice-sets/>)
+There was a lot of questions in the exam that was similar to Udemy practice questions.
+
+**TestPrep** -> (<https://www.testpreptraining.com/snowflake-snowpro-core-certification>)
+TestPrep generally has very complex practice tests but I definitely saw some questions in the exam that was exactly like testprep questions
+
 ## Practice exam notes
 
 When I started going through the practice exams, below headlines were the ones that I often got wrong and decided to take notes on them. Hope these notes would come handy to you too:
 
 ### Snowflake built-in functions for handling staged files
-
-<br/>
 
 **GET_ABSOLOUTE_PATH** -> Retrieves the absolute path of a staged file using the stage name and path of the file relative to its location in the stage as inputs.
 
@@ -77,8 +85,6 @@ When I started going through the practice exams, below headlines were the ones t
 **GET_RELATIVE_PATH** -> Extracts the path of a staged file relative to its location in the stage using the stage name and absolute file path in cloud storage as inputs.
 
 ### Differences between Snowflake functions of various types
-
-<br/>
 
 **TABLE FUNCTIONS** -> A table function returns a set of rows for each input row. The returned set can contain zero, one, or more rows. Each row can contain one or more columns.
 
@@ -98,8 +104,6 @@ Many of these system functions have the prefix SYSTEM$ (e.g. SYSTEM\$TYPEOF).
 **AGGREGATE FUNCTIONS** -> An aggregate function takes multiple rows (actually, zero, one, or more rows) as input and produces a single output. In contrast, scalar functions take one row as input and produce one row (one value) as output.
 
 ### Snowflake built-in views and tables
-
-<br/>
 
 **AUTOMATIC_CLUSTERING_HISTORY** table -> Snowflake Information Schema:
 view the billing for Automatic Clustering
@@ -150,15 +154,11 @@ can be used to query information about the metadata history for a directory tabl
 
 ### Size specific notes
 
-<br/>
-
 - The VARIANT data type imposes a 16 MB size limit on individual rows
 - A micro-partition can contain between 50 MB to 500 MB of uncompressed data
 - Recommended compressed size of data files for optimal bulk data loads is 100 to 250 MB
 
 ### Retention specific notes
-
-<br/>
 
 - Snowflake keeps the batch load history (from Stage) using COPY statement for 64 days.
 - Snowpipe load history is 14 days
@@ -173,14 +173,6 @@ can be used to query information about the metadata history for a directory tabl
 - There are two different scaling policies, one is the Standard policy, and one is the Economy policy.
 - There are two ways to set up a multi-cluster warehouse: in maximized mode, or auto-scaling mode. With maximized mode, you simply set your minimum equal to your maximum, and those values are something greater than one.
 
-———————————————————————————————————————————
-
-Temporary tables, stages, tasks, streams, pipes, and external tables are not currently supported for replication.
-
-Databases and Schemas can be cloned. External Table and Internal (Snowflake) stages do not get cloned.
-
-Database and share replication are available in all editions, including the Standard edition. Replication of all other objects is only available for Business Critical Edition (or higher).
-
 ### Secure data sharing
 
 Secure Data Sharing enables sharing selected objects in a database in your account with other Snowflake accounts. The following Snowflake database objects can be shared:
@@ -193,58 +185,58 @@ Secure UDFs
 
 Snowflake enables the sharing of databases through shares created by data providers and “imported” by data consumers.
 
-———————————————————————————————————————————
+### Replication and cloning
+
+Temporary tables, stages, tasks, streams, pipes, and external tables are not currently supported for replication.
+
+Databases and Schemas can be cloned. External Table and Internal (Snowflake) stages do not get cloned.
+
+Database and share replication are available in all editions, including the Standard edition. Replication of all other objects is only available for Business Critical Edition (or higher).
+
+### Snowflake sampling methods
 
 SYSTEM | BLOCK sampling is often faster than BERNOULLI | ROW sampling. Also, BERNOULLI | ROW method is good for Smaller Tables, and SYSTEM | BLOCK method is for Larger Tables.
 
-———————————————————————————————————————————
+### Snowflake architecture
 
 Snowflake's unique architecture consists of three key layers:
  • Database Storage
  • Query Processing
  • Cloud Services
 
-## Practice exam materials
+## Some of the questions in my actual exam from back of my mind
 
-**Udemy** -> (<https://www.udemy.com/course/snowflake-snowpro-core-certification-exam-practice-sets/>)
-There was a lot of questions in the exam that was similar to Udemy practice questions.
+These are the questions that were not similar to udemy practice tests, hence I remember them
 
-**TestPrep** -> (<https://www.testpreptraining.com/snowflake-snowpro-core-certification>)
-TestPrep generally has very complex practice tests but I definitely saw some questions in the exam that was exactly like testprep questions
-
-I would suggest to start with Udemy practice tests and taking notes as you go until you are able to get 90+% in all of the Udemy practice tests. If you have more time then go through at least a couple of the testprep practice practice runs. It helps to fill up some of the gaps that Udemy does not cover.
-
-## Some of the questions from back of my mind
-
-**What are javascript stored procedure delimiters?**
-single quotes ' or double dollar signs $$.
-**What are the output fields of directory table result?**
+- **What are javascript stored procedure delimiters?**
+single quotes ' or double dollar signs \$\$.
+- **What are the output fields of directory table result?**
 Relative_path and Modified_date
-**How do you reference a sql variable?**
+- **How do you reference a sql variable?**
 using a $ sign
-**How do you get the current version of the driver in SQL command?**
+- **How do you get the current version of the driver in SQL command?**
 SELECT CURRENT_CLIENT() SQL function
-**What SQL ANSI constrains does Snowflake Enforce?**
+- **What SQL ANSI constrains does Snowflake Enforce?**
 Snowflake supports defining and maintaining constraints like Primary, Foreign Key, Unique and NOT NULL, BUT does not enforce them except for NOT NULL constraints, which are always enforced.
-**How many days does Snowflake keeps transiant tables in fail safe?**
+- **How many days does Snowflake keeps transiant tables in fail safe?**
 zero
-**What's the retintion period of transient tables in time travel?**
+- **What's the retintion period of transient tables in time travel?**
 1 day
-**Which role can set MINS_TO_BYPASS_NETWORK_POLICY property?**
+- **Which role can set MINS_TO_BYPASS_NETWORK_POLICY property?**
 No one, you have to contact Snowflake support
-**What are shareable objects?**
+- **What are shareable objects?**
 Tables, External tables, Secure views, Secure materialized views, Secure UDFs
-**What is the maximum number of tags you are allowed to assign to an object?**
+- **What is the maximum number of tags you are allowed to assign to an object?**
 50
-**What grants do you need to add search optimization?**
+- **What grants do you need to add search optimization?**
 GRANT ADD SEARCH OPTIMIZATION ON SCHEMA X TO ROLE Y
-**What’s the maximum size limit when uploading a file through snowflake wizard?**
+- **What’s the maximum size limit when uploading a file through snowflake wizard?**
 Should be smaller than 50 MB
-**What's the minimum timeout you can set for Snowflake Session policy?**
+- **What's the minimum timeout you can set for Snowflake Session policy?**
 The min timeout I can set is 5 minutes
-**You are uploading local file 100GB and its taking more than 24 hrs, what happens at the 24th hour?**
+- **You are uploading local file 100GB and its taking more than 24 hrs, what happens at the 24th hour?**
 Maximum allowed duration of 24 hours, it could be aborted without any portion of the file being committed
 
 Don't be shy, [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)
 
-![Mechanical Rock Logo](/img/mr-logo-dark-landscape.jpg){:loading="lazy"}
+![Mechanical Rock Logo](/img/mr-logo-dark-landscape.jpg)

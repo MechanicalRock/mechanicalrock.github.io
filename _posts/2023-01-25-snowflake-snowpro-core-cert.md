@@ -218,7 +218,7 @@ SELECT CURRENT_CLIENT() SQL function
 Snowflake supports defining and maintaining constraints like Primary, Foreign Key, Unique and NOT NULL, BUT does not enforce them except for NOT NULL constraints, which are always enforced.
 - **How many days does Snowflake keeps transiant tables in fail safe?**
 zero
-- **What's the retintion period of transient tables in time travel?**
+- **What's the retention period of transient tables in time travel?**
 1 day
 - **Which role can set MINS_TO_BYPASS_NETWORK_POLICY property?**
 No one, you have to contact Snowflake support

@@ -206,8 +206,6 @@ Snowflake's unique architecture consists of three key layers:
 
 ## Some sample questions
 
-These are the questions that were not similar to udemy practice tests, hence I remember them
-
 - **What are javascript stored procedure delimiters?**
 single quotes ' or double dollar signs \$\$.
 - **What are the output fields of directory table result?**

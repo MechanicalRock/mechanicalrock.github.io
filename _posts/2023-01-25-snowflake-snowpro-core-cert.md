@@ -204,7 +204,7 @@ Snowflake's unique architecture consists of three key layers:
  • Query Processing
  • Cloud Services
 
-## Some of the questions in my actual exam from back of my mind
+## Some sample questions
 
 These are the questions that were not similar to udemy practice tests, hence I remember them
 

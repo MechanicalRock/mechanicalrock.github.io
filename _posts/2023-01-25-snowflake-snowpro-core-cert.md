@@ -1,17 +1,19 @@
 ---
 layout: postv2
-hidden: true
 inject_optimize_tag: true
 canonical_url: https://mechanicalrock.github.io/2023/01/25/snowflake-snowpro-core-cert.html
 font: serif
 title: "Snowflake SnowPro Core Certification notes"
-description: ""
+description: "Snowflake SnowPro Core Certification study guide"
 date: 2023-01-25
 highlight: monokai
-image: /img/skeleton-loaders/banner.jpg
 author: Zainab Maleki
 tags: [snowflake, snowpro, core, certification, cheatsheet, exam, notes]
 ---
+
+<center>
+  <img src="/img/snowflake-snowpro-core-cert/snowflake.jpg" />
+</center><br/>
 
 # Snowflake SnowPro Core Certification cheat sheet
 
@@ -195,7 +197,7 @@ Database and share replication are available in all editions, including the Stan
 
 ### Snowflake sampling methods
 
-SYSTEM | BLOCK sampling is often faster than BERNOULLI | ROW sampling. Also, BERNOULLI | ROW method is good for Smaller Tables, and SYSTEM | BLOCK method is for Larger Tables.
+SYSTEM \| BLOCK sampling is often faster than BERNOULLI \| ROW sampling. Also, BERNOULLI \| ROW method is good for Smaller Tables, and SYSTEM \| BLOCK method is for Larger Tables.
 
 ### Snowflake architecture
 
@@ -203,6 +205,8 @@ Snowflake's unique architecture consists of three key layers:
  • Database Storage
  • Query Processing
  • Cloud Services
+
+<br/>
 
 ## Some sample questions
 

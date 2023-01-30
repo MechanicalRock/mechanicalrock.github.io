@@ -1,17 +1,19 @@
 ---
 layout: postv2
-hidden: true
 inject_optimize_tag: true
 canonical_url: https://mechanicalrock.github.io/2023/01/25/snowflake-snowpro-core-cert.html
 font: serif
 title: "Snowflake SnowPro Core Certification notes"
-description: ""
+description: "Snowflake SnowPro Core Certification study guide"
 date: 2023-01-25
 highlight: monokai
-image: /img/skeleton-loaders/banner.jpg
 author: Zainab Maleki
 tags: [snowflake, snowpro, core, certification, cheatsheet, exam, notes]
 ---
+
+<center>
+  <img src="/img/snowflake-snowpro-core-cert/snowflake.jpg" alt="https://unsplash.com/photos/5fedGbqYwvM"/>
+</center><br/>
 
 # Snowflake SnowPro Core Certification cheat sheet
 
@@ -23,7 +25,7 @@ If you are fresh and planning to start your study, skimming through the Snowflak
 
 - [Secure Data Sharing](https://docs.snowflake.com/en/user-guide/data-sharing-intro.html)
   - sharing secure elements
-  - the types of objects that can and cannot be shared 
+  - the types of objects that can and cannot be shared
 - File uploads, downloads and unload data from Snowflake
   - [put and list commands](https://docs.snowflake.com/en/user-guide/data-load-local-file-system-stage.html)
   - [download files from stage](https://docs.snowflake.com/en/sql-reference/sql/get.html)
@@ -195,7 +197,7 @@ Database and share replication are available in all editions, including the Stan
 
 ### Snowflake sampling methods
 
-SYSTEM | BLOCK sampling is often faster than BERNOULLI | ROW sampling. Also, BERNOULLI | ROW method is good for Smaller Tables, and SYSTEM | BLOCK method is for Larger Tables.
+SYSTEM \| BLOCK sampling is often faster than BERNOULLI \| ROW sampling. Also, BERNOULLI \| ROW method is good for Smaller Tables, and SYSTEM \| BLOCK method is for Larger Tables.
 
 ### Snowflake architecture
 
@@ -203,6 +205,8 @@ Snowflake's unique architecture consists of three key layers:
  • Database Storage
  • Query Processing
  • Cloud Services
+
+<br/>
 
 ## Some sample questions
 

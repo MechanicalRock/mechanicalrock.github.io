@@ -234,6 +234,10 @@ Should be smaller than 50 MB
 The min timeout I can set is 5 minutes
 - **You are uploading local file 100GB and its taking more than 24 hrs, what happens at the 24th hour?**
 Maximum allowed duration of 24 hours, it could be aborted without any portion of the file being committed
+- **What is the benefit of managed schema access?**
+In regular schemas, the owner of an object (i.e. the role that has the OWNERSHIP privilege on the object) can grant further privileges on their objects to other roles. In managed schemas, the schema owner manages all privilege grants, including future grants, on objects in the schema. Object owners retain the OWNERSHIP privileges on the objects; however, only the schema owner can manage privilege grants on the objects.
+- **Snowflake partner portal is accessible via which role?**
+ACCOUNTADMIN role
 
 Don't be shy, [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)
 

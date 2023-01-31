@@ -1,13 +1,13 @@
 ---
-layout: postv2
+layout: post
 inject_optimize_tag: true
 canonical_url: https://mechanicalrock.github.io/2023/01/25/snowflake-snowpro-core-cert.html
-font: serif
 title: "Snowflake SnowPro Core Certification notes"
 description: "Snowflake SnowPro Core Certification study guide"
 date: 2023-01-25
 highlight: monokai
 author: Zainab Maleki
+image: /img/snowflake-snowpro-core-cert/snowflake.jpg
 tags: [snowflake, snowpro, core, certification, cheatsheet, exam, notes]
 ---
 
@@ -15,9 +15,11 @@ tags: [snowflake, snowpro, core, certification, cheatsheet, exam, notes]
   <img src="/img/snowflake-snowpro-core-cert/snowflake.jpg" alt="https://unsplash.com/photos/5fedGbqYwvM"/>
 </center><br/>
 
-# Snowflake SnowPro Core Certification cheat sheet
+## Snowflake SnowPro Core Certification cheat sheet
 
 After working with Snowflake for almost four years I have finally bowed down to studying for the Snowflake certification and passed my exam this morning. Before I started going through a set of practice tests, I thought the exam would be fairly easy given I have four years experience working with Snowflake. However, a little into my first online practice test, I realized the practical experience of using Snowflake, plus intuition and luck would probably only get me less than 50%. You will need to study a lot, especially for things that you don't normally use or would Google! Unfortunately Googling is not an option during the test, and therefore, this cheat sheet might come in handy if you are studying for the Snowflake Certification.
+
+<br/>
 
 ## General exam covered areas
 
@@ -58,6 +60,8 @@ If you are fresh and planning to start your study, skimming through the Snowflak
   - [TABLE_STORAGE_HISTORY](https://docs.snowflake.com/en/sql-reference/info-schema/table_storage_metrics.html)
 - [Differences between account usage views vs information schema views](https://docs.snowflake.com/en/sql-reference/account-usage.html#differences-between-account-usage-and-information-schema)
 
+<br/>
+
 ## Practice exam materials
 
 Once you have skimmed through the above documentation discussed before, I would suggest going through the practice tests as fast as you can. These practice tests are great and will help you prepare for the exam. I highly recommend starting with Udemy practice tests and taking notes as you go until you are able to get 90%+ in each. If you have additional time, go through a couple of the testprep practice runs to supplement your understanding and help cover gaps in the Udemy practice test. This should be plenty of practice to help you pass the exam.
@@ -68,11 +72,17 @@ There was a lot of questions in the exam that was similar to Udemy practice ques
 **TestPrep** -> (<https://www.testpreptraining.com/snowflake-snowpro-core-certification>)
 TestPrep generally has very complex practice tests but I definitely saw some questions in the exam that was exactly like testprep questions
 
+<br/>
+
 ## Practice exam notes
 
 When I started going through the practice exams, I struggled with the following headings the most and took notes. I hope these notes come in handy for you too:
 
+<br/>
+
 ### Snowflake built-in functions for handling staged files
+
+<br/>
 
 **GET_ABSOLOUTE_PATH** -> Retrieves the absolute path of a staged file using the stage name and path of the file relative to its location in the stage as inputs.
 
@@ -86,7 +96,12 @@ When I started going through the practice exams, I struggled with the following 
 
 **GET_RELATIVE_PATH** -> Extracts the path of a staged file relative to its location in the stage using the stage name and absolute file path in cloud storage as inputs.
 
+---
+<br/>
+
 ### Differences between Snowflake functions of various types
+
+<br/>
 
 **TABLE FUNCTIONS** -> A table function returns a set of rows for each input row. The returned set can contain zero, one, or more rows. Each row can contain one or more columns.
 
@@ -105,7 +120,12 @@ Many of these system functions have the prefix SYSTEM$ (e.g. SYSTEM\$TYPEOF).
 
 **AGGREGATE FUNCTIONS** -> An aggregate function takes multiple rows (actually, zero, one, or more rows) as input and produces a single output. In contrast, scalar functions take one row as input and produce one row (one value) as output.
 
+---
+<br/>
+
 ### Snowflake built-in views and tables
+
+<br/>
 
 **AUTOMATIC_CLUSTERING_HISTORY** table -> Snowflake Information Schema:
 view the billing for Automatic Clustering
@@ -154,13 +174,23 @@ can be used to query the history of data files registered in the metadata of spe
 **STAGE_DIRECTORY_FILE_REGISTRATION_HISTORY** -> table function:
 can be used to query information about the metadata history for a directory table, including: - Files added or removed automatically as part of a metadata refresh. - Any errors found when refreshing the metadata.
 
+---
+<br/>
+
 ### Size specific notes
+
+<br/>
 
 - The VARIANT data type imposes a 16 MB size limit on individual rows
 - A micro-partition can contain between 50 MB to 500 MB of uncompressed data
 - Recommended compressed size of data files for optimal bulk data loads is 100 to 250 MB
 
+---
+<br/>
+
 ### Retention specific notes
+
+<br/>
 
 - Snowflake keeps the batch load history (from Stage) using COPY statement for 64 days.
 - Snowpipe load history is 14 days
@@ -170,12 +200,22 @@ can be used to query information about the metadata history for a directory tabl
 - Snowflake Query history page allows you to view the details of all the queries executed in the last 14 days
 - All Snowflake-managed keys are automatically rotated by Snowflake when they are more than 30 days old
 
+---
+<br/>
+
 ### Scaling policies on multi-cluster warehouses
+
+<br/>
 
 - There are two different scaling policies, one is the Standard policy, and one is the Economy policy.
 - There are two ways to set up a multi-cluster warehouse: in maximized mode, or auto-scaling mode. With maximized mode, you simply set your minimum equal to your maximum, and those values are something greater than one.
 
+---
+<br/>
+
 ### Secure data sharing
+
+<br/>
 
 Secure Data Sharing enables sharing selected objects in a database in your account with other Snowflake accounts. The following Snowflake database objects can be shared:
 
@@ -187,7 +227,12 @@ Secure UDFs
 
 Snowflake enables the sharing of databases through shares created by data providers and “imported” by data consumers.
 
+---
+<br/>
+
 ### Replication and cloning
+
+<br/>
 
 Temporary tables, stages, tasks, streams, pipes, and external tables are not currently supported for replication.
 
@@ -195,11 +240,21 @@ Databases and Schemas can be cloned. External Table and Internal (Snowflake) sta
 
 Database and share replication are available in all editions, including the Standard edition. Replication of all other objects is only available for Business Critical Edition (or higher).
 
+---
+<br/>
+
 ### Snowflake sampling methods
+
+<br/>
 
 SYSTEM \| BLOCK sampling is often faster than BERNOULLI \| ROW sampling. Also, BERNOULLI \| ROW method is good for Smaller Tables, and SYSTEM \| BLOCK method is for Larger Tables.
 
+---
+<br/>
+
 ### Snowflake architecture
+
+<br/>
 
 Snowflake's unique architecture consists of three key layers:
  • Database Storage
@@ -209,6 +264,8 @@ Snowflake's unique architecture consists of three key layers:
 <br/>
 
 ## Some sample questions
+
+<br/>
 
 - **What are javascript stored procedure delimiters?**
 Single quotes ' or double dollar signs \$\$.
@@ -243,6 +300,10 @@ In regular schemas, the owner of an object (i.e. the role that has the OWNERSHIP
 - **Snowflake partner portal is accessible via which role?**
 ACCOUNTADMIN role
 
+<br/>
+
 Don't be shy, [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)
 
-![Mechanical Rock Logo](/img/mr-logo-dark-landscape.jpg)
+![Mechanical Rock Logo](/img/mr-logo-dark-landscape.jpg){:loading="lazy"}
+
+> Header image by <a href="https://unsplash.com/@aaronburden">Aaron Burden</a> on <a href="https://unsplash.com/s/photos/authentication?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>

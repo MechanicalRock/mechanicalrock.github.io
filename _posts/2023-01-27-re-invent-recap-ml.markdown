@@ -9,7 +9,7 @@ image: /img/reinventRecap2022-ML/reinventBanner.jpg
 
 # What's AWS Re:invent?
 
-[AWS Re:Invent](https://reinvent.awsevents.com/) is the biggest tech conference and cloud event of the year. A learning conference hosted by AWS where the global cloud community come together to meet, learn and get inspired! 
+[AWS Re:Invent](https://reinvent.awsevents.com/) is the biggest tech conference and cloud event of the year. A learning conference hosted by AWS where the global cloud community come together to meet, learn and get inspired. 
 
 This year for the very first time, I attended the AWS Re:invent conference through the AWS [All Builders Welcome grant](https://reinvent.awsevents.com/community/all-builders-welcome/). As a machine learning enthusiast I participated in a few Chalktalk, workshops in ML/AI learning track and obviously tried to not miss the Re:invent Announcement sessions. 
 
@@ -82,7 +82,7 @@ We are not going to focus on how design an effective ML flow here, Instead we re
 
 ![Amazon DataZone](/img/reinventRecap2022-ML/data-zone.jpg)
 
-At re:invent 2022, AWS introduced their new data management service that makes it faster and easier to catalog, discover and govern data stored across one AWS account, or on-promise! [Amazon DataZone](https://aws.amazon.com/datazone/) removes the heavy lifting of maintaining a catalog by using machine learning to collect and suggest metadata for each dataset. You can set up your own business data catalog and configure governance policies.
+At re:invent 2022, AWS introduced their new data management service that makes it faster and easier to catalog, discover and govern data stored across one AWS account, or on-promise. [Amazon DataZone](https://aws.amazon.com/datazone/) removes the heavy lifting of maintaining a catalog by using machine learning to collect and suggest metadata for each dataset. You can set up your own business data catalog and configure governance policies.
 
 After the catalog is set up, your data consumers can search and discover datasets, examine metadata for context and request access to a dataset.Once they are ready to analyze the data, they can create a "Data Project" which is a shared space where users can pull in different datasets and share access with their team and collaborate on analysis. This service integrates with AWS analytic services such as Amazon Redshift, Amazon Athena, and Amazon QuickSight, which enables your data team to access these services in the context of their data project without any need to manage new login credentials. Hence the data is automatically available in this service.
 
@@ -96,7 +96,7 @@ AWS SageMaker Data Wrangler is popular for providing:
 
 Obviously, the process of designing data transformation pipeline is time-consuming and required a cross-team collaboration. The main object of [Amazon SageMaker Data Wrangler](https://aws.amazon.com/sagemaker/data-wrangler/?sagemaker-data-wrangler-whats-new.sort-by=item.additionalFields.postDateTime&sagemaker-data-wrangler-whats-new.sort-order=desc) is to simplify the process of data preparation and all of the necessary steps of data preparation workflow on a single visual interface.  
 
-However, You still need to apply all the transformation applied to training dataset for model training to the new data during real-time inference. With new feature announced at re:invent 2022 for Amazon SageMaker Data Wrangler, you can now simply reuse the data transformation flow which you created in SageMaker Data Wrangler as a step in Amazon SageMaker inference pipelines. As a result of that, your production deployment will be speed up!
+However, You still need to apply all the transformation applied to training dataset for model training to the new data during real-time inference. With new feature announced at re:invent 2022 for Amazon SageMaker Data Wrangler, you can now simply reuse the data transformation flow which you created in SageMaker Data Wrangler as a step in Amazon SageMaker inference pipelines. As a result of that, your production deployment will be speed up.
 
 ### Amazon Glue for Ray (Preview)
 Ray is an open-source compute framework that makes it easy to scale AI and Python workloads, from reinforcement learning to deep learning to tuning, and model serving. AWS Glue is a serverless, scalable data integration service used to discover, prepare, move, and integrate data from multiple sources. AWS Glue for Ray is a new engine option on AWS Glue to process large datasets with Python and popular Python libraries. You can now create and run Ray jobs as AWS Glue ETL(Extract, Transform, Load) jobs. Having said, AWS Glue for Ray jobs can be run on schedule or on demand. 
@@ -111,24 +111,24 @@ The Apache Spark allows you to run complex analyses for a variety of size and fo
 In machine learning, the models rely on features to make accurate predictions. [Amazon SageMaker Feature Store](https://aws.amazon.com/sagemaker/feature-store/?sagemaker-data-wrangler-whats-new.sort-by=item.additionalFields.postDateTime&sagemaker-data-wrangler-whats-new.sort-order=desc) is a new capability for Amazon SageMaker to store, share and reuse features for real-time and batch machine learning solutions.
 You definitely know that maintaining consistency between features that were used for model training and at the time of inference is challenging and might result to inaccurate predictions. 
 
-Amazon SageMaker Feature Store saves our lives with allowing to reuse the existing features instead of reprocessing features for each new model. With this amazing capability, you can use historical records of feature data and easily reproduce the features as a specific point it time. This will significantly accelerate your machine learning productivity!  
+Amazon SageMaker Feature Store saves our lives with allowing to reuse the existing features instead of reprocessing features for each new model. With this amazing capability, you can use historical records of feature data and easily reproduce the features as a specific point it time. This will significantly accelerate your machine learning productivity.
 
 ### Notebook Jobs for Amazon SageMaker studio (Available Globally)
 AWS introduced the next generation of SageMaker Notebooks at Re:Invent 2022. As you know, within Amazon SageMaker Studio you can create fully managed Jupyter Notebooks that integrate with tools and ML/Data frameworks to perform all your ML steps from Data preparations, model training to evaluation and model tuning. 
 
 Now with the new generation of Amazon SageMaker studio Notebooks:
 
-- You are able to improve your data quality in a few minutes with new built-in data preparation capabilities. This feature is powered by Amazon SageMaker Data Wrangler to help you understand data distribution and identify data quality issues. Then you receive recommendations for data transformations to resolve the identified issues in your dataset. By applying the recommended transformations, SageMaker Studio notebooks automatically generate the corresponding transformation code in the notebook cells! 
+- You are able to improve your data quality in a few minutes with new built-in data preparation capabilities. This feature is powered by Amazon SageMaker Data Wrangler to help you understand data distribution and identify data quality issues. Then you receive recommendations for data transformations to resolve the identified issues in your dataset. By applying the recommended transformations, SageMaker Studio notebooks automatically generate the corresponding transformation code in the notebook cells.
 
-- Collaborate real-time on Notebooks within your team. With SageMaker Studio shared spaces, everyone in your data or ML team can edit, run and access Notebooks! This will accelerate the collaboration and communication during the development process. Also, all your taggable SageMaker resources in automatically tagged in a shared space. As a result of that, you can filter your ML resources as well as monitor cost and plan budgets within your account for your ML workflow.
+- Collaborate real-time on Notebooks within your team. With SageMaker Studio shared spaces, everyone in your data or ML team can edit, run and access Notebooks. This will accelerate the collaboration and communication during the development process. Also, all your taggable SageMaker resources in automatically tagged in a shared space. As a result of that, you can filter your ML resources as well as monitor cost and plan budgets within your account for your ML workflow.
 
-- Convert your notebooks automatically to scheduled jobs. This specific one is my favorite capability in the new generation Notebooks. Amazon SageMaker as our one shop Machine learning service allows us to select our Notebook and automate it as a job to run it in a production immediately or on schedule!
+- Convert your notebooks automatically to scheduled jobs. This specific one is my favorite capability in the new generation Notebooks. Amazon SageMaker as our one shop Machine learning service allows us to select our Notebook and automate it as a job to run it in a production immediately or on schedule.
 
 ### Shadow testing for Amazon SageMaker Endpoints (Available Globally)
 
 The common approach to observe performance of variant version of your models is the A/B testing or canary deployment, so that you send a portion of your workload to new version of your model and evaluate the performance and accuracy. 
 
-If the performance is accepted then you send all of your workload to the new model endpoint. But now, instead of offline validation with historic data or setting up A/B testing for your new models, you can simply use Amazon SageMaker [shadow testing](https://aws.amazon.com/sagemaker/shadow-testing)! 
+If the performance is accepted then you send all of your workload to the new model endpoint. But now, instead of offline validation with historic data or setting up A/B testing for your new models, you can simply use Amazon SageMaker [shadow testing](https://aws.amazon.com/sagemaker/shadow-testing). 
 
 Shadow testing helps you build confidence in your model and catch potential configuration errors and performance issues before they impact end users.
 
@@ -136,7 +136,7 @@ Wondering how does it work? through console or API your can create a shadow test
 
 Interestingly, only responses from production variant are returned to your application, the logs or responses from your shadow variant on the other hand, can be stored in Amazon S3 Bucket for offline comparison. You can benefit from real-time dashboards in SageMaker Shadow test and finally with configuring your infrastructure, deploy your shadow variant to production. 
 
-However, That's not all. Shadow testing can also be used when you want to apply any changes to your ML components. For instance upgrading to a new framework version, or considering to move to another ML instance type! 
+However, That's not all. Shadow testing can also be used when you want to apply any changes to your ML components. For instance upgrading to a new framework version, or considering to move to another ML instance type.
 
 
 ### Amazon SageMaker JumpStart ML hub (Available Globally)

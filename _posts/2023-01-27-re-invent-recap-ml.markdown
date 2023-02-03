@@ -24,7 +24,7 @@ First, let's look at the end to end workflow of building a Machine Learning solu
 
 
 # AWS ML infrastructure and Services
-![AWS Machine Learning Stack](/img/reinventRecap2022-ML/aws-ml-stack.png)
+![AWS ML infrastructure and Services](/img/reinventRecap2022-ML/aws-ml-stack.png)
 
 ## ML Compute
 As the graphic illustrates, the bottom layer contains the compute, networking and storage services that construct the foundational block of ML infrastructure on AWS. 
@@ -47,7 +47,7 @@ Much like software development analogue DevOps, MLOps is also a discipline of Ma
 
 
 ### Introducing new governance tools to sagemaker (Available Globally)
-![AWS Machine Learning Stack](/img/reinventRecap2022-ML/sageMaker-governance.jpg)
+![AWS SageMaker Governance](/img/reinventRecap2022-ML/sageMaker-governance.jpg)
 
 Today, Sagemaker as the most popular ML service on AWS offers new capabilities that help us to scale governance across our MLOps workflow.
 
@@ -61,7 +61,7 @@ Amazon SageMaker Model Cards provide a single location to store model informatio
 As you deploy your model to production, monitoring and keeping the track of your model's performance is always part of the ML workflow. This task normally gets extremely complex and time consuming when you have multiple models in the operational environment. Amazon SageMaker Model Dashboard provides a comprehensive overview of deployed models and endpoints, enabling you to track resources, model behavior and quality in one place. Once the models are deployed, Amazon SageMaker Model Dashboard gives you unified monitoring across all your models by providing deviations from expected behavior, automated alerts, and troubleshooting to improve model performance.
 
 # End-to-end ML solution on AWS
-// TO DO : Add ML Diagram for end to end workflow
+![ML Workflow](/img/reinventRecap2022-ML/MLWorkflow.png)
 
 As you know, The end to end workflow of a Machine Learning solution usually consist of the following task:
 
@@ -79,7 +79,7 @@ We are not going to focus on how design an effective ML flow here, Instead we re
 
 ### Amazon DataZone (Coming soon)
 
-![AWS Machine Learning Stack](/img/reinventRecap2022-ML/data-zone.jpg)
+![Amazon DataZone](/img/reinventRecap2022-ML/data-zone.jpg)
 
 At re:invent 2022, AWS introduced their new data management service that makes it faster and easier to catalog, discover and govern data stored across one AWS account, or on-promise! [Amazon DataZone](https://aws.amazon.com/datazone/) removes the heavy lifting of maintaining a catalog by using machine learning to collect and suggest metadata for each dataset. You can set up your own business data catalog and configure governance policies.
 
@@ -145,7 +145,7 @@ If you have multiple data science team who build ML models and Jupyter Notebooks
 
 ### Amazon SageMaker Geospatial ML (Preview)
 
-![AWS Machine Learning Stack](/img/reinventRecap2022-ML/geospetial-ml.jpg)
+![Amazon SageMaker Geospatial](/img/reinventRecap2022-ML/geospetial-ml.jpg)
 
 In the preview, Amazon SageMaker new Geospatial capabilities allow you to easily build, train and deploy the ML model using geospatial data. You can simply bring your geospatial data with a few clicks, prepare it with built-in operations and transformations, build your model with pre-trained deep neural network models and geospatial operators. It also offers, analyze and explore predictions with built-in visualization tools.
 

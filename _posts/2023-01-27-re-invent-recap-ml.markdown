@@ -156,7 +156,7 @@ If you deal with geospatial dataset and wondering how to use this wonderful capa
 The innovation in AWS Cloud Services never ends, every year at Re:Invent we get surprised by new announcements. In this article, I mainly focused on compute, data preparation, build, train and deploy on the most popular ML service Amazon SageMaker at a general level.
 This post was not technical showing how to use the new capabilities, neither covered all the announcements for Machine learning. So if you are interested to know more about what's been recently announced please make sure to check the [AWS announcement platform](https://aws.amazon.com/about-aws/whats-new/2022/11/) to read more and in depth about what are the new capabilities or feature for AWS ML services. 
 
-More Amazon SageMaker related blog posts coming up, Stay tuned with our posts if you are keen to learn how to "Tune your model with hyperparameter range" in Amazon SageMaker cost effectively or want to discover "what's under the hood of AWS DeepRacer" with Amazon SageMaker. 
+More Amazon SageMaker related blog posts coming up. Stay tuned with our future posts If you are keen to learn how to "Tune your model with hyperparameter range" in Amazon SageMaker cost effectively or want to discover "what's under the hood of AWS DeepRacer" with Amazon SageMaker.
 
 
 ## Resources

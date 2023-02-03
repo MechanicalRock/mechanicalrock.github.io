@@ -9,13 +9,9 @@ image: /img/reinventRecap2022-ML/reinventBanner.jpg
 
 # What's AWS Re:invent?
 
-[AWS Re:Invent](https://reinvent.awsevents.com/) is the biggest tech conference and cloud event of the year. It's billed as "The most transformative event in tech", a learning conference hosted by AWS where the global cloud community come together to meet, learn and get inspired! 
-AWS Re:invent event has a lot to offer in terms of different tracks and areas of interests to follow related to your job domain such as Machine learning/AI, storage, serverless, etc.
-As well as variety of session types i.e, workshops to chalktalks with different levels from level-100 (Foundational) to level-400 as expert level.
+[AWS Re:Invent](https://reinvent.awsevents.com/) is the biggest tech conference and cloud event of the year. A learning conference hosted by AWS where the global cloud community come together to meet, learn and get inspired! 
 
-Well, if you have not heard about AWS Re:invent or if you couldn't attend it for any reason, that means you have probably missed the AWS Re:invent 2022. That's ok. A good thing I like about Tech world is that there are always people who have attended the events, meet-ups and conferences and most of them are always willing to share their experience including their tech take away from the event. 
-
-This year for the very first time, I attended the AWS Re:invent conference through the AWS [All Builders Welcome grant](https://reinvent.awsevents.com/community/all-builders-welcome/). As a machine learning enthusiast I could participate in a few chalktalks in ML/AI learning track as well as Re:invent Announcement sessions. 
+This year for the very first time, I attended the AWS Re:invent conference through the AWS [All Builders Welcome grant](https://reinvent.awsevents.com/community/all-builders-welcome/). As a machine learning enthusiast I participated in a few Chalktalk, workshops in ML/AI learning track and obviously tried to not miss the Re:invent Announcement sessions. 
 
 In this blog post, I would like to share highlights of some of the cool stuff that are now available or still in preview for Machine Learning and Data Scientists within AWS AI/ML services and more specifically Amazon SageMaker.
 
@@ -45,11 +41,16 @@ The Graviton-based instances are used for Real-time and asynchronous inference m
 
 Much like software development analogue DevOps, MLOps is also a discipline of Machine Learning lifecycle to deliver models faster by automating the repeatable steps and reduce the time it takes to deploy the model to production. The ML governance on the other hand, is the management, control, visibility, explainability and auditability of the end-to-end ML workflow.
 
+![MLOps](/img/reinventRecap2022-ML/MLOps.png)
+
+
+
 
 ### Introducing new governance tools to sagemaker (Available Globally)
-![AWS SageMaker Governance](/img/reinventRecap2022-ML/sageMaker-governance.jpg)
 
 Today, Sagemaker as the most popular ML service on AWS offers new capabilities that help us to scale governance across our MLOps workflow.
+
+![AWS SageMaker Governance](/img/reinventRecap2022-ML/sageMaker-governance.jpg)
 
 ### Amazon SageMaker Role manager:
 Allows administrators to control access and define permissions for users within minutes. The SageMaker Role manager provides 3 pre-configured role personas and 12 predefined permissions for most common ML activities. Amazon SageMaker Role manager accelerates the user onboarding by automatically generating a custom policy based on your specific needs.

@@ -10,16 +10,16 @@ image: /img/reinventRecap2022-ML/reinventBanner.jpg
 # What's AWS Re:invent?
 
 [AWS Re:Invent](https://reinvent.awsevents.com/) is the biggest tech conference and cloud event of the year. It's billed as "The most transformative event in tech", a learning conference hosted by AWS where the global cloud community come together to meet, learn and get inspired! 
-AWS Re:invent event has a lot to offer in terms of different tracks and area of interests to follow related to your job domain. Such as Machine learning/AI, storage, serverless, etc,...
-As well as variety of session types i.e workshops to chalktalks with different levels from level-100 (Foundational) to level-400 as expert level! 
+AWS Re:invent event has a lot to offer in terms of different tracks and areas of interests to follow related to your job domain such as Machine learning/AI, storage, serverless, etc.
+As well as variety of session types i.e, workshops to chalktalks with different levels from level-100 (Foundational) to level-400 as expert level.
 
-Well, if you have not heard about AWS Re:invent or if you couldn't attend it for any reason, that means you have probably missed the AWS Re:invent 2022. That's ok! Good thing I like about Tech world is that there are always people who have attended the events, meet-ups and conferences and most of them are always willing to share their experience including their tech take away from the event. 
+Well, if you have not heard about AWS Re:invent or if you couldn't attend it for any reason, that means you have probably missed the AWS Re:invent 2022. That's ok. A good thing I like about Tech world is that there are always people who have attended the events, meet-ups and conferences and most of them are always willing to share their experience including their tech take away from the event. 
 
-This year for the very first time, I attended the AWS Re:invent conference through AWS [All Builders Welcome grant](https://reinvent.awsevents.com/community/all-builders-welcome/). As a machine learning enthusiasm I could participate a few chalktalks in ML/AI learning track as well as Re:invent Announcement sessions. 
+This year for the very first time, I attended the AWS Re:invent conference through the AWS [All Builders Welcome grant](https://reinvent.awsevents.com/community/all-builders-welcome/). As a machine learning enthusiast I could participate in a few chalktalks in ML/AI learning track as well as Re:invent Announcement sessions. 
 
-In this blog post, I would like to share highlights of some of the cool stuff that are now available or still in preview for Machine learning and data scientist within AWS AI/ML services and more specifically Amazon SageMaker.
+In this blog post, I would like to share highlights of some of the cool stuff that are now available or still in preview for Machine Learning and Data Scientists within AWS AI/ML services and more specifically Amazon SageMaker.
 
-To start with, let's look at the end to end workflow of building a Machine Learning solution on AWS and then walk through the new announcements for some of the components in AWS Machine learning architecture. 
+First, let's look at the end to end workflow of building a Machine Learning solution on AWS and then walk through the new announcements for some of the components in AWS Machine learning architecture. 
 
 
 
@@ -34,7 +34,7 @@ Here are some recently added capabilities to Compute component in Machine Learni
 As per AWS documentations, Inf2 instances are powered by up to 12 AWS Inferentia2, the third AWS-designed DL accelerator. Inf2 instances offer 3x higher compute performance, up to 4x higher throughput, and up to 10x lower latency compared to Inf1 instances. The Inf2 instances are designed to deliver higher performance at the lowest cost for Deep Learning inference applications. You can now efficiently deploy a 175B parameter model for inference across multiple accelerators on a single Inf2 instance.  
 
 ### AWS SageMaker Instance (Preview)
-SageMaker now supports new instances for training jobs. the "ml.trn1" instances powered by AWS Trainium chips and are available in two sizes:
+SageMaker now supports new instances for training jobs. The "ml.trn1" instances are powered by AWS Trainium chips and are available in two sizes:
  ml.trn1.2xlarge for experimenting with a single accelerator and training small models cost effectively. 
  ml.trn1.32xlarge for training large-scale models. You can use this instance type on sagemaker to train natural language processing (NLP) and computer vision applications.
 
@@ -62,12 +62,11 @@ As you deploy your model to production, monitoring and keeping the track of your
 
 # End-to-end ML solution on AWS
 // TO DO : Add ML Diagram for end to end workflow
-// TO DO: Make this section more academic and descriptive according to AWS documents
 
 As you know, The end to end workflow of a Machine Learning solution usually consist of the following task:
 
 - Data Acquisition: Explore Data source, extract, pre-process the raw data.
-- Data Transformation: Enrich data and convert data format compatible with the input type of your ML training Algorithm.
+- Data Transformation: Enrich data and convert it into a data format compatible with the input type of your ML training Algorithm.
 - Visualization: Visualize the training data for comparison, relationship, distribution and composition analysis on your data.  
 - Model Training: Train your model with transformed dataset. You can always set Testing metrics to monitor your model during training.
 - Evaluation: Evaluate your model with test dataset. AWS SageMaker provides you with evaluating metrics. 
@@ -157,7 +156,7 @@ If you deal with geospatial dataset and wondering how to use this wonderful capa
 The innovation in AWS Cloud Services never ends, every year at Re:Invent we get surprised by new announcements. In this article, I mainly focused on compute, data preparation, build, train and deploy on the most popular ML service Amazon SageMaker at a general level.
 This post was not technical showing how to use the new capabilities, neither covered all the announcements for Machine learning. So if you are interested to know more about what's been recently announced please make sure to check the [AWS announcement platform](https://aws.amazon.com/about-aws/whats-new/2022/11/) to read more and in depth about what are the new capabilities or feature for AWS ML services. 
 
-More Amazon SageMaker related blog post coming up, Stay tuned with our posts if you are keen to learn how to "Tune your model with hyperparameter range" in Amazon SageMaker cost effectively or want to discover "what's under the hood of AWS DeepRacer" with Amazon SageMaker. 
+More Amazon SageMaker related blog posts coming up, Stay tuned with our posts if you are keen to learn how to "Tune your model with hyperparameter range" in Amazon SageMaker cost effectively or want to discover "what's under the hood of AWS DeepRacer" with Amazon SageMaker. 
 
 
 ## Resources

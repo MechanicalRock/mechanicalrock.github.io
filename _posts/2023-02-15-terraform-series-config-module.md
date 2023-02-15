@@ -61,7 +61,7 @@ locals {
 ```hcl
 # modules/some_module/outputs.tf
 
-output "accounts" {
+output "iam_users" {
   value = local.accounts
 }
 ```
@@ -72,7 +72,7 @@ We can then access these outputs as attributes of the module instance in the roo
 # root configuration
 
 resource "aws_iam_user" "this" {
-  for_each = module.my_module.accounts
+  for_each = module.my_module.iam_users
   name  = each.value.username
 }
 

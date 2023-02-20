@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Highlights from the DBT Community's Coalesce Conference 
+title: Highlights from the DBT Community's Coalesce Conference
 date: 2021-01-25
 tags: data dbt elt etl transformation
 author: Paul Symons
@@ -16,7 +16,7 @@ To understand what DBT is for and how to use it, you should first read their own
 
 > *dbt does the T in ELT (Extract, Load, Transform) processes – **it doesn’t extract or load data**, but it’s extremely good at transforming data that’s already loaded into your warehouse.*
 
-It is a remarkable tool, but perhaps more remarkable are the ways it helps teams to parallelise, stabilise and democratise their practice and knowledge of data in the organisations where they work. 
+It is a remarkable tool, but perhaps more remarkable are the ways it helps teams to parallelise, stabilise and democratise their practice and knowledge of data in the organisations where they work.
 
 ## Aim
 The conference headlined with this statement:
@@ -66,10 +66,10 @@ As you can imagine with a playlist of 42 presentations from a conference that sp
 
 A common theme was the seismic shift in how teams collaborate with data at scale. There are so many factors at play, but some of the many called out include:
 
-* [The Rise of Cloud Data Warehouses](https://mechanicalrock.github.io/2020/11/09/the-cloud-data-warehouse.html) fuelling the shift from Extract, Transform, Load (ETL) towards ELT instead
+* [The Rise of Cloud Data Warehouses](https://blog.mechanicalrock.io/2020/11/09/the-cloud-data-warehouse.html) fuelling the shift from Extract, Transform, Load (ETL) towards ELT instead
 * Sustained growth and competition in the SAAS Data Extract and Load tooling market supporting the transition to Cloud Data Warehouses
 * The insatiable appetite within organisations for access to quality data to drive decision making
-* How DBT helps teams concurrently and safely deliver insights and quality data  
+* How DBT helps teams concurrently and safely deliver insights and quality data
 
 Many presentations talked about the role of a data team, their relationship to the wider organisation, and why communication, trust and knowledge sharing are indispensable partners to technology;  a few included back-references to Justin Gage's popular post from 2019 titled [Data as a Product vs Data as a Service](https://medium.com/@itunpredictable/data-as-a-product-vs-data-as-a-service-d9f7e622dc55) and furnished further with their own experiences of pivoting from being a reactive service team to a pro-active partner.
 
@@ -80,7 +80,7 @@ Notable in almost every presentation were the ability of teams to be more **self
 
 Never more so than in 2020 has the challenge of being co-located virtually, rather than physically, been more keenly felt.
 
-Many teams reflected on their strategies - beyond using collaborative workflows and tools promoting open-ness and transparency such as DBT - to enable continuity of learning and upskilling, in a year where many new recruits would on-board to companies remotely. In many cases, presenters affirmed their commitment to keeping documentation about their work, including the role that [DBT's self generating documentation](https://docs.getdbt.com/docs/building-a-dbt-project/documentation) played in communicating intent and understanding between teams and consumers. 
+Many teams reflected on their strategies - beyond using collaborative workflows and tools promoting open-ness and transparency such as DBT - to enable continuity of learning and upskilling, in a year where many new recruits would on-board to companies remotely. In many cases, presenters affirmed their commitment to keeping documentation about their work, including the role that [DBT's self generating documentation](https://docs.getdbt.com/docs/building-a-dbt-project/documentation) played in communicating intent and understanding between teams and consumers.
 
 In two very different talks, both Tristan Handy and Andrea Kopitz teach us that accepted knowledge is effectively the building of organisational consensus. Andrea's comment around creating some documentation - even if only temporarily useful - is often better than no documentation at all. It re-iterated to me also the importance of being assertive and descriptive in documentation to allow others to challenge, so that together we may reach a better consensus.
 
@@ -99,7 +99,7 @@ There were a couple of great talks about testing in Coalesce 2020; beyond introd
 One important reminder I took away was, ensure to test the right thing: avoid vanity tests and appreciate that needs and expectations, as well as data, change over time - and therefore, so should your tests; even if it means deprecation.
 
 
-### Trust 
+### Trust
 
 Perhaps the most enduring theme throughout the presentations was trust:
 
@@ -118,7 +118,7 @@ I sensed in many presentations a burden within data teams that their work should
 - Knowledge Formation and Consensus Building
 - Finding and Partnering with the right stakeholders
 
-If your stakeholders never challenge the assertions you make, then perhaps they are not fully representative of the customers you believe you serve. 
+If your stakeholders never challenge the assertions you make, then perhaps they are not fully representative of the customers you believe you serve.
 
 ## Highlighted Talks
 
@@ -231,7 +231,7 @@ In brief, this presentation focuses on finding the hallowed nexus of Effective D
 
 1. Engineering Practice
 1. Stakeholder Involvement
-1. Company Discoverability (of data) 
+1. Company Discoverability (of data)
 
 Despite being a shorter presentation, it was not short of insights - I took away some great reminders
 
@@ -239,7 +239,7 @@ Despite being a shorter presentation, it was not short of insights - I took away
 * Ensuring your stakeholder group can adequately critique your assumptions
 * Data teams should seek to remove themselves as an intermediary in discussions around data
 
-I liked the reference to [DBT Exposures](https://docs.getdbt.com/docs/building-a-dbt-project/exposures/) and how they can help cross-reference the indirect way in which modelled data is used. 
+I liked the reference to [DBT Exposures](https://docs.getdbt.com/docs/building-a-dbt-project/exposures/) and how they can help cross-reference the indirect way in which modelled data is used.
 
 ### How to build a reputation on more than just Dashboards
 
@@ -274,7 +274,7 @@ I'll end this post with a panel discussion from Coalesce 2020 - *Hiring a divers
 * Avoid conflating "Cultural Fit" with a more substantive "Values Fit"
 * Assess candidates against well defined criteria
 * Identify specialized or non-mainstream avenues to place job ads first
-* As a company, have your interview panels represent the diversity you embody 
+* As a company, have your interview panels represent the diversity you embody
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Uwj23safIRc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

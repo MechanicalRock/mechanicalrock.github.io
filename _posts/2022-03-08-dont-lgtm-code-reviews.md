@@ -6,7 +6,7 @@ tags: code cloudnative consultants deployment continuous-delivery devops pattern
 author: Simon Bracegirdle
 image: img/dont-lgtm-code-reviews.jpg
 description:
-  Do you give a cursory review and slap the trusty "LGMT!" on pull requests? Read this to find out how you could bring more rigour to your team's code review practices and improve the software delivered.
+  "Do you give a cursory review and slap the trusty 'LGMT!' on pull requests? Read this to find out how you could bring more rigour to your team's code review practices and improve the software delivered."
 ---
 
 ![Header](/img/dont-lgtm-code-reviews.jpg)
@@ -62,7 +62,7 @@ Even if the change under review doesn't directly have any bugs in it, but is mis
 
 Who's responsible for code quality though? I think everyone in the team holds the same level of responsibility for quality. But in the context of a specific change, the author's ultimately responsible that it meets the agreed standard. The reviewers are there to help by asking questions, making suggestions and sharing knowledge, but they won't be making the necessary changes and clicking the merge button.
 
-Who should the author pick to review then? Ideally it's the person that will give the best feedback — asking good questions, making insightful suggestions and identifying potential issues. But we also need to consider the impact of creating bottlenecks in the team. For example; if the senior engineer receives all the code reviews, then they're not going to be able to work on their own tasks and will block merging of other pull requests. 
+Who should the author pick to review then? Ideally it's the person that will give the best feedback — asking good questions, making insightful suggestions and identifying potential issues. But we also need to consider the impact of creating bottlenecks in the team. For example; if the senior engineer receives all the code reviews, then they're not going to be able to work on their own tasks and will block merging of other pull requests.
 
 We also need to give opportunities to less experienced team members so they can grow their own skills and learn from others. With the use of some of the suggestions in this post we can help them to uplift their code review game.
 

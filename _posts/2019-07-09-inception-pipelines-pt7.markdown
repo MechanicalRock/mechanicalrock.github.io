@@ -34,12 +34,12 @@ These are the bits you'll need before we get started:
 
 ## Deploying the pipeline
 
-Before you can enable your Organizational [CloudTrail](https://aws.amazon.com/cloudtrail/) you need to first deploy a couple of pieces of infrastructure. These are an [S3](https://aws.amazon.com/s3/) bucket to store the events in and a [KMS](https://aws.amazon.com/kms/) key to protect them. To get you started I've prepared an Inception Pipeline for you to deploy. If you've never deployed one before, I highly recommend reading my original post - ["Seeds of Inception - Seeding your Account with an Inception Pipeline"](https://mechanicalrock.github.io/2018/03/01/inception-pipelines-pt1.html).
+Before you can enable your Organizational [CloudTrail](https://aws.amazon.com/cloudtrail/) you need to first deploy a couple of pieces of infrastructure. These are an [S3](https://aws.amazon.com/s3/) bucket to store the events in and a [KMS](https://aws.amazon.com/kms/) key to protect them. To get you started I've prepared an Inception Pipeline for you to deploy. If you've never deployed one before, I highly recommend reading my original post - ["Seeds of Inception - Seeding your Account with an Inception Pipeline"](https://blog.mechanicalrock.io/2018/03/01/inception-pipelines-pt1.html).
 
 **Warning!** When [AWS CloudTrail](https://aws.amazon.com/cloudtrail/) is enabled through [AWS Organizations](https://aws.amazon.com/organizations/), it requires that the [S3 bucket](https://aws.amazon.com/s3/) and [KMS key](https://aws.amazon.com/kms/) reside in the North Virginia region. This means you must create the pipeline below in `us-east-1`, which I have already set for you in the `init.sh` script.
 
 1. Checkout the code [from here](https://github.com/MechanicalRock/InceptionPipeline/tree/post/part-7).
-2. Change all the Inception Pipeline values in the `aws_seed.json` and `aws_seed-cli-parameters.json` files to your specific values. See the [original post](https://mechanicalrock.github.io/2018/03/01/inception-pipelines-pt1.html) if you need a refresher on how to do this.
+2. Change all the Inception Pipeline values in the `aws_seed.json` and `aws_seed-cli-parameters.json` files to your specific values. See the [original post](https://blog.mechanicalrock.io/2018/03/01/inception-pipelines-pt1.html) if you need a refresher on how to do this.
 3. Open the `infrastructure/capability-global-cloudtrail.json` and set the following values:
 
     | Name                                          | Description                                                                                                                                      |

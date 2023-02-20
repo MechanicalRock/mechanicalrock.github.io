@@ -102,7 +102,7 @@ Train is responsible for completing the feedback loop based on the users selecti
 If you'd like to deploy your own version, I recommend familiarzing yourself with the following technologies:
 
 * [Serverless Framework](https://serverless.com/) - Used for the majority of the lambdas in the project. The configuration for deployment can be found in the [serverless.yaml](https://github.com/MechanicalRock/virtual-concierge/blob/master/serverless.yml) file.
-* [AWS Serverless Application Model](https://aws.amazon.com/serverless/sam/) - Used for the DeepLens Greengrass code due to a small limitation around packaging up subfolders within one [monorepo](https://mechanicalrock.github.io/2019/02/03/monorepos-aws-codebuild.html).
+* [AWS Serverless Application Model](https://aws.amazon.com/serverless/sam/) - Used for the DeepLens Greengrass code due to a small limitation around packaging up subfolders within one [monorepo](https://blog.mechanicalrock.io/2019/02/03/monorepos-aws-codebuild.html).
 * [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) - Ensure that your AWS CLI is setup and configured with your account credentials.
 * [DeepLens Setup](https://docs.aws.amazon.com/deeplens/latest/dg/deeplens-getting-started-set-up.html) - If you do end up using a DeepLens, run through the setup guide.
 

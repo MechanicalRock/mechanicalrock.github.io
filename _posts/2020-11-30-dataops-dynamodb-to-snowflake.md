@@ -16,7 +16,7 @@ AWS DynamoDB is a cloud native NoSQL database service, renowned for its performa
 
 There are [a wide range of database options](https://aws.amazon.com/products/databases/) on offer from AWS for different workloads, yet [RDS](https://aws.amazon.com/rds/) and [DynamoDB](https://aws.amazon.com/dynamodb/) are by far the most established and with the most mature capabilities to support mainstream and high performance requirements. Both are easily scaled and highly available across multiple availability zones, and even multiple geographical regions. One key differentiator, however is cost model - RDS attracts an [hourly pricing model](https://aws.amazon.com/rds/aurora/pricing/) for compute, irrespective of actual demand, whilst DynamoDB charges you only for what you use.
 
-NoSQL databases are often regarded for their *schemaless* capabilities that - as well as offering flexibility - demand tolerant applications as data structures evolve over time. With AWS DynamoDB in particular, much attention has been paid to [single table designs](https://www.serverlesslife.com/DynamoDB_Design_Patterns_for_Single_Table_Design.html) in recent years that optimize read and write patterns in order to effectively allow multiple domains of data within a single table. 
+NoSQL databases are often regarded for their *schemaless* capabilities that - as well as offering flexibility - demand tolerant applications as data structures evolve over time. With AWS DynamoDB in particular, much attention has been paid to [single table designs](https://www.serverlesslife.com/DynamoDB_Design_Patterns_for_Single_Table_Design.html) in recent years that optimize read and write patterns in order to effectively allow multiple domains of data within a single table.
 
 ### Integrating with Data Warehouses
 Despite providing flexibility for transactional data users, NoSQL tables often present challenges for analytics teams. It can be difficult to transform semi-structured data to the relational table format found in data warehouses,  or make sense of sparse data patterns commonly used in single table designs.
@@ -25,7 +25,7 @@ In this article I will to show you how to successfully integrate DynamoDB data w
 
 ### What has changed?
 
-Until very recently, getting bulk data out of AWS DynamoDB typically required the use of either specialised vendor or cloud provider tools (e.g. AWS Data Pipeline), or invest a lot of your own engineering effort to extract the data yourself. In any case, there was no out-of-the-box feature that could dump a DynamoDB table for export, without having a performance, cost or engineering impact. 
+Until very recently, getting bulk data out of AWS DynamoDB typically required the use of either specialised vendor or cloud provider tools (e.g. AWS Data Pipeline), or invest a lot of your own engineering effort to extract the data yourself. In any case, there was no out-of-the-box feature that could dump a DynamoDB table for export, without having a performance, cost or engineering impact.
 
 In November 2020, AWS DynamoDB has released a new feature to [export the contents of a table to S3](https://aws.amazon.com/blogs/aws/new-export-amazon-dynamodb-table-data-to-data-lake-amazon-s3/) without performance impact, leveraging *Point-In-Time-Recovery* (PITR). The cost for this serverless feature is based only on the volume of data that you export, priced at $0.114 per GB in the AWS Sydney region.
 
@@ -72,7 +72,7 @@ In summary, we:
   * Lambda to trigger DynamoDB export
   * S3 Storage Bucket
   * Snowflake access role
-* **Import CSV data to DynamoDB** using [ddbimport](https://github.com/a-h/ddbimport) 
+* **Import CSV data to DynamoDB** using [ddbimport](https://github.com/a-h/ddbimport)
 * Create a selection of Snowflake views accessing the staged data directly, to **break out our single table design into relational tables**
 
 The first two points are covered in the code repository linked above; the rest of this article will focus on accessing the data written by the export process.
@@ -134,7 +134,7 @@ The objects listed in the results should be familiar to you, now that you unders
 
 ### Reading Metadata
 
-Let's start with the manifest summary: it provides data about the export process. 
+Let's start with the manifest summary: it provides data about the export process.
 
 You can specify a `PATTERN` when listing files, to show only objects with names matching a particular pattern.
 ```sql
@@ -175,9 +175,9 @@ As you can see, there is useful information in there:
 
 So if you noticed before, we use the `$1` magic column to return the entire raw data from each row - but you can be much more specific:
 ```sql
-select 
+select
     -- this returns the s3 object key containing the original data
-    metadata$filename as filename, 
+    metadata$filename as filename,
     SPLIT_PART(filename,'manifest-summary.json',1) as filepath, --
     $1:exportTime::TIMESTAMP_NTZ as exported,
     SPLIT_PART($1:manifestFilesS3Key,'manifest-files.json',1) as dumpPath
@@ -251,7 +251,7 @@ Again, clicking on the data gives a prettified JSON of one of the records:
 }
 ```
 
-### Iteratively Building Views 
+### Iteratively Building Views
 
 At this stage, we can create a view of the raw data by simply prefixing the previous query with something like:
 ```sql
@@ -308,7 +308,7 @@ Let's make a table that joins the datasets on the `event_date` field:
 
 ```sql
 CREATE OR REPLACE TABLE materialized_longterm_weather_stats AS
-  SELECT 
+  SELECT
       s.event_date,
       x.daily_global_solar_exposure_MJ_per_m2,
       r.rainfall_mm,
@@ -323,7 +323,7 @@ CREATE OR REPLACE TABLE materialized_longterm_weather_stats AS
   JOIN weather_tempmax t ON t.event_date=s.event_date
 ```
 
-Then simply run a query to visualise the data using Snowflake's built in data exploration tool, [SnowSight](https://docs.snowflake.com/en/user-guide/ui-snowsight.html): 
+Then simply run a query to visualise the data using Snowflake's built in data exploration tool, [SnowSight](https://docs.snowflake.com/en/user-guide/ui-snowsight.html):
 
 ![Screenshot of a graph created by Snowflake's Snowsight Data Exploration UI](/img/blog/dynamodb-to-snowflake/snowsight.png)
 
@@ -345,14 +345,14 @@ Both of these will be effective though there are complications and cost consider
 
 When working with production systems, you don't want to be creating views in your SQL workbench.
 
-* Use a [DataOps Pipeline](https://mechanicalrock.github.io/2020/11/03/snowflake-dataOps.html) to setup and manage your Cloud Data Warehouse
+* Use a [DataOps Pipeline](https://blog.mechanicalrock.io/2020/11/03/snowflake-dataOps.html) to setup and manage your Cloud Data Warehouse
 * Materialize and Transform your data with a tool like [DBT](https://www.getdbt.com/) once it is available in your warehouse
 
 More on that in a future blog post!
 
 ## Conclusion
 
-In this article we have demonstrated 
+In this article we have demonstrated
 
 * How simple exporting DynamoDB tables to S3 can be with the new export feature
 * How to work with staged files using Snowflake

@@ -10,7 +10,7 @@ image: /img/typescript-npm-modules/header2.jpg
 description: Now that we've built our own NPM module, lets dive into making it private to our organisation using GitHub packages to host it.
 ---
 
-This is following on from my post on [Publishing Typescript NPM Modules](https://mechanicalrock.github.io/2022/01/24/publishing-typescript-npm-modules.html) where we created our own module and pushed it to the public NPM registry. However, we often run into cases where either ourselves or our clients don't want the modules we develop to be available publicly via the NPM registry.
+This is following on from my post on [Publishing Typescript NPM Modules](https://blog.mechanicalrock.io/2022/01/24/publishing-typescript-npm-modules.html) where we created our own module and pushed it to the public NPM registry. However, we often run into cases where either ourselves or our clients don't want the modules we develop to be available publicly via the NPM registry.
 
 In such cases we can use a private registry to host our modules and only make them available to people within the organisation. In this post I'll look into making the module we created in the previous post, `tim-veletta-theme`, a private one as well as talking about package scoping which makes things easier for the consumers of our package.
 

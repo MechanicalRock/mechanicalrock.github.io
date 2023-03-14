@@ -8,7 +8,7 @@ author: Andrew Tyler
 image: /img/blog/examplemapping/emOverview.png
 ---
 
-![Example Mapping](/img/blog/examplemapping/emOverview.jpg)
+![Example Mapping](/img/blog/examplemapping/emoverview.jpg)
 
 <br/>
 

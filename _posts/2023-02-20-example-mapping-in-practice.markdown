@@ -22,7 +22,7 @@ To me, example mapping is the closest you can get to perfection. This article su
 
 Example Mapping is a technique using coloured cards to facilitate a session with the dev team (or at least one representative from) and Product Owner and subject matter experts (SMEs) to elaborate a user story and create a common understanding amongst the team.
 
-Yellow cards represent the User story/feature, blue cards specify rules, green cards provide examples and red cards are for asking questions.
+Yellow cards represent the user story/feature, blue cards specify business rules, green cards provide examples and red cards are for asking questions.
 
 For this post we are going to be working on a fictional app we are building based on the 'Kwik-E-Mart' from everyone's favourite (well if it's not then it should be) cartoon TV Show 'The Simpsons'.
 

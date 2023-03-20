@@ -65,7 +65,7 @@ There's obviously many ways to specify and communicate requirements, so lets sta
 ![](/img/blog/examplemapping/funcspec.jpg)
 
 Ahhh the old faithful! What can go wrong? Well...let me tell you...
-As 'Engineer Liason' [Tom Smykowski](https://www.imdb.com/title/tt0151804/characters/nm0726223) told us in the Movie Office Space _"I deal with the god damn customers so the engineers don't have to. I have people skills; I am good at dealing with people. Can't you understand that? What the hell is wrong with you people?"_
+As 'Engineer Liason' [Tom Smykowski](https://www.imdb.com/title/tt0151804/characters/nm0726223) told us in the movie 'Office Space' _"I deal with the god damn customers so the engineers don't have to. I have people skills; I am good at dealing with people. Can't you understand that? What the hell is wrong with you people?"_
 
 So according to Tom, having the engineers talk directly with the users is just not right, so instead a specialist role exists. Sounds simple right? But here is what really happens:
 

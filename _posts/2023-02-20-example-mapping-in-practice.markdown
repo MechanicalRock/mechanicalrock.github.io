@@ -20,7 +20,7 @@ To me, example mapping is the closest you can get to perfection. This article su
 
 # What is Example Mapping
 
-Example Mapping is a technique using coloured cards to facilitate a session with the dev team (or at least one representative from) and Product Owner and SME(s) to elaborate a user story and create a common understanding amongst the team.
+Example Mapping is a technique using coloured cards to facilitate a session with the dev team (or at least one representative from) and Product Owner and subject matter experts (SMEs) to elaborate a user story and create a common understanding amongst the team.
 
 Yellow cards represent the User story/feature, blue cards specify rules, green cards provide examples and red cards are for asking questions.
 

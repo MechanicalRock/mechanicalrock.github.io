@@ -58,7 +58,7 @@ At the end of the session the goal is to at least have a starting point for the 
 
 # The Opposition
 
-There's obviouslt many ways to specify and communicate requirements, so lets stack Example Mapping up against the opposition.
+There's obviously many ways to specify and communicate requirements, so lets stack Example Mapping up against the opposition.
 
 ## The Func Spec
 

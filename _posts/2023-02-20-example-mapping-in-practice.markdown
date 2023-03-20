@@ -60,7 +60,7 @@ At the end of the session the goal is to at least have a starting point for the 
 
 There's obviously many ways to specify and communicate requirements, so lets stack Example Mapping up against the opposition.
 
-## The Func Spec
+## The Functional Specification Document
 
 ![](/img/blog/examplemapping/funcspec.jpg)
 
@@ -70,15 +70,13 @@ As 'Engineer Liason' [Tom Smykowski](https://www.imdb.com/title/tt0151804/charac
 So according to Tom, having the engineers talk directly with the users is just not right, so instead a specialist role exists. Sounds simple right? But here is what really happens:
 
 - The BA talks to 'The Business', converts their business speak into tech requirements and places them in a nice document (the spec)
-- The developer picks up the functional specification and codes their interpretation
+- The developer picks up and reads (maybe) the functional specification and codes their interpretation
 - The tester then picks up the spec and tests the code to the letter of the document
 - The developer and tester get into a massive argument
 - The BA gets involved and tells them that they are both wrong
 - 'The Business' then come along and tell them all that the spec does not reflect what they wanted
 
-And all that is based on the fact that the developer even reads the spec.
-
-Essentially there is a large up front investment which does not involve the right people, everyone then communicates through a document....working away in silos.
+Essentially there is a large up front investment which does not involve the right people, everyone then communicates through a document....working away in silos. Perhaps working through 'The Spec' in collaboration might work better?
 
 ## The "She'll be right"
 
@@ -102,7 +100,7 @@ If only there was some way of that short conversation happening between develope
 
 The opposite of the "She'll be right".
 
-Arming the developer and tester with all the information they could possibly want. This often occurs when someone writes a func spec in Given, When, Then syntax and places it into the Jira card to be agile.
+Arming the developer and tester with all the information they could possibly want. This often occurs when someone writes a functional specification in Given, When, Then syntax and places it into the Jira card to be agile.
 
 Given, When, Then, And Then......And Then And Then And Then
 

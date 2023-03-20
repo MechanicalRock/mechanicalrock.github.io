@@ -119,7 +119,7 @@ What makes Example Mapping different is the process and the output:
 - You get the right people in the room...product owner, SMEs, developers and testers
 - You document the understanding of the user story in simple clear terms
 - With the above in place, you build a shared understanding
-- EVERYONE leaves the session knowing they could build & test the feature right now
+- **EVERYONE** leaves the session knowing they could build & test the feature right now
 - The people that build the software build the requirements.....everyone wears the BA hat
 
 <br />

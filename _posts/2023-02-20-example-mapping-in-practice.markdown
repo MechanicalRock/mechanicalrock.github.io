@@ -42,7 +42,7 @@ The questions lead to examples being specified, and a new rule emerges which nee
 
 ![Example Map](/img/blog/examplemapping/examplemap.png)
 
-To recap the process. The Product Owner brings a new User Story to the session, presents to the team with a brief explanation and then the facilitator sets to work . I like to run my sessions as follows:
+To recap the process. The product owner brings a new user story to the session, presents to the team with a brief explanation and then the facilitator sets to work . I like to run my sessions as follows:
 
 1. Allow the Product Owner to describe the User Story including the how and why
 2. Set a timer for five minutes quiet time and allow the team to raise questions ready for the Product Owner

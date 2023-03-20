@@ -69,7 +69,7 @@ As 'Engineer Liason' [Tom Smykowski](https://www.imdb.com/title/tt0151804/charac
 
 So according to Tom, having the engineers talk directly with the users is just not right, so instead a specialist role exists. Sounds simple right? But here is what really happens:
 
-- The BA talks to 'The Business', converts their business speak into tech requirements and places them in a nice document
+- The BA talks to 'The Business', converts their business speak into tech requirements and places them in a nice document (the spec)
 - The developer picks up the functional specification and codes their interpretation
 - The tester then picks up the spec and tests the code to the letter of the document
 - The developer and tester get into a massive argument

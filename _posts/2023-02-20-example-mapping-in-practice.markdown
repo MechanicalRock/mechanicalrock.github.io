@@ -50,7 +50,7 @@ To recap the process. The product owner brings a new user story to the session, 
 4. Once quiet time is over I go through the question cards and get the team member who raised it to ask the Product Owner the question
 5. As questions are answered, new rules are defined and then clarified using examples as a whole team exercise
 6. The board is continually refined as questions are answered, new rules written and examples provided
-7. To ensure that we have something solid to start on, I try to keep focus on one Rule at a time to ensure that sufficient examples are required and continually ask "Dev team, are you happy you can start building this" and "Product Owner, are you happy with this outcome"
+7. To ensure that we have something solid to start on, I try to keep focus on one rule at a time to ensure that sufficient examples are required and continually ask "Dev team, are you happy you can start building this" and "Product Owner, are you happy with this outcome"
 
 At the end of the session the goal is to at least have a starting point for the User Story development and a plan to follow up any additional sessions requried.
 

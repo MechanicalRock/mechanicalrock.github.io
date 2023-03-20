@@ -35,7 +35,7 @@ _Discounts are offered based on the previous month's spend_
 Apu then offers up two rules he has already thought of and places them on the canvas on blue cards like so:
 ![Example Map](/img/blog/examplemapping/initialrules.png)
 
-The team get about asking questions aroundf the discounts and limit:
+The team get about asking questions around the discounts and limit:
 ![Example Map](/img/blog/examplemapping/questions.png)
 
 The questions lead to examples being specified, and a new rule emerges which needs examples to help explain:

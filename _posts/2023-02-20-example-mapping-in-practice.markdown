@@ -48,7 +48,7 @@ To recap the process. The product owner brings a new user story to the session, 
 2. Set a timer for five minutes quiet time and allow the team to raise questions ready for the Product Owner
 3. During the quiet time the Product Owner may start creating rules on the blue cards
 4. Once quiet time is over I go through the question cards and get the team member who raised it to ask the Product Owner the question
-5. As questions are answered, new rules are defined and then clarified using Examples as a whole team exercise
+5. As questions are answered, new rules are defined and then clarified using examples as a whole team exercise
 6. The board is continually refined as questions are answered, new rules written and examples provided
 7. To ensure that we have something solid to start on, I try to keep focus on one Rule at a time to ensure that sufficient examples are required and continually ask "Dev team, are you happy you can start building this" and "Product Owner, are you happy with this outcome"
 

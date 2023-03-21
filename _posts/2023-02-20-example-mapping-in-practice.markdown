@@ -5,18 +5,16 @@ description: Example Mapping - Breaking boundaries to provide the most effective
 date: 2023-03-21
 tags: [examplemapping, bdd]
 author: Andrew Tyler
-image: /img/blog/examplemapping/emoverview.png
+image: /img/blog/examplemapping/emoverview.jpg
 ---
 
 ![Assorted Post It note colours](/img/blog/examplemapping/emoverview.jpg)
-
-<br/>
 
 In my many years as a software engineer, scrum master and delivery lead I've worked on projects of various shapes and sizes. I firmly believe that one of the most challenging things you face in any project is building a common understanding of requirements between the customer and development team.
 
 To me, example mapping is the closest you can get to perfection. This article sums up the principles of example mapping, compares the opposition, and provides examples itself to help you master it in your own teams.
 
-# What is Example Mapping
+## What is Example Mapping
 
 Example Mapping is a technique using coloured cards to facilitate a session with the dev team (or at least one representative from) and product owner and subject matter experts (SMEs) to elaborate a user story and create a common understanding amongst the team.
 
@@ -52,13 +50,11 @@ To recap the process. The product owner brings a new user story to the session, 
 
 At the end of the session the goal is to at least have a starting point for the user story development and a plan to follow up any additional sessions required.
 
-<br />
-
-# The Opposition
+## The Opposition
 
 There's obviously many ways to specify and communicate requirements, so lets stack Example Mapping up against the opposition.
 
-## The Functional Specification Document
+### The Functional Specification Document
 
 ![](/img/blog/examplemapping/funcspec.jpg)
 
@@ -76,7 +72,7 @@ So according to Tom, having the engineers talk directly with the users is just n
 
 Essentially there is a large up front investment which does not involve the right people, everyone then communicates through a document....working away in silos. Perhaps working through 'The Spec' in collaboration might work better?
 
-## The "She'll be right"
+### The "She'll be right"
 
 You've all seen this one...the Jira Card with a title and no body!
 ![Jira card lacking any detail](/img/blog/examplemapping/emptyjiracard.png)
@@ -94,7 +90,7 @@ There's always more to the story than meets the eye. Subsequenely the code gets 
 
 If only there was some way of that short conversation happening between developer, tester and product owner beforehand :wink:
 
-## The Neverending Story
+### The Neverending Story
 
 The opposite of the "She'll be right".
 
@@ -108,7 +104,7 @@ Given, When, Then, And Then......And Then And Then And Then
 
 In this scenario someone believed they knew the story very well, so documented it in great detail. Unfortunately they forgot to involve the rest of the team.
 
-## So why Example Mapping?
+### So why Example Mapping?
 
 What makes Example Mapping different is the process and the output:
 
@@ -118,13 +114,11 @@ What makes Example Mapping different is the process and the output:
 - **EVERYONE** leaves the session knowing they could build & test the feature right now
 - The people that build the software build the requirements.....everyone wears the BA hat
 
-<br />
-
-# Examples of Examples
+## Examples of Examples
 
 Theres no set rules of how you should structure your examples, it really depends on the user story and rule, the following outlines some examples that I have seen and used myself. It doesn't always have to be the better known Given, When, Then syntax....whilst it works very well in a lot of scenarios its not the only way.
 
-## The Humble Table
+### The Humble Table
 
 Tables are really underated, and they are great for showing examples of certain types of data. I have used tables to represent examples with many sessions I have run for example mapping.
 
@@ -134,7 +128,7 @@ The following table elaborates on our Rule from above 'The discount rate is base
 
 One huge advantage of tables is that they are easy to maintain in Excel/Sheets and you can add extra examples quickly during your virtual sessions - _"Yeh but Andrew....what about if Homer......"_
 
-## Fun with Fiction
+### Fun with Fiction
 
 Adding names to roles can bring a hole load more fun to your example mapping sessions. A product owner once handed the team a matrix showing all the role -> function permissions for the system we were developing. This information was gold, and the team were super impressed with the effort put in, but in an attempt to create a quick reference example to facilitate conversations, we took the matrix and ran through it to create a simple pictorial view we could all talk to! In that instance we used the characters of the Simpsons to model the roles in the corporate organisation (Marge being the boss). This made it real easy when having conversations about role based features - _"only Marge can do that"_.
 <br/>
@@ -142,30 +136,28 @@ Applying the same principle for our 'Kwik-E-Mart' app membership options might l
 
 ![](/img/blog/examplemapping/funwithfiction.png)
 
-## A Simple Sketch
+### A Simple Sketch
 
 We've all heard the saying "a picture tells a thousand words" right? Well a thousand is a lot for a set of acceptance criteria on a user story but it's still a valid point. Pictures can really help solidify an example on a rule. Consider the feature mentioned above, where users get notified of special offers via the 'Kwik-E-Mart' app. Notifications are obviously time and location sensitive, so the product owner might mention something like "specials should be notified within a 5km range of the store, and only for five minutes". Sounds pretty simple right? But don't people with mobile phones move around during that five minute period. A sketch here can really solidify what the intention is.
 
 ![Diagram showing app users moving in and out of range](/img/blog/examplemapping/sketch.jpg)
 
-<br />
-
-# Common Example Mapping Patterns
+## Common Example Mapping Patterns
 
 The following section shows the various shapes and sizes that example maps might come out of a session like. Each one tells a story of it's own.
 
-## The Stock Standard
+### The Stock Standard
 
 A simple story which is easy to understand. This scenario usually leads to a very simple map which has two or three rules each with two to three examples and no major outstanding questions. The team can leave the session and start developing the feature immediately.
 ![Well defined Example Map with rules and examples](/img/blog/examplemapping/stockstandard.png)
 
-## The Tip of the Iceberg
+### The Tip of the Iceberg
 
 Session starts with what the team believes is a relatively simple story. Many many questions then get raised, the product owner may or may not have answers for them. As more and more rules get clarified and uncovered the team realise this is touching more and more existing functionality, one story becomes many as the impact of this new requriement is uncovered.
 ![Example map with many rules and many questions](/img/blog/examplemapping/tipiceberg.png)
 Whilst this might seem like a negative outcome I believe my response in the session was "Well...at least we know the impact of it now rather than after sinking weeks of effort in". If I recall correctly the product owner also mentioned "That's why we have these sessions".
 
-## The Time Saver
+### The Time Saver
 
 You can sense the nervousness of the product owner coming into this one. They outline what they believe is going to be a big user story with many many complexities. The questions lead to conversations, conversations lead to solutions. The team here end up finding a very simple solution to the product owner's problem, maybe using existing functionality with some small tweaks and backlogging a more elaborate solution for post MVP. A real time saver here for the product owner and team, through the power of collaboration they have realised a real quick win without adding more code.
 

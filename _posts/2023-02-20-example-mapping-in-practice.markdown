@@ -138,9 +138,7 @@ One huge advantage of tables is that they are easy to maintain in Excel/Sheets a
 
 ## Fun with Fiction
 
-Adding names to roles can bring a hole load more fun to your example mapping sessions. A product owner once handed the team a matrix showing all the role -> function permissions for the system we were developing. This information was gold, and the team were super impressed with the effort put in, but in an attempt to create a quick reference example to facilitate conversations, we took the matrix and ran through it to create a simple pictorial view we could all talk to!
-
-Here is what our 'Kwik-E-Mart' app membership options might look like as a pictorial view.
+Adding names to roles can bring a hole load more fun to your example mapping sessions. A product owner once handed the team a matrix showing all the role -> function permissions for the system we were developing. This information was gold, and the team were super impressed with the effort put in, but in an attempt to create a quick reference example to facilitate conversations, we took the matrix and ran through it to create a simple pictorial view we could all talk to! In that instance we used the characters of the Simpsons to model the roles in the corporate organisation (Marge being the boss). Applying the same principle for our 'Kwik-E-Mart' app membership options might look like this.
 ![](/img/blog/examplemapping/funwithfiction.png)
 
 ## A Simple Sketch

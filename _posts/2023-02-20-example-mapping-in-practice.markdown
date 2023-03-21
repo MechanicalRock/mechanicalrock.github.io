@@ -5,7 +5,7 @@ description: Example Mapping - Breaking boundaries to provide the most effective
 date: 2023-03-21
 tags: [examplemapping, bdd]
 author: Andrew Tyler
-image: /img/blog/examplemapping/emOverview.png
+image: /img/blog/examplemapping/emoverview.png
 ---
 
 ![Assorted Post It note colours](/img/blog/examplemapping/emoverview.jpg)
@@ -15,8 +15,6 @@ image: /img/blog/examplemapping/emOverview.png
 In my many years as a software engineer, scrum master and delivery lead I've worked on projects of various shapes and sizes. I firmly believe that one of the most challenging things you face in any project is building a common understanding of requirements between the customer and development team.
 
 To me, example mapping is the closest you can get to perfection. This article sums up the principles of example mapping, compares the opposition, and provides examples itself to help you master it in your own teams.
-
----
 
 # What is Example Mapping
 

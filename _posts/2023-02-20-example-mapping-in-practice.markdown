@@ -2,7 +2,7 @@
 layout: post |
 title: Example Mapping in Practice
 description: Example Mapping - Breaking boundaries to provide the most effective means to derive requirements and create common understanding within the team!
-date: 2022-08-06
+date: 2023-03-21
 tags: [examplemapping, bdd]
 author: Andrew Tyler
 image: /img/blog/examplemapping/emOverview.png

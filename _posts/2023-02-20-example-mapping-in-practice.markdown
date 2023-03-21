@@ -5,7 +5,7 @@ description: Example Mapping - Breaking boundaries to provide the most effective
 date: 2023-03-21
 tags: [examplemapping, bdd]
 author: Andrew Tyler
-image: /img/blog/examplemapping/emOverview.png
+image: /img/blog/examplemapping/emoverview.png
 ---
 
 ![Assorted Post It note colours](/img/blog/examplemapping/emoverview.jpg)

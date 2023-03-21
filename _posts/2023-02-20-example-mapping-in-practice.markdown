@@ -1,5 +1,5 @@
 ---
-layout: post |
+layout: post
 title: Example Mapping in Practice
 description: Example Mapping - Breaking boundaries to provide the most effective means to derive requirements and create common understanding within the team!
 date: 2023-03-21

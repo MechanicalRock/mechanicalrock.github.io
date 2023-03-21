@@ -2,7 +2,7 @@
 layout: post
 inject_optimize_tag: true
 title: "A Lean Modern Data Platform"
-description: ""
+description: "The article discusses the importance of a well-engineered data platform as a solid foundation for businesses looking to become data-driven. The article describes the infrastructure and design of the data platform for Mechanical Rock, which utilizes greenfield technologies like Snowflake, Fivetran, and DBT, as well as the Dagster orchestration tool and Github Actions for CI/CD. The article highlights the benefits of these technologies and data-ops practices, but also mentions some of the challenges and drawbacks encountered in using them."
 date: 2023-02-22
 highlight: monokai
 author: Matthew Carter

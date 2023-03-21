@@ -16,8 +16,6 @@ In my many years as a software engineer, scrum master and delivery lead I've wor
 
 To me, example mapping is the closest you can get to perfection. This article sums up the principles of example mapping, compares the opposition, and provides examples itself to help you master it in your own teams.
 
----
-
 # What is Example Mapping
 
 Example Mapping is a technique using coloured cards to facilitate a session with the dev team (or at least one representative from) and product owner and subject matter experts (SMEs) to elaborate a user story and create a common understanding amongst the team.

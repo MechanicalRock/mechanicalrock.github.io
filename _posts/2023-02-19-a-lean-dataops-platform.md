@@ -29,11 +29,11 @@ To create our data platform we leveraged multiple greenfield technologies in ord
 
 In order to build our data platform we needed to load data from our sources and transform it into a usable structure while also ensuring the security of the platform, and thus the data, was up to scratch. To rapidly create this platform while not cutting the corners of these intentions we decided on using the SaaS technologies Snowflake and Fivetran for our storage and data loading respectively. The resources needed could be created both quickly, and more importantly in code, using the Terraform provider for each of these technologies. This, coupled with strong governance, meant our platform and data are secure. However, these tools are not without their drawbacks, and these will be discussed later on. In addition, we are also using DBT for data transformation, which of course is also codified.
 
-![Flow of Data](../img/data-driven-platform-images/architecture_diagram_1.jpg)
+![Flow of Data](/img/data-driven-platform-images/architecture_diagram_1.jpg)
 
 The orchestration of Fivetran and DBT is done by Dagster to ensure the dependencies between the two tools is robust.
 
-![orchestration](../img/data-driven-platform-images/architecture_diagram_3.jpg)
+![orchestration](/img/data-driven-platform-images/architecture_diagram_3.jpg)
 
 Our CI/CD pipeline was created with Github Actions, the checks for which ensure that governance policies are maintained and Terraform is (hopefully) working as expected. For our deployments it ensures that the infrastructure is provisioned in a consistent and reliable way with the correct version control as well as change and approval processes.
 
@@ -87,7 +87,7 @@ Similar to the Fivetran Terraform provider, we also wanted to trial the use of D
 
 Dagster for our purposes was very simple to set up, minimal lines of code are required to create dependencies between Fivetran and DBT. Dagster, which is run on a Github Actions CRON job, first initiates a sync for all Fivetran connectors pointed at our destination and polls them until completion. Once successful the fivetran syncs are complete the DBT project is run, and then finally the tests for the DBT project are executed. Here is a diagram of Dagster and its interactions with Fivetran and DBT.
 
-![Dagster diagram](../img/data-driven-platform-images/dagster_diagram.png)
+![Dagster diagram](/img/data-driven-platform-images/dagster_diagram.png)
 
 # Data-Ops
 

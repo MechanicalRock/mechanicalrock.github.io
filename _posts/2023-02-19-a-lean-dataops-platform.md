@@ -2,16 +2,15 @@
 layout: post
 inject_optimize_tag: true
 title: "A Lean Modern Data Platform"
-description: "The article discusses the importance of a well-engineered data platform as a solid foundation for businesses. In addition looking at the infrastructure and design of the data platform for Mechanical Rock, which utilizes technologies like Snowflake, Fivetran, and DBT, as well as the Dagster orchestration tool and Github Actions for CI/CD. Highlighted are the benefits of these technologies and data-ops practices, however, some of the challenges and drawbacks are also discussed."
+description: "A modern data platform built on Snowflake, Fivetran, DBT and Dagster."
 date: 2023-02-22
 highlight: monokai
 author: Matthew Carter
+image: img/data-driven-platform-images/data_platform_artsy.png
 tags: [snowflake, data-ops, data platform, fivetran, dbt, dagster]
 ---
 
-# Building a Lean ‘Modern’ Data Platform
-
-### Introduction
+## Introduction
 
 Right now, everyone wants to be data driven and there has been an explosion of tooling to help people do that. However, to become data driven with things like dashboards, reporting, AI and ML, it is paramount that these groan inducing buzzwords are built upon a solid foundation of quality, aggregated and easy to access data. A well engineered data platform is, in my opinion, this solid foundation. For companies looking to effectively aggregate and analyse large amounts of data, building a platform is essential. _Excel sheets can only get you so far._ With a data platform, businesses generally can gain insights into their operations, customer behavior, and market trends. This knowledge can help them make informed decisions and ultimately move closer to becoming data driven.
 
@@ -23,9 +22,9 @@ The good and proper practices of "data-ops" or any other buzz-word to describe g
 
 To create our data platform we leveraged multiple greenfield technologies in order to decrease our time to value as well as minimizing the maintenance cost of the platform. All the while ensuring our dev-ops dream of good engineering practice lives on in the data space.
 
-# Infrastructure
+## Infrastructure
 
-## Designing The Data Platform
+### Designing The Data Platform
 
 In order to build our data platform we needed to load data from our sources and transform it into a usable structure while also ensuring the security of the platform, and thus the data, was up to scratch. To rapidly create this platform while not cutting the corners of these intentions we decided on using the SaaS technologies Snowflake and Fivetran for our storage and data loading respectively. The resources needed could be created both quickly, and more importantly in code, using the Terraform provider for each of these technologies. This, coupled with strong governance, meant our platform and data are secure. However, these tools are not without their drawbacks, and these will be discussed later on. In addition, we are also using DBT for data transformation, which of course is also codified.
 
@@ -89,19 +88,19 @@ Dagster for our purposes was very simple to set up, minimal lines of code are re
 
 ![Dagster diagram](/img/data-driven-platform-images/dagster_diagram.png)
 
-# Data-Ops
+## Data-Ops
 
-## CI/CD Pipeline
+### CI/CD Pipeline
 
 In addition to our infrastructure being defined as code, another form that data-ops practices take in this platform is our continuous integration and continuous delivery pipeline. Running on Github Actions we have two main workflows. The first is for all pull requests to the main branch. This deployment doesn't make any physical changes to our infrastructure, but instead does all the checks and balances to ensure nothing goes wrong when a branch is merged into main (being production). These checks include those discussed above for the Snowflake governance piece of our platform. In addition, they also run Terraform plans, which if successful indicate the proposed changes to be made will be applied successfully. The second workflow is the deployment of changes on the main branch. The steps in this deployment make changes to each Terraform workspace for Snowflake and Fivetran. With this structure we are able to make small incremental changes, which in rare cases they fail, can be rolled back quickly and easily.
 
-## Material outcomes, Ad-hoc Analysis and Dashboard
+### Material outcomes, Ad-hoc Analysis and Dashboard
 
 This was all setup in a couple of months, which could have been significantly longer if we chose some different technologies, in my opinion. We can do ad-hoc analysis however, is yet to be done in a meaningful way. We do plan to complete a customer segmentation piece of analysis in the coming weeks, so stay tuned for that blog. That said, we have a complete and functional dashboard that illustrates our high level metrics.
 
-# Issues & Challenges
+## Issues & Challenges
 
-## Snowflake Governance
+### Snowflake Governance
 
 Despite the value add of the Snowflake Terraform Provider, there are some challenges and drawbacks that we have encountered in using it. This is due to the provider being a relatively new technology that is still being developed. In some cases the behavior of the provider is not as expected. For example, if you are making account level grants, using Terraform, to pieces of infrastructure and you have other business units of tenants with that same grant you can revoke the access that others have. To avoid this, it is imperative to check that all grants have the parameter `multiple_grants_enabled` set to `true`. To enforce this you can use the tool `conftest` to check your terraform configuration for this exact parameter across all our snowflake grants. The code for this test can be seen below:
 
@@ -155,14 +154,14 @@ This runs as one of our safety checks within our pull requests in github to ensu
 
 In addition to this issue, there is some difficulty in troubleshooting errors as sometimes the error message is a red-hearing or is not descriptive enough to understand what went wrong. My personal method of troubleshooting these errors is to reset the terraform state of specific objects and check the Snowflake query logs to understand what the provider was trying to do.
 
-## Fivetran
+### Fivetran
 
 Similar to the Snowflake Terraform provider, the Fivetran Terraform provider is also in its infancy. The main drawback of this is that some of the functionality available in the Fivetran console has not been brought over to the Terraform provider just yet, however, from discussions with the team at Fivetran, they are working hard to make this a reality so stay tuned!
 
-## Dagster
+### Dagster
 
 The integrations in Dagster between each service are ok, fitting our use case but unfortunately stripping us of some control. An example of this is if a Fivetran sync fails silently its status is set to "rescheduled". In these cases, typically following a historical sync, the "rescheduled" sync never occurs. This causes Dagster to poll indefinitely until a timeout occurs. Unfortunately, I have not found a way to resolve this error in Dagster and thus it would be nice to have the ability to catch this polling message however Dagster doesn't allow us to do this. Though I want to emphasize this is an issue with Fivetran not Dagster.
 
-# Conclusion
+## Conclusion
 
 A solid foundation of quality, aggregated, and easy-to-access data is necessary to even start making decisions that are data-driven. To achieve this, companies need to leverage the best tools available and apply good engineering practices such as data-ops coding practices. The internal data platform we built by leveraging multiple greenfield technologies, such as Snowflake, Fivetran, and DBT. They also utilized the Dagster orchestration tool and created a CI/CD pipeline using Github Actions. While these tools have some drawbacks, they allowed us to create a lean data platform with robust security, governance checks, and data testing. The platform is still in its early iteration, and it will likely change in the future.

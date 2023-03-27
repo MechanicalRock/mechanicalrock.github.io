@@ -6,7 +6,7 @@ description: "A modern data platform built on Snowflake, Fivetran, DBT and Dagst
 date: 2023-02-22
 highlight: monokai
 author: Matthew Carter
-image: img/data-driven-platform-images/data_platform_artsy.png
+image: img/data-driven-platform-images/data_platform_artsy.jpeg
 tags: [snowflake, data-ops, data platform, fivetran, dbt, dagster]
 ---
 

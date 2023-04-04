@@ -86,7 +86,7 @@ Once you have deployed the SNS Topic, S3 Bucket, and SNS Access Policy, the next
         Status: Enabled
       NotificationConfiguration:
         TopicConfigurations:
-          - Topic: !Ref NewTopic 
+          - Topic: !Ref NewTopic
             Event: s3:ObjectCreated:Put
             Filter:
               S3Key:
@@ -95,15 +95,13 @@ Once you have deployed the SNS Topic, S3 Bucket, and SNS Access Policy, the next
                     Value: !Sub "${Bucket}/${Key}"  // configure the bucket and folder you want to monitor for new uploads
 ```
 
-
-
 ## How troubleshoot and fix the "Invalid Destination Error"
 
 So far everything seems straightforward when you are deploying the resources for the very first time. However, fun starts when you need to update the access policy on your SNS Topic, Or alternatively, for any reason you have to reconfigure new Notification Configurations on your S3 Bucket. That's where you will bump into this error:
 
 ```
 "Unable to validate the following destination configurations
-(Service: Amazon S3; Status Code: 400; Error Code: InvalidArgument;Request ID: xxxxx; 
+(Service: Amazon S3; Status Code: 400; Error Code: InvalidArgument;Request ID: xxxxx;
 S3 Extended Request ID: xxxxx; Proxy: null)"
 ```
 
@@ -119,8 +117,4 @@ After successfully updating the SNS Topic resource, you can configure notificati
 
 Finally, to complete your event-driven workflow, configure SNS Events on your Lambda resources.
 
-
-
-
-
-
+In conclusion, CloudFormation can be a powerful Infrastructure as Code tool for deploying AWS resources. However, deciphering errors during the create/update stack process can be challenging. Specifically, configuring SNS Notifications on an S3 Bucket can be complex due to the order in which dependencies are created. The errors can be frustrating to troubleshoot, but by following the recipe outlined in this article, you can save time and efficiently resolve the issue.

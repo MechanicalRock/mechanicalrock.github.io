@@ -12,7 +12,7 @@ image: /img/sns-Notifications-reconfiguration/SNS_Notification_Error.png
 
 ## How to Avoid "Unable to validate the following destination configurations" Error
 
-As is widely known, working with CloudFormation as an Infrastructure as Code tool to deploy resources poses a major challenge when it comes to deciphering errors in the create/update stack process. These errors are not usually straightforward or informative, which makes it difficult to identify the problem immediately. Recently, I had good fun with re-configuring notifications on an Amazon S3 bucket, and it took me a full day to trouble shoot why an error was occurring and how to resolve it. I consulted numerous resources, each of which pointed to a specific reason for the deployment failure. Ultimately, I had to combine all the information I had gathered to successfully address the issue.
+As is widely known amongst cloud geeks, working with CloudFormation as an Infrastructure as Code tool to deploy resources poses a major challenge when it comes to deciphering errors in the create/update stack process. These errors are not usually straightforward or informative, which makes it difficult to identify the problem immediately. Recently, I had good fun with re-configuring notifications on an Amazon S3 bucket, and it took me a full day to trouble shoot why an error was occurring and how to resolve it. I consulted numerous resources, each of which pointed to a specific reason for the deployment failure. Ultimately, I had to combine all the information I had gathered to successfully address the issue.
 
 This brief blog post will outline the complexities involved in updating SNS Notification configurations on an Amazon S3 Bucket, as well as steps for resolving the issue efficiently.
 

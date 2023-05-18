@@ -1,7 +1,7 @@
 ---
 layout: post
 title: MLOps Workflow Components
-description: !
+description: A brief overview on MLOps workflow components
 date: 2023-03-21
 tags: [MLOps Components, AWS, Machine Learning]
 author: Nadia Reyhani
@@ -10,10 +10,12 @@ image:
 
 ## Why did MLOps become a thing for ML solutions?
 
+![MLOps](/img/reinventRecap2022-ML/MLOps.png)
+
 MLOps, short for Machine Learning Operations, involves applying DevOps principles to the lifecycle of a machine learning model. Automation lies at the heart of the DevOps methodology and should also be embraced in MLOps since it is derived from DevOps.
 The various steps involved in a machine learning workflow, such as model training, tuning, and deployment, are both time-consuming and prone to errors. Without automation, valuable time, effort, and human potential are wasted. Therefore, automating these steps enables data scientists and data engineers to be freed from manual processes, allowing them to focus on developing workflows, differentiating the organization, and expediting the implementation of valuable changes in production.
 
-By adopting Continuous Integration and Continuous Deployment (CI/CD) practices and following best practices, we can mitigate risks in the environment through automated testing and reduce errors caused by manual processes.
+By adopting Continuous Integration and Continuous Deployment (CI/CD) practices and following good practices, we can mitigate risks in the environment through automated testing and reduce errors caused by manual processes.
 
 ## MLOps Workflow Components
 
@@ -41,7 +43,7 @@ This involves the ongoing monitoring of data and model quality to identify poten
 
 ![MLOps Exploration Layer](/img/MLOpsComponents/Exploration.png)
 
-Machine learning operations (MLOps) commence with exploratory data analysis (EDA), where data scientists analyze a subset of data and employ diverse ML algorithms and techniques to identify the most suitable ML solution. This process is seamlessly facilitated by Amazon SageMaker Studio, offering capabilities for data analysis, data processing, model training, and deploying models for inference through a non-production endpoint. To ensure the reproducibility of experiments, SageMaker's Experiment capability tracks all activities performed by data scientists.
+Machine learning operations (MLOps) commence with exploratory data analyzes (EDA), where data scientists analyze a subset of data and employ diverse ML algorithms and techniques to identify the most suitable ML solution. This process is seamlessly facilitated by Amazon SageMaker Studio, offering capabilities for data analyzes, data processing, model training, and deploying models for inference through a non-production endpoint. To ensure the reproducibility of experiments, SageMaker's Experiment capability tracks all activities performed by data scientists.
 
 ### ML Pipeline
 
@@ -63,4 +65,11 @@ Our objective is to establish not just a continuous building and testing capabil
 
 ## Final words
 
+![ML workflow](/img/MLOpsComponents/MLPipeline.png)
+
 As mentioned in this concise blog post, an ML pipeline typically comprises two workflows positioned on either side of a machine learning model registry. The model registry serves as a centralized hub for managing machine learning models, enabling ML engineers and data scientists to train models, compare different versions, visualize metrics, and make decisions regarding acceptance or rejection. Ideally, approving a new model version initiates a pipeline that culminates in the deployment of the model into production.
+
+In the realm of Machine Learning, particularly within the AWS ecosystem, numerous options exist for crafting an effective workflow. Various services cater to the needs of both Data Scientists, like Amazon SageMaker, and Operations teams, such as Amazon CodePipeline. Familiarizing yourself with the distinctive features of each tool or service empowers you to select the optimal solution for your Machine Learning project and team. 
+
+
+If you're curious about Mechanical Rock's approach to architecting Machine Learning solutions or require assistance with your ongoing Data Science project, don't hesitate to [contact us](https://mechanicalrock.io/lets-get-started). Our team is dedicated to providing unwavering support and guidance whenever you need it.

@@ -2,7 +2,7 @@
 layout: post
 title: MLOps Workflow Components
 description: A brief overview on MLOps workflow components
-date: 2023-03-21
+date: 2023-05-15
 tags: [MLOps Components, AWS, Machine Learning]
 author: Nadia Reyhani
 image:

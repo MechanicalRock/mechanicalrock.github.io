@@ -10,11 +10,13 @@ author: Quintin Maseyk
 tags: [react, react components, unity]
 ---
 
-![React & Unity](/img/unity-react/cover.jpg)
-
-ReactJS is designed for building dynamic and interactive web experiences with state management. It allows developers to create reusable components or libraries without having to build everything from scratch. This makes it very easy to add additional functionality or animations onto existing applications. 
+![Unity & React](/img/unity-react/cover.jpg)
 
 Unity is a powerful and versatile platform for 3D development. It is known for its ability to handle complex 3D models and environments, as well as its strong focus on creating visually appealing and interactive experiences. Unity also has a strong community and a wealth of documentation and resources available online.
+
+ReactJS is a popular choice for building user interfaces because it's easy to learn and use. It's also very flexible and can be used to build a wide range of applications, from simple websites to complex web apps. It has a wide range of support and it's index in the [State of Frontend](https://tsh.io/state-of-frontend/#over-the-past-year-which-of-the-following-frameworks-have-you-used-and-liked) report is strong .
+
+The reason you'd consider using React with Unity is because React is a great choice for building user interfaces, but it's not so great for building 3D models and environments. Unity is a great choice for building 3D models and environments, but it's not so great for building user interfaces. So, by joining forces, we can create a powerful combination that allows us to build both 3D models and user interfaces.
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 font: serif
 title: "Unity & React"
 description: "Unity for 3D modelling and React for user interfaces. How do we combine the two?"
@@ -9,8 +9,6 @@ image: /img/unity-react/cover.jpg
 author: Quintin Maseyk
 tags: [react, react components, unity]
 ---
-
-![Unity & React](/img/unity-react/cover.jpg)
 
 Unity is a powerful and versatile platform for 3D development. It is known for its ability to handle complex 3D models and environments, as well as its strong focus on creating visually appealing and interactive experiences. Unity also has a strong community and a wealth of documentation and resources available online.
 

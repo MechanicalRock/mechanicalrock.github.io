@@ -12,7 +12,7 @@ tags: [react, react components, unity]
 
 Unity is a powerful and versatile platform for 3D development. It is known for its ability to handle complex 3D models and environments, as well as its strong focus on creating visually appealing and interactive experiences. Unity also has a strong community and a wealth of documentation and resources available online.
 
-ReactJS is a popular choice for building user interfaces because it's easy to learn and use. It's also very flexible and can be used to build a wide range of applications, from simple websites to complex web apps. It has a wide range of support and it's index in the [State of Frontend](https://tsh.io/state-of-frontend/#over-the-past-year-which-of-the-following-frameworks-have-you-used-and-liked) report is strong .
+ReactJS is a popular choice for building user interfaces because it's easy to learn and use. It's also very flexible and can be used to build a wide range of applications, from simple websites to complex web apps. It has a wide range of support and it's index in the [State of Frontend](https://tsh.io/state-of-frontend/#over-the-past-year-which-of-the-following-frameworks-have-you-used-and-liked) report is strong.
 
 The reason you'd consider using React with Unity is because React is a great choice for building user interfaces, but it's not so great for building 3D models and environments. Unity is a great choice for building 3D models and environments, but it's not so great for building user interfaces. So, by joining forces, we can create a powerful combination that allows us to build both 3D models and user interfaces.
 
@@ -54,23 +54,23 @@ The layered architecture pattern is a software design pattern that divides the s
 
 The Unity Application is the bottom layer of the architecture. It's responsible for all of the 3D rendering capability. The Unity application communicates with the other layers through a set of interfaces, which are defined in the Unity application layer.
 
-This layer deploys Web View where it should expand across the entire screen.
+This layer deploys Web View where it should expand across the entire screen. It'll receive `events` from the React application and update the scene accordingly.
 
 ### Layer 2: Web View
 
 ![Layer 2](/img/unity-react/layer-2.png)
 
-The Web View layer is responsible for rendering the web content (React application). Since Web View imeplements Chromium engine it can render any web content. This layer sits inbetween Unity and React and initialises the React application.
+The Web View layer is responsible for rendering the web content (React application). Since Web View imeplements the Chromium engine it can render any web content. This layer sits inbetween Unity and React and initialises the React application.
 
-Web View should be implemented to be responsive and stetch the full size of the application viewport. It's z-index should be the topmost so that so React can be rendered on top of the Unity application.
+Web View should be implemented to be responsive and stetch the full size of the application's viewport. From Unity's perspective, Web View's z-index should be the topmost so that so React can be rendered on top of the Unity application.
 
-Since it's a Chromium implementation, things like the Window object is available to the React application. This means that the React application can communicate with the Unity application through the Window object (more on this will follow).
+Since it's a Chromium implementation, things like the global `window` object is available to the React application. This means that the React application can communicate with the Unity application through the `window` object (more on this will follow).
 
 ### Layer 3: React Application
 
 ![Layer 3](/img/unity-react/layer-3.png)
 
-The React application is the top layer of the architecture. It contains all of the business logic and data access logic. The React application communicates with the other layers through a set of interfaces, which are defined in the React application layer.
+The React application is the top layer of the architecture. It contains all of the business logic and all of the user's external API access patterns, such as: authentication, fetching contextual menu information, user selections etc. It's also responsible for rendering the user interface. It'll receive `events` from Unity and update the UI accordingly. Likewise, it'll send `events` to Unity to update the scene.
 
 ### Bringing it all together
 
@@ -113,29 +113,33 @@ An example of Unity receiving an event from React would look like:
 }
 ```
 
-Notice how both are being represented as JSON objects. This is because the JS API is designed to be used with JSON. This makes it easy for developers to work with the JS API since they don't have to worry about converting data types or serializing/deserializing objects.
+Notice how both are being represented as JSON objects. This is because the JS API is designed to be used with JSON. This makes it easy for developers to work with the JS API since they don't have to worry about converting data types or serializing/deserializing objects (custom data types still need to be catered for during deserialization of JSON -> Unity).
 
 ### React Perspective
 
-Like Unity's implementation, React also needs to implement its own event handlers to be able to both send and receive events to and from Unity.
+Like Unity's implementation, React also needs to implement its own event handlers to be able to both send and receive events to and from Unity. Web View suggest to implement `vuplex` on the `window` scope. Vuplex is a JS API bridge that allows Unity and React to communicate with each other.
+
+> 3D WebView has a built-in window.vuplex.postMessage() JavaScript API that you can use to send messages from JavaScript to C#. Since it's built into the browser, you don't need to include any 3rd party scripts in the page in order to utilize it. The following example illustrates how to use this JavaScript API in a page script or in a script executed via ExecuteJavaScript():
+>
+> [Learn more](https://support.vuplex.com/articles/how-to-send-messages-from-javascript-to-c-sharp)
 
 Following the Unity example of sending an event to let Unity know the React app has initialised, it'll look like something like this:
 
 ```ts 
 const handleOnLoad = () => {
-  window.Unity.sendMessage('onLoad', {
+  window.vuplex.postMessage('onLoad', {
     version: '1.0.0',
     state: 'ready'
   });
 }
 ```
 
-Notice that the `window.Unity` object is used to send the message. This is the same object that Unity uses to send messages to React. This means that both Unity and React can communicate with each other through the `window.Unity` object (aka JS API bridge).
+Notice that the `window.vuplex` object is used to send the message. This is the same object that Unity uses to send messages to React. This means that both Unity and React can communicate with each other through the `window.vuplex` object (aka JS API bridge).
 
 An example of receiving an event from Unity would be:
 
 ```ts
-window.Unity.onMessage((event) => {
+window.vuplex.onMessage((event) => {
   switch (event.command) {
     case "3dModelLoaded":
       console.log(event.payload);
@@ -150,17 +154,18 @@ The `onMessage` method takes a callback function as an argument. This callback f
 
 ## Lifecycle of Events
 
-1. Unity application is loaded
-2. Unity application initialises Web View
-3. Web View loads React application
-4. React application initialises
-5. React application sends `onLoad` event to Unity
-6. Unity application receives `onLoad` event from React
-7. Unity application sends `3dModelLoaded` event to React
-8. React application receives `3dModelLoaded` event from Unity
+1. Unity is loaded
+2. Unity initialises Web View
+3. Web View loads React
+4. React initialises
+5. React sets up `vuplex` event handlers
+6. React sends `onLoad` event to Unity
+7. Unity receives `onLoad` event from React
+8. Unity sends `3dModelLoaded` event to React
+9. React receives `3dModelLoaded` event from Unity
 ...
-9. User interacts with React application, sending events to Unity
-10. Unity application receives events from React and updates the scene accordingly; and so on.
+10. User interacts with React, sending events to Unity
+11. Unity receives events from React and updates the scene accordingly; and so on.
 
 ***[TODO] Convert this to a flow diagram???***
 
@@ -172,11 +177,10 @@ The `onMessage` method takes a callback function as an argument. This callback f
 
 Splitting the application into layers allows us to separate concerns and make it easier to maintain and extend the application in the future. It also makes it easier to test each layer individually, which can be useful when debugging issues or adding new features.
 
+The release cycle of the application is also improved because each layer can be released independently. This means that if there's a bug in one layer, it can be fixed without having to release the entire application.
 
 ---
 
 If you're interested in learning more about how we can help with your project, please [get in touch](https://www.mechanicalrock.io/lets-get-started)!
 
 ![Mechanical Rock Logo](/img/mr-logo-dark-landscape.jpg)
-
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->

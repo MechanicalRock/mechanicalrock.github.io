@@ -50,7 +50,7 @@ The layered architecture pattern is a software design pattern that divides the s
 
 ### Layer 1: Unity Application
 
-![Layer 1](/img/unity-react/layer-1.jpg)
+![Layer 1](/img/unity-react/layer-1.jpg){:lightbox="true"}
 
 The Unity Application is the bottom layer of the architecture. It's responsible for all of the 3D rendering capability. The Unity application communicates with the other layers through a set of interfaces, which are defined in the Unity application layer.
 
@@ -58,7 +58,7 @@ This layer deploys Web View where it should expand across the entire screen. It'
 
 ### Layer 2: Web View
 
-![Layer 2](/img/unity-react/layer-2.jpg)
+![Layer 2](/img/unity-react/layer-2.jpg){:lightbox="true"}
 
 The Web View layer is responsible for rendering the web content (React application). Since Web View imeplements the Chromium engine it can render any web content. This layer sits inbetween Unity and React and initialises the React application.
 
@@ -68,19 +68,19 @@ Since it's a Chromium implementation, things like the global `window` object is 
 
 ### Layer 3: React Application
 
-![Layer 3](/img/unity-react/layer-3.jpg)
+![Layer 3](/img/unity-react/layer-3.jpg){:lightbox="true"}
 
 The React application is the top layer of the architecture. It contains all of the business logic and all of the user's external API access patterns, such as: authentication, fetching contextual menu information, user selections etc. It's also responsible for rendering the user interface. It'll receive `events` from Unity and update the UI accordingly. Likewise, it'll send `events` to Unity to update the scene.
 
 ### Bringing it all together
 
 **High level view**
-![All Layers](/img/unity-react/layer-all.jpg)
+![All Layers](/img/unity-react/layer-all.jpg){:lightbox="true"}
 
 <br>
 
 **What it looks like in reality**
-![All Layers in reality](/img/unity-react/layer-realtime.jpg)
+![All Layers in reality](/img/unity-react/layer-realtime.jpg){:lightbox="true"}
 
 ### Lifecycle of Events
 

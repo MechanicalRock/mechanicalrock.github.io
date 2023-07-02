@@ -340,6 +340,10 @@ a.post-tag:focus {
     margin-bottom: 1em;
 }
 
+.post-content.serif h2 {
+    margin-top: 2em;
+}
+
 .post-content.serif hr {
     margin: 2em 0;
 }

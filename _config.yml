@@ -43,6 +43,9 @@ defaults:
 # Don't display future posts
 future: false
 
+# set timezone
+timezone: Australia/Perth
+
 # deployment
 host: 0.0.0.0
 port: 4000

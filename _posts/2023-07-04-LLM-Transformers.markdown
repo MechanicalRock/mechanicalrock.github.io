@@ -12,7 +12,7 @@ tags: [Machine Learning, OpenAI, StarCoder, OpenAssistant, Transformers, Agents]
 
 <div style="width:100%;height:0;padding-bottom:56%;position:relative;margin-bottom:10%"><iframe src="https://giphy.com/embed/2y1Ns6zIfK6WI8d21y" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
 
-In a recent experiment, I explored Hugging Face and OpenAI Transformers, and in this blog post, I will guide you through some easy steps to generate our first Hugging Face Transformer. But before we dive into the code snippets and their explanations, let's go over some important terms and concepts in Machine Learning.
+In a recent experiment, I explored Hugging Face and OpenAI Transformers, and in this blog post, I will guide you through some easy steps to generate your first Hugging Face Transformer. But before we dive into the code snippets and their explanations, let's go over some important terms and concepts in Machine Learning.
 
 ### Natural Language Processing (NLP)
 
@@ -76,13 +76,13 @@ agent = set_up_agent("StarCoder (HF Token)",[])
 
 ## Manage the Agent's Toolbox
 
-Up to this point, we have successfully developed an agent that enables users to interact with it and request document summarization. Transformer agents come equipped with a default set of tools, including PreTools, which enhance their functionality.
+Up to this point, we have successfully developed an agent that enables users to interact with it and request document summarization. Transformer agents come equipped with a default set of tools, called PreTools, which enhance their functionality. To get a list of all available PreTools you can simply run this command:
 
 ```py
 
 # The command bellow will print a list of PreTools on the agent
 print(agent.toolbox)
-## Here is an example of default pre tool in Agent's Toolbox
+## Output: one of the default PreTools in Agent's Toolbox
 {"document_qa": PreTool(task='document-question-answering', description='This is a tool that answers a question about an document (pdf). It takes an input named `document` which should be the document containing the information, as well as a `question` that is the question about the document. It returns a text that contains the answer to the question.', repo_id=None)}
 
 ```
@@ -126,8 +126,9 @@ def view_available_tools(agent):
 To define a custom tool in Transformers, you can create a Python function or class that performs the desired processing or functionality. We will begin by creating a function for summarization, utilizing the pretrained model named "facebook/bart-large-cnn".
 
 ```py
-## Custom tool for Summarisation of long Documents
-# Function to remove noise from the summary
+
+
+# Function to remove noise from the summary such as page number or references.
 def remove_noise(summary):
     # Define patterns for noise removal
     patterns = [
@@ -135,19 +136,18 @@ def remove_noise(summary):
         r"\bReferences:\b",  # Remove references section
         # Add more patterns as per your specific requirements
     ]
-
     # Apply pattern matching to remove noise
     for pattern in patterns:
         summary = re.sub(pattern, "", summary)
     return summary.strip()
 
-
+## Custom tool for Summarisation of long Documents
 def summarize_document(file_content):
     tokenizer = BartTokenizer.from_pretrained("facebook/bart-large-cnn")
     model = BartForConditionalGeneration.from_pretrained("facebook/bart-large-cnn")
     summarizer = pipeline("summarization", model=model, tokenizer=tokenizer)
 
-# Split the document into sentences
+# Split the document into sentences, to get more meaningful summary without truncated sentences.
     sentences = file_content.split(".")
     chunk_size = 512  # Adjust the chunk size as needed
     chunks = []
@@ -226,8 +226,9 @@ tools = [
 
 agent = set_up_agent("StarCoder (HF Token)", additional_tools=tools)
 
+# List all the current tools on our agent:
 print(agent.toolbox)
-# This will return all the tools including newly added custom tool:
+# result will be like:
 # { .
 #   .
 #   .
@@ -240,7 +241,7 @@ print(agent.toolbox)
 
 To ask Agent to summarise the document for you, you can simply call this function:
 
-```
+```py
 def summarize(document):
     return agent.run(f"Summarize content of the documents {document}.", document = document )
 

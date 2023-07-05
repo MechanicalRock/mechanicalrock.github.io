@@ -38,6 +38,7 @@ This repo uses below services to implement an automated deployment cycle to Snow
 
 To allow your pipeline to get access to Snowflake, you will need to first create an RSA public and private key. You can create the keys using openssl by running below commands in your command line
 ```sh
+mkdir keys
 openssl genrsa 2048 | openssl pkcs8 -topk8 -inform PEM -out keys/rsa_key.p8 -nocrypt
 openssl rsa -in keys/rsa_key.p8 -pubout -out keys/rsa_key.pub
 ```

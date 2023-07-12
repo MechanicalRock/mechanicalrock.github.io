@@ -166,7 +166,9 @@ export default UnityContextProvider;
 to subscribe Unity Events, we would need a custom hook that updates our app state on receiving an update on a particular event:
 
 ```ts
-import { useUnityContext } from "../UnityContextProvider";
+// useUnityEventEffect.ts
+
+import { useUnityContext } from "./UnityContextProvider";
 import { DependencyList, useCallback, useEffect } from "react";
 
 // add sudo code to explain the code
@@ -193,7 +195,8 @@ Now that we have all the prerequisites ready, all we need to do to make the unit
 ```tsx
 // app.tsx
 
-import { executeCommand, UnityContextProvider } from "./unity-interface";
+import { UnityContextProvider } from "./UnityContextProvider";
+import { executeCommand } from "./commandType";
 import { CssBaseline } from "@mui/material";
 
 import React, { FC } from "react";
@@ -228,10 +231,12 @@ Then Scene has to be added
 ```
 
 TODO:
+review the flow again, to confirm event handling and subscription has been explained as intended.
+complete the next two sections:
 
 #### Feature Steps
 
-explain the test steps with Gerkin and implementation
+explain the test steps with Jerkin and implementation
 
 #### Animation Component
 

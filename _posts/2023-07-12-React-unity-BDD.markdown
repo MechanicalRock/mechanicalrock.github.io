@@ -12,18 +12,29 @@ tags: [React, React Components, Unity, Digital Twin, BDD, React Testing]
 
 ### Introduction
 
-We recently published [an amazing blog post](https://) written by "Quintin Maseyk" discussing React & Unity. In this blog post, we will discuss how to test integration between Unity and React with jest and react testing library and help of BDD (Behavioral Development Driven).
+In a [captivating blog post authored by "Quintin Maseyk"](https://blog.mechanicalrock.io/2023/07/03/react-and-unity.html) we delved into the exciting realm of React and Unity. If you've had the opportunity to read that article, you're likely familiar with the architecture of the digital twi and the event life cycles that occur between React and Unity.
 
-For demonstration purposes, together we will develope a small feature where user can add a scene into a given animation.
-when user adds a scene, under the hood, react will execute command and request Unity to return the player position and a screenshot of the player position view.
-While the command is executed in Unity world, React will listen to the event coming back from Unity. once it received the event, then we can capture the player position and screenshot file.
+In this blog post, our primary focus will be on exploring the testing of integration between Unity and React using Jest, React Testing Library, and the principles of BDD (Behavioral Development Driven).
 
-### Unity Interface Set up
+To demonstrate the concepts discussed, we will jointly develop a small feature that allows users to add a scene to a given animation. When a user adds a scene, React will work behind the scenes by executing a command and sending a request to Unity, asking for the player's position and a screenshot of their current view.
 
-Let's start with defining the Unity Event Type and the commands we require to execute.
+During the execution of this command in the Unity world, React will actively listen for the event that is returned from Unity. Once the event is received, we can capture the player's position and save the screenshot file accordingly.
+
+### React Layer
+
+To begin, let's define the Unity Event Type and the necessary commands that we will execute.
+
+In the integration between Unity and React, we need to establish a clear understanding of the Unity Event Type that will facilitate communication between the two frameworks. This Event Type will serve as a structured format for exchanging information and triggering actions.
+
+Additionally, we must identify the specific commands that React will execute to interact with Unity. These commands will be responsible for instructing Unity to perform tasks such as retrieving the player's position and capturing a screenshot of their view.
+
+By defining the Unity Event Type and the required commands, we lay the foundation for seamless communication and collaboration between Unity and React in our integration testing scenario.
 
 ```ts
 // commandType.ts
+
+/* this code defines types, interfaces, and functions related to executing Unity commands from React. It provides a way to execute the command using the UnityContent instance, and handle any potential errors during execution.*/
+
 type EmptyObject = Record<string, never>;
 type CommandName = keyof UnityCommands;
 type CommandArgs<T extends CommandName = CommandName> = UnityCommands[T];
@@ -37,8 +48,7 @@ interface UnityCommands {
 interface UnityContent {
   send: (gameObjectName: string, methodName: string, finalJson: string) => void;
 }
-
-// add sudo code to explain the code
+// stringify a command payload
 const stringifyCommand = ({ name, args }: CommandPayload) => {
   const unitycommand = {
     name,
@@ -48,6 +58,7 @@ const stringifyCommand = ({ name, args }: CommandPayload) => {
   return finalJson;
 };
 
+// Function to execute a web command, can be initialised by a user action.
 const executeWebCommand = (command: CommandPayload, unityContent: UnityContent): void => {
   const finalJson = stringifyCommand(command);
   if (!unityContent.send) {
@@ -69,11 +80,14 @@ export const executeCommand = <T extends CommandName>(command: CommandPayload<T>
 
 ```ts
 // eventType.ts
+
+// Define the payload structure for an event.
 interface EventPayloadType {
   name: string;
   args: Record<string, unknown>;
 }
 
+// Define the payload structure for the "receivedAnimationSceneDetails" event.
 interface ReceivedAnimationSceneDetails extends EventPayloadType {
   name: "receivedAnimationSceneDetails";
   args: {
@@ -81,18 +95,20 @@ interface ReceivedAnimationSceneDetails extends EventPayloadType {
     screenshotData: string;
   };
 }
+// Create a union type of all possible event payloads. for now we only include one event.
 type EventPayloadUnion = ReceivedAnimationSceneDetails;
 
+// Define a type for the names of the events and arguments of each event.
 export type EventNames = EventPayloadUnion["name"];
-
 export type EventArgs = {
   [N in EventNames]: Extract<EventPayloadUnion, { name: N }>["args"];
 };
-
 export type EventPayload<T extends EventNames> = {
   name: T;
   args: EventArgs[T];
 };
+
+// Define a mapping of event names to their respective handler functions
 export type EventTypeMap = {
   [N in EventNames]: (args: EventArgs[N]) => void;
 };
@@ -100,9 +116,11 @@ export type EventTypeMap = {
 
 ### Unity Context Provider & Event Handler
 
-So far, all we did was about setting up the Unity's event and the command definitions to make them available in the React app.
+Up until now, our focus has been on setting up the event and command definitions from Unity to make them accessible in our React application.
 
-As we mentioned earlier in this blog post, unity layer executes the command on React's request and sends the requested data back to Front End through an event. To update the React app with the response from Unity we can set up a custom hook to manage the unity events in our react components. Also, to make all these events accessible to the browser we need to wrap our app to a context provider. Now, it's time to set up these two as per code block below:
+As mentioned earlier, the Unity layer executes commands upon receiving requests from React and sends the requested data back to the Front End through an event. To ensure that the React app reflects the response from Unity, we will now establish a custom hook to manage the Unity events within our React components. Additionally, we will wrap our app with a context provider to make these events accessible to the browser.
+
+Let's set up the custom hook for managing Unity events in React components and wrap our app with a context provider to make the events accessible to the browser. Here's the code block:
 
 ```ts
 // UnityContextProvider.ts
@@ -116,7 +134,7 @@ export interface EventsMap {
 export interface DefaultEvents extends EventsMap {
   [event: string]: (...args: any) => void;
 }
-// add sudo code to explain the code
+// Create an event controller that manages events and their handlers
 export const createEventController = <Events extends EventsMap = DefaultEvents>(): Emitter<Events> => ({
   events: {},
   emit(event, ...args) {
@@ -128,11 +146,9 @@ export const createEventController = <Events extends EventsMap = DefaultEvents>(
   },
 });
 
-// add sudo code to explain the code
 const eventController = createEventController<EventTypeMap>();
 const UnityContext = createContext(eventController);
 
-// add sudo code to explain the code
 export const eventHandler =
   () =>
   (jsonEvent: string): void => {
@@ -141,10 +157,11 @@ export const eventHandler =
       name: parsedEvent.eventName,
       args: typeof parsedEvent.args === "string" ? JSON.parse(parsedEvent.args) : parsedEvent.args,
     };
-
+    // Emit the event with its name and arguments
     eventController.emit(event.name, event.args);
   };
 
+// Unity Context Provider component
 const UnityContextProvider: FC = ({ children }) => {
   useEffect(() => {
     initialiseEvents(eventHandler());
@@ -153,17 +170,17 @@ const UnityContextProvider: FC = ({ children }) => {
       cleanupEvents();
     };
   }, []);
-
+  // Provide the event controller to the UnityContext
   return <UnityContext.Provider value={eventController}>{children}</UnityContext.Provider>;
 };
-
+// Custom hook to access the Unity context
 export const useUnityContext = (): Emitter<EventTypeMap> => useContext(UnityContext);
 export default UnityContextProvider;
 ```
 
 ### React Custom Hook
 
-to subscribe Unity Events, we would need a custom hook that updates our app state on receiving an update on a particular event:
+To subscribe to Unity events and update our app state upon receiving updates for specific events, we can create a custom hook. This hook will handle the event subscription and update our app state accordingly. Here's an example of how you can implement this custom hook:
 
 ```ts
 // useUnityEventEffect.ts
@@ -171,7 +188,7 @@ to subscribe Unity Events, we would need a custom hook that updates our app stat
 import { useUnityContext } from "./UnityContextProvider";
 import { DependencyList, useCallback, useEffect } from "react";
 
-// add sudo code to explain the code
+// Custom hook to subscribe to Unity events and execute an effect
 const useUnityEventEffect = <T extends EventNames>(
   effect: EventTypeMap[T],
   deps: DependencyList,
@@ -190,13 +207,18 @@ const useUnityEventEffect = <T extends EventNames>(
 export default useUnityEventEffect;
 ```
 
-Now that we have all the prerequisites ready, all we need to do to make the unity available to our entire app is to wrap the app with our created UnityContextProvider:
+We defined a custom hook called `useUnityEventEffect`. This hook allows you to subscribe to a specific Unity event and execute an effect (callback) when that event occurs. It takes three parameters:
+
+`effect`: The effect (callback function) to execute when the Unity event occurs.
+`deps`: An array of dependencies that the effect depends on, similar to the dependencies array in the useEffect hook.
+`eventName`: The name of the Unity event to subscribe to.
+
+To make the Unity context available throughout our entire app, we simply need to wrap our app with the `UnityContextProvider` that we created. By doing this, all components within the app will have access to the Unity events and functionalities. Here's how you can wrap your app with the `UnityContextProvider`:
 
 ```tsx
 // app.tsx
 
 import { UnityContextProvider } from "./UnityContextProvider";
-import { executeCommand } from "./commandType";
 import { CssBaseline } from "@mui/material";
 
 import React, { FC } from "react";
@@ -217,6 +239,10 @@ const AppWrapper: FC<AppProps> = (appProps) => {
 
 export default AppWrapper;
 ```
+
+Now, the Unity context will be accessible throughout the app, allowing you to subscribe to Unity events, interact with Unity functionalities, and utilize custom hooks such as useUnityEventSubscription and useUnityEventEffect in any component within your app.
+
+By wrapping your app with the UnityContextProvider, you establish a bridge between Unity and your React app, enabling seamless integration and communication between the two environments.
 
 ### BDD Testing & Unity Event Mocks
 

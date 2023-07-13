@@ -270,11 +270,9 @@ import { act } from "react-dom/test-utils";
 export const ViewToRender = () =>
   render(
     <UnityContextProvider>
-      <MockedProvider>
-        <AnimationProvider>
-          <AnimationView />
-        </AnimationProvider>
-      </MockedProvider>
+      <AnimationProvider>
+        <AnimationView />
+      </AnimationProvider>
     </UnityContextProvider>,
   );
 
@@ -371,7 +369,7 @@ Having defined the expected behavior for this feature, we can now proceed to imp
 // animationView.tsx
 import { CardActions, CardContent, styled, TextField, Typography } from "@mui/material";
 import React, { FC, useCallback } from "react";
-import AddButtonMenu from "../AddMenuButton";
+import AddButton from "../AddButton";
 // to understand the animation context provider please refer to the provided github repository
 import { setScenes, useAnimationDispatch, useAnimationState } from "../AnimationProvider";
 import { SceneCard } from "../SceneCard";
@@ -379,11 +377,11 @@ import { SceneCard } from "../SceneCard";
 const ViewAnimation: FC = () => {
   const dispatch = useAnimationDispatch();
   const { scenes } = useAnimationState();
-  const hasScenes = updatedScenes.length > 0;
+  const hasScenes = scenes.length > 0;
 
   return (
     <Stack data-testid="view-animation-details">
-      <AddButtonMenu previousIndex={null} />
+      <AddButtonMenu />
       <StyledCardContent sx={{ pt: 0, pb: hasScenes ? "4em" : undefined }}>
         {updatedScenes.map(SceneWrapper)}
       </StyledCardContent>
@@ -405,7 +403,7 @@ export default ViewAnimation;
 ```tsx
 // Button component
 
-import { useUnityEventEffect } from "@fuse-ui/unity-interface";
+import { useUnityEventEffect } from "./unityProvider";
 import { AddRounded } from "@mui/icons-material";
 import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
@@ -510,11 +508,11 @@ By following the BDD approach and mocking the response from Unity's event handle
 In addition to this approach, there is another method to verify Unity commands. By mocking the Unity context provider, we can assert whether a specific event has been called with the correct event name. Here is an example of such a test:
 
 ```tsx
+// jestMock.test.tsx
 import { executeCommand } from "./commandType";
 import React, { FC } from "react";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { MockedProvider } from "@apollo/client/testing";
 
 jest.mock("@fuse-ui/unity-interface", () => ({
   executeCommand: jest.fn(),
@@ -545,7 +543,7 @@ In conclusion, integrating Unity with React opens up exciting possibilities for 
 
 Through the use of tools like Jest Cucumber and React Testing Library, we can write readable and expressive test scenarios that capture the behavior of our Unity and React components. These tests serve as living documentation, providing clarity on the expected behavior and enabling easy maintenance and collaboration among team members.
 
-If you're eager to explore more about Unity and React integration with BDD, you can check out the accompanying GitHub repository that provides code examples. You can find the GitHub repository [here]().
+If you're eager to explore more about the example codes provided in this post, you can check out the accompanying GitHub repository. You can find the GitHub repository [here]().
 
 We hope this blog post has been informative and has sparked your interest in utilizing BDD for Unity and React development. If you have any questions or require professional assistance, feel free to [reach out to us]() at.
 

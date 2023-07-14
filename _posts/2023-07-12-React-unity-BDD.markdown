@@ -5,7 +5,7 @@ title: "Unity & React Behavioral Development Driven"
 description: "BDD testing with react library and unity event handlers"
 date: 2023-07-12
 highlight: monokai
-image: /img/unity-react/cover.jpg
+image: /img/unity-react-bdd/app-view.png
 author: Nadia Reyhani
 tags: [React, React Components, Unity, Digital Twin, BDD, React Testing]
 ---
@@ -74,7 +74,6 @@ export const executeCommand = <T extends CommandName>(command: CommandPayload<T>
 
 ```ts
 // eventType.ts
-
 // Define the payload structure for an event.
 interface EventPayloadType {
   name: string;
@@ -279,7 +278,7 @@ export const ViewToRender = () =>
 // --------------------------
 // Feature
 // --------------------------
-const feature = loadFeature("./addScene.feature");
+const feature = loadFeature("./features/addScene.feature");
 
 defineFeature(feature, (test) => {
   beforeEach(() => {
@@ -287,14 +286,10 @@ defineFeature(feature, (test) => {
   });
   test("Add New Scene", ({ given, when, and, then }) => {
     given("Drew views the animation details", async () => {
-      await selectAnimationFromList(0);
+      // wait to see the animation details
+      getAnimationView();
     });
-    when("When Drew adds a new scene", async () => {
-      // await to see the animation details
-      const list = screen.queryByTestId("view-animation-details");
-      await waitFor(() => {
-        expect(list).not.toBeNull();
-      });
+    when("Drew adds a new scene", async () => {
       // Add new scene that will trigger a unity event
       await addNewScene();
     });
@@ -503,35 +498,50 @@ export default function AddButton() {
 }
 ```
 
+![test results](../img/unity-react-bdd/bdd-test.png)
+
 By following the BDD approach and mocking the response from Unity's event handler, we can seamlessly develop our feature. Jest provides the capability to mock the Unity response, allowing us to simulate different scenarios during testing.
 
 In addition to this approach, there is another method to verify Unity commands. By mocking the Unity context provider, we can assert whether a specific event has been called with the correct event name. Here is an example of such a test:
 
 ```tsx
 // jestMock.test.tsx
-import { executeCommand } from "./commandType";
+import { executeCommand } from "../components/unityProvider/commandType";
+import UnityContextProvider from "../components/unityProvider/UnityContextProvider";
 import React, { FC } from "react";
-import { render } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { fireEvent, render, waitFor, screen } from "@testing-library/react";
+import { AnimationProvider } from "../components/animationProvider";
+import AnimationView from "../components/animationView";
+import { act } from "react-dom/test-utils";
 
-jest.mock("@fuse-ui/unity-interface", () => ({
+jest.mock("../components/unityProvider/commandType", () => ({
   executeCommand: jest.fn(),
 }));
 
-const wrapper: FC = ({ children }) => <UnityContextProvider>{children}</UnityContextProvider>;
+const wrapper: FC<{}> = ({ children }) => (
+  <UnityContextProvider>
+    <AnimationProvider>{children}</AnimationProvider>
+  </UnityContextProvider>
+);
 
 describe("Should Call getAnimationSceneDetails command", () => {
-  it("should execute the getSceneDetails command when clicked add scene", () => {
+  it("should execute the getSceneDetails command when clicked add scene", async () => {
     const executeCommandFn = jest.fn();
+    // @ts-ignore
     executeCommand.mockImplementation(executeCommandFn);
+    render(<AnimationView />, { wrapper });
 
-    const { getByTestId } = render(<AddButton />, { wrapper });
-
-    userEvent.click(getByTestId("button-add-scene"));
-
-    expect(executeCommandFn).toHaveBeenCalledWith({
-      args: {},
-      name: "getAnimationSceneDetails",
+    await waitFor(() => {
+      expect(screen.getByTestId("button-add-scene")).not.toBeNull();
+    });
+    act(() => {
+      fireEvent.click(screen.getByTestId("button-add-scene"));
+    });
+    await waitFor(() => {
+      expect(executeCommandFn).toHaveBeenCalledWith({
+        args: { height: 180, width: 134 },
+        name: "getAnimationSceneDetails",
+      });
     });
   });
 });
@@ -543,8 +553,8 @@ In conclusion, integrating Unity with React opens up exciting possibilities for 
 
 Through the use of tools like Jest Cucumber and React Testing Library, we can write readable and expressive test scenarios that capture the behavior of our Unity and React components. These tests serve as living documentation, providing clarity on the expected behavior and enabling easy maintenance and collaboration among team members.
 
-If you're eager to explore more about the example codes provided in this post, you can check out the accompanying GitHub repository. You can find the GitHub repository [here]().
+If you're eager to explore more about the example codes provided in this post, you can check out the accompanying GitHub repository. You can find the GitHub repository [here](https://github.com/MechanicalRock/unity-react-example).
 
-We hope this blog post has been informative and has sparked your interest in utilizing BDD for Unity and React development. If you have any questions or require professional assistance, feel free to [reach out to us]() at.
+We hope this blog post has been informative and has sparked your interest in utilizing BDD for Unity and React development. If you have any questions or require professional assistance, feel free to [reach out to us](https://www.mechanicalrock.io/lets-get-started) at.
 
 Thank you for reading, and happy coding!

@@ -3,14 +3,14 @@ layout: postv2
 font: serif
 title: "Single Tenant vs. Multi-Tenant - Unveiling the Ideal Architecture For Your Business"
 description: "How to choose the right architecture for your business."
-date: 2023-07-24
+date: 2023-07-31
 highlight: monokai
-image: 
+image: /img/single-multi-tenant/single_multi_tenant.png
 author: Shermayne Lee
 tags: [single tenant, multi-tenant, solution architect]
 ---
 
-Hey there, tech enthusiasts and curious minds, welcome to our blogpost on the captivating debate between single tenant and multi-tenant architectures!
+Hey there, tech enthusiasts and curious minds, welcome to our blog post on the ongoing debate between single tenant and multi-tenant architectures!
 
 In the realm of software and cloud services, choosing the right approach can significantly impact efficiency and scalability. Each approach comes with its unique strengths and trade-offs, and it is a critical one to make the right decision for your business. 
 
@@ -24,6 +24,7 @@ In this blogpost, we'll be unraveling the mysteries of these two contrasting mod
 - [When to choose Single Tenant Model](#when-to-choose-single-tenant-model)
 - [What is Multi-Tenant Model](#what-is-multi-tenant-model)
 - [When to choose Multi-Tenant Model](#when-to-choose-multi-tenant-model)
+- [Multi-Tenant Hybrid](#multi-tenant-hybrid)
 - [Conclusion](#conclusion)
 
 ---
@@ -44,9 +45,9 @@ Key benefits of a single tenant model:
 
 
 
----------------------       ------------------------
-|   Single Tenant   |       |   Single Tenant      |
-|    Application    |       |    Application       |
+---------------------        ------------------------
+|   Single Tenant    |       |   Single Tenant      |
+|    Application     |       |    Application       |
 |                    |       |                      |
 |  +--------------+  |       |  +--------------+    |
 |  | Application  |  |       |  |  Application |    |
@@ -137,10 +138,46 @@ Here's an example of an application that would thrive with a multi tenant archit
 
  An email service provider offers email accounts to thousands of users. By using a multi-tenant architecture, the provider can efficiently manage resources and offer cost-effective email solutions to a large user base. Each user's data remains separate and secure, while the underlying infrastructure is shared among multiple users.
 
+## Multi-Tenant Hybrid
+
+Apart from choosing either a single tenant model or a multi tenant model, you get the best of both worlds by combining both models.
+
+Multi-tenant hybrid model combines the advantages from both models, hosting multiple clients within a single integrated system. 
+
+This approach optimizes resource utilization, scalability, and cost-effectiveness by sharing infrastructure and updates across clients. While retaining data isolation and customization for each tenant, it also enables seamless integration and centralized management. 
+
+Multi-tenant hybrid software caters to diverse business needs, providing flexibility and adaptability in a rapidly evolving technological landscape. With enhanced security measures and streamlined operations, this approach offers organizations an efficient and practical solution to meet their unique requirements while harnessing the benefits of both models.
+
+
+---------------------------------------------------------
+|        Multi-Tenant Hybrid Application                |
+---------------------------------------------------------
+|         +---------------------------------+
+|         |       Application Logic          |          |
+|         +---------------------------------+           |
+|                      /       \                        |
+|                     /         \                       |
+|        +-------------------+  +-------------------+   |
+|        |    Tenant A       |  |    Tenant B       |   |
+|        +-------------------+  +-------------------+   |
+|               /                        \              |   
+|              /                          \             |
+| +-----------------+            +-----------------+    |   
+| |     Database    |            |     Database    |    |
+| |        A        |            |        B        |    |
+| +-----------------+            +-----------------+    |
+---------------------------------------------------------
+
+
+In this diagram, we have a shared application at the top, representing the portion of the multi tenant hybrid setup. Below it, there are two separate tenants, Tenant A and Tenant B, each utilizing the same application layer.
+
+The diagram also shows that both Tenant A and Tenant B have their own database. This indicates that their data are fully isolated from other tenants.
+
+The multi tenant hybrid setup combines the benefits of multi tenant model (shared, scalable, and cost saving) with the customization and data isolation advantages of single tenant model.
 
 ## Conclusion
 
-In conclusion, the choice between single tenant and multi-tenant architectures is based on your specific needs. 
+In conclusion, the choice between single tenant and multi-tenant architectures is based on your specific context. 
 
 Single tenant offers data isolation and customization for enhanced security, making it suitable for industries with stringent privacy requirements. However, it can be resource-intensive. Multi-tenant excels in resource efficiency, scalability, and cost-effectiveness, making it ideal for serving a large customer base. Yet, it needs robust security measures. Businesses must weigh factors like data privacy, performance, and budget constraints to make an informed decision. 
 

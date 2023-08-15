@@ -3,7 +3,7 @@ layout: postv2
 font: serif
 title: "Single Tenant vs. Multi-Tenant - Unveiling the Ideal Architecture For Your Business"
 description: "How to choose the right architecture for your business."
-date: 2023-07-31
+date: 2023-08-15
 highlight: monokai
 image: /img/single-multi-tenant/single_multi_tenant.png
 author: Shermayne Lee

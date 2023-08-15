@@ -1,16 +1,16 @@
 ---
 layout: postv2
 font: serif
-title: "Single Tenant vs. Multi-Tenant - Unveiling the Ideal Architecture For Your Business"
+title: "Isolated Tenancy vs. Shared Tenancy - Unveiling the Ideal Architecture For Your Business"
 description: "How to choose the right architecture for your business."
 date: 2023-08-15
 highlight: monokai
 image: /img/single-multi-tenant/single_multi_tenant.png
 author: Shermayne Lee
-tags: [single tenant, multi-tenant, solution architect]
+tags: [isolated tenancy, shared tenancy,single tenant, multi-tenant, solution architect]
 ---
 
-Hey there, tech enthusiasts and curious minds, welcome to our blog post on the ongoing debate between single tenant and multi-tenant architectures!
+Hey there, tech enthusiasts and curious minds, welcome to our blog post on the ongoing debate between Isolated Tenancy and Shared Tenancy architectures!
 
 In the realm of software and cloud services, choosing the right approach can significantly impact efficiency and scalability. Each approach comes with its unique strengths and trade-offs, and it is a critical one to make the right decision for your business. 
 
@@ -20,33 +20,33 @@ In this blogpost, we'll be unraveling the mysteries of these two contrasting mod
 
 **Table of Contents:**
 
-- [What is a Single Tenant Model](#what-is-a-single-tenant-model)
-- [When to choose Single Tenant Model](#when-to-choose-single-tenant-model)
-- [What is Multi-Tenant Model](#what-is-multi-tenant-model)
-- [When to choose Multi-Tenant Model](#when-to-choose-multi-tenant-model)
-- [Multi-Tenant Hybrid](#multi-tenant-hybrid)
+- [What is a Isolated Tenancy Model](#what-is-a-isolated-tenancy-model)
+- [When to choose Isolated Tenancy Model](#when-to-choose-isolated-tenancy-model)
+- [What is Shared Tenancy Model](#what-is-sShared-tenancy-model)
+- [When to choose Shared Tenancy Model](#when-to-choose-shared-tenancy-model)
+- [Targeted Isolation Tenancy Model (Hybrid)](#hybrid-tenancy)
 - [Conclusion](#conclusion)
 
 ---
 
-## What is a Single Tenant Model
+## What is a Isolated Tenancy Model
 
-Single tenant is like having your very own special space in the digital world. It's like having your own cozy room in a big virtual house! With this setup, you get dedicated resources all to yourself, meaning no sharing with others. Your data, files, and precious stuff stay completely separate and private from everyone else's. It's like having your own little kingdom where you're the ruler of your software world!
+Isolated Tenancy also known as single tenant in some instance is like having your very own special space in the digital world. It's like having your own cozy room in a big virtual house! With this setup, you get dedicated resources all to yourself, meaning no sharing with others. Your data, files, and precious stuff stay completely separate and private from everyone else's. It's like having your own little kingdom where you're the ruler of your software world!
 
-Key benefits of a single tenant model:
+Key benefits of a Isolated Tenancy model:
 
 - Isolation: Each customer's data and operations are completely isolated from others, providing enhanced privacy and security.
 
-- Performance: Single tenant solutions often offer more consistent performance as the resources are not shared with other tenants, reducing the risk of resource contention.
+- Performance: Isolated Tenancy solutions often offer more consistent performance as the resources are not shared with other tenants, reducing the risk of resource contention.
 
-- Scalability: Single tenant architectures can be less flexible in terms of scaling since resources are reserved for a specific customer and may not be easily reallocated.
+- Scalability: Isolated Tenancy architectures can be less flexible in terms of scaling since resources are reserved for a specific customer and may not be easily reallocated.
 
 - Customization: Since the software instance is dedicated to a single customer, they have the flexibility to customize and configure it to meet their specific requirements.
 
 
 
 ---------------------        ------------------------
-|   Single Tenant    |       |   Single Tenant      |
+|   Isolated Tenancy |       |   Isolated Tenancy   |
 |    Application     |       |    Application       |
 |                    |       |                      |
 |  +--------------+  |       |  +--------------+    |
@@ -61,37 +61,37 @@ Key benefits of a single tenant model:
 |  +--------------+  |       |  +--------------+    |
 ---------------------       ------------------------
 
-In this diagram, each customer has their dedicated instance of the single tenant application, including its application logic and a separate database. The applications run independently, and customer data is stored in individual, isolated databases, ensuring data privacy and security.
+In this diagram, each customer has their dedicated instance of the Isolated Tenancy application, including its application logic and a separate database. The applications run independently, and customer data is stored in individual, isolated databases, ensuring data privacy and security.
 
 
-## When to choose Single Tenant Model
+## When to choose Isolated Tenancy Model
 
-Single-tenant architectures come into play when certain needs call for exclusive resources, data privacy, and extensive customization. Let's explore some use cases where opting for a single tenant might be the best choice.
+Isolated tenancy architectures come into play when certain needs call for exclusive resources, data privacy, and extensive customization. Let's explore some use cases where opting for a Isolated Tenancy might be the best choice.
 
-- Predictable Performance: Applications that require consistent and predictable performance, without any contention for resources, can benefit from single tenant setups. This is especially relevant for resource-intensive applications.
+- Predictable Performance: Applications that require consistent and predictable performance, without any contention for resources, can benefit from Isolated Tenancy setups. This is especially relevant for resource-intensive applications.
 
-- Legacy Systems: Some organizations may have legacy systems that are not easily compatible with multi-tenant architectures. In such cases, adopting a single tenant approach might be more practical.
+- Legacy Systems: Some organizations may have legacy systems that are not easily compatible with Shared Tenancy architectures. In such cases, adopting a Isolated Tenancy approach might be more practical.
 
-- Data Security and Compliance: Industries like healthcare, finance, and government often deal with sensitive data subject to strict regulatory compliance. Single tenant ensures complete data isolation and control, reducing the risk of data breaches.
+- Data Security and Compliance: Industries like healthcare, finance, and government often deal with sensitive data subject to strict regulatory compliance. Isolated Tenancy ensures complete data isolation and control, reducing the risk of data breaches.
 
-- Customization and Control: Certain businesses require deep customization and control over their software environment. Single tenant allows them to tailor the application to their unique needs, without being constrained by shared configurations.
-
-
-
-Here's an example of an application that would thrive with a single tenant architecture:
-
-A large financial institution handling sensitive customer data and regulatory compliance would greatly benefit from a single tenant architecture. With single tenant, they can ensure that each customer's financial information remains completely isolated and secure, allowing them to maintain strict data privacy and customization requirements tailored to individual client needs. This level of control and separation makes single tenant an ideal choice for industries with high-security demands and specific data handling protocols..
+- Customization and Control: Certain businesses require deep customization and control over their software environment. Isolated Tenancy allows them to tailor the application to their unique needs, without being constrained by shared configurations.
 
 
-## What is Multi-Tenant Model
 
-Multi-tenant is like a communal approach in software. Imagine one big clubhouse where lots of friends hang out together. In this model, everyone shares the same cool software and resources, but don't worry, your data and secrets are kept safe in your own private room. So, while it's a big party, your stuff stays just for your eyes!
+Here's an example of an application that would thrive with a Isolated Tenancy architecture:
 
-Key benefits of a multi-tenant model:
+A large financial institution handling sensitive customer data and regulatory compliance would greatly benefit from a Isolated Tenancy architecture. With Isolated Tenancy, they can ensure that each customer's financial information remains completely isolated and secure, allowing them to maintain strict data privacy and customization requirements tailored to individual client needs. This level of control and separation makes Isolated Tenancy an ideal choice for industries with high-security demands and specific data handling protocols..
 
-- Scalability: Multi-tenant architectures are generally more flexible in terms of scaling, as resources can be dynamically allocated based on the needs of each customer.
 
-- Cost-effectiveness: By sharing resources among multiple customers, the cost per customer is typically lower compared to single tenant setups.
+## What is Shared Tenancy Model
+
+Shared Tenancy also known as multi-tenant in some instance is like a communal approach in software. Imagine one big clubhouse where lots of friends hang out together. In this model, everyone shares the same cool software and resources, but don't worry, your data and secrets are kept safe in your own private room. So, while it's a big party, your stuff stays just for your eyes!
+
+Key benefits of a Shared Tenancy model:
+
+- Scalability: Shared Tenancy architectures are generally more flexible in terms of scaling, as resources can be dynamically allocated based on the needs of each customer.
+
+- Cost-effectiveness: By sharing resources among multiple customers, the cost per customer is typically lower compared to Isolated Tenancy setups.
 
 - Resource Sharing: Multiple customers share the same pool of resources, such as servers, databases, and processing power, which optimizes resource utilization and reduces overall costs.
 
@@ -99,7 +99,7 @@ Key benefits of a multi-tenant model:
 
 
 -------------------------------------
-|        Multi-Tenant Application   |
+|     Shared Tenancy Application    |
 |-----------------------------------|
 |                                   |
 |    +---------------------------+  |
@@ -114,43 +114,43 @@ Key benefits of a multi-tenant model:
 |                                   |
 -------------------------------------
 
-In this diagram, the multi-tenant application's logic is shared among all tenants, meaning that there is a single instance of the application logic serving all customers. However, each tenant's data is stored separately in a shared database, ensuring that data remains isolated and secure for each customer.
+In this diagram, the Shared Tenancy application's logic is shared among all tenants, meaning that there is a single instance of the application logic serving all customers. However, each tenant's data is stored separately in a shared database, ensuring that data remains isolated and secure for each customer.
 
 The shared database is designed in such a way that each tenant's data is logically partitioned, allowing them to access only their specific data without any access to data belonging to other tenants. This approach enables efficient resource utilization and cost savings, as multiple tenants can share the same infrastructure.
 
 
-## When to choose Multi-Tenant Model
+## When to choose Shared Tenancy Model
 
-Multi-tenant architectures are best suited for scenarios where resource efficiency, cost-effectiveness, and scalability are top priorities. Here are some situations where multi-tenant might be the preferred choice:
+Shared Tenancy architectures are best suited for scenarios where resource efficiency, cost-effectiveness, and scalability are top priorities. Here are some situations where Shared Tenancy might be the preferred choice:
 
-- Software as a Service (SaaS): SaaS providers commonly use multi-tenant architectures to offer software applications to a large number of customers efficiently. It allows them to serve numerous clients with a single software instance.
+- Software as a Service (SaaS): SaaS providers commonly use Shared Tenancy architectures to offer software applications to a large number of customers efficiently. It allows them to serve numerous clients with a single software instance.
 
-- Cost Savings: Small and medium-sized businesses, startups, or organizations with limited budgets can benefit from multi-tenant architectures as they can share the cost of resources, infrastructure, and maintenance among multiple tenants.
+- Cost Savings: Small and medium-sized businesses, startups, or organizations with limited budgets can benefit from Shared Tenancy architectures as they can share the cost of resources, infrastructure, and maintenance among multiple tenants.
 
-- Scalability: Applications that experience varying levels of demand can leverage the scalability of multi-tenant setups. 
+- Scalability: Applications that experience varying levels of demand can leverage the scalability of Shared Tenancy setups. 
 Resources can be dynamically allocated and adjusted based on the changing needs of different tenants.
 
-- Collaborative Environments: Applications that encourage collaboration and interaction between users, like project management tools or social networking platforms, can benefit from the shared nature of multi-tenant architectures.
+- Collaborative Environments: Applications that encourage collaboration and interaction between users, like project management tools or social networking platforms, can benefit from the shared nature of Shared Tenancy architectures.
 
-- Rapid Deployment: Multi-tenant setups allow for quick deployment of the application to multiple customers, reducing the time and effort required for individual setups.
+- Rapid Deployment: Shared Tenancy setups allow for quick deployment of the application to multiple customers, reducing the time and effort required for individual setups.
 
 Here's an example of an application that would thrive with a multi tenant architecture:
 
- An email service provider offers email accounts to thousands of users. By using a multi-tenant architecture, the provider can efficiently manage resources and offer cost-effective email solutions to a large user base. Each user's data remains separate and secure, while the underlying infrastructure is shared among multiple users.
+ An email service provider offers email accounts to thousands of users. By using a Shared Tenancy architecture, the provider can efficiently manage resources and offer cost-effective email solutions to a large user base. Each user's data remains separate and secure, while the underlying infrastructure is shared among multiple users.
 
-## Multi-Tenant Hybrid
+## Targeted Isolation Tenancy Model (Hybrid)
 
-Apart from choosing either a single tenant model or a multi tenant model, you get the best of both worlds by combining both models.
+Apart from choosing either a Isolated Tenancy model or a Shared Tenancy model, you get the best of both worlds by combining both models.
 
-Multi-tenant hybrid model combines the advantages from both models, hosting multiple clients within a single integrated system. 
+Targeted Isolation Tenancy Model combines the advantages from both models, hosting multiple clients within a single integrated system. 
 
 This approach optimizes resource utilization, scalability, and cost-effectiveness by sharing infrastructure and updates across clients. While retaining data isolation and customization for each tenant, it also enables seamless integration and centralized management. 
 
-Multi-tenant hybrid software caters to diverse business needs, providing flexibility and adaptability in a rapidly evolving technological landscape. With enhanced security measures and streamlined operations, this approach offers organizations an efficient and practical solution to meet their unique requirements while harnessing the benefits of both models.
+Hybrid tenancy software caters to diverse business needs, providing flexibility and adaptability in a rapidly evolving technological landscape. With enhanced security measures and streamlined operations, this approach offers organizations an efficient and practical solution to meet their unique requirements while harnessing the benefits of both models.
 
 
 ---------------------------------------------------------
-|        Multi-Tenant Hybrid Application                |
+|        Targeted Isolation Tenancy Application         |
 ---------------------------------------------------------
 |         +---------------------------------+
 |         |       Application Logic          |          |
@@ -173,13 +173,13 @@ In this diagram, we have a shared application at the top, representing the porti
 
 The diagram also shows that both Tenant A and Tenant B have their own database. This indicates that their data are fully isolated from other tenants.
 
-The multi tenant hybrid setup combines the benefits of multi tenant model (shared, scalable, and cost saving) with the customization and data isolation advantages of single tenant model.
+The Targeted Isolation Tenancy setup combines the benefits of Shared Tenancy model (shared, scalable, and cost saving) with the customization and data isolation advantages of Isolated Tenancy model.
 
 ## Conclusion
 
-In conclusion, the choice between single tenant and multi-tenant architectures is based on your specific context. 
+In conclusion, the choice between Isolated Tenancy and Shared Tenancy architectures is based on your specific context. 
 
-Single tenant offers data isolation and customization for enhanced security, making it suitable for industries with stringent privacy requirements. However, it can be resource-intensive. Multi-tenant excels in resource efficiency, scalability, and cost-effectiveness, making it ideal for serving a large customer base. Yet, it needs robust security measures. Businesses must weigh factors like data privacy, performance, and budget constraints to make an informed decision. 
+Isolated Tenancy offers data isolation and customization for enhanced security, making it suitable for industries with stringent privacy requirements. However, it can be resource-intensive. Shared Tenancy excels in resource efficiency, scalability, and cost-effectiveness, making it ideal for serving a large customer base. Yet, it needs robust security measures. Businesses must weigh factors like data privacy, performance, and budget constraints to make an informed decision. 
 
 Each approach offers its own advantages, and the best decision relies on the organization's specific goals and priorities.
 

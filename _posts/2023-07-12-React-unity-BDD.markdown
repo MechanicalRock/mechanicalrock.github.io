@@ -1,9 +1,9 @@
 ---
 layout: postv2
 font: serif
-title: "Unity & React Behavioral Development Driven"
+title: "Unity & React Behaviour Development Driven"
 description: "BDD testing with react library and unity event handlers"
-date: 2023-07-12
+date: 2023-07-18
 highlight: monokai
 image: /img/unity-react-bdd/app-view.png
 author: Nadia Reyhani
@@ -12,23 +12,21 @@ tags: [React, React Components, Unity, Digital Twin, BDD, React Testing]
 
 ### Introduction
 
-In a [captivating blog post](https://blog.mechanicalrock.io/2023/07/03/react-and-unity.html) we delved into the exciting realm of React and Unity. If you've had the opportunity to read that article, you're likely familiar with the architecture of the digital twin and the event life cycles that occur between React and Unity.
+In a [captivating blog post](https://blog.mechanicalrock.io/2023/07/03/react-and-unity.html) we delved into the exciting realm of React and Unity. If you've had the opportunity to read that article, you'll then be familiar with how to setup the event lifecycle between Unity and React by implementing a layered architecture.
 
-In this blog post, our primary focus will be on exploring the testing of integration between Unity and React using Jest, React Testing Library, and the principles of BDD (Behavior-Driven Development).
+In this blog post, our primary focus will be on exploring the testing of integration between Unity and React using Jest, React Testing Library, and the principles of BDD (Behaviour Driven Development).
 
-To demonstrate the concepts discussed, we will jointly develop a small feature that allows users to add a scene to a given animation. When a user adds a scene, React will work behind the scenes by executing a command and sending a request to Unity, asking for the player's position and a screenshot of their current view.
+To demonstrate the concepts discussed, we will jointly develop a small feature that allows users to add a fruit to a given fruit basket. When a user adds a fruit, React will execute a command to Unity, asking for the fruit specifications and a screenshot of how the fruit looks like.
 
-During the execution of this command in the Unity world, React will actively listen for the event that is returned from Unity. Once the event is received, we can capture the player's position and save the screenshot file accordingly.
+React will actively listen for the event soon to be returned by the Unity layer. Once the event is received, we can capture the fruit specifications and screenshot data.
 
 ### React Layer
 
 To begin, let's define the Unity Event Type and the necessary commands that we will execute.
 
-In the integration between Unity and React, we need to configure interfaces and Unity event types that will facilitate communication between the two frameworks. This Event Type will serve as a structured format for exchanging information and triggering actions.
+In the integration between Unity and React, we need to configure interfaces and Unity event types that will facilitate communication between the two layers. This Event Type will serve as a structured format for exchanging information and triggering actions.
 
-Additionally, we must identify the specific commands that React will execute to interact with Unity. These commands will be responsible for instructing Unity to perform tasks such as retrieving the player's position and capturing a screenshot of their view.
-
-By defining the Unity Event Type and the required commands, we lay the foundation for seamless communication and collaboration between Unity and React in our integration testing scenario.
+Additionally, we must identify the specific commands that React will execute to interact with Unity. These commands will be responsible for instructing Unity to perform tasks such as retrieving the fruit specifications and capturing a screenshot of the fruit.
 
 ```ts
 // commandType.ts
@@ -43,7 +41,7 @@ type CommandPayload<T extends CommandName = CommandName> = {
   args: CommandArgs<T>;
 };
 interface UnityCommands {
-  getPositionAndPerspective: EmptyObject;
+  getFruitSpecifications: EmptyObject;
 }
 interface UnityContent {
   send: (gameObjectName: string, methodName: string, finalJson: string) => void;
@@ -80,16 +78,16 @@ interface EventPayloadType {
   args: Record<string, unknown>;
 }
 
-// Define the payload structure for the "receivedAnimationSceneDetails" event.
-interface ReceivedAnimationSceneDetails extends EventPayloadType {
-  name: "receivedAnimationSceneDetails";
+// Define the payload structure for the "receivedFruitSpecifications" event.
+interface ReceivedFruitSpecifications extends EventPayloadType {
+  name: "receivedFruitSpecifications";
   args: {
     playerPosition: { x: number; y: number; z: number };
     screenshotData: string;
   };
 }
 // Create a union type of all possible event payloads. for now we only include one event.
-type EventPayloadUnion = ReceivedAnimationSceneDetails;
+type EventPayloadUnion = ReceivedFruitSpecifications;
 
 // Define a type for the names of the events and arguments of each event.
 export type EventNames = EventPayloadUnion["name"];
@@ -212,15 +210,12 @@ To make the Unity context available throughout our entire app, we simply need to
 // app.tsx
 
 import { UnityContextProvider } from "./UnityContextProvider";
-import { CssBaseline } from "@mui/material";
 
 import React, { FC } from "react";
-import GlobalEventProvider from "../components/GlobalEventProvider";
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <UnityContextProvider>
-      <CssBaseline />
       <Component {...pageProps} />
     </UnityContextProvider>
   );
@@ -233,34 +228,34 @@ const AppWrapper: FC<AppProps> = (appProps) => {
 export default AppWrapper;
 ```
 
-Now, the Unity context will be accessible throughout the app, allowing you to subscribe to Unity events, interact with Unity functionalities, and utilize custom hooks such as useUnityEventSubscription and useUnityEventEffect in any component within your app.
+Now, the Unity context will be accessible throughout the app, allowing you to subscribe to Unity events, interact with Unity functionalities, and utilize custom hooks such as `useUnityEventSubscription` and `useUnityEventEffect` in any component within your app.
 
 By wrapping your app with the UnityContextProvider, you establish a bridge between Unity and your React app, enabling seamless integration and communication between the two environments.
 
-### BDD Testing & Unity Event Mocks
+### Behaviour Driven Development Testing & Unity Event Mocks
 
-BDD (Behavior-Driven Development) is an agile software development methodology that focuses on collaboration and communication between developers, quality assurance (QA) engineers, and business stakeholders. It aims to ensure that software development efforts align with business requirements and produce valuable outcomes. In BDD, the behavior of the system is described in a common language that is easily understandable by all stakeholders.
+BDD is an agile software development methodology that focuses on collaboration and communication between developers, quality assurance (QA) engineers, and business stakeholders. It aims to ensure that software development efforts align with business requirements and produce valuable outcomes. In BDD, the behaviour of the system is described in a common language that is easily understandable by all stakeholders.
 
-If you are new to the BBD (Behavior-Driven Development) concept, I recommend reading the article titled ["Example Mapping in Practice"](https://blog.mechanicalrock.io/2023/03/21/example-mapping-in-practice.html#:~:text=Example%20Mapping%20is%20a%20technique,common%20understanding%20amongst%20the%20team) This article provides a comprehensive overview of BDD, its principles, and how it can be applied in software development.
+If you are new to the BBD concept, I recommend reading the article titled ["Example Mapping in Practice"](https://blog.mechanicalrock.io/2023/03/21/example-mapping-in-practice.html#:~:text=Example%20Mapping%20is%20a%20technique,common%20understanding%20amongst%20the%20team) This article provides a comprehensive overview of BDD, its principles, and how it can be applied in software development.
 
-### Expected Behavior
+### Expected behaviour
 
-Now that we have completed all the necessary setup and configuration, it's time to start developing our first component using Behavioral Development Driven (BDD) principles. BDD helps us define the expected behavior of our component in a clear and understandable manner. Here's the expected behavior for our component:
+Now that we have completed all the necessary setup and configuration, it's time to start developing our first component using BDD principles. BDD helps us define the expected behaviour of our component in a clear and understandable manner. Here's the expected behaviour for our component:
 
 ```tsx
-// addScene.feature
-Scenario: Add New Scene
-  Given Drew views the animation details
-  When Drew adds a new scene
-  Then The scene has to be added
+// addFruit.feature
+Scenario: The one where Drew Adds a New Fruit
+  Given Drew views the fruit list
+  When Drew adds a new fruit
+  Then The fruit should be added
 ```
 
 #### BDD Feature Steps
 
-Let's dive into the development of our component, considering the expected behavior outlined above. By using BDD, we can create clear and comprehensive test cases and scenarios that cover various use cases and edge cases. This ensures that our component functions as expected in different scenarios and meets the desired behavior defined through BDD. To achieve this objective, we leverage the capabilities of Jest Cucumber for loading the feature file and utilize the React Testing Library.
+Let's dive into the development of our component, considering the expected behaviour outlined above. By using BDD, we utilise the power of examples to create clear and comprehensive tests that cover many scenarios. This ensures that our component functions as expected in different scenarios and meets the desired behaviour. To achieve this objective, we leverage the capabilities of Jest Cucumber for loading the feature file and utilise the React Testing Library.
 
 ```tsx
-// addScene.steps.tsx
+// addFruit.steps.tsx
 
 import { screen, waitFor } from "@testing-library/dom";
 import { defineFeature, loadFeature } from "jest-cucumber";
@@ -269,35 +264,35 @@ import { act } from "react-dom/test-utils";
 export const ViewToRender = () =>
   render(
     <UnityContextProvider>
-      <AnimationProvider>
-        <AnimationView />
-      </AnimationProvider>
+      <FruitListProvider>
+        <ViewFruitList />
+      </FruitListProvider>
     </UnityContextProvider>,
   );
 
 // --------------------------
 // Feature
 // --------------------------
-const feature = loadFeature("./features/addScene.feature");
+const feature = loadFeature("./features/addFruit.feature");
 
 defineFeature(feature, (test) => {
   beforeEach(() => {
     ViewToRender();
   });
-  test("Add New Scene", ({ given, when, and, then }) => {
-    given("Drew views the animation details", async () => {
-      // wait to see the animation details
-      getAnimationView();
+  test("The one where Drew Adds a New Fruit", ({ given, when, and, then }) => {
+    given("Drew views the fruit list", async () => {
+      // wait to see the fruit list
+      getFruitList();
     });
-    when("Drew adds a new scene", async () => {
-      // Add new scene that will trigger a unity event
-      await addNewScene();
+    when("Drew adds a new fruit", async () => {
+      // Add new fruit that will trigger a unity event
+      await addNewFruit();
     });
-    then("The scene has to be added", async () => {
-      // await to see the app state has been updated with new scene
+    then("The fruit should be added", async () => {
+      // await to see the app state has been updated with new fruit
       await waitFor(() => {
-        const sceneCards = screen.queryAllByTestId(/scene-title-/);
-        expect(sceneCards).toHaveLength(1);
+        const fruitCard = screen.queryAllByTestId(/fruit-title-/);
+        expect(fruitCard).toHaveLength(1);
       });
     });
   });
@@ -306,32 +301,32 @@ defineFeature(feature, (test) => {
 
 If you execute the test, you will observe a failure because there is currently no corresponding code implemented for it. To enhance the readability of our test steps, we have incorporated helper functions that encapsulate the actions and assertions involved. By doing so, we make the test steps more expressive and easier to understand.
 
-Now, it is time to implement the helper functions and determine the approach for evaluating or mocking the Unity events. If our objective is to verify that the correct command is executed and submitted to Unity upon a user event, such as "add a new scene," we can utilize Jest mocks. However, if we need to mock the callback function when React sends a command to Unity, we must appropriately mock the event handler with mock data. I will illustrate how to accomplish this shortly.
+Now, it is time to implement the helper functions and determine the approach for evaluating or mocking the Unity events. If our objective is to verify that the correct command is executed and submitted to Unity upon a user event, such as "add a new fruit" we can utilize Jest mocks. However, if we need to mock the callback function when React sends a command to Unity, we must appropriately mock the event handler with mock data. I will illustrate how to accomplish this shortly.
 
 ```ts
 // featureFunctions.ts
-export async function selectAnimation(index: number) {
+export async function selectFruitList(index: number) {
   await waitFor(() => {
-    expect(screen.queryByTestId(`open-animation-${index}`)).not.toBeNull();
+    expect(screen.queryByTestId(`open-fruit-list-${index}`)).not.toBeNull();
   });
 
   act(() => {
-    fireEvent.click(screen.queryByTestId(`open-animation-${index}`));
+    fireEvent.click(screen.queryByTestId(`open-fruit-list-${index}`));
   });
 }
 // Mock the Unity Response `returnedPlayerPositionAndPerspective`
-// So that callback is called and the scene is added
+// So that callback is called and the fruit is added
 
-async function getPlayerPositionUnityEvent(x: number, y: number, z: number) {
+async function getFruitSpecificationsUnityEvent(x: number, y: number, z: number) {
   const event = JSON.stringify({
-    eventName: "receivedAnimationSceneDetails",
+    eventName: "receivedFruitSpecifications",
     args: JSON.stringify({
-      playerPosition: { x: x, y: y, z: z },
+      fruitSpecification: { x: x, y: y, z: z },
       screenshotData: "base64 image data",
     }),
   });
   act(() => {
-    const handler = eventHandler(true, "");
+    const handler = eventHandler(true, ""); // TO DO: FIX
     handler(event);
   });
   await waitFor(() => {
@@ -339,60 +334,58 @@ async function getPlayerPositionUnityEvent(x: number, y: number, z: number) {
   });
 }
 
-export async function addNewScene(index?: number) {
+export async function addNewFruit(index?: number) {
   await waitFor(() => {
-    expect(screen.queryByTestId("button-add-scene")).not.toBeNull();
+    expect(screen.queryByTestId("button-add-fruit")).not.toBeNull();
   });
   act(() => {
-    fireEvent.click(screen.queryByTestId("button-add-scene")!);
+    fireEvent.click(screen.queryByTestId("button-add-fruit")!);
   });
 
-  await waitFor(() => {
-    // this would be our helper function to mock the unity response
-    // so now, each time we add a new scene the mocked player position is return and
-    // React app will simply update the app state with the returned data.
-    getPlayerPositionUnityEvent(50, 50, 120);
-  });
+  // this would be our helper function to mock the unity response
+  // so now, each time we add a new fruit the mocked fruit specifications is return and
+  // React app will simply update the app state with the returned data.
+  await getFruitSpecificationsUnityEvent(50, 50, 120);
 }
 ```
 
-#### Animation UI Component With Scene Cards
+#### Fruit List UI Component With Fruit Cards
 
-Having defined the expected behavior for this feature, we can now proceed to implement the component that fulfills these requirements.
+Having defined the expected behaviour for this feature, we can now proceed to implement the component that fulfills these requirements.
 
 ```tsx
-// animationView.tsx
+// FruitListView.tsx
 import { CardActions, CardContent, styled, TextField, Typography } from "@mui/material";
 import React, { FC, useCallback } from "react";
 import AddButton from "../AddButton";
-// to understand the animation context provider please refer to the provided github repository
-import { setScenes, useAnimationDispatch, useAnimationState } from "../AnimationProvider";
-import { SceneCard } from "../SceneCard";
+// to understand the fruit context provider please refer to the provided github repository
+import { useFruitDispatch, useFruitState } from "../FruitListProvider";
+import { FruitCard } from "../FruitCard";
 
-const ViewAnimation: FC = () => {
-  const dispatch = useAnimationDispatch();
-  const { scenes } = useAnimationState();
-  const hasScenes = scenes.length > 0;
+const ViewFruitList: FC = () => {
+  const dispatch = useFruitDispatch();
+  const { fruits } = useFruitState();
+  const hasFruits = fruits.length > 0;
 
   return (
-    <Stack data-testid="view-animation-details">
+    <Stack data-testid="view-fruit-list">
       <AddButtonMenu />
-      <StyledCardContent sx={{ pt: 0, pb: hasScenes ? "4em" : undefined }}>
-        {updatedScenes.map(SceneWrapper)}
+      <StyledCardContent sx={{ pt: 0, pb: hasFruits ? "4em" : undefined }}>
+        {fruits.map(FruitWrapper)}
       </StyledCardContent>
     </Stack>
   );
 };
 
-function SceneWrapper(scene: SceneDetails, index: number, scenes: SceneDetails[]) {
+function FruitWrapper(fruit: FruitDetails, index: number, fruits: FruitDetails[]) {
   return (
-    <React.Fragment key={scene?.id || index}>
-      <SceneCard index={index} scene={scene} nextScene={scenes[index + 1]} />
+    <React.Fragment key={fruit?.id || index}>
+      <FruitCard index={index} fruit={fruit} nextFruit={fruits[index + 1]} />
     </React.Fragment>
   );
 }
 
-export default ViewAnimation;
+export default ViewFruitList;
 ```
 
 ```tsx
@@ -404,13 +397,14 @@ import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import * as React from "react";
-// to understand the animation context provider please refer to the provided github repository
-import { addScene, useAnimationToolDispatch, useAnimationToolState } from "../AnimationToolProvider";
+// to understand the context provider please refer to the provided github repository
+import { addFruit, useFruitDispatch, useFruitState } from "../FruitListProvider";
 
 // command to get player position
-export const getAnimationSceneDetails = () => {
+export const getFruitSpecifications = () => {
   executeCommand({
-    name: "getAnimationSceneDetails",
+    name: "getFruitSpecifications",
+    // JS api expect to receive the width and height as arguments to generate the screenshot
     args: {
       width: 134,
       height: 180,
@@ -418,82 +412,72 @@ export const getAnimationSceneDetails = () => {
   });
 };
 
-const StyledAddSceneButton = styled(Button)(() => ({
+const StyledAddFruitButton = styled(Button)(() => ({
   background: "#01579B",
   width: "100%",
   marginTop: "1rem",
 }));
 
 export default function AddButton() {
-  const { animationDetails } = useAnimationToolState();
-  const dispatch = useAnimationToolDispatch();
-  const SceneIndex = previousIndex === null ? 0 : previousIndex + 1;
+  const { fruitList } = useFruitState();
+  const dispatch = useFruitDispatch();
+  const fruitIndex = previousIndex === null ? 0 : previousIndex + 1;
   const [waitingForUnity, setWaitingForUnity] = React.useState(false);
 
   // helper callback function
-  const onAddScene = React.useCallback(
-    (playerPosition: XYZ, screenshotData: string) => {
+  const onAddFruit = React.useCallback(
+    (fruitSpecifications: XYZ, screenshotData: string) => {
       setWaitingForUnity(false);
-      addScene(
+      addFruit(
         dispatch,
         {
-          animationId: animationDetails?.id,
-          title: `Scene ${SceneIndex}`,
-          siteCode: siteCode,
+          fruitListId: fruitList?.id,
+          title: `Fruit ${fruitIndex}`,
           file: screenshotData,
-          sceneSetting: {
-            transition: {
-              transitionType: TransitionType.Linear,
-              transitionTime: defaultTransitionTime,
-              curveDegrees: 0,
-            },
-            playerPosition: roundPlayerPosition(playerPosition),
-            delayTime: defaultDelayTime,
-            order: SceneIndex,
-          },
+          fruitSpecifications: fruitSpecifications,
         },
-        SceneIndex,
+        fruitIndex,
       );
     },
-    [SceneIndex, dispatch, siteCode, updatedAnimationDetails?.id],
+    [fruitIndex, , dispatch, fruitList?.id],
   );
 
-  // subscribes on receivedAnimationSceneDetails event and on receiving
-  // response with event name receivedAnimationSceneDetails from unity, it will update the app
-  // stage with new scene
+  // subscribes on receivedFruitSpecifications event and on receiving
+  // response with event name receivedFruitSpecifications from unity, it will update the app
+  // stage with new fruit
   useUnityEventEffect(
-    ({ playerPosition, screenshotData }) => {
+    ({ fruitSpecifications, screenshotData }) => {
       if (waitingForUnity) {
         const base64 = convertUnityImageToBase64(screenshotData);
-        onAddScene(roundPlayerPosition(playerPosition), base64);
+        onAddFruit(fruitSpecifications, base64);
       }
     },
-    [onAddScene, waitingForUnity],
-    "receivedAnimationSceneDetails",
+    [onAddFruit, waitingForUnity],
+    "receivedFruitSpecifications",
   );
 
-  const handleAddScene = () => {
+  const handleAddFruit = () => {
     setWaitingForUnity(true);
-    // React executes `get animation details` command on add scene
-    // and gets the scene back
-    getAnimationSceneDetails();
+    // React executes `getFruitSpecifications` command on add fruit
+    // and gets the fruit specifications back
+    getFruitSpecifications();
   };
 
   return (
-    <StyledAddSceneButton
-      id="add-scene-lock-button"
-      data-testid={`button-add-scene`}
+    <StyledAddFruitButton
+      id="add-fruit-lock-button"
+      data-testid={`button-add-fruit`}
       variant="contained"
       disableElevation
-      onClick={handleAddScene}
+      onClick={handleAddFruit}
       sx={{
         justifyContent: "space-between",
       }}>
       <Box display="flex" marginLeft="-0.5em">
         <AddRounded />
-        <Box marginLeft="0.2em">Add Scene</Box>
+        <Box marginLeft="0.2em">Add Fruit</Box>
       </Box>
-    </StyledAddSceneButton>
+    </StyledAddFruitButton>
   );
 }
 ```
@@ -502,7 +486,7 @@ export default function AddButton() {
 
 By following the BDD approach and mocking the response from Unity's event handler, we can seamlessly develop our feature. Jest provides the capability to mock the Unity response, allowing us to simulate different scenarios during testing.
 
-In addition to this approach, there is another method to verify Unity commands. By mocking the Unity context provider, we can assert whether a specific event has been called with the correct event name. Here is an example of such a test:
+In addition to this approach, there is another method to verify Unity commands. By mocking the Unity context provider, we can assert whether a specific event has been called with the correct event name. Here is an example of such a unit test:
 
 ```tsx
 // jestMock.test.tsx
@@ -510,8 +494,8 @@ import { executeCommand } from "../components/unityProvider/commandType";
 import UnityContextProvider from "../components/unityProvider/UnityContextProvider";
 import React, { FC } from "react";
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
-import { AnimationProvider } from "../components/animationProvider";
-import AnimationView from "../components/animationView";
+import { FruitListProvider } from "../components/FruitListProvider";
+import ViewFruitList from "../components/fruitListView";
 import { act } from "react-dom/test-utils";
 
 jest.mock("../components/unityProvider/commandType", () => ({
@@ -520,27 +504,27 @@ jest.mock("../components/unityProvider/commandType", () => ({
 
 const wrapper: FC<{}> = ({ children }) => (
   <UnityContextProvider>
-    <AnimationProvider>{children}</AnimationProvider>
+    <FruitListProvider>{children}</FruitListProvider>
   </UnityContextProvider>
 );
 
-describe("Should Call getAnimationSceneDetails command", () => {
-  it("should execute the getSceneDetails command when clicked add scene", async () => {
+describe("Should Call getFruitSpecifications command", () => {
+  it("Should execute the getFruitSpecifications command when clicked add fruit", async () => {
     const executeCommandFn = jest.fn();
-    // @ts-ignore
     executeCommand.mockImplementation(executeCommandFn);
-    render(<AnimationView />, { wrapper });
+    render(<ViewFruitList />, { wrapper });
 
     await waitFor(() => {
-      expect(screen.getByTestId("button-add-scene")).not.toBeNull();
+      expect(screen.getByTestId("button-add-fruit")).not.toBeNull();
     });
     act(() => {
-      fireEvent.click(screen.getByTestId("button-add-scene"));
+      fireEvent.click(screen.getByTestId("button-add-fruit"));
     });
     await waitFor(() => {
       expect(executeCommandFn).toHaveBeenCalledWith({
+        // As previously explained `getFruitSpecifications` expect to receive height and width arguments
         args: { height: 180, width: 134 },
-        name: "getAnimationSceneDetails",
+        name: "getFruitSpecifications",
       });
     });
   });
@@ -549,9 +533,9 @@ describe("Should Call getAnimationSceneDetails command", () => {
 
 ### Conclusion
 
-In conclusion, integrating Unity with React opens up exciting possibilities for building immersive and interactive applications. By adopting the Behavior-Driven Development (BDD) approach, we can ensure that our software meets the desired behavior and aligns with business objectives. BDD emphasizes collaboration, communication, and test automation, enabling teams to work together effectively and deliver high-quality applications.
+In conclusion, integrating Unity with React opens up exciting possibilities for building immersive and interactive applications. By adopting the Behaviour Driven Development (BDD) approach, we can ensure that our software meets the desired behaviour and aligns with business objectives. BDD emphasizes collaboration, communication, and test automation, enabling teams to work together effectively and deliver high-quality applications.
 
-Through the use of tools like Jest Cucumber and React Testing Library, we can write readable and expressive test scenarios that capture the behavior of our Unity and React components. These tests serve as living documentation, providing clarity on the expected behavior and enabling easy maintenance and collaboration among team members.
+Through the use of tools like Jest Cucumber and React Testing Library, we can write readable and expressive test scenarios that capture the behaviour of our Unity and React components. These tests serve as living documentation, providing clarity on the expected behaviour and enabling easy maintenance and collaboration among team members.
 
 If you're eager to explore more about the example codes provided in this post, you can check out the accompanying GitHub repository. You can find the GitHub repository [here](https://github.com/MechanicalRock/unity-react-example).
 

@@ -30,7 +30,7 @@ They have revolutionized the field of natural language processing by enabling mo
 
 ### Agents
 
-Transformer Agents are smart software entities that use transformer-based models to interact with users. These agents understand user inputs, context, and generate natural language responses. By leveraging transformers, which excel at understanding word relationships, these agents enable human-like conversations. They are employed in applications like virtual assistants and chatbot, enhancing user experiences and facilitating efficient communication between humans and machines.
+Transformer Agents are smart software entities that use transformer-based models to interact with users. These agents understand user inputs, context, and generate natural language responses. By leveraging transformers, which excel at understanding word relationships, these agents enable human-like conversations. They are employed in applications like virtual assistants and chatbots, enhancing user experiences and facilitating efficient communication between humans and machines.
 
 ### Prompt Engineering
 
@@ -40,7 +40,7 @@ Prompt refers to instructions given to language models to elicit desired respons
 
 Hugging Face provides open-source tools including pre-trained models, datasets, and software libraries that make it easier to work with and deploy state-of-the-art NLP models.
 
-OpenAI on the other hand focuses on artificial intelligence (AI) and machine learning. They are known for their advancements in developing large-scale language models like GPT-x
+OpenAI on the other hand focuses on artificial intelligence (AI) and machine learning. They are known for their advancements in developing large-scale language models like GPT.
 
 ---
 

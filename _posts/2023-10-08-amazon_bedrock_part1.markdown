@@ -65,6 +65,7 @@ To make this happen, head to your AWS Amazon Bedrock console and navigate to "Mo
 Feel free to explore the list of available Foundation Models (FMs) for Amazon Bedrock and discover their individual use cases. 
 
 Pricing for each model is determined by the pricing mode you've chosen, whether it's On-Demand or Provisioned. Additionally, it's influenced by factors like the length of the generated tokens and other considerations. For detailed pricing information, you can refer to [this link](https://aws.amazon.com/bedrock/pricing/).
+
 ### Fine-Tune a Foundation Model
 
 Isn't this exciting? The best part is that we're not restricted to just using Base Models. We have the flexibility to supply a labeled dataset, initiate a tuning job, and once we're satisfied with the model's performance and accuracy, we can seamlessly utilize the fine-tuned model for inference, just as easily as working with the Base Models.

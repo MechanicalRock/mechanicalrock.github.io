@@ -8,7 +8,7 @@ author: Nadia Reyhani
 tags: [Machine Learning, Amazon Web Services, ML, Generative AI, Amazon Bedrock, AWS]
 ---
 
-## Introduction
+## Initial Words
 
 Welcome to Part 2 of our introductory blog series! In Part 1, we delved into the basic concepts such as Foundation Models and discovered the amazing features and capabilities of Amazon Bedrock. Now, it's time for the fun part: building your very own storytelling application with Foundation Models from Amazon Bedrock.
 
@@ -20,7 +20,7 @@ Now that you've got a glimpse of what we're building, let's take a moment to unr
 
 All these amazing features and optimizations are like extra layers of icing on the cake, but for our project, we're keeping things focused. So, while they're fascinating possibilities, we'll save them for another time!
 
-## Build an story telling app with me 
+## Build an Storytelling app with me 
 
 Take a look at the cool diagram below! It shows you exactly how our app works at every step:
 
@@ -39,19 +39,92 @@ For all the nitty-gritty details, just check out the solution architecture diagr
 
 ### Web application
 
-We won't be diving into the fancy frontend design here. I've laid out the basic structure of the application. You can grab the source code from our GitHub repository and give it your own unique style or add more features if you'd like. Once you've got the code, just follow the simple steps in the ReadMe file to get your app running on your computer.
+We won't be diving into the fancy frontend design here. I've laid out the basic structure of the application. You can grab the source code from our [GitHub repository](#) and give it your own unique style or add more features if you'd like. Once you've got the code, just follow the simple steps in the ReadMe file to get your app running on your computer.
 
 And if you're feeling adventurous and want to share your app with the world, you can even host it on your AWS account. I won't get into the nitty-gritty details in this blog post, but all you really need is an Amazon S3 bucket to store your web app's resources. Then, set up Amazon CloudFront and use Route 53 to manage your domain's traffic and routing. It's not as complicated as it might sound, and it's a great way to take your project to the next level!
 
 
 ### Amazon Bedrock Magician
 
+To set up the necessary APIs for our app to function, we'll be creating a serverless stack. You can access the complete source code in the [GitHub repository]() within the "Backend" folder. In this folder, you'll find all the required Functions, IAM Roles, and Managed Policies listed in the "serverless.yml" file. To deploy the API, all you have to do is run the command specified in the "ReadMe.md" file.
+
+However, I strongly recommend that before you deploy the serverless stack, you continue reading this article. I'll be sharing code snippets from various lambdas, explaining how to define your Input Prompt, how to access the API "Request" object, and different methods for invoking the Foundation Models. It's like getting a sneak peek behind the scenes!   
+
+### Configure the Bedrock runtime Client
+
+```py
+import boto3, json
+
+bedrock_client = boto3.client(
+    service_name="bedrock-runtime",
+    region_name="us-east-1"
+)
+```
+### Model playground
+
+To understand how to send requests for each Bedrock model, you have two options. You can check out the Notebook examples in the Bedrock console, or you can use the model playground. In the model playground, pick the model you want, configure the inference options (The result will be influenced by the model parameters), and then click "View API Request." This allows you to copy the request and modify the input as needed.
+
+For our Generate Story API, we'll be using the "Jurassic-2 Ultra" model from the "AI21 Lab" category. It's going to be a fun ride! 
+
+![select model](/img/bedrock/select_model.png)
+
+![request payload](/img/bedrock/get_keywords.png)
+
+### Construct your Request Payload
+
+Now that we have the request payload, we can begin making it more versatile, allowing our model to generate stories for any given topic.
+
+```py
+
+kwargs = {
+  "modelId": "ai21.j2-ultra-v1", <------ Text generator model
+  "contentType": "application/json",
+  "accept": "*/*",
+  "body": "{\"prompt\":\" write a stroy up to 200 words about "+ storyTopic + "\",\"maxTokens\":300,\"temperature\":0.7,\"topP\":1,\"stopSequences\":[],\"countPenalty\":{\"scale\":0},\"presencePenalty\":{\"scale\":0},\"frequencyPenalty\":{\"scale\":0}}"  <-------- Body Object contains the Model Parameters & Input prompt
+}
+
+```
+### Invoke FM for inference
+
+We're nearly there! It's as straightforward as this: to obtain inference from our text generator model "Jurassic-2 Ultra," we have two options. We can either use the "invoke_model" method or the "invoke_model_with_response_stream" method. If you're wondering about the difference, here's the scoop:
+
+- With the "invoke_model" method, the model won't provide any response until it has fully generated the text or completed the requested task.
+- On the other hand, "invoke_model_with_response_stream" offers a smoother and more real-time experience for users. It sends stream response payloads back to clients as the model works its magic.
 
 
-### Conclusion
 
-Overall, custom tools in Transformers provide flexibility, control, and customization options to accommodate specific requirements, domain expertise, and performance optimization. They empower developers to fine-tune the library's functionality and achieve better results in various NLP applications.
+```py
 
-I hope this guide has provided you with a solid foundation to get started with building your own custom Transformer tools. If you have any further questions or need assistance, please feel free to reach out to [contact us](https://mechanicalrock.io/lets-get-started). Our team is dedicated to providing unwavering support and guidance whenever you need it.
+story = bedrock_client.invoke_model(**kwargs)
 
-Good luck with your LLM endeavors!
+```
+OR 
+
+```py
+
+story = bedrock_client.invoke_model_with_response_stream(**kwargs)
+stream = story.get('body)
+if stream:
+    for event in stream:
+        chunk = event.get('chunk)
+        if chunk:
+            print(json.loads(chunk.get('bytes').get('completion'), end=""))
+
+```
+
+### Extract the generated text
+
+```py
+story_stream = json.loads(story.get('body').read())
+story_content = story_stream.get('completions')[0].get('data').get('text')
+
+```
+
+To create illustrations for other APIs based on a generated story, simply utilize the "stable-diffusion-xl-v0" model from the "Stability AI" category. It's that easy!
+
+
+### Final Words
+
+I've always been a fan of keeping things simple and staying grounded in the fundamentals. It's a great way to uncover new ideas, explore, and learn, all while having a good time building cool stuff.
+
+In this two-part blog post, my goal was to introduce you to Amazon Bedrock, showcase its features, and demonstrate how you can easily integrate various FMs into your APIs to build amazing generative AI-powered applications. I hope you've found it valuable. Now that you have a solid foundation, feel free to build upon it and explore even further! The possibilities are endless.  

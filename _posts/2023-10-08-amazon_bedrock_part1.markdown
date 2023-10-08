@@ -58,7 +58,7 @@ If you're new to Amazon Bedrock and you're diving into the "Base Models" within 
 
 ![warning](/img/bedrock/access_models.png)
 
-To make this happen, head to your AWS Amazon Bedrock console and navigate to "Model Access." There, you can pick the models you want to use and send in an access request for them. After a little while, maybe a few minutes or occasionally a few hours, you'll see those models go from "Pending" to "Access granted," just like in the screenshot below. 
+To make this happen, head to your AWS Amazon Bedrock console and navigate to "Model Access." There, you can pick the models you want to use and send in an access request for them. After a little while, maybe a few minutes or occasionally a few hours, you'll see those models go from "Pending" to "Access granted," just like in the screenshot below. Keep in mind that Model access is provided on a per-region basis. If you want models available in multiple regions, you'll need to request access for each region separately.
 
 ![request model access](/img/bedrock/request_access.png)
 

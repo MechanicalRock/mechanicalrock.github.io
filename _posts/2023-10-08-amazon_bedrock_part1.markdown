@@ -37,7 +37,7 @@ Here's the cool part: Amazon Bedrock is "Serverless." That means it can automati
 
 If I've got you excited about the ease and efficiency of GAI apps with Amazon Bedrock, it's time to dive into the world of "Foundation Models".
 
-## Uncover The Magic Of Foundational Models (FMs)
+## Uncover The Magic Of Foundation Models (FMs)
 
 FMs are like super-smart, giant neural networks trained on massive piles of data. Instead of reinventing the AI models every time from scratch, we use FMs as a launchpad to create our own customised models in a faster and cost-effective approach. These FMs are like all-in-one champs; they can multiple tasks with high accuracy, like generating image or text from a simple input prompt, answering tricky questions, and even solving math puzzles. 
 

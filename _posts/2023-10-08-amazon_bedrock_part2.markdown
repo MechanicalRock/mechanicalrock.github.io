@@ -24,11 +24,11 @@ All these amazing features and optimizations are like extra layers of icing on t
 
 Take a look at the cool diagram below! It shows you exactly how our app works at every step:
 
-- The user, starts by giving us an idea for a story or what the story should be about.
+- The user starts by giving us an idea for a story or what the story should be about.
 
 - When user clicks on "Generate Story," the web app send a request to foundation model to create the story, and then it returns the generated story.
 
-- Now, here's where it gets interesting. user can either generate another story with the same topic or change the topic and get a new one. Plus, they can even add illustrations to the story! In this app, I've configured the FM model to generate an image for each paragraph. These images are stored in an S3 bucket, and the UI shows them to user once it gets back the S3 presigned URLs.
+- Now, here's where it gets interesting. The user can either generate another story with the same topic or change the topic and get a new one. Plus, they can even add illustrations to the story! In this app, I've configured the FM model to generate an image for each paragraph. These images are stored in an S3 bucket, and the UI shows them to user once it gets back the S3 presigned URLs.
 
 For all the nitty-gritty details, just check out the solution architecture diagram. It's like a map that guides you through the app's awesomeness.
 
@@ -86,7 +86,7 @@ kwargs = {
 ```
 ### Invoke FM for inference
 
-We're nearly there! It's as straightforward as this: to obtain inference from our text generator model "Jurassic-2 Ultra," we have two options. We can either use the "invoke_model" method or the "invoke_model_with_response_stream" method. If you're wondering about the difference, here's the scoop:
+We're nearly there! It's as straightforward as this: to obtain inference from our text generator model "Jurassic-2 Ultra", we have two options. We can either use the "invoke_model" method or the "invoke_model_with_response_stream" method. If you're wondering about the difference, here's the scoop:
 
 - With the "invoke_model" method, the model won't provide any response until it has fully generated the text or completed the requested task.
 - On the other hand, "invoke_model_with_response_stream" offers a smoother and more real-time experience for users. It sends stream response payloads back to clients as the model works its magic.

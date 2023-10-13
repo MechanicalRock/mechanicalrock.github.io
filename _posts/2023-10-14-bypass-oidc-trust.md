@@ -25,7 +25,7 @@ The documentation for which is located [here](https://docs.github.com/en/actions
 }
 ```
 
-This configuration ensures that the only way that anyone can assume the deployment role is if the subject (sub) matches the specific branch name `octo-branch` if a deployment attempts to assume the role outside of that branch it will be denied, combined with standard branch protections (no code directly to branch, must have been via a Pull Request and have approvals by other approved members) ensures that the only way code can be deployed is via the review and approval process.
+This configuration ensures that the only way that anyone can assume the deployment role is if the subject (sub) matches the specific branch name `octo-branch`.  If a deployment attempts to assume the role outside of that branch it will be denied, combined with standard branch protections (no code pushed directly to branch, must have been via a Pull Request and have approvals by other approved members) ensures that the only way code can be deployed is via the review and approval process.
 
 In contrary to the above, the documentation continues on to provide a way to create a Trust Policy when using GitHub environments:
 
@@ -93,7 +93,7 @@ We have been thwarted by our OIDC trust policy!
 
 ## Move to Github Environments
 
-Now, as a Developer, we want to try the Environments feature of Github to manage our deployments and and so we can have different secrets and reuse our pipeline configurations. We enable it, Realise that our Trust Policy no longer works (see above, the change in `sub`) so we update our Trust policy as describe in the [GitHub documentation](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services#adding-the-identity-provider-to-aws)
+Now, as a Developer, we want to try the Environments feature of Github to manage our deployments and and so we can have different secrets and reuse our pipeline configurations. We enable it, realise that our Trust Policy no longer works (see above, the change in `sub`) so we update our Trust policy as described in the [GitHub documentation](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services#adding-the-identity-provider-to-aws)
 
 ![Updated Trust Policy](/img/bypass-oidc-trust/updated-trust-policy.png){:lightbox="true"}
 
@@ -106,7 +106,7 @@ And add the environment to our pipeline, proceed through the review and merge pr
 
 Another bad actor notices this new change to use environments, so he attempts to do a deployment aswell.
 
-Remember that now, we are no longer relying on the Trust Policy to limit our credentials to a specific branch because There is no reference to the branch in the Trust Policy due to the limited subset of options provided to us.
+Remember that now, we are no longer able to rely on the Trust Policy to limit our credentials to a specific branch because there is no reference to the branch in the Trust Policy due to the limited subset of options provided to us.
 
 We can update the malicious branch with the new environment and push to our branch:
 
@@ -126,4 +126,4 @@ In my opinion no user of the AWS Identity Provider should be using the GitHub En
 
 # Remediation
 
-If you **MUST** use GitHub environments for your deployments, to ensure that your credentials are not able to be assumed by any branch, you can [customize your GitHub claim token](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect#customizing-the-token-claims) and add that new custom claim to your trust policy
+If you **MUST** use GitHub environments for your deployments, to ensure that your credentials are not able to be assumed by any branch, you can [customize your GitHub claim token](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect#customizing-the-token-claims) and add that new custom claim to your trust policy.  Unfortunately this is not required so there will be projects out there with this vulnerability. 

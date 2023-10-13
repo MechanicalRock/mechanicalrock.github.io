@@ -23,7 +23,7 @@ If you share my approach of beginning with documentation, you probably have alre
 
  On this page, three significant phrases stand out: "Easiest way", "Scalable", and "Foundation Models". I am convinced that these attributes and characteristics are what set Amazon Bedrock apart from any other alternatives.
 
-Ever wondered why AWS calls this the "easiest" and a "Scalable" option? Well, if you're an expert in generative AI (GAI), you've likely tasted the complexity of setting up and managing the nuts and bolts needed for a generative AI app. It's like solving a puzzle with pieces like:
+Ever wondered why AWS calls this the "easiest" and a "Scalable" option? Well, if you're an expert in generative AI (GenAI), you've likely tasted the complexity of setting up and managing the nuts and bolts needed for a generative AI app. It's like solving a puzzle with pieces like:
 
 - Picking the right computing power.
 - Network Configurations.
@@ -31,11 +31,11 @@ Ever wondered why AWS calls this the "easiest" and a "Scalable" option? Well, if
 - Monitoring and Keeping an eye on the infrastructure for a reliable app.
 - Data security
 
-So, how does Amazon Bedrock make this complex stuff easy? Picture this: Bedrock often serves up pre-configured resources, custom-made for GAI tasks. These ready-to-go setups come with all the software bits and pieces you need, like libraries, dependencies and tools, already installed. Plus, Bedrock integrates with AWS Managed services like Amazon S3, Amazon CloudWatch, and AWS Lambda, making tough tasks like configuring data storage, authentication, and monitoring a walk in the park for your GAI apps.
+So, how does Amazon Bedrock make this complex stuff easy? Picture this: Bedrock often serves up pre-configured resources, custom-made for GenAI tasks. These ready-to-go setups come with all the software bits and pieces you need, like libraries, dependencies and tools, already installed. Plus, Bedrock integrates with AWS Managed services like Amazon S3, Amazon CloudWatch, and AWS Lambda, making tough tasks like configuring data storage, authentication, and monitoring a walk in the park for your GenAI apps.
 
-Here's the cool part: Amazon Bedrock is "Serverless." That means it can automatically grow or shrink resources as your app's popularity ebbs and flows. So, when traffic goes up, Bedrock scales up your resources, ensuring peak performance without breaking the bank.
+Here's the cool part: Amazon Bedrock is "Serverless." That means it can automatically grow or shrink resources as your app's popularity ebbs and flows. So, when traffic goes up, Bedrock scales up your resources, ensuring peak performance without breaking the bank. All provided data to the Bedrock is encrypted at both rest and in transit. That would give your peace of mind if you want to adopt GenAI.
 
-If I've got you excited about the ease and efficiency of GAI apps with Amazon Bedrock, it's time to dive into the world of "Foundation Models".
+If I've got you excited about the ease and efficiency of GenAI apps with Amazon Bedrock, it's time to dive into the world of "Foundation Models".
 
 ## Uncover The Magic Of Foundation Models (FMs)
 

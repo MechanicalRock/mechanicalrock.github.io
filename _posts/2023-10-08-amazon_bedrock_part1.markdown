@@ -5,6 +5,7 @@ title: "Amazon Bedrock Anatomy"
 description: "Part1: What's Amazon Bedrock and what it does?"
 date: 2023-10-08
 author: Nadia Reyhani
+image: /img/bedrock/amazon_bedrock.png
 tags: [Machine Learning, Amazon Web Services, ML, Generative AI, Amazon Bedrock, AWS]
 ---
 

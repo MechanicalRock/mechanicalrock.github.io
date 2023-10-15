@@ -1,16 +1,17 @@
 ---
 layout: postv2
 font: serif
-title: "Story telling with Amazon Bedrock"
+title: "Story telling App with Amazon Bedrock"
 description: "Part2: Building your very own storytelling application with Foundation Models from Amazon Bedrock"
 date: 2023-10-08
 author: Nadia Reyhani
 tags: [Machine Learning, Amazon Web Services, ML, Generative AI, Amazon Bedrock, AWS]
+image: /img/bedrock/application_demo.png
 ---
 
 ## Initial Words
 
-Welcome to Part 2 of our introductory blog series! In Part 1, we delved into the basic concepts such as Foundation Models and discovered the amazing features and capabilities of Amazon Bedrock. Now, it's time for the fun part: building your very own storytelling application with Foundation Models from Amazon Bedrock.
+Welcome to Part 2 of our introductory blog series! In [Part 1](), we delved into the basic concepts such as Foundation Models and discovered the amazing features and capabilities of Amazon Bedrock. Now, it's time for the fun part: building your very own storytelling application with Foundation Models from Amazon Bedrock.
 
 Just a heads-up, we're keeping things super simple in this app. We won't be focusing on the bells and whistles of user experience for now. I'll explain what I mean by that in a moment, but first, let's talk about what you'll achieve by the end of this post.
 
@@ -20,7 +21,10 @@ Now that you've got a glimpse of what we're building, let's take a moment to unr
 
 All these amazing features and optimizations are like extra layers of icing on the cake, but for our project, we're keeping things focused. So, while they're fascinating possibilities, we'll save them for another time!
 
-## Build an Storytelling app with me 
+## Build An Storytelling App With Me 
+
+![Solution Diagram](/img/bedrock/application_demo.png)
+
 
 Take a look at the cool diagram below! It shows you exactly how our app works at every step:
 
@@ -28,7 +32,7 @@ Take a look at the cool diagram below! It shows you exactly how our app works at
 
 - When user clicks on "Generate Story," the web app send a request to foundation model to create the story, and then it returns the generated story.
 
-- Now, here's where it gets interesting. user can either generate another story with the same topic or change the topic and get a new one. Plus, they can even add illustrations to the story! In this app, I've configured the FM model to generate an image for each paragraph. These images are stored in an S3 bucket, and the UI shows them to user once it gets back the S3 presigned URLs.
+- Now, here's where it gets interesting. user can either generate another story with the same topic or change the topic and get a new one. Plus, they can even add illustrations to the story! In this app, I've configured the FM model to generate an image for summary of each paragraph. These images are stored in an S3 bucket, and the UI shows them to user once it gets back the S3 presigned URLs.
 
 For all the nitty-gritty details, just check out the solution architecture diagram. It's like a map that guides you through the app's awesomeness.
 
@@ -39,26 +43,39 @@ For all the nitty-gritty details, just check out the solution architecture diagr
 
 ### Web application
 
-We won't be diving into the fancy frontend design here. I've laid out the basic structure of the application. You can grab the source code from our [GitHub repository](#) and give it your own unique style or add more features if you'd like. Once you've got the code, just follow the simple steps in the ReadMe file to get your app running on your computer.
+We won't be diving into the fancy frontend design here. I've laid out the basic structure of the application. You can grab the source code from our [GitHub repository](https://github.com/RonakReyhani/botRock/tree/main) and give it your own unique style or add more features if you'd like. Once you've got the code, just follow the simple steps in the ReadMe file to get your app running on your computer.
 
 And if you're feeling adventurous and want to share your app with the world, you can even host it on your AWS account. I won't get into the nitty-gritty details in this blog post, but all you really need is an Amazon S3 bucket to store your web app's resources. Then, set up Amazon CloudFront and use Route 53 to manage your domain's traffic and routing. It's not as complicated as it might sound, and it's a great way to take your project to the next level!
 
 
 ### Amazon Bedrock Magician
 
-To set up the necessary APIs for our app to function, we'll be creating a serverless stack. You can access the complete source code in the [GitHub repository]() within the "Backend" folder. In this folder, you'll find all the required Functions, IAM Roles, and Managed Policies listed in the "serverless.yml" file. To deploy the API, all you have to do is run the command specified in the "ReadMe.md" file.
+To set up the necessary APIs for our app to function, we'll be creating a serverless stack. You can access the complete source code in the [GitHub repository](https://github.com/RonakReyhani/botRock/tree/main) within the "Backend" folder. In this folder, you'll find all the required Functions, IAM Roles, and Managed Policies listed in the "serverless.yml" file. To deploy the API, all you have to do is run the command specified in the "ReadMe.md" file.
 
 However, I strongly recommend that before you deploy the serverless stack, you continue reading this article. I'll be sharing code snippets from various lambdas, explaining how to define your Input Prompt, how to access the API "Request" object, and different methods for invoking the Foundation Models. It's like getting a sneak peek behind the scenes!   
 
 ### Configure the Bedrock runtime Client
 
 ```py
+# Implementation in Python
 import boto3, json
 
 bedrock_client = boto3.client(
     service_name="bedrock-runtime",
     region_name="us-east-1"
 )
+
+```
+
+
+
+```ts
+// Implementation in Nodejs
+
+import { BedrockRuntimeClient } from "@aws-sdk/client-bedrock-runtime";
+
+const bedrockRuntimeClient = new BedrockRuntimeClient({ region: "us-east-1" })
+
 ```
 ### Model playground
 
@@ -84,6 +101,21 @@ kwargs = {
 }
 
 ```
+
+
+```ts
+// Implementation in Nodejs
+    private constructStoryRequestPayload = (prompt: string, maxToken: number) => {
+        return {
+            "modelId": this.textModelId,
+            "contentType": "application/json",
+            "accept": "*/*",
+            "body": `{\"prompt\":\ ${prompt},\"maxTokens\": ${maxToken},\"temperature\":0.7,\"topP\":1,\"stopSequences\":[],\"countPenalty\":{\"scale\":0},\"presencePenalty\":{\"scale\":0},\"frequencyPenalty\":{\"scale\":0}}`
+        }
+    }
+
+```
+
 ### Invoke FM for inference
 
 We're nearly there! It's as straightforward as this: to obtain inference from our text generator model "Jurassic-2 Ultra," we have two options. We can either use the "invoke_model" method or the "invoke_model_with_response_stream" method. If you're wondering about the difference, here's the scoop:
@@ -94,6 +126,7 @@ We're nearly there! It's as straightforward as this: to obtain inference from ou
 
 
 ```py
+# Implementation in Python
 
 story = bedrock_client.invoke_model(**kwargs)
 
@@ -111,6 +144,25 @@ if stream:
             print(json.loads(chunk.get('bytes').get('completion'), end=""))
 
 ```
+
+
+```ts
+// Implementation in Nodejs
+
+private invokeTextModel = async (prompt: string, maxToken: number): Promise<string> => {
+        // construct model API payload
+        const input = this.constructStoryRequestPayload(prompt, maxToken)
+        const command = new InvokeModelCommand(input);
+        // InvokeModelRequest
+        const response = await this.bedrockRuntimeClient.send(command);
+        const story = response.body.transformToString()
+        // get the text body
+        const parsedStory = JSON.parse(story)
+        return parsedStory.completions[0].data.text
+    }
+
+```
+
 
 ### Extract the generated text
 

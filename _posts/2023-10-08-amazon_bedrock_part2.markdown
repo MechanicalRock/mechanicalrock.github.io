@@ -28,7 +28,7 @@ All these amazing features and optimizations are like extra layers of icing on t
 
 Take a look at the cool diagram below! It shows you exactly how our app works at every step:
 
-- The user, starts by giving us an idea for a story or what the story should be about.
+- The user starts by giving us an idea for a story or what the story should be about.
 
 - When user clicks on "Generate Story," the web app send a request to foundation model to create the story, and then it returns the generated story.
 
@@ -118,7 +118,7 @@ kwargs = {
 
 ### Invoke FM for inference
 
-We're nearly there! It's as straightforward as this: to obtain inference from our text generator model "Jurassic-2 Ultra," we have two options. We can either use the "invoke_model" method or the "invoke_model_with_response_stream" method. If you're wondering about the difference, here's the scoop:
+We're nearly there! It's as straightforward as this: to obtain inference from our text generator model "Jurassic-2 Ultra", we have two options. We can either use the "invoke_model" method or the "invoke_model_with_response_stream" method. If you're wondering about the difference, here's the scoop:
 
 - With the "invoke_model" method, the model won't provide any response until it has fully generated the text or completed the requested task.
 - On the other hand, "invoke_model_with_response_stream" offers a smoother and more real-time experience for users. It sends stream response payloads back to clients as the model works its magic.

@@ -12,7 +12,7 @@ tags: [Trust policy, GitHub, GitHub Environments, Security, OIDC]
 
 # Bypassing GitHub branch protection with OIDC and Github Environments
 
-As part of deploying to AWS with Github Actions is the idea of using an OIDC provider to allow for temporary credentials that can be assumed during the pipeline to enable secure access to AWS accounts.
+A part of deploying to AWS with Github Actions is the idea of using an OIDC provider to allow for temporary credentials that can be assumed during the pipeline to enable secure access to AWS accounts.
 
 The documentation for which is located [here](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services#adding-the-identity-provider-to-aws) shows that you should configure your trust policy like so:
 
@@ -126,4 +126,4 @@ In my opinion no user of the AWS Identity Provider should be using the GitHub En
 
 # Remediation
 
-If you **MUST** use GitHub environments for your deployments, to ensure that your credentials may not be assumed by any branch, you can [customize your GitHub claim token](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect#customizing-the-token-claims) and add that new custom claim to your trust policy.  Unfortunately this is not required so there will be projects out there with this vulnerability. 
+If you **MUST** use GitHub environments for your deployments, to ensure that your credentials may not be assumed by any branch, you can [customize your GitHub claim token](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect#customizing-the-token-claims) and add that new custom claim to your trust policy.  Unfortunately this is not required so there will be projects out there with this vulnerability.

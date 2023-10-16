@@ -12,7 +12,7 @@ tags: [Trust policy, GitHub, GitHub Environments, Security, OIDC]
 
 # Bypassing GitHub branch protection with OIDC and Github Environments
 
-As part of the deploying to AWS with Github Actions is the idea of using an OIDC provider to allow for temporary credentials that can be assumed during the pipeline to enable secure access to AWS accounts.
+As part of deploying to AWS with Github Actions is the idea of using an OIDC provider to allow for temporary credentials that can be assumed during the pipeline to enable secure access to AWS accounts.
 
 The documentation for which is located [here](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services#adding-the-identity-provider-to-aws) shows that you should configure your trust policy like so:
 
@@ -27,7 +27,7 @@ The documentation for which is located [here](https://docs.github.com/en/actions
 
 This configuration ensures that the only way that anyone can assume the deployment role is if the subject (sub) matches the specific branch name `octo-branch`.  If a deployment attempts to assume the role outside of that branch it will be denied, combined with standard branch protections (no code pushed directly to branch, must have been via a Pull Request and have approvals by other approved members) ensures that the only way code can be deployed is via the review and approval process.
 
-In contrary to the above, the documentation continues on to provide a way to create a Trust Policy when using GitHub environments:
+Contrary to the above, the documentation continues on to provide a way to create a Trust Policy when using GitHub environments:
 
 > If you use a workflow with an environment, the sub field must reference the environment name: repo:OWNER/REPOSITORY:environment:NAME.
 ```
@@ -43,7 +43,7 @@ Herein lies the issue: **There is no longer any reference to the branch name**
 
 Github does provide the branch name as the `ref` value of the JWT [shown here](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect#understanding-the-oidc-token) so a way to validate the branch name is possible.
 
-And then we go to check which values we can use as part of the Trust Policy condition operators [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_iam-condition-keys.html#cross-condition-keys-wif)
+When we go to check which values we can use as part of the Trust Policy condition operators [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_iam-condition-keys.html#cross-condition-keys-wif)
 
 The available keys are:
   
@@ -74,13 +74,13 @@ And our Merge is blocked:
 
 ![Merge Blocked](/img/bypass-oidc-trust/merge-blocked.png){:lightbox="true"}
 
-The process works wholely as we expect, once the review is complete and the merge happens, the pipeline runs and we get deployed code:
+The process works wholly as we expect, once the review is complete and the merge happens, the pipeline runs and we get deployed code:
 
 ![Pipeline Success](/img/bypass-oidc-trust/pipeline-success.png){:lightbox="true"}
 
 ## Malicious user enters the chat
 
-Let's say we see this open source repository, and we want to be a bad person, We can attempt to run our own actions inside a branch, and uses GitHub Actions `on: push` we can essentially run anything we want even in branches
+Let's say we see this open source repository, and we want to be a bad person, then we can attempt to run our own actions inside a branch, and using GitHub Actions `on: push` we can essentially run anything we want even in branches.
 
 So we create a new branch, make some small modifications to our pipeline config and attempt to deploy code:
 
@@ -97,16 +97,16 @@ Now, as a Developer, we want to try the Environments feature of Github to manage
 
 ![Updated Trust Policy](/img/bypass-oidc-trust/updated-trust-policy.png){:lightbox="true"}
 
-And add the environment to our pipeline, proceed through the review and merge process, and watch our updated pipeline perform as expected
+And add the environment to our pipeline, proceed through the review and merge process, and watch our updated pipeline perform as expected.
 
 ![Added environment](/img/bypass-oidc-trust/added-environemnt.png){:lightbox="true"}
 ![Environment Deployed](/img/bypass-oidc-trust/environment-deploy.png){:lightbox="true"}
 
 ## Malicious user number two
 
-Another bad actor notices this new change to use environments, so he attempts to do a deployment aswell.
+Another bad actor notices this new change to use environments, so he attempts to do a deployment as well.
 
-Remember that now, we are no longer able to rely on the Trust Policy to limit our credentials to a specific branch because there is no reference to the branch in the Trust Policy due to the limited subset of options provided to us.
+Remember that now we are no longer able to rely on the Trust Policy to limit our credentials to a specific branch because there is no reference to the branch in the Trust Policy due to the limited subset of options provided to us.
 
 We can update the malicious branch with the new environment and push to our branch:
 
@@ -120,10 +120,10 @@ We can update the malicious branch with the new environment and push to our bran
 
 # Conclusion
 
-By simply following the documentation for configuring an OIDC provider that makes use of GitHub Environments, are you are completely able to bypass the branch protection feature of GitHub and use credentials that should be locked down to use by only a single branch.
+By simply following the documentation for configuring an OIDC provider that makes use of GitHub Environments you are completely able to bypass the branch protection feature of GitHub and use credentials that should be locked down to use by only a single branch.
 
-In my opinion no user of the AWS Identity Provider should be using the GitHub Environment feature as it (by default, and with the expected setup based on documentation) makes your pipelines less secure.
+In my opinion no user of the AWS Identity Provider should be using the GitHub Environment feature as it (by default, and with the expected setup based on documentation) leaves your pipelines vulnerable to a simple attack.
 
 # Remediation
 
-If you **MUST** use GitHub environments for your deployments, to ensure that your credentials are not able to be assumed by any branch, you can [customize your GitHub claim token](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect#customizing-the-token-claims) and add that new custom claim to your trust policy.  Unfortunately this is not required so there will be projects out there with this vulnerability. 
+If you **MUST** use GitHub environments for your deployments, to ensure that your credentials may not be assumed by any branch, you can [customize your GitHub claim token](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect#customizing-the-token-claims) and add that new custom claim to your trust policy.  Unfortunately this is not required so there will be projects out there with this vulnerability. 

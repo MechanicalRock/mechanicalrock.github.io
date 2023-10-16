@@ -74,7 +74,7 @@ And our Merge is blocked:
 
 ![Merge Blocked](/img/bypass-oidc-trust/merge-blocked.png){:lightbox="true"}
 
-The process works wholely as we expect, once the review is complete and the merge happens, the pipeline runes and we get deployed code:
+The process works wholely as we expect, once the review is complete and the merge happens, the pipeline runs and we get deployed code:
 
 ![Pipeline Success](/img/bypass-oidc-trust/pipeline-success.png){:lightbox="true"}
 

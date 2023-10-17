@@ -13,7 +13,7 @@ tags: [Machine Learning, Amazon Web Services, ML, Generative AI, Amazon Bedrock,
 
 Did you catch the thrilling announcement? "Amazon Bedrock" is now officially accessible to all users. While a few incredible features of this service are still in the "Preview" stage, it is sufficient to empower teams with exciting capabilities for effortlessly creating and launching Generative AI applications.
 
-This blog post comes in two exciting parts. In Part 1, I'll dive into the core concepts and terminology, taking apart the inner mechanisms of Amazon Bedrock. Then, brace yourself for Part 2, where I'll walk you through crafting a simple yet captivating storytelling bot with Amazon Bedrock. If you're already well-versed in the basics, feel free to jump ahead to Part 2 and embark on your creative journey! 
+This blog post comes in two exciting parts. In Part 1, I'll dive into the core concepts and terminology, taking apart the inner mechanisms of Amazon Bedrock. Then, brace yourself for [Part 2](https://blog.mechanicalrock.io/2023/10/08/amazon_bedrock_part2.html), where I'll walk you through crafting a simple yet captivating storytelling bot with Amazon Bedrock. If you're already well-versed in the basics, feel free to jump ahead to Part 2 and embark on your creative journey! 
 
 
 ## Let's Begin With The Basics
@@ -87,4 +87,4 @@ If you've got Preview access to Amazon Bedrock, don't hesitate any longer. Jump 
 
 While Amazon Bedrock is still evolving, it's been a game-changer for sparking our creativity and making it easy and cost-effective to build advanced generative AI apps. Personally, I can't wait to try out Amazon Bedrock Agent and its Knowledge Base features; they promise even more exciting possibilities.
 
-Now that you've got the basics of this service and its models, let's get hands-on. Follow along in [Part 2]() of this article, where I'll guide you through creating a storytelling app using Amazon Bedrock and some other cool Amazon services. It's time to bring your ideas to life!
+Now that you've got the basics of this service and its models, let's get hands-on. Follow along in [Part 2](https://blog.mechanicalrock.io/2023/10/08/amazon_bedrock_part2.html) of this article, where I'll guide you through creating a storytelling app using Amazon Bedrock and some other cool Amazon services. It's time to bring your ideas to life!

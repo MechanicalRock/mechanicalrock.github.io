@@ -11,7 +11,7 @@ image: /img/bedrock/application_demo.png
 
 ## Initial Words
 
-Welcome to Part 2 of our introductory blog series! In [Part 1](), we delved into the basic concepts such as Foundation Models and discovered the amazing features and capabilities of Amazon Bedrock. Now, it's time for the fun part: building your very own storytelling application with Foundation Models from Amazon Bedrock.
+Welcome to Part 2 of our introductory blog series! In [Part 1](https://blog.mechanicalrock.io/2023/10/08/amazon_bedrock_part1.html), we delved into the basic concepts such as Foundation Models and discovered the amazing features and capabilities of Amazon Bedrock. Now, it's time for the fun part: building your very own storytelling application with Foundation Models from Amazon Bedrock.
 
 By the time we're done here, you'll have deployed a serverless setup with two APIs. First API will generate the story from a given topic, and the other one will illustrate each paragraph of the story. We'll be using Appsync and GraphQL to make requests to these APIs and generate stories. If you're wondering how these APIs work with FM models to create stories and illustrations, that's the magic of Amazon Bedrock we'll uncover together. So, let's get started on this storytelling adventure! 
 

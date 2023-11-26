@@ -41,7 +41,7 @@ In our tech setup, the main thing we need is an IP camera for the video source. 
 
 To playback the camera's video stream, we can use Amazon Kinesis Video Streams. This service works with Amazon Rekognition for computer vision and video analytics. So, when the video streams reach our AWS account, Amazon Rekognition can recognize familiar faces.
 
-If you're wondering how Amazon Rekognition does this, it uses something called a "face collection." We can make different face collections and add faces to them. When the video stream data goes to Amazon Rekognition, it looks at the face collection and identifies faces based on the ones we added.
+If you're wondering how Amazon Rekognition does this, it uses something called a "face collection". We can make different face collections and add faces to them. When the video stream data goes to Amazon Rekognition, it looks at the face collection and identifies faces based on the ones we added.
 
 When it finds a match, Amazon Rekognition sends out the results. But we're not done yet—we need another way to deliver these results smoothly to a place like an AWS Lambda function. For this, we can use Amazon Kinesis Data Streams as a delivery service.
 
@@ -57,7 +57,7 @@ To set up the camera, first, you need to find its IP address. To do this, log in
 
 #### Create Camera Account
 
-No matter what IP camera you have, they usually come with a mobile app that lets you control the camera. For my 'Tapo C310' camera, I used the TP-Link App and made a camera account. This account info is needed by Amazon Kinesis Video Streams' Client to make sure it's allowed to get the video from the camera.
+No matter what IP camera you have, they usually come with a mobile app that lets you control the camera. For my 'Tapo C310' camera, I used the TP-Link App and made a camera account. This account info is needed by Amazon Kinesis Video Streams' Client to make sure it's authorised to get the video from the camera.
 
 This camera account is separate from your TP-Link App login. If you don't give these details, Kinesis Video Streams won't be able to get the video from the camera. If you're using the same camera as me, you can [check out the instructions here](https://www.tp-link.com/us/support/faq/2790/) on how to create your camera account.
 
@@ -92,11 +92,11 @@ Please note that Amazon Kinesis Video Streams (KVS) availability is limited in c
 
 ##### Rekognition Stream Processor
 
-Now that our camera's live video is flowing into Kinesis Video Streams in real-time, you might be curious about how it recognizes your visitors and what services make it happen. Well, as I mentioned earlier the answer is simple: we just use "Amazon Rekognition Stream Producer" and a "Face Collection."
+Now that our camera's live video is flowing into Kinesis Video Streams in real-time, you might be curious about how it recognizes your visitors and what services make it happen. Well, as I mentioned earlier the answer is simple: we just use "Amazon Rekognition Stream Producer" and a "Face Collection".
 
 When the live video data gets to Amazon Rekognition, it looks through a collection of images from different people.
 
-You can set up the face collection and Rekognition Stream Producer using the instructions in this CloudFormation snippet:
+You can set up the face collection and Rekognition Stream Producer using this CloudFormation snippet:
 
 ```
   RekognitionFaceCollection:
@@ -164,7 +164,7 @@ We need an IAM role for Amazon Rekognition service that allows Rekognition to ge
 
 ### Create Joy From Amazon Rekognition Analysis
 
-Once the AWS Lambda gets the info about matching faces from Amazon Kinesis Data Streams, we can do lots of cool things with it. We can use it however we want—like sending a happy text to tell us our visitor is here with their name, or playing a nice song for them as they wait for our welcoming hello at the door.
+Once the AWS Lambda gets the matching face analysis from Amazon Kinesis Data Streams, we can do lots of cool things with it. We can use it however we want—like sending a text to tell us our visitor is here with their name, or playing a nice song for them as they wait for our welcoming hello at the door.
 
 To make our two Lambda functions—one for publishing a message to Amazon SNS topic containing the face recognition result and the other for suggesting music—we can use the cloudformation resources like this:
 
@@ -218,15 +218,35 @@ To make our two Lambda functions—one for publishing a message to Amazon SNS to
 
 If you want to know what each lambda function does, check out the examples in this code repository on [GitHub](https://github.com/RonakReyhani/MusicalJoyBells/blob/main/src/Implementation/MusicalJoyStore.ts). You can use them as a starting point and change them however you like.
 
-### Configure Face collection (AWS CLI)
+### Deploy Resources as Infrastructure as Code
 
+We are nearly there, through cloudformation snippets from this blog post we almost created all the core resources required for the Musical Concierge. However, there are some other resources such as Amazon Secrets Manager or AWS S3 Buckets to store the face images or collection of musics, to access the full version of all the resources please check out the cloudformation file in [this code repository](https://github.com/RonakReyhani/MusicalJoyBells/blob/main/cloudformation.yaml).
+
+Time to deploy all the resources in AWS account. Go ahead and continue with build, package and deploying the resources.
+
+#### Build and Package
+```
+npm run build
+npm run package
+
+aws cloudformation package --template-file ./cloudformation.yaml --s3-bucket $ARTIFACT_BUCKET --output-template-file /<FOLDER>/cloudformation.yaml
+
+aws cloudformation deploy \
+  --template /path_to_template/my-template.yml \
+  --stack-name <STACK_NAME> \
+  --parameter-overrides Key1=Value1 Key2=Value2 \
+```
+*In this project I have not set up CI/CD, if you are planing to productionise this project, make sure this step is part of your continues integration and continues deployment.*
+
+After successful deployment of cloudformation resources, it's time to link everything together and make the videos flow into Amazon resources. We'll do that in the next few steps.
+
+### Configure Face collection (AWS CLI)
 
 To make Amazon Rekognition recognize faces in the live stream, we have to give it a collection of known faces. In earlier steps, we made this collection. Now, to add familiar faces to it, you can use AWS CLI. This part requires some manual work, though. You must have set up your AWS CLI and put in your credentials to run these commands and make it work.
 
 ##### Add face to face collection:
 
-I put some pictures of faces in a folder on S3. When I run this command, it grabs a picture from S3 and adds it as a new face to my collection:
-
+I put some photos of faces in a folder on S3. When I run this command, it grabs the photo from S3 and adds it as a new face to my collection:
 
 ```
   aws rekognition index-faces \
@@ -241,7 +261,7 @@ I put some pictures of faces in a folder on S3. When I run this command, it grab
 
 ### Start Rekognition Stream Producer (AWS CLI)
 
-This is the heart of the system. It pulls video from Kinesis video, analyzes it & pushes the results to Kinesis data. We created the Amazon Rekognition Procession within the cloudformation lets get a list of existing processors:
+Rekognition Stream Producer is the heart of the system. It pulls video from Kinesis video, analyzes it & pushes the results to Kinesis data. Earlier, We created the Amazon Rekognition Procession within the cloudformation lets get a list of existing processors:
 
 - To List Rekognition Stream Producer run this command in your terminal:
 
@@ -333,28 +353,6 @@ To be notified on my guests arrival, I have created a lambda function that sends
 
 You can simply follow instruction from [this web page](https://sendpulse.com/knowledge-base/chatbot/telegram/create-telegram-chatbot) to set up your Telegram chatbot. Once the chatbot is ready, you will be provided by an API Token. As it's a secret token you can store the API Token in Amazon Secrets Manager Service to get the secret in the lambda function. The Lambda Function will use this token to send the visitors names and the music file to the telegram bot.
 
-We are nearly there, through cloudformation snippets from this blog post we almost created all the core resources required for the Musical Concierge. However, there are some other resources such as Amazon Secrets Manager or AWS S3 Buckets to store the face images or collection of musics, to access the full version of all the resources please check out the cloudformation file in [this code repository](https://github.com/RonakReyhani/MusicalJoyBells/blob/main/cloudformation.yaml).
-
-### Deploy Resources as Infrastructure as Code
-
-Time to deploy all the resources in AWS account. Go ahead and continue with build, package and deploying the resources.
-
-
-#### Build and Package
-```
-npm run build
-npm run package
-
-aws cloudformation package --template-file ./cloudformation.yaml --s3-bucket $ARTIFACT_BUCKET --output-template-file /<FOLDER>/cloudformation.yaml
-
-aws cloudformation deploy \
-  --template /path_to_template/my-template.yml \
-  --stack-name <STACK_NAME> \
-  --parameter-overrides Key1=Value1 Key2=Value2 \
-```
-*In this project I have not set up CI/CD, if you are planing to productionise this project, make sure this step is part of your continues integration and continues deployment.*
-
-
 ### Trouble shooting and Wrap up
 
 After setting everything up, it's good to go! Try out the Musical Concierge with a friend, or the next time you have someone visiting, check your Telegram messages. Here's an example of a message I got when a friend visited me over the weekend ;)
@@ -367,7 +365,7 @@ Building your Amazon Kinesis Video Stream app gives you more control over your m
 
 In this article, I wanted to show how easily you can set up a budget-friendly custom concierge. This is just the start.You can add more, like displaying a welcome message on an LED board when guests arrive or sending a fun message to their phone. Get creative, maybe even tease them about forgetting to bring your favorite beverage!
 
-I hope this guide has provided you with a solid foundation to get started with building your own Concierge. If you have any further questions or need assistance, please feel free to reach out to [contact us](https://mechanicalrock.io/lets-get-started). Our team is dedicated to providing unwavering support and guidance whenever you need it.
+I hope this guide has provided you with a solid foundation to get started with building your own Concierge. If you have any further questions or need assistance, please feel free to [contact us](https://mechanicalrock.io/lets-get-started). Our team is dedicated to providing unwavering support and guidance whenever you need it.
 
 And don't forget to clean up the resources once you finished.
 

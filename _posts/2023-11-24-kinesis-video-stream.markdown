@@ -344,7 +344,7 @@ AWS_SECRET_ACCESS_KEY=<AWS_SECRET_ACCESS_KEY> \
 
 *Tip1: Make sure that you are Authenticate with your AWS credentials. Set up aws config within your Docker.*
 
-*Tip2: If you are using the same camera as mine, the <RTSP_URL> url is typically something in this format rtsp://camera_username:camera_password@camera_ip:554/stream1*
+*Tip2: If you are using the same camera as mine, the RTSP url is typically something in this format rtsp://camera_username:camera_password@camera_ip:554/stream1*
 
 
 ### Set Up Telegram ChatBot

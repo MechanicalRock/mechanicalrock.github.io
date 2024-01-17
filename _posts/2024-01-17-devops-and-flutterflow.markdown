@@ -2,7 +2,7 @@
 layout: postv2
 font: serif
 title: "Role of FlutterFlow in Modern App Development: Insights for DevOps Teams"
-description: "FlutterFlow is a visual editor for building Flutter apps. It is a good starting point to move github and use DevOps practices to build out a full app"
+description: "FlutterFlow is a visual editor for building Flutter apps. It is a good starting point for building applications, however, at a certain size applications may need to be moved GitHub to enable DevOps practises as well as robust, secure and consistent development"
 date: 2023-10-17
 highlight: monokai
 image: img/devopsflutterflow/cover.png
@@ -33,7 +33,6 @@ To demonstrate FlutterFlow's abilities and how to go beyond the tool, alongside 
 - Extensive templates and pre-built components
 - Database integrations
 - Authentication
-- Export to code
 
 ### Design and Building
 
@@ -62,11 +61,19 @@ In addition to create a sign up and login page, FlutterFlow can easily integrate
 <div><img src="/img/devopsflutterflow/what_is_flutterflow_firebase_console.png" height="300px"\><p>Image X: Firebase Console setup</p></div>
 </div>
 
-### Database
+### Databases & APIs
+
+Something something Firebase and APIs
 
 ## Beyond FlutterFlow
 
-- FlutterFlow is a good starting point but you can push the entire code base to github
+### Exporting Code Base
+
+- FlutterFlow is a good starting point but you can push the entire code base to github, the code is Flutter
+
+### Integrating with Github
+
+- FlutterFlow can integrate with Github and push changes to a branch there
 
 ## DevOps and FlutterFlow
 
@@ -74,15 +81,19 @@ In addition to create a sign up and login page, FlutterFlow can easily integrate
   - Flutter Integration tests and firebase test lab
   - Need a pro plan
 - Version control
-  - Can ClickOps it but better to use git
+  - Will automatically version with each deployment and can ClickOps it but might be better to use git
+  - Has Opaque Versioning - there is a list view of changes, can't click an element or page and see an equivalent commit history. - devops_collaboration.png
 - CI/CD & Trunk Based Development
+  - Can branch and merge in FlutterFlow
   - Not possible to enforces testing before publishing
   - Can use github actions to build and publish
 
 ## Drawbacks of FlutterFlow
 
 - DevOps practices really need github and CI/CD.
-- Heavy integration with Firebase and associated services
+- Infra would have to be IaC'd somewhere else
+- Heavy integration with Firebase and associated services.
+  - Customizations are possible but the effort for something like custom auth is high.
 
 ## Conclusion
 

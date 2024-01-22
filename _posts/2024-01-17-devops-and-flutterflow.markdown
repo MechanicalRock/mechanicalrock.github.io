@@ -63,7 +63,13 @@ In addition to create a sign up and login page, FlutterFlow can easily integrate
 
 ### Databases & APIs
 
-Something something Firebase and APIs
+There are three easy methods of enabling Create, Replace, Update and Delete operations withing FlutterFlow. They are Firebase, Supabase and API integrations. Firebase and Supabase are both no-code database solutions that are both easy to setup and use. Firebase is a Google product and Supabase is an open source alternative. Both have free tiers and are easy to setup. I used Firebase for AleFinder as you can deploy a Firebase project from withing FlutterFlow. Within the setup you can enable authentication and Firestore.
+
+<div style="display:flex;justify-content:center;flex-wrap:wrap;align-items: center;gap:20px">
+<div ><img src="/img/devopsflutterflow/database_firebase_config_1.png" height="250px"\><p>Image X: Firebase Setup</p></div>
+<div ><img src="/img/devopsflutterflow/api_testing_2.png" height="250px"\><p>Image X: API Testing</p></div>
+</div>
+</div>
 
 ## Beyond FlutterFlow
 
@@ -73,7 +79,7 @@ Something something Firebase and APIs
 
 ### Integrating with Github
 
-- FlutterFlow can integrate with Github and push changes to a branch there
+FlutterFlow can integrate with Github and push changes to a branch there
 
 ## DevOps and FlutterFlow
 

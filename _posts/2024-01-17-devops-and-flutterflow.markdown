@@ -99,13 +99,60 @@ More information on integrating Flutterflow with Github can be found <a href='ht
 
 ### Exporting Code Base
 
-It might become apparent that your team is ready to move on from Flutterflow.
+It might become apparent that your team is ready to move on from Flutterflow completely. This be because you've successfully proven an MVP that would now like development by a enterprise team or you've decided that the drawbacks of Flutterflow are too great. In this case, you can export your code base from Flutterflow and continue development in a code editor. To do this, is very simple and easy to do.
+
+<div ><img src="/img/devopsflutterflow/export_code_base.png" height="250px"\><p>Image X: Exporting FlutterFlow</p></div>
+
+These are the options for enterprise users which make it super easy and convenient to export your app in many different ways. For free users, the options are more limited are arguably not possible. For free users of FlutterFlow you can view the code that makes up your app, however, if you use are FlutterFlow widgets or any of the following like I did. You will not be able to run the code locally.
+
+```dart
+import '/flutter_flow/flutter_flow_google_map.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+```
+
+This is because this code is FlutterFlow's and their is no way to download these dependencies in the free version. Their GitHub version that claim to be able to replace these dependencies, however, users have had mixed success.
+
+For enterprise users you can export the project via a zip file as well as export the entire project to Github.
 
 ## DevOps and FlutterFlow
 
-- Automated Testing
-  - Flutter Integration tests and firebase test lab
-  - Need a pro plan
+### Automated Testing
+
+A foundational pillar of DevOps is automated testing. This allows for rapid, confident development as with automated testing, within test driven development, we can quickly catch breaking changes to our code and ensure critical functionality of our application and its components is maintained.
+
+FlutterFlow claims to facilitate automated testing. However, upon closer inspection, this is seemingly a half baked feature. There are three types of tests that <i>Flutter</i> supports which is unit tests, widget tests and integration test. The only type of test you can create in FlutterFlow is integration tests. In the spirit of FlutterFlow, the automated testing is a click-ops tool. In some ways it is similar to `codegen` functionality of libraries like playwright. Here is an example of an automated test in FlutterFlow.
+
+<div ><img src="/img/devopsflutterflow/automated_testing.png" height="300px"\><p>Image X: Automated Testing in FlutterFlow </p></div>
+
+You can design tests in FlutterFlow with three possible actions:
+
+1. Interact with a widget
+   - Tap, double tap, long press, enter text, scroll until visable
+2. Wait to Load
+3. Expect Result
+   - Find widget(s) or find nothing with text or without.
+
+The selection methods of the interactions and expecting a result are:
+
+- Selecting from the UI which is live alongside the testing suite, which is admittedly nice.
+- ValueKey: A unique identifier, also known as a testing id, for a widget.
+- Tooltip: Find a widget that displays a specific tooltip.
+- Semantics Label: This is useful for identifying widgets that are associated with a specific semantics label.
+- Text: A widget that shows a particular text.
+- Descendent: Widget that contains a specific child or ancestor.
+
+This is an exhaustive list, which speaks to limited nature of these automated tests within FlutterFlow. Though, to FlutterFlow's credit you can specify preconditions such as being logged in with a specific username and password.
+
+The major issue I have with this automated testing functionality is that its not possible to run these tests in FlutterFlow. There are two methods of running these automated tests, they can be run locally after downloading the code base or using Firebase Test Lab. Both of which require you to download the code base.
+This means there is no way to automate the execution of tests before publishing changes to your Flutterflow app. With this, the aforementioned benefits of automated testing in a DevOps context is not satisfied with this functionality.
+
+More information on automated testing in FlutterFlow can be found <a href="https://docs.flutterflow.io/deploying-your-app/testing-your-app/automated-tests">here</a>.
+
+### CI/CD
+
 - Version control
   - Will automatically version with each deployment and can ClickOps it but might be better to use git
   - Has Opaque Versioning - there is a list view of changes, can't click an element or page and see an equivalent commit history. - devops_collaboration.png

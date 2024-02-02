@@ -118,7 +118,7 @@ This is because this code is FlutterFlow's and there is no way to download these
 
 A foundational pillar of DevOps is automated testing. This allows for rapid, confident development as with automated testing, within test driven development, we can quickly catch breaking changes to our code and ensure critical functionality of our application and its components is maintained.
 
-FlutterFlow claims to facilitate automated testing. However, upon closer inspection, this is seemingly a half baked feature. There are three types of tests that <i>Flutter</i> supports which is unit tests, widget tests and integration tests. The only type of tests you can create in FlutterFlow is integration tests. In the spirit of FlutterFlow, the automated testing is a click-ops tool. In some ways it is similar to `codegen` functionality of testing libraries like playwright. Here is an example of an automated test in FlutterFlow.
+FlutterFlow claims to facilitate automated testing. However, upon closer inspection, this is seemingly a half baked feature. There are three types of tests that <i>Flutter</i> supports which is unit tests, widget tests and integration tests. The only type of tests you can create in FlutterFlow is integration tests. In the spirit of FlutterFlow, the automated testing is a click-ops tool. In some ways it is similar to `codegen` functionality of testing libraries like <a href="https://playwright.dev/">playwright</a>. Here is an example of an automated test in FlutterFlow.
 
 <div ><img src="/img/devopsflutterflow/automated_testing.png" height="300px"\><p>Image X: Automated Testing in FlutterFlow </p></div>
 

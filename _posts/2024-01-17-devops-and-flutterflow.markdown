@@ -146,20 +146,21 @@ The selection methods of the interactions and expecting a result are:
 
 This is an exhaustive list, which speaks to limited nature of these automated tests within FlutterFlow. Though, to FlutterFlow's credit you can specify preconditions such as being logged in with a specific username and password.
 
-The major issue I have with this automated testing functionality is that its not possible to run these tests in FlutterFlow. There are two methods of running these automated tests, they can be run locally after downloading the code base or using Firebase Test Lab. Both of which require you to download the code base.
-This means there is no way to automate the execution of tests before publishing changes to your Flutterflow app. With this, the aforementioned benefits of automated testing in a DevOps context is not satisfied with this functionality.
+The major issue I have with this automated testing functionality is that its not possible to run these tests in FlutterFlow. There are two methods of running these automated tests, they can be run locally after downloading the code base or using Firebase Test Lab. Both of which require you to download the code base. This means there is no way to automate the execution of tests before publishing changes to your app from within FlutterFlow. With this, the aforementioned benefits of automated testing in a DevOps context is not satisfied with this functionality.
 
 More information on automated testing in FlutterFlow can be found <a href="https://docs.flutterflow.io/deploying-your-app/testing-your-app/automated-tests">here</a>.
 
 ### CI/CD
 
-- Version control
-  - Will automatically version with each deployment and can ClickOps it but might be better to use git
-  - Has Opaque Versioning - there is a list view of changes, can't click an element or page and see an equivalent commit history. - devops_collaboration.png
-- CI/CD & Trunk Based Development
-  - Can branch and merge in FlutterFlow
-  - Not possible to enforces testing before publishing
-  - Can use github actions to build and publish
+Continuous Integration and Continuous Deployment (CI/CD) is the process of of merging software engineer's working copies of a common project and the automated testing and deployment of those changes. Within larger software teams there are two common strategies for, trunk based development and GitFlow feature branching. Both of these strategies require a robust CI/CD pipeline to ensure that changes are tested and reviewed before being merged into the main branch. DevOps teams often opt for trunk based development on the caveat that there is strong automated testing. FlutterFlow supports both strategies in theory, in that users can branch and merge changes but note this is only available for teams and enterprise users. Though there is automated merging and deployment of changes when merging and publishing a Flutterflow app, there is no way to enforce reviews or testing before publishing. In my opinion, FlutterFlow's CI/CD is the equivalent of a developer pushing to the main branch without a pull request. This is not a robust CI/CD pipeline and is not suitable for production development.
+
+### Version control
+
+Version control in the context of DevOps is the ability to track changes to your code base and to be able to roll back changes if necessary. FlutterFlow has a version control system that is automatically versioned with each deployment. However, the versioning is opaque. There is a list view of changes, however, you cannot click an element or page and see an equivalent commit history.
+
+<div ><img src="/img/devopsflutterflow/devops_collaboration.png" height="300px"\><p>Image X: "Collaboration" in Version Control </p></div>
+
+This is a major drawback of FlutterFlow's version control system. In a production development environment, teams need to be able to see the changes that were made to a specific element or page and be able to roll back those changes if necessary. This is not possible with FlutterFlow's version control system. As a consequence, I imagine a production failure would be difficult to diagnose and fix.
 
 ## Conclusion
 

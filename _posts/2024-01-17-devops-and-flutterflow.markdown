@@ -3,7 +3,7 @@ layout: postv2
 font: serif
 title: "Role of FlutterFlow in Modern App Development: Insights for DevOps Teams"
 description: "FlutterFlow is a visual editor for building Flutter apps. It is a good starting point for building applications; however, beyond a certain size, applications may need to be moved to GitHub to enable DevOps practices as well as robust, secure, and consistent development."
-date: 2023-2-2
+date: 2024-2-2
 highlight: monokai
 image: img/devopsflutterflow/cover.png
 author: Matthew Carter

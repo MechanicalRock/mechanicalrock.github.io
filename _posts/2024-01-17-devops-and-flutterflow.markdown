@@ -32,27 +32,51 @@ To demonstrate FlutterFlow's abilities and how to go beyond the tool, alongside 
 
 As seen in the image above, FlutterFlow allows you to create pages from scratch or use customizable prebuilt templates. Within AleFinder, it was super ease to use a GoogleMap element to create the map for the demo app. Customizing was relatively simple using the provided documentation. In addition, there are templates and elements that make up the draggable and droppable parts of your MVP. I used a prebuilt travel card to showcase different potential Ales 🍻.
 
+<div style="display:flex;justify-content:center;align-items: center;gap:20px">
+   <div>
+      <img src="/img/devopsflutterflow/what_is_flutterflow_google_widgets.png" width="400px"/>
+      <p>Image 2: GoogleMap element used in AleFinder</p>
+   </div>
+   <div>
+      <img src="/img/devopsflutterflow/what_is_flutterflow_templates.png" width="200px"/>
+      <p>Image 3: Prebuilt templates</p>
+   </div>
+   <div>
+      <img src="/img/devopsflutterflow/what_is_flutterflow_elements.png" width="200px"/>
+      <p>Image 4: Prebuilt Elements</p>
+   </div>
+</div>
 <center>
-<div ><img src="/img/devopsflutterflow/what_is_flutterflow_google_widgets.png"/><p>Image X: GoogleMap element used in AleFinder</p></div>
-<div ><img src="/img/devopsflutterflow/what_is_flutterflow_templates.png"/><p>Image X: Prebuilt templates</p></div>
-<div ><img src="/img/devopsflutterflow/what_is_flutterflow_elements.png"/><p>Image X: Prebuilt Elements</p></div>
+   <img src="/img/devopsflutterflow/what_is_flutterflow_travel_card_possible_ale.png"/>
+   <p>Image 5: Prebuilt Elements</p>
 </center>
-<div style="display:flex;justify-content:center;align-items: center;"><div><img src="/img/devopsflutterflow/what_is_flutterflow_travel_card_possible_ale.png"/><p>Image X: Prebuilt Elements</p></div></div>
 
 ### Authentication
 
 In addition, there are also numerous prebuilt and changeable sign up and login pages. This is a great feature for MVPs as it allows you to quickly build out a login page and authentication flow to ultimately collect sign ups.
 
-<center>
-<div><img src="/img/devopsflutterflow/what_is_flutterflow_page_templates.png"/><p>Image X: Content page templates</p></div>
-<div><img src="/img/devopsflutterflow/what_is_flutterflow_auth.png"/><p>Image X: Auth page templates</p></div>
-</center>
+<div style="display:flex;justify-content:center;align-items: center;gap:20px">
+   <div>
+      <img src="/img/devopsflutterflow/what_is_flutterflow_page_templates.png" width="400px" />
+      <p>Image 6: Content page templates</p>
+   </div>
+   <div>
+      <img src="/img/devopsflutterflow/what_is_flutterflow_auth.png" width="400px" />
+      <p>Image 7: Auth page templates</p>
+   </div>
+</div>
 
 In addition to create a sign up and login page, FlutterFlow can easily integrate with Firebase and Supabase authentication providers. You can use your own authentication provide however that will require additional effort. Steps found <a href="https://docs.flutterflow.io/data-and-backend/custom-authentication">here</a>. It took less than 5 clicks to spin up Firebase authentication for this application with FlutterFlow though there was some minimal setup to complete within the firebase console.
 
 <center>
-<div><img src="/img/devopsflutterflow/what_is_flutterflow_auth_2.png"/><p>Image X: Firebase setup in FlutterFlow</p></div>
-<div><img src="/img/devopsflutterflow/what_is_flutterflow_firebase_console.png"/><p>Image X: Firebase Console setup</p></div>
+   <div>
+      <img src="/img/devopsflutterflow/what_is_flutterflow_auth_2.png" width="600px" />
+      <p>Image 8: Firebase setup in FlutterFlow</p>
+   </div>
+   <div>
+      <img src="/img/devopsflutterflow/what_is_flutterflow_firebase_console.png" width="600px"/>
+      <p>Image 9: Firebase Console setup</p>
+   </div>
 </center>
 
 ### Databases & APIs
@@ -60,10 +84,15 @@ In addition to create a sign up and login page, FlutterFlow can easily integrate
 There are three easy methods of enabling Create, Replace, Update and Delete operations withing FlutterFlow. They are Firebase, Supabase and API integrations. Firebase and Supabase are both no-code database solutions that are both easy to setup and use. Firebase is a Google product and Supabase is an open source alternative. Both have free tiers and are easy to setup. I used Firebase for AleFinder as you can deploy a Firebase project from withing FlutterFlow and within the setup you can enable authentication and Firestore.
 
 <center>
-<div ><img src="/img/devopsflutterflow/database_firebase_config_1.png"/><p>Image X: Firebase Setup</p></div>
-<div ><img src="/img/devopsflutterflow/api_testing_2.png"/><p>Image X: API Testing</p></div>
+   <div>
+      <img src="/img/devopsflutterflow/database_firebase_config_1.png" width="600px" />
+      <p>Image 10: Firebase Setup</p>
+   </div>
+   <div>
+      <img src="/img/devopsflutterflow/api_testing_2.png" width="600px" />
+      <p>Image 11: API Testing</p>
+   </div>
 </center>
-</div>
 
 ## Drawbacks of FlutterFlow
 
@@ -73,8 +102,8 @@ For example, although there are collaboration-centered features available, such 
 
 <center>
    <div>
-      <img src="/img/devopsflutterflow/collaboration.png"/>
-      <p>Image X: Collaboration </p>
+      <img src="/img/devopsflutterflow/collaboration.png" width="600px" />
+      <p>Image 12: Collaboration </p>
    </div>
 </center>
 
@@ -92,8 +121,8 @@ FlutterFlow can integrate with Github for teams and enterprise users. After maki
 
 <center>
    <div>
-      <img src="/img/devopsflutterflow/flutterflow_and_github.png"/>
-      <p>Image X: FlutterFlow and Github </p>
+      <img src="/img/devopsflutterflow/flutterflow_and_github.png" width="600px" />
+      <p>Image 13: FlutterFlow and Github </p>
    </div>
 </center>
 
@@ -107,8 +136,8 @@ It might become apparent that your team is ready to move on from FlutterFlow com
 
 <center>
    <div>
-      <img src="/img/devopsflutterflow/export_code_base.png"/>
-      <p>Image X: Exporting FlutterFlow</p>
+      <img src="/img/devopsflutterflow/export_code_base.png" width="600px" />
+      <p>Image 14: Exporting FlutterFlow</p> 
    </div>
 </center>
 
@@ -136,7 +165,8 @@ FlutterFlow claims to facilitate automated testing. However, upon closer inspect
 
 <center>
    <div>
-      <img src="/img/devopsflutterflow/automated_testing.png"/><p>Image X: Automated Testing in FlutterFlow </p>
+      <img src="/img/devopsflutterflow/automated_testing.png" width="600px" />
+      <p>Image 15: Automated Testing in FlutterFlow </p>
    </div>
 </center>
 
@@ -173,16 +203,16 @@ Version control in the context of DevOps is the ability to track changes to your
 
 <center>
    <div>
-      <img src="/img/devopsflutterflow/devops_collaboration.png"/>
-      <p>Image X: "Collaboration" in Version Control </p>
+      <img src="/img/devopsflutterflow/devops_collaboration.png" width="600px" />
+      <p>Image 16: "Collaboration" in Version Control </p>
    </div>
 </center>
 This is a major drawback of FlutterFlow's version control system. In a production development environment, teams need to be able to see the changes that were made to a specific element or page and be able to roll back those changes if necessary. This is not possible with FlutterFlow's version control system. As a consequence, I imagine a production failure would be difficult to diagnose and fix.
 
 ## Conclusion
 
-FlutterFlow emerges as a highly effective tool for rapidly developing minimum viable products (MVPs) in the realm of modern app development. It has a slick design, pre-built components, and seamless integrations with databases and authentication providers Firebase and Supabase make it an ideal choice to validate ideas quickly and efficiently.
+FlutterFlow is an effective tool for developing minimum viable products (MVPs) within the modern app development lifecycle. It does through arming developers with sleek pre-built, modern components and pages as well as CRUD functionality through integrations with databases and authentication providers Firebase and Supabase.
 
-However, as an application grows in complexity and size, the limitations of FlutterFlow become apparent. The platform, while excellent for initial development, does not enable production-level app development. DevOps practices such as robust version control, comprehensive automated testing, and a secure, consistent development environment necessitate a transition to more traditional development tools and platforms like GitHub.
+However, as an application grows in complexity, size and contributes, the limitations of this tool will hinder development. While excellent for initial development, FlutterFlow does not comfortably accommodate production development. DevOps practices such as robust version control, comprehensive automated testing, and a secure, consistent development environment require a transition to more traditional development tools and platforms.
 
 If you have any questions or would like to discuss FlutterFlow further, please feel free to reach out to Mechanical Rock.

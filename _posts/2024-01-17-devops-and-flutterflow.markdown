@@ -211,7 +211,7 @@ This is a major drawback of FlutterFlow's version control system. In a productio
 
 ## Conclusion
 
-FlutterFlow is an effective tool for developing minimum viable products (MVPs) within the modern app development lifecycle. It does through arming developers with sleek pre-built, modern components and pages as well as CRUD functionality through integrations with databases and authentication providers Firebase and Supabase.
+FlutterFlow is an effective tool for developing minimum viable products (MVPs) within the modern app development lifecycle. It does this by arming developers with sleek pre-built, modern components and pages as well as CRUD functionality through integrations with databases and authentication providers Firebase and Supabase.
 
 However, as an application grows in complexity, size and contributes, the limitations of this tool will hinder development. While excellent for initial development, FlutterFlow does not comfortably accommodate production development. DevOps practices such as robust version control, comprehensive automated testing, and a secure, consistent development environment require a transition to more traditional development tools and platforms.
 

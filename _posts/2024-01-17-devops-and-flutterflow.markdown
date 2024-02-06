@@ -81,7 +81,7 @@ In addition to create a sign up and login page, FlutterFlow can easily integrate
 
 ### Databases & APIs
 
-There are three easy methods of enabling Create, Replace, Update and Delete operations withing FlutterFlow. They are Firebase, Supabase and API integrations. Firebase and Supabase are both no-code database solutions that are both easy to setup and use. Firebase is a Google product and Supabase is an open source alternative. Both have free tiers and are easy to setup. I used Firebase for AleFinder as you can deploy a Firebase project from withing FlutterFlow and within the setup you can enable authentication and Firestore.
+There are three easy methods of enabling Create, Replace, Update and Delete operations within FlutterFlow. They are Firebase, Supabase and API integrations. Firebase and Supabase are both no-code database solutions that are both easy to setup and use. Firebase is a Google product and Supabase is an open source alternative. Both have free tiers and are easy to setup. I used Firebase for AleFinder as you can deploy a Firebase project from within FlutterFlow and within the setup you can enable authentication and Firestore.
 
 <center>
    <div>
@@ -96,7 +96,7 @@ There are three easy methods of enabling Create, Replace, Update and Delete oper
 
 ## Drawbacks of FlutterFlow
 
-As described above you can create simply CRUD app very easily and quickly using the tooling above. However, there are some drawbacks to FlutterFlow that mean it is not a complete solution for production development. However, hat would be considered 'production development' though? This could be defined as the development of an application that will be built by a large number of developers, will have a large number of features, and will be maintained over a long period. But specifically, the bottle neck of click-ops tools like FlutterFlow is the difficulty to scale with larger teams.
+As described above you can create simply CRUD app very easily and quickly using the tooling above. However, there are some drawbacks to FlutterFlow that mean it is not a complete solution for production development. However, that would be considered 'production development' though? This could be defined as the development of an application that will be built by a large number of developers, will have a large number of features, and will be maintained over a long period. But specifically, the bottle neck of click-ops tools like FlutterFlow is the difficulty to scale with larger teams.
 
 For example, although there are collaboration-centered features available, such as real-time collaboration and an activity log, the concept of a pull request is rather loosely adopted. A pull request is vital to ensure changes are reviewed and tested.. In FlutterFlow, for teams and enterprise users, the ability to branch and merge changes is available, however, there is no ability to require automated tests or review of another developer. Furthermore, the ability to roll back a merge is not available, but you can abort a merge or branch during development. In addition, the versioning of changes is somewhat opaque. There is a list view of changes, however, you cannot click an element or page and see an equivalent commit history.
 

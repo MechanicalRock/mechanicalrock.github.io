@@ -3,7 +3,7 @@ layout: postv2
 hidden: false
 title: "DevOps: An Introduction"
 description: "An overview of the Waterfall and Agile Methodologies, and an introduction to DevOps."
-date: 2024-04-03
+date: 2024-4-3
 highlight: monokai
 tags: [DevOps, DataOps, Agile]
 author: Benjamin Dang
@@ -21,7 +21,7 @@ The Waterfall model is a sequential and linear approach to software development,
 
 Agile software development can be characterised by its responsiveness to change, straying away from the constraints of following a plan. Supported by an iterative and incremental approach, Agile methodologies emphasise collaborative flexibility to deliver value early whilst continuously adapting to evolving requirements. This iterative approach enables teams to frequently inspect and adapt, allowing them to respond promptly to changing market conditions, customer needs, and technological advancements.
 
-A 2020 "<a href="https://www.researchgate.net/publication/344434872_Comparative_Case_Study_of_Plan-Driven_and_Agile_Approaches_in_Student_Computing_Projects">Comparative Case Study of Plan-Driven and Agile Approaches in Student Computing Projects</a>" found that student projects which used the Agile methodology had better team cohesion - likely a result of the Agile methodology’s emphasis on team collaboration. In terms of productivity, Agile projects were found to be more complete (functional completeness), but Waterfall projects had a slight advantage in the quality of the project (functional adequacy). In essence, Agile projects deliver a minimum viable product whilst Waterfall projects focus on perfectionism. 
+A 2020 <a href="https://www.researchgate.net/publication/344434872_Comparative_Case_Study_of_Plan-Driven_and_Agile_Approaches_in_Student_Computing_Projects">Comparative Case Study of Plan-Driven and Agile Approaches in Student Computing Projects</a> found that student projects which used the Agile methodology had better team cohesion - likely a result of the Agile methodology’s emphasis on team collaboration. In terms of productivity, Agile projects were found to be more complete (functional completeness), but Waterfall projects had a slight advantage in the quality of the project (functional adequacy). In essence, Agile projects deliver a minimum viable product whilst Waterfall projects focus on perfectionism. 
 <center>
 <div ><img src="/img/devops-introduction/average_mean_scores.png"/><p>Average Mean Scores</p></div>
 </center>
@@ -32,21 +32,21 @@ Additionally, a 2022 <a href="https://www.sarjournal.com/content/51/SARJournalMa
 # DevOps
 Emerging as a response to the fast-paced and competitive technology market, the DevOps philosophy builds upon the principles of the Agile movement. At its core, DevOps emphasises stronger collaboration and communication between software development and IT operations teams.
 
-DevOps, an amalgamation of "development" and "operations," encompasses both a cultural shift and a set of practices aimed at delivering "<a href="https://www.sarjournal.com/content/51/SARJournalMarch2022_52_62.html">better software, faster through</a>":
+DevOps, an amalgamation of "development" and "operations," encompasses both a cultural shift and a set of practices aimed at delivering <a href="https://www.sarjournal.com/content/51/SARJournalMarch2022_52_62.html">better software, faster through</a>:
 - Everything-as-Code under configuration management, including immutable infrastructure validated via Behaviour Driven Infrastructure (BDI).
 - Test First Development, exemplified by Test Driven Development (TDD) and Behaviour Driven Development (BDD).
 - Continuous Build via deployment pipelines, including automated testing at the unit and scenario level.
 Continuous Operations including monitoring and alerting, auto remediation and optimisation.
 - Transparency of information, and active collaboration across teams, throughout the process.
 
-The 2022 "<a href="https://arxiv.org/pdf/2211.09390.pdf">Study of Adoption and Effects of DevOps Practices</a>" found significant positive correlations between the adoption of DevOps practices and organisational performance. These organisational performance metrics were performance, profitability, customer satisfaction, quality, efficiency and achieving goals. The below practices were found to have the most significant correlation with organisation performance:
+The 2022 <a href="https://arxiv.org/pdf/2211.09390.pdf">Study of Adoption and Effects of DevOps Practices</a>" found significant positive correlations between the adoption of DevOps practices and organisational performance. These organisational performance metrics were performance, profitability, customer satisfaction, quality, efficiency and achieving goals. The below practices were found to have the most significant correlation with organisation performance:
 
-| DevOps Practice           | Metric         | Correlation | p-value |
-|---------------------------|----------------|-------------|---------|
-| Automated and continuous deployments | Efficiency | 0.482       | < 0.001 |
-| Small and continuous releases      | Achieving goals | 0.389       | < 0.001 |
-| Configuration management | Efficiency | 0.371       | < 0.001 |
-| Test-driven development   | Efficiency | 0.392       | < 0.001 |
+| DevOps Practice            | Metric          | Correlation | p-value |
+|----------------------------|-----------------|-------------|---------|
+|  &nbsp; Automated and continuous deployments |  &nbsp; Efficiency | &nbsp; 0.482       | &nbsp; < 0.001 |
+|  &nbsp; Small and continuous releases      |  &nbsp; Achieving goals | &nbsp; 0.389       | &nbsp; < 0.001 |
+|  &nbsp; Configuration management |  &nbsp; Efficiency | &nbsp; 0.371       | &nbsp; < 0.001 |
+|  &nbsp; Test-driven development    |  &nbsp; Efficiency | &nbsp; 0.392       | &nbsp; < 0.001 |
 
 Additionally, the case studies delivered the following benefits when introducing highly scalable DevOps practices:
 - <a href="https://www.mechanicalrock.io/docs/case-studies/31_Woodside_CNF_Case_Study.pdf">Woodside Cloud Native Factory</a>: A reduction of release times from 3 months to 3 days, reducing risks of complexity and deployment failures.

@@ -16,7 +16,7 @@ Have you ever wondered how leading companies maintain their edge in today's rapi
 In the 1950s, Toyota, a relatively obscure car brand at the time, grappled with a dire shortage of raw materials, severely limiting its vehicle manufacturing capability. In a bid to not just survive but also thrive on the highly globalised international stage, Toyota’s engineers pioneered the renowned lean-production system—an organisational philosophy centred on continuous improvement, waste minimisation, and streamlined quality control. By the 1970s, Toyota had fulfilled its pledge of delivering superior quality at reduced costs, firmly establishing itself as a dominant force in the automotive industry to this day.
 
 <center>
-<div ><img src="/img/devops-introduction/unsplash_white-metal-frame-on-brown-wooden-table.png"/><p></p></div>
+<div ><img src="/img/devops-introduction/timeline.png"/><p></p></div>
 </center>
 
 Just as Toyota's lean-production system revolutionised manufacturing, inspiring a culture of continuous improvement and efficiency, it also heavily influenced the emergence of Agile software development methodologies. The conventional Waterfall model was unable to meet the ever-changing demands of consumers - a new approach was necessary to maintain competitiveness. Thus, Agile software development emerged as an innovative method for delivering better software, faster.

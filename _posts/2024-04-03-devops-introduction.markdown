@@ -52,6 +52,10 @@ DevOps, an amalgamation of "development" and "operations," encompasses both a cu
 Continuous Operations including monitoring and alerting, auto remediation and optimisation.
 - Transparency of information, and active collaboration across teams, throughout the process.
 
+<center>
+<div ><img src="/img/devops-introduction/devops.png"/><p></p></div>
+</center>
+
 The 2022 <a href="https://arxiv.org/pdf/2211.09390.pdf">Study of Adoption and Effects of DevOps Practices</a> found significant positive correlations between the adoption of DevOps practices and organisational performance. These organisational performance metrics were performance, profitability, customer satisfaction, quality, efficiency and achieving goals. The below practices were found to have the most significant correlation with organisation performance:
 
 | DevOps Practice            | Metric          | Correlation | p-value |

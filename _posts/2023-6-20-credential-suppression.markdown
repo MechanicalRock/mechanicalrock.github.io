@@ -88,19 +88,24 @@ The token also carries the User ID the permissions were granted to, and a Condit
 
 This may be important in a larger Organization to avoid disrupting activity for others, but it requires identifying the particular user whose credentials have been leaked.  As I mentioned above, the majority of our larger clients have their own AWS Administrative and Security teams, and they will implement their approach to this problem.
 ## Our approach
+We avoid using credentials outside those granted via the IAM Identify Center, we avoid using permissions that grant access to IAM Identity Center, and we avoid ever writing the credentials we are granted to any file - a file might be transmitted - including tranmission to source control.  By these restrictions, we greatly reduce any opportunity to provide credentials to a hostile actors.
+
 Within our own Consultancy, some of our accounts provide Company services, and others provide testbeds for our consultants to use, and there may be activity at any hour, and there often is.  We take advantage of a number of AWS supplied alarms and alerts to issues that arise, and have also written some of our own.
 
 As a consequence, an alert might happen at any hour and the person that sees it first may have no knowledge of actions other Consultants may have taken.  For this reason, we have implemented a tool that sets timestamp-conditional Policies that ignore any SSO credentials that were issued before the time the tool was invoked.  With this, any employee can stop access that results from leaked SSO credentials at any time.
 
 The best security interceptions are the ones you never need to invoke, but if this problem occurs, we know it may be easily stopped.
 
-Recovery from this is simple - by refreshing the AWS log in page, we invalidate the cached credentials held by the page and when we then log into our account again it is with new tokens that have timestamps later than specified in the Condition of the limiting Policies that were applied, and we may continue investigating our accounts.  But any leaked credentials will not have an updated timestamp and will remain blocked.
+Recovery from this is simple - by refreshing the AWS login page, we invalidate the cached credentials held by the page and when we then log into our account again it is with new tokens that have timestamps later than specified in the Condition of the limiting Policies that were applied, and we may continue investigating our accounts.  But any leaked credentials will not have an updated timestamp and will remain blocked.
 # DoS risks
 ## Future timestamp attack
 This approach to managing leaked credentials relies on a timestamp listed in a Conditional in Policies which deny access to services.  If other security protections fail and a hostile actor gains access to our IAM Identify Center console, they could apply a policy with a timestamp in the future, and this would block any SSO credentials we might be issued by AWS.  This provides an avenue for a Denial of Service (DoS) attack.
 
-## Robot attack!
-There has been discussion of varying front-ends for our Credential Suppression tool - for example posting an update to a repository or posting a message to Slack.
-We avoid using credentials outside those granted via the IAM Identify Center, we avoid using permissions that grant access to IAM Identity Center, and we avoid ever writing the credentials we are granted to any file - a file might be transmitted - including tranmission to source control.  By these restrictions, we greatly reduce any opportunity to provide credentials to a hostile actors.
-# DoS mitigation
-In the event that a Policy with a Conditional timestamp in the future is applied, we would access the Organization management account via it's root user login.  This unconditional access permits us to remove any improper Policies.
+We would mitigate this by signing in to the account as the root user - a login that can't be denied, and correcting the Permission Sets.
+
+## Convenience attack and Robot attack!
+There has been discussion of varying front-ends for our Credential Suppression tool - for example posting an update to a repository or posting a message to Slack.  We do not implement this, and I argue strenuously against it.
+We avoid the possibility of misuse of our Credential Suppression tool by implementing proper security on our AWS accounts.  Adding another layer and API means we must also be experts on that layer, as well as possibly that layer's interactions with AWS.
+I prefer to have the simplest understanding of what may occur during what is already an anomalous, and hopefully, rare event.
+
+As well, introducing a front-end layer means there will be an API to access our tool.  In that case, an attacker might write a robot that repeatedly invokes the tool before we can refresh our credentials again!

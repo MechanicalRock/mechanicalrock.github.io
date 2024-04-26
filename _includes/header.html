@@ -8,6 +8,12 @@
          <img class="logo-cog" alt="Mechanical Rock Cog" src="/img/logo-cog.png">
          <span>Mechanical Rock<br />Blogs</span>
       </a>
+
+      <a href="https://mechanicalrock.io/" class="logo font-brand">
+         <img class="logo-cog" alt="Mechanical Rock Cog" src="/img/logo-cog.png">
+         <span>Mechanical Rock<br />Home</span>
+      </a>
+      
       {% if page.layout != "home" %}
       {% include searchbox.html %}
       {% else %}
@@ -22,7 +28,7 @@
       {% assign page_paths = site.header_pages | default: default_paths %}
 
       {% if page.layout == "home" %}
-      <h2 class="home-heading">We are leaders in modern technology practises</h2>
+      <h2 class="home-heading">We are leaders in modern technology practices</h2>
       <span class="search-text">browse or search our collection of blogs below</span>
       {% include searchbox.html %}
       {% endif %}

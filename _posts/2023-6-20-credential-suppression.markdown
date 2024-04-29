@@ -12,30 +12,32 @@ AWS credentials permit a user to assume an AWS identity.  Depending on the type 
 
 This identity is called a 'login', and the identity may be specific to one account or may offer access to several.  It is not an account, and by itself has no powers - actions are taken in one or more accounts.
 
-Credentials will include an identifier (username), and a password.  Further protections to assuming an identity may include one of several types of Multi-factor Authentication (MFA) token or policy limits on the context the identity is valid for (specific account, region, etc).  Some types of credentials also include a token which includes hashed details of the username, account, time and perhaps other details.
+Credentials will include an identifier (username), and a password.  Further protections to assuming an identity may include one of several types of Multi-factor Authentication (MFA) token or policy limits on the context the identity is valid for (specific account, region, etc).  Some types of credentials also include a token which includes hashed details of the username, account, time issued and perhaps other details.
+## Console vs CLI
+The AWS Console is a GUI web interface presenting the state of and controls for an AWS account.
+
+The CLI is the Command Line Interface which is an AWS program which is run in a text terminal which reports about and acts on an AWS account according to program arguments provided when invoked.
+
+Both require an identity and supporting authentication secrets (password, MFA, generated token).
 ## AWS Identities
 ### Account Root user
 This identity is created with each new account and has undeniable access to all resources within that account.
 
 The identifier is the email address used to create the account and a password, which may not be set at creation.  Optionally, an MFA token may be assigned to the identity.
 ### IAM User
-This optional identity is created within an account and has only the permissions granted to it.  Optionally, an MFA token may be assigned to the identity.
-## Console vs CLI
-The AWS Console is a GUI web interface presenting state of and controls for an AWS account.  The CLI is the Command Line Interface which is an AWS program which is run in a text terminal which reports about and acts on an AWS account according to program arguments provided when invoked.
-
-Both require an identity and supporting authentication secrets (password, MFA, generated token).
+This optional identity may be created within an account and has only the permissions granted to it.  Optionally, an MFA token may be assigned to the identity.
 ### SSO/IAM Identity Center User
-AWS provided a feature named SSO (Single Sign On) and has renamed this to IAM Identity Center, however many documents still refer to SSO, and the CLI command is still named SSO.
+AWS provided a feature named SSO (Single Sign On) and has renamed this to IAM Identity Center, however many documents still refer to SSO, and the CLI command is still named 'sso'.
 
 This feature offers a login, which may then be permitted access to several accounts with varying permissions.
 
 The access may be to the GUI console, or temporary credentials may be given to permit CLI access.
 ## IAM vs SSO
-IAM (not SSO) credentials are not time limited, but remain valid until deliberately cancelled.  There are situations where IAM users may be needed, but it is generally wise to avoid using them to avoid the possibility of leaking such permanent credentials.
+IAM (not SSO) credentials are not time limited, but remain valid until deliberately cancelled.  There are situations where IAM users may be useful, but it is generally wise to avoid using them to avoid the possibility of leaking such permanent credentials.
 ## Temporary credentials
 SSO credentials are time limited, and must be renewed periodically.  When CLI SSO credentials are acquired, a token is included which hashes a timestamp for the time acquired, and the credentials will not be honored after the time the credentials are set to expire.  This makes them much safer for use.
 # Credential leakage, attendent risks
-Leaked credentials may be used to carry out the same operations as they are legitimately intended for and often for many more uses.
+Leaked credentials may be used to carry out the same operations as they are legitimately intended for and often for many other uses as well.
 
 The Internet is surveilled by many actors, and also credentials commited to repositories such as Github and Bitbucket will be noted, harvested, and put into use within minutes.  These mis-uses can lead to several negative outcomes:
 - Substantial bills for resources.
@@ -44,7 +46,7 @@ The Internet is surveilled by many actors, and also credentials commited to repo
 # Defenses
 Don't leak credentials.  But how?
 
-AWS has introduced a range of facilities and tools through time to address vulnerabilities of it's original approaches - IAM users instead of root users, 'child' account roles instead of proliferating IAM users, SSO with temporary credentials instead of IAM users with permanent credentials, etc.
+AWS has introduced a range of facilities and tools through time to address vulnerabilities of it's original approaches - IAM users instead of root users, 'child' account Roles instead of proliferating IAM users, SSO users with temporary credentials instead of IAM users with permanent credentials, etc.
 
 There are tools to acquire credentials without exposing them and I will not enumerate them here - they change, and reading up-to-date docs is the best way to learn about them.
 

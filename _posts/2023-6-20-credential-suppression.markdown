@@ -58,7 +58,7 @@ Our large clients generally have their own AWS administrators, and they provide 
 
 To avoid problems with leaked credentials, we try hard not to use them.  In fact, I use them all the time in my administrative work, but I never write them down in a file I might save, so there is no avenue to publish (leak) them.
 
-We avoid using IAM users because those may be issued permanent credentials - we don't need them generally and thus can't leak those credentials.
+We avoid using IAM users because those credentials are permanent - we don't need IAM users generally and thus can't leak those credentials.
 
 Our account root logins do not have assigned passwords - we always recover the password when we need to operate at that level and we do not save the recovered password - so it is not written anywhere that might be published.  We also have a hardware MFA token assigned to each root user and that must be used to recover the password.  We only operate as a root user when there is no other option - mostly we only do so to assign that hardware MFA, and we might use it to stop an attack some day.
 

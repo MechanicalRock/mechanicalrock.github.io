@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postv2
 title: Leaked Credentials!
 date: 2023-6-20
 tags: aws account control tower sso organizations credentials permission policy
@@ -8,7 +8,7 @@ author: Bret Comstock Waldow
 # Summary
 This is a discussion of issues due to leaked AWS credentials and suggestions of how to avoid these problems.
 # AWS Credentials & types
-AWS credentials permit a user to assume an AWS identity.  Depending on the type of AWS identity, the identity may also have inherent or assigned permission to acess AWS resources and initiate actions with them.
+AWS credentials permit a user to assume an AWS identity.  Depending on the type of AWS identity, the identity may also have inherent or assigned permission to access AWS resources and initiate actions with them.
 
 This identity is called a 'login', and the identity may be specific to one account or may offer access to several.  It is not an account, and by itself has no powers - actions are taken in one or more accounts.
 
@@ -56,7 +56,7 @@ AWS has many suggestions for different scenarios.  You may start here, but this 
 ## Our approaches
 Our large clients generally have their own AWS administrators, and they provide their own security approaches, although we may advise them about issues that we encounter.  In this section, I'm going to discuss approaches we take in our own company accounts, which support a collection of consultants rather than production systems.
 
-To avoid problems with leaked credentials, we try hard not to use them.  In fact, I use them all the time in my administrative work, but I never write them down in a file I might save, there is no avenue to publish (leak) them.
+To avoid problems with leaked credentials, we try hard not to use them.  In fact, I use them all the time in my administrative work, but I never write them down in a file I might save, so there is no avenue to publish (leak) them.
 
 We avoid using IAM users because those may be issued permanent credentials - we don't need them generally and thus can't leak those credentials.
 

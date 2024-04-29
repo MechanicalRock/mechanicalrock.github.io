@@ -1,6 +1,6 @@
 ---
 layout: postv2
-title: Leaked Credentials!
+title: Leaking Credentials!
 date: 2023-6-20
 tags: aws account control tower sso organizations credentials permission policy
 author: Bret Comstock Waldow

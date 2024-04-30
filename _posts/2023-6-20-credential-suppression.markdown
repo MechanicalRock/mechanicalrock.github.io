@@ -88,7 +88,8 @@ The temporary credentials issued by SSO include a token, and this token carries 
 
 This is an example of a Policy which includes a Condition dependent on the timestamp of the credentials of the user:
 
-`InlinePolicy = {
+```
+InlinePolicy = {
   Version: '2012-10-17',
   Statement: [
     {
@@ -105,7 +106,8 @@ This is an example of a Policy which includes a Condition dependent on the times
       }
     }
   ]
-}`
+}
+```
 
 ### UserId
 The token also carries the User ID the permissions were granted to, and a Condition may specify that the permissions of the Policy are granted to, or witheld from, that user.

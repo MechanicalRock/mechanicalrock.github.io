@@ -1,7 +1,7 @@
 ---
 layout: postv2
 title: "Dependabot Management - Notification Fatigue, AWS CodeArtifact and Transient Dependencies"
-description: "Dependabot is useful free tool for managing dependencies in your GitHub repositories. This blog discuss some common issues with the tool and some solutions"
+description: "Dependabot is a useful free tool for managing dependencies in your GitHub repositories. This blog discuss some common issues with the tool and some solutions"
 date: 2024-2-2
 highlight: monokai
 image: /img/dependabot-management/cover_photo.png
@@ -11,7 +11,7 @@ tags:
     Dependabot,
     AWS CodeArtifact,
     Transient Dependencies,
-    Github,
+    GitHub,
     Spam,
     AWS CodeArtifact and GitHub Dependabot Configuration,
   ]
@@ -21,7 +21,7 @@ tags:
 
 ## Introduction
 
-Dependabot was rejected by YC Startup school in 2018 before being acquired and integrated into Github in 2019. It is a free tool that allows developers to better manage the dependencies of their projects in Github repositories. Dependabot is useful tool that supports a wide range of languages including, JavaScript, Python, Java and .NET. In addition, out of the box it creates pull requests to update dependencies in your repository, whether its, patch, minor or major updates and it also supports security updates. It can be configured at both an organization level, though with limited controls, and most effectively at the repository level. Using Dependabot can feel a bit like being a code janitor, below are some common issues and solutions to managing Dependabot to hopefully make it a little less painful.
+Dependabot was rejected by YC Startup school in 2018 before being acquired and integrated into Github in 2019. It is a free tool that allows developers to better manage the dependencies of their projects in Github repositories. Dependabot is useful tool that supports a wide range of languages including, JavaScript, Python, Java and .NET. In addition, out of the box it creates pull requests to update dependencies in your repository, whether its patch, minor, or major updates and it also supports security updates. It can be configured at both an organisation level, though with limited controls, and most effectively at the repository level. Using Dependabot can feel a bit like being a code janitor, below are some common issues and solutions to managing Dependabot to hopefully make it a little less painful.
 
 ## Common Issues Dependabot
 
@@ -31,16 +31,16 @@ Dependabot was rejected by YC Startup school in 2018 before being acquired and i
 <div ><img src="/img/dependabot-management/notification_fatigue.png" width="400px"/><p>Image 1: Notification Fatigue</p></div>
 </center>
 
-Does this look familiar ? If so, my condolences comrade.  
-Dependabot when left unchecked can be a source of what feels like spam pull requests. Above we can see 49/51 open pull requests are related to dependencies updates and there are 34 security issues that need addressing. This is overwhelming and can lead to developers, understandably, ignoring these notifications. This can increase the attack surface of an application or organization.
+Does this look familiar ? If so, my condolences, comrade.  
+Dependabot when left unchecked can be a source of what feels like spam pull requests. Above we can see 49/51 open pull requests are related to dependencies updates and there are 34 security issues that need addressing. This is overwhelming and can lead to developers, understandably, ignoring these notifications. This can increase the attack surface of an application or organisation.
 
-## AWS Code Artifact
+## AWS CodeArtifact
 
 <center>
 <div ><img src="/img/dependabot-management/code_artifact_issue.png" width="400px"/><p>Image 2: AWS CodeArtifact</p></div>
 </center>
 
-Another common issue encountered with Dependabot is the inability to authenticate with AWS CodeArtifact at a organization level (to my knowledge). AWS Code Artifact is used for a variety of reasons including storing private packages and sharing them across your organization. In the context Dependabot updates, this can cause an issue as it is not supported out of the box. See Image 2: AWS CodeArtifact. Here, the original package is stored in AWS CodeArtifact and the updated package is stored in the public npm registry. This can cause issues with the integrity of the package and the security of the application.
+Another common issue encountered with Dependabot is the inability to authenticate with AWS CodeArtifact at a organisation level (to my knowledge). AWS CodeArtifact is used for a variety of reasons including storing private packages and sharing them across your organisation. In the context of Dependabot updates, this can cause an issue as it is not supported out of the box. See Image 2: AWS CodeArtifact. Here, the original package is stored in AWS CodeArtifact and the updated package is stored in the public npm registry. This can cause issues with the integrity of the package and the security of the application.
 
 ### Transient Dependencies
 
@@ -50,7 +50,7 @@ Finally, another common issue with Dependabot is the handling of transient depen
 
 ### Notification Fatigue
 
-The first solution to notification fatigue is to limit the number and type of PRs raised by dependabot. Before raising those eyebrows please keep in mind this is exclusive of security updates. Security update PRs from Dependabot in fact can not be limited this config file. I am only talking about patch and minor upgrades being turned off.
+The first solution to notification fatigue is to limit the number and type of PRs raised by Dependabot. Before raising those eyebrows please keep in mind this is exclusive of security updates. In fact, Security update PRs from Dependabot are not able to be limited by config file. I am only talking about patch and minor upgrades being turned off.
 
 To put these limits in place we can create a `.github/dependabot.yml` file in the root of the repository. This file can be used to configure the behavior of Dependabot. Below is an example of a configuration file that limits the number and type of PRs raised by Dependabot.
 
@@ -72,18 +72,18 @@ updates:
           ["version-update:semver-patch", "version-update:semver-minor"]
 ```
 
-For a node project in the root directory, this configuration file limits dependabot to 5 open PRs at a time and only allows major updates. Please note this does not include security updates, these are raised irrespective of the `open-pull-requests-limit` parameter. The `ignore` parameter is used to ignore all patch and minor updates.
+For a node project in the root directory, this configuration file limits Dependabot to 5 open PRs at a time and only allows major updates. Please note this does not include security updates, these are raised irrespective of the `open-pull-requests-limit` parameter. The `ignore` parameter is used to ignore all patch and minor updates.
 
 In addition, prefixing the PRs with `Update` and including the scope of the update in the commit message can help with the readability of the PRs.
 
-With this, at every sprint planning within our team we review the open security and major update PRs of our main repositories, and decide which ones to tackle in the upcoming sprint. However, this in line with our own ways of working and might not be suitable for all teams.
+With this, at every sprint planning within our team we review the open security and major update PRs of our main repositories, and decide which ones to tackle in the upcoming sprint. However, this in line with our own ways of working at Mechanical Rock and might not be suitable for all teams.
 
 ### AWS CodeArtifact and GitHub Dependabot Configuration
 
 Unfortunately, to solve this issue it is not super straight forward and numerous poor tutorials exist online.
-To use Dependabot with AWS CodeArtifact, a registry needs to be defined in the `.github/dependabot.yml` file for each repository. This is unfortunately not supported at an organization level and uses a token which can be defined in the organization secrets. Though there are some important security considerations for that token.
+To use Dependabot with AWS CodeArtifact, a registry needs to be defined in the `.github/dependabot.yml` file for each repository. This is unfortunately not supported at an organisation level and uses a token which can be defined in the organisation secrets. Though there are some important security considerations for that token.
 
-Here is an example of the dependabot configuration for a repository using AWS CodeArtifact.
+Here is an example of the Dependabot configuration for a repository using AWS CodeArtifact.
 
 ```yaml
 version: 2
@@ -101,16 +101,16 @@ updates:
     #  ... see code example above for the rest of the configuration
 ```
 
-Above, the registry `npm-codeartifact` is defined with the URL of the AWS CodeArtifact repository and the token is defined in the organization secrets.
+Above, the registry `npm-codeartifact` is defined with the URL of the AWS CodeArtifact repository and the token is defined in the organisation secrets.
 
-Most tutorial's recommend using a long lived AWS token for this. However, for a organization using Github, it is more appropriate to create or use a separate repository for provisioning organization level resources. In the case of AWS CodeArtifact, within this separate repository create an OIDC connection between this repo and AWS. This way there is a secure connection to AWS inside a Github Action's workflow.
+Most tutorials recommend using a long lived AWS token for this. However, for an organisation using GitHub, it is more appropriate to create or use a separate repository for provisioning organisation level resources. In the case of AWS CodeArtifact, within this separate repository create an OIDC connection between this repo and AWS. This way there is a secure connection to AWS inside a GitHub Action's workflow.
 
-Then create a workflow to automate the creation of short lived tokens for Dependabot that are stored as organization level secrets. This way the token is only valid for a short period of time and is rotated regularly. This is a more secure way of managing the token and is in line with the principle of least privilege.
+Then create a workflow to automate the creation of short lived tokens for Dependabot that are stored as organisation level secrets. This way the token is only valid for a short period of time and is rotated regularly. This is a more secure way of managing the token and is in line with the principle of least privilege.
 
 ```yaml
 name: Manage AWS CodeArtifact Secret
 
-# This GitHub workflow, automates the process of creating, or updating a secret at the organization level using a GitHub App.
+# This GitHub workflow, automates the process of creating, or updating a secret at the organisation level using a GitHub App.
 
 on:
   push:
@@ -143,7 +143,7 @@ SEE FULL CODE HERE
 ```yaml
 name: Manage AWS CodeArtifact Secret
 
-# This GitHub workflow, automates the process of creating, or updating a secret at the organization level using a GitHub App.
+# This GitHub workflow, automates the process of creating, or updating a secret at the organisation level using a GitHub App.
 
 on:
 push:
@@ -199,7 +199,7 @@ One final gotcha I found while working with Dependabot is transient dependencies
 
 ## A Note on Testing
 
-Updating packages can be painful for a number of reasons. One of particular importance is ensuring nothing breaks once something is updated. If your application has no testing, and you wish for your application to continue working after complete a package update, you need testing in place. If this testing is manual, tackling 49 pull requests can take a long time. With automated testing, the time taken can be vastly reduced. If you want exemplary automated unit, integration and end to end testing, I recommend chatting to Mechanical Rock.
+Updating packages can be painful for a number of reasons. One of particular importance is ensuring nothing breaks once something is updated. If your application has no testing, and you wish for your application to continue working after complete a package update, you need testing in place. If this testing is manual, tackling 49 pull requests can take a long time. With automated testing, the time taken can be vastly reduced. If you want exemplary automated unit, integration and end to end testing, I recommend chatting to <a href="https://www.mechanicalrock.io/lets-get-started">Mechanical Rock</a>.
 
 ## Conclusion
 

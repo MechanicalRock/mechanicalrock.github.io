@@ -28,7 +28,7 @@ Dependabot was rejected by YC Startup school in 2018 before being acquired and i
 ### Spam / Notification Fatigue
 
 <center>
-<div ><img src="/img/dependabot-management/notification_fatigue.png" width="400px"/><p>Image 1: Notification Fatigue</p></div>
+<div ><img src="/img/dependabot-management/notification_fatigue.png" width="600px"/><p>Image 1: Notification Fatigue</p></div>
 </center>
 
 Does this look familiar ? If so, my condolences, comrade.  
@@ -37,7 +37,7 @@ Dependabot when left unchecked can be a source of what feels like spam pull requ
 ## AWS CodeArtifact
 
 <center>
-<div ><img src="/img/dependabot-management/code_artifact_issue.png" width="400px"/><p>Image 2: AWS CodeArtifact</p></div>
+<div ><img src="/img/dependabot-management/code_artifact_issue.png" width="900px"/><p>Image 2: AWS CodeArtifact</p></div>
 </center>
 
 Another common issue encountered with Dependabot is the inability to authenticate with AWS CodeArtifact at a organisation level (to my knowledge). AWS CodeArtifact is used for a variety of reasons including storing private packages and sharing them across your organisation. In the context of Dependabot updates, this can cause an issue as it is not supported out of the box. See Image 2: AWS CodeArtifact. Here, the original package is stored in AWS CodeArtifact and the updated package is stored in the public npm registry. This can cause issues with the integrity of the package and the security of the application.
@@ -90,7 +90,7 @@ version: 2
 registries:
   npm-codeartifact:
     type: npm-registry
-    url: https://**ANONYMOUS**.d.codeartifact.ap-southeast-2.amazonaws.com/npm/DefaultCodeArtifactRepository-**ANONYMOUS**/
+    url: ** AWS CodeArtifact URL HERE **
     token: ${{ secrets.AWS_CODEARTIFACT_TOKEN }}
 
 updates:

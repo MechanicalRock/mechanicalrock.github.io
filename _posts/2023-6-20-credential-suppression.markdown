@@ -85,6 +85,28 @@ The first two are commonly used to defiine Permissions granted as well as denied
 A Policy may have a Conditional stanza attached, such that the Action of the Policy only takes effect if a condition is met, or only takes effect if the condition is not met.
 ### Timestamp
 The temporary credentials issued by SSO include a token, and this token carries a timestamp of when it was granted.  We can use a Condition to only apply the Policy if the timestamp shows the credentials were granted before a specified time.
+
+This is an example of a Policy which includes a Condition dependent on the timestamp of the credentials of the user:
+
+`InlinePolicy = {
+  Version: '2012-10-17',
+  Statement: [
+    {
+      Sid: 'TimeStampCutOff',
+      Effect: "Deny",
+      Action: "*",
+      Resource: "*",
+      Condition: {
+        ForAnyValue: DateLessThan: {
+          'aws:TokenIssueTime': [
+            '${cutoff_time}'
+          ]
+        }
+      }
+    }
+  ]
+}`
+
 ### UserId
 The token also carries the User ID the permissions were granted to, and a Condition may specify that the permissions of the Policy are granted to, or witheld from, that user.
 

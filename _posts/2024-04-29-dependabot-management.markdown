@@ -21,7 +21,7 @@ tags:
 
 ## Introduction
 
-Dependabot was rejected by YC Startup school in 2018 before being acquired and integrated into Github in 2019. It is a free tool that allows developers to better manage the dependencies of their projects in Github repositories. Dependabot is useful tool that supports a wide range of languages including, JavaScript, Python, Java and .NET. In addition, out of the box it creates pull requests to update dependencies in your repository, whether its, patch, minor, or major updates and it also supports security updates. It can be configured at both an organisation level, though with limited controls, and most effectively at the repository level. Using Dependabot can feel a bit like being a code janitor, below are some common issues and solutions to managing Dependabot to hopefully make it a little less painful.
+Dependabot was rejected by YC Startup school in 2018 before being acquired and integrated into Github in 2019. It is a free tool that allows developers to better manage the dependencies of their projects in Github repositories. Dependabot is useful tool that supports a wide range of languages including, JavaScript, Python, Java and .NET. In addition, out of the box it creates pull requests to update dependencies in your repository, whether its patch, minor, or major updates and it also supports security updates. It can be configured at both an organisation level, though with limited controls, and most effectively at the repository level. Using Dependabot can feel a bit like being a code janitor, below are some common issues and solutions to managing Dependabot to hopefully make it a little less painful.
 
 ## Common Issues Dependabot
 

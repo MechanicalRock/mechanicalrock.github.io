@@ -2,7 +2,7 @@
 layout: postv2
 title: "Dependabot Management - Notification Fatigue, AWS CodeArtifact and Transient Dependencies"
 description: "Dependabot is a useful free tool for managing dependencies in your GitHub repositories. This blog discuss some common issues with the tool and some solutions"
-date: 2024-2-2
+date: 2024-5-2
 highlight: monokai
 image: /img/dependabot-management/cover_photo.png
 author: Matthew Carter

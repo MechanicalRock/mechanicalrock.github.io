@@ -70,7 +70,7 @@ While these credentials expire, during their lifespan, they are independent and 
 ## SCP approach
 Control Tower is run from an initial AWS account and designates this account to be the management account.  At the same time, an Organization is created, as well as several supporting accounts.  Control Tower also creates Permission Sets to apply to accounts in the Organization.
 
-Apart from the management account, all the created accounts and any invited to join the Organization are in the Organization, which provides a mechanism to apply an AWS Service Control Policy (SCP) to any member of the Organization, including the root.  An SCP applied to the root will be in force on any account or Organizational Unit (OU) in the Organization, and in this way we may apply a blanket policy that applies to all but the management account.
+Apart from the management account, all the created accounts and any invited to join the Organization are in the Organization, which provides a mechanism to apply an AWS Service Control Policy (SCP) to any member of the Organization, including the root.  An SCP applied to the root will be enforced on any account or Organizational Unit (OU) in the Organization, and in this way we may apply a blanket policy that applies to all but the management account.
 ## Permission set approach
 An SCP has no effect on the management account of an Organization, and so another approach is needed to apply a Policy restriction to that account.
 

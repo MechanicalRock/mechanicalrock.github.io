@@ -1,7 +1,7 @@
 ---
 layout: postv2
 font: serif
-title: "Bypassing Github branch protection with Environments"
+title: "Bypassing GitHub branch protection with Environments"
 description: "GitHub Environments changes the claim token provided to OIDC Providers and removes the Branch name from the Subject, this allows a user to authenticate via any branch"
 date: 2023-10-14
 highlight: monokai
@@ -12,7 +12,7 @@ tags: [Trust policy, GitHub, GitHub Environments, Security, OIDC]
 
 # Bypassing GitHub branch protection with OIDC and Github Environments
 
-A part of deploying to AWS with Github Actions is the idea of using an OIDC provider to allow for temporary credentials that can be assumed during the pipeline to enable secure access to AWS accounts.
+A part of deploying to AWS with GitHub Actions is the idea of using an OIDC provider to allow for temporary credentials that can be assumed during the pipeline to enable secure access to AWS accounts.
 
 The documentation for which is located [here](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services#adding-the-identity-provider-to-aws) shows that you should configure your trust policy like so:
 
@@ -91,7 +91,7 @@ We have been thwarted by our OIDC trust policy!
 
 ![Thwarted](/img/bypass-oidc-trust/thwarted.png){:lightbox="true"}
 
-## Move to Github Environments
+## Move to GitHub Environments
 
 Now, as a Developer, we want to try the Environments feature of Github to manage our deployments and and so we can have different secrets and reuse our pipeline configurations. We enable it, realise that our Trust Policy no longer works (see above, the change in `sub`) so we update our Trust policy as described in the [GitHub documentation](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services#adding-the-identity-provider-to-aws)
 

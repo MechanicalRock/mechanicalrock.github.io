@@ -10,7 +10,7 @@ author: Chris Howard
 tags: [Trust policy, GitHub, GitHub Environments, Security, OIDC]
 ---
 
-# Bypassing GitHub branch protection with OIDC and Github Environments
+# Bypassing GitHub branch protection with OIDC and GitHub Environments
 
 A part of deploying to AWS with GitHub Actions is the idea of using an OIDC provider to allow for temporary credentials that can be assumed during the pipeline to enable secure access to AWS accounts.
 

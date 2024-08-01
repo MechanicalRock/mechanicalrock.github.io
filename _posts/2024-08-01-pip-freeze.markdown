@@ -4,7 +4,6 @@ title: "Don't Burn Your Data - Freeze Your Requirements!"
 description: "The Importance of Using pip freeze for Data Engineers and Analysts"
 date: 2024-8-1
 highlight: monokai
-image: /img/dependabot-management/cover_photo.png
 author: Ben Dang
 tags:
   [
@@ -51,6 +50,10 @@ After a bit of head-scratching with my team, we discovered that our CI/CD pipeli
 
 Fortunately for us, we pushed to an image repository that enforced image immutability. This meant that previous versions of our images were kept, so we simply downloaded a previous Docker Image that worked and ran a pip freeze inside it to extract the exact package versions used.
 
+<center>
+<div ><img src="/img/pip-freeze/requirements-screen.png" width="600px"/><p>Image 2: Stack </p></div>
+</center>
+
 ```diff
 + numpy==1.26.4
 - pandas
@@ -74,12 +77,6 @@ Fortunately for us, we pushed to an image repository that enforced image immutab
 ## Key Takeaways
 **Version Control and Backups**: Always keep versions and backups of previous images. Even if the images are created by code, unexpected changes in dependencies can lead to failures. Below is an example of our AWS ECR, and its attached lifecycle policy.
 ```hcl
-locals {
-  force_delete_sbx = var.environment_name == "sbx" ? true : false
-
-  ecr_repository_name = "${var.stack_name_prefix}-${var.environment_name}-${var.component_name}"
-}
-
 resource "aws_ecr_repository" "this" {
   name = local.ecr_repository_name
   image_scanning_configuration {
@@ -107,7 +104,6 @@ resource "aws_ecr_lifecycle_policy" "this" {
   repository = aws_ecr_repository.this.name
   policy     = data.aws_ecr_lifecycle_policy_document.this.json
 }
-
 ```
 
 **Freezing Package Requirements**: Regularly use pip freeze to capture the exact package versions in use. This practice ensures that your environment remains consistent and prevents unexpected issues due to automatic updates.

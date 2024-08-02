@@ -1,7 +1,7 @@
 ---
 layout: postv2
 title: "Exploring the Latest Updates to WayFinder - The Evolution of our Recommendation Engine"
-description: "A journey through the complexity of creating a recommendation engine for software develeopment performance"
+description: "A journey through the complexity of creating a recommendation engine to foster high performing software teams"
 date: 2024-8-2
 highlight: monokai
 image: /img/wayfinder/recommendation_engine.png

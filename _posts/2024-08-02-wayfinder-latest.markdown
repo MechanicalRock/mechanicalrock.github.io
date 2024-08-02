@@ -46,7 +46,7 @@ The team has also focused on making the recommendation interface more intuitive 
 #### Community Feedback Integration
 Another significant learning was the value of community feedback. By closely monitoring how users interact with the recommended improvements, we fine-tune the engine to better meet user expectations. This iterative process has been critical in evolving the recommendation system to be more aligned with organisational needs - and more specifically product improvements. 
 
-We have been using Sentry to help with this but more importantly also engaging users directly through the product whereever we can, capturing their data and feeding it back into the engine.
+We have been using <a href="https://sentry.io/welcome/">Sentry</a> to help with this but more importantly also engaging users directly through the product wherever we can, capturing their data and feeding it back into the engine.
 
 ## Challenges and Future Directions
 

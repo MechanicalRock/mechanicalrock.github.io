@@ -32,16 +32,16 @@ The development of WayFinder's recommendation engine has been a journey marked b
 One of the key learnings in building this system was the importance of balancing complexity with usability. The WayFinder team discovered that while a more intricate recommendation algorithm could deliver highly tailored improvements, it also risked overwhelming users with too many options. To address this, we implemented a tiered recommendation system, where users receive suggestions in a more digestible, prioritised manner.
 
 
-## Key Features and Updates:
+## Key Features and Updates
 
-#### Connector Recommendations: 
+#### Connector Recommendations
 The engine now leverages machine learning to understand organisation behaviour better, offering suggestions that are based on the state of connectors (ie. Incident Management not yet connected) and includes feedback from users around why some connectors may or may not be used.
 
-#### Improvement Recommendations: 
+#### Improvement Recommendations
 The team has been focused on making the recommendation interface more intuitive and flow better. By simplifying how recommendations are presented, the platform ensures that users can easily find and engage with new content without feeling overwhelmed.
 
-#### Community Feedback Integration: 
-Another significant learning was the value of community feedback. By closely monitoring how users interact with the recommended improvements, WayFinder’s developers could fine-tune the engine to better meet user expectations. This iterative process has been critical in evolving the recommendation system to be more aligned with organisational needs.
+#### Community Feedback Integration
+Another significant learning was the value of community feedback. By closely monitoring how users interact with the recommended improvements, we fine-tune the engine to better meet user expectations. This iterative process has been critical in evolving the recommendation system to be more aligned with organisational needs - and more specifically product improvements.
 
 ## Challenges and Future Directions
 

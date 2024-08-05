@@ -25,7 +25,6 @@ Our recent updates to [WayFinder](https://app.wayfinder.ninja) have ushered in s
 <div>
   <img src="/img/wayfinder/dora_metrics1.png"/>
   <center style="font-size:10px">WayFinder Metrics</center>
-  <br />
 </div>
 
 

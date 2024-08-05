@@ -356,6 +356,9 @@ a.post-tag:focus {
 .post-content.serif h3 {
     margin-top: 2em;
 }
+.post-content.serif h4 {
+    font-weight: 600;
+}
 
 .post-content.serif table {
     border: 1px solid #e8e8e8;

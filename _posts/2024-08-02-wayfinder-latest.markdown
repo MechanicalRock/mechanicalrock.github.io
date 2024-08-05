@@ -1,8 +1,9 @@
 ---
 layout: postv2
+font: serif
 title: "Exploring the Latest Updates to WayFinder - The Evolution of our Recommendation Engine"
 description: "A journey through the complexity of creating a recommendation engine to foster high performing software teams"
-date: 2024-8-2
+date: 2024-08-02
 highlight: monokai
 image: /img/wayfinder/recommendation_engine.png
 author: Hamish Tedeschi
@@ -23,7 +24,7 @@ Our recent updates to [WayFinder](https://app.wayfinder.ninja) have ushered in s
 
 <div>
   <img src="/img/wayfinder/dora_metrics.png"/>
-  <center>WayFinder Metrics</center>
+  <center style="font-size:10px">WayFinder Metrics</center>
   <br />
 </div>
 
@@ -54,10 +55,10 @@ We have been using <a href="https://sentry.io/welcome/">Sentry</a> to help with 
 
 ## Challenges and Future Directions
 
-Building an effective recommendation engine is not without its challenges. The WayFinder team faced difficulties in handling the vast amount of data required to make accurate recommendations while ensuring that the system remained fast and responsive. Additionally, we learned the importance of transparency; users are more likely to trust and engage with recommendations if they understand why they are being suggested certain content.
+Building an effective recommendation engine is not without its challenges. The [WayFinder](https://app.wayfinder.ninja) team faced difficulties in handling the vast amount of data required to make accurate recommendations while ensuring that the system remained fast and responsive. Additionally, we learned the importance of transparency; users are more likely to trust and engage with recommendations if they understand why they are being suggested certain content.
 
-Looking forward, [WayFinder](https://app.wayfinder.ninja) plans to expand the capabilities of its recommendation engine by incorporating more advanced AI and machine learning techniques. We are also building a feature which will alert product teams BEFORE metrics associated to CI/CD pipelines (ie. Lead Time, Deployment Frequency and Change Failure Rate) are impacted by upcoming changes in packages, dependancies or run times, so they can take appropriate action. This has been nicknamed "Descalr" - [please let us know](contact@app.wayfinder.ninja) if you are interested in beta testing this. 
+Looking forward, [WayFinder](https://app.wayfinder.ninja) plans to expand the capabilities of its recommendation engine by incorporating more advanced AI and machine learning techniques. We are also building a feature which will alert product teams BEFORE metrics associated to CI/CD pipelines (ie. Lead Time, Deployment Frequency and Change Failure Rate) are impacted by upcoming changes in packages, dependancies or run times, so they can take appropriate action. This has been nicknamed "Descalr" - [please let us know](mailto:contact@app.wayfinder.ninja) if you are interested in beta testing this. 
 
-But to be honest, we really want more data. So sign up <a href="https://app.wayfinder.ninja/signup">here</a>, for FREE, and start your own journey of continuous improvement!
+But to be honest, we really want more data. So [sign up for FREE](https://app.wayfinder.ninja/signup) and start your own journey of continuous improvement!
 
-[WayFinder](https://app.wayfinder.ninja) now supports GitHub, GitLab, Azure DevOps, ServiceNow and OpsGenie - with plans for more connectors to be released soon. Stay tuned for the next WayFinder update in a few months time.
+[WayFinder](https://app.wayfinder.ninja) now supports GitHub, GitLab, Azure DevOps, ServiceNow and OpsGenie - with plans for more connectors to be released soon. Stay tuned for the next [WayFinder](https://app.wayfinder.ninja) update in a few months time.

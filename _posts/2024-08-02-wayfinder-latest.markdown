@@ -5,7 +5,7 @@ title: "WayFinder: The Evolution of our Recommendation Engine"
 description: "A journey through the complexity of creating a recommendation engine to foster high performing software teams"
 date: 2024-08-02
 highlight: monokai
-image: /img/wayfinder/recommendation_engine.png
+image: /img/wayfinder/recommendation-bar.png
 author: Hamish Tedeschi
 tags:
   [
@@ -23,7 +23,7 @@ tags:
 Our recent updates to [WayFinder](https://app.wayfinder.ninja) have ushered in significant changes, particularly with the development and refinement of its recommendation engine. As [WayFinder](https://app.wayfinder.ninja) pivots towards a more refined user experience, the new recommendation engine plays a central role in delivering tailored content and suggestions to users, based on the orgs Product state and the state of the Products (DORA) metrics, such as Lead Time or Deployment Frequency. It is more complex than originally thought, so I wanted to give you a taste of the journey..
 
 <div>
-  <img src="/img/wayfinder/dora_metrics.png"/>
+  <img src="/img/wayfinder/dora_metrics1.png"/>
   <center style="font-size:10px">WayFinder Metrics</center>
   <br />
 </div>

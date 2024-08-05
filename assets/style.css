@@ -323,7 +323,7 @@ a.post-tag:focus {
 .main-image {
     background: url(/img/skeleton-loaders/banner.jpg) no-repeat center;
     display: block;
-    height: 26em;
+    max-height: 26em;
     background-size: contain;
     margin: 0;
 }

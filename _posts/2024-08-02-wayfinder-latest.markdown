@@ -1,7 +1,7 @@
 ---
 layout: postv2
 font: serif
-title: "Exploring the Latest Updates to WayFinder - The Evolution of our Recommendation Engine"
+title: "WayFinder: The Evolution of our Recommendation Engine"
 description: "A journey through the complexity of creating a recommendation engine to foster high performing software teams"
 date: 2024-08-02
 highlight: monokai

@@ -4,6 +4,7 @@ title: "Don't Burn Your Data - Freeze Your Requirements!"
 description: "The Importance of Using pip freeze for Data Engineers and Analysts"
 date: 2024-8-1
 highlight: monokai
+image: /img/pip-freeze/ai-cover.png
 author: Ben Dang
 tags:
   [

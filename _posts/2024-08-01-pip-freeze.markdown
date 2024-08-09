@@ -17,7 +17,7 @@ tags:
 
 # The Importance of Using pip freeze for Data Engineers and Analysts
 
-Prior to my career in software consulting, I had the (mis)fortune of working in accounting, finance, and analytics. Using tools like Excel, Python, and SQL, my only goal was to deliver value quickly. Concepts such as version control, repeatable code, and GIT were completely foreign to me—something I’m sure many data analysts and data scientists can relate to.
+Prior to my career in software consulting, I had the (mis)fortune of working in accounting, finance, and analytics. Using tools like Excel, Python, and SQL, my only goal was to deliver value quickly. Concepts such as version control, repeatable code, and GIT were completely foreign to me. I’m sure many data analysts and data scientists can relate to.
 
 Nowadays, I preach the benefits of version control, but remnants of my analytics background have recently come back to haunt me. When working on a feature, I have a habit of not tracking my Python dependencies until it’s ready to be reviewed. However, a recent scare in our CI/CD pipeline reminded me of the importance of investing a small amount of time in managing dependencies, which can save hours of headaches down the line.
 
@@ -116,4 +116,4 @@ resource "aws_ecr_lifecycle_policy" "this" {
 
 # Wrapping Up
 
-pip freeze is a vital tool for data engineers and analysts. It helps maintain a stable and predictable environment, allowing you to focus on building robust data solutions without worrying about unexpected dependency issues. By adopting these best practices, you can ensure that your projects remain consistent, reliable, and easier to manage. So, don't just burn through your data—freeze your requirements and safeguard your workflows against the chaos of untracked dependencies.
+pip freeze is a vital tool for data engineers and analysts. It helps maintain a stable and predictable environment, allowing you to focus on building robust data solutions without worrying about unexpected dependency issues. By adopting good practices, you can ensure that your projects remain consistent, reliable, and easier to manage. So, don't just burn through your data—freeze your requirements and safeguard your workflows against the chaos of untracked dependencies.

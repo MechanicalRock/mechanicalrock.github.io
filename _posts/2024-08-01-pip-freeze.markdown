@@ -117,3 +117,5 @@ resource "aws_ecr_lifecycle_policy" "this" {
 # Wrapping Up
 
 pip freeze is a vital tool for data engineers and analysts. It helps maintain a stable and predictable environment, allowing you to focus on building robust data solutions without worrying about unexpected dependency issues. By adopting good practices, you can ensure that your projects remain consistent, reliable, and easier to manage. So, don't just burn through your data—freeze your requirements and safeguard your workflows against the chaos of untracked dependencies.
+
+If you're keen for a chat or have any questions, please reach out to <a href="https://www.linkedin.com/in/benjamin-tam-dang/">myself</a> or <a href="https://www.mechanicalrock.io/lets-get-started">Mechanical Rock</a>.

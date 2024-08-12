@@ -1,0 +1,22 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/backend/"
+    schedule:
+      interval: "weekly"
+    # Disable version updates for npm dependencies - this will still let security update PRs to be created
+    open-pull-requests-limit: 0
+    reviewers:
+      - "@MechanicalRock/websiteadmins"
+    labels:
+      - "npm security updates"
+  - package-ecosystem: "bundler"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    # Disable version updates for npm dependencies - this will still let security update PRs to be created
+    open-pull-requests-limit: 0
+    reviewers:
+      - "@MechanicalRock/websiteadmins"
+    labels:
+      - "npm security updates"

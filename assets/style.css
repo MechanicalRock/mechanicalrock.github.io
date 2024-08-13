@@ -140,8 +140,6 @@ p {
     font-weight: 700;
 }
 .breadcrumb svg {
-    font-size: 0.9em;
-    width: 0.5em;
     fill: var(--color-brand-dark);
 }
 .breadcrumb-wrapper .article-title {

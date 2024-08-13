@@ -3,10 +3,14 @@
 </div>
 
 <header class="site-header" role="banner">
-   <div class="appBar">
-      <a href="https://blog.mechanicalrock.io/" class="logo font-brand">
-         <img class="logo-cog" alt="Mechanical Rock Cog" src="/img/logo-cog.png">
-         <span>Mechanical Rock<br />Blogs</span>
+   {% if page.layout == "home" %}
+      <div class="appBar home">
+   {% else %}
+      <div class="appBar article">
+   {% endif %}
+      <a href="https://www.mechanicalrock.io/" class="logo font-brand">
+         <img class="logo-cog" alt="Mechanical Rock Logo" src="/img/logo-cog.png">
+         <span>Mechanical<br />Rock</span>
       </a>
       {% if page.layout != "home" %}
       {% include searchbox.html %}

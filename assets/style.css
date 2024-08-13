@@ -10,6 +10,7 @@
 
 :root {
     --color-brand: #40bfb4;
+    --color-brand-dark: #00645C;
     --color-grey-dark: #231f20;
 }
 
@@ -63,6 +64,12 @@ p {
     width: 100%;
 }
 
+@media screen  and (max-width: 780px) {
+    .header-wrapper .content {
+        padding: 2em 1em;
+    }
+}
+
 .home {
     margin-top: 4em;
 }
@@ -88,6 +95,7 @@ p {
     display: flex;
     height: 64px;
     justify-content: center;
+    margin: 0;
     max-height: 64px;
     padding: 0.2em 1em 0.2em 1.5em;
     justify-content: space-between;
@@ -112,6 +120,53 @@ p {
     line-height: 1em;
 }
 
+/* ========================================
+   Breadcrumbs
+   ======================================== */
+.breadcrumb-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.breadcrumb-wrapper.home {
+    margin: -3em 0 2em 0;
+}
+.breadcrumb-wrapper.post {
+    margin: 1em 0 -1em;
+}
+.breadcrumb {
+    display: inline-block;
+    font-size: 0.9em;
+    font-weight: 700;
+}
+.breadcrumb svg {
+    font-size: 0.9em;
+    width: 0.5em;
+    fill: var(--color-brand-dark);
+}
+.breadcrumb-wrapper .article-title {
+    font-weight: 300;
+    margin-left: 0.5em;
+    color: #828282;
+    display: inline-block;
+}
+.breadcrumb, .breadcrumb-wrapper .article-title {
+    font-size: 14px;
+    line-height: 1.5em;
+}
+
+
+@media screen and (max-width: 780px) {
+    .breadcrumb-wrapper {
+        flex-direction: column;
+        align-items: baseline;
+    }
+}
+
+
+/* ========================================
+   Headers
+   ======================================== */
 .header-description p{
     color: #fff;
     font-size: 25px;
@@ -132,6 +187,11 @@ p {
     height: 42px;
 }
 
+.gsc-input-box {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
 @media screen and (max-width: 780px) {
     img {
         height: auto !important;
@@ -143,8 +203,14 @@ p {
     .appBar {
         align-items: baseline;
         height: 105px;
-        padding: 1em 1em 7em 1em;
         flex-direction: column;
+    }
+    .appBar.home {
+        padding: 1em 0 4em 1em;
+    }
+    .appBar.article {
+        padding: 1em 1em 7em 1em;
+
     }
 
     .appBar .gsc-search-box .gsc-input-box {
@@ -178,7 +244,7 @@ a,
 .page:visited,
 .change-pages-set:visited
 {
-	color: var(--color-brand) !important;
+	color: var(--color-brand-dark) !important;
 }
 
 .page.active {
@@ -186,11 +252,11 @@ a,
 }
 
 a:visited {
-    color: #1A73E8;
+    color: var(--color-brand-dark);
 }
 
 a:hover, a:focus {
-    color:#205854;
+    color: var(--color-brand-dark)
 }
 
 a.btn {
@@ -272,11 +338,12 @@ a.btn.chevronLeft::before {
 }
 
 .post-link {
-    display: inline-block
+    display: inline-block;
+    color: var(--color-brand-dark);
 }
 
 a.post-tag {
-    border: 1px solid var(--color-brand);
+    border: 1px solid var(--color-brand-dark);
     border-radius: 0.5em;
     padding: 0.1em 0.5em;
     font-size: 0.9em;

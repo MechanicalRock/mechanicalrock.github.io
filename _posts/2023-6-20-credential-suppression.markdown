@@ -1,18 +1,18 @@
 ---
 layout: postv2
 title: Leaking Credentials!
-date: 2023-6-20
+date: 2024-8-14
 tags: aws account control tower sso organizations credentials permission policy
 author: Bret Comstock Waldow
 ---
 # Summary
-This is a discussion of issues due to leaked AWS credentials and suggestions of how to avoid these problems.
+AWS credentials can be leaked!  Here are some ways to stop this or deal with it.
 # AWS Credentials & types
 AWS credentials permit a user to assume an AWS identity.  Depending on the type of AWS identity, the identity may also have inherent or assigned permission to access AWS resources and initiate actions with them.
 
 This identity is called a 'login', and the identity may be specific to one account or may offer access to several.  It is not an account, and by itself has no powers - actions are taken in one or more accounts.
 
-Credentials will include an identifier (username), and a password.  Further protections to assuming an identity may include one of several types of Multi-factor Authentication (MFA) token or policy limits on the context the identity is valid for (specific account, region, etc).  Some types of credentials also include a token which includes hashed details of the username, account, time issued and perhaps other details.
+Credentials will include an identifier (username), and a password.  Further protections to assuming an identity may include one of several types of Multi-factor Authentication (MFA) tokens or policy limits on the context the identity is valid for (specific account, region, etc).  Some types of credentials also include a token which includes hashed details of the username, account, time issued and perhaps other details.
 ## Console vs CLI
 The AWS Console is a GUI web interface presenting the state of and controls for an AWS account.
 
@@ -23,17 +23,19 @@ Both require an identity and supporting authentication secrets (password, MFA, g
 ### Account Root user
 This identity is created with each new account and has undeniable access to all resources within that account.
 
-The identifier is the email address used to create the account and a password, which may not be set at creation.  Optionally, an MFA token may be assigned to the identity.
+The identifier is the email address used to create the account and a password, which may not be set at creation.  Optionally, an MFA requirement may be assigned to the identity.
 ### IAM User
 This optional identity may be created within an account and has only the permissions granted to it.  Optionally, an MFA token may be assigned to the identity.
 ### SSO/IAM Identity Center User
-AWS provided a feature named SSO (Single Sign On) and has renamed this to IAM Identity Center, however many documents still refer to SSO, and the CLI command is still named 'sso'.
+AWS provided a feature named SSO (Single Sign On) and has renamed this to IAM Identity Center, however many documents still refer to SSO, and the CLI command is still named `sso`.
 
 This feature offers a login, which may then be permitted access to several accounts with varying permissions.
 
 The access may be to the GUI console, or temporary credentials may be given to permit CLI access.
 ## IAM vs SSO
 IAM (not SSO) credentials are not time limited, but remain valid until deliberately cancelled.  There are situations where IAM users may be useful, but it is generally wise to avoid using them to avoid the possibility of leaking such permanent credentials.
+
+If leaked, they must be actively voided in the AWS Console or via the AWS CLI.
 ## Temporary credentials
 SSO credentials are time limited, and must be renewed periodically.  When CLI SSO credentials are acquired, a token is included which hashes a timestamp for the time acquired, and the credentials will not be honored after the time the credentials are set to expire.  This makes them much safer for use.
 # Credential leakage, attendent risks
@@ -66,11 +68,11 @@ We use SSO/IAM Identity Center users for our AWS access, and our configuration w
 ## No invalidation, but credentials may be ignored
 SSO credentials, whether for Console access or for CLI use, have temporary lifespans.  This lifespan is long enough for serious mischief to occur if leaked to a hostile party, or even a less-competent one.
 
-While these credentials expire, during their lifespan, they are independent and AWS offers no way to cancel them.  However, a clause in a well-targeted policy leads to them being ignored, which may be just as effective.
+These SSO credentials do expire, but during their lifespan, they are independent and AWS offers no way to cancel them.  However, a conditional clause in a well-targeted policy leads to them being ignored, which may be just as effective.
 ## SCP approach
 Control Tower is run from an initial AWS account and designates this account to be the management account.  At the same time, an Organization is created, as well as several supporting accounts.  Control Tower also creates Permission Sets to apply to accounts in the Organization.
 
-Apart from the management account, all the created accounts and any invited to join the Organization are in the Organization, which provides a mechanism to apply an AWS Service Control Policy (SCP) to any member of the Organization, including the root.  An SCP applied to the root will be enforced on any account or Organizational Unit (OU) in the Organization, and in this way we may apply a blanket policy that applies to all but the management account.
+Apart from the management account, all the created accounts and any invited to join the Organization are in the Organization, which provides a mechanism to apply an AWS Service Control Policy (SCP) to any member of the Organization, including the root Organizational Unit (OU).  An SCP applied to the root will be enforced on any account or OU in the Organization, and in this way we may apply a blanket policy that applies to all but the management account.
 ## Permission set approach
 An SCP has no effect on the management account of an Organization, and so another approach is needed to apply a Policy restriction to that account.
 
@@ -130,8 +132,8 @@ This approach to managing leaked credentials relies on a timestamp listed in a C
 We would mitigate this by signing in to the account as the root user - a login that can't be denied, and correcting the Permission Sets.
 
 ## Convenience attack and Robot attack!
-There has been discussion of varying front-ends for our Credential Suppression tool - for example posting an update to a repository or posting a message to Slack.  We do not implement this, and I argue strenuously against it.
+There has been discussion of varying front-ends for our Credential Suppression tool - for example posting an update to a repository or posting a message to Slack to shut down access.  We do not implement this, and I argue strenuously against it.
 We avoid the possibility of misuse of our Credential Suppression tool by implementing proper security on our AWS accounts.  Adding another layer and API means we must also be experts on that layer, as well as possibly that layer's interactions with AWS.
 I prefer to have the simplest understanding of what may occur during what is already an anomalous, and hopefully, rare event.
 
-As well, introducing a front-end layer means there will be an API to access our tool.  In that case, an attacker might write a robot that repeatedly invokes the tool before we can refresh our credentials again!
+As well, introducing a front-end layer means there will be an API to access our tool.  In that case, an attacker might write a robot that repeatedly invokes the tool before we can refresh our credentials again!  Better to keep it simple.

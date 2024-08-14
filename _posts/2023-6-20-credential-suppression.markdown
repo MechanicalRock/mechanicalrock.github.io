@@ -3,7 +3,7 @@ layout: postv2
 title: Leaking Credentials!
 image: img/CutoffPolicy.png
 date: 2024-8-14
-tags: aws account control tower sso organizations credentials permission policy cutoff
+tags: aws account control tower sso organizations credentials permission policy cutoff token
 author: Bret Comstock Waldow
 ---
 

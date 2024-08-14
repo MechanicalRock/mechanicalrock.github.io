@@ -1,12 +1,18 @@
 ---
 layout: postv2
 title: Leaking Credentials!
+image: img/CutoffPolicy.png
 date: 2024-8-14
 tags: aws account control tower sso organizations credentials permission policy
 author: Bret Comstock Waldow
 ---
+
+<center><img src="/img/CutoffPolicy.png" /></center>
+<br/>
+
 # Summary
 AWS credentials can be leaked!  Here are some ways to stop this or deal with it.
+
 # AWS Credentials & types
 AWS credentials permit a user to assume an AWS identity.  Depending on the type of AWS identity, the identity may also have inherent or assigned permission to access AWS resources and initiate actions with them.
 

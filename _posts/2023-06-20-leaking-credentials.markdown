@@ -170,3 +170,7 @@ We avoid the possibility of misuse of our Credential Suppression tool by impleme
 I prefer to have the simplest understanding of what may occur during what is already an anomalous, and hopefully, rare event.
 
 As well, introducing a front-end layer means there will be an API to access our tool.  In that case, an attacker might write a robot that repeatedly invokes the tool before we can refresh our credentials again!  Better to keep it simple.
+
+---
+
+If you need help with your cloud security posture or set up, don't be shy and <a href="https://www.mechanicalrock.io/lets-get-started">get in touch</a>.

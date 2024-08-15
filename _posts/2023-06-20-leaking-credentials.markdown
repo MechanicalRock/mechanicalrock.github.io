@@ -5,7 +5,18 @@ title: "Leaking Credentials!"
 description: "AWS credentials can be leaked! Here are some ways to stop this or deal with it."
 date: 2024-08-14
 highlight: monokai
-tags: aws account control tower sso organizations credentials permission policy cutoff token timestamp
+tags: [
+  aws,
+  control tower,
+  sso,
+  organizations,
+  credentials,
+  permission,
+  policy,
+  cutoff,
+  token,
+  timestamp
+]
 image: /img/CutoffPolicy.png
 author: Bret Comstock Waldow
 ---

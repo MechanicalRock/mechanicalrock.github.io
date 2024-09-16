@@ -96,6 +96,6 @@ But if avoiding CloudFormation is not an option, bear the above tips in mind.
 
 ## Conclusion ##
 
-MWAA can be a great addition to provide managed orchestration of your workloads without much fuss of managing your own resources. It can help you move away from having to manually run tasks and integrates well with other services, both inside and outside of AWS. However, it does at times feel like a lesser cared for service by AWS and it would be great to see some of the hurdles mentioned in this post removed in the future. Stay tuned for Part 2 in which we will discuss additional aspects related to private networking setup.
+MWAA can be a great addition to provide managed orchestration of your workloads without much fuss of managing your own resources. It can help you move away from having to manually run tasks and integrates well with other services, both inside and outside of AWS. However, it does at times feel like a lesser cared for service by AWS and it would be great to see some of the hurdles mentioned in this post removed in the future. Stay tuned for [Part 2 in which we will discuss additional aspects related to private networking setup](https://blog.mechanicalrock.io/2024/09/16/deploying-mwaa-with-cloudformation-part2.html).
 
 If you have any questions or would like to discuss MWAA further, please feel free to reach out to <a href="https://www.mechanicalrock.io/lets-get-started">Mechanical Rock</a>.

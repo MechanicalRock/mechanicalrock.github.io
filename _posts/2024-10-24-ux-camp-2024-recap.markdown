@@ -57,7 +57,7 @@ Unfortunately [Mechanical Rock](https://www.mechanicalrock.io/) missed out on ti
 
 ## Categorisation of Talks
 
-I've divided the talks into 5 categories, each with a different focus. Here is a list of the talks in each category:
+We divided the talks into 5 categories, each with a different focus. Here is a list of the talks in each category:
 
 ### 1. Design Methodologies & Tools
 Diana - Why you should design a maturity model<br />

@@ -1,0 +1,111 @@
+---
+layout: postv2
+font: serif
+title: "UXCamp Boorloo: 2024 Recap"
+description: "A recap of the 2024 UXCamp Boorloo, a conference for UX professionals"
+date: 2024-10-24
+highlight: monokai
+image: /img/ux-camp-2024/ux-camp-2024.png
+author: Mechanical Rock
+tags:
+  [
+    UXCamp,
+    UX,
+    Design,
+    Unconference,
+    Conference,
+  ]
+---
+
+
+> UXCamp is a global network of independent events and Australia’s only community-driven design unconference. We bring together 200+ local designers and stand for radical collaboration, empathy and curiosity. - [UXCamp Boorloo](https://uxcamp.au/)
+
+This year, the [UXCamp Boorloo](https://uxcamp.au/) was held at the [State Library of Western Australia](https://slwa.wa.gov.au/). The event was a great success, with over 200 attendees from all over Australia. The conference featured a wide range of talks and workshops on topics such as user experience design, interaction design, service design, AI, design systems, psycologic impacts, accessibility, gaming and much more. [There were 41 pitches, 21 talks and a keynote.](https://uxcamp.au/agenda/)
+
+The conference was organised by a team of volunteers, who did an amazing job of putting together a diverse and engaging program. The event was sponsored by a number of local companies, who provided financial support and prizes for the attendees. 
+
+A shout out to the sponsors:
+
+<center style="max-width:10em;display:flex;flex-direction:column;justify-content:center;align-items:center;margin:0 auto;">
+  <b>Gold</b><br />
+  <a href="https://au.insight.com/en_AU/home.html"><img alt="insight" src="/img/ux-camp-2024/insight.avif"/></a><br />
+  <a href="https://www.ecu.edu.au/"><img alt="Edith Cowan University" src="/img/ux-camp-2024/ecu.avif"/></a><br />
+
+  <br /><b>Silver</b><br />
+  <a href="https://www.rac.com.au/"><img alt="RAC" src="/img/ux-camp-2024/rac.avif"/></a><br />
+
+  <br /><b>Bronze</b><br />
+  <a href="https://www.humaan.com/"><img alt="Humaan" src="/img/ux-camp-2024/humaan.avif"/></a><br />
+  <a href="https://purple.telstra.com/"><img alt="Telstra Purple" src="/img/ux-camp-2024/telstrapurple.avif"/></a><br />
+  <a href="https://about.google/google-in-australia/"><img alt="Google" src="/img/ux-camp-2024/google.avif"/></a><br />
+  <a href="https://zhamatix.com/"><img alt="Zhamatrix" src="/img/ux-camp-2024/zhamatix.avif"/></a><br />
+</center>
+
+## Buying Ticket Strategy
+
+Unfortunately [Mechanical Rock](https://www.mechanicalrock.io/) missed out on tickets last year. To make sure we didn't miss out this year we put a strategy in place -BRUTE FORCE! We had a team of people ready to buy tickets as soon as they went on sale. Refreshing the page every few seconds, we eventuated with tickets! As any good solution architect should do, they should draw diagrams:
+
+![Buying Ticket Strategy](/img/ux-camp-2024/buying-ticket-strategy.png)
+
+<div style="display:flex;flex-direction:row;align-items:center;">
+  <p><em>A shout out to <a href="https://www.linkedin.com/in/sarahthegreat/">Sarah Wright (Partner Exec)</a> for making all these things possible at <a href="https://www.mechanicalrock.io/">Mechanical Rock!</a></em></p>
+  <div style="margin-top:1em;max-width:10em;margin-left:auto;margin-right:auto;border-radius:1em;overflow:hidden;">
+    <img alt="Sarah Wright, Mechanical Rock's Partner Exec" src="/img/ux-camp-2024/sarah-wright.png" />
+  </div>
+</div>
+
+
+## Categorisation of Talks
+
+We divided the talks into 5 categories, each with a different focus. Here is a list of the talks in each category:
+
+### 1. Design Methodologies & Tools
+Diana - Why you should design a maturity model<br />
+Teresa - Designing design critiques<br />
+Ben Low - Live build your Figma design system foundation in 30 minutes<br />
+Brian - Building better experiences through design systems<br />
+
+### 2. Value & Impact of Design
+Kristy - How to measure value<br />
+Rebecca & Dorata - Accessible content design: why it matters for all abilities<br />
+Andrew - "After AI hype": What does AI mean for designers?<br />
+Shani - Form farm to Figma: Permaculture wisdom for digital design<br />
+Aaron - Designing for action: UX lessons from video games<br />
+
+### 3. Ethics & Social Impact of Design
+RAC CoLab - The creepy line<br />
+Leila - Trauma informed design<br />
+Clare - LE-GO in inequitable energy<br />
+
+### 4. Career Development & Personal Growth
+Simon - Design your life: Part 2<br />
+Niaal - Atypical path: a neurodivergent take on career development<br />
+Jess Witt - Can only leaders lead?<br />
+Josh - Embracing your pirate code<br />
+Elle - Design career journey maps<br />
+Hayley - Chicken coops & ballet slippers: my year with global millionaires<br />
+Jerry - Does your job spark joy<br />
+
+### 5. Design & Play / Entertainment
+Megan - Games 2.0<br />
+Aaron - Designing for action: UX lessons from video games<br />
+Lucy & Ernest - Freak in the sheets / Freak in the streets<br />
+
+## Diversity is Strength
+
+As you can see from this list, the variety of talks and experiences on display was a highlight. 
+Whether you were looking for nitty-gritty of UX design talk, career advice, or reflections on the role
+of UX in our wider world, the agenda had something for everyone. Even the UX-specific talks were delivered
+in a way that made them accessible to non-UX professionals, which was important due to the diversity of attendees: 
+UXers, students, software engineers were all present.
+
+This versatility reflects on the awesome community surrounding the conference. The fact that 41 of the around 200 
+attendees took to the stage and pitched their talks is fantastic, and helped make this variety and accessibility
+of talks possible. We all had something we could take away from [UXCamp](https://uxcamp.au/) regardless of our role, and we look forward
+to next year's event!
+
+---
+
+Want to talk more about this topic, [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)
+
+![Mechanical Rock Logo](/img/mr-logo-dark-landscape.jpg)

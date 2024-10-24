@@ -48,7 +48,7 @@ Unfortunately [Mechanical Rock](https://www.mechanicalrock.io/) missed out on ti
 ![Buying Ticket Strategy](/img/ux-camp-2024/buying-ticket-strategy.png)
 
 <div style="display:flex;flex-direction:row;align-items:center;">
-  <p><em>A shout out to [Sarah Wright](https://www.linkedin.com/in/sarahthegreat/) (Partner Exec) for making all these things possible at <a href="https://www.mechanicalrock.io/">Mechanical Rock!</a></em></p>
+  <p><em>A shout out to <a href="https://www.linkedin.com/in/sarahthegreat/">Sarah Wright (Partner Exec)</a> for making all these things possible at <a href="https://www.mechanicalrock.io/">Mechanical Rock!</a></em></p>
   <div style="margin-top:1em;max-width:10em;margin-left:auto;margin-right:auto;border-radius:1em;overflow:hidden;">
     <img alt="Sarah Wright, Mechanical Rock's Partner Exec" src="/img/ux-camp-2024/sarah-wright.png" />
   </div>
@@ -101,7 +101,7 @@ UXers, students, software engineers were all present.
 
 This versatility reflects on the awesome community surrounding the conference. The fact that 41 of the around 200 
 attendees took to the stage and pitched their talks is fantastic, and helped make this variety and accessibility
-of talks possible. We all had something we could take away from UXCamp regardless of our role, and we look forward
+of talks possible. We all had something we could take away from [UXCamp](https://uxcamp.au/) regardless of our role, and we look forward
 to next year's event!
 
 ---

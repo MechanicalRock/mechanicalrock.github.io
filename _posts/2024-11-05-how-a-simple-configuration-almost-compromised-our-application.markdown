@@ -25,7 +25,7 @@ Imagine logging into an application and suddenly viewing someone else’s accoun
 
 During extended testing, we identified a security vulnerability within the authentication process. Despite using OKTA as our identity provider, we observed sporadic occurrences of session hijacking, where authenticated users unexpectedly accessed other users’ sessions. Although infrequent, this issue posed a significant risk to data security.
 
-Initially, we suspected that the issue was related to user IDs in the database. During development, these IDs were randomly generated with each insertion, meaning a single user could have different IDs over time. This inconsistency, combined with the way cookies stored session IDs, seemed to open the door to unauthorised access.
+Initially, we suspected that the issue was related to user IDs in the database. During development, these IDs were randomly generated with each insertion, meaning a single user could have different IDs over time. This inconsistency, combined with the way we used cookies to store session IDs, seemed to open the door to unauthorised access.
 
 To address this, we forced the assignment of a unique ID for each user in every new iteration, but the problem persisted after days of testing. We then decided to investigate the HTTP requests between the client and the server.
 

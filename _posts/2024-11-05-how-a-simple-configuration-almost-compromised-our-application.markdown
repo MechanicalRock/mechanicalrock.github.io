@@ -82,7 +82,7 @@ This experience underscored the importance of rigorous testing, not only for cod
 
 #### Conclusion: The Importance of Comprehensive Testing for Security
 
-While traditional tests, such as unit, end-to-end (E2E), BDD, and smoke tests, ensure that the code and application functionalities work correctly and that the server is accessible, this experience taught us that in a complex environment with multiple components, these may not be enough. Each system integration, like cache and authentication, should also be tested for expected behaviour across various scenarios, especially under load and stress conditions.
+While tests, such as unit, end-to-end (E2E), BDD, and smoke tests, ensure that the code and application functionalities work correctly and that the server is accessible, this experience taught us that in a complex environment with multiple components, these may not be enough. Each system integration, like cache and authentication, should also be tested for expected behaviour across various scenarios, especially under load and stress conditions.
 
 We have not yet developed a fully automated and reliable method for testing cache and authentication scenarios together. However, until that becomes possible, the most important lesson we learned is that it’s essential to subject cache configurations to rigorous testing to ensure the application operates securely and protects all users. In doing so, we minimize the risk of issues like this and ensure the integrity of the user experience and data.
 

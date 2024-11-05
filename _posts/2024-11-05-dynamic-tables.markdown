@@ -42,6 +42,14 @@ We explored incremental models in DBT, but it had its own issues:
 
 Dynamic Tables just made more sense. They work directly in SQL, can still be version-controlled, and offer easy refresh options. This approach kept things flexible and simple without needing more tools.
 
+# Issues and Concerns
+
+TODO: Limitations
+
+Limited visibility of Dynamic Tables failures (such as upstream sources) - this can be worked around by running a scheduled task to review dynamic tables logs (at additional overheads)
+
+Dynamic Tables don't support self-merges or window functions (this will result in a Dynamic Table always doing a full refresh, as opposed to an incremental refresh)
+
 # Takeaways
 
 Switching to Snowflake Dynamic Tables has been a game-changer.

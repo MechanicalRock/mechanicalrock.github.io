@@ -16,25 +16,27 @@ tags: [
 ]
 ---
 
-Imagine logging into an application and suddenly viewing someone else’s account. As alarming as this sounds, it was nearly a reality in one of our applications. In this post, we’ll detail how a simple misconfiguration in Amazon CloudFront led to a security vulnerability and how we managed to resolve it.
+Imagine logging into an application and suddenly viewing someone else's account. As alarming as this sounds, it was nearly a reality in one of our applications. In this post, we'll detail how a simple misconfiguration in Amazon CloudFront led to a security vulnerability and how we resolved it.
 
 ## The Problem: Cross-User Data Exposure
 
-During extended testing, we identified a security vulnerability within the authentication process. Despite using OKTA as our identity provider, we observed sporadic occurrences of session hijacking, where authenticated users unexpectedly accessed other users’ sessions. Although infrequent, this issue posed a significant risk to data security.
+During extended testing, we unearthed a potential threat to our data security. Despite using OKTA as our identity provider, we observed sporadic session hijacking occurrences where authenticated users unexpectedly accessed other users' sessions. This issue, not with OKTA's service but with our implementation, posed a significant risk to our data security.
 
-Initially, we suspected that the issue was related to user IDs in the database. During development, these IDs were randomly generated with each insertion, meaning a single user could have different IDs over time. This inconsistency, combined with the way we used cookies to store session IDs, seemed to open the door to unauthorised access.
+Initially, we suspected the issue was related to user IDs in the database. However, this was more related to the development process, so the database was getting seeded even for the staging server. The actual users were yet to be available at that stage. So, the user IDs were randomly generated with each insertion, meaning a single user could have different IDs over time.
 
-To address this, we forced the assignment of a unique ID for each user in every new iteration, but the problem persisted after days of testing. We then decided to investigate the HTTP requests between the client and the server.
+Despite our best efforts, the problem persisted after days of testing. Undeterred, we continued our investigation, focusing on the HTTP requests between the client and the server.
+
+Our team was focused on resolving this issue, and we gathered the best people in the office to brainstorm what we could do to mitigate this top-priority issue.
 
 ## The Investigation: Discovering CloudFront’s Role
 
-As we analysed the authentication flow, we noticed that, after logging in via OKTA, a session was created and a token was returned to the client. The application then checked if the user had access rights. At this stage, we observed that CloudFront was intercepting these requests. We suspected that, due to improper configuration, CloudFront was caching some of these responses, resulting in one user’s session data being served to another.
+As we analysed the authentication flow, we noticed that a session was created after logging in via OKTA, and a token was returned to the client. The application then checked if the user had access rights. At this stage, we observed that CloudFront was intercepting these requests. Due to improper configuration, we suspected that CloudFront was caching some of these responses, resulting in one user's session data being served to another.
 
 ## Cloud Infrastructure Architecture
 
-From the start, we planned the application’s cloud architecture based on the "AWS Well-Architected Framework," adopting a standard structure for web applications.
+We planned the application's cloud architecture based on the "AWS [Well-Architected](https://www.mechanicalrock.io/offerings/well-architected-review) Framework". We opted for a simple design for this web application that would tick all the client's boxes, ensuring that our architecture was well-optimised and secure.
 
-After numerous diagnostic attempts, we found that CloudFront was using optimised caching policies on certain routes, such as `api/*`.
+After some days of debugging, reading endless CloudFront logs, monitoring the network traffic through the dev tools, and inspecting the caching policies in the CDK code, we finally found that CloudFront was using the optimised caching policies on specific routes, such as `api/*`.
 
 ```typescript
     // ...
@@ -49,19 +51,19 @@ After numerous diagnostic attempts, we found that CloudFront was using optimised
     // ...
 ```
 
-See the flow diagram below for a simplified view of both the desired workflow and the issue we encountered:
+See the flow diagram below for a broader view of the user authentication flow:
 ![CloudFront Caching Issue](/img/2024-11-05-how-a-simple-configuration-almost-compromised-our-application/the-post-img.png)
 
-The diagram shows 2 users, A and B, accessing the application.
-User A logs in and receives a token, which is then used to access the application. However, due to the caching policy, User B can sometimes access User A’s session data.
+The diagram shows two users, A and B, accessing the application.
+User A logs in and receives a token, which is then used to access the application. However, due to the caching policy, User B can sometimes access User A's session data.
 
-Although no issues were initially detected with this caching policy, we began to suspect that the access token generated by OKTA immediately after login was being ignored, with the application occasionally serving cached responses from other user sessions.
+Although no issues were initially detected with this caching policy, we began to suspect that the access token generated by OKTA immediately after login was getting ignored, with the application occasionally serving cached responses from other user sessions.
 
 ## The Challenge of Understanding the Issue
 
-The greatest challenge was isolating and understanding the root cause in an environment with multiple components. Uncertainty around whether the issue lay in the OKTA configuration or the application complicated the investigation. We added `console.log` statements in strategic points to monitor CloudFront logs and gather more information.
+The greatest challenge was isolating and understanding the root cause in an environment with multiple components. Uncertainty around whether the issue lay in the OKTA configuration or the application complicated the investigation. To gather more information, we added `console.log` statements in strategic points in our code to monitor CloudFront logs and track the flow of requests and responses.
 
-Additionally, the intermittent nature of the issue made debugging even more challenging. The lack of clear reproduction steps and the absence of automated tests specifically for the authentication flow further complicated our efforts to identify and resolve the problem.
+Another factor was that surfacing the bug required multiple users to test the system simultaneously, making debugging and tracking even more complex. The lack of reproduction steps due to the one-off nature of the problem and the absence of automated tests specifically for the authentication flow further complicated our efforts.
 
 ## The Solution: Disabling CloudFront Caching
 
@@ -69,19 +71,19 @@ The most effective solution was to disable caching in CloudFront for sensitive r
 
 ## Lessons Learned
 
-Our experience highlighted several essential points for securely managing CloudFront cache:
+We've refined some simple yet crucial lessons from the extensive debugging and code review. These insights will help us prevent similar issues in the future and equip other people with valuable knowledge for your own security challenges.
 
 1. **Use Strict Cache Policies**: Avoid caching on routes with user-specific or session-based data. Configuring headers like `Cache-Control: private, no-store` for sensitive routes can help prevent unwanted caching.
 2. **Align Authentication and Cache Configuration**: Ensure that authentication and authorisation mechanisms are properly integrated with cache configuration, especially when using external providers.
 3. **Limit Data in Tokens**: Keep token-stored data minimal and periodically verify essential information directly from the database.
 
-This experience underscored the importance of rigorous testing, not only for code but also for infrastructure when using services like CloudFront in conjunction with external authentication providers.
+This process emphasises the importance of testing for code and infrastructure when using services like CloudFront in conjunction with external authentication providers.
 
 ## Conclusion: The Importance of Comprehensive Testing for Security
 
-While tests, such as unit, end-to-end (E2E), BDD, and smoke tests, ensure that the code and application functionalities work correctly and that the server is accessible, this experience taught us that in a complex environment with multiple components, these may not be enough. Each system integration, like cache and authentication, should also be tested for expected behaviour across various scenarios, especially under load.
+While tests, such as unit, end-to-end (E2E), BDD, and smoke tests, are crucial, this experience taught us the importance of comprehensive testing in a complex environment with multiple components. Each system integration, like cache and authentication, should be rigorously tested for expected behaviour across various scenarios, especially under load.
 
-We have not yet developed a fully automated and reliable method for testing cache and authentication scenarios together. However, until that becomes possible, the most important lesson we learned is that it’s essential to subject cache configurations to rigorous testing to ensure the application operates securely and protects all users. In doing so, we minimize the risk of issues like this and ensure the integrity of the user experience and data.
+We have yet to develop a fully automated and reliable method for testing cache and authentication scenarios together. However, until that becomes possible, the most important lesson we learned is that it's essential to subject cache configurations to rigorous testing to ensure the application operates securely and protects all users. Doing so could diminish the risk of issues like this and ensure data integrity.
 
 <hr style="margin:20px 0" />
 

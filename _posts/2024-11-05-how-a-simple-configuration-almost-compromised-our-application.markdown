@@ -68,7 +68,7 @@ Additionally, the intermittent nature of the issue made debugging even more chal
 
 #### The Solution: Disabling CloudFront Caching
 
-The most effective solution was to disable caching in CloudFront for sensitive routes, which resolved the issue. Although we could have created a custom cache policy, disabling the cache was the most practical and secure solution given the project timeline.
+The most effective solution was to disable caching in CloudFront for sensitive routes, which resolved the issue. Although we could have created a custom cache policy, disabling the cache was the most practical and secure solution.
 
 #### Lessons Learned
 

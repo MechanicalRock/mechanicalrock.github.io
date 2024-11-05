@@ -5,7 +5,7 @@ description: "Discover how a single misconfiguration in Amazon CloudFront led to
 date: 2024-11-05
 highlight: monokai
 author: Caio K. Kaihara
-image: /img/2024-11-05-how-a-simple-configuration-almost-compromised-our-application/hero.png
+image: /img/2024-11-05-how-a-simple-configuration-almost-compromised-our-application/hero.jpg
 tags: [
   "CloudFront caching",
   "AWS security",
@@ -83,7 +83,15 @@ While tests, such as unit, end-to-end (E2E), BDD, and smoke tests, ensure that t
 
 We have not yet developed a fully automated and reliable method for testing cache and authentication scenarios together. However, until that becomes possible, the most important lesson we learned is that it’s essential to subject cache configurations to rigorous testing to ensure the application operates securely and protects all users. In doing so, we minimize the risk of issues like this and ensure the integrity of the user experience and data.
 
----
+<hr style="margin:20px 0" />
+
+Don't be shy, [get in touch with us!](https://www.mechanicalrock.io/lets-get-started)
+
+![Mechanical Rock Logo](/img/mr-logo-dark-landscape.jpg){:loading="lazy"}
+
+> Header image by <a href="https://unsplash.com/@charlesdeluvio">charlesdeluvio</a> on <a href="https://unsplash.com/s/photos/personal-data">Unsplash</a>
+
+<hr style="margin:20px 0" />
 
 ## Links for Further Reading
 - [Well Architected Review](https://www.mechanicalrock.io/offerings/well-architected-review)

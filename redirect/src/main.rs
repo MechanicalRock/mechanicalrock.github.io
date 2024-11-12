@@ -1,7 +1,7 @@
 use lambda_http::{run, service_fn, tracing, Body, Error, Request, Response};
 
-async fn function_handler(_event: Request) -> Result<Response<Body>, Error> {
-    let uri = _event.uri().path();
+async fn handler(event: Request) -> Result<Response<Body>, Error> {
+    let uri = event.uri().path();
     let slug: String = slugify(&uri[1..uri.len()]);
 
     let resp = Response::builder()
@@ -16,7 +16,7 @@ async fn function_handler(_event: Request) -> Result<Response<Body>, Error> {
 async fn main() -> Result<(), Error> {
     tracing::init_default_subscriber();
 
-    run(service_fn(function_handler)).await
+    run(service_fn(handler)).await
 }
 
 fn slugify(uri: &str) -> String {

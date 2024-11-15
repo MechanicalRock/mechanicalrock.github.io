@@ -61,4 +61,4 @@ Switching to Snowflake Dynamic Tables has been a game-changer.
 - Streamlined workflows: We’re focusing more on building robust data solutions rather than wrestling with infrastructure.
 - Cost-effective: No added fees for extra tooling, and we’re using resources more efficiently.
 
-Dynamic Tables have been a great addition, fitting perfectly into our Snowflake environment and team skill set. They’re helping us work more effectively, and we’re excited to see how they’ll continue to support our data strategy moving forward.
+Dynamic Tables have been a great addition, fitting perfectly into our Snowflake environment and team skill set. These new objects are helping us work more effectively, and we’re excited to see how Dynamic Tables continue to support our data strategy moving forward.

@@ -1,8 +1,8 @@
 ---
 layout: postv2
-title: "WIP"
-description: "The Importance of Using pip freeze for Data Engineers and Analysts"
-date: 2024-11-05
+title: "Getting Dynamic with Snowflake"
+description: "Exploring Snowflake's Dynamic Tables feature"
+date: 2024-11-18
 highlight: monokai
 image: /img/pip-freeze/ai-cover.png
 author: Ben Dang

@@ -44,11 +44,9 @@ Dynamic Tables just made more sense. They work directly in SQL, can still be ver
 
 # Issues and Concerns
 
-TODO: Limitations
+In its current state, visibility into Dynamic Table failures are limited. When an upstream data source changes or is no longer available, identifying the root cause of the failure isn’t always straightforward. We’ve explored a few custom solutions to address this, including setting up a scheduled Snowflake task that queries the Dynamic Table refresh history available in Snowflake’s information schema. Whilst these custom setups are easy to implement, they do add some overhead and aren’t quite as streamlined as we’d like.
 
-Limited visibility of Dynamic Tables failures (such as upstream sources) - this can be worked around by running a scheduled task to review dynamic tables logs (at additional overheads)
-
-Dynamic Tables don't support self-merges or window functions (this will result in a Dynamic Table always doing a full refresh, as opposed to an incremental refresh)
+Dynamic Tables also come with a few functional limitations. For instance, they don’t support self-merges, window functions, or pivot functions. With self-merges and window functions, the lack of incremental support means that Dynamic Tables perform a full refresh rather than an incremental one, which can increase compute time and somewhat detract from the main benefits of Dynamic Tables. Pivot functions, from what we’ve seen so far, are entirely unsupported, though this does prompt a closer look at whether pivoting is truly required in your workflow.
 
 # Takeaways
 

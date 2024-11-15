@@ -17,7 +17,7 @@ tags:
 
 # Dynamic Tables
 
-After more than a year in preview, Snowflake finally launched Dynamic Tables for general availability in [April 2024](https://docs.snowflake.com/en/release-notes/2024/other/2024-04-29-dynamic-tables). For those of us in data engineering, this is massive. Dynamic Tables bring together scheduling and data ingestion into one setup, all in SQL. This means we can handle batch and streaming data seamlessly without needing complex infrastructure or extra tools. After implementing and monitoring Dynamic Tables a few months with a client, here’s my take on how they’re reshaping data pipelines.
+After more than a year in preview, Snowflake finally launched Dynamic Tables for general availability in [April 2024](https://docs.snowflake.com/en/release-notes/2024/other/2024-04-29-dynamic-tables). For those of us in data engineering, this is massive as Dynamic Tables brings together scheduling and data ingestion into one setup, all in SQL. This means we can handle batch and streaming data seamlessly without needing complex infrastructure or extra tools. After implementing and monitoring Dynamic Tables for a few months with a client, here’s my take on how they’re reshaping data pipelines.
 
 # The Previous Stack
 

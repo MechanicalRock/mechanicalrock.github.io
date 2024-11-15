@@ -29,7 +29,16 @@ The client's batch processing architecture in AWS was powerful but complex. At t
 
 Whilst the abstraction allowed for heaps of customisation, it was a bit of a maze to navigate, especially for newcomers. Debugging was tough, and maintaining and scaling the stack eventually became unwieldy. We started looking for a simpler solution.
 
-TODO: Diagram of Architecture
+```
+graph TD
+    A[GitHub] -- push commit, triggers --> B[CodeBuild]
+    B -- scheduling info --> C[DynamoDB]
+    B -- specific job details --> D[S3]
+    E[EventScheduler] -- every minute triggers --> F[EventManagerLambda]
+    F -- verifies if schedule needs to be triggered --> C
+    F -- pulls additional parameters --> D
+    F -- initiates jobs --> G[Snowflake Procedures]
+  ```
 
 # The Decision
 

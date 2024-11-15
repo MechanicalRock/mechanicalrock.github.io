@@ -4,7 +4,7 @@ title: "Getting Dynamic with Snowflake"
 description: "Exploring Snowflake's Dynamic Tables feature"
 date: 2024-11-18
 highlight: monokai
-image: /img/pip-freeze/ai-cover.png
+image: /img/dynamic-tables/dt_graph.png
 author: Ben Dang
 tags:
   [

@@ -43,6 +43,28 @@ We explored incremental models in DBT, but it had its own issues:
 - DBT needs a separate orchestration tool, like DBT Cloud, which costs extra and adds another layer to manage.
 - Jinja expressions in DBT, while handy, added a learning curve compared to plain SQL.
 
+The below example shows how simple it is to create a Dynamic Table. Here, we're creating a Dynamic Table named `COMBINED_SOURCES`, which consolidates data from multiple source tables and refreshes every 15 minutes (well, it actually aims for a target lag of 15 minutes). This By setting it to `INCREMENTAL` mode, the Dynamci Table only materialises the results of the query based on changes in the source data, allowing us to maintain a near real-time view without the need for complex ETL (extract, transform, and load) processes.
+
+```sql
+CREATE OR REPLACE DYNAMIC TABLE SCHEMA.COMBINED_SOURCES
+    LAG = '15 minutes' 
+    REFRESH_MODE = INCREMENTAL 
+    INITIALIZE = ON_SCHEDULE 
+    WAREHOUSE = WAREHOUSE 
+AS
+    (
+        SELECT * FROM SCHEMA.SOURCE_A
+        UNION ALL
+        SELECT * FROM SCHEMA.SOURCE_B
+        UNION ALL
+        SELECT * FROM SCHEMA.SOURCE_C
+        UNION ALL
+        SELECT * FROM SCHEMA.SOURCE_D
+        UNION ALL
+        SELECT * FROM SCHEMA.SOURCE_E
+    );
+```
+
 Dynamic Tables just made more sense. They work directly in SQL, can still be version-controlled, and offer easy refresh options. This approach kept things flexible and simple without needing more tools.
 
 # Issues and Concerns

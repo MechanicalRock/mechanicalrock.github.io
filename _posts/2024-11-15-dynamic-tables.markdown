@@ -84,3 +84,6 @@ Switching to Snowflake Dynamic Tables has been a game-changer.
 - Cost-effective: No added fees for extra tooling, and we’re using resources more efficiently.
 
 Dynamic Tables have been a great addition, fitting perfectly into our Snowflake environment and team skill set. These new objects are helping us work more effectively, and we’re excited to see how Dynamic Tables continue to support our data strategy moving forward.
+
+If you’d like to chat or have any questions, feel free to contact me on <a href="https://www.linkedin.com/in/benjamin-tam-dang/">LinkedIn</a>. Also, don’t miss out on exploring our Data & AI capabilities  <a href="https://www.mechanicalrock.io/our-expertise/data-and-ai">here</a>!
+

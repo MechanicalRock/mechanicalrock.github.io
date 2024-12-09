@@ -1,0 +1,12 @@
+[package]
+name = "redirect"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+lambda_http = "0.13.0"
+lazy_static = "1.4"
+regex = "1.5"
+tokio = { version = "1", features = ["macros"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt"] }

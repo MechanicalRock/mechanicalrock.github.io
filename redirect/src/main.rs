@@ -3170,9 +3170,9 @@ fn create_redirect_response(slug: &str) -> Result<Response<Body>, Error> {
         .status(301)
         .header(
             "location",
-            format!("https://mechanicalrock.io/blog/{}", slug),
+            format!("https://www.mechanicalrock.io/blog/{}", slug),
         )
-        .body(format!("Redirected to https://mechanicalrock.io/blog/{}", slug).into())
+        .body(format!("Redirected to https://www.mechanicalrock.io/blog/{}", slug).into())
         .map_err(Box::new)?)
 }
 
